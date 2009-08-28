@@ -1,0 +1,275 @@
+//--- OBJECT WRITE BEGIN ---
+new GuiColorPickerCtrl(ColorPickerDlg) {
+	Profile = "GuiDefaultProfile";
+	HorizSizing = "right";
+	VertSizing = "bottom";
+	position = "0 0";
+	Extent = "800 600";
+	MinExtent = "8 2";
+	Visible = "1";
+	baseColor = "1.000000 0.000000 1.000000 1.000000";
+	pickColor = "0.788235 0.713726 0.600000 1.000000";
+	selectorGap = "1";
+	displayMode = "Dropper";
+	actionOnMove = "1";
+
+	new GuiWindowCtrl(GuiPickerDlg) {
+		Profile = "GuiWindowProfile";
+		HorizSizing = "right";
+		VertSizing = "bottom";
+		position = "51 39";
+		Extent = "358 294";
+		MinExtent = "8 2";
+		Visible = "1";
+		text = "Pick Color";
+		maxLength = "255";
+		resizeWidth = "0";
+		resizeHeight = "0";
+		canMove = "1";
+		canClose = "1";
+		canMinimize = "0";
+		canMaximize = "0";
+		MinSize = "50 50";
+		closeCommand = "endColorDropper();Canvas.popDialog(ColorPickerDlg);";
+
+		new GuiColorPickerCtrl(ColorBlendSelect) {
+			Profile = "GuiDefaultProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "9 42";
+			Extent = "314 190";
+			MinExtent = "8 2";
+			Visible = "1";
+			baseColor = "0.600000 1.000000 0.000000 1.000000";
+			selectorGap = "1";
+			displayMode = "BlendColor";
+			actionOnMove = "1";
+		};
+		new GuiSliderCtrl(ColorAlphaSelect) {
+			Profile = "GuiSliderProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "8 238";
+			Extent = "293 21";
+			MinExtent = "8 2";
+			Visible = "1";
+			range = "0.000000 1.000000";
+			ticks = "255";
+			value = "1";
+		};
+		new GuiColorPickerCtrl(ColorRangeSelect) {
+			Profile = "GuiDefaultProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "328 42";
+			Extent = "21 188";
+			MinExtent = "8 2";
+			Visible = "1";
+			Command = "updatePickerBaseColor();";
+			baseColor = "1.000000 0.000000 1.000000 1.000000";
+			pickColor = "0.600000 1.000000 0.000000 1.000000";
+			selectorGap = "1";
+			displayMode = "VertColor";
+			actionOnMove = "1";
+		};
+		new GuiTextCtrl(Channel_R_Val) {
+			Profile = "GuiTextProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "14 21";
+			Extent = "22 18";
+			MinExtent = "8 2";
+			Visible = "1";
+			text = "R : 1.0";
+			maxLength = "255";
+		};
+		new GuiTextCtrl(Channel_G_Val) {
+			Profile = "GuiTextProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "69 21";
+			Extent = "23 18";
+			MinExtent = "8 2";
+			Visible = "1";
+			text = "G : 1.0";
+			maxLength = "255";
+		};
+		new GuiTextCtrl(Channel_B_Val) {
+			Profile = "GuiTextProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "131 21";
+			Extent = "22 18";
+			MinExtent = "8 2";
+			Visible = "1";
+			text = "B : 1.0";
+			maxLength = "255";
+		};
+		new GuiTextCtrl(Channel_A_Val) {
+			Profile = "GuiTextProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "198 21";
+			Extent = "23 18";
+			MinExtent = "8 2";
+			Visible = "1";
+			text = "A : 1.0";
+			maxLength = "255";
+		};
+		new GuiButtonCtrl() {
+			Profile = "GuiButtonProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "304 238";
+			Extent = "47 18";
+			MinExtent = "8 2";
+			Visible = "1";
+			Command = "toggleColorPicker();";
+			text = "Drop";
+			groupNum = "-1";
+			buttonType = "PushButton";
+		};
+		new GuiButtonCtrl() {
+			Profile = "GuiButtonProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "201 267";
+			Extent = "71 17";
+			MinExtent = "8 2";
+			Visible = "1";
+			Command = "DoColorPickerCallback();";
+			text = "Ok";
+			groupNum = "-1";
+			buttonType = "PushButton";
+		};
+		new GuiButtonCtrl() {
+			Profile = "GuiButtonProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "279 267";
+			Extent = "71 17";
+			MinExtent = "8 2";
+			Visible = "1";
+			Command = "Canvas.popDialog(ColorPickerDlg);";
+			text = "Cancel";
+			groupNum = "-1";
+			buttonType = "PushButton";
+		};
+	};
+};
+//--- OBJECT WRITE END ---
+
+$ColorPickerCallback = ""; // Control that we need to update
+$ColorCallbackType	= 1;  // ColorI
+
+// This function pushes the color picker dialog and returns to a callback the selected value
+function GetColorI( %currentColor, %callback )
+{
+	$ColorPickerCallback = %callback;
+	$ColorCallbackType = 1; // ColorI
+	
+	// Set the RGBA displays accordingly
+	%red = getWord(%currentColor, 0);
+	%green = getWord(%currentColor, 1);
+	%blue = getWord(%currentColor, 2);
+	%alpha = getWord(%currentColor, 3);
+	
+	setColorInfo(%red, %green, %blue, %alpha);
+	
+	ColorBlendSelect.pickColor = %red SPC %green SPC %blue SPC "1.0";
+	ColorBlendSelect.updateColor();
+	ColorAlphaSelect.setValue(%alpha);
+
+	Canvas.pushDialog(ColorPickerDlg);
+}
+
+function GetColorF( %currentColor, %callback )
+{
+	$ColorPickerCallback = %callback;
+	$ColorCallbackType = 2; // ColorF
+	
+	// Set the RGBA displays accordingly
+	%red = getWord(%currentColor, 0);
+	%green = getWord(%currentColor, 1);
+	%blue = getWord(%currentColor, 2);
+	%alpha = getWord(%currentColor, 3);
+
+	setColorInfo(%red, %green, %blue, %alpha);
+
+	ColorBlendSelect.pickColor = %red SPC %green SPC %blue SPC "1.0";
+	ColorBlendSelect.updateColor();
+	ColorAlphaSelect.setValue(%alpha);
+
+	Canvas.pushDialog(ColorPickerDlg);
+}
+
+
+function DoColorPickerCallback()
+{
+  eval( $ColorPickerCallback @ "(\"" @ constructNewColor(ColorBlendSelect.getValue(), $ColorCallbackType) @"\");" );
+
+  Canvas.popDialog(ColorPickerDlg);
+}	
+
+// This function updates the base color on the blend control
+function updatePickerBaseColor()
+{
+	%pickColor = ColorRangeSelect.getValue();
+	%red = getWord(%pickColor, 0);
+	%green = getWord(%pickColor, 1);
+	%blue = getWord(%pickColor, 2);
+
+	ColorBlendSelect.baseColor = %red SPC %green SPC %blue SPC "1.0";
+	ColorBlendSelect.updateColor();
+}
+
+// This function is used to update the text controls at the top
+function setColorInfo(%red, %green, %blue, %alpha)
+{
+	Channel_R_Val.setValue("R :" SPC mCeil(%red * 255));
+	Channel_G_Val.setValue("G :" SPC mCeil(%green * 255));
+	Channel_B_Val.setValue("B :" SPC mCeil(%blue * 255));
+	Channel_A_Val.setValue("A :" SPC mCeil(%alpha * 255));
+}
+
+// This function constructs a new color, and updates the text displays accordingly
+function constructNewColor(%pickColor, %colorType )
+{
+	%red = getWord(%pickColor, 0);
+	%green = getWord(%pickColor, 1);
+	%blue = getWord(%pickColor, 2);
+	%alpha = ColorAlphaSelect.getValue();
+	
+	// Update the text controls to reflect new color
+	setColorInfo(%red, %green, %blue, %alpha);
+	if ( %colorType == 1 ) // ColorI
+		return mCeil( %red * 255 ) SPC mCeil( %green * 255 ) SPC mCeil( %blue * 255 ) SPC mCeil( %alpha * 255 );
+	else // ColorF
+		return %red SPC %green SPC %blue SPC %alpha;
+}
+
+
+// Functions to deal with the color dropper
+function startColorDropper()
+{
+	//ColorPickerDlg.command = "ColorDropperSelect.baseColor = ColorPickerDlg.pickColor;";
+	ColorPickerDlg.altCommand = $pickerUpdateControl@".setValue(constructNewColor(ColorPickerDlg.pickColor));endColorDropper();";
+	ColorPickerDlg.setActive(true);
+	$pickerActive = true;
+}
+
+function endColorDropper()
+{
+	ColorPickerDlg.command = "";
+	ColorPickerDlg.altCommand = "";
+	ColorPickerDlg.setActive(false);
+	$pickerActive = false;
+}
+
+function toggleColorPicker()
+{
+	if ($pickerActive)
+		endColorDropper();
+	else
+		startColorDropper();
+}

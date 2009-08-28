@@ -1,0 +1,65 @@
+html {
+	cursor: url(graphics/cursor.png), auto;
+	height: 100%;
+}
+
+body {
+	font-family: "Verdana", "Helvetica", sans-serif;
+	font-size: 0.95em;
+	color: #0088ff;
+	margin: 10px;
+}
+
+p {
+	margin-bottom: 2em;
+}
+
+li {
+	font-size: 0.85em;
+}
+
+td {
+	font-size: 0.85em;
+	border: 1px solid;
+}
+
+/* LINKS */
+a {
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+/* Page Header style */
+h1 {
+	font-size: 2em;
+	margin: 0;
+	padding: 0.4em;	
+	border-bottom: 1px solid;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+}
+
+h2 {
+	font-size: 1.4em;
+}
+
+h3 {
+	font-size: 1.1em;
+}
+
+#noborder  {
+	border: none;
+}
+
+#footer {
+	text-align: center;
+	border-top: 1px solid;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-left: none;
+	margin: 0;
+	padding: 0.4em;
+	clear: both;
+}
+

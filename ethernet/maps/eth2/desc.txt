@@ -1,0 +1,1 @@
+Big, simple, currently very bare maze-like map.

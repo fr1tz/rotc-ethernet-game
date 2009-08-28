@@ -1,0 +1,81 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2009, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
+// Torque Game Engine
+// Copyright (c) 2001 GarageGames.Com
+//-----------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(AboutWindorForEditing) {
+	canSaveDynamicFields = "0";
+	Profile = "GuiDefaultProfile";
+	HorizSizing = "right";
+	VertSizing = "bottom";
+	position = "0 0";
+	Extent = "640 480";
+	MinExtent = "8 8";
+	canSave = "1";
+	Visible = "1";
+	hovertime = "1000";
+
+	new GuiWindowCtrl(AboutWindow) {
+		canSaveDynamicFields = "0";
+		Profile = "GuiWindowProfile";
+		HorizSizing = "center";
+		VertSizing = "center";
+		position = "157 139";
+		Extent = "350 175";
+		MinExtent = "8 8";
+		canSave = "1";
+		Visible = "1";
+		hovertime = "1000";
+		text = "About";
+		maxLength = "255";
+		resizeWidth = "0";
+		resizeHeight = "0";
+		canMove = "1";
+		canClose = "1";
+		canMinimize = "1";
+		canMaximize = "0";
+		minSize = "50 50";
+		closeCommand = "removeWindow(AboutWindow);";
+
+		new GuiMLTextCtrl(AboutText) {
+			canSaveDynamicFields = "0";
+			Profile = "GuiMLTextProfile";
+			HorizSizing = "left";
+			VertSizing = "top";
+			position = "10 30";
+			Extent = "325 82";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			hovertime = "1000";
+			lineSpacing = "2";
+			allowColorChars = "0";
+			maxChars = "-1";
+			text = "---";
+		};
+		new GuiButtonCtrl() {
+			canSaveDynamicFields = "0";
+			Profile = "GuiButtonProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "115 140";
+			Extent = "120 20";
+			MinExtent = "8 2";
+			canSave = "1";
+			Visible = "1";
+			Command = "removeWindow(AboutWindow);";
+			hovertime = "1000";
+			text = "Who cares?";
+			groupNum = "-1";
+			buttonType = "PushButton";
+		};
+	};
+};
+//--- OBJECT WRITE END ---
+

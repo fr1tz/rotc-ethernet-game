@@ -1,0 +1,135 @@
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(TerrainEditorSoftSelectionForEditing) {
+	canSaveDynamicFields = "0";
+	Profile = "GuiDefaultProfile";
+	HorizSizing = "right";
+	VertSizing = "bottom";
+	position = "0 0";
+	Extent = "800 600";
+	MinExtent = "8 8";
+	canSave = "1";
+	Visible = "1";
+	hovertime = "1000";
+
+   new GuiWindowCtrl(TerrainEditorSoftSelection) {
+      canSaveDynamicFields = "0";
+      Profile = "GuiWindowProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      position = "117 113";
+      Extent = "196 257";
+      MinExtent = "8 8";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      text = "Terrain Soft Selection";
+      maxLength = "255";
+      resizeWidth = "0";
+      resizeHeight = "0";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "0";
+      canMaximize = "0";
+      minSize = "50 50";
+      closeCommand = "EditorGui::removeWindow(TerrainEditorSoftSelection);";
+
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "12 199";
+         Extent = "8 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "0";
+         maxLength = "255";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "12 36";
+         Extent = "8 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "1";
+         maxLength = "255";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "60 200";
+         Extent = "45 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         tooltipprofile = "GuiToolTipProfile";
+         ToolTip = "Brush radius for Selection Mode.";
+         hovertime = "1000";
+         text = "<Radius>";
+         maxLength = "255";
+      };
+      new GuiTextEditCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextEditProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "125 197";
+         Extent = "50 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         Variable = "ETerrainEditor.softSelectRadius";
+         Command = "ETerrainEditor.softSelectRadius = $ThisControl.getValue();";
+         tooltipprofile = "GuiToolTipProfile";
+         ToolTip = "Brush radius for Selection Mode.";
+         hovertime = "1000";
+         maxLength = "255";
+         historySize = "0";
+         password = "0";
+         tabComplete = "0";
+         sinkAllKeyEvents = "0";
+         password = "0";
+         passwordMask = "*";
+      };
+      new GuiFilterCtrl(TESoftSelectFilter) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiDefaultProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "20 32";
+         Extent = "155 162";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         controlPoints = "7";
+         filter = "1 0.833333 0.666667 0.5 0.333333 0.166667 0";
+      };
+      new GuiButtonCtrl(TESettingsApplyButton) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "55 223";
+         Extent = "80 20";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Apply";
+         groupNum = "-1";
+         buttonType = "PushButton";
+      };
+   };
+};
+//--- OBJECT WRITE END ---
+

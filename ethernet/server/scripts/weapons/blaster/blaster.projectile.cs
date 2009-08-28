@@ -1,0 +1,93 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2009, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// Revenge Of The Cats - blaster.projectile.cs
+// Code for the blaster projectile
+//------------------------------------------------------------------------------
+
+exec("./blaster.projectile.sfx.cs");
+exec("./blaster.projectile.gfx.red.cs");
+exec("./blaster.projectile.gfx.blue.cs");
+
+//-----------------------------------------------------------------------------
+// projectile datablock...
+
+datablock ShotgunProjectileData(RedBlasterProjectile)
+{
+	// script damage properties...
+	impactDamage       = 15;
+	impactImpulse      = 150;
+	splashDamage       = 0;
+	splashDamageRadius = 0;
+	splashImpulse      = 0;
+ 
+	energyDrain = 3; // how much energy does firing this projectile drain?
+	
+    numBullets = 9; // number of shotgun bullets
+ 
+    range = 500; // shotgun range
+    spread = 0.6; // shotgun spread in degrees
+	
+	explodesNearEnemies			= false;
+	explodesNearEnemiesRadius	= 4;
+	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
+
+    //sound = BlasterProjectileFlybySound;
+
+    //projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
+
+	explosion				 = RedBlasterProjectileImpact;
+	hitEnemyExplosion	  = RedBlasterProjectileHit;
+    //nearEnemyExplosion	 = DefaultProjectileNearEnemyExplosion;
+    //hitTeammateExplosion  = RedBlasterImpact;
+    //hitDeflectorExplosion = SeekerDiscBounceEffect;
+	
+    //fxLight					= RedBlasterProjectileFxLight;
+
+	missEnemyEffect		 = RedBlasterProjectileMissedEnemyEffect;
+	
+    laserTail				 = RedBlasterProjectileLaserTail;
+    laserTailLen			 = 10.0;
+
+    //laserTrail[0]			= RedBlasterProjectileLaserTrail;
+    //laserTrail[1]		 = Team1StingerProjectileLaserTrail2;
+
+    //particleEmitter	  = RedBlasterProjectileParticleEmitter;
+
+	muzzleVelocity   = 1000;
+	velInheritFactor = 0.0;
+	
+	isBallistic			= false;
+	gravityMod			 = 10.0;
+	
+	armingDelay			= 1000*0;
+	lifetime				= 3000;
+	fadeDelay			  = 5000;
+	
+	decals[0] = BulletHoleDecalOne;
+	
+	hasLight    = false;
+	lightRadius = 10.0;
+	lightColor  = "1.0 0.0 0.0";
+};
+
+//-----------------------------------------------------------------------------
+
+datablock ShotgunProjectileData(BlueBlasterProjectile : RedBlasterProjectile)
+{
+    //projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
+
+	explosion          = BlueBlasterProjectileImpact;
+	hitEnemyExplosion  = BlueBlasterProjectileHit;
+
+	missEnemyEffect    = BlueBlasterProjectileMissedEnemyEffect;
+
+	laserTail          = BlueBlasterProjectileLaserTail;
+ 
+    //laserTrail[0]      = BlueBlasterProjectileLaserTrail;
+	
+	lightColor  = "0.0 0.0 1.0";
+};

@@ -1,0 +1,245 @@
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(SaveFileDlgEx) {
+	profile = "GuiDialogProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	fitParentWidth = "0";
+	fitParentHeight = "0";
+	position = "0 0";
+	extent = "800 600";
+	minExtent = "8 8";
+	visible = "1";
+		helpTag = "0";
+
+	new GuiWindowCtrl() {
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		fitParentWidth = "0";
+		fitParentHeight = "0";
+		position = "73 61";
+		extent = "653 478";
+		minExtent = "8 8";
+		visible = "1";
+		text = "Save File...";
+		maxLength = "255";
+		resizeWidth = "1";
+		resizeHeight = "1";
+		canMove = "1";
+		canClose = "1";
+		canMinimize = "1";
+		canMaximize = "1";
+		MinSize = "50 50";
+		closeCommand = "Canvas.popDialog(SaveFileDlgEx);";
+			helpTag = "0";
+	 
+		new GuiButtonCtrl() {
+			profile = "GuiButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			fitParentWidth = "0";
+			fitParentHeight = "0";
+			position = "513 449";
+			extent = "60 20";
+			minExtent = "8 8";
+			visible = "1";
+			command = "DoSaveFileExCallback();";
+			text = "Save";
+			groupNum = "-1";
+			buttonType = "PushButton";
+				helpTag = "0";
+		};
+		new GuiButtonCtrl() {
+			profile = "GuiButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			fitParentWidth = "0";
+			fitParentHeight = "0";
+			position = "583 449";
+			extent = "60 20";
+			minExtent = "8 8";
+			visible = "1";
+			command = "Canvas.popDialog(SaveFileDlgEx);";
+			text = "Cancel";
+			groupNum = "-1";
+			buttonType = "PushButton";
+				helpTag = "0";
+		};
+		new GuiTextCtrl() {
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "10 449";
+			extent = "89 18";
+			minExtent = "8 2";
+			visible = "1";
+			text = "File name:";
+			maxLength = "255";
+		};
+		new GuiTextEditCtrl(SaveFileExEdit) {
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "60 449";
+			extent = "286 16";
+			minExtent = "8 8";
+			visible = "1";
+			helpTag = "0";
+			maxLength = "255";
+			historySize = "0";
+			password = "0";
+			tabComplete = "0";
+		 };
+		
+		new GuiFrameSetCtrl() {
+			profile = "GuiDefaultProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			fitParentWidth = "0";
+			fitParentHeight = "0";
+			position = "4 24";
+			extent = "643 416";
+			minExtent = "8 2";
+			visible = "1";
+			columns = "0 245";
+			rows = "0";
+			borderWidth = "7";
+			borderColor = "206 206 206 206";
+			borderEnable = "dynamic";
+			borderMovable = "dynamic";
+			autoBalance = "0";
+			fudgeFactor = "0";
+		
+			new GuiScrollCtrl() {
+				profile = "GuiScrollProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				fitParentWidth = "0";
+				fitParentHeight = "1";
+				position = "0 0";
+				extent = "238 416";
+				minExtent = "8 2";
+				visible = "1";
+				willFirstRespond = "1";
+				hScrollBar = "dynamic";
+				vScrollBar = "dynamic";
+				constantThumbHeight = "0";
+				childMargin = "0 0";
+				
+				new GuiDirectoryTreeCtrl(SaveDirTreeEx) {
+					profile = "GuiDirectoryTreeProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					fitParentWidth = "0";
+					fitParentHeight = "0";
+					position = "2 -670";
+					extent = "206 1470";
+					minExtent = "8 2";
+					visible = "1";
+					tabSize = "16";
+					textOffset = "2";
+					fullRowSelect = "0";
+					itemHeight = "21";
+					destroyTreeOnSleep = "0";
+					MouseDragging = "0";
+					MultipleSelections = "0";
+				};
+			};
+			
+			new GuiScrollCtrl() {
+				profile = "GuiScrollProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				fitParentWidth = "1";
+				fitParentHeight = "1";
+				position = "245 0";
+				extent = "643 416";
+				minExtent = "8 2";
+				visible = "1";
+				willFirstRespond = "1";
+				hScrollBar = "alwaysOn";
+				vScrollBar = "alwaysOn";
+				constantThumbHeight = "0";
+				childMargin = "0 0";
+				
+				new GuiDirectoryFileListCtrl(SaveFileListEx) {
+					profile = "GuiDirectoryFileListProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					fitParentWidth = "0";
+					fitParentHeight = "0";
+					position = "2 2";
+					extent = "621 224";
+					minExtent = "8 2";
+					visible = "1";
+					enumerate = "0";
+					resizeCell = "1";
+					columns = "0";
+					fitParentWidth = "1";
+					clipColumnText = "0";
+				};
+			};
+		};
+	};
+};
+//--- OBJECT WRITE END ---
+
+
+//------------------------------------------------------------------------------
+// ex: getSaveFilenameEx("~/stuff/*.*", saveStuff);
+//	  -- calls 'saveStuff(%filename)' on ok
+//------------------------------------------------------------------------------
+function getSaveFilename(%filespec, %callback, %currentFile)
+{
+  $GuiSaveDialogCallback = %callback;	
+  if( %filespec $= "" )
+	$SaveFileExFileSpec = "*.*";
+  else
+	$SaveFileExFileSpec = %filespec;
+
+  Canvas.pushDialog(SaveFileDlgEx, 99);
+
+  $SaveFileExFile = %currentFile;
+
+	// If we have a current path, set the tree to it
+	if( filePath( %currentFile ) !$= "" )
+		SaveDirTreeEx.setSelectedPath( filePath( %currentFile ) );
+	else if ( $pref::Constructor::lastPath !$= "" )
+		SaveDirTreeEx.setSelectedPath( $pref::Constructor::lastPath );
+		
+	// Update our file view to reflect the changes
+	SaveFileListEx.setPath( SaveDirTreeEx.getSelectedPath(), $SaveFileExFileSpec );
+
+	// Update the file edit control
+	SaveFileExEdit.setText(fileName($SaveFileExFile));
+}
+
+
+//--------------------------------------
+function DoSaveFileExCallback()
+{
+  %path = SaveDirTreeEx.getSelectedPath();
+  %file = SaveFileExEdit.getValue();
+  %cat = %path @ "/" @ %file;
+  
+  // MEOW
+  echo(%cat);
+	 
+  eval( $GuiSaveDialogCallback @ "(\"" @ %cat @"\");" );
+
+  Canvas.popDialog(SaveFileDlgEx);
+}	
+
+function SaveDirTreeEx::onSelectPath( %this, %path )
+{
+	// Update our file view to reflect the changes
+	SaveFileListEx.setPath( %path, $SaveFileExFileSpec  );
+	
+	$pref::Constructor::lastPath = %path;
+}
+
+function SaveFileListEx::onSelect( %this, %listid, %file )
+{
+	// Update our file name to the one selected
+	SaveFileExEdit.setText( %file );
+}

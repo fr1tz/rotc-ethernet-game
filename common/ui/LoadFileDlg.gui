@@ -1,0 +1,206 @@
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(LoadFileDlg) {
+	Profile = "GuiDialogProfile";
+	HorizSizing = "right";
+	VertSizing = "bottom";
+	Position = "0 0";
+	Extent = "800 600";
+	MinExtent = "8 8";
+	Visible = "1";
+		fitParentHeight = "0";
+		fitParentWidth = "0";
+		helpTag = "0";
+
+	new GuiWindowCtrl() {
+		Profile = "GuiWindowProfile";
+		HorizSizing = "center";
+		VertSizing = "center";
+		Position = "36 33";
+		Extent = "589 372";
+		MinExtent = "8 8";
+		Visible = "1";
+		text = "Open File...";
+		maxLength = "255";
+		resizeWidth = "1";
+		resizeHeight = "1";
+		canMove = "1";
+		canClose = "1";
+		canMinimize = "1";
+		canMaximize = "1";
+		MinSize = "50 50";
+		closeCommand = "Canvas.popDialog(LoadFileDlg);";
+			fitParentHeight = "0";
+			fitParentWidth = "0";
+			helpTag = "0";
+
+		new GuiButtonCtrl() {
+			Profile = "GuiButtonProfile";
+			HorizSizing = "left";
+			VertSizing = "top";
+			Position = "449 343";
+			Extent = "60 20";
+			MinExtent = "8 8";
+			Visible = "1";
+			Command = "DoOpenFileExCallback();";
+			text = "Load";
+			groupNum = "-1";
+			buttonType = "PushButton";
+				fitParentHeight = "0";
+				fitParentWidth = "0";
+				helpTag = "0";
+		};
+		new GuiButtonCtrl() {
+			Profile = "GuiButtonProfile";
+			HorizSizing = "left";
+			VertSizing = "top";
+			Position = "519 343";
+			Extent = "60 20";
+			MinExtent = "8 8";
+			Visible = "1";
+			Command = "Canvas.popDialog(LoadFileDlg);";
+			text = "Cancel";
+			groupNum = "-1";
+			buttonType = "PushButton";
+				fitParentHeight = "0";
+				fitParentWidth = "0";
+				helpTag = "0";
+		};
+		new GuiFrameSetCtrl() {
+			Profile = "GuiDefaultProfile";
+			HorizSizing = "width";
+			VertSizing = "height";
+			Position = "4 24";
+			Extent = "579 310";
+			MinExtent = "8 2";
+			Visible = "1";
+			columns = "0 245";
+			rows = "0";
+			borderWidth = "7";
+			borderColor = "206 206 206 206";
+			borderEnable = "dynamic";
+			borderMovable = "dynamic";
+			autoBalance = "0";
+			fudgeFactor = "0";
+
+			new GuiScrollCtrl() {
+				Profile = "GuiScrollProfile";
+				HorizSizing = "right";
+				VertSizing = "bottom";
+				Position = "0 0";
+				Extent = "238 310";
+				MinExtent = "8 2";
+				Visible = "1";
+				willFirstRespond = "1";
+				hScrollBar = "dynamic";
+				vScrollBar = "dynamic";
+				constantThumbHeight = "0";
+				childMargin = "0 0";
+					fitParentHeight = "1";
+					fitParentWidth = "0";
+
+				new GuiDirectoryTreeCtrl(LoadDirTreeEx) {
+					Profile = "GuiDirectoryTreeProfile";
+					HorizSizing = "right";
+					VertSizing = "bottom";
+					Position = "2 2";
+					Extent = "85 63";
+					MinExtent = "8 2";
+					Visible = "1";
+					tabSize = "16";
+					textOffset = "2";
+					fullRowSelect = "0";
+					itemHeight = "21";
+					destroyTreeOnSleep = "0";
+					MouseDragging = "0";
+					MultipleSelections = "0";
+						fitParentHeight = "0";
+						fitParentWidth = "0";
+				};
+			};
+			new GuiScrollCtrl() {
+				Profile = "GuiScrollProfile";
+				HorizSizing = "right";
+				VertSizing = "bottom";
+				Position = "245 0";
+				Extent = "334 310";
+				MinExtent = "8 2";
+				Visible = "1";
+				willFirstRespond = "1";
+				hScrollBar = "alwaysOn";
+				vScrollBar = "alwaysOn";
+				constantThumbHeight = "0";
+				childMargin = "0 0";
+					fitParentHeight = "1";
+					fitParentWidth = "1";
+
+				new GuiDirectoryFileListCtrl(LoadFileListEx) {
+					Profile = "GuiDirectoryFileListProfile";
+					HorizSizing = "right";
+					VertSizing = "bottom";
+					Position = "2 2";
+					Extent = "623 208";
+					MinExtent = "8 2";
+					Visible = "1";
+					enumerate = "0";
+					resizeCell = "1";
+					columns = "0";
+					fitParentWidth = "1";
+					clipColumnText = "0";
+						fitParentHeight = "0";
+				};
+			};
+		};
+	};
+};
+//--- OBJECT WRITE END ---
+
+
+//------------------------------------------------------------------------------
+// ex: getLoadFilename("~/stuff/*.*", openStuff);
+//	  -- calls 'openStuff(%filename)' on dblclick or ok
+//------------------------------------------------------------------------------
+function getLoadFilename(%filespec, %callback, %currentFile)
+{
+  $GuiLoadDialogCallback = %callback;	
+  if( %filespec $= "" )
+	$LoadFileExFileSpec = "*.*";
+  else
+	$LoadFileExFileSpec = %filespec;
+
+  Canvas.pushDialog(LoadFileDlg, 99);
+
+  $LoadFileExFile = %currentFile;
+
+	// If we have a current path, set the tree to it
+	if( filePath( %currentFile ) !$= "" )
+		LoadDirTreeEx.setSelectedPath( filePath( %currentFile ) );
+		
+	// Update our file view to reflect the changes
+	LoadFileListEx.setPath( LoadDirTreeEx.getSelectedPath(), $LoadFileExFileSpec );
+}
+
+
+//--------------------------------------
+function DoOpenFileExCallback()
+{
+  %path = LoadDirTreeEx.getSelectedPath();
+  %file = LoadFileListEx.getSelectedFile();
+  %cat = %path @ "/" @ %file;
+  
+  // MEOW
+  eval( $GuiLoadDialogCallback @ "(\"" @ %cat @"\");" );
+
+  Canvas.popDialog(LoadFileDlg);
+}	
+
+function LoadDirTreeEx::onSelectPath( %this, %path )
+{
+	// Update our file view to reflect the changes
+	LoadFileListEx.setPath( %path, $LoadFileExFileSpec  );
+}
+
+
+function LoadFileListEx::onDoubleClick(%this)
+{
+	DoOpenFileExCallback();	
+}

@@ -1,0 +1,52 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2009, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiFadeinBitmapCtrl(TorqueSplash) {
+   profile = "GuiInputCtrlProfile";
+   horizSizing = "right";
+   vertSizing = "bottom";
+   position = "0 0";
+   extent = "640 480";
+   minExtent = "8 8";
+   visible = "1";
+   helpTag = "0";
+   bitmap = "";
+   wrap = "0";
+   fadeinTime = "125";
+   waitTime   = "3000";
+   fadeoutTime = "125";
+};
+//--- OBJECT WRITE END ---
+
+function TorqueSplash::click()
+{
+   TorqueSplash.done = true;
+}
+
+function showTorqueSplashScreen(%nextGui)
+{
+    // Select splash screen bitmap according to resolution aspect ratio.
+    %res = getRes();
+    if(getWord(%res,0) / getWord(%res, 1) > 1.5)
+        TorqueSplash.setBitmap("common/ui/torquesplash_16x9");
+    else
+        TorqueSplash.setBitmap("common/ui/torquesplash_4x3");
+
+    TorqueSplash.done = false;
+    TorqueSplash.nextGui = %nextGui;
+    Canvas.setContent(TorqueSplash);
+    schedule(100, 0, checkTorqueSplashScreenDone);
+   //alxPlay(TorqueSplashSound);
+}
+
+function checkTorqueSplashScreenDone()
+{
+    if(TorqueSplash.done)
+        Canvas.setContent(TorqueSplash.nextGui);
+    else
+        schedule(100, 0, checkTorqueSplashScreenDone);
+}
+

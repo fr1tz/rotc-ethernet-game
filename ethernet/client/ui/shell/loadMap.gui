@@ -1,0 +1,118 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2009, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(LoadingWindowForEditing) {
+	canSaveDynamicFields = "0";
+	Profile = "GuiDefaultProfile";
+	HorizSizing = "right";
+	VertSizing = "bottom";
+	position = "0 0";
+	Extent = "800 600";
+	MinExtent = "8 8";
+	canSave = "1";
+	Visible = "1";
+	hovertime = "1000";
+
+	new GuiWindowCtrl(LoadingWindow) {
+		canSaveDynamicFields = "0";
+		Profile = "GuiWindowProfile";
+		HorizSizing = "center";
+		VertSizing = "center";
+		position = "175 150";
+		Extent = "450 110";
+		MinExtent = "8 8";
+		canSave = "1";
+		Visible = "1";
+		hovertime = "1000";
+		text = "Loading Map";
+		maxLength = "255";
+		resizeWidth = "0";
+		resizeHeight = "0";
+		canMove = "1";
+		canClose = "1";
+		canMinimize = "1";
+		canMaximize = "0";
+		minSize = "50 50";
+		closeCommand = "removeWindow(LoadingWindow);";
+
+		new GuiTextCtrl(LOAD_MapName) {
+			canSaveDynamicFields = "0";
+			Profile = "GuiMediumTextProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "10 30";
+			Extent = "8 28";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			hovertime = "1000";
+			maxLength = "255";
+		};
+		new GuiMLTextCtrl(LOAD_MapHomepage) {
+			canSaveDynamicFields = "0";
+			Profile = "GuiMLTextProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "10 60";
+			Extent = "435 14";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			hovertime = "1000";
+			lineSpacing = "2";
+			allowColorChars = "0";
+			maxChars = "-1";
+			text = "Map homepage";
+		};
+		new GuiProgressCtrl(LoadingProgress) {
+			canSaveDynamicFields = "0";
+			Profile = "GuiProgressProfile";
+			HorizSizing = "right";
+			VertSizing = "top";
+			position = "80 78";
+			Extent = "360 20";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			hovertime = "1000";
+			maxLength = "1024";
+
+			new GuiTextCtrl(LoadingProgressTxt) {
+				canSaveDynamicFields = "0";
+				Profile = "GuiProgressTextProfile";
+				HorizSizing = "right";
+				VertSizing = "bottom";
+				position = "0 0";
+				Extent = "360 20";
+				MinExtent = "8 8";
+				canSave = "1";
+				Visible = "1";
+				hovertime = "1000";
+				text = "WAITING FOR SERVER";
+				maxLength = "255";
+			};
+		};
+		new GuiButtonCtrl() {
+			canSaveDynamicFields = "0";
+			Profile = "GuiButtonProfile";
+			HorizSizing = "right";
+			VertSizing = "top";
+			position = "10 78";
+			Extent = "65 20";
+			MinExtent = "20 15";
+			canSave = "1";
+			Visible = "1";
+			Command = "disconnect();";
+			Accelerator = "escape";
+			hovertime = "1000";
+			text = "CANCEL";
+			groupNum = "-1";
+			buttonType = "PushButton";
+		};
+	};
+};
+//--- OBJECT WRITE END ---
+

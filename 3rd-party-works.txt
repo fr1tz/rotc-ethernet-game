@@ -1,0 +1,213 @@
+This file is maintained to keep track of copyrighted 3rd-party
+works that were used to create "Revenge Of The Cats: Ethernet".
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\players\shared\sound.spawn.wav
+
+	http://www.soundsnap.com/node/101781
+	Laser shot burst 03 SFXBible ss06006
+	User: SFX Bible (http://www.soundsnap.com/user/7410)
+
+	http://www.soundsnap.com/node/89810
+	Pixie dust burst shine BLASTWAVEFX 25833
+	User: BLASTWAVE FX (http://www.soundsnap.com/user/19113)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\players\standardcat\slide.wav
+
+	http://www.soundsnap.com/node/102024
+	Crystal glow 01 SFXBible ss05663
+	User: SFX Bible (http://www.soundsnap.com/user/7410)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\players\standardcat\slidecontact.wav
+
+	http://www.soundsnap.com/node/48276
+	FOLEY GLASS PIECE GRIND CEMENT 01
+	User: SFX Bible (http://www.soundsnap.com/user/7410)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\sound\weaponEmpty.wav
+
+        By Vosvoy (http://www.freesound.org/usersViewSingle.php?id=527687)
+            glock_reloadsequence.wav (http://www.freesound.org/samplesViewSingle.php?id=69872)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\sound\weaponSwitch.wav
+
+        By LAGtheNoggin (http://www.freesound.org/usersViewSingle.php?id=48428)
+            Reload.mp3 (http://www.freesound.org/samplesViewSingle.php?id=15545)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\sound\events\clown.wav
+
+        By NoiseCollector (http://www.freesound.org/usersViewSingle.php?id=4948)
+            noisemaker1.wav (http://www.freesound.org/samplesViewSingle.php?id=55210)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\sound\events\victory.wav
+
+	http://www.soundsnap.com/node/35359
+	victory orchestral
+	User: dimlif (http://www.soundsnap.com/user/784) 
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\vehicles\etherform\sound.impact.wav
+
+	http://www.soundsnap.com/node/99600
+	Crystal glass tap 01 SFXBible ss00892
+	User: SFX Bible (http://www.soundsnap.com/user/7410)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\vehicles\etherform\sound.spawn.wav
+
+	http://www.soundsnap.com/node/66540
+	Sound design crystal accent distortion front to rear BLASTWAVEFX 04567
+	User: BLASTWAVE FX (http://www.soundsnap.com/user/19113)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\vehicles\etherform\sound.sing.wav
+
+	http://www.soundsnap.com/node/102024
+	Crystal glow 01 SFXBible ss05663
+	User: SFX Bible (http://www.soundsnap.com/user/7410)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\assaultrifle\sound.bounce.wav:
+
+	http://www.soundsnap.com/node/12294
+	GATE LATCH
+	User: Justine Angus (http://www.soundsnap.com/user/25)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\assaultrifle\sound.explosion.wav:
+
+	http://www.soundsnap.com/node/98824
+	Grenade explosion 11 SFXBible ss00690
+	User: SFX Bible (http://www.soundsnap.com/user/7410)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\assaultrifle\sound.fire.wav:
+
+        By Matt_G (http://www.freesound.org/usersViewSingle.php?id=240366)
+            m240.wav (http://www.freesound.org/samplesViewSingle.php?id=30749)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\blaster\sound_fire.wav:
+
+	http://www.soundsnap.com/node/12887
+	SHOTGUN COCK
+	User: Justine Angus (http://www.soundsnap.com/user/25)
+
+	http://www.soundsnap.com/node/104689
+	12 gauge SPAS 12 shotgun single shot close perspective 04 SFXBible ss06853
+	User: SFX Bible (http://www.soundsnap.com/user/7410)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\blaster\sound_flyby.wav:
+
+        By mich3d (http://www.freesound.org/usersViewSingle.php?id=32482)
+            Whoosh_Swish_02.wav (http://www.freesound.org/samplesViewSingle.php?id=12657)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\blaster\sound_impact.wav:
+
+	http://www.soundsnap.com/node/111821
+	Mallet hitting a pint glass breaking smash debris
+	User: Airborne Sound (http://www.soundsnap.com/user/5118)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\disc\sound.deflected.wav:
+
+	http://www.soundsnap.com/node/43595
+	WARFARE SWORD HIT RESONATE 01
+	User: SFX Bible (http://www.soundsnap.com/user/7410)
+
+	http://www.soundsnap.com/node/7577
+	Gunshot Ricochet Cartoon
+	User: Fred Weinberg (http://www.soundsnap.com/user/19)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\disc\sound.hit.wav:
+
+        By Abyssmal (http://www.freesound.org/usersViewSingle.php?id=307822)
+            slashkut.wav (http://www.freesound.org/samplesViewSingle.php?id=35213)
+
+	http://www.soundsnap.com/node/111821
+	Mallet hitting a pint glass breaking smash debris
+	User: Airborne Sound (http://www.soundsnap.com/user/5118)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\disc\sound.denied.wav:
+
+        By guitarguy1985 (http://www.freesound.org/usersViewSingle.php?id=533680)
+            aircraftalarm.wav (http://www.freesound.org/samplesViewSingle.php?id=57806)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\disc\sound.explosion.wav:
+
+        By nthompson (http://www.freesound.org/usersViewSingle.php?id=364925)
+            rocketexpl.wav (http://www.freesound.org/samplesViewSingle.php?id=47252)
+
+        By themfish (http://www.freesound.org/usersViewSingle.php?id=223338)
+            glass_house1.wav (http://www.freesound.org/samplesViewSingle.php?id=34201)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\disc\sound.projectile.wav:
+
+	http://www.soundsnap.com/node/83997
+	Martial arts ninja star throw whip spin twirl BLASTWAVEFX 18176
+	User: BLASTWAVE FX (http://www.soundsnap.com/user/19113)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\disc\sound.throw.wav:
+
+        By mich3d (http://www.freesound.org/usersViewSingle.php?id=32482)
+            Whoosh_Swish_02.wav (http://www.freesound.org/samplesViewSingle.php?id=12657)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\sniperrifle\sound.debris.wav:
+
+	http://www.soundsnap.com/node/111746
+        Pint glass breaking debris hard
+	User: Airborne Sound (http://www.soundsnap.com/user/5118)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\sniperrifle\sound.explosion.wav:
+
+        By ljudman (http://www.freesound.org/usersViewSingle.php?id=65091)
+            grenade.wav (http://www.freesound.org/samplesViewSingle.php?id=33245)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\sniperrifle\sound_fire.wav:
+
+        By man (http://www.freesound.org/usersViewSingle.php?id=14447)
+            canon.aif (http://www.freesound.org/samplesViewSingle.php?id=14615)
+
+----------------------------------------------------------------------------------
+

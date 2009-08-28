@@ -1,0 +1,230 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2009, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(OptAudioWindowForEditing) {
+   canSaveDynamicFields = "0";
+   Profile = "GuiDefaultProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   position = "0 0";
+   Extent = "640 480";
+   MinExtent = "8 8";
+   canSave = "1";
+   Visible = "1";
+   hovertime = "1000";
+
+   new GuiWindowCtrl(OptAudioWindow) {
+      canSaveDynamicFields = "0";
+      Profile = "GuiWindowProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      position = "139 113";
+      Extent = "361 253";
+      MinExtent = "8 8";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      text = "Audio Options";
+      maxLength = "255";
+      resizeWidth = "0";
+      resizeHeight = "0";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "0";
+      canMaximize = "0";
+      minSize = "50 50";
+      closeCommand = "removeWindow(OptAudioWindow);";
+
+      new GuiSliderCtrl(OptAudioVolumeSim) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiSliderProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "107 192";
+         Extent = "240 34";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         Variable = "value";
+         AltCommand = "OptAudioUpdateChannelVolume($SimAudioType, OptAudioVolumeSim.value);";
+         hovertime = "1000";
+         range = "0 1";
+         ticks = "8";
+         value = "0.8";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "12 114";
+         Extent = "72 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Master Volume";
+         maxLength = "255";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "22 152";
+         Extent = "62 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Shell Volume";
+         maxLength = "255";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "28 189";
+         Extent = "56 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Sim Volume";
+         maxLength = "255";
+      };
+      new GuiSliderCtrl(OptAudioVolumeMaster) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiSliderProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "106 118";
+         Extent = "240 34";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         Variable = "value";
+         AltCommand = "OptAudioUpdateMasterVolume(OptAudioVolumeMaster.value);";
+         hovertime = "1000";
+         range = "0 1";
+         ticks = "8";
+         value = "0.8";
+      };
+      new GuiSliderCtrl(OptAudioVolumeShell) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiSliderProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "106 155";
+         Extent = "240 34";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         Variable = "value";
+         AltCommand = "OptAudioUpdateChannelVolume($GuiAudioType, OptAudioVolumeShell.value);";
+         hovertime = "1000";
+         range = "0 1";
+         ticks = "8";
+         value = "0.8";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "23 29";
+         Extent = "61 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "OpenAL Info";
+         maxLength = "255";
+      };
+      new GuiCheckBoxCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiCheckBoxProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "106 214";
+         Extent = "77 30";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Variable = "$pref::Audio::UseMumbleLink";
+         hovertime = "1000";
+         text = "Mumble Link";
+         groupNum = "-1";
+         buttonType = "ToggleButton";
+         useInactiveState = "0";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "202 220";
+         Extent = "34 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Status:";
+         maxLength = "1024";
+      };
+      new GuiTextCtrl(OptAudioMumbleLinkStatus) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "242 220";
+         Extent = "68 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Link not found";
+         maxLength = "1024";
+      };
+      new GuiScrollCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiScrollProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "107 29";
+         Extent = "238 82";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         willFirstRespond = "1";
+         hScrollBar = "dynamic";
+         vScrollBar = "dynamic";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiMLTextCtrl(OptAudioInfo) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiMLTextProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "2 2";
+            Extent = "190 56";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            lineSpacing = "2";
+            allowColorChars = "0";
+            maxChars = "-1";
+         };
+      };
+   };
+};
+//--- OBJECT WRITE END ---
+
+
