@@ -173,9 +173,10 @@ function ShapeBase::clearDiscTarget(%this)
 
 //-----------------------------------------------------------------------------
 
-function ShapeBase::setInflictedDamageSoundPitch(%this, %pitch)
+function ShapeBase::setInflictedDamageSoundPitch(%this, %pitch, %locked)
 {
     %this.inflictedDamageSoundPitch = %pitch;
+    %this.inflictedDamageSoundLocked = %locked;
 
     cancel(%this.inflictedDamageThread);
     %this.inflictedDamageThread = %this.schedule(0, "playInflictedDamageSound");
@@ -186,7 +187,10 @@ function ShapeBase::playInflictedDamageSound(%this)
     if(%this.client)
     {
         %pitch = 0.9 + %this.inflictedDamageSoundPitch / 2;
-        %this.client.play2D(DamageSound, %pitch);
+        if(%this.inflictedDamageSoundLocked)
+            %this.client.play2D(DamageSoundTwo, %pitch);
+        else
+            %this.client.play2D(DamageSoundOne, %pitch);
     }
 
     %this.inflictedDamageSoundPitch = 0;
@@ -295,7 +299,6 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	%damageDealt = %obj.applyDamage(%damage);
     %bufDamageDealt = %damageBufStore - %obj.getDamageBufferLevel();
 
-	// victim's damage = attacker's health...
 	%realSourceObject = 0;
 	if(%sourceObject.getType() & $TypeMasks::ProjectileObjectType)
 		%realSourceObject = %sourceObject.getSourceObject();
@@ -305,21 +308,12 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	&& %realSourceObject.teamId != %obj.teamId
 	&& %realSourceObject.getDamageState() $= "Enabled")
 	{
-        %healthTakeback = (%damageDealt + %bufDamageDealt) * 0.5;
-	
-		%newSrcDamage = %realSourceObject.getDamageLevel() - %healthTakeback;
-		%realSourceObject.setDamageLevel(%newSrcDamage);
-		if(%newSrcDamage < 0)
-		{
-			%realSourceObject.setDamageBufferLevel(
-				%realSourceObject.getDamageBufferLevel() - %newSrcDamage);
-		}
-  
-		%obj.setTagged();
-        %realSourceObject.setCurrTagged(%obj);
-        %realSourceObject.setDiscTarget(%obj);
-        
-        %realSourceObject.setInflictedDamageSoundPitch(%obj.getDamagePercent());
+        %this.onHitEnemy(
+            %realSourceObject,
+            %obj,
+            %damage,
+            %damageDealt+%bufDamageDealt
+        );
 	}
 	
 	// eyecandy: ain't got time to bleed?...
@@ -422,5 +416,38 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
  
     if(%obj.client)
         messageClient(%obj.client, 'MsgCurrentZone', "", %zoneTeamId);
+}
+
+// called by script code...
+function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %dmg, %actualdmg)
+{
+    %currTime = getSimTime();
+
+    %healthTakeback = %actualdmg * 0.5;
+
+    %newSrcDamage = %obj.getDamageLevel() - %healthTakeback;
+    %obj.setDamageLevel(%newSrcDamage);
+    if(%newSrcDamage < 0)
+        %obj.setDamageBufferLevel(%obj.getDamageBufferLevel() - %newSrcDamage);
+
+    %enemy.setTagged();
+    %obj.setCurrTagged(%enemy);
+    
+    if(%enemy != %obj.lastHitEnemy || %currTime >= %obj.lastHitClearTime)
+        %obj.discTargetDamageAmount = 0;
+        
+    %obj.discTargetDamageAmount += %dmg;
+
+    if(%obj.discTargetDamageAmount >= 60)
+    {
+        %obj.setDiscTarget(%enemy);
+        %obj.discTargetDamageAmount = 0;
+    }
+
+    %locked = %obj.getCurrTarget() == %enemy;
+    %obj.setInflictedDamageSoundPitch(%obj.getDamagePercent(), %locked);
+    
+    %obj.lastHitEnemy = %enemy;
+    %obj.lastHitClearTime = %currTime + 1000;
 }
 
