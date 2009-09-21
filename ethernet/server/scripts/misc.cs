@@ -55,9 +55,16 @@ datablock AudioProfile(BlueVictorySound)
 	preload = true;
 };
 
-datablock AudioProfile(DamageSound)
+datablock AudioProfile(DamageSoundOne)
 {
-	filename = "~/data/sound/damage.wav";
+	filename = "~/data/sound/damage1.wav";
+	description = Audio2D;
+	preload = true;
+};
+
+datablock AudioProfile(DamageSoundTwo)
+{
+	filename = "~/data/sound/damage2.wav";
 	description = Audio2D;
 	preload = true;
 };
