@@ -81,6 +81,18 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	lightColor  = "1.0 0.8 0.2";
 };
 
+function RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
+{
+    Parent::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
+
+	if( !(%col.getType() & $TypeMasks::ShapeBaseObjectType) )
+		return;
+
+    %src =  %obj.getSourceObject();
+    if(%src)
+        %src.setDiscTarget(%col);
+}
+
 //--------------------------------------------------------------------------
 
 datablock TracerProjectileData(BlueAssaultRifleProjectile : RedAssaultRifleProjectile)
@@ -88,6 +100,11 @@ datablock TracerProjectileData(BlueAssaultRifleProjectile : RedAssaultRifleProje
     dummyFieldToAvoidSyntaxError = 0;
 //	laserTrail[1] = AssaultRifleProjectileBlueLaserTrail;
 };
+
+function BlueAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
+{
+    RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
+}
 
 //--------------------------------------------------------------------------
 // weapon image which does all the work...

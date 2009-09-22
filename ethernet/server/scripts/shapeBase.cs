@@ -162,6 +162,8 @@ function ShapeBase::setDiscTarget(%this, %target)
     cancel(%this.discTargetThread);
 	%pos = %target.getWorldBoxCenter();
     %this.setCurrTarget(%target, %pos);
+    %this.inflictedDamageSoundLocked = true;
+    
     %this.discTargetThread = %this.schedule(2000, "clearDiscTarget");
 }
 
@@ -173,10 +175,9 @@ function ShapeBase::clearDiscTarget(%this)
 
 //-----------------------------------------------------------------------------
 
-function ShapeBase::setInflictedDamageSoundPitch(%this, %pitch, %locked)
+function ShapeBase::setInflictedDamageSoundPitch(%this, %pitch)
 {
     %this.inflictedDamageSoundPitch = %pitch;
-    %this.inflictedDamageSoundLocked = %locked;
 
     cancel(%this.inflictedDamageThread);
     %this.inflictedDamageThread = %this.schedule(0, "playInflictedDamageSound");
@@ -194,6 +195,7 @@ function ShapeBase::playInflictedDamageSound(%this)
     }
 
     %this.inflictedDamageSoundPitch = 0;
+    %this.inflictedDamageSoundLocked = false;
 }
 
 //-----------------------------------------------------------------------------
@@ -290,6 +292,8 @@ function ShapeBaseData::getBleed(%this, %obj, %dmg)
 // called by ShapeBase::damage()
 function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType)
 {
+    %dmgstor = %damage;
+
 	// reduce damage based on energy level...
 	%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
 	%damage -= %damage * %energyScale * 0.50;
@@ -311,7 +315,6 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
         %this.onHitEnemy(
             %realSourceObject,
             %obj,
-            %damage,
             %damageDealt+%bufDamageDealt
         );
 	}
@@ -419,11 +422,9 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
 }
 
 // called by script code...
-function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %dmg, %actualdmg)
+function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %dmg)
 {
-    %currTime = getSimTime();
-
-    %healthTakeback = %actualdmg * 0.5;
+    %healthTakeback = %dmg * 0.5;
 
     %newSrcDamage = %obj.getDamageLevel() - %healthTakeback;
     %obj.setDamageLevel(%newSrcDamage);
@@ -433,21 +434,6 @@ function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %dmg, %actualdmg)
     %enemy.setTagged();
     %obj.setCurrTagged(%enemy);
     
-    if(%enemy != %obj.lastHitEnemy || %currTime >= %obj.lastHitClearTime)
-        %obj.discTargetDamageAmount = 0;
-        
-    %obj.discTargetDamageAmount += %dmg;
-
-    if(%obj.discTargetDamageAmount >= 60)
-    {
-        %obj.setDiscTarget(%enemy);
-        %obj.discTargetDamageAmount = 0;
-    }
-
-    %locked = %obj.getCurrTarget() == %enemy;
-    %obj.setInflictedDamageSoundPitch(%obj.getDamagePercent(), %locked);
-    
-    %obj.lastHitEnemy = %enemy;
-    %obj.lastHitClearTime = %currTime + 1000;
+    %obj.setInflictedDamageSoundPitch(%enemy.getDamagePercent());
 }
 

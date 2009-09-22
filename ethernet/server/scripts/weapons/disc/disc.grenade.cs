@@ -65,6 +65,33 @@ function RedDiscGrenade::onRemove(%this, %obj)
     %source.incDiscs();
 }
 
+function RedDiscGrenade::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
+{
+    Parent::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType);
+
+	%radius = %this.splashDamageRadius;
+	%sourceObject = %obj.getSourceObject();
+
+	InitContainerRadiusSearch(%pos, %radius, $TypeMasks::ShapeBaseObjectType);
+	%halfRadius = %radius / 2;
+	while( (%targetObject = containerSearchNext()) != 0 )
+	{
+        // the observer cameras are ShapeBases; ignore them...
+        if(%targetObject.getType() & $TypeMasks::CameraObjectType)
+    	   continue;
+
+		%coverage = calcExplosionCoverage(%pos, %targetObject,
+			$TypeMasks::InteriorObjectType |  $TypeMasks::TerrainObjectType |
+			$TypeMasks::ForceFieldObjectType | $TypeMasks::VehicleObjectType |
+			$TypeMasks::TurretObjectType);
+
+		if (%coverage == 0)
+			continue;
+
+        %sourceObject.setDiscTarget(%targetObject);
+	}
+}
+
 //------------------------------------------------------------------------------
 
 datablock ProjectileData(BlueDiscGrenade : RedDiscGrenade)
@@ -86,4 +113,9 @@ function BlueDiscGrenade::onAdd(%this, %obj)
 function BlueDiscGrenade::onRemove(%this, %obj)
 {
     RedDiscGrenade::onRemove(%this, %obj);
+}
+
+function BlueDiscGrenade::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
+{
+    RedDiscGrenade::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType);
 }

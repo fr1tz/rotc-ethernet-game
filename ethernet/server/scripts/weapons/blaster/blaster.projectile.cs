@@ -74,6 +74,35 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 	lightColor  = "1.0 0.0 0.0";
 };
 
+function RedBlasterProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
+{
+    Parent::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
+    
+	if( !(%col.getType() & $TypeMasks::ShapeBaseObjectType) )
+		return;
+  
+    %src =  %obj.getSourceObject();
+    if(!%src)
+        return;
+        
+    if(%col.numBlasterBulletHits > 4)
+        return;
+    
+    %currTime = getSimTime();
+    
+    if(%currTime == %obj.hitTime)
+    {
+        %col.numBlasterBulletHits += 1;
+        if(%col.numBlasterBulletHits == 4)
+            %src.setDiscTarget(%col);
+    }
+    else
+    {
+        %obj.hitTime = %currTime;
+        %col.numBlasterBulletHits = 1;
+    }
+}
+
 //-----------------------------------------------------------------------------
 
 datablock ShotgunProjectileData(BlueBlasterProjectile : RedBlasterProjectile)
@@ -91,3 +120,8 @@ datablock ShotgunProjectileData(BlueBlasterProjectile : RedBlasterProjectile)
 	
 	lightColor  = "0.0 0.0 1.0";
 };
+
+function BlueBlasterProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
+{
+    RedBlasterProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
+}
