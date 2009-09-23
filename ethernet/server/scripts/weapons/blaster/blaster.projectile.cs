@@ -85,7 +85,7 @@ function RedBlasterProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%d
     if(!%src)
         return;
         
-    if(%col.numBlasterBulletHits > 4)
+    if(%col.numBlasterBulletHits >= 3)
         return;
     
     %currTime = getSimTime();
@@ -93,7 +93,7 @@ function RedBlasterProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%d
     if(%currTime == %obj.hitTime)
     {
         %col.numBlasterBulletHits += 1;
-        if(%col.numBlasterBulletHits == 4)
+        if(%col.numBlasterBulletHits == 3)
             %src.setDiscTarget(%col);
     }
     else
