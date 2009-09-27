@@ -41,7 +41,7 @@ function initClient()
 	$Server::Dedicated = false;
 
 	// Game information used to query the master server
-	$Client::GameTypeQuery = "rotc-ethernet";
+	$Client::GameTypeQuery = $GameNameString;
 	$Client::MissionTypeQuery = "Any";
 
 	// The common module provides basic client functionality
@@ -56,7 +56,7 @@ function initClient()
 	// The canvas needs to be constructed before the gui scripts are
 	// run because many of the controls assume the canvas exists at
 	// load time.
-	initCanvas("Revenge Of The Cats: Ethernet" SPC "-" SPC $ETHERNET_VERSION);
+	initCanvas("Revenge Of The Cats: Ethernet (" @ $GameVersionString @ ")");
 
 	/// load client-side Audio Descriptions
 	exec("./scripts/audioDescriptions.cs");

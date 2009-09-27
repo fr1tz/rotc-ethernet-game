@@ -86,7 +86,6 @@ function PlayerListWindow::toggle(%this)
 	if( %this.isMaximized )
 	{
 		%this.resize(getWord(%this.oldPos,0),getWord(%this.oldPos,1),300,52);
-		%this.setBitmap($ETHERNET_PREFIX @ "/client/pixmaps/backdrop_playerlist_small");
 		%this.isMaximized = false;
 
 		// make sure selected row is visible...
@@ -101,7 +100,6 @@ function PlayerListWindow::toggle(%this)
 		%resWidth = getWord(%res,0);
 		%resHeight = getWord(%res,1);
 		%this.resize(%resWidth/2-250,%resHeight/2-200,501,401);
-		%this.setBitmap($ETHERNET_PREFIX @ "/client/pixmaps/backdrop_playerlist_big");
 		%this.isMaximized = true;
 	}
 }

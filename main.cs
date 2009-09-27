@@ -8,8 +8,16 @@
 // Copyright (C) GarageGames.com, Inc.
 //-----------------------------------------------------------------------------
 
-$defaultGame = "ethernet";
-$displayHelp = false;
+$GameNameString = "rotc-ethernet";
+$GameVersionString = "prototype1.8+dev";
+
+//------------------------------------------------------------------------------
+
+// The "creator" mod is needed for editors and the
+// "share" mod is used to make content available to all mods.
+$defaultMod = "ethernet";
+$userMods = "creator;share;" @ $defaultMod;
+$modcount = 2;
 
 //-----------------------------------------------------------------------------
 // Support functions used to manage the mod string
@@ -33,17 +41,11 @@ function popFront(%list, %delim)
 	return nextToken(%list, unused, %delim);
 }
 
-
 //------------------------------------------------------------------------------
 // Process command line arguments
 
-// Run the Torque Creator mod by default, it's needed for editors.
-// Also run the "share mod" in order to access content available to all mods.
-
-
+$displayHelp = false;
 $isDedicated = false;
-$modcount = 2;
-$userMods = "creator;share;" @ $defaultGame;
 
 for ($i = 1; $i < $Game::argc ; $i++)
 {
@@ -55,7 +57,7 @@ for ($i = 1; $i < $Game::argc ; $i++)
 	// Check for dedicated run
 	if( stricmp($arg,"-dedicated") == 0  )
 	{
-		$userMods = $defaultGame;
+		$userMods = $defaultMod;
 		$modcount = 1;
 		$isDedicated = true;
 	}
@@ -183,7 +185,7 @@ for ($i = 1; $i < $Game::argc ; $i++)
 
 if ($modcount == 0)
 {
-		$userMods = $defaultGame;
+		$userMods = $defaultMod;
 		$modcount = 1;
 }
 
@@ -226,16 +228,16 @@ function displayHelp() {
 
 	error(
 		"ROTC command line options:\n"@
-		"  -log <logmode>			Logging behavior; see main.cs comments for details\n"@
-		"  -game <game_name>		Reset list of mods to only contain <game_name>\n"@
-		"  <game_name>				Works like the -game argument\n"@
-		"  -mod <mod_name>		  Add <mod_name> to list of mods\n"@
-		"  -console					Open a separate console\n"@
-		"  -show <shape>			 Launch the TS show tool\n"@
-		"  -jSave  <file_name>	 Record a journal\n"@
-		"  -jPlay  <file_name>	 Play back a journal\n"@
-		"  -jDebug <file_name>	 Play back a journal and issue an int3 at the end\n"@
-		"  -help						Display this help message\n"
+        "  -log <logmode>      Logging behavior; see main.cs comments for details\n"@
+		"  -game <game_name>   Reset list of mods to only contain <game_name>\n"@
+		"  <game_name>         Works like the -game argument\n"@
+		"  -mod <mod_name>     Add <mod_name> to list of mods\n"@
+		"  -console            Open a separate console\n"@
+		"  -show <shape>       Launch the TS show tool\n"@
+		"  -jSave  <file>      Record a journal\n"@
+		"  -jPlay  <file>      Play back a journal\n"@
+		"  -jDebug <file>      Play back a journal and issue an int3 at the end\n"@
+		"  -help               Display this help message\n"
 	);
 }
 

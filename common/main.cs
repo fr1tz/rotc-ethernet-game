@@ -67,14 +67,14 @@ function displayHelp() {
 	Parent::displayHelp();
 	error(
 		"Common Mod options:\n"@
-		"  -fullscreen				Starts game in full screen mode\n"@
-		"  -windowed				  Starts game in windowed mode\n"@
-		"  -autoVideo				 Auto detect video, but prefers OpenGL\n"@
-		"  -openGL					 Force OpenGL acceleration\n"@
-		"  -directX					Force DirectX acceleration\n"@
-		"  -voodoo2					Force Voodoo2 acceleration\n"@
-		"  -noSound					Starts game without sound\n"@
-		"  -prefs <configFile>	 Exec the config file\n"
+		"  -fullscreen         Starts game in full screen mode\n"@
+		"  -windowed           Starts game in windowed mode\n"@
+		"  -autoVideo          Auto detect video, but prefers OpenGL\n"@
+		"  -openGL             Force OpenGL acceleration\n"@
+		"  -directX            Force DirectX acceleration\n"@
+		"  -voodoo2            Force Voodoo2 acceleration\n"@
+		"  -noSound            Starts game without sound\n"@
+		"  -prefs <file>       Exec the config file\n"
 	);
 }
 

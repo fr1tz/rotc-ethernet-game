@@ -80,8 +80,8 @@ function displayHelp() {
 	Parent::displayHelp();
 	error(
 		"Show Mod options:\n"@
-		"  -show <shape>			 Launch the TS show tool\n"@
-		"  -file <shape>			 Load the mission\n"
+		"  -show <shape>       Launch the TS show tool\n"@
+		"  -file <shape>       Load the mission\n"
 	);
 }
 

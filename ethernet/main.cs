@@ -8,9 +8,6 @@
 // Copyright (C) GarageGames.com, Inc.
 //-----------------------------------------------------------------------------
 
-$ETHERNET_VERSION = "Prototype 1.8+dev";
-$ETHERNET_PREFIX  = "ethernet";
-
 // Load up common script base
 loadDir("common");
 
@@ -32,9 +29,9 @@ function displayHelp()
 	
 	error(
 		"Ethernet options:\n"@
-		"  -dedicated				 Start as dedicated server\n"@
-		"  -connect <address>	  For non-dedicated: Connect to a game at <address>\n" @
-		"  -map <filename>		  For dedicated: Load specified map\n"
+		"  -dedicated          Start as dedicated server\n"@
+		"  -connect <address>  For non-dedicated: Connect to a game at <address>\n" @
+		"  -map <filename>     For dedicated: Load specified map\n"
 	);
 }
 

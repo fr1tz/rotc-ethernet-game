@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 
 // Game information used to query the master server
-$Client::GameTypeQuery = "rotc-ethernet";
+$Client::GameTypeQuery = $GameNameString;
 $Client::MissionTypeQuery = "Any";
 
 $Pref::ServerWatcher::UpdateDelay = 10000;

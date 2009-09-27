@@ -64,8 +64,8 @@ function onServerCreated()
 {
 	// Server::GameType is sent to the master server.
 	// This variable should uniquely identify your game and/or mod.
-	$Server::GameType = "rotc-ethernet";
-	$Server::GameVersion = $ETHERNET_VERSION;
+	$Server::GameType = $GameNameString;
+	$Server::GameVersion = $GameVersionString;
 
 	// GameStartTime is the sim time the game started. Used to calculated
 	// game elapsed time.
