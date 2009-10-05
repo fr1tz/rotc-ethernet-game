@@ -12,6 +12,87 @@ exec("./blaster.projectile.cs");
 
 exec("./blaster.sfx.cs");
 
+//-----------------------------------------------------------------------------
+// fire particle emitter
+
+datablock ParticleData(RedBlasterFireEmitter_Particles)
+{
+	dragCoefficient       = 1;
+	gravityCoefficient    = 0.0;
+	windCoefficient       = 0.0;
+	inheritedVelFactor    = 0.0;
+	constantAcceleration  = 0.0;
+	lifetimeMS            = 100;
+	lifetimeVarianceMS    = 0;
+	textureName           = "~/data/particles/smoke_particle";
+	colors[0]             = "1.0 1.0 1.0 1.0";
+	colors[1]             = "1.0 0.0 0.0 1.0";
+	colors[2]             = "1.0 0.0 0.0 0.0";
+	sizes[0]              = 1.0;
+	sizes[1]              = 1.0;
+	sizes[2]              = 0.0;
+	times[0]              = 0.0;
+	times[1]              = 0.5;
+	times[2]              = 1.0;
+
+};
+
+datablock ParticleEmitterData(RedBlasterFireEmitter)
+{
+	ejectionPeriodMS = 10;
+	periodVarianceMS = 0;
+	ejectionVelocity = 1.0;
+	velocityVariance = 0.2;
+	ejectionOffset   = 0;
+	thetaMin         = 0;
+	thetaMax         = 180;
+	phiReferenceVel  = 0;
+	phiVariance      = 360;
+	overrideAdvances = false;
+	orientParticles  = false;
+	lifetimeMS       = 0;
+	particles        = "RedBlasterFireEmitter_Particles";
+};
+
+datablock ParticleData(BlueBlasterFireEmitter_Particles)
+{
+	dragCoefficient       = 1;
+	gravityCoefficient    = 0.0;
+	windCoefficient       = 0.0;
+	inheritedVelFactor    = 0.0;
+	constantAcceleration  = 0.0;
+	lifetimeMS            = 100;
+	lifetimeVarianceMS    = 0;
+	textureName           = "~/data/particles/smoke_particle";
+	colors[0]             = "1.0 1.0 1.0 1.0";
+	colors[1]             = "0.0 0.0 1.0 1.0";
+	colors[2]             = "0.0 0.0 1.0 0.0";
+	sizes[0]              = 1.0;
+	sizes[1]              = 1.0;
+	sizes[2]              = 0.0;
+	times[0]              = 0.0;
+	times[1]              = 0.5;
+	times[2]              = 1.0;
+
+};
+
+datablock ParticleEmitterData(BlueBlasterFireEmitter)
+{
+	ejectionPeriodMS = 10;
+	periodVarianceMS = 0;
+	ejectionVelocity = 1.0;
+	velocityVariance = 0.2;
+	ejectionOffset   = 0;
+	thetaMin         = 0;
+	thetaMax         = 180;
+	phiReferenceVel  = 0;
+	phiVariance      = 360;
+	overrideAdvances = false;
+	orientParticles  = false;
+	lifetimeMS       = 0;
+	particles        = "BlueBlasterFireEmitter_Particles";
+};
+
 //------------------------------------------------------------------------------
 // weapon image which does all the work...
 // (images do not normally exist in the world, they can only
@@ -28,9 +109,9 @@ datablock ShapeBaseImageData(RedBlasterImage)
 
 	// mount point & mount offset...
 	mountPoint  = 0;
-	offset		= "0 0 0";
-	rotation	 = "0 0 0";
-	eyeOffset	= "0.3 -0.34 -0.5";
+	offset      = "0 0 0";
+	rotation    = "0 0 0";
+	eyeOffset   = "0.375 -0.2 -0.3";
 	eyeRotation = "0 0 0";
 
 	// Adjust firing vector to eye's LOS point?
@@ -40,7 +121,7 @@ datablock ShapeBaseImageData(RedBlasterImage)
 	minEnergy = 30;
 
 	projectile = RedBlasterProjectile;
-
+ 
 	// script fields...
 	iconId = 5;
 	armThread = "holdblaster";  // armThread to use when holding this weapon
@@ -58,7 +139,7 @@ datablock ShapeBaseImageData(RedBlasterImage)
 		stateName[1]                     = "Activate";
 		stateTransitionOnTimeout[1]      = "Ready";
 		stateTimeoutValue[1]             = 0.5;
-		stateSequence[1]                 = "activate";
+		stateSequence[1]                 = "idle";
 
 		// ready to fire, just waiting for the trigger...
 		stateName[2]                     = "Ready";
@@ -79,6 +160,9 @@ datablock ShapeBaseImageData(RedBlasterImage)
 		stateArmThread[3]                = "aimblaster";
 		stateSequence[3]                 = "fire";
 		stateSound[3]                    = BlasterFireSound;
+		stateEmitter[3]                  = RedBlasterFireEmitter;
+		stateEmitterNode[3]              = "fireparticles";
+		stateEmitterTime[3]              = 0.1;
 		stateScript[3]                   = "onFire";
 		
 		// after fire...
@@ -98,16 +182,19 @@ datablock ShapeBaseImageData(RedBlasterImage)
 		stateName[6]                     = "NoAmmo";
         stateTransitionOnTriggerDown[6]  = "DryFire";
 		stateTransitionOnAmmo[6]         = "Ready";
+		stateSequence[6]                 = "idle";
   
         // dry fire...
 		stateName[7]                     = "DryFire";
 		stateTransitionOnTriggerUp[7]    = "NoAmmo";
 		stateSound[7]                    = WeaponEmptySound;
+		stateSequence[7]                 = "idle";
 
 		// disabled...
 		stateName[8]                     = "Disabled";
 		stateTransitionOnLoaded[8]       = "Ready";
 		stateAllowImageChange[8]         = false;
+		stateSequence[8]                 = "idle";
 	//
 	// ...end of image states
 	//-------------------------------------------------
@@ -120,5 +207,6 @@ datablock ShapeBaseImageData(BlueBlasterImage : RedBlasterImage)
 	shapeFile = "~/data/weapons/blaster/image.blue.dts";
 	projectile = BlueBlasterProjectile;
 	stateFireProjectile[3] = BlueBlasterProjectile;
+    stateEmitter[3] = BlueBlasterFireEmitter;
 };
 

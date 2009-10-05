@@ -49,15 +49,15 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 
 	missEnemyEffect		 = RedBlasterProjectileMissedEnemyEffect;
 	
-    laserTail				 = RedBlasterProjectileLaserTail;
-    laserTailLen			 = 10.0;
+    //laserTail				 = RedBlasterProjectileLaserTail;
+    //laserTailLen			 = 10.0;
 
-    //laserTrail[0]			= RedBlasterProjectileLaserTrail;
+    laserTrail[0]			= RedBlasterProjectileLaserTrail;
     //laserTrail[1]		 = Team1StingerProjectileLaserTrail2;
 
     //particleEmitter	  = RedBlasterProjectileParticleEmitter;
 
-	muzzleVelocity   = 1000;
+	muzzleVelocity   = 9999;
 	velInheritFactor = 0.0;
 	
 	isBallistic			= false;
@@ -114,9 +114,9 @@ datablock ShotgunProjectileData(BlueBlasterProjectile : RedBlasterProjectile)
 
 	missEnemyEffect    = BlueBlasterProjectileMissedEnemyEffect;
 
-	laserTail          = BlueBlasterProjectileLaserTail;
+	//laserTail          = BlueBlasterProjectileLaserTail;
  
-    //laserTrail[0]      = BlueBlasterProjectileLaserTrail;
+    laserTrail[0]      = BlueBlasterProjectileLaserTrail;
 	
 	lightColor  = "0.0 0.0 1.0";
 };

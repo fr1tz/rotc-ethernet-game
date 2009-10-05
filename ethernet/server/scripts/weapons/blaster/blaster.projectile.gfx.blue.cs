@@ -61,10 +61,12 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrail)
 	outerColor = "0.00 0.00 1.00 0.20";
 	outerWidth = "0.05";
 
-//	bitmap = "~/data/weapons/disc/lasertrail.red";
-//	bitmapWidth = 0.50;
+	bitmap = "~/data/weapons/blaster/lasertrail.blue";
+	bitmapWidth = 0.50;
 
 	blendMode = 1;
+	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
+	fadeTime = 200;
 
     windCoefficient = 0.0;
 
@@ -77,13 +79,11 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrail)
     nodeMoveSpeed[1]    = -0.002;
     nodeMoveSpeedAdd[1] =  0.004;
     // node z movement...
-    nodeMoveMode[2]     = $NodeMoveMode::ConstantSpeed;
-    nodeMoveSpeed[2]    = 1.5;
-    nodeMoveSpeedAdd[2] = 1.0;
+    nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
+    nodeMoveSpeed[2]    = 3.0;
+    nodeMoveSpeedAdd[2] = -6.0;
 
     nodeDistance = 5;
-
-	fadeTime = 500;
 };
 
 //-----------------------------------------------------------------------------
