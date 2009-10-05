@@ -23,14 +23,14 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 	splashDamage       = 0;
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
- 
+
 	energyDrain = 3; // how much energy does firing this projectile drain?
-	
+
     numBullets = 9; // number of shotgun bullets
- 
+
     range = 500; // shotgun range
     spread = 0.6; // shotgun spread in degrees
-	
+
 	explodesNearEnemies			= false;
 	explodesNearEnemiesRadius	= 4;
 	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
@@ -44,11 +44,11 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
     //nearEnemyExplosion	 = DefaultProjectileNearEnemyExplosion;
     //hitTeammateExplosion  = RedBlasterImpact;
     //hitDeflectorExplosion = SeekerDiscBounceEffect;
-	
+
     //fxLight					= RedBlasterProjectileFxLight;
 
 	missEnemyEffect		 = RedBlasterProjectileMissedEnemyEffect;
-	
+
     //laserTail				 = RedBlasterProjectileLaserTail;
     //laserTailLen			 = 10.0;
 
@@ -59,16 +59,16 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 
 	muzzleVelocity   = 9999;
 	velInheritFactor = 0.0;
-	
+
 	isBallistic			= false;
 	gravityMod			 = 10.0;
-	
+
 	armingDelay			= 1000*0;
 	lifetime				= 3000;
 	fadeDelay			  = 5000;
-	
+
 	decals[0] = BulletHoleDecalOne;
-	
+
 	hasLight    = false;
 	lightRadius = 10.0;
 	lightColor  = "1.0 0.0 0.0";
@@ -77,19 +77,16 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 function RedBlasterProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 {
     Parent::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
-    
+
 	if( !(%col.getType() & $TypeMasks::ShapeBaseObjectType) )
 		return;
-  
+
     %src =  %obj.getSourceObject();
     if(!%src)
         return;
-        
-    if(%col.numBlasterBulletHits >= 3)
-        return;
-    
+
     %currTime = getSimTime();
-    
+
     if(%currTime == %obj.hitTime)
     {
         %col.numBlasterBulletHits += 1;
@@ -115,9 +112,9 @@ datablock ShotgunProjectileData(BlueBlasterProjectile : RedBlasterProjectile)
 	missEnemyEffect    = BlueBlasterProjectileMissedEnemyEffect;
 
 	//laserTail          = BlueBlasterProjectileLaserTail;
- 
+
     laserTrail[0]      = BlueBlasterProjectileLaserTrail;
-	
+
 	lightColor  = "0.0 0.0 1.0";
 };
 
