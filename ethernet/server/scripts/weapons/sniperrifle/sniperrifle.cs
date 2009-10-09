@@ -185,9 +185,9 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 
 	// mount point & mount offset...
 	mountPoint  = 0;
-	offset		= "0 0 0";
-	rotation	 = "0 0 0";
-	eyeOffset	= "0.3 0.05 -0.55";
+	offset      = "0 0 0";
+	rotation    = "0 0 0";
+	eyeOffset   = "0.25 -0.2 -0.2";
 	eyeRotation = "0 0 0 0";
 
 	// Adjust firing vector to eye's LOS point?
@@ -283,7 +283,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 		stateAllowImageChange[8]         = false;
 		stateEmitter[8]                  = RedSniperRifleFireEmitter;
 		stateEmitterNode[8]              = "emitter1";
-		stateEmitterTime[8]              = 0.1;
+		stateEmitterTime[8]              = 0.05;
 
 		// eyecandy...
 		stateName[9]                     = "Emitter2";
@@ -292,7 +292,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 		stateAllowImageChange[9]         = false;
 		stateEmitter[9]                  = RedSniperRifleFireEmitter;
 		stateEmitterNode[9]              = "emitter2";
-		stateEmitterTime[9]              = 0.1;
+		stateEmitterTime[9]              = 0.05;
 
 		// reload...
 		stateName[10]                    = "Reload";
