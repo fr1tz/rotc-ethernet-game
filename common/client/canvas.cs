@@ -16,15 +16,15 @@ function initCanvas(%windowName, %effectCanvas)
 {
 	videoSetGammaCorrection($pref::OpenGL::gammaCorrection);
 	
-	if( %effectCanvas )
+	if(%effectCanvas)
 		%canvasCreate = createEffectCanvas( %windowName );
 	else
 		%canvasCreate = createCanvas( %windowName );
 	
-	if( !%canvasCreate ) 
+	if(!%canvasCreate)
 	{
-		quitWithErrorMessage("Copy of ROTC is already running; exiting.");
-		return;
+        quitWithErrorMessage("Unable to create canvas; exiting.");
+        return;
 	}
 
 	setOpenGLTextureCompressionHint( $pref::OpenGL::compressionHint );
