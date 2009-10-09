@@ -159,6 +159,9 @@ function ShapeBase::checkTagged(%this, %tagger)
 
 function ShapeBase::setDiscTarget(%this, %target)
 {
+    if(%this == %target)
+        return;
+
     cancel(%this.discTargetThread);
 	%pos = %target.getWorldBoxCenter();
     %this.setCurrTarget(%target, %pos);
