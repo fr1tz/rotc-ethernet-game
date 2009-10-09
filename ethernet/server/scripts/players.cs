@@ -261,7 +261,10 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
 		// release the weapon triggers
 		%obj.setImageTrigger(0, false);
 		%obj.setImageTrigger(1, false);
-
+  
+        // to remove the zone light
+        %obj.getDataBlock().updateZone(%obj, 0);
+  
 		// detonate a possible teleport grenade
 		if(isObject(%obj.teleportGrenade))
 		{

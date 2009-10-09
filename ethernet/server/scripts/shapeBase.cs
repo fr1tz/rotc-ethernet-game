@@ -383,6 +383,15 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
 		TerritoryZones_disableRepair(%obj);
 	else
 		TerritoryZones_enableRepair(%obj);
+  
+    if(%obj.client)
+        messageClient(%obj.client, 'MsgCurrentZone', "", %zoneTeamId);
+        
+	if(%obj.isCAT && %obj.getState() $= "Dead")
+    {
+        %obj.unmountImage(3); // remove light
+        return;
+    }
  
 	if(%inZone)
 	{
@@ -416,9 +425,6 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
         %this.onLeaveMissionArea(%obj);
 		%obj.unmountImage(3); // remove light
 	}
- 
-    if(%obj.client)
-        messageClient(%obj.client, 'MsgCurrentZone', "", %zoneTeamId);
 }
 
 // called by script code...
