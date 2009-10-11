@@ -269,6 +269,11 @@ datablock ParticleEmitterData(BlueCatBufferRepairEmitter)
 
 datablock DebrisData(RedCatDamageDebris)
 {
+    // 2d billboard...
+    render2D = true;
+    texture = "~/data/particles/halo1.red.png";
+    textureWidth = 0.5;
+
 	// shape...
 	shapeFile = "~/data/misc/debris1.red.dts";
 
@@ -292,6 +297,11 @@ datablock DebrisData(RedCatDamageDebris)
 
 datablock DebrisData(BlueCatDamageDebris)
 {
+    // 2d billboard...
+    render2D = true;
+    texture = "~/data/particles/halo1.blue.png";
+    textureWidth = 0.5;
+
 	// shape...
 	shapeFile = "~/data/misc/debris1.blue.dts";
 
@@ -318,6 +328,11 @@ datablock DebrisData(BlueCatDamageDebris)
 
 datablock DebrisData(CatBufferDamageDebris)
 {
+    // 2d billboard...
+    render2D = true;
+    texture = "~/data/particles/halo1.white.png";
+    textureWidth = 0.5;
+
 	// shape...
 	shapeFile = "~/data/misc/debris1.white.dts";
 
