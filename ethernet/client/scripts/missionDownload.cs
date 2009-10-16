@@ -29,7 +29,7 @@ function onConnectionInitiated()
 // Loading Phases:
 // Phase 1: Download Datablocks
 // Phase 2: Download Ghost Objects
-// Phase 3: Scene Lighting
+// Phase 3: TacticalZones grid computation / Scene Lighting
 
 //----------------------------------------------------------------------------
 // Phase 1
@@ -91,13 +91,14 @@ function onFileChunkReceived(%fileName, %ofs, %size)
 function onMissionDownloadPhase3()
 {
 	LoadingProgress.setValue(0);
-	LoadingProgressTxt.setValue("LIGHTING MISSION");
 	Canvas.repaint();
 }
 
-function onPhase3Progress(%progress)
+function onPhase3Progress(%subphase_name, %progress)
 {
+	LoadingProgressTxt.setValue(%subphase_name);
 	LoadingProgress.setValue(%progress);
+ 	Canvas.repaint();
 }
 
 function onPhase3Complete()

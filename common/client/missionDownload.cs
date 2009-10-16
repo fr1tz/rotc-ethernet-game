@@ -16,7 +16,7 @@
 // Loading Phases:
 // Phase 1: Download Datablocks
 // Phase 2: Download Ghost Objects
-// Phase 3: Scene Lighting
+// Phase 3: TacticalZones grid computation / Scene Lighting
 //----------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------
@@ -71,8 +71,22 @@ function onGhostAlwaysObjectReceived()
 function clientCmdMissionStartPhase3(%seq,%missionName)
 {
 	onPhase2Complete();
+ 
+ 	echo ("*** Phase 3: Shape replication");
+  	onPhase3Progress("SHAPE REPLICATION", 0);
 	StartClientReplication();
+  	onPhase3Progress("SHAPE REPLICATION", 1);
+   
+ 	echo ("*** Phase 3: Foliage replication");
+   	onPhase3Progress("FOLIAGE REPLICATION", 0);
 	StartFoliageReplication();
+   	onPhase3Progress("FOLIAGE REPLICATION", 1);
+    
+ 	echo ("*** Phase 3: TacticalZone grid computation");
+   	onPhase3Progress("ZONE GRID COMPUTATION", 0);
+    computeZoneGrids("updateZoneGridProgress");
+   	onPhase3Progress("ZONE GRID COMPUTATION", 1);
+  
 	echo ("*** Phase 3: Mission Lighting");
 	$MSeq = %seq;
 
@@ -88,9 +102,14 @@ function clientCmdMissionStartPhase3(%seq,%missionName)
 	}
 }
 
+function updateZoneGridProgress(%progress)
+{
+    onPhase3Progress("ZONE GRID COMPUTATION", %progress);
+}
+
 function updateLightingProgress()
 {
-	onPhase3Progress($SceneLighting::lightingProgress);
+	onPhase3Progress("LIGHTING MISSION", $SceneLighting::lightingProgress);
 	if ($lightingMission)
 		$lightingProgressThread = schedule(1, 0, "updateLightingProgress");
 }
