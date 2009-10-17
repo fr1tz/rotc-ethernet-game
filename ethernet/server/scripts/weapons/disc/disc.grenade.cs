@@ -62,7 +62,7 @@ function RedDiscGrenade::onAdd(%this, %obj)
 function RedDiscGrenade::onRemove(%this, %obj)
 {
     %source = %obj.sourceObject;
-    %source.incDiscs();
+    %source.schedule(5000, "incDiscs");
 }
 
 function RedDiscGrenade::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
