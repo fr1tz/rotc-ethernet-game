@@ -185,7 +185,7 @@ datablock TacticalZoneData(TerritoryZone)
 	// in the zone.  The default value is 100 MS.
 	tickPeriodMS          = 250;
 	neutralColor          = "0.5 0.5 0.5 0.2";
-	neutralColorProtected = "1.0 0.0 1.0 0.5";
+	neutralColorProtected = "1.0 0.0 1.0 0.2";
 	team1Color            = "1.0 0.0 0.0 0.2";
 	team1ColorProtected   = "1.0 0.0 0.0 0.5";
 	team2Color            = "0.0 0.0 1.0 0.2";
