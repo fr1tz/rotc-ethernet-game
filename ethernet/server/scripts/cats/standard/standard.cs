@@ -79,8 +79,8 @@ datablock PlayerData(RedStandardCat)
 	minRunEnergy = 0;
 	
 	slideForce = 20 * 90;
-	slideEnergyDrain = 0.6;
-	minSlideEnergy = 5;
+	slideEnergyDrain = 0;
+	minSlideEnergy = 0;
 
 	maxForwardSpeed = 15;
 	maxBackwardSpeed = 12;
