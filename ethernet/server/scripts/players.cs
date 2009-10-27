@@ -273,12 +273,14 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
 		}
   
         // play clown sound if the player was humiliated...
-        if(%sourceObject.getClassName() $= "NortDisc")
-        {
-            serverPlay2D(ClownSound);
-        	MessageAll('MsgDiscKill', '\c2%1 was clowned by \c2%2.',
-        		%obj.client.name, %sourceObject.client.name);
-        }
+        // DON'T DO THIS, CL'OWNING HAPPENS WAY TO OFTEN SO THIS
+        // BECOMES ANNOYING REALLY QUICKLY
+        //if(%sourceObject.getClassName() $= "NortDisc")
+        //{
+        //    serverPlay2D(ClownSound);
+        //	MessageAll('MsgDiscKill', '\c2%1 was clowned by \c2%2.',
+        //		%obj.client.name, %sourceObject.client.name);
+        //}
 	}
 
 	%location = "Body";
