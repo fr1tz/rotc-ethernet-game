@@ -103,6 +103,7 @@ function JoinServerWindow::onWake()
 		"Game Version" TAB
 		"Server Name" TAB
 		"Ping" TAB
+		"Mod" TAB
 		"Players" TAB
 		"Map Name" TAB
 		"Map Homepage" TAB
@@ -190,6 +191,7 @@ function JoinServerWindow::update(%this)
 			$ServerInfo::GameVersion TAB
 			$ServerInfo::Name TAB
 			$ServerInfo::Ping TAB
+			$ServerInfo::ModString TAB
 			$ServerInfo::PlayerCount @ "/" @ $ServerInfo::MaxPlayers TAB
 			$ServerInfo::MissionName TAB
 			$ServerInfo::MissionHomepage TAB
