@@ -162,9 +162,16 @@ function slide(%val)
 	$mvTriggerCount5++;
 }
 
+function instantGrenadeThrow(%val)
+{
+    if(%val)
+		commandToServer('InstantGrenadeThrow');
+}
+
 MoveMap.bind( mouse, button0, primaryFire );
 MoveMap.bind( mouse, button1, secondaryFire );
 MoveMap.bind( mouse, button2, tertiaryFire );
+MoveMap.bind( mouse, "shift button1", instantGrenadeThrow );
 MoveMap.bind( keyboard, space, jump );
 MoveMap.bind( keyboard, lshift, march );
 MoveMap.bind( keyboard, lcontrol, slide );

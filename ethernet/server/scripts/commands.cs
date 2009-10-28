@@ -161,4 +161,14 @@ function serverCmdSelectObject(%client, %mouseVec, %cameraPoint)
 	}
 }
 
+function serverCmdInstantGrenadeThrow(%client)
+{
+    %player = %client.player;
+	if(!isObject(%player))
+        return;
+        
+    %player.doInstantGrenadeThrow = true;
+    %player.setImageTrigger(1, true);
+}
+
 

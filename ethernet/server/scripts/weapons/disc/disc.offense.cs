@@ -59,6 +59,7 @@ datablock ShapeBaseImageData(RedOffensiveDiscImage)
 		stateTransitionOnNotLoaded[2]   = "Disabled";
 		stateTransitionOnTriggerDown[2] = "SilentCharge";
 		stateSequence[2]                = "Invisible";
+		stateScript[2]                  = "onReady";
 
 		// silent charge...
 		stateName[3]                    = "SilentCharge";
@@ -169,11 +170,19 @@ function RedOffensiveDiscImage::onUnmount(%this, %obj, %slot)
 	Parent::onUnmount(%this, %obj, %slot);
 }
 
+function RedOffensiveDiscImage::onReady(%this, %obj, %slot)
+{
+    %obj.doInstantGrenadeThrow = false;
+}
+
 function RedOffensiveDiscImage::selectAction(%this, %obj, %slot)
 {
     // charged = throw grenade
     // not charged, flag 0 set = throw seeker
     // not charged, flag 0 not set = unable to throw seeker
+    
+    if(%obj.doInstantGrenadeThrow)
+        %obj.setImageCharge(%slot, 1.0);
 
     //echo(%obj.getImageCharge(%slot) SPC   %this.minCharge );
     if(%obj.getImageCharge(%slot) >= %this.minCharge)

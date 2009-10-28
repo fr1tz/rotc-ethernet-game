@@ -22,7 +22,7 @@ new GuiControl(OptControlsWindowForEditing) {
       HorizSizing = "center";
       VertSizing = "center";
       position = "113 26";
-      Extent = "376 378";
+      Extent = "476 378";
       MinExtent = "8 8";
       canSave = "1";
       Visible = "1";
@@ -44,7 +44,7 @@ new GuiControl(OptControlsWindowForEditing) {
          HorizSizing = "right";
          VertSizing = "bottom";
          position = "10 56";
-         Extent = "357 293";
+         Extent = "457 293";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -61,7 +61,7 @@ new GuiControl(OptControlsWindowForEditing) {
             HorizSizing = "right";
             VertSizing = "bottom";
             position = "2 2";
-            Extent = "335 320";
+            Extent = "435 320";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -69,7 +69,7 @@ new GuiControl(OptControlsWindowForEditing) {
             hovertime = "1000";
             enumerate = "0";
             resizeCell = "1";
-            columns = "0 160";
+            columns = "0 260";
             fitParentWidth = "1";
             clipColumnText = "0";
          };
