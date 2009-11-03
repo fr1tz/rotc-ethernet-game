@@ -364,6 +364,11 @@ function BlueOffensiveDiscImage::onUnmount(%this, %obj, %slot)
 	RedOffensiveDiscImage::onUnmount(%this,%obj,%slot);
 }
 
+function BlueOffensiveDiscImage::onReady(%this, %obj, %slot)
+{
+    RedOffensiveDiscImage::onReady(%this, %obj, %slot);
+}
+
 function BlueOffensiveDiscImage::selectAction(%this, %obj, %slot)
 {
 	RedOffensiveDiscImage::selectAction(%this,%obj,%slot);
