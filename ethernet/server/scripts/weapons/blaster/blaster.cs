@@ -28,8 +28,8 @@ datablock ParticleData(RedBlasterFireEmitter_Particles)
 	colors[0]             = "1.0 1.0 1.0 1.0";
 	colors[1]             = "1.0 0.0 0.0 1.0";
 	colors[2]             = "1.0 0.0 0.0 0.0";
-	sizes[0]              = 1.0;
-	sizes[1]              = 1.0;
+	sizes[0]              = 0.5;
+	sizes[1]              = 0.5;
 	sizes[2]              = 0.0;
 	times[0]              = 0.0;
 	times[1]              = 0.5;
@@ -41,11 +41,11 @@ datablock ParticleEmitterData(RedBlasterFireEmitter)
 {
 	ejectionPeriodMS = 10;
 	periodVarianceMS = 0;
-	ejectionVelocity = 1.0;
+	ejectionVelocity = 5.0*10;
 	velocityVariance = 0.2;
 	ejectionOffset   = 0;
 	thetaMin         = 0;
-	thetaMax         = 180;
+	thetaMax         = 0;
 	phiReferenceVel  = 0;
 	phiVariance      = 360;
 	overrideAdvances = false;
@@ -67,8 +67,8 @@ datablock ParticleData(BlueBlasterFireEmitter_Particles)
 	colors[0]             = "1.0 1.0 1.0 1.0";
 	colors[1]             = "0.0 0.0 1.0 1.0";
 	colors[2]             = "0.0 0.0 1.0 0.0";
-	sizes[0]              = 1.0;
-	sizes[1]              = 1.0;
+	sizes[0]              = 0.5;
+	sizes[1]              = 0.5;
 	sizes[2]              = 0.0;
 	times[0]              = 0.0;
 	times[1]              = 0.5;
@@ -80,11 +80,11 @@ datablock ParticleEmitterData(BlueBlasterFireEmitter)
 {
 	ejectionPeriodMS = 10;
 	periodVarianceMS = 0;
-	ejectionVelocity = 1.0;
+	ejectionVelocity = 5.0*10;
 	velocityVariance = 0.2;
 	ejectionOffset   = 0;
 	thetaMin         = 0;
-	thetaMax         = 180;
+	thetaMax         = 0;
 	phiReferenceVel  = 0;
 	phiVariance      = 360;
 	overrideAdvances = false;
@@ -111,7 +111,7 @@ datablock ShapeBaseImageData(RedBlasterImage)
 	mountPoint  = 0;
 	offset      = "0 0 0";
 	rotation    = "0 0 0";
-	eyeOffset   = "0.375 -0.2 -0.3";
+	eyeOffset   = "0.275 -0.25 -0.2";
 	eyeRotation = "0 0 0";
 
 	// Adjust firing vector to eye's LOS point?

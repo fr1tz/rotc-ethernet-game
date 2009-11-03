@@ -49,8 +49,9 @@ datablock LaserBeamData(RedBlasterProjectileLaserTail)
 
 datablock MultiNodeLaserBeamData(RedBlasterProjectileLaserTrail)
 {
-	hasLine = false;
-	lineColor	= "1.00 0.00 0.00 0.3";
+	hasLine   = true;
+	lineColor = "1.00 0.00 0.00 1.0";
+    lineWidth = 2.0;
 
 	hasInner = false;
 	innerColor = "1.00 0.00 1.00 0.3";
@@ -65,7 +66,7 @@ datablock MultiNodeLaserBeamData(RedBlasterProjectileLaserTrail)
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
-	fadeTime = 200;
+	fadeTime = 100;
  
     windCoefficient = 0.0;
     
@@ -156,7 +157,7 @@ datablock ExplosionData(RedBlasterProjectileImpact)
 {
 	soundProfile	= BlasterProjectileImpactSound;
 
-	lifetimeMS = 400;
+	lifetimeMS = 3000;
  
  	// shape...
 	//explosionShape = "~/data/effects/explosion4_red.dts";
@@ -178,8 +179,8 @@ datablock ExplosionData(RedBlasterProjectileImpact)
 	debrisVelocityVariance = 5.0;
 
 	// Dynamic light
-	lightStartRadius = 0.25;
-	lightEndRadius = 3;
+	lightStartRadius = 1;
+	lightEndRadius = 1;
 	lightStartColor = "1.0 0.0 0.0";
 	lightEndColor = "0.0 0.0 0.0";
     lightCastShadows = false;
