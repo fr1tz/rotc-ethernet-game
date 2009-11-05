@@ -31,18 +31,18 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
     range = 500; // shotgun range
     spread = 0.6; // shotgun spread in degrees
 
-	explodesNearEnemies			= false;
-	explodesNearEnemiesRadius	= 4;
-	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
+	explodesNearEnemies	      = false;
+	explodesNearEnemiesRadius = 4;
+	explodesNearEnemiesMask   = $TypeMasks::PlayerObjectType;
 
     //sound = BlasterProjectileFlybySound;
 
     //projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
 
-	explosion				 = RedBlasterProjectileImpact;
-	hitEnemyExplosion	  = RedBlasterProjectileHit;
-    //nearEnemyExplosion	 = DefaultProjectileNearEnemyExplosion;
-    //hitTeammateExplosion  = RedBlasterImpact;
+	explosion               = RedBlasterProjectileImpact;
+	hitEnemyExplosion       = RedBlasterProjectileHit;
+    hitTeammateExplosion    = RedBlasterProjectileHit;
+    //nearEnemyExplosion	= DefaultProjectileNearEnemyExplosion;
     //hitDeflectorExplosion = SeekerDiscBounceEffect;
 
     //fxLight					= RedBlasterProjectileFxLight;
@@ -106,8 +106,9 @@ datablock ShotgunProjectileData(BlueBlasterProjectile : RedBlasterProjectile)
 {
     //projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
 
-	explosion          = BlueBlasterProjectileImpact;
-	hitEnemyExplosion  = BlueBlasterProjectileHit;
+	explosion            = BlueBlasterProjectileImpact;
+	hitEnemyExplosion    = BlueBlasterProjectileHit;
+    hitTeammateExplosion = BlueBlasterProjectileHit;
 
 	missEnemyEffect    = BlueBlasterProjectileMissedEnemyEffect;
 

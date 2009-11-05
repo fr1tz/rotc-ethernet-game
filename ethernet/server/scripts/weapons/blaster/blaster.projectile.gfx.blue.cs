@@ -160,11 +160,11 @@ datablock ExplosionData(BlueBlasterProjectileImpact)
 	lifetimeMS = 3000;
 
  	// shape...
-	//explosionShape = "~/data/effects/explosion4_blue.dts";
+	explosionShape = "~/data/weapons/blaster/projectile.impact.blue.dts";
 	faceViewer = false;
-	playSpeed = 3.0;
-	sizes[0] = "0.02 0.02 0.02";
-	sizes[1] = "0.15 0.15 0.15";
+	playSpeed = 0.4;
+	sizes[0] = "1 1 1";
+	sizes[1] = "1 1 1";
 	times[0] = 0.0;
 	times[1] = 1.0;
 
@@ -179,8 +179,8 @@ datablock ExplosionData(BlueBlasterProjectileImpact)
 	debrisVelocityVariance = 5.0;
 
 	// Dynamic light
-	lightStartRadius = 1;
-	lightEndRadius = 1;
+	lightStartRadius = 0;
+	lightEndRadius = 0;
 	lightStartColor = "0.0 0.0 1.0";
 	lightEndColor = "0.0 0.0 0.0";
     lightCastShadows = false;
