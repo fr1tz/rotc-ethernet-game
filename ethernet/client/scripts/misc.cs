@@ -92,7 +92,7 @@ function CurrentZoneMessageCallback(%msgType, %msgString, %zoneTeamId)
 		case 0: Sky.changeColor("1 1 1");
 		case 1: Sky.changeColor("1 0 0");
 		case 2: Sky.changeColor("0 0 1");
-		default: Sky.changeColor("1 0 1");
+		default: Sky.changeColor("1 1 1");
 	}
 }
 
