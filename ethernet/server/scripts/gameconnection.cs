@@ -308,7 +308,7 @@ function GameConnection::togglePlayerForm(%this)
 	
 		%this.player.delete();
 
-		%obj.setEnergyLevel(%nrg - 50);
+		%obj.setEnergyLevel(%nrg);
 		%obj.setVelocity(VectorScale(%vel, 0.25));
 		
 		%obj.startFade(1000,0,false);
@@ -331,7 +331,7 @@ function GameConnection::togglePlayerForm(%this)
 			//}
 		}
 
-		%obj.setEnergyLevel(%nrg);
+		%obj.setEnergyLevel(%nrg - 50);
 		%obj.applyImpulse(%pos, VectorScale(%vel,100));
 		%obj.playAudio(0, EtherformSpawnSound);
 	}
