@@ -184,12 +184,12 @@ datablock TacticalZoneData(TerritoryZone)
 	// onTick callback is called while there are any objects
 	// in the zone.  The default value is 100 MS.
 	tickPeriodMS          = 250;
-	neutralColor          = "0.5 0.5 0.5 0.2";
-	neutralColorProtected = "1.0 0.0 1.0 0.2";
-	team1Color            = "1.0 0.0 0.0 0.2";
-	team1ColorProtected   = "1.0 0.0 0.0 0.5";
-	team2Color            = "0.0 0.0 1.0 0.2";
-    team2ColorProtected   = "0.0 0.0 1.0 0.5";
+	neutralColor          = "1 1 1 0.05";
+	neutralColorProtected = "1 0 1 0.2";
+	team1Color            = "1 0 0 0.2";
+	team1ColorProtected   = "1 0 0 0.5";
+	team2Color            = "0 0 1 0.2";
+    team2ColorProtected   = "0 0 1 0.5";
     
     texture = "~/data/textures/zone";
 };
