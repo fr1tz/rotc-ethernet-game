@@ -22,7 +22,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
       HorizSizing = "center";
       VertSizing = "center";
       position = "67 94";
-      Extent = "264 176";
+      Extent = "264 212";
       MinExtent = "8 8";
       canSave = "1";
       Visible = "1";
@@ -71,7 +71,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          Profile = "GuiCheckBoxProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "21 110";
+         position = "21 140";
          Extent = "137 25";
          MinExtent = "8 8";
          canSave = "1";
@@ -88,7 +88,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "165 141";
+         position = "165 171";
          Extent = "78 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -149,6 +149,35 @@ new GuiControl(OptGraphicsWindowForEditing) {
          HorizSizing = "right";
          VertSizing = "bottom";
          position = "113 82";
+         Extent = "130 23";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Default";
+         maxLength = "255";
+         maxPopupHeight = "200";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "21 106";
+         Extent = "77 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Zone rendering:";
+         maxLength = "255";
+      };
+      new GuiPopUpMenuCtrl(OptGraphicsZoneRenderingMenu) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiPopUpMenuProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "113 108";
          Extent = "130 23";
          MinExtent = "8 8";
          canSave = "1";

@@ -5,6 +5,7 @@
 
 function OptGraphicsWindow::onWake(%this)
 {
+    // Graphics driver menu...
 	%buffer = getDisplayDeviceList();
 	%count = getFieldCount( %buffer );
 	OptGraphicsDriverMenu.clear();
@@ -15,6 +16,13 @@ function OptGraphicsWindow::onWake(%this)
 		%selId = 0; // How did THAT happen?
 	OptGraphicsDriverMenu.setSelected( %selId );
 	OptGraphicsDriverMenu.onSelect( %selId, "" );
+ 
+    // Zone rendering menu...
+	OptGraphicsZoneRenderingMenu.clear();
+	OptGraphicsZoneRenderingMenu.add("None", $TacticalZoneRenderMode::None);
+	OptGraphicsZoneRenderingMenu.add("Borders Only", $TacticalZoneRenderMode::BordersOnly);
+	OptGraphicsZoneRenderingMenu.add("Full", $TacticalZoneRenderMode::Full);
+	OptGraphicsZoneRenderingMenu.setSelected($Pref::TacticalZone::RenderMode);
 }
 
 function OptGraphicsDriverMenu::onSelect( %this, %id, %text )
@@ -134,6 +142,11 @@ function OptGraphicsBPPMenu::init( %this, %device )
 			}
 		}
 	}
+}
+
+function OptGraphicsZoneRenderingMenu::onSelect( %this, %id, %text )
+{
+    $Pref::TacticalZone::RenderMode = %id;
 }
 
 function OptGraphicsWindow::applyGraphics( %this )
