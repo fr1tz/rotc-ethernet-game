@@ -16,15 +16,15 @@ new SimGroup(MissionGroup) {
          bumpOffset = "0.01";
          zeroBumpScale = "8";
          tile = "1";
-            Locked = "true";
             position = "-1024 -1024 0";
+            Locked = "true";
       };
       new Sun(Sun) {
          canSaveDynamicFields = "1";
          azimuth = "0";
          elevation = "35";
-         color = "0.2 0.2 0.2 1";
-         ambient = "0.1 0.1 0.1 1";
+         color = "0.25 0.25 0.25 1";
+         ambient = "0.2 0.2 0.2 1";
          CastsShadows = "1";
             Locked = "1";
       };
@@ -83,7 +83,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
-            checkTaggedThread = "20799";
+            checkTaggedThread = "15232";
             lockCount = "0";
             homingCount = "0";
             Locked = "False";
@@ -94,7 +94,7 @@ new SimGroup(MissionGroup) {
 
       new SpawnSphere() {
          canSaveDynamicFields = "1";
-         position = "-13.9915 -396.127 147.971";
+         position = "-14.0201 -399.048 104.569";
          rotation = "0.989559 -0.00484152 0.144044 3.89083";
          scale = "0.940827 1.97505 1";
          nameTag = "T2drop";
@@ -105,7 +105,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
-            checkTaggedThread = "20800";
+            checkTaggedThread = "15233";
             lockCount = "0";
             homingCount = "0";
             Locked = "False";
@@ -127,7 +127,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
-            checkTaggedThread = "20801";
+            checkTaggedThread = "15234";
             lockCount = "0";
             homingCount = "0";
             Locked = "False";
@@ -150,15 +150,15 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "1";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
          position = "-356 -152 125";
          rotation = "1 0 0 0";
-         scale = "40 96 40";
+         scale = "40 96 100";
          dataBlock = "TerritoryZone";
          teamId = "0";
          borderBottom = "0";
@@ -168,15 +168,15 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "1";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
-         position = "-229.75 -96 125";
+         position = "-198 -94 201";
          rotation = "1 0 0 0";
-         scale = "86.25 40 40";
+         scale = "118 38 50";
          dataBlock = "TerritoryZone";
          teamId = "0";
          borderBottom = "0";
@@ -186,15 +186,15 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "1";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
-         position = "332 -392.5 125";
+         position = "352 -354 125";
          rotation = "1 0 0 0";
-         scale = "130 119 40";
+         scale = "108 110 40";
          dataBlock = "TerritoryZone";
          teamId = "0";
          borderBottom = "0";
@@ -204,15 +204,15 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
-         position = "-25 -275.5 125";
+         position = "-2 -242 125";
          rotation = "1 0 0 0";
-         scale = "76 58 40";
+         scale = "70 30 40";
          dataBlock = "TerritoryZone";
          teamId = "0";
          borderBottom = "0";
@@ -222,8 +222,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "1";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -240,8 +240,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -258,8 +258,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -276,15 +276,15 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "0";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
-         position = "-4 -2 156";
+         position = "-1.98423 3.09874 116";
          rotation = "0 0 1 180";
-         scale = "47 173 40";
+         scale = "122 187 40";
          dataBlock = "TerritoryZone";
          teamId = "0";
          borderBottom = "1";
@@ -294,33 +294,33 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "0";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
-         position = "-25 -417.5 125";
+         position = "-4 -368 125";
          rotation = "1 0 0 0";
-         scale = "76 84 40";
+         scale = "68 96 40";
          dataBlock = "TerritoryZone";
          teamId = "0";
          borderBottom = "0";
          borderLeft = "1";
          borderBack = "1";
-         borderFront = "1";
+         borderFront = "0";
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "1";
+            numReds = "1";
             onGroup = "Default Value";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
-         position = "-176.5 -417.5 125";
+         position = "192 -418 128";
          rotation = "1 0 0 0";
-         scale = "75.5 84 40";
+         scale = "52 46 40";
          dataBlock = "TerritoryZone";
          teamId = "0";
          borderBottom = "0";
@@ -330,26 +330,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
-            initialOwner = "1";
-            onGroup = "Default Value";
-      };
-      new TacticalZone() {
-         canSaveDynamicFields = "1";
-         position = "126.5 -417.5 125";
-         rotation = "1 0 0 0";
-         scale = "75.5 84 40";
-         dataBlock = "TerritoryZone";
-         teamId = "0";
-         borderBottom = "0";
-         borderLeft = "1";
-         borderBack = "1";
-         borderFront = "1";
-         borderRight = "1";
-         borderTop = "1";
-            numBlues = "0";
-            numReds = "0";
             initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -366,8 +348,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "2";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -384,8 +366,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -402,8 +384,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -420,8 +402,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "2";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -438,8 +420,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "2";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -456,8 +438,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "2";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -474,8 +456,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "2";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -492,8 +474,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "0";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -510,8 +492,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -528,8 +510,8 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
       new TacticalZone() {
@@ -546,8 +528,119 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             numBlues = "0";
-            numReds = "0";
             initialOwner = "2";
+            numReds = "0";
+            onGroup = "Default Value";
+      };
+      new TacticalZone() {
+         canSaveDynamicFields = "1";
+         position = "-108 -386 125";
+         rotation = "1 0 0 0";
+         scale = "36 78 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "1";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+            onGroup = "Default Value";
+      };
+      new TacticalZone() {
+         canSaveDynamicFields = "1";
+         position = "-196 -418 125";
+         rotation = "1 0 0 0";
+         scale = "52 46 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "1";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+            onGroup = "Default Value";
+      };
+      new TacticalZone() {
+         canSaveDynamicFields = "1";
+         position = "102 -386 125";
+         rotation = "1 0 0 0";
+         scale = "38 78 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "1";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+            onGroup = "Default Value";
+      };
+      new TacticalZone() {
+         canSaveDynamicFields = "1";
+         position = "-228.001 -189.951 125";
+         rotation = "1 0 0 0";
+         scale = "88 54 100";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "0";
+         borderFront = "0";
+         borderRight = "0";
+         borderTop = "0";
+            initiallyProtected = "1";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+            onGroup = "Default Value";
+      };
+      new TacticalZone() {
+         canSaveDynamicFields = "1";
+         position = "-198 -308 125";
+         rotation = "1 0 0 0";
+         scale = "54 64 100";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "0";
+         borderBack = "0";
+         borderFront = "0";
+         borderRight = "0";
+         borderTop = "0";
+            initiallyProtected = "1";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+            onGroup = "Default Value";
+      };
+      new TacticalZone() {
+         canSaveDynamicFields = "1";
+         position = "-108 -260 125";
+         rotation = "1 0 0 0";
+         scale = "36 48 100";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "0";
+         borderBack = "0";
+         borderFront = "0";
+         borderRight = "1";
+         borderTop = "0";
+            initiallyProtected = "1";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
             onGroup = "Default Value";
       };
    };
@@ -556,174 +649,54 @@ new SimGroup(MissionGroup) {
    };
    new InteriorInstance() {
       canSaveDynamicFields = "1";
-      position = "-15.1731 -228.886 124.174";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/alpha.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "-149.142 -131.188 135.824";
-      rotation = "0 0 1 90";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "71.5949 -129.192 127.609";
-      rotation = "-0.0697724 0.0697724 0.99512 90.2803";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/bridge1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "-15.0427 225.501 124.174";
-      rotation = "0 0 1 179.518";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/alpha.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "136.294 122.35 139.824";
-      rotation = "0 0 -1 90.4817";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "-92.6541 -152.971 104.014";
-      rotation = "0.753183 0.45523 -0.474849 104.607";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/rotcbox.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "45.5 -364 133.5";
-      rotation = "0 0 1 90";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "45.5 -457.5 133.5";
-      rotation = "0 0 1 90";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "-94.5 -364 133.5";
-      rotation = "0 0 1 90";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "-94.5 -457.5 133.5";
-      rotation = "0 0 1 90";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "24 -326 133.5";
+      position = "-116 -94 200";
       rotation = "0 0 1 180";
       scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
+      interiorFile = "share/interiors/eth4/alpha.dif";
       useGLLighting = "0";
       showTerrainInside = "0";
    };
-   new InteriorInstance() {
+   new TSStatic() {
       canSaveDynamicFields = "1";
-      position = "-69 -326 133.5";
-      rotation = "0 0 1 180";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
+      position = "-93.2434 -93.6074 206";
+      rotation = "0.577657 0.577197 -0.577197 119.974";
+      scale = "1.29526 0.427389 0.1";
+      shapeName = "share/shapes/eth4/window1.dts";
+      receiveSunLight = "1";
+      receiveLMLighting = "1";
+      useAdaptiveSelfIllumination = "0";
+      useCustomAmbientLighting = "0";
+      customAmbientSelfIllumination = "0";
+      customAmbientLighting = "0 0 0 1";
+      useLightingOcclusion = "1";
    };
-   new InteriorInstance() {
+   new TSStatic() {
       canSaveDynamicFields = "1";
-      position = "44 359 133.5";
-      rotation = "0 0 1 90";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
+      position = "-112.243 -69.6074 206";
+      rotation = "1 0 0 90";
+      scale = "0.793865 0.427389 0.1";
+      shapeName = "share/shapes/eth4/window1.dts";
+      receiveSunLight = "1";
+      receiveLMLighting = "1";
+      useAdaptiveSelfIllumination = "0";
+      useCustomAmbientLighting = "0";
+      customAmbientSelfIllumination = "0";
+      customAmbientLighting = "0 0 0 1";
+      useLightingOcclusion = "1";
    };
-   new InteriorInstance() {
+   new TSStatic() {
       canSaveDynamicFields = "1";
-      position = "44 452.5 133.5";
-      rotation = "0 0 1 90";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "-96 359 133.5";
-      rotation = "0 0 1 90";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "-96 452.5 133.5";
-      rotation = "0 0 1 90";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "-71 323 133.5";
-      rotation = "0 0 1 180";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "22 323 133.5";
-      rotation = "0 0 1 180";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/wall1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "-90.6296 127.5 125.008";
-      rotation = "0.0648176 -0.0648176 0.99579 90.2417";
-      scale = "1 1 1";
-      interiorFile = "share/interiors/eth1/bridge1.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
+      position = "-112.243 -119.107 206";
+      rotation = "1 0 0 90";
+      scale = "0.793865 0.427389 0.1";
+      shapeName = "share/shapes/eth4/window1.dts";
+      receiveSunLight = "1";
+      receiveLMLighting = "1";
+      useAdaptiveSelfIllumination = "0";
+      useCustomAmbientLighting = "0";
+      customAmbientSelfIllumination = "0";
+      customAmbientLighting = "0 0 0 1";
+      useLightingOcclusion = "1";
    };
 };
 //--- OBJECT WRITE END ---
