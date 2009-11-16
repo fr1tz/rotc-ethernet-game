@@ -4,14 +4,11 @@ html {
 }
 
 body {
-	font-family: "Verdana", "Helvetica", sans-serif;
+	font-family: "Arial", "Verdana", "Helvetica", sans-serif;
 	font-size: 0.95em;
-	color: #0088ff;
+	color: #000000;
+	background-color: #828282;
 	margin: 10px;
-}
-
-p {
-	margin-bottom: 2em;
 }
 
 li {
@@ -21,6 +18,7 @@ li {
 td {
 	font-size: 0.85em;
 	border: 1px solid;
+	border-color: #646464;
 }
 
 /* LINKS */
@@ -29,7 +27,6 @@ a {
 	text-decoration: underline;
 }
 
-/* Page Header style */
 h1 {
 	font-size: 2em;
 	margin: 0;
