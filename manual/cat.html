@@ -3,7 +3,7 @@
 	<title>Life as CAT - Revenge Of The Cats: Ethernet</title>
 	<link rel="stylesheet" type="text/css" href="default.css"/>
 </head>
-<body bgcolor="#000000">
+<body>
 
 	<h1>Life as CAT</h1>
 	
@@ -22,8 +22,31 @@
 	and the primary weapon that was selected while in <i>Etherform</i>.
 	</p>
 	
-	<p>
+	<table><tr><td id="noborder">
+	<table align="left">
+		<tr><td><img src="./graphics/cat_full.png"></td></tr>
+		<tr><td>CAT with full energy/shields<br/> and full damage buffer</td></tr>
+	</table>	
+	<table align="left">
+		<tr><td><img src="./graphics/cat_noenergy.png"></td></tr>
+		<tr><td>CAT with no energy/shields</td></tr>
+	</table>		
+	<table align="left">
+		<tr><td><img src="./graphics/cat_dmgbufempty.png"></td></tr>
+		<tr><td>CAT with empty<br/> damage buffer</td></tr>
+	</table>			
+	<table align="left">
+		<tr><td><img src="./graphics/cat_dmgbufoverflow.png"></td></tr>
+		<tr><td>CAT with overflowing<br/> damage buffer</td></tr>
+	</table>		
+	<table align="left">
+		<tr><td><img src="./graphics/cat_etherboard.png"></td></tr>
+		<tr><td>CAT using etherboard</td></tr>
+	</table>					
+	</td></tr></table>		
+	
 	<h2>Health</h2>
+	<p>	
 	Players start with 75 health points. At least 25% health is needed to manifest as a <i>CAT</i>.
 	Health is lost if a player takes more damage than the <i>damage buffer</i> can absorb.
 	To regain health, players can either change back into <i>Etherform</i> and rest in a zone
@@ -32,82 +55,41 @@
 	possibly overflowing it.
 	</p>
 
-	<p>
-	<h2>Damage buffer</h2>
-	Players have a buffer that constantly re-/degenerates to 25 points. Damage first hits the 
-	<i>damage buffer</i> before affecting a player's health. The <i>damage buffer</i> can overflow
-	if players inflict enough damage on enemies.
-	<table><tr><td id="noborder">
-	<table align="left">
-		<tr><td><img src="./graphics/cat_dmgbuf_normal.png"></td></tr>
-		<tr><td>CAT with full damage buffer</td></tr>
-	</table>	
-	<table align="left">
-		<tr><td><img src="./graphics/cat_dmgbuf_empty.png"></td></tr>
-		<tr><td>CAT with empty damage buffer</td></tr>
-	</table>
-	<table align="left">
-		<tr><td><img src="./graphics/cat_dmgbuf_over.png"></td></tr>
-		<tr><td>CAT with overflowing<br/> damage buffer</td></tr>
-	</table>		
-	</td></tr></table>
-	</p>
-
-	<p>
 	<h2>Energy</h2>
-	A <i>CAT</i> needs energy to power its shield, fire its weapons and use its <i>Etherboard</i>.
+	<p>	
+	A <i>CAT</i> needs energy to power its shield and fire its weapons.
 	The energy consumed when firing a shot from a weapon is restored if the shot hits an enemy.
-	<table><tr><td id="noborder">
-	<table align="left">
-		<tr><td><img src="./graphics/cat_energy_full.png"></td></tr>
-		<tr><td>CAT with full energy after hitting an enemy</td></tr>
-	</table>	
-	<table align="left">
-		<tr><td><img src="./graphics/cat_energy_empty.png"></td></tr>
-		<tr><td>CAT with almost no energy after<br/> missing an enemy twice</td></tr>
-	</table>		
-	</td></tr></table>	
 	</p>
 	
-	<p>
 	<h2>Shield</h2>
+	<p>	
 	Every <i>CAT</i> has a shield that can absorb up to 50% damage if the <i>CAT</i>
 	has full energy. The damage absorbed by the shield decreases in a linear fashion with
 	decreased energy.
 	</p>
-	
-	<p>
-	<h2>Etherboard</h2>
-	By holding down the <b>left control</b> key, <i>CATs</i> can trade agility for speed by  
-	using the <i>Etherboard</i> to ride the ether.
-	Using the <i>Etherboard</i> consumes energy.
-	<table><tr><td id="noborder">
-	<table align="left">
-		<tr><td><img src="./graphics/cat_etherboard.png"></td></tr>
-		<tr><td>Red CAT riding its Etherboard</td></tr>
-	</table>	
-	</td></tr></table>		
-	</p>
-	
-	<p>
-	<h2>Tagging</h2>
-	<i>CATs</i> are tagged when they take damage from an enemy.
-	Tagged enemies appear on the HUD.
-	<table><tr><td id="noborder">
-	<table align="left">
-		<tr><td><img src="./graphics/cat_tag.png"></td></tr>
-		<tr><td>Two tagged enemies visible on the HUD</td></tr>
-	</table>	
-	</td></tr></table>			
+
+	<h2>Damage buffer</h2>
+	<p>	
+	Players have a buffer that constantly re-/degenerates to 25 points. Damage first hits the 
+	<i>damage buffer</i> before affecting a player's health. The <i>damage buffer</i> can overflow
+	if players inflict enough damage on enemies.
 	</p>	
 	
+	<h2>Etherboard</h2>
+	<p>	
+	By holding down the <b>left control</b> key, <i>CATs</i> can trade agility for speed by  
+	using the <i>Etherboard</i> to ride the ether.
+	</p>
+	
+	<h2>Tagging</h2>
 	<p>
-	<h2>Returning to Etherform</h2>	
+	Players are tagged when they take damage from an enemy.
+	Tagged enemies appear on the HUD.
+	</p>	
+
+	<h2>Returning to Etherform</h2>
+	<p>	
 	By pressing <b>TAB</b>, players manifested as <i>CAT</i> can dissolve their physical bodies at any time.
-	<table>
-		<tr><td><img src="./graphics/player_dissolve.png"></td></tr>
-		<tr><td>Red CAT dissolving and<br/> returning to Etherform</td></tr>	
-	</table>		
 	</p>		
 	
 	<p>
@@ -136,6 +118,10 @@
 	<tr>
 		<td>Right mouse button</td>
 		<td>Use Crystal Sceptre (Offensive)</td>
+	</tr>			
+	<tr>
+		<td>Left shift + Right mouse button</td>
+		<td>Throw exploding Sceptre at full force</td>
 	</tr>				
 	<tr>
 		<td>Tab</td>
@@ -171,6 +157,6 @@
 	</tr>									
 	</table>
 	</p>	
-
+	
 </body>
 </html>
