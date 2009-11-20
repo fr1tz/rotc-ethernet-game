@@ -105,6 +105,7 @@ function clientCmdMissionStartPhase3(%seq,%missionName)
 function updateZoneGridProgress(%progress)
 {
     onPhase3Progress("ZONE GRID COMPUTATION", %progress);
+    Canvas.repaint();
 }
 
 function updateLightingProgress()

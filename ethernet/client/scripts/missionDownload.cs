@@ -98,7 +98,6 @@ function onPhase3Progress(%subphase_name, %progress)
 {
 	LoadingProgressTxt.setValue(%subphase_name);
 	LoadingProgress.setValue(%progress);
- 	Canvas.repaint();
 }
 
 function onPhase3Complete()
