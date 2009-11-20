@@ -62,6 +62,19 @@ function onGhostAlwaysObjectReceived()
 {
 	$ghostsRecvd++;
 	onPhase2Progress($ghostsRecvd / $ghostCount);
+
+    // HACK HACK HACK: The client should really have a cleaner
+    // way of accessing the sky object.
+    $sky = 0;
+    for(%idx = 0; %idx < ServerConnection.getCount(); %idx++)
+    {
+		%obj = ServerConnection.getObject(%idx);
+        if(%obj.getClassName() $= "Sky")
+        {
+            $sky = %obj;
+            break;
+        }
+    }
 }
 
 //----------------------------------------------------------------------------

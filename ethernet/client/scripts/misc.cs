@@ -89,10 +89,10 @@ function CurrentZoneMessageCallback(%msgType, %msgString, %zoneTeamId)
 {
 	switch(%zoneTeamId)
 	{
-		case 0: Sky.changeColor("1 1 1");
-		case 1: Sky.changeColor("1 0 0");
-		case 2: Sky.changeColor("0 0 1");
-		default: Sky.changeColor("1 1 1");
+		case 0:  $sky.changeColor("1 1 1");
+		case 1:  $sky.changeColor("1 0 0");
+		case 2:  $sky.changeColor("0 0 1");
+		default: $sky.changeColor("1 1 1");
 	}
 }
 
