@@ -31,16 +31,6 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 {
 	%client = %obj.client;
  
-    if($Pref::Server::InstaGibMode)
-    {
-		if(%obj.getTeamId() == 1)
-			%obj.mountImage(RedRailgunImage, 0, -1, true);
-		else
-			%obj.mountImage(BlueRailgunImage, 0, -1, true);
-   
-        return;
-    }
-	
 	if(%nr == 0)
 	{
 		if(%obj.getMountedImage(0).mainWeapon)

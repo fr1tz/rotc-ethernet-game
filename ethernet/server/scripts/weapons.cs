@@ -26,7 +26,6 @@ function executeWeaponScripts()
 	exec("./weapons/blaster/blaster.cs");
 	exec("./weapons/assaultrifle/assaultrifle.cs");
 	exec("./weapons/sniperrifle/sniperrifle.cs");
-	exec("./weapons/railgun/railgun.cs");
 }
 
 executeWeaponScripts();
