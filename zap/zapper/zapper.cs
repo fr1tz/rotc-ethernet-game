@@ -30,7 +30,7 @@ datablock ShapeBaseImageData(HolsteredZapperImage)
 //-----------------------------------------------------------------------------
 // projectile datablock...
 
-datablock TracerProjectileData(RedZapperProjectile)
+datablock ShotgunProjectileData(RedZapperProjectile)
 {
 	// script damage properties...
 	impactDamage       = 25;
@@ -42,7 +42,9 @@ datablock TracerProjectileData(RedZapperProjectile)
 	// how much energy does firing this projectile drain?...
 	energyDrain = 10;
 
-	trackingAgility = 0;
+    numBullets = 1; // number of shotgun bullets
+    range = 1000; // shotgun range
+    spread = 0.0; // shotgun spread in degrees
 	
 	explodesNearEnemies	      = false;
 	explodesNearEnemiesRadius = 4;
@@ -65,11 +67,11 @@ datablock TracerProjectileData(RedZapperProjectile)
 	laserTail	    = RedZapperProjectileLaserTail;
 	laserTailLen    = 20;
 
-	muzzleVelocity		= 2000;
-	velInheritFactor	 = 1.0;
+	muzzleVelocity    = 9999;
+	velInheritFactor  = 0.0;
 	
-	isBallistic			= true;
-	gravityMod			 = 7.5;
+	isBallistic	= false;
+	gravityMod	= 7.5;
 
 	armingDelay			= 0;
 	lifetime				= 1000*10;
@@ -89,7 +91,7 @@ function RedZapperProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%di
 
 //--------------------------------------------------------------------------
 
-datablock TracerProjectileData(BlueZapperProjectile : RedZapperProjectile)
+datablock ShotgunProjectileData(BlueZapperProjectile : RedZapperProjectile)
 {
 	explosion               = BlueZapperProjectileImpact;
 	hitEnemyExplosion       = BlueZapperProjectileHit;
@@ -162,7 +164,7 @@ datablock ShapeBaseImageData(RedZapperImage)
 		
 		stateName[3]                     = "Fire";
 		stateTransitionOnTimeout[3]      = "KeepAiming";
-		stateTimeoutValue[3]             = 0.08;
+		stateTimeoutValue[3]             = 0.1;
 		stateFire[3]                     = true;
 		stateFireProjectile[3]           = RedZapperProjectile;
 		stateRecoil[3]                   = LightRecoil;
