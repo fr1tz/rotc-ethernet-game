@@ -65,12 +65,12 @@ datablock ShotgunProjectileData(RedRailgunProjectile)
     
     missEnemyEffect = RedRailgunProjectileMissedEnemyEffect;
 
-    particleEmitter	= RedRailgunProjectileParticleEmitter;
-	laserTrail[0]   = RedRailgunProjectileLaserTrailOne;
-    laserTrail[1]   = RedRailgunProjectileLaserTrailTwo;
-    laserTrail[2]   = RedRailgunProjectileLaserTrailThree;
-	//laserTail	    = RailgunProjectileLaserTail;
-	//laserTailLen    = 20;
+    //particleEmitter	= RedRailgunProjectileParticleEmitter;
+	//laserTrail[0]   = RedRailgunProjectileLaserTrailOne;
+    //laserTrail[1]   = RedRailgunProjectileLaserTrailTwo;
+    //laserTrail[2]   = RedRailgunProjectileLaserTrailThree;
+	laserTail = RedRailgunProjectileLaserTail;
+	laserTailLen = 20;
 
 	muzzleVelocity   = 500;
 	velInheritFactor = 0.0;
@@ -95,10 +95,11 @@ datablock ShotgunProjectileData(BlueRailgunProjectile : RedRailgunProjectile)
 {
 	explosion = BlueRailgunProjectileExplosion;
     missEnemyEffect = BlueRailgunProjectileMissedEnemyEffect;
-    particleEmitter	= BlueRailgunProjectileParticleEmitter;
-	laserTrail[0]   = BlueRailgunProjectileLaserTrailOne;
-    laserTrail[1]   = BlueRailgunProjectileLaserTrailTwo;
-    laserTrail[2]   = BlueRailgunProjectileLaserTrailThree;
+    //particleEmitter	= BlueRailgunProjectileParticleEmitter;
+	//laserTrail[0]   = BlueRailgunProjectileLaserTrailOne;
+    //laserTrail[1]   = BlueRailgunProjectileLaserTrailTwo;
+    //laserTrail[2]   = BlueRailgunProjectileLaserTrailThree;
+	laserTail = BlueRailgunProjectileLaserTail;
 };
 
 //--------------------------------------------------------------------------
@@ -163,7 +164,7 @@ datablock ShapeBaseImageData(RedRailgunImage)
 		stateTimeoutValue[3]             = 0.0;
 		stateFire[3]                     = true;
 		stateFireProjectile[3]           = RedRailgunProjectile;
-		stateRecoil[3]                   = MediumRecoil;
+		stateRecoil[3]                   = NoRecoil;
 		stateAllowImageChange[3]         = false;
 		stateEjectShell[3]               = true;
 		stateArmThread[3]                = "aimrifle";

@@ -9,6 +9,42 @@
 //------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
+// laser tail...
+
+datablock LaserBeamData(RedRailgunProjectileLaserTail)
+{
+	hasLine = true;
+	lineStartColor	= "1.00 0.00 0.00 0.0";
+	lineBetweenColor = "1.00 0.00 0.00 0.25";
+	lineEndColor	  = "1.00 0.00 0.00 0.5";
+	lineWidth		  = 2.0;
+
+	hasInner = false;
+	innerStartColor = "0.00 0.00 0.90 0.5";
+	innerBetweenColor = "0.50 0.00 0.90 0.9";
+	innerEndColor = "1.00 1.00 1.00 0.9";
+	innerStartWidth = "0.05";
+	innerBetweenWidth = "0.05";
+	innerEndWidth = "0.05";
+
+	hasOuter = false;
+	outerStartColor = "0.00 0.00 0.90 0.0";
+	outerBetweenColor = "0.50 0.00 0.90 0.8";
+	outerEndColor = "1.00 1.00 1.00 0.8";
+	outerStartWidth = "0.3";
+	outerBetweenWidth = "0.25";
+	outerEndWidth = "0.1";
+
+	bitmap = "ethernet/data/weapons/blaster/lasertail.red";
+	bitmapWidth = 0.20;
+	crossBitmap = "ethernet/data/weapons/blaster/lasertail.blue.cross";
+	crossBitmapWidth = 0.50;
+
+	betweenFactor = 0.5;
+	blendMode = 1;
+};
+
+//-----------------------------------------------------------------------------
 // laser trail
 
 datablock MultiNodeLaserBeamData(RedRailgunProjectileLaserTrailOne)
@@ -135,32 +171,32 @@ datablock ParticleData(RedRailgunProjectileParticleEmitter_Particles)
 	windCoefficient      = 0.0;
 	inheritedVelFactor	 = 0.0;
 	constantAcceleration = 0.0;
-	lifetimeMS			 = 125;
+	lifetimeMS			 = 100;
 	lifetimeVarianceMS	 = 0;
-	spinRandomMin        = -1000.0;
-	spinRandomMax        = 1000.0;
-	textureName			 = "ethernet/data/particles/smoke_particle";
-	colors[0]	    = "1.0 0.2 0.0 0.75";
-	colors[1]	    = "1.0 0.2 0.0 0.0";
-	sizes[0]		= 1.5;
-	sizes[1]		= 1.5;
-	times[0]		= 0.0;
-	times[1]		= 1.0;
-	useInvAlpha = false;
-	renderDot = false;
+	spinRandomMin        = 0;
+	spinRandomMax        = 0;
+	textureName			 = "ethernet/data/weapons/blaster/projectile.impact.red";
+	colors[0]            = "1.0 0.0 0.0 1.0";
+	colors[1]            = "1.0 0.0 0.0 0.0";
+	sizes[0]             = 0.5;
+	sizes[1]             = 0.0;
+	times[0]             = 0.0;
+	times[1]             = 1.0;
+	useInvAlpha          = false;
+	renderDot            = true;
 };
 
 datablock ParticleEmitterData(RedRailgunProjectileParticleEmitter)
 {
 	ejectionPeriodMS = 5;
-	periodVarianceMS = 0;
-	ejectionVelocity = 5.0;
-	velocityVariance = 5.0;
-	ejectionOffset	 = 0.0;
-	thetaMin		 = 0;
-	thetaMax		 = 0;
+	periodVarianceMS = 2;
+	ejectionVelocity = 5;
+	velocityVariance = 2.5;
+	ejectionOffset   = 0.0;
+	thetaMin         = 0;
+	thetaMax         = 0;
 	phiReferenceVel  = 0;
-	phiVariance		 = 360;
+	phiVariance      = 0;
 	overrideAdvances = false;
 	orientParticles  = false;
 	lifetimeMS		 = 0;
