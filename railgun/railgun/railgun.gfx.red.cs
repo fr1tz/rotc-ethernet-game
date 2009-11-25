@@ -37,7 +37,7 @@ datablock LaserBeamData(RedRailgunProjectileLaserTail)
 
 	bitmap = "ethernet/data/weapons/blaster/lasertail.red";
 	bitmapWidth = 0.20;
-	crossBitmap = "ethernet/data/weapons/blaster/lasertail.blue.cross";
+	crossBitmap = "ethernet/data/weapons/blaster/lasertail.red.cross";
 	crossBitmapWidth = 0.50;
 
 	betweenFactor = 0.5;
