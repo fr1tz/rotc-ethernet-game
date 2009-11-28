@@ -20,7 +20,7 @@ datablock ParticleData(RedBlasterFireEmitter_Particles)
 	dragCoefficient       = 1;
 	gravityCoefficient    = 0.0;
 	windCoefficient       = 0.0;
-	inheritedVelFactor    = 0.0;
+	inheritedVelFactor    = 1.0;
 	constantAcceleration  = 0.0;
 	lifetimeMS            = 100;
 	lifetimeVarianceMS    = 0;
@@ -59,7 +59,7 @@ datablock ParticleData(BlueBlasterFireEmitter_Particles)
 	dragCoefficient       = 1;
 	gravityCoefficient    = 0.0;
 	windCoefficient       = 0.0;
-	inheritedVelFactor    = 0.0;
+	inheritedVelFactor    = 1.0;
 	constantAcceleration  = 0.0;
 	lifetimeMS            = 100;
 	lifetimeVarianceMS    = 0;
