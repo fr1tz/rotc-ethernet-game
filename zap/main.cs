@@ -25,10 +25,10 @@ function parseArgs()
 
 function onStart()
 {
-	Parent::onStart();
- 
 	echo("\n--------- Initializing MOD: Zap ---------");
  	exec("./server.cs");
+
+	Parent::onStart();
 }
 
 function onExit()
