@@ -28,6 +28,16 @@ datablock ShapeBaseImageData(HolsteredZapperImage)
 };
 
 //-----------------------------------------------------------------------------
+
+datablock DecalData(ZapperExplosionDecal)
+{
+	sizeX = "1.0";
+	sizeY = "1.0";
+	textureName = "ethernet/data/textures/explosiondecal1";
+	SelfIlluminated = false;
+};
+
+//-----------------------------------------------------------------------------
 // projectile datablock...
 
 datablock ShotgunProjectileData(RedZapperProjectile)
@@ -77,7 +87,7 @@ datablock ShotgunProjectileData(RedZapperProjectile)
 	lifetime				= 1000*10;
 	fadeDelay			  = 5000;
 	
-	decals[0]	= BulletHoleDecalOne;
+    decals[0] = ZapperExplosionDecal;
 	
 	hasLight	= false;
 	lightRadius = 8.0;
@@ -172,7 +182,9 @@ datablock ShapeBaseImageData(RedZapperImage)
 		stateEjectShell[3]               = true;
 		stateArmThread[3]                = "aimblaster";
 		stateSequence[3]                 = "Fire";
-		stateEmitter[3]                  = RedBlasterFireEmitter;
+		stateEmitter[3]                  = RedZapperFireEmitter;
+		stateEmitterNode[3]              = "fireparticles";
+		stateEmitterTime[3]              = 0.1;
 		stateSound[3]                    = ZapperFireSound;
 		stateScript[3]                   = "onFire";
 		
@@ -194,7 +206,7 @@ datablock ShapeBaseImageData(RedZapperImage)
 		stateName[6]                     = "DryFire";
 		stateTransitionOnTriggerUp[6]    = "NoAmmo";
 		stateSound[6]                    = WeaponEmptySound;
-  
+
 		// disabled...
 		stateName[7]                     = "Disabled";
 		stateTransitionOnLoaded[7]       = "Ready";
