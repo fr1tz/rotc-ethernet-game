@@ -1,0 +1,302 @@
+//--- OBJECT WRITE BEGIN ---
+new SimGroup(MissionGroup) {
+   canSaveDynamicFields = "1";
+
+   new SimGroup(Essentials) {
+      canSaveDynamicFields = "1";
+
+      new MissionArea(MissionArea) {
+         canSaveDynamicFields = "1";
+         Area = "-6016 -6016 12032 12032";
+         flightCeiling = "1000";
+         flightCeilingRange = "20";
+            Locked = "true";
+      };
+      new Sky(Sky) {
+         canSaveDynamicFields = "1";
+         position = "744 -432 0";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         materialList = "share/skies/eth2/sky.dml";
+         cloudHeightPer[0] = "0.2";
+         cloudHeightPer[1] = "0.2";
+         cloudHeightPer[2] = "0.1";
+         cloudSpeed1 = "0.001";
+         cloudSpeed2 = "0.09";
+         cloudSpeed3 = "0.09";
+         visibleDistance = "300";
+         fogDistance = "250";
+         fogColor = "0.015686 0 0.192157 1";
+         fogStorm1 = "0";
+         fogStorm2 = "0";
+         fogStorm3 = "0";
+         fogVolume1 = "300 0 190";
+         fogVolume2 = "0 0 0";
+         fogVolume3 = "0 0 0";
+         fogVolumeColor1 = "1 1 1 1";
+         fogVolumeColor2 = "1 1 1 1";
+         fogVolumeColor3 = "0 0 0 1";
+         windVelocity = "0 1 0";
+         windEffectPrecipitation = "1";
+         SkySolidColor = "0 0 0 1";
+         useSkyTextures = "1";
+         renderBottomTexture = "0";
+         noRenderBans = "0";
+            Locked = "true";
+      };
+      new Sun(Sun) {
+         canSaveDynamicFields = "1";
+         azimuth = "0";
+         elevation = "30";
+         color = "0.4 0.4 0.4 1";
+         ambient = "0.2 0.2 0.2 1";
+         CastsShadows = "1";
+            Locked = "1";
+      };
+      new TerrainBlock(Terrain) {
+         canSaveDynamicFields = "1";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         detailTexture = "share/textures/malloc/detail.grid";
+         terrainFile = "./mission.ter";
+         squareSize = "8";
+         emptySquares = "0";
+         bumpScale = "1";
+         bumpOffset = "0.01";
+         zeroBumpScale = "8";
+         tile = "1";
+            Locked = "true";
+            position = "-1024 -1024 0";
+      };
+   };
+   new SimGroup(ObserverPoints) {
+      canSaveDynamicFields = "1";
+
+      new SpawnSphere(OBSsphere) {
+         canSaveDynamicFields = "1";
+         position = "-40.2976 -353.399 254.4";
+         rotation = "0 0 1 130.062";
+         scale = "0.940827 1.97505 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "0";
+         isTagging = "0";
+         Radius = "20";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+            lockCount = "0";
+            Locked = "false";
+            homingCount = "0";
+            checkTaggedThread = "15403";
+      };
+   };
+   new SimGroup(RedSpawnPoints) {
+      canSaveDynamicFields = "1";
+
+      new SpawnSphere(T1drop) {
+         canSaveDynamicFields = "1";
+         position = "-44.2236 -408.464 200.4";
+         rotation = "0 0 1 130.062";
+         scale = "0.5 0.5 1";
+         nameTag = "T1drop";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "0";
+         isTagging = "0";
+         Radius = "10";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+            lockCount = "0";
+            Locked = "False";
+            homingCount = "0";
+            checkTaggedThread = "15404";
+      };
+   };
+   new SimGroup(BlueSpawnPoints) {
+      canSaveDynamicFields = "1";
+
+      new SpawnSphere(T2drop) {
+         canSaveDynamicFields = "1";
+         position = "-46.9818 -328.11 200.6";
+         rotation = "0 0 1 130.062";
+         scale = "0.940827 1.97505 1";
+         nameTag = "T2drop";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "0";
+         isTagging = "0";
+         Radius = "10";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+            lockCount = "0";
+            Locked = "False";
+            homingCount = "0";
+            checkTaggedThread = "15405";
+      };
+   };
+   new SimGroup(TerritoryZones) {
+      canSaveDynamicFields = "1";
+
+      new TacticalZone() {
+         canSaveDynamicFields = "1";
+         position = "-48 -368 225";
+         rotation = "1 0 0 0";
+         scale = "80 64 30";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            initialOwner = "0";
+            numReds = "1";
+            numBlues = "0";
+      };
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "24 -424 245.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight1";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
+      ParticleColorAttenuation = "1";
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "-120 -424 245.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight3";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
+      ParticleColorAttenuation = "1";
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "-120 -312 245.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight4";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
+      ParticleColorAttenuation = "1";
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "24 -312 245.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight2";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
+      ParticleColorAttenuation = "1";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "24 -312 199.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      interiorFile = "share/interiors/malloc/lighttower.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "-120 -312 199.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      interiorFile = "share/interiors/malloc/lighttower.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "-120 -424 199.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      interiorFile = "share/interiors/malloc/lighttower.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "-47 -368 200";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      interiorFile = "share/interiors/malloc/spike2.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "0.159393 -319.103 200";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      interiorFile = "share/interiors/malloc/spike.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "-95.7805 -415.553 200";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      interiorFile = "share/interiors/malloc/spike.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "-15.1916 -415.454 200";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      interiorFile = "share/interiors/malloc/spike.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "-79.4908 -319.08 200";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      interiorFile = "share/interiors/malloc/spike.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "0 -368 200";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      interiorFile = "share/interiors/malloc/spike.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "-95 -368 200";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      interiorFile = "share/interiors/malloc/spike.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "24 -424 199.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      interiorFile = "share/interiors/malloc/lighttower.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+};
+//--- OBJECT WRITE END ---
