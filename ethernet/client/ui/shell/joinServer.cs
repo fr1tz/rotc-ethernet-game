@@ -135,7 +135,7 @@ function JoinServerWindow::join(%this)
 
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%index = getField(JS_ServerList.getRowTextById(%id), 7);
+	%index = getField(JS_ServerList.getRowTextById(%id), 8);
 	if (setServerInfo(%index)) {
 		%conn = new GameConnection(ServerConnection);
 		%conn.setConnectArgs($pref::Player::Name);
