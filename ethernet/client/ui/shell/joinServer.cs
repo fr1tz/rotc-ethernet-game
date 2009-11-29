@@ -154,7 +154,7 @@ function JoinServerWindow::refreshServer(%this)
 
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%serverindex = getField(JS_serverList.getRowTextById(%id), 7);
+	%serverindex = getField(JS_serverList.getRowTextById(%id), 8);
 	if(setServerInfo(%serverindex)) {
 		querySingleServer( $ServerInfo::Address, 0 );
 	}
@@ -165,7 +165,7 @@ function JoinServerWindow::refreshServer(%this)
 function JoinServerWindow::gotoMapHomepage(%this)
 {
 	%id = JS_ServerList.getSelectedId();
-	gotoWebPage(getField(JS_ServerList.getRowTextById(%id), 5));
+	gotoWebPage(getField(JS_ServerList.getRowTextById(%id), 6));
 }
 
 //----------------------------------------
@@ -217,7 +217,7 @@ function JS_ServerList::onSelect(%this, %id, %text)
 {
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%serverindex = getField(JS_ServerList.getRowTextById(%id), 7);
+	%serverindex = getField(JS_ServerList.getRowTextById(%id), 8);
 	
 	if(setServerInfo(%serverindex))
 	{
