@@ -415,7 +415,10 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 	//--------------------------------------------------------------------------
 	if( %triggerNum == 2 )
 	{
-		// no additional stuff here currently
+        if(%val)
+        {
+            %obj.schedule(0, "checkReJump");
+        }
 	}
 	
 	//--------------------------------------------------------------------------
@@ -451,9 +454,27 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 
 //-----------------------------------------------------------------------------
 
+function Player::checkReJump(%this)
+{
+    %this.getDataBlock().checkReJump(%this);
+}
+
+function PlayerData::checkReJump(%this, %obj)
+{
+    if(%obj.lastJumpTime != getSimTime() && %obj.getEnergyLevel() > %this.reJumpEnergyDrain)
+    {
+       	createExplosionOnClients(CatJumpExplosion, %obj.getPosition(), "0 0 1");
+  		%impulseVec = VectorScale("0 0 1", %this.reJumpForce);
+  		%obj.applyImpulse(%pos, %impulseVec);
+        %obj.setEnergyLevel( %obj.getEnergyLevel() -  %this.reJumpEnergyDrain);
+    }
+}
+
+//-----------------------------------------------------------------------------
+
 function PlayerData::onJump(%this, %obj)
 {
-	createExplosionOnClients(CatJumpExplosion, %obj.getPosition(), "0 0 1");
+    %obj.lastJumpTime = getSimTime();
 }
 
 //-----------------------------------------------------------------------------

@@ -103,8 +103,10 @@ datablock PlayerData(RedStandardCat)
 	maxUnderwaterSideSpeed = 7.8;
 	// [todo: insert values for other body poses here?]
 
-	jumpForce = 12 * 90;
-	jumpEnergyDrain = 20;
+	jumpForce = 8 * 90;  // 12 * 90
+	jumpEnergyDrain = 0;
+    reJumpForce = 10 * 90; // script field
+    reJumpEnergyDrain = 20; // script field
 	minJumpEnergy = 20;
 	jumpDelay = 0;
 	
