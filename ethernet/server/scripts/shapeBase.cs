@@ -390,43 +390,42 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
     if(%obj.client)
         messageClient(%obj.client, 'MsgCurrentZone', "", %zoneTeamId);
         
-	if(%obj.isCAT && %obj.getState() $= "Dead")
-    {
-        %obj.unmountImage(3); // remove light
-        return;
-    }
- 
 	if(%inZone)
 	{
 		//echo(" in zone");
         %this.onEnterMissionArea(%obj);
 
-		%datablock = WhiteZoneLightImage;
+        if(%obj.getClassName() $= "Etherform")
+        {
+            %datablock = WhiteZoneLightImage;
 
-		if(%inEnemyZone)
-		{
-			//echo(" in enemy zone");
-			if(%ownTeamId == 1)
-				%datablock = BlueZoneLightImage;
-			else
-				%datablock = RedZoneLightImage;
-		}
-		else if(%inOwnZone)
-		{
-			//echo(" in own zone");
-			if(%ownTeamId == 1)
-				%datablock = RedZoneLightImage;
-			else
-				%datablock = BlueZoneLightImage;
-		}
+            if(%inEnemyZone)
+            {
+                //echo(" in enemy zone");
+                if(%ownTeamId == 1)
+                    %datablock = BlueZoneLightImage;
+                else
+                    %datablock = RedZoneLightImage;
+            }
+            else if(%inOwnZone)
+            {
+                //echo(" in own zone");
+                if(%ownTeamId == 1)
+                    %datablock = RedZoneLightImage;
+                else
+                    %datablock = BlueZoneLightImage;
+            }
 
-		%obj.mountImage(%datablock, 3);
+            %obj.mountImage(%datablock, 3);
+        }
 	}
 	else
 	{
 		//echo(" not in zone");
         %this.onLeaveMissionArea(%obj);
-		%obj.unmountImage(3); // remove light
+        
+        if(%obj.getClassName() $= "Etherform")
+    		%obj.unmountImage(3); // remove light
 	}
 }
 
