@@ -33,6 +33,7 @@ function initBaseClient()
 	exec("./client/mission.cs");
 	exec("./client/missionDownload.cs");
 	exec("./client/actionMap.cs");
+	exec("./client/actionMap.recording.cs");
 	exec("./client/materialMappings.cs");
     exec("./client/mumble.cs");
     exec("./client/tacticalZones.cs");

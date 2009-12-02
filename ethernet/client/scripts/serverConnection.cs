@@ -43,7 +43,7 @@ function GameConnection::initialControlSet(%this)
 	// first check if the editor is active
 	if (!Editor::checkActiveLoadDone())
 	{
-		if (Canvas.getContent() != Hud.getId())
+		if (Canvas.getContent() == Shell.getId())
 			Canvas.setContent(Hud);
 	}
 }

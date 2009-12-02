@@ -49,6 +49,7 @@ function initCanvas(%windowName, %effectCanvas)
 	exec("~/ui/RecordingsDlg.gui");
 	exec("~/ui/NetGraphGui.gui");
 	exec("~/ui/TorqueSplash.gui");
+	exec("~/ui/RecordingFreelook.gui");
 	
 	// Commonly used helper scripts
 	exec("./metrics.cs");

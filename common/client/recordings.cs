@@ -8,28 +8,55 @@
 // Copyright (C) GarageGames.com, Inc.
 //-----------------------------------------------------------------------------
 
-//-----------------------------------------------------------------------------
-// RecordingsGui is the main TSControl through which the a demo game recording
-// is viewed. 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+// Demo playback...
 
-function RecordingsWindow::onWake()
+function fastForward(%seconds)
 {
-	RecordingsDlgList.clear();
-	%i = 0;
-	%filespec = $lastMod @ "/recordings/*.rec";
-	echo(%filespec);
-	for(%file = findFirstFile(%filespec); %file !$= ""; %file = findNextFile(%filespec)) 
-	{ 
-		%fileName = fileBase(%file);
-		if (strStr(%file, "/CVS/") == -1) 
-		{
-			RecordingsDlgList.addRow(%i++, %fileName);
+    $timeScale = %seconds;
+    schedule(%seconds * 1000, 0, "pauseDemoPlayback", 1);
+}
+
+function pauseDemoPlayback()
+{
+    $timeScale = 0;
+}
+
+function startDemoPlayback(%file, %skipToSecond)
+{
+    $DemoFileName = %file;
+
+    if(isObject(ServerConnection))
+        ServerConnection.delete();
+
+	new GameConnection(ServerConnection);
+	RootGroup.add(ServerConnection);
+
+	if(ServerConnection.playDemo($DemoFileName))
+	{
+        StartClientReplication();
+        StartFoliageReplication();
+        computeZoneGrids();
+        
+		ServerConnection.prepDemoPlayback();
+  
+        pushActionMap(RecordingActionMap);
+        
+        if(%skipToSecond > 0)
+        {
+            $timeScale = %skipToSecond;
+            if($timeScale > 25) $timeScale = 25;
+            schedule(%skipToSecond * 1000, 0, "pauseDemoPlayback", 1);
+        }
+	}
+	else
+	{
+		MessageBoxOK("Playback Failed", "Demo playback failed for file '" @ %file @ "'.");
+		if(isObject(ServerConnection)) {
+			ServerConnection.delete();
 		}
 	}
-	RecordingsDlgList.sort(0);
-	RecordingsDlgList.setSelectedRow(0);
-	RecordingsDlgList.scrollVisible(0);
+
 }
 
 function StartSelectedDemo()
@@ -40,33 +67,28 @@ function StartSelectedDemo()
 
 	%file = $lastMod @ "/recordings/" @ getField(%rowText, 0) @ ".rec";
 
-	new GameConnection(ServerConnection);
-	RootGroup.add(ServerConnection);
-
-	if(ServerConnection.playDemo(%file))
-	{
-		Canvas.setContent(PlayGui);
-		Canvas.popDialog(RecordingsDlg);
-		ServerConnection.prepDemoPlayback();
-	}
-	else 
-	{
-		MessageBoxOK("Playback Failed", "Demo playback failed for file '" @ %file @ "'.");
-		if (isObject(ServerConnection)) {
-			ServerConnection.delete();
-		}
-	}
+    startDemoPlayback(%file, 0);
 }
+
+function demoPlaybackComplete()
+{
+	disconnect();
+    popActionMap(RecordingActionMap);
+	Canvas.setContent("Shell");
+}
+
+//------------------------------------------------------------------------------
+// Demo recording...
 
 function startDemoRecord()
 {
 	// make sure that current recording stream is stopped
 	ServerConnection.stopRecording();
-	
+
 	// make sure we aren't playing a demo
 	if(ServerConnection.isDemoPlaying())
 		return;
-	
+
 	for(%i = 0; %i < 1000; %i++)
 	{
 		%num = %i;
@@ -78,7 +100,7 @@ function startDemoRecord()
 		%file = $lastMod @ "/recordings/"
 			@ strreplace($Pref::Player::Name, "/", "")
 			@ "-" @ %num @ ".rec";
-			
+
 		if(!isfile(%file))
 			break;
 	}
@@ -111,8 +133,29 @@ function stopDemoRecord()
 	}
 }
 
-function demoPlaybackComplete()
+//------------------------------------------------------------------------------
+// GUI stuff...
+
+function RecordingsWindow::onWake()
 {
-	disconnect();
-	Canvas.setContent("Shell");
+	RecordingsDlgList.clear();
+	%i = 0;
+	%filespec = $lastMod @ "/recordings/*.rec";
+	echo(%filespec);
+	for(%file = findFirstFile(%filespec); %file !$= ""; %file = findNextFile(%filespec)) 
+	{ 
+		%fileName = fileBase(%file);
+		if (strStr(%file, "/CVS/") == -1) 
+		{
+			RecordingsDlgList.addRow(%i++, %fileName);
+		}
+	}
+	RecordingsDlgList.sort(0);
+	RecordingsDlgList.setSelectedRow(0);
+	RecordingsDlgList.scrollVisible(0);
 }
+
+
+
+
+
