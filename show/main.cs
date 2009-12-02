@@ -46,7 +46,7 @@ function stopShow()
 	Canvas.popDialog(TShowEditScale);
 	Canvas.popDialog(TSShowDetailControlDlg);
 
-	showMoveMap.pop(); 
+	popActionMap(showMoveMap);
 	quit();
 }
 

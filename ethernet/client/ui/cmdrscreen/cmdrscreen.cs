@@ -32,7 +32,7 @@ function CmdrScreen::onWake(%this)
 	chatHud.attach(HudMessageVector);
 
 	// activate commander screen controls...
-	CmdrScreenActionMap.push();
+    pushActionMap(CmdrScreenActionMap);
 	%this.controlThread = %this.schedule(0, "updatePanAndZoom");
 	
 	// warp to curr position...
@@ -46,7 +46,7 @@ function CmdrScreen::onSleep(%this)
 	Canvas.popDialog(ScannerHud);
 
 	// deactivate commander screen controls...
-	CmdrScreenActionMap.pop();
+	popActionMap(CmdrScreenActionMap);
 	cancel(%this.controlThread);
 }
 

@@ -9,6 +9,26 @@
 //-----------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
+// All Pushing and popping of action maps should go through these functions:
+//------------------------------------------------------------------------------
+
+function pushActionMap(%actionMap)
+{
+	echo("Pushing action map:" SPC %actionMap);
+	%actionMap.push();
+	if(%actionMap.pushCallback !$= "")
+		call(%actionMap.pushCallback);
+}
+
+function popActionMap(%actionMap)
+{
+	echo("Popping action map:" SPC %actionMap);
+	%actionMap.pop();
+	if(%actionMap.popCallback !$= "")
+		call(%actionMap.popCallback);
+}
+
+//------------------------------------------------------------------------------
 // Utility remap functions:
 //------------------------------------------------------------------------------
 

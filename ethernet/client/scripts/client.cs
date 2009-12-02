@@ -68,18 +68,11 @@ function clientCmdPopDialog(%dlg)
 
 function clientCmdPopActionMap(%map)
 {
-	echo("popping action map " @ %map);
-	%map.pop();
+    popActionMap(%map);
 
-	if(%map.popCallback !$= "")
-		call(%map.popCallback);
 }
 
 function clientCmdPushActionMap(%map)
 {
-	echo("pushing action map " @ %map);
-	%map.push();
-
-	if(%map.pushCallback !$= "")
-		call(%map.pushCallback);
+    pushActionMap(%map);
 }

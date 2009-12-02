@@ -43,7 +43,7 @@ function Hud::onWake(%this)
 	chatHud.attach(HudMessageVector);
 
 	// just update the action map here
-	MoveMap.push();
+    pushActionMap(MoveMap);
 
 	// hack city - these controls are floating around and need to be clamped
 	schedule(0, 0, "refreshCenterTextCtrl");
@@ -55,7 +55,7 @@ function Hud::onSleep(%this)
 	Canvas.popDialog( MainChatHud  );
 
 	// pop the keymaps
-	MoveMap.pop();
+	popActionMap(MoveMap);
 }
 
 function Hud::matchControlObject(%this, %obj)

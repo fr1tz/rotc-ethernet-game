@@ -953,8 +953,9 @@ function EPainter::setup(%this)
 
 function EditorGui::onWake(%this)
 {
-	MoveMap.push();
-	EditorMap.push();
+    pushActionMap(MoveMap);
+    pushActionMap(EditorMap);
+
 	%this.setEditor(%this.currentEditor);
 	
 	if (DemoEditorAlert.helpTag<2) Canvas.pushDialog(DemoEditorAlert);
@@ -963,8 +964,8 @@ function EditorGui::onWake(%this)
 
 function EditorGui::onSleep(%this)
 {
-	EditorMap.pop();
-	MoveMap.pop();
+    popActionMap(EditorMap);
+	popActionMap(MoveMap);
 	$Server::CurrentScene.open();
 }
 
