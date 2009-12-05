@@ -70,7 +70,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	isBallistic			= true;
 	gravityMod			 = 7.5;
 
-	armingDelay			= 75;
+	armingDelay			= 0;
 	lifetime				= 1000*10;
 	fadeDelay			  = 5000;
 	
