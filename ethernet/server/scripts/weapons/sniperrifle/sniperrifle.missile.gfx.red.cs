@@ -4,45 +4,46 @@
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
-// Revenge Of The Cats - sniperrifle.gfx.blue.cs
+// Revenge Of The Cats - sniperrifle.gfx.red.cs
 // Eye-candy for the sniper rifle
 //------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
 // laser trail
 
-datablock MultiNodeLaserBeamData(BlueSniperProjectileTrail)
+datablock MultiNodeLaserBeamData(RedSniperMissileTrail)
 {
-	//bitmap = "~/data/weapons/sniperrifle/lasertrail_blue";
+	//bitmap = "~/data/weapons/sniperrifle/lasertrail_red";
 	bitmapWidth = 0.50;
 
 	blendMode = 1;
 	fadeTime = 1000;
 };
 
+
 //-----------------------------------------------------------------------------
 // laser tail
 
-datablock LaserBeamData(BlueSniperProjectileTail)
+datablock LaserBeamData(RedSniperMissileTail)
 {
 	hasLine = true;
-	lineStartColor	= "0.00 0.00 1.00 0.0";
-	lineBetweenColor = "0.00 0.00 1.00 0.5";
-	lineEndColor	  = "0.00 0.00 1.00 0.5";
+	lineStartColor	= "1.00 0.00 0.00 0.0";
+	lineBetweenColor = "1.00 0.00 0.00 0.5";
+	lineEndColor	  = "1.00 0.00 0.00 0.5";
     lineWidth = 2.0;
 
 	hasInner = true;
-	innerStartColor	= "0.00 0.00 1.00 0.0";
-	innerBetweenColor = "0.00 0.00 1.00 0.5";
-	innerEndColor	  = "0.00 0.00 1.00 0.5";
+	innerStartColor	= "1.00 0.00 0.00 0.0";
+	innerBetweenColor = "1.00 0.00 0.00 0.5";
+	innerEndColor	  = "1.00 0.00 0.00 0.5";
 	innerStartWidth	= "0.0";
 	innerBetweenWidth = "0.3";
 	innerEndWidth	  = "0.1";
 
 	hasOuter = true;
-	outerStartColor	= "0.00 0.00 1.00 0.0";
-	outerBetweenColor = "0.00 0.00 1.00 0.5";
-	outerEndColor	  = "0.00 0.00 1.00 0.5";
+	outerStartColor	= "1.00 0.00 0.00 0.0";
+	outerBetweenColor = "1.00 0.00 0.00 0.5";
+	outerEndColor	  = "1.00 0.00 0.00 0.5";
 	outerStartWidth	= "0.1";
 	outerBetweenWidth = "0.4";
 	outerEndWidth	  = "0.2";
@@ -57,7 +58,7 @@ datablock LaserBeamData(BlueSniperProjectileTail)
 //-----------------------------------------------------------------------------
 // slow projectile particle emitter
 
-datablock ParticleData(BlueSlowSniperProjectileEmitter_Particles)
+datablock ParticleData(RedSlowSniperMissileEmitter_Particles)
 {
 	dragCoefficient		= 1;
 	gravityCoefficient	= 0.0;
@@ -83,7 +84,7 @@ datablock ParticleData(BlueSlowSniperProjectileEmitter_Particles)
 	renderDot = true;
 };
 
-datablock ParticleEmitterData(BlueSlowSniperProjectileEmitter)
+datablock ParticleEmitterData(RedSlowSniperMissileEmitter)
 {
 	ejectionPeriodMS = 50;
 	periodVarianceMS = 0;
@@ -97,14 +98,13 @@ datablock ParticleEmitterData(BlueSlowSniperProjectileEmitter)
 	overrideAdvances = false;
 	orientParticles  = false;
 	lifetimeMS		 = 0;
-	particles = "BlueSlowSniperProjectileEmitter_Particles";
+	particles = "RedSlowSniperMissileEmitter_Particles";
 };
-
 
 //-----------------------------------------------------------------------------
 // projectile particle emitter
 
-datablock ParticleData(BlueSniperProjectileEmitter_Particles)
+datablock ParticleData(RedSniperMissileEmitter_Particles)
 {
 	dragCoefficient		= 1;
 	gravityCoefficient	= 0.0;
@@ -115,8 +115,8 @@ datablock ParticleData(BlueSniperProjectileEmitter_Particles)
 	lifetimeVarianceMS	= 0;
 	textureName			 = "~/data/particles/small_particle4";
 	colors[0]	  = "1.0 0.0 1.0 0.5";
-	colors[1]	  = "0.0 0.0 1.0 0.5";
-	colors[2]	  = "0.0 1.0 1.0 0.5";
+	colors[1]	  = "1.0 0.0 0.0 0.5";
+	colors[2]	  = "1.0 1.0 0.0 0.5";
 	colors[3]	  = "0.0 5.0 0.0 0.0";
 	sizes[0]		= 0.5;
 	sizes[1]		= 0.5;
@@ -129,7 +129,7 @@ datablock ParticleData(BlueSniperProjectileEmitter_Particles)
 	renderDot = true;
 };
 
-datablock ParticleEmitterData(BlueSniperProjectileEmitter)
+datablock ParticleEmitterData(RedSniperMissileEmitter)
 {
 	ejectionPeriodMS = 5;
 	periodVarianceMS = 0;
@@ -143,13 +143,13 @@ datablock ParticleEmitterData(BlueSniperProjectileEmitter)
 	overrideAdvances = false;
 	orientParticles  = false;
 	lifetimeMS		 = 0;
-	particles = "BlueSniperProjectileEmitter_Particles";
+	particles = "RedSniperMissileEmitter_Particles";
 };
 
 //-----------------------------------------------------------------------------
 // fire particle emitter
 
-datablock ParticleData(BlueSniperRifleFireEmitter_Particles)
+datablock ParticleData(RedSniperRifleFireEmitter_Particles)
 {
 	dragCoefficient		= 1;
 	gravityCoefficient	= -0.5;
@@ -160,10 +160,10 @@ datablock ParticleData(BlueSniperRifleFireEmitter_Particles)
 	lifetimeVarianceMS	= 0;
 	textureName			 = "~/data/particles/smoke_particle";
 	colors[0]	  = "1.0 1.0 1.0 1.0";
-	colors[1]	  = "0.0 0.0 1.0 1.0";
-	colors[2]	  = "0.0 0.0 1.0 0.0";
-	sizes[0]		= 1.0;
-	sizes[1]		= 1.0;
+	colors[1]	  = "1.0 0.0 0.0 1.0";
+	colors[2]	  = "1.0 0.0 0.0 0.0";
+	sizes[0]		= 0.5;
+	sizes[1]		= 0.25;
 	sizes[2]		= 0.0;
 	times[0]		= 0.0;
 	times[1]		= 0.5;
@@ -171,7 +171,7 @@ datablock ParticleData(BlueSniperRifleFireEmitter_Particles)
 
 };
 
-datablock ParticleEmitterData(BlueSniperRifleFireEmitter)
+datablock ParticleEmitterData(RedSniperRifleFireEmitter)
 {
 	ejectionPeriodMS = 10;
 	periodVarianceMS = 0;
@@ -185,13 +185,13 @@ datablock ParticleEmitterData(BlueSniperRifleFireEmitter)
 	overrideAdvances = false;
 	orientParticles  = false;
 	lifetimeMS		 = 0;
-	particles = "BlueSniperRifleFireEmitter_Particles";
+	particles = "RedSniperRifleFireEmitter_Particles";
 };
 
 //-----------------------------------------------------------------------------
 // near enemy explosion
 
-datablock ParticleData( BlueSniperNearEnemyExplosionDebrisSmokeParticle )
+datablock ParticleData( RedSniperNearEnemyExplosionDebrisSmokeParticle )
 {
 	dragCoeffiecient	  = 1.0;
 	gravityCoefficient	= 0.0;
@@ -207,8 +207,8 @@ datablock ParticleData( BlueSniperNearEnemyExplosionDebrisSmokeParticle )
 	//spinRandomMax = 60.0;
 
 	colors[0]	  = "1.0 0.0 1.0 0.25";
-	colors[1]	  = "0.0 0.0 1.0 0.25";
-	colors[2]	  = "0.0 1.0 1.0 0.25";
+	colors[1]	  = "1.0 0.0 0.0 0.25";
+	colors[2]	  = "1.0 1.0 0.0 0.25";
 	colors[3]	  = "0.0 5.0 0.0 0.0";
 	sizes[0]		= 1.0;
 	sizes[1]		= 1.0;
@@ -220,7 +220,7 @@ datablock ParticleData( BlueSniperNearEnemyExplosionDebrisSmokeParticle )
 	times[3]		= 1.0;
 };
 
-datablock ParticleEmitterData( BlueSniperNearEnemyExplosionDebrisSmokeEmitter )
+datablock ParticleEmitterData( RedSniperNearEnemyExplosionDebrisSmokeEmitter )
 {
 	ejectionPeriodMS = 10;
 	periodVarianceMS = 1;
@@ -231,13 +231,13 @@ datablock ParticleEmitterData( BlueSniperNearEnemyExplosionDebrisSmokeEmitter )
 	thetaMin			= 0.0;
 	thetaMax			= 0.0;
 
-	particles = "BlueSniperNearEnemyExplosionDebrisSmokeParticle";
+	particles = "RedSniperNearEnemyExplosionDebrisSmokeParticle";
 };
 
 
-datablock DebrisData( BlueSniperNearEnemyExplosionDebris )
+datablock DebrisData( RedSniperNearEnemyExplosionDebris )
 {
-	emitters[0] = BlueSniperNearEnemyExplosionDebrisSmokeEmitter;
+	emitters[0] = RedSniperNearEnemyExplosionDebrisSmokeEmitter;
 
 	explodeOnMaxBounce = true;
 
@@ -252,7 +252,7 @@ datablock DebrisData( BlueSniperNearEnemyExplosionDebris )
 	numBounces = 1;
 };
 
-datablock ParticleData(BlueSniperNearEnemyExplosionCloud)
+datablock ParticleData(RedSniperNearEnemyExplosionCloud)
 {
 	dragCoefficient		= 1;
 	gravityCoefficient	= -0.15; // rise slowly
@@ -264,10 +264,10 @@ datablock ParticleData(BlueSniperNearEnemyExplosionCloud)
 	spinRandomMax =  200.0;
 	textureName			 = "~/data/particles/particle1";
 	colors[0]	  = "1.00 1.00 1.00 0.8";
-	colors[1]	  = "0.00 0.00 1.00 0.4";
-	colors[2]	  = "0.00 0.00 1.00 0.0";
-	sizes[0]		= 3.0;
-	sizes[1]		= 1.5;
+	colors[1]	  = "1.00 0.00 0.00 0.4";
+	colors[2]	  = "1.00 0.00 0.00 0.0";
+	sizes[0]		= 5.0;
+	sizes[1]		= 2.0;
 	sizes[2]		= 0.5;
 	times[0]		= 0.0;
 	times[1]		= 0.2;
@@ -275,7 +275,7 @@ datablock ParticleData(BlueSniperNearEnemyExplosionCloud)
 
 };
 
-datablock ParticleEmitterData(BlueSniperNearEnemyExplosionCloudEmitter)
+datablock ParticleEmitterData(RedSniperNearEnemyExplosionCloudEmitter)
 {
 	ejectionPeriodMS = 4;
 	periodVarianceMS = 0;
@@ -289,24 +289,24 @@ datablock ParticleEmitterData(BlueSniperNearEnemyExplosionCloudEmitter)
 	overrideAdvances = false;
 	orientParticles  = false;
 	lifetimeMS		 = 100;
-	particles = "BlueSniperNearEnemyExplosionCloud";
+	particles = "RedSniperNearEnemyExplosionCloud";
 };
 
-datablock ExplosionData(BlueSniperNearEnemyExplosion)
+datablock ExplosionData(RedSniperNearEnemyExplosion)
 {
 	soundProfile	= SniperNearEnemyExplosionSound;
 
 	faceViewer	  = true;
 	explosionScale = "1.0 1.0 1.0";
-
-	debris = BlueSniperNearEnemyExplosionDebris;
+	
+	debris = RedSniperNearEnemyExplosionDebris;
 	debrisThetaMin = 0;
 	debrisThetaMax = 180;
 	debrisNum = 15;
 	debrisVelocity = 30.0;
 	debrisVelocityVariance = 0.0;
 
-	//emitter[0] = BlueSniperNearEnemyExplosionCloudEmitter;
+	//emitter[0] = RedSniperNearEnemyExplosionCloudEmitter;
 
 	shakeCamera = true;
 	camShakeFreq = "10.0 6.0 9.0";
@@ -318,7 +318,7 @@ datablock ExplosionData(BlueSniperNearEnemyExplosion)
 //-----------------------------------------------------------------------------
 // explosion
 
-datablock ParticleData(BlueSniperProjectileExplosion_Cloud)
+datablock ParticleData(RedSniperMissileExplosion_Cloud)
 {
 	dragCoeffiecient	  = 0.4;
 	gravityCoefficient	= 0;
@@ -346,7 +346,7 @@ datablock ParticleData(BlueSniperProjectileExplosion_Cloud)
 	allowLighting = true;
 };
 
-datablock ParticleEmitterData(BlueSniperProjectileExplosion_CloudEmitter)
+datablock ParticleEmitterData(RedSniperMissileExplosion_CloudEmitter)
 {
 	ejectionPeriodMS = 5;
 	periodVarianceMS = 0;
@@ -359,10 +359,10 @@ datablock ParticleEmitterData(BlueSniperProjectileExplosion_CloudEmitter)
 
 	lifetimeMS		 = 100;
 
-	particles = "BlueSniperProjectileExplosion_Cloud";
+	particles = "RedSniperMissileExplosion_Cloud";
 };
 
-datablock ParticleData(BlueSniperProjectileExplosion_Dust)
+datablock ParticleData(RedSniperMissileExplosion_Dust)
 {
 	dragCoefficient		= 1.0;
 	gravityCoefficient	= -0.01;
@@ -386,7 +386,7 @@ datablock ParticleData(BlueSniperProjectileExplosion_Dust)
 	allowLighting = true;
 };
 
-datablock ParticleEmitterData(BlueSniperProjectileExplosion_DustEmitter)
+datablock ParticleEmitterData(RedSniperMissileExplosion_DustEmitter)
 {
 	ejectionPeriodMS = 5;
 	periodVarianceMS = 0;
@@ -399,11 +399,11 @@ datablock ParticleEmitterData(BlueSniperProjectileExplosion_DustEmitter)
 	phiVariance		= 360;
 	overrideAdvances = false;
 	lifetimeMS		 = 250;
-	particles = "BlueSniperProjectileExplosion_Dust";
+	particles = "RedSniperMissileExplosion_Dust";
 };
 
 
-datablock ParticleData(BlueSniperProjectileExplosion_Smoke)
+datablock ParticleData(RedSniperMissileExplosion_Smoke)
 {
 	dragCoeffiecient	  = 0.4;
 	gravityCoefficient	= -0.5;	// rises slowly
@@ -431,7 +431,7 @@ datablock ParticleData(BlueSniperProjectileExplosion_Smoke)
 	allowLighting = true;
 };
 
-datablock ParticleEmitterData(BlueSniperProjectileExplosion_SmokeEmitter)
+datablock ParticleEmitterData(RedSniperMissileExplosion_SmokeEmitter)
 {
 	ejectionPeriodMS = 5;
 	periodVarianceMS = 0;
@@ -444,10 +444,10 @@ datablock ParticleEmitterData(BlueSniperProjectileExplosion_SmokeEmitter)
 
 	lifetimeMS		 = 250;
 
-	particles = "BlueSniperProjectileExplosion_Smoke";
+	particles = "RedSniperMissileExplosion_Smoke";
 };
 
-datablock ParticleData(BlueSniperProjectileExplosion_Sparks)
+datablock ParticleData(RedSniperMissileExplosion_Sparks)
 {
 	dragCoefficient		= 1;
 	gravityCoefficient	= 0.0;
@@ -468,7 +468,7 @@ datablock ParticleData(BlueSniperProjectileExplosion_Sparks)
 	allowLighting = false;
 };
 
-datablock ParticleEmitterData(BlueSniperProjectileExplosion_SparksEmitter)
+datablock ParticleEmitterData(RedSniperMissileExplosion_SparksEmitter)
 {
 	ejectionPeriodMS = 2;
 	periodVarianceMS = 0;
@@ -482,10 +482,10 @@ datablock ParticleEmitterData(BlueSniperProjectileExplosion_SparksEmitter)
 	overrideAdvances = false;
 	orientParticles  = true;
 	lifetimeMS		 = 100;
-	particles = "BlueSniperProjectileExplosion_Sparks";
+	particles = "RedSniperMissileExplosion_Sparks";
 };
 
-datablock DebrisData(BlueSniperProjectileExplosion_SmallDebris)
+datablock DebrisData(RedSniperMissileExplosion_SmallDebris)
 {
 	// shape...
 	shapeFile = "~/data/misc/debris1.white.dts";
@@ -508,7 +508,7 @@ datablock DebrisData(BlueSniperProjectileExplosion_SmallDebris)
 	lifetimeVariance = 1.0;
 };
 
-datablock MultiNodeLaserBeamData(BlueSniperProjectileExplosion_LargeDebris_LaserTrail)
+datablock MultiNodeLaserBeamData(RedSniperMissileExplosion_LargeDebris_LaserTrail)
 {
 	hasLine = true;
 	lineColor	= "1.00 1.00 1.00 0.5";
@@ -529,7 +529,7 @@ datablock MultiNodeLaserBeamData(BlueSniperProjectileExplosion_LargeDebris_Laser
 	fadeTime = 1000;
 };
 
-datablock ParticleData(BlueSniperProjectileExplosion_LargeDebris_Particles2)
+datablock ParticleData(RedSniperMissileExplosion_LargeDebris_Particles2)
 {
 	dragCoefficient		= 1;
 	gravityCoefficient	= 0.0;
@@ -553,7 +553,7 @@ datablock ParticleData(BlueSniperProjectileExplosion_LargeDebris_Particles2)
 	times[3]		= 1.0;
 };
 
-datablock ParticleEmitterData(BlueSniperProjectileExplosion_LargeDebris_Emitter2)
+datablock ParticleEmitterData(RedSniperMissileExplosion_LargeDebris_Emitter2)
 {
 	ejectionPeriodMS = 30;
 	periodVarianceMS = 0;
@@ -567,10 +567,10 @@ datablock ParticleEmitterData(BlueSniperProjectileExplosion_LargeDebris_Emitter2
 	overrideAdvances = false;
 	orientParticles  = false;
 	lifetimeMS		 = 0;
-	particles = "BlueSniperProjectileExplosion_LargeDebris_Particles2";
+	particles = "RedSniperMissileExplosion_LargeDebris_Particles2";
 };
 
-datablock ParticleData(BlueSniperProjectileExplosion_LargeDebris_Particles1)
+datablock ParticleData(RedSniperMissileExplosion_LargeDebris_Particles1)
 {
 	dragCoefficient		= 1;
 	gravityCoefficient	= 0.0;
@@ -594,7 +594,7 @@ datablock ParticleData(BlueSniperProjectileExplosion_LargeDebris_Particles1)
 	times[3]		= 1.0;
 };
 
-datablock ParticleEmitterData(BlueSniperProjectileExplosion_LargeDebris_Emitter1)
+datablock ParticleEmitterData(RedSniperMissileExplosion_LargeDebris_Emitter1)
 {
 	ejectionPeriodMS = 5;
 	periodVarianceMS = 0;
@@ -608,14 +608,14 @@ datablock ParticleEmitterData(BlueSniperProjectileExplosion_LargeDebris_Emitter1
 	overrideAdvances = false;
 	orientParticles  = false;
 	lifetimeMS		 = 0;
-	particles = "BlueSniperProjectileExplosion_LargeDebris_Particles1";
+	particles = "RedSniperMissileExplosion_LargeDebris_Particles1";
 };
 
-datablock ExplosionData(BlueSniperProjectileExplosion_LargeDebris_Explosion)
+datablock ExplosionData(RedSniperMissileExplosion_LargeDebris_Explosion)
 {
 	soundProfile	= SniperDebrisSound;
-
-	debris = BlueSniperProjectileExplosion_SmallDebris;
+	
+	debris = RedSniperMissileExplosion_SmallDebris;
 	debrisThetaMin = 0;
 	debrisThetaMax = 60;
 	debrisNum = 5;
@@ -623,16 +623,16 @@ datablock ExplosionData(BlueSniperProjectileExplosion_LargeDebris_Explosion)
 	debrisVelocityVariance = 10.0;
 };
 
-datablock DebrisData(BlueSniperProjectileExplosion_LargeDebris)
+datablock DebrisData(RedSniperMissileExplosion_LargeDebris)
 {
 	// shape...
 	shapeFile = "~/data/misc/debris2.white.dts";
 
-	explosion = BlueSniperProjectileExplosion_LargeDebris_Explosion;
+	explosion = RedSniperMissileExplosion_LargeDebris_Explosion;
 
-	//laserTrail = BlueSniperProjectileExplosion_LargeDebris_LaserTrail;
-	emitters[0] = BlueSniperProjectileExplosion_LargeDebris_Emitter2;
-	//emitters[1] = BlueSniperProjectileExplosion_LargeDebris_Emitter1;
+	//laserTrail = RedSniperMissileExplosion_LargeDebris_LaserTrail;
+	emitters[0] = RedSniperMissileExplosion_LargeDebris_Emitter2;
+	//emitters[1] = RedSniperMissileExplosion_LargeDebris_Emitter1;
 
 	// bounce...
 	numBounces = 0;
@@ -652,29 +652,29 @@ datablock DebrisData(BlueSniperProjectileExplosion_LargeDebris)
 	lifetimeVariance = 0.0;
 };
 
-datablock ExplosionData(BlueSniperProjectileExplosion)
+datablock ExplosionData(RedSniperMissileExplosion)
 {
 	soundProfile	= SniperExplosionSound;
 
 	faceViewer	  = true;
 	explosionScale = "0.8 0.8 0.8";
-
+	
 	lifetimeMS = 200;
 
-	debris = BlueSniperProjectileExplosion_LargeDebris;
+	debris = RedSniperMissileExplosion_LargeDebris;
 	debrisThetaMin = 0;
 	debrisThetaMax = 60;
 	debrisNum = 5;
 	debrisVelocity = 30.0;
 	debrisVelocityVariance = 10.0;
 
-	particleEmitter = BlueSniperProjectileExplosion_CloudEmitter;
+	particleEmitter = RedSniperMissileExplosion_CloudEmitter;
 	particleDensity = 100;
 	particleRadius = 4;
 
-	emitter[0] = BlueSniperProjectileExplosion_DustEmitter;
-	emitter[1] = BlueSniperProjectileExplosion_SmokeEmitter;
-	emitter[2] = BlueSniperProjectileExplosion_SparksEmitter;
+	emitter[0] = RedSniperMissileExplosion_DustEmitter;
+	emitter[1] = RedSniperMissileExplosion_SmokeEmitter;
+	emitter[2] = RedSniperMissileExplosion_SparksEmitter;
 
 	// Camera shake
 	shakeCamera = true;
@@ -682,11 +682,12 @@ datablock ExplosionData(BlueSniperProjectileExplosion)
 	camShakeAmp = "20.0 20.0 20.0";
 	camShakeDuration = 0.5;
 	camShakeRadius = 20.0;
-
+	
 	// Dynamic light
 	lightStartRadius = 3;
 	lightEndRadius = 20;
 	lightStartColor = "1.0 1.0 0.0";
 	lightEndColor = "0.0 0.0 0.0";
 };
+
 

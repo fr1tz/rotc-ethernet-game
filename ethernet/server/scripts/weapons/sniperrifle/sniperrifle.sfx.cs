@@ -50,6 +50,13 @@ datablock AudioProfile(SniperNearEnemyExplosionSound)
 	preload = true;
 };
 
+datablock AudioProfile(SniperPowerUpSound)
+{
+	filename = "~/data/weapons/sniperrifle/sound.target.wav";
+	description = AudioClose3D;
+	preload = true;
+};
+
 datablock AudioProfile(SniperPowerDownSound)
 {
 	filename = "~/data/weapons/sniperrifle/sound.noammo.wav";

@@ -430,26 +430,34 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 	}
 
 	//--------------------------------------------------------------------------
-	// march...
+	// body pose...
 	//--------------------------------------------------------------------------
-	if( %triggerNum == 4 )
+	if( %triggerNum == 4 || %triggerNum == 5 )
 	{
 		if(%val)
-			%obj.setBodyPose($PlayerBodyPose::Marching);
+        {
+            if(%triggerNum == 4)
+    			%obj.nonSnipingBodyPose = $PlayerBodyPose::Marching;
+            else if(%triggerNum == 5)
+    			%obj.nonSnipingBodyPose = $PlayerBodyPose::Sliding;
+        }
 		else
-			%obj.setBodyPose($PlayerBodyPose::Standard);
+			%obj.nonSnipingBodyPose = $PlayerBodyPose::Standard;
+ 
+        if(!%obj.isSniping)
+            %obj.setBodyPose(%obj.nonSnipingBodyPose);
 	}
-	  
-	//--------------------------------------------------------------------------
-	// slide...
-	//--------------------------------------------------------------------------
-	if( %triggerNum == 5 )
-	{
-		if(%val)
-			%obj.setBodyPose($PlayerBodyPose::Sliding);
-		else
-			%obj.setBodyPose($PlayerBodyPose::Standard);
-	}
+}
+
+//-----------------------------------------------------------------------------
+
+function Player::setSniping(%this, %sniping)
+{
+    %this.isSniping = %sniping;
+    if(%this.isSniping)
+        %this.setBodyPose($PlayerBodyPose::Marching);
+    else
+        %this.setBodyPose(%this.nonSnipingBodyPose);
 }
 
 //-----------------------------------------------------------------------------
