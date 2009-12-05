@@ -62,7 +62,7 @@ datablock EtherformData(RedEtherform)
 	emap = true;
  
 	cameraDefaultFov = 110.0;
-	cameraMinFov     = 30.0;
+	cameraMinFov     = 110.0;
 	cameraMaxFov     = 130.0;
 	cameraMinDist    = 2;
 	cameraMaxDist    = 3;
