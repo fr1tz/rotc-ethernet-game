@@ -6,7 +6,7 @@
 //-----------------------------------------------------------------------------
 // projectile particle emitter
 
-datablock ParticleData(RedDiscGrenade_ParticleEmitter_Particles)
+datablock ParticleData(BlueGrenade_ParticleEmitter_Particles)
 {
    dragCoefficient      = 1;
    gravityCoefficient   = 0.0;
@@ -16,9 +16,9 @@ datablock ParticleData(RedDiscGrenade_ParticleEmitter_Particles)
    lifetimeMS           = 500;
    lifetimeVarianceMS   = 0;
    textureName          = "~/data/particles/smoke_particle";
-   colors[0]     = "1.0 1.0 0.0 1.0";
-   colors[1]     = "1.0 0.0 0.0 1.0";
-   colors[2]     = "1.0 0.0 0.0 0.0";
+   colors[0]     = "0.0 1.0 1.0 1.0";
+   colors[1]     = "0.0 0.0 1.0 1.0";
+   colors[2]     = "0.0 0.0 1.0 0.0";
    sizes[0]      = 0.80;
    sizes[1]      = 0.80;
    sizes[2]      = 0.50;
@@ -28,7 +28,7 @@ datablock ParticleData(RedDiscGrenade_ParticleEmitter_Particles)
 
 };
 
-datablock ParticleEmitterData(RedDiscGrenade_ParticleEmitter)
+datablock ParticleEmitterData(BlueGrenade_ParticleEmitter)
 {
    ejectionPeriodMS = 5;
    periodVarianceMS = 0;
@@ -42,13 +42,13 @@ datablock ParticleEmitterData(RedDiscGrenade_ParticleEmitter)
    overrideAdvances = false;
    orientParticles  = false;
    lifetimeMS       = 0;
-   particles = "RedDiscGrenade_ParticleEmitter_Particles";
+   particles = "BlueGrenade_ParticleEmitter_Particles";
 };
 
 //-----------------------------------------------------------------------------
 // laser trail
 
-datablock MultiNodeLaserBeamData(RedDiscGrenade_Lasertrail)
+datablock MultiNodeLaserBeamData(BlueGrenade_Lasertrail)
 {
 	hasLine = false;
 	lineColor	= "1.00 1.00 1.00 0.02";
@@ -58,7 +58,7 @@ datablock MultiNodeLaserBeamData(RedDiscGrenade_Lasertrail)
 	innerWidth = "0.05";
 
 	hasOuter = true;
-	outerColor = "1.00 0.00 0.00 1.00";
+	outerColor = "0.00 0.00 1.00 1.00";
 	outerWidth = "0.20";
 
 //	bitmap = "~/data/weapons/assaultrifle/lasertrail";
@@ -87,15 +87,15 @@ datablock MultiNodeLaserBeamData(RedDiscGrenade_Lasertrail)
 //-----------------------------------------------------------------------------
 // bounce
 
-datablock ExplosionData(RedDiscGrenadeBounceEffect)
+datablock ExplosionData(BlueGrenadeBounceEffect)
 {
-    soundProfile   = DiscGrenadeBounceSound;
+    soundProfile   = GrenadeBounceSound;
 };
 
 //-----------------------------------------------------------------------------
 // explosion
 
-datablock ParticleData(RedDiscGrenadeExplosion_Cloud)
+datablock ParticleData(BlueGrenadeExplosion_Cloud)
 {
    dragCoeffiecient     = 0.4;
    gravityCoefficient   = 0;
@@ -110,9 +110,9 @@ datablock ParticleData(RedDiscGrenadeExplosion_Cloud)
 
    textureName = "~/data/particles/corona.png";
 
-   colors[0]     = "1.0 0.2 0.0 1.0";
-   colors[1]     = "1.0 0.2 0.0 0.0";
-   colors[2]     = "1.0 0.2 0.0 0.0";
+   colors[0]     = "0.0 0.2 1.0 1.0";
+   colors[1]     = "0.0 0.2 1.0 0.0";
+   colors[2]     = "0.0 0.2 1.0 0.0";
    sizes[0]      = 6.0;
    sizes[1]      = 6.0;
    sizes[2]      = 2.0;
@@ -123,7 +123,7 @@ datablock ParticleData(RedDiscGrenadeExplosion_Cloud)
    allowLighting = true;
 };
 
-datablock ParticleEmitterData(RedDiscGrenadeExplosion_CloudEmitter)
+datablock ParticleEmitterData(BlueGrenadeExplosion_CloudEmitter)
 {
    ejectionPeriodMS = 5;
    periodVarianceMS = 0;
@@ -136,10 +136,10 @@ datablock ParticleEmitterData(RedDiscGrenadeExplosion_CloudEmitter)
 
    lifetimeMS       = 100;
 
-   particles = "RedDiscGrenadeExplosion_Cloud";
+   particles = "BlueGrenadeExplosion_Cloud";
 };
 
-datablock ParticleData(RedDiscGrenadeExplosion_Dust)
+datablock ParticleData(BlueGrenadeExplosion_Dust)
 {
    dragCoefficient      = 1.0;
    gravityCoefficient   = -0.01;
@@ -163,7 +163,7 @@ datablock ParticleData(RedDiscGrenadeExplosion_Dust)
    allowLighting = true;
 };
 
-datablock ParticleEmitterData(RedDiscGrenadeExplosion_DustEmitter)
+datablock ParticleEmitterData(BlueGrenadeExplosion_DustEmitter)
 {
    ejectionPeriodMS = 5;
    periodVarianceMS = 0;
@@ -176,11 +176,11 @@ datablock ParticleEmitterData(RedDiscGrenadeExplosion_DustEmitter)
    phiVariance      = 360;
    overrideAdvances = false;
    lifetimeMS       = 250;
-   particles = "RedDiscGrenadeExplosion_Dust";
+   particles = "BlueGrenadeExplosion_Dust";
 };
 
 
-datablock ParticleData(RedDiscGrenadeExplosion_Smoke)
+datablock ParticleData(BlueGrenadeExplosion_Smoke)
 {
    dragCoeffiecient     = 0.4;
    gravityCoefficient   = -0.5;   // rises slowly
@@ -208,7 +208,7 @@ datablock ParticleData(RedDiscGrenadeExplosion_Smoke)
    allowLighting = true;
 };
 
-datablock ParticleEmitterData(RedDiscGrenadeExplosion_SmokeEmitter)
+datablock ParticleEmitterData(BlueGrenadeExplosion_SmokeEmitter)
 {
    ejectionPeriodMS = 5;
    periodVarianceMS = 0;
@@ -221,10 +221,10 @@ datablock ParticleEmitterData(RedDiscGrenadeExplosion_SmokeEmitter)
 
    lifetimeMS       = 250;
 
-   particles = "RedDiscGrenadeExplosion_Smoke";
+   particles = "BlueGrenadeExplosion_Smoke";
 };
 
-datablock ParticleData(RedDiscGrenadeExplosion_Shards)
+datablock ParticleData(BlueGrenadeExplosion_Shards)
 {
    dragCoefficient      = 1;
    gravityCoefficient   = 0.0;
@@ -232,7 +232,7 @@ datablock ParticleData(RedDiscGrenadeExplosion_Shards)
    constantAcceleration = 0.0;
    lifetimeMS           = 250;
    lifetimeVarianceMS   = 50;
-   textureName          = "~/data/weapons/disc/shard.red";
+   textureName          = "~/data/weapons/disc/shard.blue";
    colors[0]     = "1.0 1.0 1.0 1.0";
    colors[1]     = "1.0 1.0 1.0 1.0";
    colors[2]     = "1.0 1.0 1.0 0.0";
@@ -245,7 +245,7 @@ datablock ParticleData(RedDiscGrenadeExplosion_Shards)
    allowLighting = false;
 };
 
-datablock ParticleEmitterData(RedDiscGrenadeExplosion_ShardsEmitter)
+datablock ParticleEmitterData(BlueGrenadeExplosion_ShardsEmitter)
 {
    ejectionPeriodMS = 2;
    periodVarianceMS = 0;
@@ -259,20 +259,20 @@ datablock ParticleEmitterData(RedDiscGrenadeExplosion_ShardsEmitter)
    overrideAdvances = false;
    orientParticles  = true;
    lifetimeMS       = 100;
-   particles = "RedDiscGrenadeExplosion_Shards";
+   particles = "BlueGrenadeExplosion_Shards";
 };
 
-datablock MultiNodeLaserBeamData(RedDiscGrenadeExplosion_Debris_LaserTrail)
+datablock MultiNodeLaserBeamData(BlueGrenadeExplosion_Debris_LaserTrail)
 {
    hasLine = true;
-   lineColor   = "1.00 1.00 0.00 0.5";
+   lineColor   = "0.00 1.00 1.00 0.5";
 
    hasInner = false;
-   innerColor = "1.00 1.00 0.00 0.3";
+   innerColor = "0.00 1.00 1.00 0.3";
    innerWidth = "0.20";
 
    hasOuter = false;
-   outerColor = "1.00 1.00 0.00 0.3";
+   outerColor = "0.00 1.00 1.00 0.3";
    outerWidth = "0.40";
 
    //bitmap = "~/data/weapons/hegrenade/lasertrail";
@@ -283,12 +283,12 @@ datablock MultiNodeLaserBeamData(RedDiscGrenadeExplosion_Debris_LaserTrail)
    fadeTime = 1000;
 };
 
-datablock DebrisData(RedDiscGrenadeExplosion_Debris)
+datablock DebrisData(BlueGrenadeExplosion_Debris)
 {
 //   shapeFile = "~/data/weapons/hegrenade/grenade.dts";
 //   emitters[0] = GrenadeLauncherParticleEmitter;
 
-   laserTrail = RedDiscGrenadeExplosion_Debris_LaserTrail;
+   laserTrail = BlueGrenadeExplosion_Debris_LaserTrail;
 
    // bounce...
    numBounces = 3;
@@ -303,14 +303,14 @@ datablock DebrisData(RedDiscGrenadeExplosion_Debris)
    lifetimeVariance = 0.02;
 };
 
-datablock ExplosionData(RedDiscGrenadeExplosion)
+datablock ExplosionData(BlueGrenadeExplosion)
 {
-    soundProfile   = DiscGrenadeExplodeSound;
+    soundProfile   = GrenadeExplodeSound;
 
     lifetimeMS = 250;
     
 	// Shape
-	explosionShape = "~/data/weapons/disc/explosion.red.dts";
+	explosionShape = "~/data/weapons/disc/explosion.blue.dts";
 	faceViewer     = false;
 	playSpeed      = 4.0;
 	sizes[0]       = "0.1 0.1 0.1";
@@ -318,25 +318,25 @@ datablock ExplosionData(RedDiscGrenadeExplosion)
 	times[0]       = 0.0;
 	times[1]       = 1.0;
 
-    //debris = RedDiscGrenadeExplosion_Debris;
+    //debris = BlueGrenadeExplosion_Debris;
     //debrisThetaMin = 0;
     //debrisThetaMax = 180;
     //debrisNum = 5;
     //debrisVelocity = 50.0;
     //debrisVelocityVariance = 10.0;
    
-    particleEmitter = RedDiscGrenadeExplosion_CloudEmitter;
+    particleEmitter = BlueGrenadeExplosion_CloudEmitter;
     particleDensity = 100;
     particleRadius = 2.5;
 
-    //emitter[0] = RedDiscGrenadeExplosion_DustEmitter;
-    //emitter[1] = RedDiscGrenadeExplosion_SmokeEmitter;
-    emitter[2] = RedDiscGrenadeExplosion_ShardsEmitter;
+    //emitter[0] = BlueGrenadeExplosion_DustEmitter;
+    //emitter[1] = BlueGrenadeExplosion_SmokeEmitter;
+    emitter[2] = BlueGrenadeExplosion_ShardsEmitter;
    
 	// Dynamic light
 	lightStartRadius = 15;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.5 0.0";
+	lightStartColor = "0.0 0.5 1.0";
 	lightEndColor = "0.0 0.0 0.0";
 
     // Camera shake

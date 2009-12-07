@@ -89,7 +89,8 @@ function PlayerData::onAdd(%this,%obj)
 	//
 	// disc management...
 	//
-	%obj.setDiscs(2);				// players have two discs
+	%obj.setDiscs(2);            // players have two discs
+	%obj.setGrenades(1);         // players have one grenade
 	%obj.attackedByDisc = false; // player being attacked by disc?
 
 	// Vehicle timeout
@@ -101,13 +102,13 @@ function PlayerData::onAdd(%this,%obj)
 	%obj.mainWeapon = %obj.client ? %obj.client.mainWeapon : 0;
 	if(%obj.getTeamId() == 1)
     {
-		%obj.mountImage(RedOffensiveDiscImage, 1, -1, %obj.hasDisc());
-		%obj.mountImage(RedDefensiveDiscImage, 2, -1, %obj.hasDisc());
+		%obj.mountImage(RedGrenadeImage, 1, -1, %obj.hasGrenade());
+		%obj.mountImage(RedDiscImage, 2, -1, %obj.hasDisc());
     }
 	else
     {
-		%obj.mountImage(BlueOffensiveDiscImage, 1, -1, %obj.hasDisc());
-        %obj.mountImage(BlueDefensiveDiscImage, 2, -1, %obj.hasDisc());
+		%obj.mountImage(BlueGrenadeImage, 1, -1, %obj.hasGrenade());
+		%obj.mountImage(BlueDiscImage, 2, -1, %obj.hasDisc());
     }
     
     if(isObject(%obj.client) && %obj.client.lastCATWeapon)
@@ -564,8 +565,6 @@ function Player::setDiscs(%this, %numDiscs)
 		messageClient(%this.client, 'MsgNumDiscs', "", %this.numDiscs);
 
 	%hasDisc = %this.hasDisc();
-	%this.setImageLoaded(1, %hasDisc);
-	%this.setImageAmmo(1, %hasDisc);
 	%this.setImageLoaded(2, %hasDisc);
 	%this.setImageAmmo(2, %hasDisc);
 }
@@ -580,6 +579,35 @@ function Player::decDiscs(%this)
 {
 	%this.numDiscs--;
 	%this.setDiscs(%this.numDiscs);
+}
+
+function Player::hasGrenade(%this)
+{
+	return %this.numGrenades > 0;
+}
+
+function Player::setGrenades(%this, %numGrenades)
+{
+	%this.numGrenades = %numGrenades;
+
+	if(isObject(%this.client))
+		messageClient(%this.client, 'MsgNumGrenadees', "", %this.numGrenades);
+
+	%hasGrenade = %this.hasGrenade();
+	%this.setImageLoaded(1, %hasGrenade);
+	%this.setImageAmmo(1, %hasGrenade);
+}
+
+function Player::incGrenades(%this)
+{
+	%this.numGrenades++;
+	%this.setGrenades(%this.numGrenades);
+}
+
+function Player::decGrenades(%this)
+{
+	%this.numGrenades--;
+	%this.setGrenades(%this.numGrenades);
 }
 
 function Player::mountVehicle(%this, %vehicle)

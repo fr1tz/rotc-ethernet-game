@@ -23,6 +23,7 @@ function executeWeaponScripts()
 	exec("./weapons.gfx.cs");
 
 	exec("./weapons/disc/disc.cs");
+	exec("./weapons/grenade/grenade.cs");
 	exec("./weapons/blaster/blaster.cs");
 	exec("./weapons/assaultrifle/assaultrifle.cs");
 	exec("./weapons/sniperrifle/sniperrifle.cs");
