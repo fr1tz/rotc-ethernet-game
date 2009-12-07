@@ -102,13 +102,13 @@ function PlayerData::onAdd(%this,%obj)
 	%obj.mainWeapon = %obj.client ? %obj.client.mainWeapon : 0;
 	if(%obj.getTeamId() == 1)
     {
-		%obj.mountImage(RedGrenadeImage, 1, -1, %obj.hasGrenade());
-		%obj.mountImage(RedDiscImage, 2, -1, %obj.hasDisc());
+		%obj.mountImage(RedDiscImage, 1, -1, %obj.hasDisc());
+		%obj.mountImage(RedGrenadeImage, 2, -1, %obj.hasGrenade());
     }
 	else
     {
-		%obj.mountImage(BlueGrenadeImage, 1, -1, %obj.hasGrenade());
-		%obj.mountImage(BlueDiscImage, 2, -1, %obj.hasDisc());
+		%obj.mountImage(BlueDiscImage, 1, -1, %obj.hasDisc());
+		%obj.mountImage(BlueGrenadeImage, 2, -1, %obj.hasGrenade());
     }
     
     if(isObject(%obj.client) && %obj.client.lastCATWeapon)
@@ -565,8 +565,8 @@ function Player::setDiscs(%this, %numDiscs)
 		messageClient(%this.client, 'MsgNumDiscs', "", %this.numDiscs);
 
 	%hasDisc = %this.hasDisc();
-	%this.setImageLoaded(2, %hasDisc);
-	%this.setImageAmmo(2, %hasDisc);
+	%this.setImageLoaded(1, %hasDisc);
+	%this.setImageAmmo(1, %hasDisc);
 }
 
 function Player::incDiscs(%this)
@@ -594,8 +594,8 @@ function Player::setGrenades(%this, %numGrenades)
 		messageClient(%this.client, 'MsgNumGrenadees', "", %this.numGrenades);
 
 	%hasGrenade = %this.hasGrenade();
-	%this.setImageLoaded(1, %hasGrenade);
-	%this.setImageAmmo(1, %hasGrenade);
+	%this.setImageLoaded(2, %hasGrenade);
+	%this.setImageAmmo(2, %hasGrenade);
 }
 
 function Player::incGrenades(%this)
