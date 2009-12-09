@@ -64,4 +64,11 @@ datablock AudioProfile(SniperPowerDownSound)
 	preload = true;
 };
 
+datablock AudioProfile(SniperProjectileMissedEnemySound)
+{
+	filename = "~/data/weapons/blaster/sound_flyby.wav";
+	description = AudioClose3D;
+	preload = true;
+};
+
 

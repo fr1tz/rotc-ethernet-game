@@ -108,7 +108,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 		stateName[4]                     = "Charged";
 		stateTransitionOnTriggerUp[4]    = "Fire";
 		stateTransitionOnNoAmmo[4]       = "NoAmmo";
-		stateSound[4]                    = SniperRifleTargetAquiredSound;
+		//stateSound[4]                    = SniperRifleTargetAquiredSound;
 
 		// fire!...
 		stateName[5]                     = "Fire";
