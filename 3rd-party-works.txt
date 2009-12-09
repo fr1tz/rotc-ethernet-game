@@ -211,3 +211,9 @@ Used for ethernet\data\weapons\sniperrifle\sound_fire.wav:
 
 ----------------------------------------------------------------------------------
 
+Used for ethernet\data\weapons\sniperrifle\sound.charge.wav:
+
+        By emmanuel (http://www.freesound.org/usersViewSingle.php?id=53045)
+            one use camera flash load.wav (http://www.freesound.org/samplesViewSingle.php?id=16462)
+
+----------------------------------------------------------------------------------

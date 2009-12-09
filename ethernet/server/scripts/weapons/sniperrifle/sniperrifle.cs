@@ -56,7 +56,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 	minEnergy = 45;
 	
     // charging...
-    minCharge = 0.3;
+    minCharge = 0.75;
     
 	projectile = RedSniperProjectile;
     missile = RedSniperMissile;
@@ -101,7 +101,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 		stateCharge[3]                   = true;
 		stateAllowImageChange[3]         = false;
 		stateArmThread[3]                = "aimrifle";
-		stateSound[3]                    = SniperRifleTargetSound;
+		stateSound[3]                    = SniperPowerUpSound;
 		stateScript[3]                   = "onCharge";
   
 		// charged...

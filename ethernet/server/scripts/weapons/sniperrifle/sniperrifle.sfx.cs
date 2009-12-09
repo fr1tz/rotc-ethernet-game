@@ -52,7 +52,7 @@ datablock AudioProfile(SniperNearEnemyExplosionSound)
 
 datablock AudioProfile(SniperPowerUpSound)
 {
-	filename = "~/data/weapons/sniperrifle/sound.target.wav";
+	filename = "~/data/weapons/sniperrifle/sound.charge.wav";
 	description = AudioClose3D;
 	preload = true;
 };
