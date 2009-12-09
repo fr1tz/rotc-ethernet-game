@@ -53,16 +53,16 @@ datablock MultiNodeLaserBeamData(RedSniperProjectileLaserTrail)
 	lineColor = "1.00 0.00 0.00 1.0";
     lineWidth = 2.0;
 
-	hasInner = false;
-	innerColor = "1.00 0.00 1.00 0.3";
-	innerWidth = "0.05";
+	hasInner = true;
+	innerColor = "1.00 0.00 0.00 1.0";
+	innerWidth = "0.15";
 
 	hasOuter = false;
 	outerColor = "1.00 0.00 0.00 0.75";
 	outerWidth = "0.20";
 
-	bitmap = "~/data/weapons/blaster/lasertrail.red";
-	bitmapWidth = 0.50;
+	bitmap = "~/data/weapons/sniperrifle/lasertrail.red";
+	bitmapWidth = 0.25;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::Horizontal;
@@ -71,19 +71,19 @@ datablock MultiNodeLaserBeamData(RedSniperProjectileLaserTrail)
     windCoefficient = 0.0;
     
     // node x movement...
-    nodeMoveMode[0]     = $NodeMoveMode::None;
-    nodeMoveSpeed[0]    = -0.002;
-    nodeMoveSpeedAdd[0] =  0.004;
+    nodeMoveMode[0]     = $NodeMoveMode::DynamicSpeed;
+    nodeMoveSpeed[0]    = -5;
+    nodeMoveSpeedAdd[0] =  10;
     // node y movement...
-    nodeMoveMode[1]     = $NodeMoveMode::None;
-    nodeMoveSpeed[1]    = -0.002;
-    nodeMoveSpeedAdd[1] =  0.004;
+    nodeMoveMode[1]     = $NodeMoveMode::DynamicSpeed;
+    nodeMoveSpeed[1]    = -5;
+    nodeMoveSpeedAdd[1] =  10;
     // node z movement...
     nodeMoveMode[2]     = $NodeMoveMode::None;
     nodeMoveSpeed[2]    = 3.0;
     nodeMoveSpeedAdd[2] = -6.0;
     
-    //nodeDistance = 5;
+    nodeDistance = 1;
 };
 
 //-----------------------------------------------------------------------------
