@@ -3,6 +3,57 @@
 // Copyright (C) 2009, mEthLab Interactive
 //------------------------------------------------------------------------------
 
+function aiAdd(%teamid, %weaponNum)
+{
+	if( !isObject($aiPlayers) )
+	{
+		$aiPlayers = new Array();
+		MissionCleanup.add($aiPlayers);
+	}
+
+	%nameadd = "_" @ $aiPlayers.count();
+	if(isObject($aiPlayers)) {
+		%nameadd = "_" @ $aiPlayers.count();
+	}
+
+	%spawnSphere = pickSpawnSphere(%teamid);
+
+	if(%spawnSphere.spawnLight)
+	{
+		if(%teamid == 1)
+			%playerData = RedLightCat;
+		else
+			%playerData = BlueLightCat;
+	}
+	else
+	{
+		if(%teamid == 1)
+			%playerData = RedStandardCat;
+		else
+			%playerData = BlueStandardCat;
+	}
+
+	%player = new AiPlayer() {
+		dataBlock = %playerData;
+		path = "";
+		teamId = 0;
+	};
+    %player.setTeamId(%player);
+	MissionCleanup.add(%player);
+
+	%pos = getRandomHorizontalPos(%spawnSphere.position,%spawnSphere.radius);
+	%player.setShapeName("wayne" @ %nameadd);
+	%player.setTransform(%pos);
+
+	%player.weapon = %weaponNum;
+	%player.charge = 100;
+
+	$aiPlayers.push_back("",%player);
+
+	return %player;
+}
+
+
 //------------------------------------------------------------------------------
 // GameConnection
 
@@ -149,10 +200,8 @@ function EtherformData::onAdd(%this, %obj)
 {
 	Parent::onAdd(%this, %obj);
 
-	// start singing your swan song...
+	// start singing...
 	%obj.playAudio(1, EtherformSingSound);
-    %obj.reset();
-    %obj.fade();
 }
 
 function EtherformData::onDamage(%this, %obj, %delta)
@@ -160,7 +209,7 @@ function EtherformData::onDamage(%this, %obj, %delta)
 	%totalDamage = %obj.getDamageLevel();
 	if(%totalDamage >= %this.maxDamage)
 	{
-        %obj.reset();
+        %obj.setRepairRate(0.5);
     }
 }
 
