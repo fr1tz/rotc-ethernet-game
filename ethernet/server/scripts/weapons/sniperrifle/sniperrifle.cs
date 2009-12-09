@@ -185,6 +185,7 @@ function RedSniperRifleImage::onMount(%this, %obj, %slot)
 function RedSniperRifleImage::onUnmount(%this, %obj, %slot)
 {
     Parent::onUnmount(%this, %obj, %slot);
+    %obj.setSniping(false);
 }
 
 function RedSniperRifleImage::onReady(%this, %obj, %slot)
