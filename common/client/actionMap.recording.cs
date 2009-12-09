@@ -19,9 +19,14 @@ function recordingToggleFreelook(%val)
         Canvas.setContent(RecordingFreelookGui);
         
         if(RecordingFreelookGui.getCameraMode() == 0)
-             ServerConnection.setFirstPerson(true);
+        {
+            RecordingFreelookGui.camZoomToPlayer();
+            ServerConnection.setFirstPerson(true);
+        }
         else
+        {
             ServerConnection.setFirstPerson(false);
+        }
     }
     else
     {
@@ -38,6 +43,8 @@ function recordingTogglePerspective(%val)
     
     if(Canvas.getContent() == RecordingFreelookGui.getId())
     {
+        RecordingFreelookGui.camZoomToPlayer();
+    
         if(RecordingFreelookGui.getCameraMode() == 0)
         {
             RecordingFreelookGui.setCameraFlyMode();
