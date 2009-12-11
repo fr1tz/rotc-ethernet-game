@@ -64,6 +64,13 @@ datablock AudioProfile(SniperPowerDownSound)
 	preload = true;
 };
 
+datablock AudioProfile(SniperProjectileImpactSound)
+{
+	filename = "~/data/weapons/blaster/sound_impact.wav";
+	description = AudioDefault3D;
+	preload = true;
+};
+
 datablock AudioProfile(SniperProjectileMissedEnemySound)
 {
 	filename = "~/data/weapons/blaster/sound_flyby.wav";
