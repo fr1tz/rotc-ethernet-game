@@ -65,7 +65,7 @@ function Hud::matchControlObject(%this, %obj)
 	Scanlines.setVisible(false);
 	DiscIcon1.setVisible(false);
 	DiscIcon2.setVisible(false);
-	DiscIcon3.setVisible(false);
+	GrenadeIcon1.setVisible(false);
 	
 	if(%obj.getType() & $TypeMasks::CameraObjectType)
 	{
@@ -76,6 +76,7 @@ function Hud::matchControlObject(%this, %obj)
 		EnergyMeter.setVisible(false);
 		
 		%this.showDiscIcons = false;
+		%this.showGrenadeIcons = false;
 	}
 	else
 	{
@@ -88,7 +89,9 @@ function Hud::matchControlObject(%this, %obj)
 		if(%obj.getType() & $TypeMasks::PlayerObjectType)
 		{
 			%this.showDiscIcons = true;
+			%this.showGrenadeIcons = true;
 			%this.updateDiscIcons();
+			%this.updateGrenadeIcons();
 		}
 	}
 	
@@ -102,7 +105,6 @@ function Hud::updateDiscIcons(%this)
 	{
 		DiscIcon1.setVisible(false);
 		DiscIcon2.setVisible(false);
-		DiscIcon3.setVisible(false);
 		return;
 	}
 
@@ -114,25 +116,43 @@ function Hud::updateDiscIcons(%this)
 		case 1:
 			DiscIcon1.setVisible(true);
 			DiscIcon2.setVisible(false);
-			DiscIcon3.setVisible(false);
 			break;
 
 		case 2:
 			DiscIcon1.setVisible(true);
 			DiscIcon2.setVisible(true);
-			DiscIcon3.setVisible(false);
 			break;
 
 		case 3:
 			DiscIcon1.setVisible(true);
 			DiscIcon2.setVisible(true);
-			DiscIcon3.setVisible(true);
 			break;
 
 		default:
 			DiscIcon1.setVisible(false);
 			DiscIcon2.setVisible(false);
-			DiscIcon3.setVisible(false);
+	}
+}
+
+function Hud::updateGrenadeIcons(%this)
+{
+	if(!%this.showGrenadeIcons)
+	{
+		GrenadeIcon1.setVisible(false);
+		return;
+	}
+
+	if(%this.numGrenades $= "")
+		%this.numGrenades = 1;
+
+	switch(%this.numGrenades)
+	{
+		case 1:
+			GrenadeIcon1.setVisible(true);
+			break;
+
+		default:
+			GrenadeIcon1.setVisible(false);
 	}
 }
 

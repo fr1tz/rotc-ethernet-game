@@ -591,7 +591,7 @@ function Player::setGrenades(%this, %numGrenades)
 	%this.numGrenades = %numGrenades;
 
 	if(isObject(%this.client))
-		messageClient(%this.client, 'MsgNumGrenadees', "", %this.numGrenades);
+		messageClient(%this.client, 'MsgNumGrenades', "", %this.numGrenades);
 
 	%hasGrenade = %this.hasGrenade();
 	%this.setImageLoaded(2, %hasGrenade);

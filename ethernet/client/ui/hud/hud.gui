@@ -331,7 +331,7 @@ new GameTSCtrl(HUD) {
 		bitmap = "./pixmaps/icon.disc.png";
 		wrap = "0";
 	};
-	new GuiAdditiveBitmapCtrl(DiscIcon3) {
+	new GuiAdditiveBitmapCtrl(GrenadeIcon1) {
 		canSaveDynamicFields = "0";
 		Profile = "HudDefaultProfile";
 		HorizSizing = "right";
@@ -342,7 +342,7 @@ new GameTSCtrl(HUD) {
 		canSave = "1";
 		Visible = "1";
 		hovertime = "1000";
-		bitmap = "./pixmaps/icon.disc.png";
+		bitmap = "./pixmaps/icon.grenade.png";
 		wrap = "0";
 	};
 	new GuiAdditiveBitmapCtrl(PrimaryWeaponIcon) {

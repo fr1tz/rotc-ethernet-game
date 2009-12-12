@@ -11,6 +11,8 @@
 $WeaponIcons[0] = "icon.assaultrifle.png";
 $WeaponIcons[1] = "icon.sniperrifle.png";
 
+//------------------------------------------------------------------------------
+
 function NumDiscsMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
 {
 	Hud.numDiscs = %a1;
@@ -18,6 +20,18 @@ function NumDiscsMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, 
 }
 
 addMessageCallback('MsgNumDiscs', NumDiscsMessageCallback);
+
+//------------------------------------------------------------------------------
+
+function NumGrenadesMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
+{
+	Hud.numGrenades = %a1;
+	Hud.updateGrenadeIcons();
+}
+
+addMessageCallback('MsgNumGrenades', NumGrenadesMessageCallback);
+
+//------------------------------------------------------------------------------
 
 function WeaponSelectedMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
 {
@@ -27,5 +41,7 @@ function WeaponSelectedMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4,
 }
 
 addMessageCallback('MsgWeaponUsed', WeaponSelectedMessageCallback);
+
+//------------------------------------------------------------------------------
 
 
