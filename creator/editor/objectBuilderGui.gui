@@ -587,8 +587,8 @@ function ObjectBuilderGui::buildAmbientAudioEmitter(%this)
 	%this.addField("description", "TypeDataBlock", "Sound Description", "AudioDescription");
 	%this.addField("fileName", "TypeFile", "Audio file", "");
 	%this.addField("useProfileDescription", "TypeBool", "Use profile's desc?", "false");
-	%this.addField("outsideAmbient", "TypeBool", "Does not play inside of interiors.", "true")
-	%this.addField("areaAmbient", "TypeBool", "Plays only in a certain area.", "false"); ;
+	%this.addField("outsideAmbient", "TypeBool", "Outside ambient", "true");
+	%this.addField("areaAmbient", "TypeBool", "Area ambient", "false");
 	%this.addFIeld("volume", "TypeFloat", "Volume", "1.0");
 	%this.addField("isLooping", "TypeBool", "Looping?", "true");
 	%this.addField("ReferenceDistance", "TypeFloat", "Reference distance", "5.0"); //EFM
