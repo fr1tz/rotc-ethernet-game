@@ -69,7 +69,7 @@ datablock ShapeBaseImageData(RedGrenadeImage)
    		stateTimeoutValue[7]            = 0.10;
    		stateAllowImageChange[7]        = false;
    		stateSequence[7]                = "AllVisible";
-        stateSound[7]                   = GrenadeGrenadeThrowSound;
+        stateSound[7]                   = GrenadeThrowSound;
         stateScript[7]                  = "grenadeAttackStart";
         stateFire[7]                    = true;
 
