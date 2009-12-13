@@ -166,9 +166,10 @@ function serverCmdInstantGrenadeThrow(%client)
     %player = %client.player;
 	if(!isObject(%player))
         return;
-        
+
     %player.doInstantGrenadeThrow = true;
-    %player.setImageTrigger(1, true);
+    %player.setImageTrigger(2, true);
+    %player.setImageTrigger(2, false);
 }
 
 

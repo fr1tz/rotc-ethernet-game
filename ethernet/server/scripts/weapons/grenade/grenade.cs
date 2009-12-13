@@ -117,7 +117,7 @@ function RedGrenadeImage::onUnmount(%this, %obj, %slot)
 
 function RedGrenadeImage::onReady(%this, %obj, %slot)
 {
-
+    %obj.doInstantGrenadeThrow = false;
 }
 
 function RedGrenadeImage::grenadeAttackStart(%this, %obj, %slot)
@@ -139,11 +139,17 @@ function RedGrenadeImage::grenadeAttackFire(%this, %obj, %slot)
 	%obj.setEnergyLevel( %obj.getEnergyLevel() - %projectile.energyDrain );
 
     // %throwForce is based on how long the trigger has been hold down...
-    %throwCoefficient = %obj.getImageCharge(%slot);
-    if( %throwCoefficient < 0.2 )
+    %throwCoefficient = 0;
+    if(%obj.doInstantGrenadeThrow)
+    {
         %throwCoefficient = 1;
-    else if( %throwCoefficient > 1 )
-        %throwCoefficient = 1;
+    }
+    else
+    {
+        %throwCoefficient = %obj.getImageCharge(%slot);
+        if( %throwCoefficient > 1 )
+            %throwCoefficient = 1;
+    }
     //%throwCoefficient = %throwCoefficient/2;
     %throwForce = %projectile.muzzleVelocity * %throwCoefficient;
 
