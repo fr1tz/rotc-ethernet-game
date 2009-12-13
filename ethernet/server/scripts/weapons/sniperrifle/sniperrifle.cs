@@ -179,7 +179,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 
 function RedSniperRifleImage::onMount(%this, %obj, %slot)
 {
-    Parent::onUnmount(%this, %obj, %slot);
+    Parent::onMount(%this, %obj, %slot);
 }
 
 function RedSniperRifleImage::onUnmount(%this, %obj, %slot)
