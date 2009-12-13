@@ -17,7 +17,7 @@ exec("./sniperrifle.projectile.gfx.blue.cs");
 datablock ShotgunProjectileData(RedSniperProjectile)
 {
 	// script damage properties...
-	impactDamage       = 50;
+	impactDamage       = 150;
 	impactImpulse      = 1000;
 	splashDamage       = 0;
 	splashDamageRadius = 0;
