@@ -8,12 +8,13 @@
 // code for all weapons
 //------------------------------------------------------------------------------
 
-$MainWeapon::AssaultRifle = 0;
-$MainWeapon::SniperRifle  = 1;
+$MainWeapon::AssaultRifle    = 0;
+$MainWeapon::SniperRifle     = 1;
+$MainWeapon::MissileLauncher = 2;
 
-$DamageType::Impact		  = 0;
-$DamageType::Splash		  = 1;
-$DamageType::Force			= 2;
+$DamageType::Impact = 0;
+$DamageType::Splash	= 1;
+$DamageType::Force  = 2;
 
 function executeWeaponScripts()
 {
@@ -27,6 +28,7 @@ function executeWeaponScripts()
 	exec("./weapons/blaster/blaster.cs");
 	exec("./weapons/assaultrifle/assaultrifle.cs");
 	exec("./weapons/sniperrifle/sniperrifle.cs");
+	exec("./weapons/missilelauncher/missilelauncher.cs");
 }
 
 executeWeaponScripts();

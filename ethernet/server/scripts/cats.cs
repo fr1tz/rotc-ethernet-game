@@ -57,12 +57,19 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 			else
 				%obj.mountImage(BlueAssaultRifleImage, 0, -1, true);
 		}
-		else
+		else if(%obj.mainWeapon == $MainWeapon::SniperRifle)
 		{
 			if(%obj.getTeamId() == 1)
 				%obj.mountImage(RedSniperRifleImage, 0, -1, true);
 			else
 				%obj.mountImage(BlueSniperRifleImage, 0, -1, true);
+		}
+		else if(%obj.mainWeapon == $MainWeapon::MissileLauncher)
+		{
+			if(%obj.getTeamId() == 1)
+				%obj.mountImage(RedMissileLauncherImage, 0, -1, true);
+			else
+				%obj.mountImage(BlueMissileLauncherImage, 0, -1, true);
 		}
 	}
 	else if(%nr == 4)

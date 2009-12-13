@@ -217,3 +217,35 @@ Used for ethernet\data\weapons\sniperrifle\sound.charge.wav:
             one use camera flash load.wav (http://www.freesound.org/samplesViewSingle.php?id=16462)
 
 ----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\missilelauncher\sound.debris.wav:
+
+	http://www.soundsnap.com/node/111746
+        Pint glass breaking debris hard
+	User: Airborne Sound (http://www.soundsnap.com/user/5118)
+
+Used for ethernet\data\weapons\missilelauncher\sound.explosion.wav:
+
+        By ljudman (http://www.freesound.org/usersViewSingle.php?id=65091)
+            grenade.wav (http://www.freesound.org/samplesViewSingle.php?id=33245)
+
+Used for ethernet\data\weapons\missilelauncher\sound.fire.wav:
+
+        By man (http://www.freesound.org/usersViewSingle.php?id=14447)
+            canon.aif (http://www.freesound.org/samplesViewSingle.php?id=14615)
+
+----------------------------------------------------------------------------------
+
+Used for share/sounds/eth1/ambient1.ogg:
+
+        By daveincamas (http://www.freesound.org/usersViewSingle.php?id=111413)
+            StormInOregonRainforest-Wind.wav (http://www.freesound.org/samplesViewSingle.php?id=45480)
+
+----------------------------------------------------------------------------------
+
+Used for share/sounds/eth1/ambient2.ogg:
+
+        By sagetyrtle (http://www.freesound.org/usersViewSingle.php?id=43834)
+            lakeontariofree.wav (http://www.freesound.org/samplesViewSingle.php?id=20694)
+
+----------------------------------------------------------------------------------
