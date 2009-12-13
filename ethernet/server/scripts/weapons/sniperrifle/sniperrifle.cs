@@ -10,7 +10,6 @@
 
 exec("./sniperrifle.sfx.cs");
 exec("./sniperrifle.projectile.cs");
-exec("./sniperrifle.missile.cs");
 
 //------------------------------------------------------------------------------
 
@@ -201,7 +200,6 @@ function RedSniperRifleImage::onCharge(%this, %obj, %slot)
 
 function RedSniperRifleImage::onFire(%this, %obj, %slot)
 {
-    %this.schedule(0, "fireMissile", %obj, %slot);
     %obj.schedule(250, "setSniping", false);
 }
 
@@ -209,41 +207,6 @@ function RedSniperRifleImage::onNoAmmo(%this, %obj, %slot)
 {
     %obj.setSniping(false);
 }
-
-function RedSniperRifleImage::fireMissile(%this, %obj, %slot)
-{
-    if(%obj.sniperTarget $= "")
-        return;
-
-	%projectile = %this.missile;
-
-	// determine initial projectile velocity based on the
-	// gun's muzzle point and the object's current velocity...
-	%muzzleVector = %obj.getMuzzleVector(%slot);
-	%objectVelocity = %obj.getVelocity();
-	%muzzleVelocity = VectorAdd(
-		VectorScale(%muzzleVector, %projectile.muzzleVelocity),
-		VectorScale(%objectVelocity, %projectile.velInheritFactor));
-
-	// determine muzzle-point...
-	%muzzlePoint = %obj.getMuzzlePoint(%slot);
-
-	// create the projectile object...
-	%p = new Projectile() {
-		dataBlock       = %projectile;
-        teamId          = %obj.teamId;
-		initialVelocity = %muzzleVelocity;
-		initialPosition = %muzzlePoint;
-		sourceObject    = %obj;
-		sourceSlot      = %slot;
-		client			= %obj.client;
-	};
-	MissionCleanup.add(%p);
-
-	// set projectile target...
-	%p.setTarget(%obj.sniperTarget);
-}
-
 
 //------------------------------------------------------------------------------
 
@@ -287,10 +250,5 @@ function BlueSniperRifleImage::onFire(%this, %obj, %slot)
 function BlueSniperRifleImage::onNoAmmo(%this, %obj, %slot)
 {
     RedSniperRifleImage::onNoAmmo(%this, %obj, %slot);
-}
-
-function BlueSniperRifleImage::fireMissile(%this, %obj, %slot)
-{
-   RedSniperRifleImage::fireMissile(%this, %obj, %slot);
 }
 
