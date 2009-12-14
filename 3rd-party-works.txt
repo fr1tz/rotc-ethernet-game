@@ -242,6 +242,11 @@ Used for ethernet\data\weapons\missilelauncher\sound.fire.wav:
         By man (http://www.freesound.org/usersViewSingle.php?id=14447)
             canon.aif (http://www.freesound.org/samplesViewSingle.php?id=14615)
             
+Used for ethernet\data\weapons\missilelauncher\sound.missile.wav:
+
+        By qubodup (http://www.freesound.org/usersViewSingle.php?id=71257)
+            bgm-71_tow_missile_launch_1_less_echo.flac (http://www.freesound.org/samplesViewSingle.php?id=67542)
+            
 Used for ethernet\data\weapons\missilelauncher\sound.noammo.wav:
 
         By Dynamicell (http://www.freesound.org/usersViewSingle.php?id=47052)

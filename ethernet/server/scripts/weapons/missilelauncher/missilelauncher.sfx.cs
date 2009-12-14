@@ -64,4 +64,12 @@ datablock AudioProfile(MissileLauncherProjectileMissedEnemySound)
 	preload = true;
 };
 
+datablock AudioProfile(MissileLauncherMissileSound)
+{
+	filename = "~/data/weapons/missilelauncher/sound.missile.wav";
+	description = AudioDefaultLooping3d;
+	preload = true;
+};
+
+
 

@@ -28,7 +28,7 @@ datablock ProjectileData(RedMissileLauncherMissile)
 	
 	energyDrain = 0; // how much energy does firing this projectile drain?
 
-	//sound = MissileLauncherFlyBySound;
+	sound = MissileLauncherMissileSound;
 	
 	// target-tracking properties...
 	maxTrackingAbility = 200;
