@@ -27,23 +27,23 @@ datablock MultiNodeLaserBeamData(RedMissileLauncherMissileTrail)
 datablock LaserBeamData(RedMissileLauncherMissileTail)
 {
 	hasLine = true;
-	lineStartColor	= "1.00 0.00 0.00 0.0";
-	lineBetweenColor = "1.00 0.00 0.00 0.5";
-	lineEndColor	  = "1.00 0.00 0.00 0.5";
+	lineStartColor	= "1.00 0.00 1.00 0.0";
+	lineBetweenColor = "1.00 0.00 1.00 0.5";
+	lineEndColor	  = "1.00 0.00 1.00 0.5";
     lineWidth = 2.0;
 
 	hasInner = true;
-	innerStartColor	= "1.00 0.00 0.00 0.0";
-	innerBetweenColor = "1.00 0.00 0.00 0.5";
-	innerEndColor	  = "1.00 0.00 0.00 0.5";
+	innerStartColor	= "1.00 0.00 1.00 0.0";
+	innerBetweenColor = "1.00 0.00 1.00 0.5";
+	innerEndColor	  = "1.00 0.00 1.00 0.5";
 	innerStartWidth	= "0.0";
 	innerBetweenWidth = "0.3";
 	innerEndWidth	  = "0.1";
 
 	hasOuter = true;
-	outerStartColor	= "1.00 0.00 0.00 0.0";
-	outerBetweenColor = "1.00 0.00 0.00 0.5";
-	outerEndColor	  = "1.00 0.00 0.00 0.5";
+	outerStartColor	= "1.00 0.00 1.00 0.0";
+	outerBetweenColor = "1.00 0.00 1.00 0.5";
+	outerEndColor	  = "1.00 0.00 1.00 0.5";
 	outerStartWidth	= "0.1";
 	outerBetweenWidth = "0.4";
 	outerEndWidth	  = "0.2";
@@ -60,28 +60,30 @@ datablock LaserBeamData(RedMissileLauncherMissileTail)
 
 datablock ParticleData(RedSlowMissileLauncherMissileEmitter_Particles)
 {
-	dragCoefficient		= 1;
-	gravityCoefficient	= 0.0;
-	windCoefficient		= 0.0;
-	inheritedVelFactor	= 0.0;
-	constantAcceleration = 0.0;
-	lifetimeMS			  = 1000;
+	dragCoeffiecient	  = 0.4;
+	gravityCoefficient	= -0.5;	// rises slowly
+	inheritedVelFactor	= 0.025;
+
+	lifetimeMS			  = 1250;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/smoke_particle";
-	colors[0]	  = "0.5 0.5 0.5 1.0";
-	colors[1]	  = "0.5 0.5 0.5 0.666";
-	colors[2]	  = "0.5 0.5 0.5 0.333";
-	colors[3]	  = "0.5 0.5 0.5 0.0";
-	sizes[0]		= 1.5;
-	sizes[1]		= 1.5;
-	sizes[2]		= 1.5;
-	sizes[3]		= 1.5;
+
+	useInvAlpha =  true;
+	spinRandomMin = -200.0;
+	spinRandomMax =  200.0;
+
+	textureName = "~/data/particles/smoke_particle.png";
+
+	colors[0]	  = "0.9 0.9 0.9 0.4";
+	colors[1]	  = "0.9 0.9 0.9 0.2";
+	colors[2]	  = "0.9 0.9 0.9 0.0";
+	sizes[0]		= 1.0;
+	sizes[1]		= 1.0;
+	sizes[2]		= 1.0;
 	times[0]		= 0.0;
-	times[1]		= 0.333;
-	times[2]		= 0.666;
-	times[3]		= 1.0;
-	useInvAlpha = true;
-	renderDot = true;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+
+	allowLighting = true;
 };
 
 datablock ParticleEmitterData(RedSlowMissileLauncherMissileEmitter)
@@ -106,39 +108,42 @@ datablock ParticleEmitterData(RedSlowMissileLauncherMissileEmitter)
 
 datablock ParticleData(RedMissileLauncherMissileEmitter_Particles)
 {
-	dragCoefficient		= 1;
-	gravityCoefficient	= 0.0;
-	windCoefficient		= 0.0;
+	dragCoeffiecient    = 0.4;
+	gravityCoefficient	= -0.5;	// rises slowly
 	inheritedVelFactor	= 0.0;
-	constantAcceleration = 0.0;
-	lifetimeMS			  = 1000;
-	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/small_particle4";
-	colors[0]	  = "1.0 0.0 1.0 0.5";
-	colors[1]	  = "1.0 0.0 0.0 0.5";
-	colors[2]	  = "1.0 1.0 0.0 0.5";
-	colors[3]	  = "0.0 5.0 0.0 0.0";
-	sizes[0]		= 0.25;
-	sizes[1]		= 0.25;
-	sizes[2]		= 0.25;
-	sizes[3]		= 0.25;
+
+	lifetimeMS         = 2500;
+	lifetimeVarianceMS = 0;
+
+	useInvAlpha =  true;
+	spinRandomMin = -200.0;
+	spinRandomMax =  200.0;
+
+	textureName = "~/data/particles/smoke_particle.png";
+
+	colors[0]	  = "0.9 0.9 0.9 0.8";
+	colors[1]	  = "0.9 0.9 0.9 0.4";
+	colors[2]	  = "0.9 0.9 0.9 0.0";
+	sizes[0]		= 1.0;
+	sizes[1]		= 1.5;
+	sizes[2]		= 2.0;
 	times[0]		= 0.0;
-	times[1]		= 0.333;
-	times[2]		= 0.666;
-	times[3]		= 1.0;
-	renderDot = true;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+
+	allowLighting = true;
 };
 
 datablock ParticleEmitterData(RedMissileLauncherMissileEmitter)
 {
-	ejectionPeriodMS = 5;
-	periodVarianceMS = 0;
-	ejectionVelocity = 1.5;
+	ejectionPeriodMS = 10;
+	periodVarianceMS = 3;
+	ejectionVelocity = 0.0;
 	velocityVariance = 0.0;
 	ejectionOffset	= 0.0;
-	thetaMin			= 45;
-	thetaMax			= 45;
-	phiReferenceVel  = 75000;
+	thetaMin		= 0;
+	thetaMax		= 10;
+	phiReferenceVel  = 360;
 	phiVariance		= 0;
 	overrideAdvances = false;
 	orientParticles  = false;

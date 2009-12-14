@@ -37,7 +37,7 @@ datablock ProjectileData(RedMissileLauncherMissile)
 	explodesNearEnemies		 = false;
 	explodesNearEnemiesRadius = 10;
  
-    projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
+    projectileShapeName = "~/data/weapons/missilelauncher/missile/shape.dts";
 
 	explosion				 = RedMissileLauncherMissileExplosion;
 	//bounceExplosion		 = MissileLauncherRifleBounce;
@@ -59,9 +59,13 @@ datablock ProjectileData(RedMissileLauncherMissile)
 
 	armingDelay = 0;
 	lifetime    = 3000;
-	fadeDelay   = 0;
+	fadeDelay   = 3000;
 	
 	decals[0] = ExplosionDecalOne;
+ 
+	hasLight    = true;
+	lightRadius = 15.0;
+	lightColor  = "1.0 0.0 1.0";
 };
 
 function RedMissileLauncherMissile::onRemove(%this, %obj)
@@ -97,9 +101,11 @@ datablock ProjectileData(RedSlowMissileLauncherMissile : RedMissileLauncherMissi
 	//projectileShapeName = "~/data/weapons/missilelauncher/projectile/shape.dts";
 	missEnemyEffect = 0;
 	particleEmitter = RedSlowMissileLauncherMissileEmitter;
-	isBallistic	  = true;
-	gravityMod		= 10.0;
-	lifetime		  = 10000;
+    laserTail = 0;
+	isBallistic = true;
+	gravityMod = 7.5;
+	lifetime = 10000;
+	hasLight = false;
 };
 
 
@@ -108,7 +114,7 @@ datablock ProjectileData(RedSlowMissileLauncherMissile : RedMissileLauncherMissi
 
 datablock ProjectileData(BlueMissileLauncherMissile : RedMissileLauncherMissile)
 {
-    projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
+    //projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
 	explosion = BlueMissileLauncherMissileExplosion;
 	missEnemyEffect = BlueMissileLauncherNearEnemyExplosion;
 	laserTail = BlueMissileLauncherMissileTail;
