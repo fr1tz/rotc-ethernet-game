@@ -33,7 +33,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 {
 	// script damage properties...
 	impactDamage       = 0;
-	impactImpulse      = 0;
+	impactImpulse      = 1000;
 	splashDamage       = 25;
 	splashDamageRadius = 3;
 	splashImpulse      = 0;
