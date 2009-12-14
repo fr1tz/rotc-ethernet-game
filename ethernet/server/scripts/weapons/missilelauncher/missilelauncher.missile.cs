@@ -54,7 +54,7 @@ datablock ProjectileData(RedMissileLauncherMissile)
 
 	particleEmitter = RedMissileLauncherMissileEmitter;
 
-	muzzleVelocity   = 400;
+	muzzleVelocity   = 300;
 	velInheritFactor = 0.0;
 
 	armingDelay = 0;
