@@ -162,8 +162,8 @@ datablock ParticleData(RedMissileLauncherFireEmitter_Particles)
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "1.0 0.0 0.0 1.0";
 	colors[2]	  = "1.0 0.0 0.0 0.0";
-	sizes[0]		= 0.5;
-	sizes[1]		= 0.25;
+	sizes[0]		= 1.0;
+	sizes[1]		= 0.5;
 	sizes[2]		= 0.0;
 	times[0]		= 0.0;
 	times[1]		= 0.5;
