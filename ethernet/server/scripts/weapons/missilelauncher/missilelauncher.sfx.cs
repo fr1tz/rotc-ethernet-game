@@ -11,14 +11,7 @@
 datablock AudioProfile(MissileLauncherChargeSound)
 {
 	filename = "~/data/weapons/missilelauncher/sound.charge.wav";
-	description = AudioCloseLooping3D;
-	preload = true;
-};
-
-datablock AudioProfile(MissileLauncherChargedSound)
-{
-	filename = "~/data/weapons/missilelauncher/sound.charged.wav";
-	description = AudioCloseLooping3D;
+	description = AudioClose3D;
 	preload = true;
 };
 

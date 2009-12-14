@@ -77,32 +77,31 @@ datablock ShapeBaseImageData(RedMissileLauncherImage)
 		stateTransitionOnNotLoaded[2]    = "Disabled";
 		stateTransitionOnTriggerDown[2]  = "Charge";
 		stateArmThread[2]                = "holdrifle";
+		stateSequence[2]                 = "idle";
 		stateScript[2]                   = "onReady";
   
 		// charge...
 		stateName[3]                     = "Charge";
-		stateTransitionOnTriggerUp[3]    = "Ready";
+		stateTransitionOnTriggerUp[3]    = "CheckFire";
 		stateTransitionOnMovement[3]     = "ChargeAborted";
 		stateTransitionOnNoAmmo[3]       = "ChargeAborted";
-		stateTransitionOnCharged[3]      = "Charged";
 		stateCharge[3]                   = true;
 		stateAllowImageChange[3]         = false;
 		stateArmThread[3]                = "aimrifle";
 		stateSound[3]                    = MissileLauncherChargeSound;
+		stateSequence[3]                 = "charge";
 		stateScript[3]                   = "onCharge";
   
-		// charged...
-		stateName[4]                     = "Charged";
-		stateTransitionOnTriggerUp[4]    = "Fire";
-		stateTransitionOnMovement[4]     = "ChargeAborted";
-		stateTransitionOnNoAmmo[4]       = "ChargeAborted";
-		stateSound[4]                    = MissileLauncherChargedSound;
+		// check fire...
+		stateName[4]                     = "CheckFire";
+		stateTransitionOnCharged[4]      = "Fire";
+		stateTransitionOnNotCharged[4]   = "Ready";
+		stateFire[4]                     = true;
 
 		// fire!...
 		stateName[5]                     = "Fire";
 		stateTransitionOnTimeout[5]      = "Emitter1";
 		stateTimeoutValue[5]             = 0.00;
-		stateFire[5]                     = true;
 		stateFireProjectile[5]           = RedMissileLauncherProjectile;
 		stateRecoil[5]                   = NoRecoil;
 		stateAllowImageChange[5]         = false;
@@ -135,7 +134,7 @@ datablock ShapeBaseImageData(RedMissileLauncherImage)
 		// keep aiming...
 		stateName[9]                     = "KeepAiming";
 		stateTransitionOnNoAmmo[9]       = "NoAmmo";
-		stateTransitionOnTriggerDown[9]  = "Charge";
+		stateTransitionOnTriggerDown[9]  = "Ready";
 		stateTransitionOnTimeout[9]      = "Ready";
 		stateTransitionOnNotLoaded[9]    = "Disabled";
 		stateWaitForTimeout[9]           = false;
@@ -157,20 +156,28 @@ datablock ShapeBaseImageData(RedMissileLauncherImage)
   
         // charge aborted...
 		stateName[12]                    = "ChargeAborted";
+		stateTransitionOnTriggerUp[12]   = "Ready";
 		stateTransitionOnNoMovement[12]  = "Ready";
 		stateSound[12]                   = MissileLauncherChargeAbortedSound;
-		stateSequence[12]                = "idle";
+		stateSequence[12]                = "nocharge";
   
-        // charge aborted...
+        // moving...
 		stateName[13]                    = "Moving";
+		stateTransitionOnTriggerDown[13] = "MovingTriggerDown";
 		stateTransitionOnNoMovement[13]  = "Ready";
 		stateSequence[13]                = "idle";
+  
+        // moving with trigger...
+		stateName[14]                    = "MovingTriggerDown";
+		stateTransitionOnTriggerUp[14]   = "Moving";
+		stateTransitionOnNoMovement[14]  = "Ready";
+		stateSequence[14]                = "nocharge";
 
 		// disabled...
-		stateName[14]                    = "Disabled";
-		stateTransitionOnLoaded[14]      = "Ready";
-		stateAllowImageChange[14]        = false;
-		stateSequence[14]                = "idle";
+		stateName[15]                    = "Disabled";
+		stateTransitionOnLoaded[15]      = "Ready";
+		stateAllowImageChange[15]        = false;
+		stateSequence[15]                = "idle";
 	//
 	// ...end of image states
 	//-------------------------------------------------

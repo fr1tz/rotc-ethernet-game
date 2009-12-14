@@ -218,6 +218,14 @@ Used for ethernet\data\weapons\sniperrifle\sound.charge.wav:
 
 ----------------------------------------------------------------------------------
 
+Used for ethernet\data\weapons\missilelauncher\sound.charge.wav:
+
+        By Dynamicell (http://www.freesound.org/usersViewSingle.php?id=47052)
+            Fire_huge_lazer.aif (http://www.freesound.org/samplesViewSingle.php?id=17831)
+            
+        By FreqMan (http://www.freesound.org/usersViewSingle.php?id=92661)
+            scanner blip.wav (http://www.freesound.org/samplesViewSingle.php?id=32683)
+
 Used for ethernet\data\weapons\missilelauncher\sound.debris.wav:
 
 	http://www.soundsnap.com/node/111746
@@ -233,6 +241,11 @@ Used for ethernet\data\weapons\missilelauncher\sound.fire.wav:
 
         By man (http://www.freesound.org/usersViewSingle.php?id=14447)
             canon.aif (http://www.freesound.org/samplesViewSingle.php?id=14615)
+            
+Used for ethernet\data\weapons\missilelauncher\sound.noammo.wav:
+
+        By Dynamicell (http://www.freesound.org/usersViewSingle.php?id=47052)
+            Fire_huge_lazer.aif (http://www.freesound.org/samplesViewSingle.php?id=17831)
 
 ----------------------------------------------------------------------------------
 
