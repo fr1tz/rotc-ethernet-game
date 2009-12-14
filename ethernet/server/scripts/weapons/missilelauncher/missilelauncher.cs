@@ -41,7 +41,7 @@ datablock ShapeBaseImageData(RedMissileLauncherImage)
 	minEnergy = 45;
 	
     // charging...
-    minCharge = 0.5;
+    minCharge = 0.4;
     
 	projectile = RedMissileLauncherProjectile;
     missile = RedMissileLauncherMissile;

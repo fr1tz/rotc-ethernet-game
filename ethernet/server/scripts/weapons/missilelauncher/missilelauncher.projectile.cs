@@ -23,7 +23,7 @@ datablock ShotgunProjectileData(RedMissileLauncherProjectile)
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
 
-	energyDrain = 45; // how much energy does firing this projectile drain?
+	energyDrain = 35; // how much energy does firing this projectile drain?
 
     numBullets = 1; // number of shotgun bullets
     range = 2000; // shotgun range

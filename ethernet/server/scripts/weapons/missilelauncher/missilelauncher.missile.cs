@@ -17,11 +17,11 @@ exec("./missilelauncher.missile.gfx.blue.cs");
 datablock ProjectileData(RedMissileLauncherMissile)
 {
 	// script damage properties...
-	impactDamage        = 100;
-	impactImpulse       = 2000;
-	splashDamage        = 0;
-	splashDamageRadius  = 0;
-	splashImpulse       = 0;
+	impactDamage       = 0;
+	impactImpulse      = 0;
+	splashDamage       = 150;
+	splashDamageRadius = 15;
+	splashImpulse      = 2500;
 	
 	// simulate the projectile's entire life in one tick?
 	hyperSpeed = false;
