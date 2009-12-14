@@ -32,7 +32,7 @@ function Hud::onWake(%this)
 
 	$enableDirectInput = "1";
 	activateDirectInput();
-	
+
 	// reclaim ScannerHud
 	%this.add(ScannerHud);
 	%this.bringToFront(ScannerHud);
@@ -61,27 +61,27 @@ function Hud::onSleep(%this)
 function Hud::matchControlObject(%this, %obj)
 {
 	%data = %obj.getDataBlock().getName();
-	
+
 	Scanlines.setVisible(false);
 	DiscIcon1.setVisible(false);
 	DiscIcon2.setVisible(false);
-	GrenadeIcon1.setVisible(false);
-	
+	DiscIcon3.setVisible(false);
+ 
+    GrenadeIcon.setVisible(false);
+    GrenadeAmmo.setVisible(false);
+
 	if(%obj.getType() & $TypeMasks::CameraObjectType)
 	{
 		PrimaryWeaponIcon.setVisible(false);
-		SecondaryWeaponIcon.setVisible(false);
-		
+
 		HealthMeter.setVisible(false);
 		EnergyMeter.setVisible(false);
-		
+
 		%this.showDiscIcons = false;
-		%this.showGrenadeIcons = false;
 	}
 	else
 	{
 		PrimaryWeaponIcon.setVisible(true);
-		SecondaryWeaponIcon.setVisible(true);
 
 		HealthMeter.setVisible(true);
 		EnergyMeter.setVisible(true);
@@ -89,12 +89,13 @@ function Hud::matchControlObject(%this, %obj)
 		if(%obj.getType() & $TypeMasks::PlayerObjectType)
 		{
 			%this.showDiscIcons = true;
-			%this.showGrenadeIcons = true;
 			%this.updateDiscIcons();
-			%this.updateGrenadeIcons();
+   
+            GrenadeIcon.setVisible(true);
+            GrenadeAmmo.setVisible(true);
 		}
 	}
-	
+
 	if(%data $= "PlayerThirdEye")
 		Scanlines.setVisible(true);
 }
@@ -105,6 +106,7 @@ function Hud::updateDiscIcons(%this)
 	{
 		DiscIcon1.setVisible(false);
 		DiscIcon2.setVisible(false);
+		DiscIcon3.setVisible(false);
 		return;
 	}
 
@@ -116,43 +118,25 @@ function Hud::updateDiscIcons(%this)
 		case 1:
 			DiscIcon1.setVisible(true);
 			DiscIcon2.setVisible(false);
+			DiscIcon3.setVisible(false);
 			break;
 
 		case 2:
 			DiscIcon1.setVisible(true);
 			DiscIcon2.setVisible(true);
+			DiscIcon3.setVisible(false);
 			break;
 
 		case 3:
 			DiscIcon1.setVisible(true);
 			DiscIcon2.setVisible(true);
+			DiscIcon3.setVisible(true);
 			break;
 
 		default:
 			DiscIcon1.setVisible(false);
 			DiscIcon2.setVisible(false);
-	}
-}
-
-function Hud::updateGrenadeIcons(%this)
-{
-	if(!%this.showGrenadeIcons)
-	{
-		GrenadeIcon1.setVisible(false);
-		return;
-	}
-
-	if(%this.numGrenades $= "")
-		%this.numGrenades = 1;
-
-	switch(%this.numGrenades)
-	{
-		case 1:
-			GrenadeIcon1.setVisible(true);
-			break;
-
-		default:
-			GrenadeIcon1.setVisible(false);
+			DiscIcon3.setVisible(false);
 	}
 }
 
@@ -161,7 +145,7 @@ function Hud::setColor(%this, %color)
 	if(%color $= "red")
 	{
 		Scanlines.color = "255 50 50 50";
-	
+
 		HudDefaultProfile.fillColor = "255 0 0 100";
 		HudDefaultProfile.fillColorHL = "255 0 0 100";
 		HudDefaultProfile.fillColorNA = "255 0 0 100";
@@ -174,11 +158,11 @@ function Hud::setColor(%this, %color)
 		HudDefaultProfile.fontColorHL = "255 200 200 255";
 		HudDefaultProfile.fontColorNA = "255 200 200 255";
 		HudDefaultProfile.fontColorSEL= "200 200 200";
-		
+
 		HudButtonProfile.fillColor = "255 0 0 100";
 		HudButtonProfile.fillColorHL = "255 0 0 100";
 		HudButtonProfile.fillColorNA = "255 0 0 100";
-		
+
 		HudButtonProfile.borderColor	= "255 0 0 200";
 		HudButtonProfile.borderColorHL = "255 0 0 200";
 		HudButtonProfile.borderColorNA = "255 0 0 200";
@@ -187,16 +171,24 @@ function Hud::setColor(%this, %color)
 		HudButtonProfile.fontColorHL = "255 0 0 200";
 		HudButtonProfile.fontColorNA = "255 0 0 200";
 		HudButtonProfile.fontColorSEL= "200 200 200";
-		
+
 		HudMediumTextProfile.fillColor = "255 0 0 100";
 		HudMediumTextProfile.fillColorHL = "255 0 0 100";
 		HudMediumTextProfile.fillColorNA = "255 0 0 100";
+  
+		HudProgressProfile.fillColor = "255 0 0 100";
+		HudProgressProfile.fillColorHL = "255 0 0 100";
+		HudProgressProfile.fillColorNA = "255 0 0 100";
+
+		HudProgressProfile.borderColor	= "255 0 0 200";
+		HudProgressProfile.borderColorHL = "255 0 0 200";
+		HudProgressProfile.borderColorNA = "255 0 0 200";
 	}
 
 	if(%color $= "blue")
 	{
 		Scanlines.color = "50 50 255 50";
-	
+
 		HudDefaultProfile.fillColor = "0 100 255 100";
 		HudDefaultProfile.fillColorHL = "0 100 255 100";
 		HudDefaultProfile.fillColorNA = "0 100 255 100";
@@ -209,7 +201,7 @@ function Hud::setColor(%this, %color)
 		HudDefaultProfile.fontColorHL = "200 200 255 255";
 		HudDefaultProfile.fontColorNA = "200 200 255 255";
 		HudDefaultProfile.fontColorSEL= "200 200 200";
-		
+
 		HudButtonProfile.fillColor = "0 100 255 100";
 		HudButtonProfile.fillColorHL = "0 100 255 100";
 		HudButtonProfile.fillColorNA = "0 100 255 100";
@@ -222,10 +214,19 @@ function Hud::setColor(%this, %color)
 		HudButtonProfile.fontColorHL = "0 100 255 200";
 		HudButtonProfile.fontColorNA = "0 100 255 200";
 		HudButtonProfile.fontColorSEL= "200 200 200";
-		
+
 		HudMediumTextProfile.fillColor = "0 100 255 100";
 		HudMediumTextProfile.fillColorHL = "0 100 255 100";
 		HudMediumTextProfile.fillColorNA = "0 100 255 100";
+  
+		HudProgressProfile.fillColor = "0 100 255 100";
+		HudProgressProfile.fillColorHL = "0 100 255 100";
+		HudProgressProfile.fillColorNA = "0 100 255 100";
+
+		HudProgressProfile.borderColor	= "0 100 255 200";
+		HudProgressProfile.borderColorHL = "0 100 255 200";
+		HudProgressProfile.borderColorNA = "0 100 255 200";
 	}
 }
+
 

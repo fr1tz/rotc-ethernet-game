@@ -182,7 +182,7 @@ function RedGrenadeImage::grenadeAttackFire(%this, %obj, %slot)
 
     //%disc.schedule(2000,"explode");
 
-	%obj.decGrenades();
+	%obj.decGrenadeAmmo(1.0);
 
 	return %grenade;
 }

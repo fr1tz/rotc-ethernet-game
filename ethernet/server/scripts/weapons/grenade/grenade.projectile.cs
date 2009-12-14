@@ -60,8 +60,7 @@ function RedGrenade::onAdd(%this, %obj)
 
 function RedGrenade::onRemove(%this, %obj)
 {
-    %source = %obj.sourceObject;
-    %source.schedule(8000, "incGrenades");
+
 }
 
 function RedGrenade::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)

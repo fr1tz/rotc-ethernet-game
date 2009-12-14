@@ -90,8 +90,13 @@ function PlayerData::onAdd(%this,%obj)
 	// disc management...
 	//
 	%obj.setDiscs(2);            // players have two discs
-	%obj.setGrenades(1);         // players have one grenade
 	%obj.attackedByDisc = false; // player being attacked by disc?
+
+	//
+	// grenade management...
+	//
+	%obj.setGrenadeAmmo(1);
+    %obj.setGrenadeAmmoDt(0.125);
 
 	// Vehicle timeout
 	%obj.mountVehicle = true;
@@ -583,31 +588,55 @@ function Player::decDiscs(%this)
 
 function Player::hasGrenade(%this)
 {
-	return %this.numGrenades > 0;
+	return %this.grenadeAmmo >= 1;
 }
 
-function Player::setGrenades(%this, %numGrenades)
+function Player::incGrenadeAmmo(%this, %amount)
 {
-	%this.numGrenades = %numGrenades;
+    %this.setGrenadeAmmo(%this.grenadeAmmo + %amount);
+}
 
-	if(isObject(%this.client))
-		messageClient(%this.client, 'MsgNumGrenades', "", %this.numGrenades);
+function Player::decGrenadeAmmo(%this, %amount)
+{
+    %this.setGrenadeAmmo(%this.grenadeAmmo - %amount);
+}
+
+function Player::setGrenadeAmmo(%this, %amount)
+{
+    %store = %this.grenadeAmmo;
+
+    if(%amount < 0)
+        %this.grenadeAmmo = 0;
+    else if(%amount > 1)
+        %this.grenadeAmmo = 1;
+    else
+        %this.grenadeAmmo = %amount;
+
+    if(%this.grenadeAmmo != %store)
+    {
+        if(isObject(%this.client))
+            messageClient(%this.client, 'MsgGrenadeAmmo', "", %this.grenadeAmmo);
+    }
 
 	%hasGrenade = %this.hasGrenade();
 	%this.setImageLoaded(2, %hasGrenade);
 	%this.setImageAmmo(2, %hasGrenade);
 }
 
-function Player::incGrenades(%this)
+function Player::setGrenadeAmmoDt(%this, %amount)
 {
-	%this.numGrenades++;
-	%this.setGrenades(%this.numGrenades);
+    %this.clearGrenadeAmmoDt();
+    %this.incGrenadeAmmo(%amount);
+    %this.grenadeAmmoThread = %this.schedule(1000, "setGrenadeAmmoDt", %amount);
 }
 
-function Player::decGrenades(%this)
+function Player::clearGrenadeAmmoDt(%this)
 {
-	%this.numGrenades--;
-	%this.setGrenades(%this.numGrenades);
+	if(%this.grenadeAmmoThread !$= "")
+    {
+        cancel(%this.grenadeAmmoThread);
+		%this.grenadeAmmoThread = "";
+	}
 }
 
 function Player::mountVehicle(%this, %vehicle)

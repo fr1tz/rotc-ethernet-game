@@ -122,5 +122,10 @@ new GuiControlProfile(HudMediumTextProfile : HudDefaultProfile)
 	fontSize = 36;
 };
 
+new GuiControlProfile(HudProgressProfile : HudDefaultProfile)
+{
+	border = true;
+};
+
 
 

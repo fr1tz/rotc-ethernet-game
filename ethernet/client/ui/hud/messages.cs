@@ -23,13 +23,12 @@ addMessageCallback('MsgNumDiscs', NumDiscsMessageCallback);
 
 //------------------------------------------------------------------------------
 
-function NumGrenadesMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
+function GrenadeAmmoMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
 {
-	Hud.numGrenades = %a1;
-	Hud.updateGrenadeIcons();
+    GrenadeAmmo.setValue(%a1);
 }
 
-addMessageCallback('MsgNumGrenades', NumGrenadesMessageCallback);
+addMessageCallback('MsgGrenadeAmmo', GrenadeAmmoMessageCallback);
 
 //------------------------------------------------------------------------------
 
