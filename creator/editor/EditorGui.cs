@@ -1379,18 +1379,17 @@ function Creator::init( %this )
 	%Environment_Item[3]  = "Water";
 	%Environment_Item[4]  = "Terrain";
 	%Environment_Item[5]  = "AudioEmitter";
-	%Environment_Item[6]  = "AmbientAudioEmitter";
-	%Environment_Item[7]  = "Precipitation";
-	%Environment_Item[8]  = "ParticleEmitter";
-	%Environment_Item[9]  = "fxSunLight";
-	%Environment_Item[10]  = "fxShapeReplicator";
-	%Environment_Item[11] = "fxFoliageReplicator";
-	%Environment_Item[12] = "fxLight";
+	%Environment_Item[6]  = "Precipitation";
+	%Environment_Item[7]  = "ParticleEmitter";
+	%Environment_Item[8]  = "fxSunLight";
+	%Environment_Item[9]  = "fxShapeReplicator";
+	%Environment_Item[10] = "fxFoliageReplicator";
+	%Environment_Item[11] = "fxLight";
 	
-	%Environment_Item[13] = "sgLightObject";
-	%Environment_Item[14] = "VolumeLight";
-	%Environment_Item[15] = "sgMissionLightingFilter";
-	%Environment_Item[16] = "sgDecalProjector";
+	%Environment_Item[12] = "sgLightObject";
+	%Environment_Item[13] = "VolumeLight";
+	%Environment_Item[14] = "sgMissionLightingFilter";
+	%Environment_Item[15] = "sgDecalProjector";
 	
 	%Mission_Item[0] = "MissionArea";
 	%Mission_Item[1] = "Path";

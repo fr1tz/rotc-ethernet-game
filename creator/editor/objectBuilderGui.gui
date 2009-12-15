@@ -580,26 +580,6 @@ function ObjectBuilderGui::buildTerrain(%this)
 	%this.process();
 }
 
-function ObjectBuilderGui::buildAmbientAudioEmitter(%this)
-{
-	%this.className = "AmbientAudioEmitter";
-	%this.addField("profile", "TypeDataBlock", "Sound Profile", "AudioProfile");
-	%this.addField("description", "TypeDataBlock", "Sound Description", "AudioDescription");
-	%this.addField("fileName", "TypeFile", "Audio file", "");
-	%this.addField("useProfileDescription", "TypeBool", "Use profile's desc?", "false");
-	%this.addField("outsideAmbient", "TypeBool", "Outside ambient", "true");
-	%this.addField("areaAmbient", "TypeBool", "Area ambient", "false");
-	%this.addFIeld("volume", "TypeFloat", "Volume", "1.0");
-	%this.addField("isLooping", "TypeBool", "Looping?", "true");
-	%this.addField("ReferenceDistance", "TypeFloat", "Reference distance", "5.0"); //EFM
-	%this.addField("maxDistance", "TypeFloat", "Max distance", "35.0");
-	%this.addField("loopCount", "TypeInt", "Loop count", "-1");
-	%this.addField("minLoopGap", "TypeInt", "Min loop gap (ms)", "0");
-	%this.addField("maxLoopGap", "TypeInt", "Max loop gap (ms)", "0");
-	%this.addField("type", "TypeInt", "Audio type", $SimAudioType);
-	%this.process();
-}
-
 function ObjectBuilderGui::buildAudioEmitter(%this)
 {
 	%this.className = "AudioEmitter";
@@ -607,6 +587,7 @@ function ObjectBuilderGui::buildAudioEmitter(%this)
 	%this.addField("description", "TypeDataBlock", "Sound Description", "AudioDescription");
 	%this.addField("fileName", "TypeFile", "Audio file", "");
 	%this.addField("useProfileDescription", "TypeBool", "Use profile's desc?", "false");
+	%this.addField("outsideAmbient", "TypeBool", "Outside ambient", "false");
 	%this.addFIeld("volume", "TypeFloat", "Volume", "1.0");
 	%this.addField("isLooping", "TypeBool", "Looping?", "true");
 	%this.addField("is3D", "TypeBool", "Is 3D sound?", "true");
