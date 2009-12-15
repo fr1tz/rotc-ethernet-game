@@ -800,16 +800,16 @@ new SimGroup(MissionGroup) {
    };
    new AudioEmitter() {
       canSaveDynamicFields = "1";
-      position = "0 0 0";
+      position = "0 0 125";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       useProfileDescription = "0";
-      fileName = "share/sounds/eth1/ambient1.ogg";
+      fileName = "share/sounds/eth1/ambient2.ogg";
       type = "2";
-      volume = "0.3";
+      volume = "1";
       outsideAmbient = "1";
-      referenceDistance = "10000";
-      maxDistance = "10000";
+      referenceDistance = "300";
+      maxDistance = "400";
       isLooping = "1";
       loopCount = "-1";
       minLoopGap = "0";
