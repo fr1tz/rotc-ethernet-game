@@ -34,7 +34,7 @@ datablock ShapeBaseImageData(RedDiscImage)
 	correctMuzzleVector = true;
 
 	// targeting...
-    targetingMask = $TypeMasks::ProjectileObjectType;
+    targetingMask = $TargetingMask::Disc;
 	targetingMaxDist = 250;
 
 	// script fields...

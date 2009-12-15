@@ -71,7 +71,7 @@ datablock NortDiscData(RedSeekerDisc)
 
 function RedSeekerDisc::onAdd(%this,%obj)
 {
-
+   %obj.setTargetingMask($TargetingMask::Disc);
 }
 
 function RedSeekerDisc::onRemove(%this,%obj)

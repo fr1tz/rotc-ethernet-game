@@ -16,6 +16,12 @@ $DamageType::Impact = 0;
 $DamageType::Splash	= 1;
 $DamageType::Force  = 2;
 
+// These are bit masks ($TargetingMask::FreeX = 2^X)...
+$TargetingMask::Disc  = 1;
+$TargetingMask::Heat  = 2;
+$TargetingMask::Free1 = 4;
+$TargetingMask::Free2 = 8;
+
 function executeWeaponScripts()
 {
 	echo(" ----- executing weapon scripts ----- ");

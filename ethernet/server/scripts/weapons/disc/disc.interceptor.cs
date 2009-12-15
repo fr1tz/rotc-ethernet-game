@@ -74,7 +74,7 @@ datablock NortDiscData(RedInterceptorDisc)
 
 function RedInterceptorDisc::onAdd(%this,%obj)
 {
-
+   %obj.setTargetingMask($TargetingMask::Disc);
 }
 
 function RedInterceptorDisc::onRemove(%this,%obj)

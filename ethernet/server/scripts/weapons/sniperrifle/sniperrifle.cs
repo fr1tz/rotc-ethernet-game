@@ -60,10 +60,6 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 	projectile = RedSniperProjectile;
     missile = RedSniperMissile;
 	
-	// targeting...
-	//targetingMask	 = $TypeMasks::ShapeBaseObjectType;
-	//targetingMaxDist = 10000;
-
 	// script fields...
 	iconId = 9;
 	mainWeapon = true;
