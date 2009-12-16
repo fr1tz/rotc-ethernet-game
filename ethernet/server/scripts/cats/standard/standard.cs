@@ -39,6 +39,7 @@ datablock PlayerData(RedStandardCat)
  
     //cloakTexture = "~/data/effects/explosion_white.png";
     shapeFxTexture[0] = "~/data/textures/heat.red.png";
+    shapeFxTexture[1] = "~/data/textures/locked.png";
 
 	computeCRC = true;
 

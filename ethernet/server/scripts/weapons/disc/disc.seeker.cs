@@ -71,13 +71,13 @@ datablock NortDiscData(RedSeekerDisc)
 
 function RedSeekerDisc::onAdd(%this,%obj)
 {
-   %obj.setTargetingMask($TargetingMask::Disc);
+    %obj.setTargetingMask($TargetingMask::Disc);
 }
 
 function RedSeekerDisc::onRemove(%this,%obj)
 {
-//	if(%obj.state() == $NortDisc::Attacking)
-//		%obj.getTarget().attackedByDisc = false;
+    if(%obj.state() == $NortDisc::Attacking)
+        %obj.getTarget().removeAttackingDisc(%obj);
 
 	%source = %obj.sourceObject;
 	%source.incDiscs();
@@ -107,9 +107,17 @@ function RedSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 	}
 }
 
+function RedSeekerDisc::onDeflected(%this, %obj)
+{
+    error("wee");
+    if(%obj.state() == $NortDisc::Attacking)
+        %obj.getTarget().removeAttackingDisc(%obj);
+}
+
+
 function RedSeekerDisc::onHitTarget(%this,%obj)
 {
-	%obj.getTarget().attackedByDisc = false;
+    %obj.getTarget().removeAttackingDisc(%obj);
 }
 
 //-----------------------------------------------------------------------------
@@ -147,6 +155,11 @@ function BlueSeekerDisc::onRemove(%this,%obj)
 function BlueSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 {
 	RedSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
+}
+
+function BlueSeekerDisc::onDeflected(%this, %obj)
+{
+    RedSeekerDisc::onDeflected(%this, %obj);
 }
 
 function BlueSeekerDisc::onHitTarget(%this,%obj)

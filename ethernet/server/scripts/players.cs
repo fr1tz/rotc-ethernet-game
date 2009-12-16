@@ -89,8 +89,8 @@ function PlayerData::onAdd(%this,%obj)
 	//
 	// disc management...
 	//
-	%obj.setDiscs(2);            // players have two discs
-	%obj.attackedByDisc = false; // player being attacked by disc?
+	%obj.setDiscs(2);         // players have two discs
+	%obj.attackingDiscs = 0;  // Number of discs that are attacking the player
 
 	//
 	// grenade management...
@@ -519,6 +519,24 @@ function Player::updateHeat(%this)
        	messageClient(%this.client, 'MsgHeat', "", %this.heat, %this.heatDt);
 
     %this.heatThread = %this.schedule(50, "updateHeat");
+}
+
+//-----------------------------------------------------------------------------
+
+function Player::addAttackingDisc(%this, %disc)
+{
+    %this.attackingDiscs += 1;
+    
+    %this.shapeFxSetBalloon(1, 1.25);
+    %this.shapeFxSetActive(1, true);
+}
+
+function Player::removeAttackingDisc(%this, %disc)
+{
+    %this.attackingDiscs -= 1;
+    
+    if(%this.attackingDiscs == 0)
+        %this.shapeFxSetActive(1, false);
 }
 
 //-----------------------------------------------------------------------------

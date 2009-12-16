@@ -79,9 +79,6 @@ function RedInterceptorDisc::onAdd(%this,%obj)
 
 function RedInterceptorDisc::onRemove(%this,%obj)
 {
-//	if(%obj.state() == $NortDisc::Attacking)
-//		%obj.getTarget().attackedByDisc = false;
-
 	%source = %obj.sourceObject;
 	%source.incDiscs();
 }
@@ -93,7 +90,6 @@ function RedInterceptorDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dis
 
 function RedInterceptorDisc::onHitTarget(%this,%obj)
 {
-	%obj.getTarget().attackedByDisc = false;
     %obj.explode();
 }
 

@@ -230,6 +230,8 @@ function RedDiscImage::selectAction(%this, %obj, %slot)
         %obj.setImageFlag(%slot, 0, true); // attack
     
         %target = %obj.getCurrTarget();
+        %target.addAttackingDisc(%obj);
+        
         %obj.setImageFlag(%slot, 1, %target != 0);
         %obj.seekerTarget = %target;
 
@@ -254,9 +256,6 @@ function RedDiscImage::seekerAttackStart(%this, %obj, %slot)
 	%obj.setArmThread("look");
 	//%obj.playThread(0, "throwSidearm");
     %obj.playThread(0, "throwInterceptor");
-
-	// target is being attacked by disc...
-//	%target.attackedByDisc = true;
 
 	// inform target he's about to get attacked...
 //	if(isObject(%target.client) && %target == %target.client.player)
