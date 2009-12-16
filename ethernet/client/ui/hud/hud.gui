@@ -386,6 +386,19 @@ new GameTSCtrl(HUD) {
       hovertime = "1000";
       maxLength = "1024";
    };
+   new GuiProgressCtrl(Heat) {
+      canSaveDynamicFields = "0";
+      Profile = "HudProgressProfile";
+      HorizSizing = "right";
+      VertSizing = "top";
+      position = "50 300";
+      Extent = "100 16";
+      MinExtent = "8 2";
+      canSave = "1";
+      Visible = "0";
+      hovertime = "1000";
+      maxLength = "1024";
+   };
    new GuiHealthBarHud(HealthMeter) {
       canSaveDynamicFields = "0";
       Profile = "HudDefaultProfile";

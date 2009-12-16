@@ -69,6 +69,8 @@ function Hud::matchControlObject(%this, %obj)
  
     GrenadeIcon.setVisible(false);
     GrenadeAmmo.setVisible(false);
+    
+    Heat.setVisible(false);
 
 	if(%obj.getType() & $TypeMasks::CameraObjectType)
 	{
@@ -93,6 +95,7 @@ function Hud::matchControlObject(%this, %obj)
    
             GrenadeIcon.setVisible(true);
             GrenadeAmmo.setVisible(true);
+            Heat.setVisible(true);
 		}
 	}
 
@@ -138,6 +141,16 @@ function Hud::updateDiscIcons(%this)
 			DiscIcon2.setVisible(false);
 			DiscIcon3.setVisible(false);
 	}
+}
+
+function Hud::updateHeat(%this)
+{
+    if(%this.heatThread !$= "")
+        cancel(%this.heatThread);
+        
+    Heat.setValue(Heat.getValue() + Heat.dt);
+        
+    %this.heatThread = %this.schedule(50, "updateHeat");
 }
 
 function Hud::setColor(%this, %color)

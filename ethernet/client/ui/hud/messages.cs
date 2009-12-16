@@ -32,6 +32,18 @@ addMessageCallback('MsgGrenadeAmmo', GrenadeAmmoMessageCallback);
 
 //------------------------------------------------------------------------------
 
+function HeatMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
+{
+    Heat.setValue(%a1);
+    Heat.dt = 0;
+    Hud.updateHeat();
+    Heat.dt = %a2;
+}
+
+addMessageCallback('MsgHeat', HeatMessageCallback);
+
+//------------------------------------------------------------------------------
+
 function WeaponSelectedMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
 {
 	%pixmap = "ethernet/client/ui/hud/pixmaps/" @ $WeaponIcons[%a1];

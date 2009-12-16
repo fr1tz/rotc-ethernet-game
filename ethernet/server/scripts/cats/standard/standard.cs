@@ -36,6 +36,9 @@ datablock PlayerData(RedStandardCat)
 	cameraMaxDist = 5;
 
 	shapeFile = "~/data/players/standardcat/player.red.dts";
+ 
+    //cloakTexture = "~/data/effects/explosion_white.png";
+    shapeFxTexture[0] = "~/data/textures/heat.red.png";
 
 	computeCRC = true;
 
@@ -232,6 +235,7 @@ datablock PlayerData(RedStandardCat)
 datablock PlayerData(BlueStandardCat : RedStandardCat)
 {
 	shapeFile = "~/data/players/standardcat/player.blue.dts";
+    shapeFxTexture[0] = "~/data/textures/heat.blue.png";
 	debrisShapeName = "~/data/players/standardcat/debris.blue.dts";
 	slideParticleEmitter = BlueSlideEmitter;
 	damageBufferParticleEmitter = BlueCatDamageBufferEmitter;

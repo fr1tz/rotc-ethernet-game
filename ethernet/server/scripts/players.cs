@@ -120,6 +120,9 @@ function PlayerData::onAdd(%this,%obj)
         %obj.useWeapon(%obj.client.lastCATWeapon);
     else
     	%obj.useWeapon(1);
+     
+     // Start heat thread.
+     %obj.updateHeat();
 }
 
 // callback function: called by engine
@@ -464,6 +467,58 @@ function Player::setSniping(%this, %sniping)
         %this.setBodyPose($PlayerBodyPose::Marching);
     else
         %this.setBodyPose(%this.nonSnipingBodyPose);
+}
+
+//-----------------------------------------------------------------------------
+
+function Player::updateHeat(%this)
+{
+    if(%this.heatThread !$= "")
+        cancel(%this.heatThread);
+        
+    %storeDt = %this.heatDt;
+
+    if(%this.getBodyPose() == $PlayerBodyPose::Sliding)
+    {
+        %this.heatDt = 0.01;
+        %this.heatCooldownTime = 1.0;
+    }
+    else
+    {
+        %this.heatCooldownTime -= 0.05;
+        if(%this.heatCooldownTime >= 0)
+            %this.heatDt = 0;
+        else
+            %this.heatDt = -0.01;
+    }
+    
+    %this.heat += %this.heatDt;
+    if(%this.heat > 1)
+    {
+        %this.heat = 1;
+        %this.heatDt = 0;
+    }
+    else if(%this.heat < 0)
+    {
+        %this.heat = 0;
+        %this.heatDt = 0;
+    }
+    
+    if(%this.heat > 0.5)
+    {
+        %this.setTargetingMask($TargetingMask::Heat);
+        %this.shapeFxSetActive(0, true);
+    }
+    else
+    {
+        %this.setTargetingMask(0);
+        %this.shapeFxSetActive(0, false);
+    }
+        
+    if(%this.client && %this.heatDt !$= %storeDt)
+       	messageClient(%this.client, 'MsgHeat', "", %this.heat, %this.heatDt);
+
+    %this.heatThread = %this.schedule(50, "updateHeat");
 }
 
 //-----------------------------------------------------------------------------

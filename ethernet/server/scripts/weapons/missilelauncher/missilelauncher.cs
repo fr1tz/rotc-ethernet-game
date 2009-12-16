@@ -43,18 +43,20 @@ datablock ShapeBaseImageData(RedMissileLauncherImage)
     // charging...
     minCharge = 0.4;
     
+    // NOTE: The Projectile is not actually used, but is needed to
+    // put the image into "client fire mode".
 	projectile = RedMissileLauncherProjectile;
-    missile = RedMissileLauncherMissile;
-	
+
 	// targeting...
-	//targetingMask	 = $TypeMasks::ShapeBaseObjectType;
-	//targetingMaxDist = 10000;
+    targetingMask = $TargetingMask::Heat;
+	targetingMaxDist = 10000;
 
 	// script fields...
 	iconId = 9;
 	mainWeapon = true;
 	armThread = "holdrifle";  // armThread to use when holding this weapon
 	crosshair = "missilelauncher"; // crosshair to display when holding this weapon
+    missile = RedMissileLauncherMissile;
  
 	//-------------------------------------------------
 	// image states...
@@ -85,6 +87,7 @@ datablock ShapeBaseImageData(RedMissileLauncherImage)
 		stateTransitionOnTriggerUp[3]    = "CheckFire";
 		stateTransitionOnMovement[3]     = "ChargeAborted";
 		stateTransitionOnNoAmmo[3]       = "ChargeAborted";
+		stateTarget[3]                   = true;
 		stateCharge[3]                   = true;
 		stateAllowImageChange[3]         = false;
 		stateArmThread[3]                = "aimrifle";
@@ -97,12 +100,12 @@ datablock ShapeBaseImageData(RedMissileLauncherImage)
 		stateTransitionOnCharged[4]      = "Fire";
 		stateTransitionOnNotCharged[4]   = "Ready";
 		stateFire[4]                     = true;
+		stateTarget[4]                   = true;
 
 		// fire!...
 		stateName[5]                     = "Fire";
 		stateTransitionOnTimeout[5]      = "Emitter1";
 		stateTimeoutValue[5]             = 0.00;
-		stateFireProjectile[5]           = RedMissileLauncherProjectile;
 		stateRecoil[5]                   = NoRecoil;
 		stateAllowImageChange[5]         = false;
 		stateEjectShell[5]               = true;
@@ -205,16 +208,6 @@ function RedMissileLauncherImage::onCharge(%this, %obj, %slot)
 
 function RedMissileLauncherImage::onFire(%this, %obj, %slot)
 {
-
-}
-
-function RedMissileLauncherImage::onNoAmmo(%this, %obj, %slot)
-{
-
-}
-
-function RedMissileLauncherImage::fireMissile(%this, %obj, %slot)
-{
 	%projectile = %this.missile;
 
 	// determine initial projectile velocity based on the
@@ -240,8 +233,22 @@ function RedMissileLauncherImage::fireMissile(%this, %obj, %slot)
 		client			= %obj.client;
 	};
 	MissionCleanup.add(%p);
-
+ 
+    %target = %obj.getImageTarget(%slot);
+    if(isObject(%target))
+        %p.setTarget(%target);
+        
     return %p;
+}
+
+function RedMissileLauncherImage::onNoAmmo(%this, %obj, %slot)
+{
+
+}
+
+function RedMissileLauncherImage::fireMissile(%this, %obj, %slot)
+{
+
 }
 
 
