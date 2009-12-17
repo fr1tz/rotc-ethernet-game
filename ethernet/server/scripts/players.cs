@@ -473,23 +473,33 @@ function Player::setSniping(%this, %sniping)
 
 function Player::updateHeat(%this)
 {
+    %dtTime = 50;
+    
+    %warnLevel = 0.15;
+    %hotLevel = 0.5;
+
+    %heatingDt = 0.005;
+    %coolingDt = -0.01;
+    %cooldownDelay = 1.0;
+
     if(%this.heatThread !$= "")
         cancel(%this.heatThread);
         
+    %store   = %this.heat;
     %storeDt = %this.heatDt;
 
     if(%this.getBodyPose() == $PlayerBodyPose::Sliding)
     {
-        %this.heatDt = 0.005;
-        %this.heatCooldownTime = 1.0;
+        %this.heatDt = %heatingDt;
+        %this.heatCooldownTime = %cooldownDelay;
     }
     else
     {
-        %this.heatCooldownTime -= 0.05;
+        %this.heatCooldownTime -= %dtTime / 1000;
         if(%this.heatCooldownTime >= 0)
             %this.heatDt = 0;
         else
-            %this.heatDt = -0.01;
+            %this.heatDt = %coolingDt;
     }
     
     %this.heat += %this.heatDt;
@@ -503,8 +513,28 @@ function Player::updateHeat(%this)
         %this.heat = 0;
         %this.heatDt = 0;
     }
+    
+    %updateWarnLevel = false;
+    if(%this.heat >= %warnLevel && %this.heat < %hotLevel)
+    {
+        if(%store < %warnLevel && %this.heat >= %warnLevel)
+            %updateWarnLevel = true;
+        else if(%store >= %hotLevel && %this.heat < %hotLevel)
+            %updateWarnLevel = true;
+        else if(%storeDt != %this.heatDt)
+            %updateWarnLevel = true;
+    }
+    
+    if(%updateWarnLevel)
+    {
+        %fadeValue = (%this.heat - %warnLevel) +
+            ((%hotLevel) * (%this.heat*2));
+        %fadeDelta = %this.heatDt * %dtTime;
+        %this.shapeFxSetFade(0, %fadeValue, %fadeDelta);
+        //error("updateWarnLevel:" SPC %fadeValue SPC %fadeDelta);
+    }
 
-    if(%this.heat > 0.5)
+    if(%this.heat >= %hotLevel)
     {
         %this.setTargetingMask($TargetingMask::Heat);
         %this.shapeFxSetActive(0, false);
@@ -513,7 +543,7 @@ function Player::updateHeat(%this)
     else
     {
         %this.setTargetingMask(0);
-        %this.shapeFxSetActive(0, %this.heat >= 0.25);
+        %this.shapeFxSetActive(0, %this.heat >= %warnLevel);
         %this.shapeFxSetActive(1, false);
     }
         
@@ -521,7 +551,7 @@ function Player::updateHeat(%this)
        	messageClient(%this.client, 'MsgHeat', "", %this.heat, %this.heatDt);
         
 
-    %this.heatThread = %this.schedule(50, "updateHeat");
+    %this.heatThread = %this.schedule(%dtTime, "updateHeat");
 }
 
 //-----------------------------------------------------------------------------
