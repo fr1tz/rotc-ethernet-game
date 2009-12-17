@@ -106,8 +106,6 @@ function JoinServerWindow::onWake()
 		"Mod" TAB
 		"Players" TAB
 		"Map Name" TAB
-		"Map Homepage" TAB
-		"Server Info" TAB
 		"Server Index" // <- This will never be visible
 	);
 	JS_HeaderList.setActive(false);
@@ -135,7 +133,7 @@ function JoinServerWindow::join(%this)
 
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%index = getField(JS_ServerList.getRowTextById(%id), 8);
+	%index = getField(JS_ServerList.getRowTextById(%id), 6);
 	if (setServerInfo(%index)) {
 		%conn = new GameConnection(ServerConnection);
 		%conn.setConnectArgs($pref::Player::Name);
@@ -154,7 +152,7 @@ function JoinServerWindow::refreshServer(%this)
 
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%serverindex = getField(JS_serverList.getRowTextById(%id), 8);
+	%serverindex = getField(JS_serverList.getRowTextById(%id), 6);
 	if(setServerInfo(%serverindex)) {
 		querySingleServer( $ServerInfo::Address, 0 );
 	}
@@ -194,10 +192,11 @@ function JoinServerWindow::update(%this)
 			$ServerInfo::ModString TAB
 			$ServerInfo::PlayerCount @ "/" @ $ServerInfo::MaxPlayers TAB
 			$ServerInfo::MissionName TAB
-			$ServerInfo::MissionHomepage TAB
-			$ServerInfo::Info TAB
 			%i);  // ServerInfo index stored also
 	}
+ 
+    JS_MapHomepage.setText("-");
+    JS_ServerInfo.setText("");
 	
 	JS_ServerList.sort(0);
 	JS_ServerList.setSelectedRow(0);
@@ -217,12 +216,17 @@ function JS_ServerList::onSelect(%this, %id, %text)
 {
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%serverindex = getField(JS_ServerList.getRowTextById(%id), 8);
+	%serverindex = getField(JS_ServerList.getRowTextById(%id), 6);
 	
 	if(setServerInfo(%serverindex))
 	{
+        %mapHomepage = $ServerInfo::MissionHomepage;
+        JS_MapHomepage.setText(
+    		"<a:" @ %mapHomepage @ ">" @ %mapHomepage @ "</a>");
+      
+        JS_ServerInfo.setText($ServerInfo::Info);
+ 
 		JS_RefreshServer.setActive(true);
-		JS_GotoMapHomepage.setActive($ServerInfo::MissionHomepage !$= "");
 		JS_JoinServer.setActive(true);
 	}
 }
