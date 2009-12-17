@@ -38,8 +38,9 @@ datablock PlayerData(RedStandardCat)
 	shapeFile = "~/data/players/standardcat/player.red.dts";
  
     //cloakTexture = "~/data/effects/explosion_white.png";
-    shapeFxTexture[0] = "~/data/textures/heat.red.png";
-    shapeFxTexture[1] = "~/data/textures/locked.png";
+    shapeFxTexture[0] = "~/data/textures/heating.png";
+    shapeFxTexture[1] = "~/data/textures/heat.red.png";
+    shapeFxTexture[2] = "~/data/textures/locked.png";
 
 	computeCRC = true;
 
@@ -236,7 +237,7 @@ datablock PlayerData(RedStandardCat)
 datablock PlayerData(BlueStandardCat : RedStandardCat)
 {
 	shapeFile = "~/data/players/standardcat/player.blue.dts";
-    shapeFxTexture[0] = "~/data/textures/heat.blue.png";
+    shapeFxTexture[1] = "~/data/textures/heat.blue.png";
 	debrisShapeName = "~/data/players/standardcat/debris.blue.dts";
 	slideParticleEmitter = BlueSlideEmitter;
 	damageBufferParticleEmitter = BlueCatDamageBufferEmitter;

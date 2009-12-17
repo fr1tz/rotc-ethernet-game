@@ -503,20 +503,23 @@ function Player::updateHeat(%this)
         %this.heat = 0;
         %this.heatDt = 0;
     }
-    
+
     if(%this.heat > 0.5)
     {
         %this.setTargetingMask($TargetingMask::Heat);
-        %this.shapeFxSetActive(0, true);
+        %this.shapeFxSetActive(0, false);
+        %this.shapeFxSetActive(1, true);
     }
     else
     {
         %this.setTargetingMask(0);
-        %this.shapeFxSetActive(0, false);
+        %this.shapeFxSetActive(0, %this.heat >= 0.25);
+        %this.shapeFxSetActive(1, false);
     }
         
     if(%this.client && %this.heatDt !$= %storeDt)
        	messageClient(%this.client, 'MsgHeat', "", %this.heat, %this.heatDt);
+        
 
     %this.heatThread = %this.schedule(50, "updateHeat");
 }
@@ -527,8 +530,8 @@ function Player::addAttackingDisc(%this, %disc)
 {
     %this.attackingDiscs += 1;
     
-    %this.shapeFxSetBalloon(1, 1.25);
-    %this.shapeFxSetActive(1, true);
+    %this.shapeFxSetBalloon(2, 1.10);
+    %this.shapeFxSetActive(2, true);
 }
 
 function Player::removeAttackingDisc(%this, %disc)
@@ -536,7 +539,7 @@ function Player::removeAttackingDisc(%this, %disc)
     %this.attackingDiscs -= 1;
     
     if(%this.attackingDiscs == 0)
-        %this.shapeFxSetActive(1, false);
+        %this.shapeFxSetActive(2, false);
 }
 
 //-----------------------------------------------------------------------------
