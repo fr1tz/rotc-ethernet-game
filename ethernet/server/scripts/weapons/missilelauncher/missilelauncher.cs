@@ -261,7 +261,6 @@ datablock ShapeBaseImageData(BlueMissileLauncherImage : RedMissileLauncherImage)
 	projectile = BlueMissileLauncherProjectile;
     missile = BlueMissileLauncherMissile;
 
-	stateFireProjectile[5] = BlueMissileLauncherProjectile;
 	stateEmitter[6] = BlueMissileLauncherFireEmitter;
 	stateEmitter[7] = BlueMissileLauncherFireEmitter;
 };
