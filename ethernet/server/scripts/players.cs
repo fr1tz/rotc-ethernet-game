@@ -480,7 +480,7 @@ function Player::updateHeat(%this)
 
     if(%this.getBodyPose() == $PlayerBodyPose::Sliding)
     {
-        %this.heatDt = 0.01;
+        %this.heatDt = 0.005;
         %this.heatCooldownTime = 1.0;
     }
     else
