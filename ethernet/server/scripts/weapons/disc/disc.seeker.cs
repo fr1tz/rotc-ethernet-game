@@ -109,7 +109,6 @@ function RedSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 
 function RedSeekerDisc::onDeflected(%this, %obj)
 {
-    error("wee");
     if(%obj.state() == $NortDisc::Attacking)
         %obj.getTarget().removeAttackingDisc(%obj);
 }
