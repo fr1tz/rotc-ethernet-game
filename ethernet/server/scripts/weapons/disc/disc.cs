@@ -230,15 +230,22 @@ function RedDiscImage::selectAction(%this, %obj, %slot)
         %obj.setImageFlag(%slot, 0, true); // attack
     
         %target = %obj.getCurrTarget();
-        %target.addAttackingDisc(%obj);
         
-        %obj.setImageFlag(%slot, 1, %target != 0);
-        %obj.seekerTarget = %target;
+        if(%target != 0 && %target.numAttackingDiscs() == 0)
+        {
+            %target.addAttackingDisc(%obj);
+            %obj.setImageFlag(%slot, 1, true);
+            %obj.seekerTarget = %target;
 
-        if(%target == 0)
-            %obj.client.play2D(DiscSeekerDeniedSound);
-        else if(%target.client)
-            %target.client.play2D(DiscIncomingSound);
+            if(%target.client)
+                %target.client.play2D(DiscIncomingSound);
+        }
+        else
+        {
+            %obj.setImageFlag(%slot, 1, false);
+            if(%obj.client)
+                %obj.client.play2D(DiscSeekerDeniedSound);
+        }
     }
 }
 

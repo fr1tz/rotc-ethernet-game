@@ -556,6 +556,11 @@ function Player::updateHeat(%this)
 
 //-----------------------------------------------------------------------------
 
+function Player::numAttackingDiscs(%this)
+{
+    return %this.attackingDiscs;
+}
+
 function Player::addAttackingDisc(%this, %disc)
 {
     %this.attackingDiscs += 1;
