@@ -579,6 +579,35 @@ function Player::removeAttackingDisc(%this, %disc)
 
 //-----------------------------------------------------------------------------
 
+function Player::inNoDiscGracePeriod(%this)
+{
+    return %this.noDiscGracePeriod;
+}
+
+function Player::startNoDiscGracePeriod(%this)
+{
+    if(%this.endDiscGracePeriodThread !$= "")
+        cancel(%this.endDiscGracePeriodThread);
+        
+    %gracePeriodTime = 2.0;
+        
+    %this.noDiscGracePeriod = true;
+    
+    %this.shapeFxSetActive(2, true);
+    %this.shapeFxSetFade(2, 1.0, -1/%gracePeriodTime);
+
+    %this.endDiscGracePeriodThread =
+        %this.schedule(%gracePeriodTime*1000, "endNoDiscGracePeriod");
+}
+
+function Player::endNoDiscGracePeriod(%this)
+{
+    %this.noDiscGracePeriod = false;
+    %this.shapeFxSetActive(2, false);
+}
+
+//-----------------------------------------------------------------------------
+
 function Player::checkReJump(%this)
 {
     %this.getDataBlock().checkReJump(%this);

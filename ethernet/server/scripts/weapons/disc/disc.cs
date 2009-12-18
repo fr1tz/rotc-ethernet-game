@@ -231,7 +231,9 @@ function RedDiscImage::selectAction(%this, %obj, %slot)
     
         %target = %obj.getCurrTarget();
         
-        if(%target != 0 && %target.numAttackingDiscs() == 0)
+        if(%target != 0
+        && %target.numAttackingDiscs() == 0
+        && !%target.inNoDiscGracePeriod())
         {
             %target.addAttackingDisc(%obj);
             %obj.setImageFlag(%slot, 1, true);
