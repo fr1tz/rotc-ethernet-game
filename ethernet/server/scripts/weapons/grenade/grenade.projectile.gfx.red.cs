@@ -97,252 +97,198 @@ datablock ExplosionData(RedGrenadeBounceEffect)
 
 datablock ParticleData(RedGrenadeExplosion_Cloud)
 {
-   dragCoeffiecient     = 0.4;
-   gravityCoefficient   = 0;
-   inheritedVelFactor   = 0.025;
+	dragCoeffiecient	  = 0.4;
+	gravityCoefficient	= 0;
+	inheritedVelFactor	= 0.025;
 
-   lifetimeMS           = 600;
-   lifetimeVarianceMS   = 0;
+	lifetimeMS			  = 3000;
+	lifetimeVarianceMS	= 0;
 
-   useInvAlpha =  false;
-   spinRandomMin = -200.0;
-   spinRandomMax =  200.0;
+	useInvAlpha =  false;
+	spinRandomMin = -200.0;
+	spinRandomMax =  200.0;
 
-   textureName = "~/data/particles/corona.png";
+	textureName = "~/data/particles/corona.png";
 
-   colors[0]     = "1.0 0.2 0.0 1.0";
-   colors[1]     = "1.0 0.2 0.0 0.0";
-   colors[2]     = "1.0 0.2 0.0 0.0";
-   sizes[0]      = 6.0;
-   sizes[1]      = 6.0;
-   sizes[2]      = 2.0;
-   times[0]      = 0.0;
-   times[1]      = 0.2;
-   times[2]      = 1.0;
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 0.0 0.0 0.0";
+	colors[2]	  = "1.0 0.0 0.0 0.0";
+	sizes[0]		= 12.0;
+	sizes[1]		= 10.0;
+	sizes[2]		= 0.0;
+	times[0]		= 0.0;
+	times[1]		= 0.2;
+	times[2]		= 1.0;
 
-   allowLighting = true;
+	allowLighting = false;
 };
 
 datablock ParticleEmitterData(RedGrenadeExplosion_CloudEmitter)
 {
-   ejectionPeriodMS = 5;
-   periodVarianceMS = 0;
+	ejectionPeriodMS = 5;
+	periodVarianceMS = 0;
 
-   ejectionVelocity = 6.25;
-   velocityVariance = 0.25;
+	ejectionVelocity = 6.25;
+	velocityVariance = 0.25;
 
-   thetaMin         = 0.0;
-   thetaMax         = 90.0;
+	thetaMin			= 0.0;
+	thetaMax			= 90.0;
 
-   lifetimeMS       = 100;
+	lifetimeMS		 = 100;
 
-   particles = "RedGrenadeExplosion_Cloud";
+	particles = "RedGrenadeExplosion_Cloud";
 };
 
 datablock ParticleData(RedGrenadeExplosion_Dust)
 {
-   dragCoefficient      = 1.0;
-   gravityCoefficient   = -0.01;
-   inheritedVelFactor   = 0.0;
-   constantAcceleration = 0.0;
-   lifetimeMS           = 1000;
-   lifetimeVarianceMS   = 100;
-   useInvAlpha          = true;
-   spinRandomMin        = -90.0;
-   spinRandomMax        = 500.0;
-   textureName          = "~/data/particles/smoke_particle.png";
-   colors[0]     = "0.9 0.9 0.9 0.5";
-   colors[1]     = "0.9 0.9 0.9 0.5";
-   colors[2]     = "0.9 0.9 0.9 0.0";
-   sizes[0]      = 3.2;
-   sizes[1]      = 4.6;
-   sizes[2]      = 5.0;
-   times[0]      = 0.0;
-   times[1]      = 0.7;
-   times[2]      = 1.0;
-   allowLighting = true;
+	dragCoefficient		= 1.0;
+	gravityCoefficient	= -0.01;
+	inheritedVelFactor	= 0.0;
+	constantAcceleration = 0.0;
+	lifetimeMS			  = 1000;
+	lifetimeVarianceMS	= 100;
+	useInvAlpha			 = true;
+	spinRandomMin		  = -90.0;
+	spinRandomMax		  = 500.0;
+	textureName			 = "~/data/particles/smoke_particle.png";
+	colors[0]	  = "0.9 0.9 0.9 0.5";
+	colors[1]	  = "0.9 0.9 0.9 0.5";
+	colors[2]	  = "0.9 0.9 0.9 0.0";
+	sizes[0]		= 3.2;
+	sizes[1]		= 4.6;
+	sizes[2]		= 5.0;
+	times[0]		= 0.0;
+	times[1]		= 0.7;
+	times[2]		= 1.0;
+	allowLighting = true;
 };
 
 datablock ParticleEmitterData(RedGrenadeExplosion_DustEmitter)
 {
-   ejectionPeriodMS = 5;
-   periodVarianceMS = 0;
-   ejectionVelocity = 15.0;
-   velocityVariance = 0.0;
-   ejectionOffset   = 0.0;
-   thetaMin         = 90;
-   thetaMax         = 90;
-   phiReferenceVel  = 0;
-   phiVariance      = 360;
-   overrideAdvances = false;
-   lifetimeMS       = 250;
-   particles = "RedGrenadeExplosion_Dust";
+	ejectionPeriodMS = 5;
+	periodVarianceMS = 0;
+	ejectionVelocity = 15.0;
+	velocityVariance = 0.0;
+	ejectionOffset	= 0.0;
+	thetaMin			= 90;
+	thetaMax			= 90;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	overrideAdvances = false;
+	lifetimeMS		 = 250;
+	particles = "RedGrenadeExplosion_Dust";
 };
 
 
 datablock ParticleData(RedGrenadeExplosion_Smoke)
 {
-   dragCoeffiecient     = 0.4;
-   gravityCoefficient   = -0.5;   // rises slowly
-   inheritedVelFactor   = 0.025;
+	dragCoeffiecient	  = 0.4;
+	gravityCoefficient	= -0.5;	// rises slowly
+	inheritedVelFactor	= 0.025;
 
-   lifetimeMS           = 1250;
-   lifetimeVarianceMS   = 0;
+	lifetimeMS			  = 1250;
+	lifetimeVarianceMS	= 0;
 
-   useInvAlpha =  true;
-   spinRandomMin = -200.0;
-   spinRandomMax =  200.0;
+	useInvAlpha =  true;
+	spinRandomMin = -200.0;
+	spinRandomMax =  200.0;
 
-   textureName = "~/data/particles/smoke_particle.png";
+	textureName = "~/data/particles/smoke_particle.png";
 
-   colors[0]     = "0.9 0.9 0.9 0.4";
-   colors[1]     = "0.9 0.9 0.9 0.2";
-   colors[2]     = "0.9 0.9 0.9 0.0";
-   sizes[0]      = 2.0;
-   sizes[1]      = 6.0;
-   sizes[2]      = 2.0;
-   times[0]      = 0.0;
-   times[1]      = 0.5;
-   times[2]      = 1.0;
+	colors[0]	  = "0.9 0.9 0.9 0.4";
+	colors[1]	  = "0.9 0.9 0.9 0.2";
+	colors[2]	  = "0.9 0.9 0.9 0.0";
+	sizes[0]		= 2.0;
+	sizes[1]		= 6.0;
+	sizes[2]		= 2.0;
+	times[0]		= 0.0;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
 
-   allowLighting = true;
+	allowLighting = true;
 };
 
 datablock ParticleEmitterData(RedGrenadeExplosion_SmokeEmitter)
 {
-   ejectionPeriodMS = 5;
-   periodVarianceMS = 0;
+	ejectionPeriodMS = 5;
+	periodVarianceMS = 0;
 
-   ejectionVelocity = 6.25;
-   velocityVariance = 0.25;
+	ejectionVelocity = 6.25;
+	velocityVariance = 0.25;
 
-   thetaMin         = 0.0;
-   thetaMax         = 180.0;
+	thetaMin			= 0.0;
+	thetaMax			= 180.0;
 
-   lifetimeMS       = 250;
+	lifetimeMS		 = 250;
 
-   particles = "RedGrenadeExplosion_Smoke";
+	particles = "RedGrenadeExplosion_Smoke";
 };
 
-datablock ParticleData(RedGrenadeExplosion_Shards)
+datablock ParticleData(RedGrenadeExplosion_Sparks)
 {
-   dragCoefficient      = 1;
-   gravityCoefficient   = 0.0;
-   inheritedVelFactor   = 0.0;
-   constantAcceleration = 0.0;
-   lifetimeMS           = 250;
-   lifetimeVarianceMS   = 50;
-   textureName          = "~/data/weapons/disc/shard.red";
-   colors[0]     = "1.0 1.0 1.0 1.0";
-   colors[1]     = "1.0 1.0 1.0 1.0";
-   colors[2]     = "1.0 1.0 1.0 0.0";
-   sizes[0]      = 0.5;
-   sizes[1]      = 0.5;
-   sizes[2]      = 0.5;
-   times[0]      = 0.0;
-   times[1]      = 0.5;
-   times[2]      = 1.0;
-   allowLighting = false;
+	dragCoefficient		= 1;
+	gravityCoefficient	= 0.0;
+	inheritedVelFactor	= 0.2;
+	constantAcceleration = 0.0;
+	lifetimeMS			  = 500;
+	lifetimeVarianceMS	= 350;
+	textureName			 = "~/data/particles/particle1.png";
+	colors[0]	  = "0.56 0.36 0.26 1.0";
+	colors[1]	  = "0.56 0.36 0.26 1.0";
+	colors[2]	  = "1.0 0.36 0.26 0.0";
+	sizes[0]		= 0.5;
+	sizes[1]		= 0.5;
+	sizes[2]		= 0.75;
+	times[0]		= 0.0;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+	allowLighting = false;
 };
 
-datablock ParticleEmitterData(RedGrenadeExplosion_ShardsEmitter)
+datablock ParticleEmitterData(RedGrenadeExplosion_SparksEmitter)
 {
-   ejectionPeriodMS = 2;
-   periodVarianceMS = 0;
-   ejectionVelocity = 50;
-   velocityVariance = 5;
-   ejectionOffset   = 0.0;
-   thetaMin         = 0;
-   thetaMax         = 89;
-   phiReferenceVel  = 0;
-   phiVariance      = 360;
-   overrideAdvances = false;
-   orientParticles  = true;
-   lifetimeMS       = 100;
-   particles = "RedGrenadeExplosion_Shards";
-};
-
-datablock MultiNodeLaserBeamData(RedGrenadeExplosion_Debris_LaserTrail)
-{
-   hasLine = true;
-   lineColor   = "1.00 1.00 0.00 0.5";
-
-   hasInner = false;
-   innerColor = "1.00 1.00 0.00 0.3";
-   innerWidth = "0.20";
-
-   hasOuter = false;
-   outerColor = "1.00 1.00 0.00 0.3";
-   outerWidth = "0.40";
-
-   //bitmap = "~/data/weapons/hegrenade/lasertrail";
-   //bitmapWidth = 0.25;
-
-   blendMode = 1;
-   renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
-   fadeTime = 1000;
-};
-
-datablock DebrisData(RedGrenadeExplosion_Debris)
-{
-//   shapeFile = "~/data/weapons/hegrenade/grenade.dts";
-//   emitters[0] = GrenadeLauncherParticleEmitter;
-
-   laserTrail = RedGrenadeExplosion_Debris_LaserTrail;
-
-   // bounce...
-   numBounces = 3;
-   explodeOnMaxBounce = true;
-
-   // physics...
-   gravModifier = 5.0;
-   elasticity = 0.6;
-   friction = 0.1;
-
-   lifetime = 5.0;
-   lifetimeVariance = 0.02;
+	ejectionPeriodMS = 2;
+	periodVarianceMS = 0;
+	ejectionVelocity = 12;
+	velocityVariance = 6.75;
+	ejectionOffset	= 0.0;
+	thetaMin			= 0;
+	thetaMax			= 60;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	overrideAdvances = false;
+	orientParticles  = true;
+	lifetimeMS		 = 100;
+	particles = "RedGrenadeExplosion_Sparks";
 };
 
 datablock ExplosionData(RedGrenadeExplosion)
 {
-    soundProfile   = GrenadeExplodeSound;
+	soundProfile = GrenadeExplodeSound;
 
-    lifetimeMS = 250;
-    
-	// Shape
-	explosionShape = "~/data/weapons/disc/explosion.red.dts";
-	faceViewer     = false;
-	playSpeed      = 4.0;
-	sizes[0]       = "0.1 0.1 0.1";
-	sizes[1]       = "0.1 0.1 0.1";
-	times[0]       = 0.0;
-	times[1]       = 1.0;
+	faceViewer	  = true;
+	explosionScale = "0.8 0.8 0.8";
 
-    //debris = RedGrenadeExplosion_Debris;
-    //debrisThetaMin = 0;
-    //debrisThetaMax = 180;
-    //debrisNum = 5;
-    //debrisVelocity = 50.0;
-    //debrisVelocityVariance = 10.0;
-   
-    particleEmitter = RedGrenadeExplosion_CloudEmitter;
-    particleDensity = 100;
-    particleRadius = 2.5;
+	lifetimeMS = 200;
 
-    //emitter[0] = RedGrenadeExplosion_DustEmitter;
-    //emitter[1] = RedGrenadeExplosion_SmokeEmitter;
-    emitter[2] = RedGrenadeExplosion_ShardsEmitter;
-   
+	particleEmitter = RedGrenadeExplosion_CloudEmitter;
+	particleDensity = 200;
+	particleRadius = 10;
+
+	//emitter[0] = RedGrenadeExplosion_DustEmitter;
+	//emitter[1] = RedGrenadeExplosion_SmokeEmitter;
+	//emitter[2] = RedGrenadeExplosion_SparksEmitter;
+
+	// Camera shake
+	shakeCamera = false;
+	camShakeFreq = "10.0 6.0 9.0";
+	camShakeAmp = "20.0 20.0 20.0";
+	camShakeDuration = 0.5;
+	camShakeRadius = 20.0;
+
 	// Dynamic light
 	lightStartRadius = 15;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.5 0.0";
+	lightStartColor = "1.0 0.0 0.0";
 	lightEndColor = "0.0 0.0 0.0";
-
-    // Camera shake
-    shakeCamera = true;
-    camShakeFreq = "10.0 6.0 9.0";
-    camShakeAmp = "20.0 20.0 20.0";
-    camShakeDuration = 0.5;
-    camShakeRadius = 20.0;
 };
