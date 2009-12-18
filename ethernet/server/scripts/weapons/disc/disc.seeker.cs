@@ -90,10 +90,6 @@ function RedSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 	if( !(%col.getType() & $TypeMasks::ShapeBaseObjectType) )
 		return;
 
-    %src =  %obj.getSourceObject();
-    if(%src)
-        %src.setDiscTarget(%col);
-	
 	if(%col.getType() & $TypeMasks::PlayerObjectType)
 	{
 		// collision with player:
