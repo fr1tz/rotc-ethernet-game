@@ -536,13 +536,13 @@ function Player::updateHeat(%this)
 
     if(%this.heat >= %hotLevel)
     {
-        %this.setTargetingMask($TargetingMask::Heat);
+        %this.setTargetingMask(%this.getTargetingMask() | $TargetingMask::Heat);
         %this.shapeFxSetActive(0, false);
         %this.shapeFxSetActive(1, true);
     }
     else
     {
-        %this.setTargetingMask(0);
+        %this.setTargetingMask(%this.getTargetingMask() & ~$TargetingMask::Heat);
         %this.shapeFxSetActive(0, %this.heat >= %warnLevel);
         %this.shapeFxSetActive(1, false);
     }
