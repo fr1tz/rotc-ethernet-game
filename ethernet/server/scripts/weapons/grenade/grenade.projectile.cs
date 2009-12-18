@@ -13,7 +13,7 @@ datablock ProjectileData(RedGrenade)
  	impactImpulse      = 0;
 	splashDamage       = 150;
 	splashDamageRadius = 15;
-	splashImpulse      = 2500;
+	splashImpulse      = 0;
 
 	energyDrain = 0; // how much energy does firing this projectile drain?
 
