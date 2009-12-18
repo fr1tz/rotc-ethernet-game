@@ -19,8 +19,8 @@ function EtherformData::useWeapon(%this, %obj, %nr)
 		%client.mainWeapon = $MainWeapon::AssaultRifle;
 	else if(%nr == 2)
 		%client.mainWeapon = $MainWeapon::SniperRifle;
-	else if(%nr == 3)
-		%client.mainWeapon = $MainWeapon::MissileLauncher;
+	//else if(%nr == 3)
+	//	%client.mainWeapon = $MainWeapon::MissileLauncher;
 		
 	messageClient(%client, 'MsgWeaponUsed', "", %client.mainWeapon);
 }
