@@ -37,9 +37,9 @@ datablock ShotgunProjectileData(RedSniperProjectile)
 
     //projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
 
-	explosion               = RedSniperProjectileImpact;
-	hitEnemyExplosion       = RedSniperProjectileHit;
-    hitTeammateExplosion    = RedSniperProjectileHit;
+	explosion               = RedSniperProjectileExplosion;
+	hitEnemyExplosion       = RedSniperProjectileExplosion;
+    hitTeammateExplosion    = RedSniperProjectileExplosion;
     //nearEnemyExplosion	= DefaultProjectileNearEnemyExplosion;
     //hitDeflectorExplosion = SeekerDiscBounceEffect;
 
@@ -47,11 +47,11 @@ datablock ShotgunProjectileData(RedSniperProjectile)
 
 	missEnemyEffect		 = RedSniperProjectileMissedEnemyEffect;
 
-    //laserTail				 = RedSniperProjectileLaserTail;
-    //laserTailLen			 = 10.0;
+    //laserTail	 = RedSniperProjectileLaserTail;
+    //laserTailLen = 10.0;
 
-    laserTrail[0]			= RedSniperProjectileLaserTrail;
-    //laserTrail[1]		 = Team1StingerProjectileLaserTrail2;
+    laserTrail[0] = RedSniperProjectileLaserTrail;
+    //laserTrail[1] = RedSniperProjectileVerticalLaserTrail;
 
     //particleEmitter	  = RedSniperProjectileParticleEmitter;
 
@@ -62,7 +62,7 @@ datablock ShotgunProjectileData(RedSniperProjectile)
 	gravityMod			 = 10.0;
 
 	armingDelay			= 1000*0;
-	lifetime				= 3000;
+	lifetime				= 5000;
 	fadeDelay			  = 5000;
 
 	decals[0] = BulletHoleDecalOne;
@@ -92,9 +92,9 @@ datablock ShotgunProjectileData(BlueSniperProjectile : RedSniperProjectile)
 {
     //projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
 
-	explosion            = BlueSniperProjectileImpact;
-	hitEnemyExplosion    = BlueSniperProjectileHit;
-    hitTeammateExplosion = BlueSniperProjectileHit;
+	explosion            = BlueSniperProjectileExplosion;
+	hitEnemyExplosion    = BlueSniperProjectileExplosion;
+    hitTeammateExplosion = BlueSniperProjectileExplosion;
 
 	missEnemyEffect    = BlueSniperProjectileMissedEnemyEffect;
 

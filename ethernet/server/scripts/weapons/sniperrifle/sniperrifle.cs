@@ -37,14 +37,14 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "~/data/weapons/sniperrifle/image.red.dts";
+	shapeFile = "~/data/weapons/missilelauncher/image.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
 	mountPoint  = 0;
 	offset      = "0 0 0";
 	rotation    = "0 0 0";
-	eyeOffset   = "0.25 -0.2 -0.2";
+    eyeOffset   = "0.5 -0.2 -0.2";
 	eyeRotation = "0 0 0 0";
 
 	// Adjust firing vector to eye's LOS point?
@@ -55,10 +55,15 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 	minEnergy = 45;
 	
     // charging...
-    minCharge = 0.75;
+    minCharge = 0.4;
     
 	projectile = RedSniperProjectile;
     missile = RedSniperMissile;
+    
+	// targeting...
+    targetingMask = $TargetingMask::Heat;
+	targetingMaxDist = 10000;
+    followTarget = true;
 	
 	// script fields...
 	iconId = 9;
@@ -86,24 +91,27 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 		stateTransitionOnNotLoaded[2]    = "Disabled";
 		stateTransitionOnTriggerDown[2]  = "Charge";
 		stateArmThread[2]                = "holdrifle";
+		stateSequence[2]                 = "idle";
 		stateScript[2]                   = "onReady";
   
 		// charge...
 		stateName[3]                     = "Charge";
-		stateTransitionOnTriggerUp[3]    = "Ready";
+		stateTransitionOnTriggerUp[3]    = "CheckFire";
 		stateTransitionOnNoAmmo[3]       = "NoAmmo";
-		stateTransitionOnCharged[3]      = "Charged";
+		stateTarget[3]                   = true;
 		stateCharge[3]                   = true;
 		stateAllowImageChange[3]         = false;
 		stateArmThread[3]                = "aimrifle";
-		stateSound[3]                    = SniperPowerUpSound;
+		stateSound[3]                    = MissileLauncherChargeSound;
+		stateSequence[3]                 = "charge";
 		stateScript[3]                   = "onCharge";
   
-		// charged...
-		stateName[4]                     = "Charged";
-		stateTransitionOnTriggerUp[4]    = "Fire";
-		stateTransitionOnNoAmmo[4]       = "NoAmmo";
-		//stateSound[4]                    = SniperRifleTargetAquiredSound;
+		// check fire...
+		stateName[4]                     = "CheckFire";
+		stateTransitionOnCharged[4]      = "Fire";
+		stateTransitionOnNotCharged[4]   = "Ready";
+		stateFire[4]                     = true;
+		stateTarget[4]                   = true;
 
 		// fire!...
 		stateName[5]                     = "Fire";
@@ -123,7 +131,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
         stateTransitionOnTimeout[6]      = "Emitter2";
         stateTimeoutValue[6]             = 0.00;
         stateAllowImageChange[6]         = false;
-        stateEmitter[6]                  = RedSniperRifleFireEmitter;
+        stateEmitter[6]                  = RedMissileLauncherFireEmitter;
         stateEmitterNode[6]              = "emitter1";
         stateEmitterTime[6]              = 0.05;
 
@@ -131,7 +139,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
         stateTransitionOnTimeout[7]      = "AfterFire";
         stateTimeoutValue[7]             = 0.00;
         stateAllowImageChange[7]         = false;
-        stateEmitter[7]                  = RedSniperRifleFireEmitter;
+        stateEmitter[7]                  = RedMissileLauncherFireEmitter;
         stateEmitterNode[7]              = "emitter2";
         stateEmitterTime[7]              = 0.05;
 
@@ -208,14 +216,14 @@ function RedSniperRifleImage::onNoAmmo(%this, %obj, %slot)
 
 datablock ShapeBaseImageData(BlueSniperRifleImage : RedSniperRifleImage)
 {
-	shapeFile = "~/data/weapons/sniperrifle/image.blue.dts";
+	shapeFile = "~/data/weapons/missilelauncher/image.blue.dts";
 
 	projectile = BlueSniperProjectile;
     missile = BlueSniperMissile;
 
 	stateFireProjectile[5] = BlueSniperProjectile;
-	stateEmitter[6] = BlueSniperRifleFireEmitter;
-	stateEmitter[7] = BlueSniperRifleFireEmitter;
+	stateEmitter[6] = BlueMissileLauncherFireEmitter;
+	stateEmitter[7] = BlueMissileLauncherFireEmitter;
 };
 
 function BlueSniperRifleImage::onMount(%this, %obj, %slot)

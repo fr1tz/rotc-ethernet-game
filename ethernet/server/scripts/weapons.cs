@@ -33,8 +33,8 @@ function executeWeaponScripts()
 	exec("./weapons/grenade/grenade.cs");
 	exec("./weapons/blaster/blaster.cs");
 	exec("./weapons/assaultrifle/assaultrifle.cs");
-	exec("./weapons/sniperrifle/sniperrifle.cs");
 	exec("./weapons/missilelauncher/missilelauncher.cs");
+	exec("./weapons/sniperrifle/sniperrifle.cs");
 }
 
 executeWeaponScripts();
