@@ -151,7 +151,7 @@ datablock ShapeBaseImageData(RedBlasterImage)
 		// fire!...
 		stateName[3]                     = "Fire";
 		stateTransitionOnTimeout[3]      = "AfterFire";
-		stateTimeoutValue[3]             = 0.00;
+		stateTimeoutValue[3]             = 0.10;
 		stateFire[3]                     = true;
 		stateFireProjectile[3]           = RedBlasterProjectile;
 		stateRecoil[3]                   = MediumRecoil;
