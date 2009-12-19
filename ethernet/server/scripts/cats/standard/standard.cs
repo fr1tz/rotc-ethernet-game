@@ -41,6 +41,7 @@ datablock PlayerData(RedStandardCat)
     shapeFxTexture[0] = "~/data/textures/heating.png";
     shapeFxTexture[1] = "~/data/textures/heat.red.png";
     shapeFxTexture[2] = "~/data/textures/locked.png";
+    shapeFxTexture[3] = "~/data/textures/energy.png";
 
 	computeCRC = true;
 

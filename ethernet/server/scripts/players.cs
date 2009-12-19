@@ -61,7 +61,7 @@ $PlayerDeathAnim::ExplosionBlowBack = 11;
 $PlayerShapeFxSlot::Heating = 0;
 $PlayerShapeFxSlot::Hot     = 1;
 $PlayerShapeFxSlot::NoDisc  = 2;
-//$PlayerShapeFxSlot::Energy     = 3;
+$PlayerShapeFxSlot::Energy  = 3;
 
 //-----------------------------------------------------------------------------
 
@@ -260,7 +260,15 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
 	}
 
 	%damageDealt = Parent::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType);
-	
+ 
+    // eyecandy: energy level shape fx...
+    %energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
+    %fadeValue = %energyScale;
+    %fadeDelta = -1.5;
+    %obj.shapeFxSetBalloon($PlayerShapeFxSlot::Energy, 1.05);
+    %obj.shapeFxSetFade($PlayerShapeFxSlot::Energy, %fadeValue, %fadeDelta);
+    %obj.shapeFxSetActive($PlayerShapeFxSlot::Energy, true, false);
+
 	//echo("damageDealt:" SPC %damageDealt);
 
 	// Has the player died?
@@ -546,14 +554,17 @@ function Player::updateHeat(%this)
     if(%this.heat >= %hotLevel)
     {
         %this.setTargetingMask(%this.getTargetingMask() | $TargetingMask::Heat);
-        %this.shapeFxSetActive($PlayerShapeFxSlot::Heating, false);
-        %this.shapeFxSetActive($PlayerShapeFxSlot::Hot, true);
+        %this.shapeFxSetActive($PlayerShapeFxSlot::Heating, false, false);
+        %this.shapeFxSetActive($PlayerShapeFxSlot::Hot, true, true);
     }
     else
     {
         %this.setTargetingMask(%this.getTargetingMask() & ~$TargetingMask::Heat);
-        %this.shapeFxSetActive($PlayerShapeFxSlot::Heating, %this.heat >= %warnLevel);
-        %this.shapeFxSetActive($PlayerShapeFxSlot::Hot, false);
+        if(%this.heat >= %warnLevel)
+            %this.shapeFxSetActive($PlayerShapeFxSlot::Heating, true, true);
+        else
+            %this.shapeFxSetActive($PlayerShapeFxSlot::Heating, false, false);
+        %this.shapeFxSetActive($PlayerShapeFxSlot::Hot, false, false);
     }
         
     if(%this.client && %this.heatDt !$= %storeDt)
@@ -575,7 +586,7 @@ function Player::addAttackingDisc(%this, %disc)
     %this.attackingDiscs += 1;
     
     %this.shapeFxSetBalloon($PlayerShapeFxSlot::NoDisc, 1.10);
-    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true);
+    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true, true);
 }
 
 function Player::removeAttackingDisc(%this, %disc)
@@ -583,7 +594,7 @@ function Player::removeAttackingDisc(%this, %disc)
     %this.attackingDiscs -= 1;
     
     if(%this.attackingDiscs == 0)
-        %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, false);
+        %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, false, false);
 }
 
 //-----------------------------------------------------------------------------
@@ -602,7 +613,7 @@ function Player::startNoDiscGracePeriod(%this)
         
     %this.noDiscGracePeriod = true;
     
-    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true);
+    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true, true);
     %this.shapeFxSetFade($PlayerShapeFxSlot::NoDisc, 1.0, -1/%gracePeriodTime);
 
     %this.endDiscGracePeriodThread =
@@ -612,7 +623,7 @@ function Player::startNoDiscGracePeriod(%this)
 function Player::endNoDiscGracePeriod(%this)
 {
     %this.noDiscGracePeriod = false;
-    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, false);
+    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, false, false);
 }
 
 //-----------------------------------------------------------------------------
