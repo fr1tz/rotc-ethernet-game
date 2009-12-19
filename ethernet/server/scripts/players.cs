@@ -58,10 +58,9 @@ $PlayerDeathAnim::ExplosionBlowBack = 11;
 // player shape fx slots...
 //
 
-$PlayerShapeFxSlot::Heating = 0;
-$PlayerShapeFxSlot::Hot     = 1;
-$PlayerShapeFxSlot::NoDisc  = 2;
-$PlayerShapeFxSlot::Energy  = 3;
+$PlayerShapeFxSlot::Energy = 0;
+$PlayerShapeFxSlot::Heat   = 1;
+$PlayerShapeFxSlot::NoDisc = 2;
 
 //-----------------------------------------------------------------------------
 
@@ -265,6 +264,7 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
     %energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
     %fadeValue = %energyScale;
     %fadeDelta = -1.5;
+    %obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 3);
     %obj.shapeFxSetBalloon($PlayerShapeFxSlot::Energy, 1.05);
     %obj.shapeFxSetFade($PlayerShapeFxSlot::Energy, %fadeValue, %fadeDelta);
     %obj.shapeFxSetActive($PlayerShapeFxSlot::Energy, true, false);
@@ -531,45 +531,44 @@ function Player::updateHeat(%this)
         %this.heatDt = 0;
     }
     
-    %updateWarnLevel = false;
-    if(%this.heat >= %warnLevel && %this.heat < %hotLevel)
-    {
-        if(%store < %warnLevel && %this.heat >= %warnLevel)
-            %updateWarnLevel = true;
-        else if(%store >= %hotLevel && %this.heat < %hotLevel)
-            %updateWarnLevel = true;
-        else if(%storeDt != %this.heatDt)
-            %updateWarnLevel = true;
-    }
-    
-    if(%updateWarnLevel)
-    {
-        %fadeValue = (%this.heat - %warnLevel) +
-            ((%hotLevel) * (%this.heat*2));
-        %fadeDelta = %this.heatDt * %dtTime;
-        %this.shapeFxSetFade($PlayerShapeFxSlot::Heating, %fadeValue, %fadeDelta);
-        //error("updateWarnLevel:" SPC %fadeValue SPC %fadeDelta);
-    }
-
     if(%this.heat >= %hotLevel)
     {
         %this.setTargetingMask(%this.getTargetingMask() | $TargetingMask::Heat);
-        %this.shapeFxSetActive($PlayerShapeFxSlot::Heating, false, false);
-        %this.shapeFxSetActive($PlayerShapeFxSlot::Hot, true, true);
+        
+        %this.shapeFxSetTexture($PlayerShapeFxSlot::Heat, 1);
+        %this.shapeFxSetFade($PlayerShapeFxSlot::Heat, 1, 0);
+        %this.shapeFxSetActive($PlayerShapeFxSlot::Heat, true, true);
     }
     else
     {
         %this.setTargetingMask(%this.getTargetingMask() & ~$TargetingMask::Heat);
-        if(%this.heat >= %warnLevel)
-            %this.shapeFxSetActive($PlayerShapeFxSlot::Heating, true, true);
-        else
-            %this.shapeFxSetActive($PlayerShapeFxSlot::Heating, false, false);
-        %this.shapeFxSetActive($PlayerShapeFxSlot::Hot, false, false);
+        
+        %updateWarnLevel = false;
+        if(%this.heat >= %warnLevel && %this.heat < %hotLevel)
+        {
+            if(%store < %warnLevel && %this.heat >= %warnLevel)
+                %updateWarnLevel = true;
+            else if(%store >= %hotLevel && %this.heat < %hotLevel)
+                %updateWarnLevel = true;
+            else if(%storeDt != %this.heatDt)
+                %updateWarnLevel = true;
+        }
+    
+        if(%updateWarnLevel)
+        {
+            %fadeValue = (%this.heat - %warnLevel) +
+                ((%hotLevel) * (%this.heat*2));
+            %fadeDelta = %this.heatDt * %dtTime;
+            //error("updateWarnLevel:" SPC %fadeValue SPC %fadeDelta);
+
+            %this.shapeFxSetTexture($PlayerShapeFxSlot::Heat, 0);
+            %this.shapeFxSetFade($PlayerShapeFxSlot::Heat, %fadeValue, %fadeDelta);
+            %this.shapeFxSetActive($PlayerShapeFxSlot::Heat, true, true);
+        }
     }
         
     if(%this.client && %this.heatDt !$= %storeDt)
        	messageClient(%this.client, 'MsgHeat', "", %this.heat, %this.heatDt);
-        
 
     %this.heatThread = %this.schedule(%dtTime, "updateHeat");
 }
@@ -584,7 +583,8 @@ function Player::numAttackingDiscs(%this)
 function Player::addAttackingDisc(%this, %disc)
 {
     %this.attackingDiscs += 1;
-    
+
+    %this.shapeFxSetTexture($PlayerShapeFxSlot::NoDisc, 2);
     %this.shapeFxSetBalloon($PlayerShapeFxSlot::NoDisc, 1.10);
     %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true, true);
 }
@@ -613,8 +613,9 @@ function Player::startNoDiscGracePeriod(%this)
         
     %this.noDiscGracePeriod = true;
     
-    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true, true);
+    %this.shapeFxSetTexture($PlayerShapeFxSlot::NoDisc, 2);
     %this.shapeFxSetFade($PlayerShapeFxSlot::NoDisc, 1.0, -1/%gracePeriodTime);
+    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true, true);
 
     %this.endDiscGracePeriodThread =
         %this.schedule(%gracePeriodTime*1000, "endNoDiscGracePeriod");
