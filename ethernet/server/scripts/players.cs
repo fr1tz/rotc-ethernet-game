@@ -54,6 +54,15 @@ $PlayerDeathAnim::HeadFrontDirect = 9;
 $PlayerDeathAnim::HeadBackFallForward = 10;
 $PlayerDeathAnim::ExplosionBlowBack = 11;
 
+//
+// player shape fx slots...
+//
+
+$PlayerShapeFxSlot::Heating = 0;
+$PlayerShapeFxSlot::Hot     = 1;
+$PlayerShapeFxSlot::NoDisc  = 2;
+//$PlayerShapeFxSlot::Energy     = 3;
+
 //-----------------------------------------------------------------------------
 
 // The mission editor invokes this method when it wants to create
@@ -530,21 +539,21 @@ function Player::updateHeat(%this)
         %fadeValue = (%this.heat - %warnLevel) +
             ((%hotLevel) * (%this.heat*2));
         %fadeDelta = %this.heatDt * %dtTime;
-        %this.shapeFxSetFade(0, %fadeValue, %fadeDelta);
+        %this.shapeFxSetFade($PlayerShapeFxSlot::Heating, %fadeValue, %fadeDelta);
         //error("updateWarnLevel:" SPC %fadeValue SPC %fadeDelta);
     }
 
     if(%this.heat >= %hotLevel)
     {
         %this.setTargetingMask(%this.getTargetingMask() | $TargetingMask::Heat);
-        %this.shapeFxSetActive(0, false);
-        %this.shapeFxSetActive(1, true);
+        %this.shapeFxSetActive($PlayerShapeFxSlot::Heating, false);
+        %this.shapeFxSetActive($PlayerShapeFxSlot::Hot, true);
     }
     else
     {
         %this.setTargetingMask(%this.getTargetingMask() & ~$TargetingMask::Heat);
-        %this.shapeFxSetActive(0, %this.heat >= %warnLevel);
-        %this.shapeFxSetActive(1, false);
+        %this.shapeFxSetActive($PlayerShapeFxSlot::Heating, %this.heat >= %warnLevel);
+        %this.shapeFxSetActive($PlayerShapeFxSlot::Hot, false);
     }
         
     if(%this.client && %this.heatDt !$= %storeDt)
@@ -565,8 +574,8 @@ function Player::addAttackingDisc(%this, %disc)
 {
     %this.attackingDiscs += 1;
     
-    %this.shapeFxSetBalloon(2, 1.10);
-    %this.shapeFxSetActive(2, true);
+    %this.shapeFxSetBalloon($PlayerShapeFxSlot::NoDisc, 1.10);
+    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true);
 }
 
 function Player::removeAttackingDisc(%this, %disc)
@@ -574,7 +583,7 @@ function Player::removeAttackingDisc(%this, %disc)
     %this.attackingDiscs -= 1;
     
     if(%this.attackingDiscs == 0)
-        %this.shapeFxSetActive(2, false);
+        %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, false);
 }
 
 //-----------------------------------------------------------------------------
@@ -593,8 +602,8 @@ function Player::startNoDiscGracePeriod(%this)
         
     %this.noDiscGracePeriod = true;
     
-    %this.shapeFxSetActive(2, true);
-    %this.shapeFxSetFade(2, 1.0, -1/%gracePeriodTime);
+    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true);
+    %this.shapeFxSetFade($PlayerShapeFxSlot::NoDisc, 1.0, -1/%gracePeriodTime);
 
     %this.endDiscGracePeriodThread =
         %this.schedule(%gracePeriodTime*1000, "endNoDiscGracePeriod");
@@ -603,7 +612,7 @@ function Player::startNoDiscGracePeriod(%this)
 function Player::endNoDiscGracePeriod(%this)
 {
     %this.noDiscGracePeriod = false;
-    %this.shapeFxSetActive(2, false);
+    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, false);
 }
 
 //-----------------------------------------------------------------------------
