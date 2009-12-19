@@ -18,13 +18,13 @@ exec("./blaster.projectile.gfx.blue.cs");
 datablock ShotgunProjectileData(RedBlasterProjectile)
 {
 	// script damage properties...
-	impactDamage       = 15;
+	impactDamage       = 10;
 	impactImpulse      = 150;
 	splashDamage       = 0;
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
 
-	energyDrain = 3; // how much energy does firing this projectile drain?
+	energyDrain = 2; // how much energy does firing this projectile drain?
 
     numBullets = 9; // number of shotgun bullets
 
