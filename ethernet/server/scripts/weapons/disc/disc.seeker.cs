@@ -93,13 +93,10 @@ function RedSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 	if(%col.getType() & $TypeMasks::PlayerObjectType)
 	{
 		// collision with player:
-		// transfer max. 20 points of energy from the victim to the attacker...
+		// give 20 points of energy to the attacker...
 		%source = %obj.sourceObject;
-		%victimEnergy = %col.getEnergyLevel();
-		%energySuck = %victimEnergy >= 20 ? 20 : %victimEnergy;
-		%col.setEnergyLevel(%victimEnergy - %energySuck);
 		if(%source.getDamageState() $= "Enabled")
-			%source.setEnergyLevel(%source.getEnergyLevel() + %energySuck);
+			%source.setEnergyLevel(%source.getEnergyLevel() + 20);
 	}
 }
 
