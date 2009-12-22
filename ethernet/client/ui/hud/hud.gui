@@ -414,8 +414,9 @@ new GameTSCtrl(HUD) {
       pulseThreshold = "0.3";
       showFrame = "0";
       displayEnergy = "0";
-      displayDamageBuffer = "0";
+      displayDamageBuffer = "1";
       bitmap = "./pixmaps/health_meter.png";
+      bufferBitmap = "./pixmaps/health_meter_buffer.png";
    };
    new GuiHealthBarHud(EnergyMeter) {
       canSaveDynamicFields = "0";
