@@ -85,28 +85,34 @@ function RedSeekerDisc::onRemove(%this,%obj)
 
 function RedSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 {
-	Parent::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
- 
-	if( !(%col.getType() & $TypeMasks::ShapeBaseObjectType) )
+	if( !(%col.getType() & $TypeMasks::PlayerObjectType) )
 		return;
+  
+    if( %col.hasDiscShield() )
+    {
+        //%vec = VectorScale(%normal, %obj.getVelocity());
+        //%obj.setDeflected(%vec);
+        %obj.explode();
+    }
+    else
+    {
+    	Parent::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
+    
+        %src =  %obj.getSourceObject();
+        if(%src)
+            %src.setDiscTarget(%col);
 
-	if(%col.getType() & $TypeMasks::PlayerObjectType)
-	{
-		// collision with player:
-		// give 20 points of energy to the attacker...
-		%source = %obj.sourceObject;
-		if(%source.getDamageState() $= "Enabled")
-			%source.setEnergyLevel(%source.getEnergyLevel() + 20);
-	}
+   		// give 20 points of energy to the attacker...
+    	%source = %obj.sourceObject;
+   		if(%source.getDamageState() $= "Enabled")
+    		%source.setEnergyLevel(%source.getEnergyLevel() + 20);
+    }
 }
 
 function RedSeekerDisc::onDeflected(%this, %obj)
 {
     if(%obj.state() == $NortDisc::Attacking)
-    {
         %obj.getTarget().removeAttackingDisc(%obj);
-        %obj.getTarget().startNoDiscGracePeriod();
-    }
 }
 
 function RedSeekerDisc::onHitTarget(%this,%obj)

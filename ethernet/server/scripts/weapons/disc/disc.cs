@@ -217,6 +217,7 @@ function RedDiscImage::selectAction(%this, %obj, %slot)
             %force = 50;
             %vec = VectorScale(VectorNormalize(%vec), %force);
             %target.setDeflected(%vec);
+            %obj.increaseDiscShield();
         }
         else
         {
@@ -231,9 +232,7 @@ function RedDiscImage::selectAction(%this, %obj, %slot)
     
         %target = %obj.getCurrTarget();
         
-        if(%target != 0
-        && %target.numAttackingDiscs() == 0
-        && !%target.inNoDiscGracePeriod())
+        if(%target != 0)
         {
             %target.addAttackingDisc(%obj);
             %obj.setImageFlag(%slot, 1, true);

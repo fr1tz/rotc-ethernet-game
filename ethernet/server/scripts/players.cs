@@ -58,9 +58,9 @@ $PlayerDeathAnim::ExplosionBlowBack = 11;
 // player shape fx slots...
 //
 
-$PlayerShapeFxSlot::Energy = 0;
-$PlayerShapeFxSlot::Heat   = 1;
-$PlayerShapeFxSlot::NoDisc = 2;
+$PlayerShapeFxSlot::Energy     = 0;
+$PlayerShapeFxSlot::Heat       = 1;
+$PlayerShapeFxSlot::DiscShield = 2;
 
 //-----------------------------------------------------------------------------
 
@@ -131,6 +131,9 @@ function PlayerData::onAdd(%this,%obj)
      
      // Start heat thread.
      %obj.updateHeat();
+     
+     // Start disc shield thread.
+     %obj.updateDiscShield();
 }
 
 // callback function: called by engine
@@ -583,48 +586,49 @@ function Player::numAttackingDiscs(%this)
 function Player::addAttackingDisc(%this, %disc)
 {
     %this.attackingDiscs += 1;
-
-    %this.shapeFxSetTexture($PlayerShapeFxSlot::NoDisc, 2);
-    %this.shapeFxSetBalloon($PlayerShapeFxSlot::NoDisc, 1.10);
-    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true, true);
 }
 
 function Player::removeAttackingDisc(%this, %disc)
 {
     %this.attackingDiscs -= 1;
-    
-    if(%this.attackingDiscs == 0)
-        %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, false, false);
 }
 
 //-----------------------------------------------------------------------------
 
-function Player::inNoDiscGracePeriod(%this)
+function Player::hasDiscShield(%this)
 {
-    return %this.noDiscGracePeriod;
+    return %this.discShield > 0;
 }
 
-function Player::startNoDiscGracePeriod(%this)
+function Player::increaseDiscShield(%this)
 {
-    if(%this.endDiscGracePeriodThread !$= "")
-        cancel(%this.endDiscGracePeriodThread);
+    if(%this.deactivateDiscShieldThread !$= "")
+        cancel(%this.deactivateDiscShieldThread);
         
-    %gracePeriodTime = 2.0;
-        
-    %this.noDiscGracePeriod = true;
+    %this.discShield += 5.0;
     
-    %this.shapeFxSetTexture($PlayerShapeFxSlot::NoDisc, 2);
-    %this.shapeFxSetFade($PlayerShapeFxSlot::NoDisc, 1.0, -1/%gracePeriodTime);
-    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true, true);
-
-    %this.endDiscGracePeriodThread =
-        %this.schedule(%gracePeriodTime*1000, "endNoDiscGracePeriod");
+    %this.shapeFxSetTexture($PlayerShapeFxSlot::DiscShield, 2);
+    %this.shapeFxSetBalloon($PlayerShapeFxSlot::DiscShield, 1.1);
+    %this.shapeFxSetFade($PlayerShapeFxSlot::DiscShield, 1.0, -1/%this.discShield);
+    %this.shapeFxSetActive($PlayerShapeFxSlot::DiscShield, true, true);
 }
 
-function Player::endNoDiscGracePeriod(%this)
+function Player::updateDiscShield(%this)
 {
-    %this.noDiscGracePeriod = false;
-    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, false, false);
+    %dtTime = 50;
+
+    if(%this.discShieldThread !$= "")
+        cancel(%this.discShieldThread);
+
+    %this.discShield -= %dtTime/1000;
+    
+    if(%this.discShield <= 0)
+    {
+        %this.discShield = 0;
+        %this.shapeFxSetActive($PlayerShapeFxSlot::DiscShield, false, false);
+    }
+
+    %this.discShieldThread = %this.schedule(%dtTime, "updateDiscShield");
 }
 
 //-----------------------------------------------------------------------------

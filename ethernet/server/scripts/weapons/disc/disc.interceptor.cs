@@ -91,6 +91,9 @@ function RedInterceptorDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dis
 function RedInterceptorDisc::onHitTarget(%this,%obj)
 {
     %obj.explode();
+    
+	%source = %obj.sourceObject;
+	%source.increaseDiscShield();
 }
 
 //-----------------------------------------------------------------------------
