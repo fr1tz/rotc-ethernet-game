@@ -50,7 +50,7 @@ datablock NortDiscData(RedInterceptorDisc)
 	bounceFriction		 = 0.0;
     numBounces           = 3;
 
-	projectileShapeName = "~/data/weapons/disc/projectile.red.dts";
+	projectileShapeName = "~/data/weapons/disc/projectile_red.dts";
 
 	explosion             = RedInterceptorDiscExplosion;
 	hitEnemyExplosion     = RedInterceptorDiscHitEnemy;
@@ -70,6 +70,8 @@ datablock NortDiscData(RedInterceptorDisc)
 	hasLight	 = true;
 	lightRadius = 10.0;
 	lightColor  = "1.0 0.0 0.0";
+ 
+    startVertical = true;
 };
 
 function RedInterceptorDisc::onAdd(%this,%obj)
@@ -100,7 +102,7 @@ function RedInterceptorDisc::onHitTarget(%this,%obj)
 
 datablock NortDiscData(BlueInterceptorDisc : RedInterceptorDisc)
 {
-	projectileShapeName = "~/data/weapons/disc/projectile.blue.dts";
+	projectileShapeName = "~/data/weapons/disc/projectile_blue.dts";
 
 	explosion             = BlueInterceptorDiscExplosion;
 	hitEnemyExplosion     = BlueInterceptorDiscHitEnemy;

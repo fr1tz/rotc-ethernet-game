@@ -23,12 +23,13 @@ datablock ShapeBaseImageData(RedDiscImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "~/data/weapons/disc/image.red.dts";
+    shapeFile = "~/data/weapons/disc/image.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
-	mountPoint = 1;
-	offset = "0 0 0";
+	mountPoint = 3;
+	offset = "-0.15 -0.22 -0.05";
+    rotation = "1 0 0 -12";
 
 	// Adjust firing vector to eye's LOS point?
 	correctMuzzleVector = true;
@@ -92,7 +93,7 @@ datablock ShapeBaseImageData(RedDiscImage)
   
         // attack... ---------------------------------------------------------
 		stateName[7]                    = "SelectOffense";
-		stateTransitionOnFlag1Set[7]    = "SeekerAttackStart";
+		stateTransitionOnFlag1Set[7]    = "SeekerAttackFire";
 		stateTransitionOnFlag1NotSet[7] = "SeekerAttackDenied";
   
             // seeker attack GO!... ----------------------------------------
@@ -209,7 +210,7 @@ function RedDiscImage::selectAction(%this, %obj, %slot)
        	%playerPos = %obj.getWorldBoxCenter();
        	%vec = VectorSub(%targetPos, %playerPos);
        	%dist = VectorLen(%vec);
-       	if(%dist < 12 && %target.getType() & $TypeMasks::ProjectileObjectType)
+       	if(false) //%dist < 12 && %target.getType() & $TypeMasks::ProjectileObjectType)
        	{
             // deflect!
             %obj.setImageFlag(%slot, 1, false);
@@ -230,16 +231,15 @@ function RedDiscImage::selectAction(%this, %obj, %slot)
     {
         %obj.setImageFlag(%slot, 0, true); // attack
     
-        %target = %obj.getCurrTarget();
+        %obj.seekerTarget = %obj.getCurrTarget();
         
-        if(%target != 0)
+        if(%obj.seekerTarget != 0)
         {
             %target.addAttackingDisc(%obj);
             %obj.setImageFlag(%slot, 1, true);
-            %obj.seekerTarget = %target;
 
-            if(%target.client)
-                %target.client.play2D(DiscIncomingSound);
+            if(%obj.seekerTarget.client)
+                %obj.seekerTarget.client.play2D(DiscIncomingSound);
         }
         else
         {
@@ -252,22 +252,7 @@ function RedDiscImage::selectAction(%this, %obj, %slot)
 
 function RedDiscImage::seekerAttackStart(%this, %obj, %slot)
 {
-	// disable main weapon until we fired the disc...
-	%obj.setImageLoaded(0, false);
 
-	// set shape target...
-	//%target = %obj.seekerTarget;
-	//%pos = %target.getWorldBoxCenter();
-	//%obj.setCurrTarget(%target, %pos);
-
-	// play throw animation...
-	%obj.setArmThread("look");
-	//%obj.playThread(0, "throwSidearm");
-    %obj.playThread(0, "throwInterceptor");
-
-	// inform target he's about to get attacked...
-//	if(isObject(%target.client) && %target == %target.client.player)
-//		%target.client.play2D(SeekerDiscLockedSound);
 }
 
 function RedDiscImage::seekerAttackFire(%this, %obj, %slot)
@@ -302,6 +287,7 @@ function RedDiscImage::seekerAttackFire(%this, %obj, %slot)
 	MissionCleanup.add(%disc);
 
 	// set disc target...
+
 	%disc.setTarget(%obj.seekerTarget);
 
 	// clear out disc target...
@@ -320,13 +306,6 @@ function RedDiscImage::afterSeekerAttackDenied(%this, %obj, %slot)
 
 function RedDiscImage::ThrowInterceptor(%this, %obj, %slot)
 {
-	// disable main weapon until we fired the disc...
-	%obj.setImageLoaded(0, false);
-
-	// play throw animation...
-	%obj.setArmThread("look");
-	%obj.playThread(0, "throwInterceptor");
-
 	%projectile = %this.interceptor;
 
 	// drain some energy...
@@ -369,12 +348,6 @@ function RedDiscImage::ThrowInterceptor(%this, %obj, %slot)
 
 function RedDiscImage::deflect(%this, %obj, %slot)
 {
-	%obj.setImageLoaded(0, false); // disable main weapon
-
-	// play deflect animation...
-	%obj.setArmThread("discdeflect_left_base");
-	%obj.playThread(0,"discdeflect_left_anim");
-
 	// clear out image target...
 	%obj.setImageTarget(%slot, 0);
 }
@@ -383,18 +356,12 @@ function RedDiscImage::afterDeflect(%this, %obj, %slot)
 {
 	// ensure disc is marked as loaded...
 	%obj.setImageLoaded(%slot, true);
-
-	// re-enable main weapon...
-	%obj.setImageLoaded(0, true);
 }
 
 function RedDiscImage::afterThrow(%this, %obj, %slot)
 {
 	// ensure disc is marked as loaded...
 	%obj.setImageLoaded(%slot, true);
-
-	// re-enable main weapon...
-	%obj.setImageLoaded(0, true);
 }
 
 

@@ -50,7 +50,7 @@ datablock NortDiscData(RedSeekerDisc)
 	bounceFriction		 = 0.0;
     numBounces           = 3;
 
-	projectileShapeName = "~/data/weapons/disc/projectile.red.dts";
+	projectileShapeName = "~/data/weapons/disc/projectile_red.dts";
 
 	explosion             = RedSeekerDiscExplosion;
 	hitEnemyExplosion     = RedSeekerDiscHitEnemy;
@@ -67,6 +67,8 @@ datablock NortDiscData(RedSeekerDisc)
 	hasLight	 = true;
 	lightRadius = 10.0;
 	lightColor  = "1.0 0.0 0.0";
+ 
+    startVertical = true;
 };
 
 function RedSeekerDisc::onAdd(%this,%obj)
@@ -87,7 +89,7 @@ function RedSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 {
 	if( !(%col.getType() & $TypeMasks::PlayerObjectType) )
 		return;
-  
+
     if( %col.hasDiscShield() )
     {
         //%vec = VectorScale(%normal, %obj.getVelocity());
@@ -124,7 +126,7 @@ function RedSeekerDisc::onHitTarget(%this,%obj)
 
 datablock NortDiscData(BlueSeekerDisc : RedSeekerDisc)
 {
-	projectileShapeName = "~/data/weapons/disc/projectile.blue.dts";
+	projectileShapeName = "~/data/weapons/disc/projectile_blue.dts";
 
 	explosion             = BlueSeekerDiscExplosion;
 	hitEnemyExplosion     = BlueSeekerDiscHitEnemy;
