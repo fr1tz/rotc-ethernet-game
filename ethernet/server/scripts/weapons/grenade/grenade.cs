@@ -22,7 +22,7 @@ datablock ShapeBaseImageData(RedGrenadeImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "~/data/weapons/disc/image.red.dts";
+	shapeFile = "~/data/misc/nothing.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -200,7 +200,6 @@ function RedGrenadeImage::afterThrow(%this, %obj, %slot)
 
 datablock ShapeBaseImageData(BlueGrenadeImage : RedGrenadeImage)
 {
-	shapeFile = "~/data/weapons/disc/image.blue.dts";
     projectile = BlueGrenade;
 };
 
