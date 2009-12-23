@@ -27,9 +27,9 @@ datablock NortDiscData(RedSeekerDisc)
 
 	sound = DiscProjectileSound;
 	
-	targetLockTimeMS = 50;
+	targetLockTimeMS = 0;
 
-	maxTrackingAbility = 150;
+	maxTrackingAbility = 40;
 	trackingAgility = 2;
 
 	explodesNearEnemies = false;
