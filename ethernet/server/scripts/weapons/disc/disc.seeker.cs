@@ -35,7 +35,7 @@ datablock NortDiscData(RedSeekerDisc)
 	explodesNearEnemies = false;
 	explodesNearEnemiesRadius = 3;
 
-	muzzleVelocity		= 75;
+	muzzleVelocity		= 30;
     maxVelocity         = 75;
     acceleration        = 4;
 	velInheritFactor	 = 0.0;
