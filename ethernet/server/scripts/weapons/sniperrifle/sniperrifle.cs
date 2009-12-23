@@ -161,6 +161,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
         stateTransitionOnTriggerDown[10] = "DryFire";
 		stateTransitionOnAmmo[10]        = "Ready";
 		stateSequence[10]                = "idle";
+		stateTimeoutValue[10]            = 0.50;
 		stateScript[10]                  = "onNoAmmo";
 
         // dry fire...

@@ -187,6 +187,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateName[5]                     = "NoAmmo";
 		stateTransitionOnAmmo[5]         = "Ready";
         stateTransitionOnTriggerDown[5]  = "DryFire";
+		stateTimeoutValue[5]             = 0.50;
 		stateSequence[5]                 = "NoAmmo";
   
         // dry fire...

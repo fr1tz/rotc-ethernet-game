@@ -182,6 +182,7 @@ datablock ShapeBaseImageData(RedBlasterImage)
 		stateName[6]                     = "NoAmmo";
         stateTransitionOnTriggerDown[6]  = "DryFire";
 		stateTransitionOnAmmo[6]         = "Ready";
+		stateTimeoutValue[6]             = 0.50;
 		stateSequence[6]                 = "idle";
   
         // dry fire...
