@@ -33,7 +33,7 @@ datablock NortDiscData(RedSeekerDisc)
 	trackingAgility = 2;
 
 	explodesNearEnemies = false;
-	explodesNearEnemiesRadius = 3;
+	explodesNearEnemiesRadius = 5;
 
 	muzzleVelocity		= 30;
     maxVelocity         = 75;
@@ -116,9 +116,23 @@ function RedSeekerDisc::onDeflected(%this, %obj)
     }
 }
 
-function RedSeekerDisc::onHitTarget(%this,%obj)
+function RedSeekerDisc::onHitTarget(%this, %obj)
 {
     %obj.getTarget().removeAttackingDisc(%obj);
+    %obj.stopAttacking();
+}
+
+function RedSeekerDisc::onMissedTarget(%this, %obj)
+{
+    if(%obj.state() == $NortDisc::Attacking)
+        %obj.getTarget().removeAttackingDisc(%obj);
+
+    %obj.stopAttacking();
+}
+
+function RedSeekerDisc::onLostTarget(%this, %obj)
+{
+    %obj.stopAttacking();
 }
 
 //-----------------------------------------------------------------------------
@@ -163,9 +177,19 @@ function BlueSeekerDisc::onDeflected(%this, %obj)
     RedSeekerDisc::onDeflected(%this, %obj);
 }
 
-function BlueSeekerDisc::onHitTarget(%this,%obj)
+function BlueSeekerDisc::onHitTarget(%this, %obj)
 {
-	RedSeekerDisc::onHitTarget(%this,%obj);
+	RedSeekerDisc::onHitTarget(%this, %obj);
+}
+
+function BlueSeekerDisc::onMissedTarget(%this, %obj)
+{
+	RedSeekerDisc::onMissedTarget(%this, %obj);
+}
+
+function BlueSeekerDisc::onLostTarget(%this, %obj)
+{
+	RedSeekerDisc::onLostTarget(%this, %obj);
 }
 
 

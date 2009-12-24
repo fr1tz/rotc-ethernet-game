@@ -92,6 +92,12 @@ function RedInterceptorDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dis
 
 function RedInterceptorDisc::onHitTarget(%this,%obj)
 {
+    %obj.getTarget().setDeflected(%obj.getVelocity());
+    %obj.explode();
+}
+
+function RedInterceptorDisc::onLostTarget(%this, %obj)
+{
     %obj.explode();
 }
 
@@ -137,6 +143,11 @@ function BlueInterceptorDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%di
 function BlueInterceptorDisc::onHitTarget(%this,%obj)
 {
 	RedInterceptorDisc::onHitTarget(%this,%obj);
+}
+
+function BlueInterceptorDisc::onLostTarget(%this, %obj)
+{
+	RedInterceptorDisc::onLostTarget(%this,%obj);
 }
 
 
