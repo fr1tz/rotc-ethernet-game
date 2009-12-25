@@ -544,11 +544,11 @@ function Player::updateHeat(%this)
         %this.setTargetingMask(%this.getTargetingMask() & ~$TargetingMask::Heat);
         
         %updateWarnLevel = false;
-        if(%this.heat >= %warnLevel && %this.heat < %hotLevel)
+        if(%this.heat >= %warnLevel || %this.store >= %warnLevel)
         {
-            if(%store < %warnLevel && %this.heat >= %warnLevel)
+            if(%store < %warnLevel)
                 %updateWarnLevel = true;
-            else if(%store >= %hotLevel && %this.heat < %hotLevel)
+            else if(%store >= %hotLevel)
                 %updateWarnLevel = true;
             else if(%storeDt != %this.heatDt)
                 %updateWarnLevel = true;
