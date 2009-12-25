@@ -62,28 +62,28 @@ datablock MultiNodeLaserBeamData(BlueSniperProjectileLaserTrail)
 	outerWidth = "0.20";
 
 	bitmap = "~/data/weapons/sniperrifle/lasertrail.blue";
-	bitmapWidth = 0.25;
+	bitmapWidth = 0.15;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
-	fadeTime = 2500;
+	fadeTime = 1250;
 
     windCoefficient = 0.0;
 
     // node x movement...
     nodeMoveMode[0]     = $NodeMoveMode::DynamicSpeed;
-    nodeMoveSpeed[0]    = -3;
-    nodeMoveSpeedAdd[0] =  6;
+    nodeMoveSpeed[0]    = -2;
+    nodeMoveSpeedAdd[0] =  4;
     // node y movement...
     nodeMoveMode[1]     = $NodeMoveMode::DynamicSpeed;
-    nodeMoveSpeed[1]    = -3;
-    nodeMoveSpeedAdd[1] =  6;
+    nodeMoveSpeed[1]    = -2;
+    nodeMoveSpeedAdd[1] =  4;
     // node z movement...
     nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
-    nodeMoveSpeed[2]    = -3.0;
-    nodeMoveSpeedAdd[2] =  6.0;
+    nodeMoveSpeed[2]    = -2.0;
+    nodeMoveSpeedAdd[2] =  4.0;
 
-    nodeDistance = 1;
+    nodeDistance = 4;
 };
 
 //-----------------------------------------------------------------------------
