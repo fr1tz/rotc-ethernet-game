@@ -143,6 +143,19 @@ function Hud::updateDiscIcons(%this)
 	}
 }
 
+function Hud::updateGrenadeAmmo(%this)
+{
+    if(%this.grenadeAmmoThread !$= "")
+        cancel(%this.grenadeAmmoThread);
+        
+    %dt = ((GrenadeAmmo.dt/1000)*GrenadeAmmo.interval)
+        / (GrenadeAmmo.interval/50);
+    
+    GrenadeAmmo.setValue(GrenadeAmmo.getValue() + %dt);
+    
+    %this.grenadeAmmoThread = %this.schedule(50, "updateGrenadeAmmo");
+}
+
 function Hud::updateHeat(%this)
 {
     if(%this.heatThread !$= "")

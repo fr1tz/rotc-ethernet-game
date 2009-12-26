@@ -30,6 +30,18 @@ function GrenadeAmmoMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a
 
 addMessageCallback('MsgGrenadeAmmo', GrenadeAmmoMessageCallback);
 
+function GrenadeAmmoDtMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
+{
+    %interval = %a1;
+    %delta = %a2;
+
+    GrenadeAmmo.interval = %interval;
+    GrenadeAmmo.dt = %delta;
+    Hud.updateGrenadeAmmo();
+}
+
+addMessageCallback('MsgGrenadeAmmoDt', GrenadeAmmoDtMessageCallback);
+
 //------------------------------------------------------------------------------
 
 function HeatMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)

@@ -786,18 +786,34 @@ function Player::setGrenadeAmmo(%this, %amount)
 
 function Player::setGrenadeAmmoDt(%this, %amount)
 {
-    %this.clearGrenadeAmmoDt();
-    %this.incGrenadeAmmo(%amount);
-    %this.grenadeAmmoThread = %this.schedule(1000, "setGrenadeAmmoDt", %amount);
+    %this.grenadeAmmoDt = %amount;
+
+    if(isObject(%this.client))
+        messageClient(%this.client, 'MsgGrenadeAmmoDt', "", 250, %amount);
+
+    %this.updateGrenadeAmmo();
 }
 
-function Player::clearGrenadeAmmoDt(%this)
+function Player::updateGrenadeAmmo(%this)
 {
 	if(%this.grenadeAmmoThread !$= "")
     {
         cancel(%this.grenadeAmmoThread);
 		%this.grenadeAmmoThread = "";
 	}
+ 
+    %this.grenadeAmmo += %this.grenadeAmmoDt/1000 * 250;
+    
+    if(%this.grenadeAmmo < 0)
+        %this.grenadeAmmo = 0;
+    else if(%this.grenadeAmmo > 1)
+        %this.grenadeAmmo = 1;
+
+	%hasGrenade = %this.hasGrenade();
+	%this.setImageLoaded(2, %hasGrenade);
+	%this.setImageAmmo(2, %hasGrenade);
+ 
+    %this.grenadeAmmoThread = %this.schedule(250, "updateGrenadeAmmo");
 }
 
 function Player::mountVehicle(%this, %vehicle)
