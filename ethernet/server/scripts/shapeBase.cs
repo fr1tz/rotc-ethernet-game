@@ -161,6 +161,9 @@ function ShapeBase::setDiscTarget(%this, %target)
 {
     if(%this == %target)
         return;
+        
+    if(!%target.isCAT)
+        return;
 
     cancel(%this.discTargetThread);
 	%pos = %target.getWorldBoxCenter();
