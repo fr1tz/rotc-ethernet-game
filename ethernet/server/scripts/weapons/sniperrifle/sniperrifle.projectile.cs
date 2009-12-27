@@ -17,13 +17,13 @@ exec("./sniperrifle.projectile.gfx.blue.cs");
 datablock ShotgunProjectileData(RedSniperProjectile)
 {
 	// script damage properties...
-	impactDamage       = 75;
+	impactDamage       = 110;
 	impactImpulse      = 1000;
 	splashDamage       = 0;
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
 
-	energyDrain = 35; // how much energy does firing this projectile drain?
+	energyDrain = 75; // how much energy does firing this projectile drain?
 
     numBullets = 1; // number of shotgun bullets
     range = 2000; // shotgun range

@@ -52,7 +52,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 
 	// Use energy for ammo?
 	usesEnergy = true;
-	minEnergy = 45;
+	minEnergy = 75;
 	
     // charging...
     minCharge = 0.4;
