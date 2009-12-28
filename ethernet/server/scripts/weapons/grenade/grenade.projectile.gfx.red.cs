@@ -101,7 +101,7 @@ datablock ParticleData(RedGrenadeExplosion_Cloud)
 	gravityCoefficient	= 0;
 	inheritedVelFactor	= 0.025;
 
-	lifetimeMS			  = 3000;
+	lifetimeMS			  = 1000;
 	lifetimeVarianceMS	= 0;
 
 	useInvAlpha =  false;
@@ -114,10 +114,10 @@ datablock ParticleData(RedGrenadeExplosion_Cloud)
 	colors[1]	  = "1.0 0.0 0.0 0.0";
 	colors[2]	  = "1.0 0.0 0.0 0.0";
 	sizes[0]		= 12.0;
-	sizes[1]		= 10.0;
+	sizes[1]		= 9.0;
 	sizes[2]		= 0.0;
 	times[0]		= 0.0;
-	times[1]		= 0.2;
+	times[1]		= 0.25;
 	times[2]		= 1.0;
 
 	allowLighting = false;
@@ -272,7 +272,7 @@ datablock ExplosionData(RedGrenadeExplosion)
 	lifetimeMS = 200;
 
 	particleEmitter = RedGrenadeExplosion_CloudEmitter;
-	particleDensity = 200;
+	particleDensity = 300;
 	particleRadius = 10;
 
 	//emitter[0] = RedGrenadeExplosion_DustEmitter;
