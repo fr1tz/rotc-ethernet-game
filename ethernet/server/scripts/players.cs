@@ -129,8 +129,8 @@ function PlayerData::onAdd(%this,%obj)
     else
     	%obj.useWeapon(1);
      
-     // Start heat thread.
-     %obj.updateHeat();
+     // Start sliding thread.
+     %obj.updateSliding();
 }
 
 // callback function: called by engine
@@ -488,89 +488,54 @@ function Player::setSniping(%this, %sniping)
 
 //-----------------------------------------------------------------------------
 
-function Player::updateHeat(%this)
+function Player::updateSliding(%this)
 {
     %dtTime = 50;
     
-    %warnLevel = 0.15;
-    %hotLevel = 0.5;
+    //%warnLevel = 0.15;
+    //%hotLevel = 0.5;
 
-    %heatingDt = 0.005;
-    %coolingDt = -0.01;
+    %slidingingDt = -0.01;
+    %coolingDt = 0.02;
     %cooldownDelay = 1.0;
 
-    if(%this.heatThread !$= "")
-        cancel(%this.heatThread);
+    if(%this.slidingThread !$= "")
+        cancel(%this.slidingThread);
         
-    %store   = %this.heat;
-    %storeDt = %this.heatDt;
+    %store   = %this.sliding;
+    %storeDt = %this.slidingDt;
 
     if(%this.getBodyPose() == $PlayerBodyPose::Sliding)
     {
-        %this.heatDt = %heatingDt;
-        %this.heatCooldownTime = %cooldownDelay;
+        %this.slidingDt = %slidingingDt;
+        %this.slidingCooldownTime = %cooldownDelay;
     }
     else
     {
-        %this.heatCooldownTime -= %dtTime / 1000;
-        if(%this.heatCooldownTime >= 0)
-            %this.heatDt = 0;
+        %this.slidingCooldownTime -= %dtTime / 1000;
+        if(%this.slidingCooldownTime >= 0)
+            %this.slidingDt = 0;
         else
-            %this.heatDt = %coolingDt;
+            %this.slidingDt = %coolingDt;
     }
     
-    %this.heat += %this.heatDt;
-    if(%this.heat > 1)
+    %this.sliding += %this.slidingDt;
+    if(%this.sliding > 1)
     {
-        %this.heat = 1;
-        %this.heatDt = 0;
+        %this.sliding = 1;
+        %this.slidingDt = 0;
     }
-    else if(%this.heat < 0)
+    else if(%this.sliding <= 0)
     {
-        %this.heat = 0;
-        %this.heatDt = 0;
+        %this.sliding = 0;
+        %this.slidingDt = 0;
+        %this.setBodyPose($PlayerBodyPose::Normal);
     }
     
-    if(%this.heat >= %hotLevel)
-    {
-        %this.setTargetingMask(%this.getTargetingMask() | $TargetingMask::Heat);
-        
-        %this.shapeFxSetTexture($PlayerShapeFxSlot::Heat, 1);
-        %this.shapeFxSetFade($PlayerShapeFxSlot::Heat, 1, 0);
-        %this.shapeFxSetActive($PlayerShapeFxSlot::Heat, true, true);
-    }
-    else
-    {
-        %this.setTargetingMask(%this.getTargetingMask() & ~$TargetingMask::Heat);
-        
-        %updateWarnLevel = false;
-        if(%this.heat >= %warnLevel || %this.store >= %warnLevel)
-        {
-            if(%store < %warnLevel)
-                %updateWarnLevel = true;
-            else if(%store >= %hotLevel)
-                %updateWarnLevel = true;
-            else if(%storeDt != %this.heatDt)
-                %updateWarnLevel = true;
-        }
-    
-        if(%updateWarnLevel)
-        {
-            %fadeValue = (%this.heat - %warnLevel) +
-                ((%hotLevel) * (%this.heat*2));
-            %fadeDelta = %this.heatDt * %dtTime;
-            //error("updateWarnLevel:" SPC %fadeValue SPC %fadeDelta);
+    if(%this.client && %this.slidingDt !$= %storeDt)
+       	messageClient(%this.client, 'MsgHeat', "", %this.sliding, %this.slidingDt);
 
-            %this.shapeFxSetTexture($PlayerShapeFxSlot::Heat, 0);
-            %this.shapeFxSetFade($PlayerShapeFxSlot::Heat, %fadeValue, %fadeDelta);
-            %this.shapeFxSetActive($PlayerShapeFxSlot::Heat, true, true);
-        }
-    }
-        
-    if(%this.client && %this.heatDt !$= %storeDt)
-       	messageClient(%this.client, 'MsgHeat', "", %this.heat, %this.heatDt);
-
-    %this.heatThread = %this.schedule(%dtTime, "updateHeat");
+    %this.slidingThread = %this.schedule(%dtTime, "updateSliding");
 }
 
 //-----------------------------------------------------------------------------
