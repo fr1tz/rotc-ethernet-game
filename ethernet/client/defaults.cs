@@ -67,6 +67,8 @@ $pref::Video::screenShotFormat = "PNG";
 $pref::OpenGL::force16BitTexture = "0";
 $pref::OpenGL::forcePalettedTexture = "0";
 $pref::OpenGL::maxHardwareLights = 3;
+$pref::OpenGL::textureAnisotropy = 1.0;
+$pref::OpenGL::textureTrilinear = true;
 $pref::VisibleDistanceMod = 1.0;
 
 $pref::Audio::driver = "OpenAL";
