@@ -23,6 +23,19 @@ function OptGraphicsWindow::onWake(%this)
 	OptGraphicsZoneRenderingMenu.add("Borders Only", $TacticalZoneRenderMode::BordersOnly);
 	OptGraphicsZoneRenderingMenu.add("Full", $TacticalZoneRenderMode::Full);
 	OptGraphicsZoneRenderingMenu.setSelected($Pref::TacticalZone::RenderMode);
+ 
+    // Texture filtering menu...
+	OptGraphicsTextureFilteringMenu.clear();
+	OptGraphicsTextureFilteringMenu.add("Bilinear", 0);
+	OptGraphicsTextureFilteringMenu.add("Trilinear", 1);
+	OptGraphicsTextureFilteringMenu.add("Anisotropic", 2);
+ 
+    if($pref::OpenGL::textureTrilinear == false)
+        OptGraphicsTextureFilteringMenu.setSelected(0);
+    else if($pref::OpenGL::textureAnisotropy != 0)
+        OptGraphicsTextureFilteringMenu.setSelected(2);
+    else
+        OptGraphicsTextureFilteringMenu.setSelected(1);
 }
 
 function OptGraphicsDriverMenu::onSelect( %this, %id, %text )
@@ -149,6 +162,26 @@ function OptGraphicsZoneRenderingMenu::onSelect( %this, %id, %text )
     $Pref::TacticalZone::RenderMode = %id;
 }
 
+function OptGraphicsTextureFilteringMenu::onSelect( %this, %id, %text )
+{
+    if(%id == 0) // Bilinear
+    {
+        $pref::OpenGL::textureTrilinear = false;
+        $pref::OpenGL::textureAnisotropy = 0.0;
+    }
+    else if(%id == 1) // Trilinear
+    {
+        $pref::OpenGL::textureTrilinear = true;
+        $pref::OpenGL::textureAnisotropy = 0.0;
+    }
+    else if(%id == 2) // Anisotropic
+    {
+        $pref::OpenGL::textureTrilinear = true;
+        $pref::OpenGL::textureAnisotropy = 1.0;
+        setOpenGLAnisotropy($pref::OpenGL::textureAnisotropy);
+    }
+}
+
 function OptGraphicsWindow::applyGraphics( %this )
 {
 	%newDriver = OptGraphicsDriverMenu.getText();
@@ -163,4 +196,6 @@ function OptGraphicsWindow::applyGraphics( %this )
 	}
 	else
 		setScreenMode( firstWord( %newRes ), getWord( %newRes, 1 ), %newBpp, %newFullScreen );
+  
+    flushTextureCache();
 }

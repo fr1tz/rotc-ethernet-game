@@ -22,7 +22,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
       HorizSizing = "center";
       VertSizing = "center";
       position = "67 94";
-      Extent = "264 212";
+      Extent = "264 238";
       MinExtent = "8 8";
       canSave = "1";
       Visible = "1";
@@ -57,7 +57,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "21 54";
+         position = "21 56";
          Extent = "53 18";
          MinExtent = "8 8";
          canSave = "1";
@@ -71,7 +71,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          Profile = "GuiCheckBoxProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "21 140";
+         position = "21 160";
          Extent = "137 25";
          MinExtent = "8 8";
          canSave = "1";
@@ -88,7 +88,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "165 171";
+         position = "165 196";
          Extent = "78 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -134,7 +134,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "21 80";
+         position = "21 82";
          Extent = "46 18";
          MinExtent = "8 8";
          canSave = "1";
@@ -163,7 +163,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "21 106";
+         position = "21 108";
          Extent = "77 18";
          MinExtent = "8 8";
          canSave = "1";
@@ -178,6 +178,35 @@ new GuiControl(OptGraphicsWindowForEditing) {
          HorizSizing = "right";
          VertSizing = "bottom";
          position = "113 108";
+         Extent = "130 23";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Full";
+         maxLength = "255";
+         maxPopupHeight = "200";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "21 134";
+         Extent = "46 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Textures:";
+         maxLength = "255";
+      };
+      new GuiPopUpMenuCtrl(OptGraphicsTextureFilteringMenu) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiPopUpMenuProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "113 134";
          Extent = "130 23";
          MinExtent = "8 8";
          canSave = "1";
