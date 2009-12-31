@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // Revenge Of The Cats: Ethernet
-// Copyright (C) 2009, mEthLab Interactive
+// Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
 function initMumbleLink()
