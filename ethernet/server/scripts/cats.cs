@@ -31,6 +31,8 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 {
 	%client = %obj.client;
  
+    %validWeapon = false;
+ 
 	if(%nr == 0)
 	{
 		if(%obj.getMountedImage(0).mainWeapon)
@@ -46,6 +48,8 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 			%obj.mountImage(RedBlasterImage, 0, -1, true);
 		else
 			%obj.mountImage(BlueBlasterImage, 0, -1, true);
+   
+        %validWeapon = true;
 	}
 	else if(%nr == 2)
 	{
@@ -56,6 +60,8 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 				%obj.mountImage(RedAssaultRifleImage, 0, -1, true);
 			else
 				%obj.mountImage(BlueAssaultRifleImage, 0, -1, true);
+    
+            %validWeapon = true;
 		}
 		else if(%obj.mainWeapon == $MainWeapon::SniperRifle)
 		{
@@ -63,16 +69,20 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 				%obj.mountImage(RedSniperRifleImage, 0, -1, true);
 			else
 				%obj.mountImage(BlueSniperRifleImage, 0, -1, true);
+    
+            %validWeapon = true;
 		}
-		else if(%obj.mainWeapon == $MainWeapon::MissileLauncher)
+		else if(false) //%obj.mainWeapon == $MainWeapon::MissileLauncher)
 		{
 			if(%obj.getTeamId() == 1)
 				%obj.mountImage(RedMissileLauncherImage, 0, -1, true);
 			else
 				%obj.mountImage(BlueMissileLauncherImage, 0, -1, true);
+    
+            %validWeapon = true;
 		}
 	}
-	else if(%nr == 4)
+	else if(false) //%nr == 4)
 	{
 		if(%obj.getTeamId() == 1)
 			%obj.mountImage(RedStilettoImage, 0, -1, true);
@@ -80,7 +90,7 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 			%obj.mountImage(BlueStilettoImage, 0, -1, true);
 	}
  
-    if(isObject(%obj.client))
+    if(%validWeapon && isObject(%obj.client))
         %obj.client.lastCATWeapon = %nr;
 }
 
