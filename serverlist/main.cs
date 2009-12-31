@@ -45,7 +45,7 @@ function onServerQueryStatus(%status, %msg, %value)
     if(%status $= "done")
     {
         printServers();
-        //quit();
+        quit();
     }
 }
 
