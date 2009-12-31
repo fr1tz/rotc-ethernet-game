@@ -48,13 +48,13 @@ $RemapCount++;
 $RemapName[$RemapCount] = "Fire Weapon";
 $RemapCmd[$RemapCount] = "primaryFire";
 $RemapCount++;
-$RemapName[$RemapCount] = "Use Sceptre (offensive)";
+$RemapName[$RemapCount] = "Use Disc";
 $RemapCmd[$RemapCount] = "secondaryFire";
 $RemapCount++;
-$RemapName[$RemapCount] = "Use Sceptre (defensive)";
+$RemapName[$RemapCount] = "Throw grenade";
 $RemapCmd[$RemapCount] = "tertiaryFire";
 $RemapCount++;
-$RemapName[$RemapCount] = "Throw exploding sceptre (max force)";
+$RemapName[$RemapCount] = "Throw grenade (max force)";
 $RemapCmd[$RemapCount] = "instantGrenadeThrow";
 $RemapCount++;
 $RemapName[$RemapCount] = "Jump";
@@ -228,8 +228,9 @@ function OptRemapInputCtrl::onInputEvent( %this, %device, %action )
 	{
 		if ( %prevMap $= "" )
 		{
-			moveMap.bind( %device, %action, %cmd );
-			OptRemapList.setRowById( %this.index, buildFullMapString( %this.index ) );
+            moveMap.unbind(%device, %action);
+			moveMap.bind(%device, %action, %cmd);
+			OptRemapList.setRowById(%this.index, buildFullMapString(%this.index));
 		}
 		else
 		{
