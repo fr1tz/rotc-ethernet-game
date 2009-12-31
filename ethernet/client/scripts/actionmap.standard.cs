@@ -268,8 +268,8 @@ function mouseZoom(%val)
 }
 
 //MoveMap.bind(keyboard, "r", toggleMedZoom);
-MoveMap.bind(keyboard, "r", toggleZoom);
-MoveMap.bind(keyboard, "f", setZoom);
+//MoveMap.bind(keyboard, "r", toggleZoom);
+//MoveMap.bind(keyboard, "f", setZoom);
 
 MoveMap.bind(mouse, zaxis, mouseZoom);
 
