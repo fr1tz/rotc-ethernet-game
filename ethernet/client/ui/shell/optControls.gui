@@ -61,7 +61,7 @@ new GuiControl(OptControlsWindowForEditing) {
             HorizSizing = "right";
             VertSizing = "bottom";
             position = "2 2";
-            Extent = "435 320";
+            Extent = "435 336";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -122,7 +122,7 @@ new GuiControl(OptControlsWindowForEditing) {
          HorizSizing = "right";
          VertSizing = "bottom";
          position = "105 354";
-         Extent = "176 16";
+         Extent = "241 16";
          MinExtent = "8 2";
          canSave = "1";
          Visible = "1";
@@ -130,14 +130,35 @@ new GuiControl(OptControlsWindowForEditing) {
          hovertime = "1000";
          range = "0 1";
          ticks = "20";
-         value = "1";
+         value = "0.198795";
+      };
+      new GuiTextEditCtrl(OptControlsMouseSensitivityNum) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextEditProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "355 353";
+         Extent = "27 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "OptControlsUpdateMouse();";
+         hovertime = "1000";
+         text = "-";
+         maxLength = "4";
+         historySize = "0";
+         password = "0";
+         tabComplete = "0";
+         sinkAllKeyEvents = "0";
+         password = "0";
+         passwordMask = "*";
       };
       new GuiCheckBoxCtrl(OptControlsMouseInvertYAxis) {
          canSaveDynamicFields = "0";
          Profile = "GuiCheckBoxProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "289 353";
+         position = "389 353";
          Extent = "77 18";
          MinExtent = "8 2";
          canSave = "1";

@@ -7,6 +7,7 @@ function OptControlsWindow::onWake(%this)
 {
 	OptRemapList.fillList();
     OptControlsMouseSensitivity.setValue($Pref::Input::MouseSensitivity);
+    OptControlsMouseSensitivityNum.setValue($Pref::Input::MouseSensitivity);
     OptControlsMouseInvertYAxis.setValue($Pref::Input::InvertMouse);
 }
 
@@ -253,7 +254,12 @@ function OptRemapInputCtrl::onInputEvent( %this, %device, %action )
 
 function OptControlsUpdateMouse()
 {
-    $Pref::Input::MouseSensitivity = OptControlsMouseSensitivity.getValue();
+    %oldSensitivity = $Pref::Input::MouseSensitivity;
+    %newSensitivity = OptControlsMouseSensitivity.getValue();
+    if(%newSensitivity == %oldSensitivity)
+        %newSensitivity = OptControlsMouseSensitivityNum.getValue();
+        
+    $Pref::Input::MouseSensitivity = getSubStr(%newSensitivity, 0, 4);
     $Pref::Input::InvertMouse = OptControlsMouseInvertYAxis.getValue();
     
     MoveMap.bind(
@@ -271,5 +277,8 @@ function OptControlsUpdateMouse()
         $Pref::Input::MouseSensitivity,
         pitch
     );
+    
+    OptControlsMouseSensitivity.setValue($Pref::Input::MouseSensitivity);
+    OptControlsMouseSensitivityNum.setValue($Pref::Input::MouseSensitivity);
 }
 
