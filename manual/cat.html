@@ -13,11 +13,12 @@
 	The <i>Reds</i> and <i>Blues</i> have the following basic properties:
 	<ul>
 		<li>Health: 75</li>
-		<li>Damage buffer: 25</li>
+		<li>Health buffer: 25</li>
 		<li>Energy: 100</li>				
 	</ul>
-	In addition, every <i>CAT</i> has a shield, an <i>Etherboard</i>, 
-	two <a href="weapons.html#sceptre"><i>Crystal Sceptres</i></a>,
+	In addition, every <i>CAT</i> has energy-based armor, an <i>Etherboard</i>, 
+	two <a href="weapons.html#disc"><i>Discs</i></a>,
+	<a href="weapons.html#grenade"><i>Grenades</i></a>,
 	the <a href="weapons.html#trident"><i>Trident</i></a> 
 	and the primary weapon that was selected while in <i>Etherform</i>.
 	</p>
@@ -25,19 +26,19 @@
 	<table><tr><td id="noborder">
 	<table align="left">
 		<tr><td><img src="./graphics/cat_full.png"></td></tr>
-		<tr><td>CAT with full energy/shields<br/> and full damage buffer</td></tr>
+		<tr><td>CAT with full health<br/> and full health buffer</td></tr>
 	</table>	
 	<table align="left">
 		<tr><td><img src="./graphics/cat_noenergy.png"></td></tr>
-		<tr><td>CAT with no energy/shields</td></tr>
+		<tr><td>CAT with almost no health</td></tr>
 	</table>		
 	<table align="left">
 		<tr><td><img src="./graphics/cat_dmgbufempty.png"></td></tr>
-		<tr><td>CAT with empty<br/> damage buffer</td></tr>
+		<tr><td>CAT with full health<br/>but empty health buffer</td></tr>
 	</table>			
 	<table align="left">
 		<tr><td><img src="./graphics/cat_dmgbufoverflow.png"></td></tr>
-		<tr><td>CAT with overflowing<br/> damage buffer</td></tr>
+		<tr><td>CAT with overflowing<br/> health buffer</td></tr>
 	</table>		
 	<table align="left">
 		<tr><td><img src="./graphics/cat_etherboard.png"></td></tr>
@@ -48,32 +49,32 @@
 	<h2>Health</h2>
 	<p>	
 	Players start with 75 health points. At least 25% health is needed to manifest as a <i>CAT</i>.
-	Health is lost if a player takes more damage than the <i>damage buffer</i> can absorb.
+	Health is lost if a player takes more damage than the <i>health buffer</i> can absorb.
 	To regain health, players can either change back into <i>Etherform</i> and rest in a zone
 	owned by their team or inflict damage on an enemy <i>CAT</i>. If you damage another <i>CAT</i>,
-	50% of the inflicted damage is returned to you first as health and then put into your <i>damage buffer</i>,
+	50% of the inflicted damage is returned to you first as health and then put into your <i>health buffer</i>,
 	possibly overflowing it.
 	</p>
+	
+	<h2>Health buffer</h2>
+	<p>	
+	Players have a health buffer that constantly re-/degenerates to 25 points. Damage first hits the 
+	<i>health buffer</i> before affecting a player's health. The <i>health buffer</i> can overflow
+	if players inflict enough damage on enemies.
+	</p>		
 
 	<h2>Energy</h2>
 	<p>	
-	A <i>CAT</i> needs energy to power its shield and fire its weapons.
+	A <i>CAT</i> needs energy to power its armor and fire its weapons.
 	The energy consumed when firing a shot from a weapon is restored if the shot hits an enemy.
 	</p>
 	
-	<h2>Shield</h2>
+	<h2>Armor</h2>
 	<p>	
-	Every <i>CAT</i> has a shield that can absorb up to 50% damage if the <i>CAT</i>
-	has full energy. The damage absorbed by the shield decreases in a linear fashion with
+	Every <i>CAT</i> has energy-based armor that can absorb up to 50% damage if the <i>CAT</i>
+	has full energy. The damage absorbed by the armor decreases in a linear fashion with
 	decreased energy.
 	</p>
-
-	<h2>Damage buffer</h2>
-	<p>	
-	Players have a buffer that constantly re-/degenerates to 25 points. Damage first hits the 
-	<i>damage buffer</i> before affecting a player's health. The <i>damage buffer</i> can overflow
-	if players inflict enough damage on enemies.
-	</p>	
 	
 	<h2>Etherboard</h2>
 	<p>	
@@ -110,18 +111,18 @@
 	<tr>
 		<td>Left mouse button</td>
 		<td>Fire equipped weapon</td>
+	</tr>				
+	<tr>
+		<td>Right mouse button</td>
+		<td>Fire disc</td>
 	</tr>			
 	<tr>
 		<td>Middle mouse button</td>
-		<td>Use Crystal Sceptre (Defensive)</td>
-	</tr>			
+		<td>Throw grenade</td>
+	</tr>		
 	<tr>
-		<td>Right mouse button</td>
-		<td>Use Crystal Sceptre (Offensive)</td>
-	</tr>			
-	<tr>
-		<td>Left shift + Right mouse button</td>
-		<td>Throw exploding Sceptre at full force</td>
+		<td>Left shift + middle mouse button</td>
+		<td>Throw grenade at full force</td>
 	</tr>				
 	<tr>
 		<td>Tab</td>
@@ -147,10 +148,6 @@
 		<td>q</td>
 		<td>Toggle equipped weapon</td>
 	</tr>	
-	<tr>
-		<td>r</td>
-		<td>Zoom</td>
-	</tr>		
 	<tr>
 		<td>y</td>
 		<td>Show bigger minimap</td>

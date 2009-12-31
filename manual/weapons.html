@@ -7,46 +7,26 @@
 
 	<h1>Weapons</h1>
 	
-	<h2><a name="sceptre"></a>The Crystal Sceptre</h2>
+	<h2><a name="disc"></a>The Disc</h2>
 	<p>		
-	Every <i>CAT</i> carries two <i>Crystal Sceptres</i>. 
-	The <i>Sceptre</i> has three different modes that are accessed via the right and middle mouse buttons.
+	Every <i>CAT</i> carries a head-mounted disc launcher and two discs. 
 	</p>
 	
-	<h3>Exploding Sceptre</h3>
-	<table><tr><td id="noborder" valign="top">
-	<table align="left"><tr><td><img src="./graphics/wpn_grenade.png"></td></tr></table>
-	An exploding <i>Sceptre</i> will explode shortly after it has been thrown.
-	To throw an exploding <i>Sceptre</i> you need to hold down the right mouse button.
-	After a little while you will hear a first click, which indicates
-	that the <i>Sceptre</i> can be thrown by releasing the mouse button. The <i>Sceptre</i> is thrown farther
-	the longer the mouse button was held down. There's also the possibility to throw an exploding <i>Sceptre</i>
-	instantly at full force by holding down shift and clicking the right mouse button.
-	<table>
-		<tr><td>Energy cost</td><td>-</td></tr>
-		<tr><td>Impact damage</td><td>-</td></tr>
-		<tr><td>Impact impulse</td><td>-</td></tr>
-		<tr><td>Splash damage</td><td>150</td></tr>
-		<tr><td>Splash damage radius</td><td>20</td></tr>
-		<tr><td>Splash damage impulse</td><td>2500</td></tr>										
-	</table>
-	</tr></table>	
-	
-	<h3>Seeking Sceptre</h3>
+	<h3>Seeking Disc</h3>
 	<table><tr><td id="noborder" valign="top">	
 	<table align="left">
 		<tr><td><img src="./graphics/wpn_disc.png"></td></tr>
 	</table>		
-	A seeker <i>Sceptre</i> will track its target until it has hit it, was deflected by another <i>Sceptre</i>,
-	has bounced a few times or has expired.	While a seeker does not deal a lot of damage compared to its rate of fire, it uses
-	absolutely no energy and can suck up to 20 points of energy from its target and transfer them to the CAT that threw the <i>Sceptre</i>.
-	To throw a seeker, you first need to get a target-lock on an enemy <i>CAT</i>. The seeker is then thrown by a quick click of
+	A seeker <i>Disc</i> will track its target until it has hit it, missed it, was deflected by another <i>Disc</i>,
+	has bounced a few times or has expired.	While a disc does not deal a lot of damage compared to its rate of fire, it uses
+	absolutely no energy and will return 20 points of energy to the CAT that launched it when it hits its target.
+	To throw a disc, you first need to get a target-lock on an enemy <i>CAT</i>. The seeker is then thrown by a quick click of
 	the right mouse button. These are the rules to get a target lock:<br/>
-	- Hit the target with a seeker <i>Sceptre</i><br/>
-	- Damage the target with an exploding <i>Sceptre</i><br/>
+	- Hit the target with a seeker <i>Disc</i><br/>
+	- Damage the target with a <i>Grenade</i><br/>
 	- Hit the target with at least 3 of the 9 shots fired by the <i>Trident</i><br/>
 	- Land a direct hit on the target with the <i>MG</i><br/>
-	A target-lock lasts for two seconds.
+	A target-lock lasts for two seconds. Also note that a CAT can only be attacked by one disc at a time.
 	<table>
 		<tr><td>Energy cost</td><td>-</td></tr>
 		<tr><td>Impact damage</td><td>60</td></tr>
@@ -57,13 +37,35 @@
 	</table>	
 	</tr></table>			
 
-	<h3>Deflecting seekers</h3>
+	<h3>Deflecting Discs</h3>
 	<table><tr><td id="noborder" valign="top">	
 	<table align="left">
 		<tr><td><img src="./graphics/wpn_discdeflect.png"></td></tr>
 	</table>		
-	To deflect an incoming seeker <i>Sceptre</i>, keep the crosshair over it until it's locked, then press the middle mouse button.	
-	</tr></table>				
+	To deflect an incoming seeker <i>Disc</i>, keep the crosshair over it until it's locked, then press the right mouse button.	
+	For deflecting a disc, CATs are rewarded with a three second grace period, during which they can not be attacked by another disc.
+	</tr></table>	
+	
+	<h2><a name="grenade"></a>Grenades</h2>
+	<table><tr><td id="noborder" valign="top">
+	<table align="left"><tr><td><img src="./graphics/wpn_grenade.png"></td></tr></table>
+	A grenade will implode shortly after it has been thrown.
+	To throw a grenade you need to hold down and then release the middle mouse button.
+	The grenade is thrown farther the longer the mouse button was held down. 
+	There's also the possibility to throw a Grenade	instantly at full force by holding
+	down shift and clicking the middle mouse button.
+	Grenades don't consume energy. Instead, they draw from their own separate ammo supply.
+	The grenade ammo supply regenerates slowly by itself, but the regeneration can be sped
+	up by dealing damage to enemies.
+	<table>
+		<tr><td>Energy cost</td><td>-</td></tr>
+		<tr><td>Impact damage</td><td>-</td></tr>
+		<tr><td>Impact impulse</td><td>-</td></tr>
+		<tr><td>Splash damage</td><td>150</td></tr>
+		<tr><td>Splash damage radius</td><td>15</td></tr>
+		<tr><td>Splash damage impulse</td><td>-</td></tr>										
+	</table>
+	</tr></table>					
 		
 	<h2><a name="trident"></a>The Trident</h2>
 	<table><tr><td id="noborder" valign="top">		
@@ -73,10 +75,10 @@
 	Every <i>CAT</i> carries a <i>Trident</i>.
 	The <i>Trident</i> is a powerful but tricky weapon. It always fires 9 shots at once.
 	Because of this, it uses a lot of energy and has a huge recoil, but is able to deal up
-	to 135 damage at once. The properties of an individual <i>Trident</i> shot:
+	to 90 points of damage at once. The properties of an individual <i>Trident</i> shot:
 	<table>
-		<tr><td>Energy cost</td><td>3</td></tr>
-		<tr><td>Impact damage</td><td>15</td></tr>
+		<tr><td>Energy cost</td><td>2</td></tr>
+		<tr><td>Impact damage</td><td>10</td></tr>
 		<tr><td>Impact impulse</td><td>150</td></tr>
 		<tr><td>Splash damage</td><td>-</td></tr>
 		<tr><td>Splash damage radius</td><td>-</td></tr>
@@ -90,41 +92,33 @@
 		<tr><td><img src="./graphics/wpn_assaultrifle.png"></td></tr>
 	</table>	
 	The <i>MG</i> fires tiny grenades that explode near enemies or on impact.
-	The grenades need a moment to arm themselves after leaving the barrel, making the <i>MG</i>
-	a sub-optimal choice if the enemy is really close. While a single grenade is pretty weak,
-	the fact that you don't have to be 100% accurate to deal damage to enemies combined with
-	a relatively high rate of fire turn the <i>MG</i> into a formidable weapon.
+	While a single grenade is pretty weak, the fact that you don't have to be 100% 
+	accurate to deal damage to enemies combined with a relatively high rate of 
+	fire turn the <i>MG</i> into a formidable weapon.
 	</p>		
 	<table>
 		<tr><td>Energy cost</td><td>10</td></tr>
 		<tr><td>Impact damage</td><td>-</td></tr>
-		<tr><td>Impact impulse</td><td>-</td></tr>
+		<tr><td>Impact impulse</td><td>1000</td></tr>
 		<tr><td>Splash damage</td><td>25</td></tr>
 		<tr><td>Splash damage radius</td><td>3</td></tr>
-		<tr><td>Splash damage impulse</td><td>0</td></tr>										
+		<tr><td>Splash damage impulse</td><td>-</td></tr>										
 	</table>	
 	</tr></table>						
 
-	<h2><a name="hyper"></a>The Hyper-Missile Launcher AKA The Hyperrifle</h2>
+	<h2><a name="sniper"></a>The Sniper ROFL</h2>
 	<table><tr><td id="noborder" valign="top">		
 	<table align="left">
 		<tr><td><img src="./graphics/wpn_sniperrifle.png"></td></tr>
 	</table>	
-	The <i>Hyperrifle</i> is a missile launcher in the form of a rifle. The guided missile fired
-	by the <i>Hyperrifle</i> leaves brightly colored sparks on its path and weird colorful (but harmless) effects in the ether near enemies.
-	In order to fire the <i>Hyperrifle</i> you first need to get a lock on a target for the missile.
-	To select a target, hold down the left mouse button while the crosshair
-	is over an enemy <i>CAT</i>, keep the crosshair on the target until it's locked
-	as target, then release the button to fire.
-	Note that the <i>Hyperrifle</i> needs at least 40 energy to be even able to search for a target
-	and that the targeting process itself already uses up your energy.	
-	Also, keep in mind that the missile is not that agile. If you're close to your enemy, your aim 
-	needs to be more accurate than when you're standing far away and the missile has more
-	time to home in on its target.			
+	The <i>Sniper ROFL</i> is... kind of a sniper rifle.
+	The sniper rofl needs to be charged before it can fire. While charging doesn't take long and
+	doesn't consume energy, you can't run fast or use the Etherboard while doing it.
+	Hold down the left mouse button to charge, release it to fire.
 	<table>
-		<tr><td>Energy cost</td><td>40</td></tr>
-		<tr><td>Impact damage</td><td>80</td></tr>
-		<tr><td>Impact impulse</td><td>2000</td></tr>
+		<tr><td>Energy cost</td><td>75</td></tr>
+		<tr><td>Impact damage</td><td>120</td></tr>
+		<tr><td>Impact impulse</td><td>1000</td></tr>
 		<tr><td>Splash damage</td><td>-</td></tr>
 		<tr><td>Splash damage radius</td><td>-</td></tr>
 		<tr><td>Splash damage impulse</td><td>-</td></tr>										
