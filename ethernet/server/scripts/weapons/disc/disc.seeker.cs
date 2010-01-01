@@ -111,8 +111,6 @@ function RedSeekerDisc::onDeflected(%this, %obj)
 {
     if(%obj.state() == $NortDisc::Attacking)
         %obj.getTarget().removeAttackingDisc(%obj);
-        
-    %obj.getTarget().startNoDiscGracePeriod();
 }
 
 function RedSeekerDisc::onHitTarget(%this, %obj)
