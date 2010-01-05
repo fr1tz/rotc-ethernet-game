@@ -29,7 +29,7 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
     numBullets = 9; // number of shotgun bullets
 
     range = 500; // shotgun range
-    spread = 0.6; // shotgun spread in degrees
+    spread = 0.5; // shotgun spread in degrees
 
 	explodesNearEnemies	      = false;
 	explodesNearEnemiesRadius = 4;
