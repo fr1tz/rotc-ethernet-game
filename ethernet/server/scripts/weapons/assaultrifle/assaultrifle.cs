@@ -9,7 +9,8 @@
 //------------------------------------------------------------------------------
 
 exec("./assaultrifle.sfx.cs");
-exec("./assaultrifle.gfx.cs");
+exec("./assaultrifle.gfx.red.cs");
+exec("./assaultrifle.gfx.blue.cs");
 
 //-----------------------------------------------------------------------------
 
@@ -32,11 +33,12 @@ datablock ShapeBaseImageData(HolsteredAssaultRifleImage)
 datablock TracerProjectileData(RedAssaultRifleProjectile)
 {
 	// script damage properties...
-	impactDamage       = 0;
-	impactImpulse      = 1000;
-	splashDamage       = 25;
-	splashDamageRadius = 3;
-	splashImpulse      = 0;
+	impactDamage        = 0;
+	impactImpulse       = 1000;
+	splashDamage        = 25;
+	splashDamageRadius  = 5;
+	splashDamageFalloff = $SplashDamageFalloff::Exponential;
+	splashImpulse       = 0;
 	
 	// how much energy does firing this projectile drain?...
 	energyDrain = 10;
@@ -44,30 +46,30 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	trackingAgility = 0;
 	
 	explodesNearEnemies			= true;
-	explodesNearEnemiesRadius	= 3;
+	explodesNearEnemiesRadius	= 5;
 	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
 
 	//sound = AssaultRifleProjectileFlybySound;
  
-    projectileShapeName = "~/data/weapons/assaultrifle/projectile.dts";
+    projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
 
-	explosion             = AssaultRifleProjectileImpact;
-	bounceExplosion		  = AssaultRifleProjectileBounceExplosion;
-	hitEnemyExplosion     = AssaultRifleProjectileImpact;
-	nearEnemyExplosion    = AssaultRifleProjectileExplosion;
+	explosion             = RedAssaultRifleProjectileExplosion;
+//	bounceExplosion		  = AssaultRifleProjectileBounceExplosion;
+//	hitEnemyExplosion     = AssaultRifleProjectileImpact;
+//	nearEnemyExplosion    = AssaultRifleProjectileExplosion;
 //	hitTeammateExplosion  = AssaultRifleProjectileImpact;
 //	hitDeflectorExplosion = DiscDeflectedEffect;
 
 //   particleEmitter	= AssaultRifleProjectileParticleEmitter;
-	laserTrail[0]   = AssaultRifleProjectileLaserTrail;
+	laserTrail[0]   = RedAssaultRifleProjectileLaserTrail;
 //	laserTrail[1]   = AssaultRifleProjectileRedLaserTrail;
-	laserTail	    = AssaultRifleProjectileLaserTail;
-	laserTailLen    = 2;
+	laserTail	    = RedAssaultRifleProjectileLaserTail;
+	laserTailLen    = 10;
 
 	muzzleVelocity		= 600;
 	velInheritFactor	 = 1.0;
 	
-	isBallistic			= true;
+	isBallistic			= false;
 	gravityMod			 = 7.5;
 
 	armingDelay			= 0;
@@ -77,8 +79,8 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	decals[0]	= ExplosionDecalTwo;
 	
 	hasLight	 = true;
-	lightRadius = 8.0;
-	lightColor  = "1.0 0.8 0.2";
+	lightRadius = 6.0;
+	lightColor  = "1.0 0.0 0.0";
 };
 
 function RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
@@ -97,8 +99,11 @@ function RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%norm
 
 datablock TracerProjectileData(BlueAssaultRifleProjectile : RedAssaultRifleProjectile)
 {
-    dummyFieldToAvoidSyntaxError = 0;
-//	laserTrail[1] = AssaultRifleProjectileBlueLaserTrail;
+	projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
+	explosion = BlueAssaultRifleProjectileExplosion;
+	laserTrail[0]   = BlueAssaultRifleProjectileLaserTrail;
+	laserTail = BlueAssaultRifleProjectileLaserTail;
+	lightColor  = "0.0 0.0 1.0";
 };
 
 function BlueAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
@@ -163,7 +168,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
         stateArmThread[2]                = "holdrifle";
 		
 		stateName[3]                     = "Fire";
-		stateTransitionOnTimeout[3]      = "KeepAiming";
+		stateTransitionOnTimeout[3]      = "Reload";
 		stateTimeoutValue[3]             = 0.15;
 		stateFire[3]                     = true;
 		stateFireProjectile[3]           = RedAssaultRifleProjectile;
@@ -174,6 +179,9 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateSequence[3]                 = "Fire";
 		stateSound[3]                    = AssaultRifleFireSound;
 		stateScript[3]                   = "onFire";
+
+		stateName[8]                     = "Reload";
+		stateTransitionOnTriggerUp[8]    = "KeepAiming";
 		
 		stateName[4]                     = "KeepAiming";
 		stateTransitionOnNoAmmo[4]       = "NoAmmo";

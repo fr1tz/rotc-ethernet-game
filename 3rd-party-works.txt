@@ -100,10 +100,33 @@ Used for ethernet\data\weapons\assaultrifle\sound.explosion.wav:
 
 ----------------------------------------------------------------------------------
 
+Used for ethernet\data\weapons\assaultrifle\sound.explosion2.wav:
+
+        By junggle (http://www.freesound.org/usersViewSingle.php?id=128404)
+            btn107.wav (http://www.freesound.org/samplesViewSingle.php?id=28917)
+
+        By qubodup (http://www.freesound.org/usersViewSingle.php?id=71257)
+            m242_chain_gun_slow_burst_1.flac (http://www.freesound.org/samplesViewSingle.php?id=67579)
+
+        By gezortenplotz (http://www.freesound.org/usersViewSingle.php?id=11536)
+            308_rifle_02.wav (http://www.freesound.org/samplesViewSingle.php?id=43756)
+
+----------------------------------------------------------------------------------
+
 Used for ethernet\data\weapons\assaultrifle\sound.fire.wav:
 
         By Matt_G (http://www.freesound.org/usersViewSingle.php?id=240366)
             m240.wav (http://www.freesound.org/samplesViewSingle.php?id=30749)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\weapons\assaultrifle\sound.fire2.wav:
+
+        By junggle (http://www.freesound.org/usersViewSingle.php?id=128404)
+            btn107.wav (http://www.freesound.org/samplesViewSingle.php?id=28917)
+
+        By PhreaKsAccount (http://www.freesound.org/usersViewSingle.php?id=89025)
+            Coachgun_Fire1.wav (http://www.freesound.org/samplesViewSingle.php?id=46261)
 
 ----------------------------------------------------------------------------------
 

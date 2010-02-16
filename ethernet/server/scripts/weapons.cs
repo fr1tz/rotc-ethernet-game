@@ -16,6 +16,9 @@ $DamageType::Impact = 0;
 $DamageType::Splash	= 1;
 $DamageType::Force  = 2;
 
+$SplashDamageFalloff::Linear = 0;
+$SplashDamageFalloff::Exponential = 1;
+
 // These are bit masks ($TargetingMask::FreeX = 2^X)...
 $TargetingMask::Disc  = 1;
 $TargetingMask::Heat  = 2;
@@ -135,7 +138,6 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 	%regainEnergy = %sourceObject.getClassName() $= "Player";
 		
 	InitContainerRadiusSearch(%pos, %radius, $TypeMasks::ShapeBaseObjectType);
-	%halfRadius = %radius / 2;
 	while( (%targetObject = containerSearchNext()) != 0 )
 	{
         // the observer cameras are ShapeBases; ignore them...
@@ -151,7 +153,11 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 			continue;
 
 		%dist = containerSearchCurrRadiusDist();
-		%distScale = (%radius-%dist)/%radius;
+		%prox = %radius - %dist;
+		if(%this.splashDamageFalloff == $SplashDamageFalloff::Exponential)
+			%distScale = (%prox*%prox) / (%radius*%radius);
+		else
+			%distScale = %prox / %radius;
 		
 		// apply impulse...
 		if(%this.splashImpulse > 0)

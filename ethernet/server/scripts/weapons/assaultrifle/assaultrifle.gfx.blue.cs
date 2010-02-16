@@ -4,14 +4,14 @@
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
-// Revenge Of The Cats - assaultrifle.gfx.cs
+// Revenge Of The Cats - assaultrifle.gfx.blue.cs
 // Eyecandy for the assault rifle
 //------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
 // projectile particle emitter
 
-datablock ParticleData(AssaultRifleProjectileParticleEmitter_Particles)
+datablock ParticleData(BlueAssaultRifleProjectileParticleEmitter_Particles)
 {
 	dragCoefficient      = 1;
 	gravityCoefficient   = -0.2;
@@ -31,7 +31,7 @@ datablock ParticleData(AssaultRifleProjectileParticleEmitter_Particles)
 	renderDot = false;
 };
 
-datablock ParticleEmitterData(AssaultRifleProjectileParticleEmitter)
+datablock ParticleEmitterData(BlueAssaultRifleProjectileParticleEmitter)
 {
 	ejectionPeriodMS = 200;
 	periodVarianceMS = 100;
@@ -45,72 +45,35 @@ datablock ParticleEmitterData(AssaultRifleProjectileParticleEmitter)
 	overrideAdvances = false;
 	orientParticles  = false;
 	lifetimeMS		 = 0;
-	particles = "AssaultRifleProjectileParticleEmitter_Particles";
+	particles = "BlueAssaultRifleProjectileParticleEmitter_Particles";
 };
 
 //-----------------------------------------------------------------------------
 // laser trail
 
-datablock MultiNodeLaserBeamData(AssaultRifleProjectileRedLaserTrail)
+datablock MultiNodeLaserBeamData(BlueAssaultRifleProjectileLaserTrail)
 {
-	hasLine = true;
-	lineColor	= "1.00 0.00 0.00 0.02";
+	hasLine   = true;
+	lineColor = "0.00 0.00 1.00 1.0";
+    lineWidth = 2.0;
 
 	hasInner = false;
-	innerColor = "0.00 0.00 1.00 0.1";
+	innerColor = "1.00 0.00 1.00 0.3";
 	innerWidth = "0.05";
 
-	hasOuter = true;
-	outerColor = "1.00 0.00 0.00 0.25";
-	outerWidth = "0.05";
+	hasOuter = false;
+	outerColor = "1.00 0.00 1.00 0.1";
+	outerWidth = "0.10";
 
-//	bitmap = "~/data/weapons/assaultrifle/lasertrail";
-//	bitmapWidth = 0.25;
-
-	blendMode = 1;
-	fadeTime = 250;
-};
-
-datablock MultiNodeLaserBeamData(AssaultRifleProjectileBlueLaserTrail)
-{
-	hasLine = true;
-	lineColor	= "0.00 0.00 1.00 0.02";
-
-	hasInner = false;
-	innerColor = "0.00 0.00 1.00 0.1";
-	innerWidth = "0.05";
-
-	hasOuter = true;
-	outerColor = "0.00 0.00 1.00 0.25";
-	outerWidth = "0.05";
-
-//	bitmap = "~/data/weapons/assaultrifle/lasertrail";
-//	bitmapWidth = 0.25;
+	bitmap = "~/data/weapons/blaster/lasertrail.blue";
+	bitmapWidth = 0.50;
 
 	blendMode = 1;
-	fadeTime = 250;
-};
-
-datablock MultiNodeLaserBeamData(AssaultRifleProjectileLaserTrail)
-{
-	hasLine = true;
-	lineColor	= "1.00 1.00 1.00 0.02";
-
-	hasInner = false;
-	innerColor = "0.00 1.00 0.00 1.00";
-	innerWidth = "0.05";
-
-	hasOuter = true;
-	outerColor = "1.00 1.00 1.00 0.02";
-	outerWidth = "0.05";
-
-//	bitmap = "~/data/weapons/assaultrifle/lasertrail";
-//	bitmapWidth = 0.25;
-
-	blendMode = 1;
+	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
+	fadeTime = 100;
  
     windCoefficient = 0.0;
-
+    
     // node x movement...
     nodeMoveMode[0]     = $NodeMoveMode::None;
     nodeMoveSpeed[0]    = -0.002;
@@ -120,44 +83,44 @@ datablock MultiNodeLaserBeamData(AssaultRifleProjectileLaserTrail)
     nodeMoveSpeed[1]    = -0.002;
     nodeMoveSpeedAdd[1] =  0.004;
     // node z movement...
-    nodeMoveMode[2]     = $NodeMoveMode::ConstantSpeed;
-    nodeMoveSpeed[2]    = 0.5;
-    nodeMoveSpeedAdd[2] = 0.5;
- 
-	fadeTime = 1000;
+    nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
+    nodeMoveSpeed[2]    = 3.0;
+    nodeMoveSpeedAdd[2] = -6.0;
+    
+    nodeDistance = 5;
 };
 
 //-----------------------------------------------------------------------------
 // laser tail...
 
-datablock LaserBeamData(AssaultRifleProjectileLaserTail)
+datablock LaserBeamData(BlueAssaultRifleProjectileLaserTail)
 {
 	hasLine = true;
-	lineStartColor	= "1.00 1.00 1.00 0.0";
-	lineBetweenColor = "1.00 1.00 1.00 0.5";
-	lineEndColor	  = "1.00 1.00 1.00 1.0";
- 	lineWidth		  = 2.0;
+	lineStartColor	= "0.00 0.00 1.00 0.0";
+	lineBetweenColor = "0.00 0.00 1.00 0.25";
+	lineEndColor	  = "0.00 0.00 1.00 0.5";
+	lineWidth		  = 2.0;
 
 	hasInner = false;
-	innerStartColor	= "1.00 1.00 0.00 0.5";
-	innerBetweenColor = "1.00 1.00 0.00 0.5";
-	innerEndColor	  = "1.00 1.00 0.00 0.5";
-	innerStartWidth	= "0.0";
+	innerStartColor = "0.00 0.00 0.90 0.5";
+	innerBetweenColor = "0.50 0.00 0.90 0.9";
+	innerEndColor = "1.00 1.00 1.00 0.9";
+	innerStartWidth = "0.05";
 	innerBetweenWidth = "0.05";
-	innerEndWidth	  = "0.1";
+	innerEndWidth = "0.05";
 
 	hasOuter = false;
-	outerStartColor	= "1.00 1.00 0.00 0.0";
-	outerBetweenColor = "1.00 1.00 0.00 0.2";
-	outerEndColor	  = "1.00 1.00 0.00 0.2";
-	outerStartWidth	= "0.0";
-	outerBetweenWidth = "0.3";
-	outerEndWidth	  = "0.0";
-
-	bitmap = "~/data/weapons/assaultrifle/lasertail";
-	bitmapWidth = 0.2;
-//	crossBitmap = "~/data/weapons/assaultrifle/lasertail.cross";
-//	crossBitmapWidth = 0.25;
+	outerStartColor = "0.00 0.00 0.90 0.0";
+	outerBetweenColor = "0.50 0.00 0.90 0.8";
+	outerEndColor = "1.00 1.00 1.00 0.8";
+	outerStartWidth = "0.3";
+	outerBetweenWidth = "0.25";
+	outerEndWidth = "0.1";
+	
+	bitmap = "~/data/weapons/blaster/lasertail.blue";
+	bitmapWidth = 0.30;
+	//crossBitmap = "~/data/weapons/blaster/lasertail.blue.cross";
+	//crossBitmapWidth = 0.50;
 
 	betweenFactor = 0.5;
 	blendMode = 1;
@@ -166,9 +129,9 @@ datablock LaserBeamData(AssaultRifleProjectileLaserTail)
 //-----------------------------------------------------------------------------
 // bounce
 
-datablock ExplosionData(AssaultRifleProjectileBounceExplosion)
+datablock ExplosionData(BlueAssaultRifleProjectileBounceExplosion)
 {
-	soundProfile	= AssaultRifleProjectileBounceSound;
+	soundProfile	= BlueAssaultRifleProjectileBounceSound;
 	
 	lifetimeMS = 200;
 	
@@ -183,7 +146,7 @@ datablock ExplosionData(AssaultRifleProjectileBounceExplosion)
 //-----------------------------------------------------------------------------
 // explosion
 
-datablock ParticleData(AssaultRifleProjectileExplosion_Cloud)
+datablock ParticleData(BlueAssaultRifleProjectileExplosion_Cloud)
 {
 	dragCoeffiecient	  = 0.4;
 	gravityCoefficient	= 0;
@@ -211,7 +174,7 @@ datablock ParticleData(AssaultRifleProjectileExplosion_Cloud)
 	allowLighting = true;
 };
 
-datablock ParticleEmitterData(AssaultRifleProjectileExplosion_CloudEmitter)
+datablock ParticleEmitterData(BlueAssaultRifleProjectileExplosion_CloudEmitter)
 {
 	ejectionPeriodMS = 1;
 	periodVarianceMS = 0;
@@ -224,10 +187,10 @@ datablock ParticleEmitterData(AssaultRifleProjectileExplosion_CloudEmitter)
 
 	lifetimeMS		 = 100;
 
-	particles = "AssaultRifleProjectileExplosion_Cloud";
+	particles = "BlueAssaultRifleProjectileExplosion_Cloud";
 };
 
-datablock ParticleData(AssaultRifleProjectileExplosion_Dust)
+datablock ParticleData(BlueAssaultRifleProjectileExplosion_Dust)
 {
 	dragCoefficient		= 1.0;
 	gravityCoefficient	= -0.01;
@@ -251,9 +214,9 @@ datablock ParticleData(AssaultRifleProjectileExplosion_Dust)
 	allowLighting = true;
 };
 
-datablock ParticleEmitterData(AssaultRifleProjectileExplosion_DustEmitter)
+datablock ParticleEmitterData(BlueAssaultRifleProjectileExplosion_DustEmitter)
 {
-	ejectionPeriodMS = 10;
+	ejectionPeriodMS = 2;
 	periodVarianceMS = 0;
 	ejectionVelocity = 2.0;
 	velocityVariance = 0.0;
@@ -264,11 +227,11 @@ datablock ParticleEmitterData(AssaultRifleProjectileExplosion_DustEmitter)
 	phiVariance		= 360;
 	overrideAdvances = false;
 	lifetimeMS		 = 50;
-	particles = "AssaultRifleProjectileExplosion_Dust";
+	particles = "BlueAssaultRifleProjectileExplosion_Dust";
 };
 
 
-datablock ParticleData(AssaultRifleProjectileExplosion_Smoke)
+datablock ParticleData(BlueAssaultRifleProjectileExplosion_Smoke)
 {
 	dragCoeffiecient	  = 0.4;
 	gravityCoefficient	= -0.5;	// rises slowly
@@ -296,7 +259,7 @@ datablock ParticleData(AssaultRifleProjectileExplosion_Smoke)
 	allowLighting = true;
 };
 
-datablock ParticleEmitterData(AssaultRifleProjectileExplosion_SmokeEmitter)
+datablock ParticleEmitterData(BlueAssaultRifleProjectileExplosion_SmokeEmitter)
 {
 	ejectionPeriodMS = 2;
 	periodVarianceMS = 0;
@@ -309,10 +272,10 @@ datablock ParticleEmitterData(AssaultRifleProjectileExplosion_SmokeEmitter)
 
 	lifetimeMS		 = 250;
 
-	particles = "AssaultRifleProjectileExplosion_Smoke";
+	particles = "BlueAssaultRifleProjectileExplosion_Smoke";
 };
 
-datablock ParticleData(AssaultRifleProjectileExplosion_Sparks)
+datablock ParticleData(BlueAssaultRifleProjectileExplosion_Sparks)
 {
 	dragCoefficient		= 1;
 	gravityCoefficient	= 0.0;
@@ -333,7 +296,7 @@ datablock ParticleData(AssaultRifleProjectileExplosion_Sparks)
 	allowLighting = false;
 };
 
-datablock ParticleEmitterData(AssaultRifleProjectileExplosion_SparksEmitter)
+datablock ParticleEmitterData(BlueAssaultRifleProjectileExplosion_SparksEmitter)
 {
 	ejectionPeriodMS = 10;
 	periodVarianceMS = 0;
@@ -347,10 +310,10 @@ datablock ParticleEmitterData(AssaultRifleProjectileExplosion_SparksEmitter)
 	overrideAdvances = false;
 	orientParticles  = true;
 	lifetimeMS		 = 100;
-	particles = "AssaultRifleProjectileExplosion_Sparks";
+	particles = "BlueAssaultRifleProjectileExplosion_Sparks";
 };
 
-datablock MultiNodeLaserBeamData(AssaultRifleProjectileExplosion_Debris_LaserTrail)
+datablock MultiNodeLaserBeamData(BlueAssaultRifleProjectileExplosion_Debris_LaserTrail)
 {
 	hasLine = true;
 	lineColor	= "1.00 1.00 0.00 0.5";
@@ -371,12 +334,12 @@ datablock MultiNodeLaserBeamData(AssaultRifleProjectileExplosion_Debris_LaserTra
 	fadeTime = 500;
 };
 
-datablock DebrisData(AssaultRifleProjectileExplosion_Debris)
+datablock DebrisData(BlueAssaultRifleProjectileExplosion_Debris)
 {
 //	shapeFile = "~/data/weapons/hegrenade/grenade.dts";
 //	emitters[0] = GrenadeLauncherParticleEmitter;
 
-	laserTrail = AssaultRifleProjectileExplosion_Debris_LaserTrail;
+	laserTrail = BlueAssaultRifleProjectileExplosion_Debris_LaserTrail;
 
 	// bounce...
 	numBounces = 3;
@@ -391,7 +354,7 @@ datablock DebrisData(AssaultRifleProjectileExplosion_Debris)
 	lifetimeVariance = 0.02;
 };
 
-datablock ExplosionData(AssaultRifleProjectileExplosion)
+datablock ExplosionData(BlueAssaultRifleProjectileExplosion)
 {
 	soundProfile = AssaultRifleProjectileExplosionSound;
 
@@ -406,20 +369,20 @@ datablock ExplosionData(AssaultRifleProjectileExplosion)
 	times[0] = 0.0;
 	times[1] = 1.0;
 
-	debris = 0; //AssaultRifleProjectileExplosion_Debris;
+	debris = 0; //BlueAssaultRifleProjectileExplosion_Debris;
 	debrisThetaMin = 0;
 	debrisThetaMax = 180;
 	debrisNum = 3;
 	debrisVelocity = 50.0;
 	debrisVelocityVariance = 10.0;
 	
-	particleEmitter = AssaultRifleProjectileExplosion_CloudEmitter;
-	particleDensity = 25;
-	particleRadius = 0.5;
+	particleEmitter = BlueAssaultRifleProjectileExplosion_CloudEmitter;
+	particleDensity = 100;
+	particleRadius = 1.5;
 
-	emitter[0] = AssaultRifleProjectileExplosion_DustEmitter;
-	emitter[1] = 0; // AssaultRifleProjectileExplosion_SmokeEmitter;
-	emitter[2] = 0; // AssaultRifleProjectileExplosion_SparksEmitter;
+	emitter[0] = BlueAssaultRifleProjectileExplosion_DustEmitter;
+	emitter[1] = 0; // BlueAssaultRifleProjectileExplosion_SmokeEmitter;
+	emitter[2] = 0; // BlueAssaultRifleProjectileExplosion_SparksEmitter;
 
 	// Camera shake
 	shakeCamera = false;
@@ -429,16 +392,16 @@ datablock ExplosionData(AssaultRifleProjectileExplosion)
 	camShakeRadius = 20.0;
 
 	// Dynamic light
-	lightStartRadius = 15;
+	lightStartRadius = 6;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.8 0.2";
+	lightStartColor = "0.0 0.0 1.0";
 	lightEndColor = "0.0 0.0 0.0";
 };
 
 //-----------------------------------------------------------------------------
 // impact...
 
-datablock ParticleData(AssaultRifleProjectileImpact_Smoke)
+datablock ParticleData(BlueAssaultRifleProjectileImpact_Smoke)
 {
 	dragCoeffiecient	  = 0.4;
 	gravityCoefficient	= -0.4;
@@ -461,7 +424,7 @@ datablock ParticleData(AssaultRifleProjectileImpact_Smoke)
 	allowLighting = false;
 };
 
-datablock ParticleEmitterData(AssaultRifleProjectileImpact_SmokeEmitter)
+datablock ParticleEmitterData(BlueAssaultRifleProjectileImpact_SmokeEmitter)
 {
 	ejectionOffset	= 0;
 
@@ -476,10 +439,10 @@ datablock ParticleEmitterData(AssaultRifleProjectileImpact_SmokeEmitter)
 
 	lifetimeMS		 = 100;
 
-	particles = "AssaultRifleProjectileImpact_Smoke";
+	particles = "BlueAssaultRifleProjectileImpact_Smoke";
 };
 
-datablock DebrisData(AssaultRifleProjectileImpact_Debris)
+datablock DebrisData(BlueAssaultRifleProjectileImpact_Debris)
 {
 	// shape...
 	shapeFile = "~/data/misc/debris1.white.dts";
@@ -502,18 +465,18 @@ datablock DebrisData(AssaultRifleProjectileImpact_Debris)
 	lifetimeVariance = 1.0;
 };
 
-datablock ExplosionData(AssaultRifleProjectileImpact)
+datablock ExplosionData(BlueAssaultRifleProjectileImpact)
 {
-	soundProfile	= AssaultRifleProjectileImpactSound;
+	soundProfile	= BlueAssaultRifleProjectileImpactSound;
 
 	faceViewer	  = true;
 	explosionScale = "0.8 0.8 0.8";
 
 	lifetimeMS = 250;
 
-	emitter[0] = AssaultRifleProjectileImpact_SmokeEmitter;
+	emitter[0] = BlueAssaultRifleProjectileImpact_SmokeEmitter;
 
-	debris = AssaultRifleProjectileImpact_Debris;
+	debris = BlueAssaultRifleProjectileImpact_Debris;
 	debrisThetaMin = 0;
 	debrisThetaMax = 60;
 	debrisNum = 2;

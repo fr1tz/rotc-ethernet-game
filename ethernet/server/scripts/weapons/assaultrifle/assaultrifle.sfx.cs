@@ -10,7 +10,7 @@
 
 datablock AudioProfile(AssaultRifleFireSound)
 {
-	filename = "~/data/weapons/assaultrifle/sound.fire.wav";
+	filename = "~/data/weapons/assaultrifle/sound.fire2.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
@@ -24,7 +24,7 @@ datablock AudioProfile(AssaultRifleProjectileBounceSound)
 
 datablock AudioProfile(AssaultRifleProjectileExplosionSound)
 {
-	filename = "~/data/weapons/assaultrifle/sound.explosion.wav";
+	filename = "~/data/weapons/assaultrifle/sound.explosion2.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
