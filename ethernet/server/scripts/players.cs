@@ -129,8 +129,9 @@ function PlayerData::onAdd(%this,%obj)
     else
     	%obj.useWeapon(1);
      
-     // Start sliding thread.
-     %obj.updateSliding();
+   // Start sliding thread.
+   %obj.sliding = 0.5;
+   %obj.updateSliding();
 }
 
 // callback function: called by engine
