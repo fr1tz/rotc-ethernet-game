@@ -35,27 +35,27 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 	explodesNearEnemiesRadius = 4;
 	explodesNearEnemiesMask   = $TypeMasks::PlayerObjectType;
 
-    //sound = BlasterProjectileFlybySound;
+	//sound = BlasterProjectileFlybySound;
 
-    //projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
+	//projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
 
 	explosion               = RedBlasterProjectileImpact;
 	hitEnemyExplosion       = RedBlasterProjectileHit;
-    hitTeammateExplosion    = RedBlasterProjectileHit;
-    //nearEnemyExplosion	= DefaultProjectileNearEnemyExplosion;
-    //hitDeflectorExplosion = SeekerDiscBounceEffect;
+	hitTeammateExplosion    = RedBlasterProjectileHit;
+	//nearEnemyExplosion	= DefaultProjectileNearEnemyExplosion;
+	//hitDeflectorExplosion = SeekerDiscBounceEffect;
 
-    //fxLight					= RedBlasterProjectileFxLight;
+	//fxLight					= RedBlasterProjectileFxLight;
 
 	missEnemyEffect		 = RedBlasterProjectileMissedEnemyEffect;
 
-    //laserTail				 = RedBlasterProjectileLaserTail;
-    //laserTailLen			 = 10.0;
+	//laserTail				 = RedBlasterProjectileLaserTail;
+	//laserTailLen			 = 10.0;
 
-    laserTrail[0]			= RedBlasterProjectileLaserTrail;
-    //laserTrail[1]		 = Team1StingerProjectileLaserTrail2;
+	laserTrail[0]			= RedBlasterProjectileLaserTrailMissed;
+	laserTrail[1]			= RedBlasterProjectileLaserTrailHit;
 
-    //particleEmitter	  = RedBlasterProjectileParticleEmitter;
+	//particleEmitter	  = RedBlasterProjectileParticleEmitter;
 
 	muzzleVelocity   = 9999;
 	velInheritFactor = 0.0;
@@ -104,17 +104,18 @@ function RedBlasterProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%d
 
 datablock ShotgunProjectileData(BlueBlasterProjectile : RedBlasterProjectile)
 {
-    //projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
+	//projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
 
 	explosion            = BlueBlasterProjectileImpact;
 	hitEnemyExplosion    = BlueBlasterProjectileHit;
-    hitTeammateExplosion = BlueBlasterProjectileHit;
+	hitTeammateExplosion = BlueBlasterProjectileHit;
 
 	missEnemyEffect    = BlueBlasterProjectileMissedEnemyEffect;
 
 	//laserTail          = BlueBlasterProjectileLaserTail;
 
-    laserTrail[0]      = BlueBlasterProjectileLaserTrail;
+	laserTrail[0]      = BlueBlasterProjectileLaserTrailMissed;
+	laserTrail[1]      = BlueBlasterProjectileLaserTrailHit;
 
 	lightColor  = "0.0 0.0 1.0";
 };

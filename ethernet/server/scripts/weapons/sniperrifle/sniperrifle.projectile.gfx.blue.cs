@@ -61,7 +61,7 @@ datablock MultiNodeLaserBeamData(BlueSniperProjectileLaserTrail)
 	outerColor = "1.00 0.00 0.00 0.75";
 	outerWidth = "0.20";
 
-	bitmap = "~/data/weapons/sniperrifle/lasertrail.blue";
+	bitmap = "~/data/weapons/blaster/lasertrail.blue";
 	bitmapWidth = 0.15;
 
 	blendMode = 1;
