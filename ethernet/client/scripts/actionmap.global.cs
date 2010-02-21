@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 
 GlobalActionMap.bind(keyboard, "tilde", toggleConsole);
+GlobalActionMap.bind(keyboard, "F12", toggleConsole);
 GlobalActionMap.bindCmd(keyboard, "alt enter", "", "toggleFullScreen();");
 //GlobalActionMap.bindCmd(keyboard, "F1", "", "contextHelp();");
 
