@@ -353,14 +353,14 @@ datablock ParticleData(RedEtherform_ContrailParticle)
 	lifetimeMS			  = 1000;
 	lifetimeVarianceMS	= 0;
 	textureName			 = "~/data/particles/small_particle4";
-	colors[0]	  = "1.0 0.0 1.0 1.0";
-	colors[1]	  = "1.0 0.0 0.0 1.0";
-	colors[2]	  = "1.0 1.0 0.0 1.0";
+	colors[0]	  = "1.0 0.0 0.0 0.8";
+	colors[1]	  = "1.0 0.0 1.0 0.8";
+	colors[2]	  = "1.0 1.0 0.0 0.8";
 	colors[3]	  = "0.0 5.0 0.0 0.0";
-	sizes[0]		= 1.0;
-	sizes[1]		= 1.0;
-	sizes[2]		= 1.0;
-	sizes[3]		= 1.0;
+	sizes[0]		= 0.25;
+	sizes[1]		= 0.25;
+	sizes[2]		= 0.25;
+	sizes[3]		= 0.25;
 	times[0]		= 0.0;
 	times[1]		= 0.333;
 	times[2]		= 0.666;
@@ -371,7 +371,7 @@ datablock ParticleEmitterData(RedEtherform_ContrailEmitter)
 {
 	ejectionPeriodMS = 5;
 	periodVarianceMS = 0;
-	ejectionVelocity = 10;
+	ejectionVelocity = 2;
 	velocityVariance = 0;
 	ejectionOffset	= 0.0;
 	thetaMin			= 90;
@@ -393,14 +393,14 @@ datablock ParticleData(BlueEtherform_ContrailParticle)
 	lifetimeMS			  = 1000;
 	lifetimeVarianceMS	= 0;
 	textureName			 = "~/data/particles/small_particle4";
-	colors[0]	  = "1.0 0.0 1.0 1.0";
-	colors[1]	  = "0.0 0.0 1.0 1.0";
-	colors[2]	  = "0.0 1.0 1.0 1.0";
+	colors[0]	  = "0.0 0.0 1.0 0.8";
+	colors[1]	  = "1.0 0.0 1.0 0.8";
+	colors[2]	  = "0.0 1.0 1.0 0.8";
 	colors[3]	  = "0.0 5.0 0.0 0.0";
-	sizes[0]		= 1.0;
-	sizes[1]		= 1.0;
-	sizes[2]		= 1.0;
-	sizes[3]		= 1.0;
+	sizes[0]		= 0.25;
+	sizes[1]		= 0.25;
+	sizes[2]		= 0.25;
+	sizes[3]		= 0.25;
 	times[0]		= 0.0;
 	times[1]		= 0.333;
 	times[2]		= 0.666;
@@ -411,7 +411,7 @@ datablock ParticleEmitterData(BlueEtherform_ContrailEmitter)
 {
 	ejectionPeriodMS = 5;
 	periodVarianceMS = 0;
-	ejectionVelocity = 10;
+	ejectionVelocity = 2;
 	velocityVariance = 0;
 	ejectionOffset	= 0.0;
 	thetaMin			= 90;
