@@ -96,12 +96,12 @@ datablock EtherformData(RedEtherform)
 	bufferRepairParticleEmitter = RedEtherformBufferRepairEmitter;
 
 	// laser trail...
-	//laserTrail[0] = RedEtherform_LaserTrailOne;
-	//laserTrail[1] = RedEtherform_LaserTrailTwo;
+	laserTrail[0] = RedEtherform_LaserTrailOne;
+	laserTrail[1] = RedEtherform_LaserTrailTwo;
 
 	// contrail...
-	minTrailSpeed = 20;
-	particleTrail = RedEtherform_ContrailEmitter;
+	minTrailSpeed = 1;
+	//particleTrail = RedEtherform_ContrailEmitter;
 	
 	// various emitters...
 	//forwardJetEmitter = FlyerJetEmitter;
@@ -123,9 +123,9 @@ datablock EtherformData(BlueEtherform : RedEtherform)
 	damageBufferParticleEmitter = BlueEtherformDamageBufferEmitter;
 	repairParticleEmitter = BlueEtherformRepairEmitter;
 	bufferRepairParticleEmitter = BlueEtherformBufferRepairEmitter;
-	//laserTrail[0] = BlueEtherform_LaserTrailOne;
-	//laserTrail[1] = BlueEtherform_LaserTrailTwo;
-	particleTrail = BlueEtherform_ContrailEmitter;
+	laserTrail[0] = BlueEtherform_LaserTrailOne;
+	laserTrail[1] = BlueEtherform_LaserTrailTwo;
+	//particleTrail = BlueEtherform_ContrailEmitter;
 };
 
 
