@@ -49,24 +49,24 @@ datablock LaserBeamData(BlueBlasterProjectileLaserTail)
 
 datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailMissed)
 {
-	hasLine   = false;
-	lineColor = "1.00 0.00 0.00 1.0";
+	hasLine   = true;
+	lineColor = "0.00 0.00 1.00 1.0";
 	lineWidth = 2.0;
 
-	hasInner = true;
-	innerColor = "1.00 1.00 1.00 0.1";
+	hasInner = false;
+	innerColor = "1.00 0.00 0.00 0.5";
 	innerWidth = "0.04";
 
 	hasOuter = false;
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	//bitmap = "~/data/weapons/blaster/projectile.impact.red";
-	//bitmapWidth = 0.20;
+	bitmap = "~/data/weapons/blaster/lasertrail.blue";
+	bitmapWidth = 0.10;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
-	fadeTime = 500;
+	fadeTime = 100;
  
 	windCoefficient = 0.0;
     
@@ -79,29 +79,29 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailMissed)
 	nodeMoveSpeed[1]    = -0.002;
 	nodeMoveSpeedAdd[1] =  0.004;
 	// node z movement...
-	nodeMoveMode[2]     = $NodeMoveMode::ConstantSpeed;
-	nodeMoveSpeed[2]    = 0.5;
-	nodeMoveSpeedAdd[2] = 0.5;
+	nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
+	nodeMoveSpeed[2]    = 3.0;
+	nodeMoveSpeedAdd[2] = -6.0;
     
-	nodeDistance = 10;
+	nodeDistance = 5;
 };
 
 datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailHit)
 {
 	hasLine   = true;
-	lineColor = "0.00 0.00 1.00 0.5";
+	lineColor = "0.00 0.00 1.00 1.0";
 	lineWidth = 2.0;
 
-	hasInner = true;
-	innerColor = "0.00 0.00 1.00 0.5";
+	hasInner = false;
+	innerColor = "1.00 0.00 0.00 0.5";
 	innerWidth = "0.04";
 
 	hasOuter = false;
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	//bitmap = "~/data/weapons/blaster/projectile.impact.red";
-	//bitmapWidth = 0.20;
+	bitmap = "~/data/weapons/blaster/lasertrail.blue";
+	bitmapWidth = 0.10;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
@@ -118,11 +118,11 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailHit)
 	nodeMoveSpeed[1]    = -0.002;
 	nodeMoveSpeedAdd[1] =  0.004;
 	// node z movement...
-	nodeMoveMode[2]     = $NodeMoveMode::ConstantSpeed;
-	nodeMoveSpeed[2]    = 0.5;
-	nodeMoveSpeedAdd[2] = 0.5;
+	nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
+	nodeMoveSpeed[2]    = 3.0;
+	nodeMoveSpeedAdd[2] = -6.0;
     
-	nodeDistance = 10;
+	nodeDistance = 5;
 };
 
 //-----------------------------------------------------------------------------

@@ -26,10 +26,12 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 
 	energyDrain = 2; // how much energy does firing this projectile drain?
 
-    numBullets = 9; // number of shotgun bullets
+	numBullets = 9; // number of shotgun bullets
 
-    range = 500; // shotgun range
-    spread = 0.6; // shotgun spread in degrees
+	range = 500; // shotgun range
+	muzzleSpreadRadius = 0.5;
+	referenceSpreadRadius = 1.0;
+	referenceSpreadDistance = 40;
 
 	explodesNearEnemies	      = false;
 	explodesNearEnemiesRadius = 4;
@@ -92,6 +94,7 @@ function RedBlasterProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%d
         %col.numBlasterBulletHits += 1;
         if(%col.numBlasterBulletHits == 3)
             %src.setDiscTarget(%col);
+			error(%col.numBlasterBulletHits);
     }
     else
     {
