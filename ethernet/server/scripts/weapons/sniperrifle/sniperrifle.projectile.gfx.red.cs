@@ -47,7 +47,46 @@ datablock LaserBeamData(RedSniperProjectileLaserTail)
 //-----------------------------------------------------------------------------
 // laser trail
 
-datablock MultiNodeLaserBeamData(RedSniperProjectileLaserTrail)
+datablock MultiNodeLaserBeamData(RedSniperProjectileLaserTrailMissed)
+{
+	hasLine   = true;
+	lineColor = "1.00 0.50 0.50 1.0";
+    lineWidth = 2.0;
+
+	hasInner = true;
+	innerColor = "1.00 0.50 0.50 1.0";
+	innerWidth = "0.15";
+
+	hasOuter = false;
+	outerColor = "1.00 0.00 0.00 0.75";
+	outerWidth = "0.20";
+
+	//bitmap = "~/data/weapons/blaster/lasertrail.red";
+	//bitmapWidth = 0.15;
+
+	blendMode = 1;
+	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
+	fadeTime = 1250;
+ 
+    windCoefficient = 0.0;
+    
+    // node x movement...
+    nodeMoveMode[0]     = $NodeMoveMode::DynamicSpeed;
+    nodeMoveSpeed[0]    = -2;
+    nodeMoveSpeedAdd[0] =  4;
+    // node y movement...
+    nodeMoveMode[1]     = $NodeMoveMode::DynamicSpeed;
+    nodeMoveSpeed[1]    = -2;
+    nodeMoveSpeedAdd[1] =  4;
+    // node z movement...
+    nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
+    nodeMoveSpeed[2]    = -2.0;
+    nodeMoveSpeedAdd[2] =  4.0;
+    
+    nodeDistance = 4;
+};
+
+datablock MultiNodeLaserBeamData(RedSniperProjectileLaserTrailHit)
 {
 	hasLine   = true;
 	lineColor = "1.00 0.00 0.00 1.0";
@@ -61,8 +100,8 @@ datablock MultiNodeLaserBeamData(RedSniperProjectileLaserTrail)
 	outerColor = "1.00 0.00 0.00 0.75";
 	outerWidth = "0.20";
 
-	bitmap = "~/data/weapons/blaster/lasertrail.red";
-	bitmapWidth = 0.15;
+	//bitmap = "~/data/weapons/blaster/lasertrail.red";
+	//bitmapWidth = 0.15;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;

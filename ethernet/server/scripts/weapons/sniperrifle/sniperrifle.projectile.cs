@@ -25,9 +25,11 @@ datablock ShotgunProjectileData(RedSniperProjectile)
 
 	energyDrain = 75; // how much energy does firing this projectile drain?
 
-    numBullets = 1; // number of shotgun bullets
-    range = 2000; // shotgun range
-    spread = 0.0; // shotgun spread in degrees
+	numBullets = 1; // number of shotgun bullets
+	range = 2000; // shotgun range
+	muzzleSpreadRadius = 0.0;
+	referenceSpreadRadius = 0.0;
+	referenceSpreadDistance = 50.0;
 
 	explodesNearEnemies	      = false;
 	explodesNearEnemiesRadius = 4;
@@ -50,7 +52,8 @@ datablock ShotgunProjectileData(RedSniperProjectile)
     //laserTail	 = RedSniperProjectileLaserTail;
     //laserTailLen = 10.0;
 
-    laserTrail[0] = RedSniperProjectileLaserTrail;
+	laserTrail[0] = RedSniperProjectileLaserTrailMissed;
+	laserTrail[1] = RedSniperProjectileLaserTrailHit;
     //laserTrail[1] = RedSniperProjectileVerticalLaserTrail;
 
     //particleEmitter	  = RedSniperProjectileParticleEmitter;
@@ -100,7 +103,8 @@ datablock ShotgunProjectileData(BlueSniperProjectile : RedSniperProjectile)
 
 	//laserTail          = BlueSniperProjectileLaserTail;
 
-    laserTrail[0]      = BlueSniperProjectileLaserTrail;
+	laserTrail[0] = BlueSniperProjectileLaserTrailMissed;
+	laserTrail[1] = BlueSniperProjectileLaserTrailHit;
 
 	lightColor  = "0.0 0.0 1.0";
 };
