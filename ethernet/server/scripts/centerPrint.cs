@@ -8,51 +8,38 @@
 // Copyright (C) GarageGames.com, Inc.
 //-----------------------------------------------------------------------------
 
-function centerPrintAll( %message, %time, %lines )
+function centerPrintAll( %message, %time, %append )
 {
-	if( %lines $= "" || ((%lines > 3) || (%lines < 1)) )
-		%lines = 1;
-	
 	%count = ClientGroup.getCount();
 	for (%i = 0; %i < %count; %i++)
 	{
 		%cl = ClientGroup.getObject(%i);
 		if( !%cl.isAIControlled() )
-			commandToClient( %cl, 'centerPrint', %message, %time, %lines );
+			centerPrint(%cl, %message, %time, %append);
 	}
 }
 
-function bottomPrintAll( %message, %time, %lines )
+function bottomPrintAll( %message, %time )
 {
-	if( %lines $= "" || ((%lines > 3) || (%lines < 1)) )
-		%lines = 1;
-	
 	%count = ClientGroup.getCount();
 	for (%i = 0; %i < %count; %i++)
 	{
 		%cl = ClientGroup.getObject(%i);
 		if( !%cl.isAIControlled() )
-			commandToClient( %cl, 'bottomPrint', %message, %time, %lines );
+			bottomPrint(%cl, %message, %time);
 	}
 }
 
 //-------------------------------------------------------------------------------------------------------
 
-function centerPrint( %client, %message, %time, %lines )
+function centerPrint( %client, %message, %time, %append )
 {
-	if( %lines $= "" || ((%lines > 3) || (%lines < 1)) )
-		%lines = 1;
-		
-	
-	commandToClient( %client, 'CenterPrint', %message, %time, %lines );
+	commandToClient( %client, 'CenterPrint', %message, %time, %append );
 }
 
-function bottomPrint( %client, %message, %time, %lines )
+function bottomPrint( %client, %message, %time )
 {
-	if( %lines $= "" || ((%lines > 3) || (%lines < 1)) )
-		%lines = 1;
-
-	commandToClient( %client, 'BottomPrint', %message, %time, %lines );
+	commandToClient( %client, 'BottomPrint', %message, %time );
 }
 
 //-------------------------------------------------------------------------------------------------------
