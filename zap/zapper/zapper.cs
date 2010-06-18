@@ -53,8 +53,12 @@ datablock ShotgunProjectileData(RedZapperProjectile)
 	energyDrain = 10;
 
     numBullets = 1; // number of shotgun bullets
+
     range = 1000; // shotgun range
-    spread = 0.0; // shotgun spread in degrees
+
+	muzzleSpreadRadius = 0.0;
+	referenceSpreadRadius = 0.0;
+	referenceSpreadDistance = 40;
 	
 	explodesNearEnemies	      = false;
 	explodesNearEnemiesRadius = 4;

@@ -43,8 +43,11 @@ datablock ShotgunProjectileData(RedRailgunProjectile)
 	energyDrain = 0;
  
     numBullets = 1;
-    spread = 0;
-    range = 1000;
+
+	range = 500; // shotgun range
+	muzzleSpreadRadius = 0.5;
+	referenceSpreadRadius = 1.0;
+	referenceSpreadDistance = 40;
 
 	trackingAgility = 0;
 	

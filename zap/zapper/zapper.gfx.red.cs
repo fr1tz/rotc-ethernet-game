@@ -478,7 +478,7 @@ datablock ExplosionData(RedZapperProjectileImpact)
 	debris = RedZapperProjectileExplosion_LargeDebris;
 	debrisThetaMin = 0;
 	debrisThetaMax = 60;
-	debrisNum = 3;
+	debrisNum = 0;
     debrisNumVariance = 0;
 	debrisVelocity = 60.0;
 	debrisVelocityVariance = 10.0;
