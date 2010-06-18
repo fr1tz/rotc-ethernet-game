@@ -12,7 +12,7 @@ $centerPrintActive = 0;
 $bottomPrintActive = 0;
 
 // time is specified in seconds
-function clientCmdCenterPrint( %message, %time, %size )
+function clientCmdCenterPrint( %message, %time, %append )
 {
 	// if centerprint already visible, reset text and time.
 	if ($centerPrintActive) {	
@@ -25,14 +25,17 @@ function clientCmdCenterPrint( %message, %time, %size )
 		$centerPrintActive = 1;
 	}
 
-	CenterPrintText.setText( "<just:center>" @ %message );
+	if(%append)
+		CenterPrintText.setText( CenterPrintText.getText() @ %message );
+	else
+		CenterPrintText.setText( "<just:center>" @ %message );
 
 	if (%time > 0)
 		CenterPrint.removePrint = schedule( ( %time * 1000 ), 0, "clientCmdClearCenterPrint" );
 }
 
 // time is specified in seconds
-function clientCmdBottomPrint( %message, %time, %size )
+function clientCmdBottomPrint( %message, %time )
 {
 	if($bottomPrintActive)
 	{
