@@ -27,10 +27,10 @@ new SimGroup(MissionGroup) {
          visibleDistance = "300";
          fogDistance = "250";
          fogColor = "0.015686 0 0.192157 1";
-         fogStorm1 = "0";
+         fogStorm1 = "1";
          fogStorm2 = "0";
          fogStorm3 = "0";
-         fogVolume1 = "300 0 190";
+         fogVolume1 = "0 0 0";
          fogVolume2 = "0 0 0";
          fogVolume3 = "0 0 0";
          fogVolumeColor1 = "1 1 1 1";
@@ -83,10 +83,10 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
-            lockCount = "0";
             homingCount = "0";
+            lockCount = "0";
             Locked = "False";
-            checkTaggedThread = "603838";
+            checkTaggedThread = "364485";
       };
    };
    new SimGroup(RedSpawnPoints) {
@@ -94,7 +94,7 @@ new SimGroup(MissionGroup) {
 
       new SpawnSphere(T1drop) {
          canSaveDynamicFields = "1";
-         position = "0 -40 140";
+         position = "0 -154.5 163";
          rotation = "1 0 0 0";
          scale = "1 1 1";
          nameTag = "T1drop";
@@ -105,10 +105,10 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
-            lockCount = "0";
             homingCount = "0";
+            lockCount = "0";
             Locked = "False";
-            checkTaggedThread = "603839";
+            checkTaggedThread = "364486";
       };
    };
    new SimGroup(BlueSpawnPoints) {
@@ -127,10 +127,10 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
-            lockCount = "0";
             homingCount = "0";
+            lockCount = "0";
             Locked = "False";
-            checkTaggedThread = "603840";
+            checkTaggedThread = "364487";
       };
    };
    new SimGroup(TerritoryZones) {
@@ -149,9 +149,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(topright) {
          canSaveDynamicFields = "1";
@@ -166,9 +166,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
-            initialOwner = "0";
-            numReds = "1";
             numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
       };
       new TacticalZone(bottomleft) {
          canSaveDynamicFields = "1";
@@ -183,9 +183,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "1";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(bottomright) {
          canSaveDynamicFields = "1";
@@ -200,13 +200,13 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrr) {
          canSaveDynamicFields = "1";
-         position = "276 0 84.5";
+         position = "276 43.5 84.5";
          rotation = "1 0 0 0";
          scale = "20 40 40";
          dataBlock = "TerritoryZone";
@@ -217,9 +217,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "2";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrb) {
          canSaveDynamicFields = "1";
@@ -234,9 +234,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "2";
             initialOwner = "2";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrt) {
          canSaveDynamicFields = "1";
@@ -251,9 +251,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrl) {
          canSaveDynamicFields = "1";
@@ -268,9 +268,11 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
-            initialOwner = "0";
-            numReds = "0";
+            nGroup = "Default Value";
+            initiallyProtected = "1";
             numBlues = "0";
+            initialOwner = "1";
+            numReds = "0";
       };
       new TacticalZone(corrtl) {
          canSaveDynamicFields = "1";
@@ -285,9 +287,11 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
-            initialOwner = "0";
-            numReds = "0";
+            nGroup = "Default Value";
+            initiallyProtected = "1";
             numBlues = "0";
+            initialOwner = "1";
+            numReds = "0";
       };
       new TacticalZone(corrtr) {
          canSaveDynamicFields = "1";
@@ -302,9 +306,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrbl) {
          canSaveDynamicFields = "1";
@@ -319,9 +323,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrbr) {
          canSaveDynamicFields = "1";
@@ -336,9 +340,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(center) {
          canSaveDynamicFields = "1";
@@ -353,46 +357,134 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
-            initialOwner = "1";
-            numReds = "0";
             numBlues = "0";
+            initialOwner = "1";
+            numReds = "1";
       };
    };
    new SimGroup(TutorialTextTriggers) {
       canSaveDynamicFields = "1";
 
-      new Trigger(text1) {
+      new Trigger(text40) {
          canSaveDynamicFields = "1";
-         position = "-2 -38 138";
-         rotation = "1 0 0 0";
-         scale = "4 4 4";
-         dataBlock = "TextDisplay";
-         teamId = "0";
-         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "1";
-            dEditor = "Default Value";
-      };
-      new Trigger(text2) {
-         canSaveDynamicFields = "1";
-         position = "-4 -36 126";
-         rotation = "1 0 0 0";
-         scale = "8 8 8";
-         dataBlock = "TextDisplay";
-         teamId = "0";
-         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "2";
-            dEditor = "Default Value";
-      };
-      new Trigger(text3) {
-         canSaveDynamicFields = "1";
-         position = "-3.5 -25 124.5";
+         position = "-118 94.5 124.5";
          rotation = "1 0 0 0";
          scale = "5 5 10";
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "3";
             dEditor = "Default Value";
+            text = "40";
+      };
+      new Trigger(text78) {
+         canSaveDynamicFields = "1";
+         position = "130 262.5 124";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "78";
+      };
+      new Trigger(text75) {
+         canSaveDynamicFields = "1";
+         position = "193.5 55 124";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "75";
+      };
+      new Trigger(text76) {
+         canSaveDynamicFields = "1";
+         position = "201 55 124";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "76";
+      };
+      new Trigger(text77) {
+         canSaveDynamicFields = "1";
+         position = "210 55 124";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "77";
+      };
+      new Trigger(text15) {
+         canSaveDynamicFields = "1";
+         position = "113 94.5 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "15";
+      };
+      new Trigger(text7) {
+         canSaveDynamicFields = "1";
+         position = "53.5 15 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "7";
+      };
+      new Trigger(text4) {
+         canSaveDynamicFields = "1";
+         position = "-3.5 -21.5 123.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "4";
+      };
+      new Trigger(text1) {
+         canSaveDynamicFields = "1";
+         position = "-20 -146 156";
+         rotation = "1 0 0 0";
+         scale = "40 20 12";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "1";
+      };
+      new Trigger(text2) {
+         canSaveDynamicFields = "1";
+         position = "-20 -104 127.5";
+         rotation = "1 0 0 0";
+         scale = "40 32 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "2";
+      };
+      new Trigger(text3) {
+         canSaveDynamicFields = "1";
+         position = "-3.5 -67 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "3";
       };
       new Trigger(text5) {
          canSaveDynamicFields = "1";
@@ -402,8 +494,8 @@ new SimGroup(MissionGroup) {
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "5";
             dEditor = "Default Value";
+            text = "5";
       };
       new Trigger(text6) {
          canSaveDynamicFields = "1";
@@ -413,30 +505,30 @@ new SimGroup(MissionGroup) {
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "6";
             dEditor = "Default Value";
+            text = "6";
       };
       new Trigger(text10) {
          canSaveDynamicFields = "1";
-         position = "53.5 14.5 124.5";
+         position = "53.5 94.5 124.5";
          rotation = "1 0 0 0";
          scale = "5 5 10";
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "10";
             dEditor = "Default Value";
+            text = "10";
       };
       new Trigger(text11) {
          canSaveDynamicFields = "1";
-         position = "53.5 23 124.5";
+         position = "74 94.5 124.5";
          rotation = "1 0 0 0";
          scale = "5 5 10";
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "11";
             dEditor = "Default Value";
+            text = "11";
       };
       new Trigger(text21) {
          canSaveDynamicFields = "1";
@@ -446,21 +538,10 @@ new SimGroup(MissionGroup) {
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "21";
             dEditor = "Default Value";
+            text = "21";
       };
       new Trigger(text22) {
-         canSaveDynamicFields = "1";
-         position = "201.5 118.5 124";
-         rotation = "1 0 0 0";
-         scale = "5 5 10";
-         dataBlock = "TextDisplay";
-         teamId = "0";
-         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "22";
-            dEditor = "Default Value";
-      };
-      new Trigger(text23) {
          canSaveDynamicFields = "1";
          position = "201.5 110.5 124";
          rotation = "1 0 0 0";
@@ -468,30 +549,41 @@ new SimGroup(MissionGroup) {
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "23";
             dEditor = "Default Value";
+            text = "22";
+      };
+      new Trigger(text23) {
+         canSaveDynamicFields = "1";
+         position = "201.5 94.5 124";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "23";
       };
       new Trigger(text24) {
          canSaveDynamicFields = "1";
-         position = "201.5 102 124";
+         position = "201.5 78.5 124";
          rotation = "1 0 0 0";
          scale = "5 5 10";
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "24";
             dEditor = "Default Value";
+            text = "24";
       };
       new Trigger(text20) {
          canSaveDynamicFields = "1";
-         position = "193 114.5 124";
+         position = "185.5 102.5 124";
          rotation = "1 0 0 0";
          scale = "5 5 10";
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "20";
             dEditor = "Default Value";
+            text = "20";
       };
       new Trigger(text25) {
          canSaveDynamicFields = "1";
@@ -501,8 +593,8 @@ new SimGroup(MissionGroup) {
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "25";
             dEditor = "Default Value";
+            text = "25";
       };
       new Trigger(text26) {
          canSaveDynamicFields = "1";
@@ -512,8 +604,8 @@ new SimGroup(MissionGroup) {
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "26";
             dEditor = "Default Value";
+            text = "26";
       };
       new Trigger(text30) {
          canSaveDynamicFields = "1";
@@ -523,13 +615,24 @@ new SimGroup(MissionGroup) {
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-            text = "30";
             dEditor = "Default Value";
+            text = "30";
+      };
+      new Trigger(text79) {
+         canSaveDynamicFields = "1";
+         position = "-135 102.5 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "79";
       };
    };
    new ScriptObject() {
-         healthTaken = "0";
          healthLost = "0";
+         healthTaken = "0";
    };
    new SimGroup(interiors) {
       canSaveDynamicFields = "1";
@@ -615,28 +718,6 @@ new SimGroup(MissionGroup) {
          useGLLighting = "0";
          showTerrainInside = "0";
       };
-      new sgLightObject() {
-         canSaveDynamicFields = "1";
-         position = "3 -312 245.5";
-         rotation = "1 0 0 0";
-         scale = "1 1 1";
-         dataBlock = "maplight2";
-         teamId = "0";
-         Enable = "1";
-         IconSize = "1";
-            ParticleColorAttenuation = "1";
-      };
-      new sgLightObject() {
-         canSaveDynamicFields = "1";
-         position = "-120 -312 245.5";
-         rotation = "1 0 0 0";
-         scale = "1 1 1";
-         dataBlock = "maplight2";
-         teamId = "0";
-         Enable = "1";
-         IconSize = "1";
-            ParticleColorAttenuation = "1";
-      };
       new InteriorInstance() {
          canSaveDynamicFields = "1";
          position = "-120 -312 199.5";
@@ -645,17 +726,6 @@ new SimGroup(MissionGroup) {
          interiorFile = "share/interiors/malloc/lighttower.dif";
          useGLLighting = "0";
          showTerrainInside = "0";
-      };
-      new sgLightObject() {
-         canSaveDynamicFields = "1";
-         position = "-120 -424 245.5";
-         rotation = "1 0 0 0";
-         scale = "1 1 1";
-         dataBlock = "maplight1";
-         teamId = "0";
-         Enable = "1";
-         IconSize = "1";
-            ParticleColorAttenuation = "1";
       };
       new InteriorInstance() {
          canSaveDynamicFields = "1";
@@ -731,14 +801,14 @@ new SimGroup(MissionGroup) {
       };
    };
    new ScriptObject() {
-         material = "dark_grey_blue_grid";
          color = "0.3 0.3 0.3 0.4 0.0";
          sound = "2";
+         material = "dark_grey_blue_grid";
    };
    new ScriptObject() {
-         material = "tutorial/dark_blue_grid";
          color = "0.3 0.3 0.3 0.4 0.0";
          sound = "2";
+         material = "tutorial/dark_blue_grid";
    };
    new Trigger(disc) {
       canSaveDynamicFields = "1";
@@ -748,8 +818,8 @@ new SimGroup(MissionGroup) {
       dataBlock = "ThrowDiscAtMe";
       teamId = "0";
       polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-         originObjName = "discDispencer";
          onGroup = "discDispencer";
+         originObjName = "discDispencer";
    };
    new sgLightObject(discDispencer) {
       canSaveDynamicFields = "1";
@@ -762,49 +832,49 @@ new SimGroup(MissionGroup) {
       IconSize = "1";
    };
    new ScriptObject() {
-         material = "dark_grey_blue_grid";
          color = "0.3 0.3 0.3 0.4 0.0";
          sound = "2";
+         material = "dark_grey_blue_grid";
    };
    new ScriptObject() {
+         color = "0.3 0.3 0.3 0.4 0.0";
+         sound = "2";
          material = "tutorial/dark_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
    };
    new ScriptObject() {
+         color = "0.3 0.3 0.3 0.4 0.0";
+         sound = "2";
          material = "dark_grey_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
    };
    new ScriptObject() {
+         color = "0.3 0.3 0.3 0.4 0.0";
+         sound = "2";
          material = "tutorial/dark_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
    };
    new ScriptObject() {
+         color = "0.3 0.3 0.3 0.4 0.0";
+         sound = "2";
          material = "dark_grey_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
    };
    new ScriptObject() {
+         color = "0.3 0.3 0.3 0.4 0.0";
+         sound = "2";
          material = "dark_grey_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
    };
    new ScriptObject() {
+         color = "0.3 0.3 0.3 0.4 0.0";
+         sound = "2";
          material = "tutorial/dark_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
    };
    new ScriptObject() {
+         color = "0.3 0.3 0.3 0.4 0.0";
+         sound = "2";
          material = "dark_grey_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
    };
    new ScriptObject() {
-         material = "tutorial/dark_blue_grid";
          color = "0.3 0.3 0.3 0.4 0.0";
          sound = "2";
+         material = "tutorial/dark_blue_grid";
    };
    new InteriorInstance() {
       canSaveDynamicFields = "1";
@@ -837,9 +907,9 @@ new SimGroup(MissionGroup) {
       borderFront = "1";
       borderRight = "1";
       borderTop = "0";
+         numBlues = "3";
          initialOwner = "0";
          numReds = "0";
-         numBlues = "0";
    };
    new InteriorInstance() {
       canSaveDynamicFields = "1";
@@ -865,7 +935,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "603841";
+            checkTaggedThread = "364488";
       };
       new SpawnSphere(genericTargetL) {
          canSaveDynamicFields = "1";
@@ -879,7 +949,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "603842";
+            checkTaggedThread = "364489";
       };
       new SpawnSphere(genericTargetS) {
          canSaveDynamicFields = "1";
@@ -893,7 +963,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "603843";
+            checkTaggedThread = "364490";
       };
       new SpawnSphere(genericTargetM) {
          canSaveDynamicFields = "1";
@@ -907,18 +977,8 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "603844";
+            checkTaggedThread = "364491";
       };
-   };
-   new ScriptObject() {
-         material = "dark_grey_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-   };
-   new ScriptObject() {
-         material = "tutorial/dark_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
    };
    new InteriorInstance() {
       canSaveDynamicFields = "1";
@@ -928,6 +988,134 @@ new SimGroup(MissionGroup) {
       interiorFile = "share/interiors/malloc/spike.dif";
       useGLLighting = "0";
       showTerrainInside = "0";
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "204 43 142";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight1";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "-98.5 233 147.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight2";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
+         ParticleColorAttenuation = "1";
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "-98.5 271 147.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight2";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
+         ParticleColorAttenuation = "1";
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "-32.5 271 147.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight2";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
+         ParticleColorAttenuation = "1";
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "-32.5 233 147.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight2";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
+         ParticleColorAttenuation = "1";
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "45.5 271 147.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight2";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
+         ParticleColorAttenuation = "1";
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "45.5 233 147.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight2";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
+         ParticleColorAttenuation = "1";
+   };
+   new SpawnSphere(aiSpawn1) {
+      canSaveDynamicFields = "1";
+      position = "-212 146 133";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "SpawnSphereMarker";
+      teamId = "0";
+      isTagging = "0";
+      Radius = "20";
+      sphereWeight = "100";
+      indoorWeight = "100";
+      outdoorWeight = "100";
+         checkTaggedThread = "364492";
+   };
+   new SpawnSphere(aiSpawn2) {
+      canSaveDynamicFields = "1";
+      position = "-186 234 137";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "SpawnSphereMarker";
+      teamId = "0";
+      isTagging = "0";
+      Radius = "20";
+      sphereWeight = "100";
+      indoorWeight = "100";
+      outdoorWeight = "100";
+         checkTaggedThread = "364493";
+   };
+   new SpawnSphere(aiSpawn3) {
+      canSaveDynamicFields = "1";
+      position = "-303 178 150";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "SpawnSphereMarker";
+      teamId = "0";
+      isTagging = "0";
+      Radius = "20";
+      sphereWeight = "100";
+      indoorWeight = "100";
+      outdoorWeight = "100";
+         checkTaggedThread = "364494";
+   };
+   new sgLightObject() {
+      canSaveDynamicFields = "1";
+      position = "0 -108.5 134";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "maplight2";
+      teamId = "0";
+      Enable = "1";
+      IconSize = "1";
    };
 };
 //--- OBJECT WRITE END ---

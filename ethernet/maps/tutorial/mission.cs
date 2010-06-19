@@ -50,10 +50,10 @@ package Tutorial {
         Parent::startNewRound();
 
         // create target bots
-        createTargetBotAt(NameToID("genericTargetS"));
-        createTargetBotAt(NameToID("genericTargetM"));
-        createTargetBotAt(NameToID("genericTargetL"));
-        createTargetBotAt(NameToID("sniperTarget"));
+        createTargetBotAt(NameToID("genericTargetS"), 0);
+        createTargetBotAt(NameToID("genericTargetM"), 0);
+        createTargetBotAt(NameToID("genericTargetL"), 0);
+        createTargetBotAt(NameToID("sniperTarget"), 0);
 
     }
 
@@ -117,9 +117,9 @@ function throwDiscAt(%origin, %target) {
 // Create bots
 // -----------------------------
 
-function createTargetBotAt(%spawnSphere) {
+function createTargetBotAt(%spawnSphere, %fight) {
     if( !isObject($tutBots) ) {
-		$aiPlayers = new Array();
+		$tutBots = new Array();
 		MissionCleanup.add($aiPlayers);
     }
 
@@ -140,6 +140,13 @@ function createTargetBotAt(%spawnSphere) {
 
 	$tutBots.push_back("",%player);
 
+    if (%fight == 1) {
+		xxx_aiStartMove(%player);
+		xxx_aiStartFire(%player);
+		xxx_aiChooseWeapon(%player);
+
+        schedule(20000, %player, "kill"); // after 20 seconds, a fighting bot dies
+	}
 }
 
 
@@ -229,13 +236,18 @@ function TextDisplay::onEnterTrigger(%this, %trigger, %obj) {
 
     if (%text >= 70) { // these texts will invoke additional functions
         if (%text == 75)
-            createTargetBotAt(NameToID("genericTargetS"));
+            createTargetBotAt(NameToID("genericTargetS"), 0);
         if (%text == 76)
-            createTargetBotAt(NameToID("genericTargetM"));
+            createTargetBotAt(NameToID("genericTargetM"), 0);
         if (%text == 77)
-            createTargetBotAt(NameToID("genericTargetL"));
+            createTargetBotAt(NameToID("genericTargetL"), 0);
         if (%text == 78)
-            createTargetBotAt(NameToID("sniperTarget"));
+            createTargetBotAt(NameToID("sniperTarget"), 0);
+        if (%text == 79) {
+            createTargetBotAt(NameToID("aiSpawn1"), 1);
+            createTargetBotAt(NameToID("aiSpawn2"), 1);
+            createTargetBotAt(NameToID("aiSpawn3"), 1);
+        }
 
     }
 
