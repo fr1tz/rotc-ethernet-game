@@ -135,7 +135,7 @@ function serverCmdSelectObject(%client, %mouseVec, %cameraPoint)
 	// rangeEnd = camera point + length of selectable range
 	%rangeEnd = VectorAdd(%cameraPoint, %mouseScaled);
 
-	// Search for anything that is selectable – below are some examples
+	// Search for anything that is selectable ï¿½ below are some examples
 	%searchMasks = $TypeMasks::PlayerObjectType | $TypeMasks::CorpseObjectType |
 						$TypeMasks::ItemObjectType | $TypeMasks::TriggerObjectType;
 
