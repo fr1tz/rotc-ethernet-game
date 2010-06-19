@@ -164,8 +164,8 @@ new GameTSCtrl(HUD) {
          HorizSizing = "center";
          VertSizing = "center";
          position = "0 25";
-         Extent = "580 80";
-         MinExtent = "580 80";
+         Extent = "565 80";
+         MinExtent = "565 80";
          canSave = "1";
          Visible = "1";
          hovertime = "1000";

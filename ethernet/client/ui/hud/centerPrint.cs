@@ -60,7 +60,7 @@ function clientCmdBottomPrint( %message, %time )
 
 function CenterPrintText::onResize(%this, %width, %height)
 {
-	%this.position = "0 25";
+	%this.position = "20 15";
 }
 
 //-------------------------------------------------------------------------------------------------------
