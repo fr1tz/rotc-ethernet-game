@@ -206,10 +206,14 @@ function showTextDisplayDecals() {
 exec("./tutorial_texts.cs");
 
 function displayText(%cl, %message) {
-    %time = 0;
-    %lines = 3;
-    echo("displayText: " @ %message);
-    commandToClient( %cl, 'CenterPrint', %message, %time, %lines );
+	commandToClient( %cl, 'CenterPrint', "", 0, 0 );
+	%l = strlen(%message); %n = 0;
+	while(%n < %l)
+	{
+		%chunk = getSubStr(%message, %n, 255);
+		commandToClient( %cl, 'CenterPrint', %chunk, 0, 1 );
+		%n += 255;
+	}
 }
 
 function undisplayText(%cl) {
