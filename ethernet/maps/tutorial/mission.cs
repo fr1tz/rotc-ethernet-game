@@ -35,19 +35,19 @@ package Tutorial {
             if( %client.team == $Team0 )
                 %client.joinTeam(1);
         }
-
-
-        for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {
-            %client = ClientGroup.getObject( %clientIndex );
-
-            if( %client.team == $Team1 ) {
-                %client.player.setEnergyLevel(75);
-                %client.togglePlayerForm();
-            }
-        }
         */
 
         Parent::startNewRound();
+
+        // show the info box to all players not in the read team
+        for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {
+            %client = ClientGroup.getObject( %clientIndex );
+
+            if( %client.team == $Team0 ) 
+                displayText(%client, $tutorialText[70]);
+            else if( %client.team == $Team2 ) 
+                displayText(%client, $tutorialText[90]);
+        }
 
         // create target bots
         createTargetBotAt(NameToID("genericTargetS"), 0);
@@ -55,6 +55,10 @@ package Tutorial {
         createTargetBotAt(NameToID("genericTargetL"), 0);
         createTargetBotAt(NameToID("sniperTarget"), 0);
 
+        createTargetBotAt(NameToID("genericTargetZ1"), 0);
+        createTargetBotAt(NameToID("genericTargetZ2"), 0);
+
+        showTextDisplayDecals();
     }
 
     function serverCmdJoinTeam(%client, %team) {
@@ -99,7 +103,7 @@ function throwDiscAt(%origin, %target) {
     %disc = new (NortDisc)() {
         dataBlock         = PussyBlueSeekerDisc;
         teamId            = 2;
-        initialVelocity  = "0 0 100";
+        initialVelocity  = "0" SPC getRandom(-100,100) SPC getRandom(1,100);
         initialPosition  = %origin.position;
         sourceObject      = %origin;
         sourceSlot       = 0;
@@ -163,48 +167,55 @@ datablock DecalData(TextDisplayDecal)
     lifeSpan = 600000;
 };
 
-$tutorialTextDecalsCount = 0;
+if (! $tutorialTextDecalsCount)
+    $tutorialTextDecalsCount = 0;
 
-schedule(5000, 0, "showTextDisplayDecals");
 function showTextDisplayDecals() {
     echo("Redraw Decals");
+    cancel($tutorialTextDecalsThread);
     %group = nameToID("TutorialTextTriggers");
 
     // Delete decals
     for (%i = 0; %i < $tutorialTextDecalsCount; %i++) {
         %trig = $tutorialTextDecals[%i];
-        //MissionCleanup.removeObject(%trig); // Is this even necessary?
         %trig.delete();
     }
+    $tutorialTextDecalsCount = 0;
 
 
     if (%group != -1) {
         %count = %group.getCount();
-        $tutorialTextDecalsCount = %count;
 
         if (%count != 0) {
+            %j = 0;
             for (%i = 0; %i < %count; %i++) {
                 %trig = %group.getObject(%i);
 
+                if (%trig.noDecal == 1)
+                    continue;
+
+                %scalexy = getWord(%trig.scale,0) SPC (-1*getWord(%trig.scale,1)) SPC "0";
+                %pos = VectorAdd(%trig.position, VectorScale(%scalexy, 0.5));
                 // Center the decal - this is a dirty hack
-                %x = getWord(%trig.position, 0) + 2.2;
-                %y = getWord(%trig.position, 1) - 2.2;
-                %z = getWord(%trig.position, 2);
 
                 %decal = new sgDecalProjector(%decalPrototype) {
-                    position = %x SPC %y SPC %z;
+                    position = %pos;
                     dataBlock = "TextDisplayDecal";
                     rotation = "1 0 0 0";
                     scale = "1 1 1";
                     canSaveDynamicFields = "1";
                 };
-                $tutorialTextDecals[%i] = %decal;
+                $tutorialTextDecals[%j++] = %decal;
                 MissionCleanup.add(%decal);
             }
 
-            schedule(TextDisplayDecal.lifeSpan/3*2, 0, "showTextDisplayDecals");
-        } else 
+            $tutorialTextDecalsCount = %j;
+
+            $tutorialTextDecalsThread =
+                schedule(TextDisplayDecal.lifeSpan/3*2, 0, "showTextDisplayDecals");
+        } else {
             error("showTextDisplayDecals(): could not find any Triggers in the TutorialTextTrigger group.");
+        }
     } else
         error("showTextDisplayDecals(): could not find the TutorialTextTrigger group.");
 }
@@ -235,15 +246,41 @@ function TextDisplay::onEnterTrigger(%this, %trigger, %obj) {
     %text = %trigger.text;
 
     if (%text >= 70) { // these texts will invoke additional functions
-        if (%text == 75)
+        if (%text == 71) { // tactical room
+            %numZones = 13;
+            // check if someone is in the tactical room
+
+            %redFound = 0;
+            for (%i = 1; %i <= %numZones; %i++) {
+                %zone = NameToID("bottomright" @ %i);
+                if (%zone.numReds > 0)
+                    %redFound = 1;
+            }
+
+            if (%redFound == 0) { // reset tactical room
+                for (%i = 1; %i <= %numZones; %i++) {
+                    %zone = NameToID("bottomright" @ %i);
+                    // reset owner
+                    %zone.getDataBlock().setZoneOwner(%zone, %zone.initialOwner);
+
+                    // create bots if they're dead
+                    if (%i == 2 && %zone.numBlues == 0)
+                        createTargetBotAt(NameToID("genericTargetZ1"), 0);
+                    if (%i == 5 && %zone.numBlues == 0)
+                        createTargetBotAt(NameToID("genericTargetZ2"), 0);
+
+                }
+            }
+        }
+        else if (%text == 75)
             createTargetBotAt(NameToID("genericTargetS"), 0);
-        if (%text == 76)
+        else if (%text == 76)
             createTargetBotAt(NameToID("genericTargetM"), 0);
-        if (%text == 77)
+        else if (%text == 77)
             createTargetBotAt(NameToID("genericTargetL"), 0);
-        if (%text == 78)
+        else if (%text == 78)
             createTargetBotAt(NameToID("sniperTarget"), 0);
-        if (%text == 79) {
+        else if (%text == 79) {
             createTargetBotAt(NameToID("aiSpawn1"), 1);
             createTargetBotAt(NameToID("aiSpawn2"), 1);
             createTargetBotAt(NameToID("aiSpawn3"), 1);

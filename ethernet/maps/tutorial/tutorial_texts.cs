@@ -2,7 +2,7 @@ $tutorialText[1] = "You are now in the etherform. This is one of the two forms y
 
 $tutorialText[2] = "After pressing TAB, you'll find yourself in the CAT form. In this tutorial we have prepared multiple locations where you can learn about different aspects of the game. Just move to one of the marked zones, like this one, to see the help to the topic. You're invited to follow the arrows, but of course you don't have to. Move around with WASD.";
 
-$tutorialText[3] = "You've just seen how you transform into CAT form. But you can transform back into etherform as well by pressing TAB.\nSometimes you're even forced back into etherform - it is when you normally would die becasue you took too much damage. Instead of dying, you transform back into etherform. Then you'll have to get back into your own zone to recharge energy and health before going back to become a CAT.";
+$tutorialText[3] = "You've just seen how you transform into CAT form. But you can transform back into etherform as well by pressing TAB. Maybe try it now! Press TAB, fly around a bit and come back here and press TAB again.\nSometimes you're even forced back into etherform - it is when you normally would die becasue you took too much damage. Instead of dying, you transform back into etherform. Then you'll have to get back into your own zone to recharge energy and health before going back to become a CAT.";
 
 $tutorialText[4] = "ROTC ethernet is all about zone control. The goal of the game is to catch all of the zones. You do this by walking into them and killing all the enemies. You'll learn more about this in one of the bigger tutorial rooms (the one in your back on the right side).";
 
@@ -37,11 +37,32 @@ $tutorialText[30] = "This part teaches you about defending against seeker discs.
 
 //// ------------------
 
-$tutorialText[40] = "This room here doesn't do anything; but you can try all those sweet moves you've learned till now. You're even able to create some bots that fight against you. Keep in mind though: There bod are poorly programmed and are no match for any human. They don't even use all the weapons ;)";
+$tutorialText[40] = "This room is all about fun. You can try out your jump and board moves, as well as give some bots a hell of a fight. If you step on the trigger in front of you, it will create some bots that shoot at you. You'll notice that while the room belongs to the red team, as soon as the bots appear the room will change to the white color - until you've killed all of them off; just as you learned in the zone and tactics room. Have fun!";
+
+/// ------------------
+/// Tactics room
+/// -------------------
+
+
+$tutorialText[51] = "The goal in rotc ethernet is to take all the zones from your enemy. In this case, you're red and the enemy is blue. If you've taken all blue zones, and killed off all remaining enemies, there is no way for them to rematerialise as a cat. It is then, that you win the game. See those zones in front of you? If you walk into them, they'll turn red - except the one that has an enemy on it. You'll have to kill him off before you can take over the zone.";
+
+$tutorialText[52] = "You've now taken your first zones from the enemy and even killed some to get them. In a real game, the enemies would fight back and respawn in the next zone farther behind, so they can fight back. This will end up in a back and forth where there is a front line.";
+
+$tutorialText[53] = "Suppose you're on the front now and there are both allies and enemies fighting for the zone. If one of the enemies dies, they'll have to get back into a blue zone to recharge and join the fight again. Suppose now, you'd go and take the next zone already - the killed ones would have to go back even further which could mean a huge territorral win for your team! Try it now, without killing the bot!";
+
+$tutorialText[54] = "Keep in mind though - this strategy only works if your team wins the fight. If all of your friends get killed, you'll end up with something you should see now (if you havn't killed the bot) - a blue zone surrounded by red ones. Now you'd have two possibilities: Go back and try to get that zone, in which case the enemies may take this one you're in now, or go even further and risk an even deeper penetration into your territorry.";
+
+$tutorialText[55] = "You see - there are a lot of different ways to play this game. Try to choose the best strategy with your team; and remember to always watch your energy!";
+
+$tutorialText[60] = "What you see here is the different kinds of zones there are. We have the normal neutral, red and blue zones - but we also have protected zones. These protected zones can't be conquered - the opposing team even dies if they try to get into them. As for the green zone: These kill all CATs, regardless of their color.";
+
+$tutorialText[61] = "Well, thats about it! If you've already been to the weapons room, you may wanna try the bots room across the 'hall'. If you've been there as well, there is nothing more we can show you - you're ready for some serious multiplayer action! Make sure to check out the rotc ethernet website: http://ethernet.wasted.ch and our IRC channel on freenode: #rotc";
 
 ///// all texts >70 have a special meaning and will invoke additional functions - not only display text
 
 $tutorialText[70] = "Hello, welcome to the rotc tutorial. Please join the red team by pressing ESC on your keyboard - choosing \"Join Team\" and then clicking on the proper button.";
+
+$tutorialText[71] = "This is the strategy and tactics room. Here you'll learn how to actually win a game; how to take a zone, how to lose one, and we give you some tipps on how to overpower your enemy. If you've been to the weapons room already, after this you may want to check out the bot fighting room across the 'hall'. After that, there's nothing more we can teach you here and you're ready to jump into action!";
 
 $tutorialText[75] = "Short target created";
 $tutorialText[76] = "Mid target created";

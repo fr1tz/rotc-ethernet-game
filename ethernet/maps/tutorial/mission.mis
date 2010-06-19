@@ -64,8 +64,8 @@ new SimGroup(MissionGroup) {
          bumpOffset = "0.01";
          zeroBumpScale = "8";
          tile = "1";
-            position = "-1024 -1024 0";
             Locked = "true";
+            position = "-1024 -1024 0";
       };
    };
    new SimGroup(ObserverPoints) {
@@ -83,10 +83,10 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
+            Locked = "False";
+            checkTaggedThread = "1759987";
             homingCount = "0";
             lockCount = "0";
-            Locked = "False";
-            checkTaggedThread = "364485";
       };
    };
    new SimGroup(RedSpawnPoints) {
@@ -105,10 +105,10 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
+            Locked = "False";
+            checkTaggedThread = "1759988";
             homingCount = "0";
             lockCount = "0";
-            Locked = "False";
-            checkTaggedThread = "364486";
       };
    };
    new SimGroup(BlueSpawnPoints) {
@@ -127,15 +127,225 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
+            Locked = "False";
+            checkTaggedThread = "1759989";
             homingCount = "0";
             lockCount = "0";
-            Locked = "False";
-            checkTaggedThread = "364487";
       };
    };
    new SimGroup(TerritoryZones) {
       canSaveDynamicFields = "1";
 
+      new TacticalZone(bottomright13) {
+         canSaveDynamicFields = "1";
+         position = "280 -180 160";
+         rotation = "1 0 0 0";
+         scale = "48 20 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            initiallyProtected = "1";
+            numBlues = "0";
+            initialOwner = "1";
+            numReds = "0";
+            onGroup = "Default Value";
+      };
+      new TacticalZone(bottomright2) {
+         canSaveDynamicFields = "1";
+         position = "152 -160 160";
+         rotation = "1 0 0 0";
+         scale = "24 40 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            numBlues = "1";
+            initialOwner = "0";
+            numReds = "0";
+      };
+      new TacticalZone(bottomright3) {
+         canSaveDynamicFields = "1";
+         position = "152 -252 160";
+         rotation = "1 0 0 0";
+         scale = "24 52 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+      };
+      new TacticalZone(bottomright4) {
+         canSaveDynamicFields = "1";
+         position = "204 -252 160";
+         rotation = "1 0 0 0";
+         scale = "28 52 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+      };
+      new TacticalZone(bottomright6) {
+         canSaveDynamicFields = "1";
+         position = "304 -252 160";
+         rotation = "1 0 0 0";
+         scale = "24 52 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+      };
+      new TacticalZone(bottomright5) {
+         canSaveDynamicFields = "1";
+         position = "256 -252 160";
+         rotation = "1 0 0 0";
+         scale = "24 52 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            numBlues = "1";
+            initialOwner = "0";
+            numReds = "0";
+      };
+      new TacticalZone(bottomright7) {
+         canSaveDynamicFields = "1";
+         position = "204 -120 160";
+         rotation = "1 0 0 0";
+         scale = "28 80 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+      };
+      new TacticalZone(bottomright8) {
+         canSaveDynamicFields = "1";
+         position = "280 -52 160";
+         rotation = "1 0 0 0";
+         scale = "48 12 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            numBlues = "0";
+            initialOwner = "2";
+            numReds = "0";
+      };
+      new TacticalZone(bottomright9) {
+         canSaveDynamicFields = "1";
+         position = "280 -76 160";
+         rotation = "1 0 0 0";
+         scale = "48 12 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            initiallyProtected = "1";
+            numBlues = "0";
+            initialOwner = "2";
+            numReds = "0";
+            onGroup = "Default Value";
+      };
+      new TacticalZone(bottomright10) {
+         canSaveDynamicFields = "1";
+         position = "280 -100 160";
+         rotation = "1 0 0 0";
+         scale = "48 12 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+      };
+      new TacticalZone(bottomright11) {
+         canSaveDynamicFields = "1";
+         position = "280 -124 160";
+         rotation = "1 0 0 0";
+         scale = "48 12 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            initiallyProtected = "1";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+            onGroup = "Default Value";
+      };
+      new TacticalZone(bottomright12) {
+         canSaveDynamicFields = "1";
+         position = "280 -148 160";
+         rotation = "1 0 0 0";
+         scale = "48 12 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            numBlues = "0";
+            initialOwner = "1";
+            numReds = "0";
+      };
       new TacticalZone(topleft) {
          canSaveDynamicFields = "1";
          position = "-228 172 150";
@@ -183,15 +393,15 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
-            numBlues = "1";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
       };
-      new TacticalZone(bottomright) {
+      new TacticalZone(bottomright1) {
          canSaveDynamicFields = "1";
-         position = "228 -172 160";
+         position = "152 -80 160";
          rotation = "1 0 0 0";
-         scale = "100 132 40";
+         scale = "24 40 40";
          dataBlock = "TerritoryZone";
          teamId = "0";
          borderBottom = "0";
@@ -234,7 +444,7 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
-            numBlues = "2";
+            numBlues = "1";
             initialOwner = "2";
             numReds = "0";
       };
@@ -268,8 +478,8 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
-            nGroup = "Default Value";
             initiallyProtected = "1";
+            nGroup = "Default Value";
             numBlues = "0";
             initialOwner = "1";
             numReds = "0";
@@ -287,8 +497,8 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
-            nGroup = "Default Value";
             initiallyProtected = "1";
+            nGroup = "Default Value";
             numBlues = "0";
             initialOwner = "1";
             numReds = "0";
@@ -344,6 +554,23 @@ new SimGroup(MissionGroup) {
             initialOwner = "0";
             numReds = "0";
       };
+      new TacticalZone(topright) {
+         canSaveDynamicFields = "1";
+         position = "284 88 160";
+         rotation = "1 0 0 0";
+         scale = "44 48 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            numBlues = "3";
+            initialOwner = "0";
+            numReds = "0";
+      };
       new TacticalZone(center) {
          canSaveDynamicFields = "1";
          position = "0 0 160";
@@ -359,7 +586,7 @@ new SimGroup(MissionGroup) {
          borderTop = "0";
             numBlues = "0";
             initialOwner = "1";
-            numReds = "1";
+            numReds = "0";
       };
    };
    new SimGroup(TutorialTextTriggers) {
@@ -461,14 +688,16 @@ new SimGroup(MissionGroup) {
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            noDecal = "1";
             dEditor = "Default Value";
             text = "1";
+            onGroup = "Default Value";
       };
       new Trigger(text2) {
          canSaveDynamicFields = "1";
-         position = "-20 -104 127.5";
+         position = "-20 -104 119";
          rotation = "1 0 0 0";
-         scale = "40 32 10";
+         scale = "40 32 16";
          dataBlock = "TextDisplay";
          teamId = "0";
          polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
@@ -563,6 +792,94 @@ new SimGroup(MissionGroup) {
             dEditor = "Default Value";
             text = "23";
       };
+      new Trigger(text71) {
+         canSaveDynamicFields = "1";
+         position = "113.5 -89.5 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "71";
+      };
+      new Trigger(text51) {
+         canSaveDynamicFields = "1";
+         position = "149.5 -89.5 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "51";
+      };
+      new Trigger(text52) {
+         canSaveDynamicFields = "1";
+         position = "165.5 -229.5 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "52";
+      };
+      new Trigger(text53) {
+         canSaveDynamicFields = "1";
+         position = "185.5 -229.5 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "53";
+      };
+      new Trigger(text54) {
+         canSaveDynamicFields = "1";
+         position = "285.5 -229.5 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "54";
+      };
+      new Trigger(text55) {
+         canSaveDynamicFields = "1";
+         position = "286 -213.5 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "55";
+      };
+      new Trigger(text60) {
+         canSaveDynamicFields = "1";
+         position = "210 -97.5 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "60";
+      };
+      new Trigger(text61) {
+         canSaveDynamicFields = "1";
+         position = "222 -81.5 124.5";
+         rotation = "1 0 0 0";
+         scale = "5 5 10";
+         dataBlock = "TextDisplay";
+         teamId = "0";
+         polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+            dEditor = "Default Value";
+            text = "61";
+      };
       new Trigger(text24) {
          canSaveDynamicFields = "1";
          position = "201.5 78.5 124";
@@ -629,10 +946,6 @@ new SimGroup(MissionGroup) {
             dEditor = "Default Value";
             text = "79";
       };
-   };
-   new ScriptObject() {
-         healthLost = "0";
-         healthTaken = "0";
    };
    new SimGroup(interiors) {
       canSaveDynamicFields = "1";
@@ -792,6 +1105,87 @@ new SimGroup(MissionGroup) {
       };
       new InteriorInstance() {
          canSaveDynamicFields = "1";
+         position = "-116.01 -92 149.211";
+         rotation = "1 0 0 180";
+         scale = "1 4 1";
+         interiorFile = "share/interiors/malloc/spike2.dif";
+         useGLLighting = "0";
+         showTerrainInside = "0";
+      };
+      new InteriorInstance() {
+         canSaveDynamicFields = "1";
+         position = "118.49 -252 149.211";
+         rotation = "1 0 0 180";
+         scale = "1 4 1";
+         interiorFile = "share/interiors/malloc/spike2.dif";
+         useGLLighting = "0";
+         showTerrainInside = "0";
+      };
+      new InteriorInstance() {
+         canSaveDynamicFields = "1";
+         position = "166 -93 131.5";
+         rotation = "-1 0 0 90";
+         scale = "0.5 0.5 0.5";
+         interiorFile = "share/interiors/malloc/spike.dif";
+         useGLLighting = "0";
+         showTerrainInside = "0";
+      };
+      new InteriorInstance() {
+         canSaveDynamicFields = "1";
+         position = "182 -160 127";
+         rotation = "1 0 0 0";
+         scale = "1 6.6 1";
+         interiorFile = "share/interiors/malloc/spike2.dif";
+         useGLLighting = "0";
+         showTerrainInside = "0";
+      };
+      new InteriorInstance() {
+         canSaveDynamicFields = "1";
+         position = "227.58 -200.5 127";
+         rotation = "0 0 1 90";
+         scale = "1 8.55277 1";
+         interiorFile = "share/interiors/malloc/spike2.dif";
+         useGLLighting = "0";
+         showTerrainInside = "0";
+      };
+      new InteriorInstance() {
+         canSaveDynamicFields = "1";
+         position = "224 144 118";
+         rotation = "0 0 1 90";
+         scale = "1 4 1";
+         interiorFile = "share/interiors/malloc/spike2.dif";
+         useGLLighting = "0";
+         showTerrainInside = "0";
+      };
+      new InteriorInstance() {
+         canSaveDynamicFields = "1";
+         position = "276 -24 148";
+         rotation = "-0.706825 0.707389 -3.08963e-008 180";
+         scale = "1 4 1";
+         interiorFile = "share/interiors/malloc/spike2.dif";
+         useGLLighting = "0";
+         showTerrainInside = "0";
+      };
+      new InteriorInstance() {
+         canSaveDynamicFields = "1";
+         position = "66 -26.5 157";
+         rotation = "1 0 0 115";
+         scale = "0.5 0.5 0.5";
+         interiorFile = "share/interiors/malloc/spike.dif";
+         useGLLighting = "0";
+         showTerrainInside = "0";
+      };
+      new InteriorInstance() {
+         canSaveDynamicFields = "1";
+         position = "224 200 118";
+         rotation = "0 0 1 90";
+         scale = "1 4 1";
+         interiorFile = "share/interiors/malloc/spike2.dif";
+         useGLLighting = "0";
+         showTerrainInside = "0";
+      };
+      new InteriorInstance() {
+         canSaveDynamicFields = "1";
          position = "-94 -359 200";
          rotation = "1 0 0 0";
          scale = "1 1 1";
@@ -799,16 +1193,92 @@ new SimGroup(MissionGroup) {
          useGLLighting = "0";
          showTerrainInside = "0";
       };
-   };
-   new ScriptObject() {
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-         material = "dark_grey_blue_grid";
-   };
-   new ScriptObject() {
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-         material = "tutorial/dark_blue_grid";
+      new sgLightObject() {
+         canSaveDynamicFields = "1";
+         position = "204 43 142";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "maplight1";
+         teamId = "0";
+         Enable = "1";
+         IconSize = "1";
+      };
+      new sgLightObject() {
+         canSaveDynamicFields = "1";
+         position = "-98.5 233 147.5";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "maplight2";
+         teamId = "0";
+         Enable = "1";
+         IconSize = "1";
+            ParticleColorAttenuation = "1";
+      };
+      new sgLightObject() {
+         canSaveDynamicFields = "1";
+         position = "-98.5 271 147.5";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "maplight2";
+         teamId = "0";
+         Enable = "1";
+         IconSize = "1";
+            ParticleColorAttenuation = "1";
+      };
+      new sgLightObject() {
+         canSaveDynamicFields = "1";
+         position = "-32.5 271 147.5";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "maplight2";
+         teamId = "0";
+         Enable = "1";
+         IconSize = "1";
+            ParticleColorAttenuation = "1";
+      };
+      new sgLightObject() {
+         canSaveDynamicFields = "1";
+         position = "-32.5 233 147.5";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "maplight2";
+         teamId = "0";
+         Enable = "1";
+         IconSize = "1";
+            ParticleColorAttenuation = "1";
+      };
+      new sgLightObject() {
+         canSaveDynamicFields = "1";
+         position = "45.5 271 147.5";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "maplight2";
+         teamId = "0";
+         Enable = "1";
+         IconSize = "1";
+            ParticleColorAttenuation = "1";
+      };
+      new sgLightObject() {
+         canSaveDynamicFields = "1";
+         position = "45.5 233 147.5";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "maplight2";
+         teamId = "0";
+         Enable = "1";
+         IconSize = "1";
+            ParticleColorAttenuation = "1";
+      };
+      new sgLightObject() {
+         canSaveDynamicFields = "1";
+         position = "0 -108.5 134";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "maplight2";
+         teamId = "0";
+         Enable = "1";
+         IconSize = "1";
+      };
    };
    new Trigger(disc) {
       canSaveDynamicFields = "1";
@@ -818,8 +1288,8 @@ new SimGroup(MissionGroup) {
       dataBlock = "ThrowDiscAtMe";
       teamId = "0";
       polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-         onGroup = "discDispencer";
          originObjName = "discDispencer";
+         onGroup = "discDispencer";
    };
    new sgLightObject(discDispencer) {
       canSaveDynamicFields = "1";
@@ -830,95 +1300,6 @@ new SimGroup(MissionGroup) {
       teamId = "0";
       Enable = "1";
       IconSize = "1";
-   };
-   new ScriptObject() {
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-         material = "dark_grey_blue_grid";
-   };
-   new ScriptObject() {
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-         material = "tutorial/dark_blue_grid";
-   };
-   new ScriptObject() {
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-         material = "dark_grey_blue_grid";
-   };
-   new ScriptObject() {
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-         material = "tutorial/dark_blue_grid";
-   };
-   new ScriptObject() {
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-         material = "dark_grey_blue_grid";
-   };
-   new ScriptObject() {
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-         material = "dark_grey_blue_grid";
-   };
-   new ScriptObject() {
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-         material = "tutorial/dark_blue_grid";
-   };
-   new ScriptObject() {
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-         material = "dark_grey_blue_grid";
-   };
-   new ScriptObject() {
-         color = "0.3 0.3 0.3 0.4 0.0";
-         sound = "2";
-         material = "tutorial/dark_blue_grid";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "224 144 118";
-      rotation = "0 0 1 90";
-      scale = "1 4 1";
-      interiorFile = "share/interiors/malloc/spike2.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "224 200 118";
-      rotation = "0 0 1 90";
-      scale = "1 4 1";
-      interiorFile = "share/interiors/malloc/spike2.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new TacticalZone(topright) {
-      canSaveDynamicFields = "1";
-      position = "284 88 160";
-      rotation = "1 0 0 0";
-      scale = "44 48 40";
-      dataBlock = "TerritoryZone";
-      teamId = "0";
-      borderBottom = "0";
-      borderLeft = "1";
-      borderBack = "1";
-      borderFront = "1";
-      borderRight = "1";
-      borderTop = "0";
-         numBlues = "3";
-         initialOwner = "0";
-         numReds = "0";
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "276 -24 148";
-      rotation = "-0.706825 0.707389 -3.08963e-008 180";
-      scale = "1 4 1";
-      interiorFile = "share/interiors/malloc/spike2.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
    };
    new SimGroup(botSpawns) {
       canSaveDynamicFields = "1";
@@ -935,7 +1316,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "364488";
+            checkTaggedThread = "1759990";
       };
       new SpawnSphere(genericTargetL) {
          canSaveDynamicFields = "1";
@@ -949,7 +1330,63 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "364489";
+            checkTaggedThread = "1759991";
+      };
+      new SpawnSphere(aiSpawn1) {
+         canSaveDynamicFields = "1";
+         position = "-212 146 133";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "0";
+         isTagging = "0";
+         Radius = "20";
+         sphereWeight = "100";
+         indoorWeight = "100";
+         outdoorWeight = "100";
+            checkTaggedThread = "1759992";
+      };
+      new SpawnSphere(aiSpawn2) {
+         canSaveDynamicFields = "1";
+         position = "-186 234 137";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "0";
+         isTagging = "0";
+         Radius = "20";
+         sphereWeight = "100";
+         indoorWeight = "100";
+         outdoorWeight = "100";
+            checkTaggedThread = "1759993";
+      };
+      new SpawnSphere(genericTargetZ1) {
+         canSaveDynamicFields = "1";
+         position = "155 -171.5 133";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "0";
+         isTagging = "0";
+         Radius = "5";
+         sphereWeight = "100";
+         indoorWeight = "100";
+         outdoorWeight = "100";
+            checkTaggedThread = "1759994";
+      };
+      new SpawnSphere(genericTargetZ2) {
+         canSaveDynamicFields = "1";
+         position = "258 -250 133";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "0";
+         isTagging = "0";
+         Radius = "5";
+         sphereWeight = "100";
+         indoorWeight = "100";
+         outdoorWeight = "100";
+            checkTaggedThread = "1759995";
       };
       new SpawnSphere(genericTargetS) {
          canSaveDynamicFields = "1";
@@ -963,7 +1400,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "364490";
+            checkTaggedThread = "1759996";
       };
       new SpawnSphere(genericTargetM) {
          canSaveDynamicFields = "1";
@@ -977,145 +1414,22 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "364491";
+            checkTaggedThread = "1759997";
       };
-   };
-   new InteriorInstance() {
-      canSaveDynamicFields = "1";
-      position = "66 -26.5 157";
-      rotation = "1 0 0 115";
-      scale = "0.5 0.5 0.5";
-      interiorFile = "share/interiors/malloc/spike.dif";
-      useGLLighting = "0";
-      showTerrainInside = "0";
-   };
-   new sgLightObject() {
-      canSaveDynamicFields = "1";
-      position = "204 43 142";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "maplight1";
-      teamId = "0";
-      Enable = "1";
-      IconSize = "1";
-   };
-   new sgLightObject() {
-      canSaveDynamicFields = "1";
-      position = "-98.5 233 147.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "maplight2";
-      teamId = "0";
-      Enable = "1";
-      IconSize = "1";
-         ParticleColorAttenuation = "1";
-   };
-   new sgLightObject() {
-      canSaveDynamicFields = "1";
-      position = "-98.5 271 147.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "maplight2";
-      teamId = "0";
-      Enable = "1";
-      IconSize = "1";
-         ParticleColorAttenuation = "1";
-   };
-   new sgLightObject() {
-      canSaveDynamicFields = "1";
-      position = "-32.5 271 147.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "maplight2";
-      teamId = "0";
-      Enable = "1";
-      IconSize = "1";
-         ParticleColorAttenuation = "1";
-   };
-   new sgLightObject() {
-      canSaveDynamicFields = "1";
-      position = "-32.5 233 147.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "maplight2";
-      teamId = "0";
-      Enable = "1";
-      IconSize = "1";
-         ParticleColorAttenuation = "1";
-   };
-   new sgLightObject() {
-      canSaveDynamicFields = "1";
-      position = "45.5 271 147.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "maplight2";
-      teamId = "0";
-      Enable = "1";
-      IconSize = "1";
-         ParticleColorAttenuation = "1";
-   };
-   new sgLightObject() {
-      canSaveDynamicFields = "1";
-      position = "45.5 233 147.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "maplight2";
-      teamId = "0";
-      Enable = "1";
-      IconSize = "1";
-         ParticleColorAttenuation = "1";
-   };
-   new SpawnSphere(aiSpawn1) {
-      canSaveDynamicFields = "1";
-      position = "-212 146 133";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "SpawnSphereMarker";
-      teamId = "0";
-      isTagging = "0";
-      Radius = "20";
-      sphereWeight = "100";
-      indoorWeight = "100";
-      outdoorWeight = "100";
-         checkTaggedThread = "364492";
-   };
-   new SpawnSphere(aiSpawn2) {
-      canSaveDynamicFields = "1";
-      position = "-186 234 137";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "SpawnSphereMarker";
-      teamId = "0";
-      isTagging = "0";
-      Radius = "20";
-      sphereWeight = "100";
-      indoorWeight = "100";
-      outdoorWeight = "100";
-         checkTaggedThread = "364493";
-   };
-   new SpawnSphere(aiSpawn3) {
-      canSaveDynamicFields = "1";
-      position = "-303 178 150";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "SpawnSphereMarker";
-      teamId = "0";
-      isTagging = "0";
-      Radius = "20";
-      sphereWeight = "100";
-      indoorWeight = "100";
-      outdoorWeight = "100";
-         checkTaggedThread = "364494";
-   };
-   new sgLightObject() {
-      canSaveDynamicFields = "1";
-      position = "0 -108.5 134";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "maplight2";
-      teamId = "0";
-      Enable = "1";
-      IconSize = "1";
+      new SpawnSphere(aiSpawn3) {
+         canSaveDynamicFields = "1";
+         position = "-303 178 150";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "0";
+         isTagging = "0";
+         Radius = "20";
+         sphereWeight = "100";
+         indoorWeight = "100";
+         outdoorWeight = "100";
+            checkTaggedThread = "1759998";
+      };
    };
 };
 //--- OBJECT WRITE END ---
