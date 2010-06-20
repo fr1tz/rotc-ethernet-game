@@ -76,7 +76,7 @@ function meshToggleProtected(%seq) {
     }
 
     $meshToggleProtectedMsgThread =
-        schedule(28500, 0, "centerPrintAll", "Corridors are changing!", 1, 1);
+        schedule(28500, 0, "centerPrintAll", "Corridors are changing!", 1, 0);
     if (%seq == 0) 
         $meshToggleProtectedThread = schedule(30000, 0, "meshToggleProtected", 1);
     else

@@ -64,8 +64,8 @@ new SimGroup(MissionGroup) {
          bumpOffset = "0.01";
          zeroBumpScale = "8";
          tile = "1";
-            position = "-1024 -1024 0";
             Locked = "true";
+            position = "-1024 -1024 0";
       };
    };
    new SimGroup(ObserverPoints) {
@@ -84,9 +84,9 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            Locked = "False";
+            checkTaggedThread = "23973";
             lockCount = "0";
-            checkTaggedThread = "99988";
+            Locked = "False";
       };
    };
    new SimGroup(RedSpawnPoints) {
@@ -106,9 +106,9 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            Locked = "False";
+            checkTaggedThread = "23974";
             lockCount = "0";
-            checkTaggedThread = "99989";
+            Locked = "False";
       };
    };
    new SimGroup(BlueSpawnPoints) {
@@ -128,9 +128,9 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            Locked = "False";
+            checkTaggedThread = "23975";
             lockCount = "0";
-            checkTaggedThread = "99990";
+            Locked = "False";
       };
    };
    new SimGroup(TerritoryZones) {
@@ -149,9 +149,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "1";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(topright) {
          canSaveDynamicFields = "1";
@@ -166,9 +166,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(bottomleft) {
          canSaveDynamicFields = "1";
@@ -183,9 +183,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(bottomright) {
          canSaveDynamicFields = "1";
@@ -200,9 +200,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "2";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrr) {
          canSaveDynamicFields = "1";
@@ -217,9 +217,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrt) {
          canSaveDynamicFields = "1";
@@ -234,9 +234,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrb) {
          canSaveDynamicFields = "1";
@@ -251,9 +251,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrl) {
          canSaveDynamicFields = "1";
@@ -268,9 +268,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrtl) {
          canSaveDynamicFields = "1";
@@ -285,9 +285,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrtr) {
          canSaveDynamicFields = "1";
@@ -302,9 +302,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrbl) {
          canSaveDynamicFields = "1";
@@ -319,9 +319,9 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(corrbr) {
          canSaveDynamicFields = "1";
@@ -336,15 +336,15 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            numBlues = "0";
       };
       new TacticalZone(center) {
          canSaveDynamicFields = "1";
-         position = "0.0176849 -0.0536423 160";
+         position = "0 0 150";
          rotation = "1 0 0 0";
-         scale = "104 144 40";
+         scale = "104 144 60";
          dataBlock = "TerritoryZone";
          teamId = "0";
          borderBottom = "0";
@@ -353,9 +353,66 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
-            initialOwner = "0";
-            numReds = "1";
             numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+      };
+      new TacticalZone(killerr) {
+         canSaveDynamicFields = "1";
+         position = "116 0 160";
+         rotation = "1 0 0 0";
+         scale = "12 72 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            initiallyProtected = "1";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+            nGroup = "Default Value";
+      };
+      new TacticalZone(killerl) {
+         canSaveDynamicFields = "1";
+         position = "-116 0 160";
+         rotation = "1 0 0 0";
+         scale = "12 72 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            initiallyProtected = "1";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "0";
+            nGroup = "Default Value";
+      };
+      new TacticalZone(killerbr) {
+         canSaveDynamicFields = "1";
+         position = "116 -132 160";
+         rotation = "1 0 0 0";
+         scale = "12 20 40";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "0";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "0";
+            initiallyProtected = "1";
+            numBlues = "0";
+            dEditor = "Default Value";
+            initialOwner = "0";
+            numReds = "0";
       };
    };
    new SimGroup(TutorialTextTriggers) {
@@ -531,14 +588,14 @@ new SimGroup(MissionGroup) {
       };
    };
    new ScriptObject() {
-         material = "dark_grey_blue_grid";
          color = "0.3 0.3 0.3 0.4 0.0";
          sound = "2";
+         material = "dark_grey_blue_grid";
    };
    new ScriptObject() {
-         material = "tutorial/dark_blue_grid";
          color = "0.3 0.3 0.3 0.4 0.0";
          sound = "2";
+         material = "tutorial/dark_blue_grid";
    };
    new Etherform() {
       canSaveDynamicFields = "1";
@@ -548,8 +605,8 @@ new SimGroup(MissionGroup) {
       dataBlock = "BlueEtherform";
       teamId = "2";
       isTagging = "0";
+         checkTaggedThread = "23976";
          client = "1830";
-         checkTaggedThread = "99991";
    };
    new InteriorInstance() {
       canSaveDynamicFields = "1";
@@ -586,6 +643,73 @@ new SimGroup(MissionGroup) {
       interiorFile = "share/interiors/malloc/spike2.dif";
       useGLLighting = "0";
       showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "0 252 150";
+      rotation = "0 0 1 90";
+      scale = "3.29404 21.0193 0.347218";
+      interiorFile = "share/interiors/malloc/spike2.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new InteriorInstance() {
+      canSaveDynamicFields = "1";
+      position = "0 -252 150";
+      rotation = "0 0 1 90";
+      scale = "3.29404 21.0193 0.347218";
+      interiorFile = "share/interiors/malloc/spike2.dif";
+      useGLLighting = "0";
+      showTerrainInside = "0";
+   };
+   new Etherform() {
+      canSaveDynamicFields = "1";
+      position = "-112.47 -69.7024 160.217";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "BlueEtherform";
+      teamId = "2";
+      isTagging = "0";
+         checkTaggedThread = "23977";
+         client = "16141";
+   };
+   new TacticalZone(killertl) {
+      canSaveDynamicFields = "1";
+      position = "-116 132 160";
+      rotation = "1 0 0 0";
+      scale = "12 20 40";
+      dataBlock = "TerritoryZone";
+      teamId = "0";
+      borderBottom = "0";
+      borderLeft = "1";
+      borderBack = "1";
+      borderFront = "1";
+      borderRight = "1";
+      borderTop = "0";
+         initiallyProtected = "1";
+         numBlues = "0";
+         dEditor = "Default Value";
+         initialOwner = "0";
+         numReds = "0";
+   };
+   new TacticalZone(killerbl) {
+      canSaveDynamicFields = "1";
+      position = "-116 -132 160";
+      rotation = "1 0 0 0";
+      scale = "12 20 40";
+      dataBlock = "TerritoryZone";
+      teamId = "0";
+      borderBottom = "0";
+      borderLeft = "1";
+      borderBack = "1";
+      borderFront = "1";
+      borderRight = "1";
+      borderTop = "0";
+         initiallyProtected = "1";
+         numBlues = "0";
+         dEditor = "Default Value";
+         initialOwner = "0";
+         numReds = "0";
    };
 };
 //--- OBJECT WRITE END ---
