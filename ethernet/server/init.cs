@@ -51,7 +51,7 @@ function initServer()
 	$Server::Status = "Unknown";
 
 	// Specify where the map info files are...
-	$Server::MapInfoFileSpec = "*/maps/*.map";
+	$Server::MapInfoFileSpec = "*/maps/*.info";
 
 	// The common module provides the basic server functionality
 	initBaseServer();
