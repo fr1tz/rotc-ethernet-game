@@ -64,8 +64,8 @@ new SimGroup(MissionGroup) {
          bumpOffset = "0.01";
          zeroBumpScale = "8";
          tile = "1";
-            Position = "-1024 -1024 0";
             Locked = "true";
+            Position = "-1024 -1024 0";
       };
    };
    new SimGroup(ObserverPoints) {
@@ -83,10 +83,10 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
-            checkTaggedThread = "32392";
-            homingCount = "0";
             Locked = "False";
+            checkTaggedThread = "19934";
             lockCount = "0";
+            homingCount = "0";
       };
    };
    new SimGroup(RedSpawnPoints) {
@@ -105,10 +105,10 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
-            checkTaggedThread = "32393";
-            homingCount = "0";
             Locked = "False";
+            checkTaggedThread = "19935";
             lockCount = "0";
+            homingCount = "0";
       };
    };
    new SimGroup(BlueSpawnPoints) {
@@ -127,10 +127,10 @@ new SimGroup(MissionGroup) {
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
-            checkTaggedThread = "32394";
-            homingCount = "0";
             Locked = "False";
+            checkTaggedThread = "19936";
             lockCount = "0";
+            homingCount = "0";
       };
    };
    new SimGroup(TerritoryZones) {
@@ -149,11 +149,11 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            initiallyProtected = "1";
             numBlues = "0";
             initialOwner = "1";
             numReds = "0";
             onGroup = "Default Value";
-            initiallyProtected = "1";
       };
       new TacticalZone(bottomright2) {
          canSaveDynamicFields = "1";
@@ -287,11 +287,11 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            initiallyProtected = "1";
             numBlues = "0";
             initialOwner = "2";
             numReds = "0";
             onGroup = "Default Value";
-            initiallyProtected = "1";
       };
       new TacticalZone(bottomright10) {
          canSaveDynamicFields = "1";
@@ -323,11 +323,11 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
+            initiallyProtected = "1";
             numBlues = "0";
             initialOwner = "0";
             numReds = "0";
             onGroup = "Default Value";
-            initiallyProtected = "1";
       };
       new TacticalZone(bottomright12) {
          canSaveDynamicFields = "1";
@@ -478,11 +478,11 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
-            numBlues = "0";
+            initiallyProtected = "1";
             nGroup = "Default Value";
+            numBlues = "0";
             initialOwner = "1";
             numReds = "0";
-            initiallyProtected = "1";
       };
       new TacticalZone(corrtl) {
          canSaveDynamicFields = "1";
@@ -497,11 +497,11 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "0";
-            numBlues = "0";
+            initiallyProtected = "1";
             nGroup = "Default Value";
+            numBlues = "0";
             initialOwner = "1";
             numReds = "0";
-            initiallyProtected = "1";
       };
       new TacticalZone(corrtr) {
          canSaveDynamicFields = "1";
@@ -601,10 +601,10 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "1";
+            initiallyProtected = "0";
             numBlues = "0";
             initialOwner = "1";
             numReds = "0";
-            initiallyProtected = "0";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
@@ -619,10 +619,10 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "1";
+            initiallyProtected = "0";
             numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            initiallyProtected = "0";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
@@ -637,10 +637,10 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "1";
+            initiallyProtected = "0";
             numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            initiallyProtected = "0";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
@@ -655,10 +655,28 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "1";
+            initiallyProtected = "0";
+            numBlues = "0";
+            initialOwner = "0";
+            numReds = "1";
+      };
+      new TacticalZone() {
+         canSaveDynamicFields = "1";
+         Position = "627 -544 50";
+         rotation = "1 0 0 0";
+         scale = "166 25 150";
+         dataBlock = "TerritoryZone";
+         teamId = "0";
+         borderBottom = "1";
+         borderLeft = "1";
+         borderBack = "1";
+         borderFront = "1";
+         borderRight = "1";
+         borderTop = "1";
+            initiallyProtected = "0";
             numBlues = "0";
             initialOwner = "0";
             numReds = "0";
-            initiallyProtected = "0";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
@@ -673,10 +691,10 @@ new SimGroup(MissionGroup) {
          borderFront = "1";
          borderRight = "1";
          borderTop = "1";
+            initiallyProtected = "0";
             numBlues = "0";
             initialOwner = "0";
-            numReds = "1";
-            initiallyProtected = "0";
+            numReds = "0";
       };
    };
    new SimGroup(TutorialTextTriggers) {
@@ -951,8 +969,8 @@ new SimGroup(MissionGroup) {
       dataBlock = "ThrowDiscAtMe";
       teamId = "0";
       polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-         onGroup = "discDispencer";
          originObjName = "discDispencer";
+         onGroup = "discDispencer";
    };
    new sgLightObject(discDispencer) {
       canSaveDynamicFields = "1";
@@ -979,7 +997,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "32395";
+            checkTaggedThread = "19937";
       };
       new SpawnSphere(genericTargetL) {
          canSaveDynamicFields = "1";
@@ -993,7 +1011,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "32396";
+            checkTaggedThread = "19938";
       };
       new SpawnSphere(aiSpawn1) {
          canSaveDynamicFields = "1";
@@ -1007,7 +1025,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "32397";
+            checkTaggedThread = "19939";
       };
       new SpawnSphere(aiSpawn2) {
          canSaveDynamicFields = "1";
@@ -1021,7 +1039,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "32398";
+            checkTaggedThread = "19940";
       };
       new SpawnSphere(genericTargetZ1) {
          canSaveDynamicFields = "1";
@@ -1035,7 +1053,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "32399";
+            checkTaggedThread = "19941";
       };
       new SpawnSphere(genericTargetZ2) {
          canSaveDynamicFields = "1";
@@ -1049,7 +1067,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "32400";
+            checkTaggedThread = "19942";
       };
       new SpawnSphere(genericTargetS) {
          canSaveDynamicFields = "1";
@@ -1063,7 +1081,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "32401";
+            checkTaggedThread = "19943";
       };
       new SpawnSphere(genericTargetM) {
          canSaveDynamicFields = "1";
@@ -1077,7 +1095,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "32402";
+            checkTaggedThread = "19944";
       };
       new SpawnSphere(aiSpawn3) {
          canSaveDynamicFields = "1";
@@ -1091,7 +1109,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "32403";
+            checkTaggedThread = "19945";
       };
    };
    new Trigger(StageTrigger2) {
@@ -1103,51 +1121,11 @@ new SimGroup(MissionGroup) {
       teamId = "0";
       polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
    };
-   new ScriptObject() {
-         material = "dark_grey_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         Sound = "2";
-   };
-   new ScriptObject() {
-         material = "tutorial/dark_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         Sound = "2";
-   };
-   new ScriptObject() {
-         material = "dark_grey_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         Sound = "2";
-   };
-   new ScriptObject() {
-         material = "tutorial/dark_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         Sound = "2";
-   };
-   new ScriptObject() {
-         material = "dark_grey_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         Sound = "2";
-   };
-   new ScriptObject() {
-         material = "tutorial/dark_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         Sound = "2";
-   };
-   new ScriptObject() {
-         material = "dark_grey_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         Sound = "2";
-   };
-   new ScriptObject() {
-         material = "tutorial/dark_blue_grid";
-         color = "0.3 0.3 0.3 0.4 0.0";
-         Sound = "2";
-   };
    new Trigger(StageTrigger3) {
       canSaveDynamicFields = "1";
-      Position = "-12.9731 -657 44.4389";
+      Position = "-12.9731 -680.694 44.4389";
       rotation = "1 0 0 0";
-      scale = "71.8536 71 30";
+      scale = "71.8536 47.3064 30";
       dataBlock = "Map_StageTrigger";
       teamId = "0";
       polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
@@ -1217,9 +1195,9 @@ new SimGroup(MissionGroup) {
    };
    new Trigger(StageTrigger5) {
       canSaveDynamicFields = "1";
-      Position = "746.699 -644.814 53.911";
+      Position = "746.699 -630.673 53.911";
       rotation = "1 0 0 0";
-      scale = "42.8249 8.96547 30";
+      scale = "42.8249 23.1065 30";
       dataBlock = "Map_StageTrigger";
       teamId = "0";
       polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
@@ -1256,32 +1234,155 @@ new SimGroup(MissionGroup) {
       removeWetEdges = "0";
       specularColor = "1 1 1 1";
       specularPower = "6";
-         params0 = "0.32 -0.67 0.066 0.5";
          params2 = "0.39 0.39 0.2 0.133";
-         floodFill = "1";
-         seedPoints = "0 0 1 0 1 1 0 1";
-         Extent = "100 100 10";
-         params1 = "0.63 -2.41 0.33 0.21";
          params3 = "1.21 -0.61 0.13 -0.33";
+         seedPoints = "0 0 1 0 1 1 0 1";
+         params1 = "0.63 -2.41 0.33 0.21";
+         floodFill = "1";
          textureSize = "32 32";
+         Extent = "100 100 10";
+         params0 = "0.32 -0.67 0.066 0.5";
    };
    new Trigger(StageTrigger6) {
       canSaveDynamicFields = "1";
-      Position = "746.699 -524.608 46.411";
+      Position = "746.699 -519.108 46.411";
       rotation = "1 0 0 0";
-      scale = "42.8249 38.6712 30";
+      scale = "42.8249 100.671 30";
       dataBlock = "Map_StageTrigger";
       teamId = "0";
       polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
    };
    new Trigger(StageTrigger7) {
       canSaveDynamicFields = "1";
-      Position = "553.98 -521.608 33.911";
+      Position = "488.888 -521.608 33.911";
       rotation = "1 0 0 0";
-      scale = "3.54341 45 62.4922";
+      scale = "68.6352 45 62.4922";
       dataBlock = "Map_StageTrigger";
       teamId = "0";
       polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+   };
+   new SimGroup(TutorialInfoPoints) {
+      canSaveDynamicFields = "1";
+
+      new SpawnSphere(1) {
+         canSaveDynamicFields = "1";
+         Position = "8.00001 -839 50";
+         rotation = "0 0 1 180";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "1";
+         isTagging = "0";
+         radius = "1";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+            Locked = "False";
+            checkTaggedThread = "19946";
+            lockCount = "0";
+            homingCount = "0";
+      };
+      new SpawnSphere(2) {
+         canSaveDynamicFields = "1";
+         Position = "8.00004 -752.5 45.5";
+         rotation = "0 0 1 180";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "1";
+         isTagging = "0";
+         radius = "1";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+            Locked = "False";
+            checkTaggedThread = "19947";
+            lockCount = "0";
+            homingCount = "0";
+      };
+      new SpawnSphere(3) {
+         canSaveDynamicFields = "1";
+         Position = "-4.49994 -692 50";
+         rotation = "0 0 1 140.466";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "1";
+         isTagging = "0";
+         radius = "1";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+            Locked = "False";
+            checkTaggedThread = "19948";
+            lockCount = "0";
+            homingCount = "0";
+      };
+      new SpawnSphere(4) {
+         canSaveDynamicFields = "1";
+         Position = "779.161 -715.862 55.5";
+         rotation = "0 0 -1 39.4427";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "1";
+         isTagging = "0";
+         radius = "1";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+            Locked = "False";
+            checkTaggedThread = "19949";
+            lockCount = "0";
+            homingCount = "0";
+      };
+      new SpawnSphere(5) {
+         canSaveDynamicFields = "1";
+         Position = "754.352 -640.959 55.5";
+         rotation = "0 0 1 88.8999";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "1";
+         isTagging = "0";
+         radius = "1";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+            Locked = "False";
+            checkTaggedThread = "19950";
+            lockCount = "0";
+            homingCount = "0";
+      };
+      new SpawnSphere(6) {
+         canSaveDynamicFields = "1";
+         Position = "779.61 -532.229 50";
+         rotation = "0 0 1 219.534";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "1";
+         isTagging = "0";
+         radius = "1";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+            Locked = "False";
+            checkTaggedThread = "19951";
+            lockCount = "0";
+            homingCount = "0";
+      };
+      new SpawnSphere(7) {
+         canSaveDynamicFields = "1";
+         Position = "495.965 -543.735 50";
+         rotation = "0 0 1 90.0455";
+         scale = "1 1 1";
+         dataBlock = "SpawnSphereMarker";
+         teamId = "1";
+         isTagging = "0";
+         radius = "1";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+            Locked = "False";
+            checkTaggedThread = "19952";
+            lockCount = "0";
+            homingCount = "0";
+      };
    };
 };
 //--- OBJECT WRITE END ---
