@@ -10,7 +10,7 @@ sgLoadDataBlocks($sgLightEditor::filterDBPath);
 exec("./materials.cs");
 exec("./text.cs");
 exec("./stages.cs");
-exec("./infopoints.cs");
+exec("./infopts.cs");
 
 package Tutorial {
     function startNewRound() {
@@ -100,7 +100,7 @@ package Tutorial {
 
 	function RedStandardCat::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType)
 	{
-		else if(%obj.infoPoint)
+		if(%obj.infoPoint)
 		{
 
 		}
