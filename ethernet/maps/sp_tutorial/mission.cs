@@ -10,7 +10,7 @@ sgLoadDataBlocks($sgLightEditor::filterDBPath);
 exec("./materials.cs");
 exec("./text.cs");
 exec("./stages.cs");
-exec("./util.cs");
+exec("./infopts.cs");
 
 package Tutorial {
     function startNewRound() {
@@ -47,46 +47,111 @@ package Tutorial {
         createTargetBotAt(NameToID("genericTargetZ2"), 0);
 
         showTextDisplayDecals();
+
+		map_activateInfoPoint(1);
     }
 
     function serverCmdJoinTeam(%client, %team) {
-        Parent::serverCmdJoinTeam(%client, %team);
+        
+		if(Parent::serverCmdJoinTeam(%client, %team))
+		{
+			if (%team == 0) {
+				$Map::Stage = 1;
+				map_displayCenter($tutorialText[70]);
+			} else if (%team == 1) {	
+			} else if (%team == 2) {
+				$Map::Stage = 2;
+				map_displayCenter($tutorialText[90]);
+			}
 
-        if (%team == 0) {
-			$Map::Stage = 1;
-			map_displayCenter($tutorialText[70]);
-        } else if (%team == 1) {
-			$Map::Stage = 3;
-			map_displayCenter($Map::Text::1);		
-        } else if (%team == 2) {
-			$Map::Stage = 2;
-            map_displayCenter($tutorialText[90]);
-        }
+			map_clearObjective();
+		}
     }
 
 	function EtherformData::onAdd(%this, %obj)
 	{
 		Parent::onAdd(%this, %obj);
-		if($Map::Stage == 4)
+		if($Map::Stage < 3)
 		{
 			$Map::Stage = 3;
-			map_displayCenter($Map::Text::1);
+			map_displayCenter($Map::Text::Info0);
 		}
+
+		map_displayObjective();	
 	}
 
 	function RedStandardCat::onAdd(%this, %obj)
 	{
 		Parent::onAdd(%this, %obj);
-		if($Map::Stage == 3)
+
+		if(%obj.infoPoint)
+			return;
+
+		clearCenterPrintAll();
+		
+		if($Map::Stage < 4)
 		{
 			$Map::Stage = 4;
-			map_displayCenter($Map::Text::2);
+			map_displayObjective("Touch the InfoBot");	
 		}
+		else
+			map_displayObjective();	
+	}
+
+	function RedStandardCat::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType)
+	{
+		if(%obj.infoPoint)
+		{
+
+		}
+		else
+			Parent::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType);
+	}
+
+	function RedStandardCat::onCollision(%this,%obj,%col,%vec,%vecLen)
+	{
+		Parent::onCollision(%this,%obj,%col,%vec,%vecLen);
+
+		if(%obj.infoPoint)
+			map_useInfoPoint(%obj.infoPoint);
 	}
 
 
 };
 activatePackage(Tutorial);
+
+function map_displayCenter(%message)
+{
+	centerPrintAll("", 0, 0 );
+	%l = strlen(%message); %n = 0;
+	while(%n < %l)
+	{
+		%chunk = getSubStr(%message, %n, 255);
+		centerPrintAll(%chunk, 0, 1);
+		%n += 255;
+	}
+}
+
+function map_displayObjective(%message)
+{
+	if(%message !$= "")
+		$Map::Objective = %message;
+
+	clearBottomPrintAll();
+	%l = strlen($Map::Objective); %n = 0;
+	while(%n < %l)
+	{
+		%chunk = getSubStr($Map::Objective, %n, 255);
+		bottomPrintAll(%chunk);
+		%n += 255;
+	}
+}
+
+function map_clearObjective()
+{
+	$Map::Objective = "";
+	clearBottomPrintAll();
+}
 
 
 // -----------------------------

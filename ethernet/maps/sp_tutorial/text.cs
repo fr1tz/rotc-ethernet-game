@@ -75,44 +75,50 @@ $tutorialText[79] = "Created some bots for you";
 $tutorialText[90] = "No! This is the blue team - you want to join the red team.";
 
 
+$Map::Text::WrongTeam = "Whoops! This is the blue team - you want to join the red team.";
 
-$Map::Text::1 = "" @
+$Map::Text::SeeInfoBot = "Touch the InfoBot";
+$Map::Text::Continue = "Step into the next zone";
+
+$Map::Text::Info0 = "" @
 	"You start out in ether form. This form can't be harmed and can replenish" SPC 
 	"your health by being inside your team's zones, but can't interact" SPC 
 	"with the world. Find the zone that's owned by your team and press TAB" SPC 
 	"to change into CAT form.";
 
-$Map::Text::2 = "" @
+$Map::Text::Info1 = "" @
 	"You are now in CAT form. In this form you can use weapons and capture" SPC 
 	"zones for your team. Your team needs to capture all the zones of the" SPC 
 	"other team to win. If you lose your health, you are forced back into" SPC
 	"ether form, but you can also manually switch back to ether form by" SPC
-	"pressing TAB. Walk into the next room.";
+	"pressing TAB.";
 
-$Map::Text::3 = "" @
+$Map::Text::Info2 = "" @
 	"Congratulations, you just captured another zone for your team." SPC 
 	"If enemy CATs were present in the zone, the zone would remain white" SPC 
-	"until only CATs of one team were present in the zone. Move on...";
+	"until only CATs of one team were present in the zone.";
 
-$Map::Text::4 = "" @
+$Map::Text::Info3 = "" @
 	"And another zone for your team. I'll be a long walk to the end of this" SPC 
 	"trench. Thankfully, this zone is now yours so you can use your etherform" SPC
 	"to travel the trench and manifest back to CAT form at the end.";
 
-$Map::Text::5 = "" @
+$Map::Text::Info4 = "" @
 	"In CAT form you can jump by pressing the space bar. Try jumping the beams.";
 
-$Map::Text::6 = "" @
+$Map::Text::Info5 = "" @
 	"If you press the jump key while you are not on the ground, your CAT" SPC
 	"while fire its jump boosters. This drains your energy, so use it carefully." SPC
 	"Use your jump boosters to jump over the wall formed by the beams.";
 
-$Map::Text::7 = "" @
+$Map::Text::Info6 = "" @
 	"CATs have the ability to ride the ether. This is known as etherboarding" SPC
 	"and allows a CAT to trade agility for speed. Etherboarding uses its own" SPC
 	"dedicated power source and you can't do it for very long before it needs" SPC
 	"to recharge, but it will not drain your energy." SPC
 	"Hold down left control to board down the slope and jump the deadly pit.";
 
-$Map::Text::8 = "" @
+$Map::Text::Info7 = "" @
 	"Well done. This concludes the part about movement. Move on to do some shooting.";
+
+
