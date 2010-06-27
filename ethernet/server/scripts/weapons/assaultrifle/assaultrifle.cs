@@ -35,7 +35,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	// script damage properties...
 	impactDamage        = 0;
 	impactImpulse       = 1000;
-	splashDamage        = 35;
+	splashDamage        = 25;
 	splashDamageRadius  = 5;
 	splashDamageFalloff = $SplashDamageFalloff::Exponential;
 	splashImpulse       = 0;
