@@ -49,12 +49,12 @@ datablock LaserBeamData(BlueBlasterProjectileLaserTail)
 
 datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailMissed)
 {
-	hasLine   = true;
+	hasLine   = false;
 	lineColor = "0.00 0.00 1.00 1.0";
 	lineWidth = 2.0;
 
 	hasInner = true;
-	innerColor = "0.00 0.00 1.00 0.4";
+	innerColor = "0.00 0.00 1.00 0.2";
 	innerWidth = "0.05";
 
 	hasOuter = false;

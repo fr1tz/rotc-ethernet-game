@@ -96,7 +96,7 @@ datablock MultiNodeLaserBeamData(RedBlasterProjectileLaserTrailMissed)
 	lineWidth = 2.0;
 
 	hasInner = true;
-	innerColor = "1.00 0.00 0.00 0.4";
+	innerColor = "1.00 0.00 0.00 0.2";
 	innerWidth = "0.05";
 
 	hasOuter = false;
