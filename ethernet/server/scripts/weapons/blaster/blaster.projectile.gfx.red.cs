@@ -91,20 +91,20 @@ datablock LaserBeamData(RedBlasterProjectileLaserTail)
 
 datablock MultiNodeLaserBeamData(RedBlasterProjectileLaserTrailMissed)
 {
-	hasLine   = true;
+	hasLine   = false;
 	lineColor = "1.00 0.00 0.00 1.0";
 	lineWidth = 2.0;
 
-	hasInner = false;
-	innerColor = "1.00 0.00 0.00 0.5";
-	innerWidth = "0.04";
+	hasInner = true;
+	innerColor = "1.00 0.00 0.00 0.2";
+	innerWidth = "0.05";
 
 	hasOuter = false;
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	bitmap = "~/data/weapons/blaster/lasertrail.red";
-	bitmapWidth = 0.10;
+	//bitmap = "~/data/weapons/blaster/lasertrail.red";
+	//bitmapWidth = 0.10;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
@@ -122,8 +122,8 @@ datablock MultiNodeLaserBeamData(RedBlasterProjectileLaserTrailMissed)
 	nodeMoveSpeedAdd[1] =  0.004;
 	// node z movement...
 	nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
-	nodeMoveSpeed[2]    = 3.0;
-	nodeMoveSpeedAdd[2] = -6.0;
+	nodeMoveSpeed[2]    = 1.0;
+	nodeMoveSpeedAdd[2] = -2.0;
     
 	nodeDistance = 5;
 };
@@ -161,8 +161,8 @@ datablock MultiNodeLaserBeamData(RedBlasterProjectileLaserTrailHit)
 	nodeMoveSpeedAdd[1] =  0.004;
 	// node z movement...
 	nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
-	nodeMoveSpeed[2]    = 3.0;
-	nodeMoveSpeedAdd[2] = -6.0;
+	nodeMoveSpeed[2]    = 1.0;
+	nodeMoveSpeedAdd[2] = -2.0;
     
 	nodeDistance = 5;
 };
