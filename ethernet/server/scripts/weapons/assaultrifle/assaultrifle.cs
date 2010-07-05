@@ -61,10 +61,10 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 //	hitDeflectorExplosion = DiscDeflectedEffect;
 
 //   particleEmitter	= AssaultRifleProjectileParticleEmitter;
-	laserTrail[0]   = RedAssaultRifleProjectileLaserTrail;
+//	laserTrail[0]   = RedAssaultRifleProjectileLaserTrail;
 //	laserTrail[1]   = AssaultRifleProjectileRedLaserTrail;
 	laserTail	    = RedAssaultRifleProjectileLaserTail;
-	laserTailLen    = 10;
+	laserTailLen    = 20;
 
 	muzzleVelocity		= 600;
 	velInheritFactor	 = 1.0;
@@ -101,7 +101,7 @@ datablock TracerProjectileData(BlueAssaultRifleProjectile : RedAssaultRifleProje
 {
 	projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
 	explosion = BlueAssaultRifleProjectileExplosion;
-	laserTrail[0]   = BlueAssaultRifleProjectileLaserTrail;
+	//laserTrail[0]   = BlueAssaultRifleProjectileLaserTrail;
 	laserTail = BlueAssaultRifleProjectileLaserTail;
 	lightColor  = "0.0 0.0 1.0";
 };
