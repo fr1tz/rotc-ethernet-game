@@ -36,7 +36,7 @@ function aiAdd(%teamid, %weaponNum)
 	%player = new AiPlayer() {
 		dataBlock = %playerData;
 		path = "";
-		teamId = 0;
+		teamId = $aiPlayers.count();
 	};
     %player.setTeamId(%player);
 	MissionCleanup.add(%player);
@@ -77,7 +77,7 @@ function GameConnection::togglePlayerForm(%this)
 		%obj = new Etherform() {
 			dataBlock = %data;
 			client = %this;
-			teamId = %this;
+			teamId = %this.team.teamId;
 		};
 	}
 	else
@@ -105,7 +105,7 @@ function GameConnection::togglePlayerForm(%this)
 		%obj = new Player() {
 			dataBlock = %data;
 			client = %this;
-			teamId = %this;
+			teamId = %this.team.teamId;
 		};
 
 		$aiTarget = %obj;
