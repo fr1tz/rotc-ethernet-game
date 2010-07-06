@@ -49,20 +49,20 @@ datablock LaserBeamData(BlueBlasterProjectileLaserTail)
 
 datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailMissed)
 {
-	hasLine   = false;
+	hasLine   = true;
 	lineColor = "0.00 0.00 1.00 1.0";
 	lineWidth = 2.0;
 
-	hasInner = true;
-	innerColor = "0.00 0.00 1.00 0.2";
-	innerWidth = "0.05";
+	hasInner = false;
+	innerColor = "0.00 0.00 1.00 1.0";
+	innerWidth = "0.10";
 
 	hasOuter = false;
-	outerColor = "1.00 0.00 1.00 0.1";
+	outerColor = "0.00 0.00 0.00 0.1";
 	outerWidth = "0.10";
 
-	//bitmap = "~/data/weapons/blaster/lasertrail.blue";
-	//bitmapWidth = 0.10;
+	bitmap = "~/data/weapons/blaster/lasertrail.blue";
+	bitmapWidth = 0.50;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
@@ -83,7 +83,7 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailMissed)
 	nodeMoveSpeed[2]    = 1.0;
 	nodeMoveSpeedAdd[2] = -2.0;
     
-	nodeDistance = 5;
+	//nodeDistance = 5;
 };
 
 datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailHit)
@@ -93,15 +93,15 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailHit)
 	lineWidth = 2.0;
 
 	hasInner = false;
-	innerColor = "1.00 0.00 0.00 0.5";
-	innerWidth = "0.04";
+	innerColor = "0.00 0.00 1.00 1.0";
+	innerWidth = "0.10";
 
 	hasOuter = false;
-	outerColor = "1.00 0.00 1.00 0.1";
+	outerColor = "0.00 0.00 0.00 0.1";
 	outerWidth = "0.10";
 
 	bitmap = "~/data/weapons/blaster/lasertrail.blue";
-	bitmapWidth = 0.10;
+	bitmapWidth = 0.50;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
@@ -122,7 +122,7 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailHit)
 	nodeMoveSpeed[2]    = 1.0;
 	nodeMoveSpeedAdd[2] = -2.0;
     
-	nodeDistance = 5;
+	//nodeDistance = 5;
 };
 
 //-----------------------------------------------------------------------------
@@ -230,15 +230,65 @@ datablock ExplosionData(BlueBlasterProjectileImpact)
 //-----------------------------------------------------------------------------
 // hit enemy...
 
+datablock ParticleData(BlueBlasterProjectileHit_Particle)
+{
+	dragCoefficient    = 0.0;
+	windCoefficient    = 0.0;
+	gravityCoefficient	= 0.0;
+	inheritedVelFactor	= 0.0;
+
+	lifetimeMS			  = 500;
+	lifetimeVarianceMS	= 0;
+
+	useInvAlpha =  false;
+
+	textureName	= "~/data/particles/star1";
+
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "0.0 0.0 1.0 1.0";
+	colors[2]	  = "0.0 0.0 1.0 0.0";
+	sizes[0]		= 0.5;
+	sizes[1]		= 0.5;
+	sizes[2]		= 0.5;
+	times[0]		= 0.0;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+
+	allowLighting = false;
+	renderDot = true;
+};
+
+datablock ParticleEmitterData(BlueBlasterProjectileHit_Emitter)
+{
+	ejectionOffset	= 0;
+
+	ejectionPeriodMS = 40;
+	periodVarianceMS = 0;
+
+	ejectionVelocity = 0.0;
+	velocityVariance = 0.0;
+
+	thetaMin			= 0.0;
+	thetaMax			= 60.0;
+
+	lifetimeMS		 = 100;
+
+	particles = "BlueBlasterProjectileHit_Particle";
+};
+
 datablock ExplosionData(BlueBlasterProjectileHit)
 {
 	soundProfile = BlasterProjectileImpactSound;
 
 	lifetimeMS = 450;
 
+	particleEmitter = BlueBlasterProjectileHit_Emitter;
+	particleDensity = 1;
+	particleRadius = 0;
+
 	// Dynamic light
-	lightStartRadius = 0.25;
-	lightEndRadius = 3;
+	lightStartRadius = 2;
+	lightEndRadius = 0;
 	lightStartColor = "0.0 0.0 1.0";
 	lightEndColor = "0.0 0.0 0.0";
     lightCastShadows = false;
