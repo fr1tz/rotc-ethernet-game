@@ -51,7 +51,7 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailMissed)
 {
 	hasLine   = true;
 	lineColor = "0.00 0.00 1.00 1.0";
-	lineWidth = 2.0;
+	lineWidth = 1.0;
 
 	hasInner = false;
 	innerColor = "0.00 0.00 1.00 1.0";
@@ -62,7 +62,7 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailMissed)
 	outerWidth = "0.10";
 
 	bitmap = "~/data/weapons/blaster/lasertrail.blue";
-	bitmapWidth = 0.50;
+	bitmapWidth = 0.90;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
@@ -90,7 +90,7 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailHit)
 {
 	hasLine   = true;
 	lineColor = "0.00 0.00 1.00 1.0";
-	lineWidth = 2.0;
+	lineWidth = 1.0;
 
 	hasInner = false;
 	innerColor = "0.00 0.00 1.00 1.0";
@@ -101,11 +101,11 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailHit)
 	outerWidth = "0.10";
 
 	bitmap = "~/data/weapons/blaster/lasertrail.blue";
-	bitmapWidth = 0.50;
+	bitmapWidth = 0.90;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
-	fadeTime = 500;
+	fadeTime = 100;
  
 	windCoefficient = 0.0;
     
