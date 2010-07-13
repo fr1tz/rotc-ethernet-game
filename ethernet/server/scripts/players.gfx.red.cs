@@ -55,7 +55,7 @@ datablock ExplosionData(RedPlayerBleedEffect_Heavy)
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.1 0.1 0.1";
-	sizes[1] = "0.8 0.8 0.8";
+	sizes[1] = "0.6 0.6 0.6";
 	times[0] = 0.0;
 	times[1] = 1.0;
  
@@ -81,7 +81,7 @@ datablock ExplosionData(RedPlayerBleedEffect_Medium)
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.1 0.1 0.1";
-	sizes[1] = "0.6 0.6 0.6";
+	sizes[1] = "0.4 0.4 0.4";
 	times[0] = 0.0;
 	times[1] = 1.0;
  
@@ -107,7 +107,7 @@ datablock ExplosionData(RedPlayerBleedEffect_Light)
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.0 0.0 0.0";
-	sizes[1] = "0.4 0.4 0.4";
+	sizes[1] = "0.2 0.2 0.2";
 	times[0] = 0.0;
 	times[1] = 1.0;
  
@@ -133,7 +133,7 @@ datablock ExplosionData(RedPlayerBleedEffect_Sting)
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.0 0.0 0.0";
-	sizes[1] = "0.2 0.2 0.2";
+	sizes[1] = "0.1 0.1 0.1";
 	times[0] = 0.0;
 	times[1] = 1.0;
  
