@@ -36,7 +36,7 @@ function aiAdd(%teamid, %weaponNum)
 	%player = new AiPlayer() {
 		dataBlock = %playerData;
 		path = "";
-		teamId = $aiPlayers.count();
+		teamId = %teamId;
 	};
     %player.setTeamId(%player);
 	MissionCleanup.add(%player);
