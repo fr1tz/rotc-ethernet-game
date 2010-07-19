@@ -54,7 +54,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
     projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
 
 	explosion             = RedAssaultRifleProjectileExplosion;
-//	bounceExplosion		  = AssaultRifleProjectileBounceExplosion;
+	bounceExplosion		  = RedAssaultRifleProjectileBounceExplosion;
 //	hitEnemyExplosion     = AssaultRifleProjectileImpact;
 //	nearEnemyExplosion    = AssaultRifleProjectileExplosion;
 //	hitTeammateExplosion  = AssaultRifleProjectileImpact;
@@ -72,7 +72,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	isBallistic			= true;
 	gravityMod			 = 7.5;
 
-	armingDelay			= 0;
+	armingDelay			= 50;
 	lifetime				= 1000*10;
 	fadeDelay			  = 5000;
 	
@@ -101,6 +101,7 @@ datablock TracerProjectileData(BlueAssaultRifleProjectile : RedAssaultRifleProje
 {
 	projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
 	explosion = BlueAssaultRifleProjectileExplosion;
+	bounceExplosion = BlueAssaultRifleProjectileBounceExplosion;
 	//laserTrail[0]   = BlueAssaultRifleProjectileLaserTrail;
 	laserTail = BlueAssaultRifleProjectileLaserTail;
 	lightColor  = "0.0 0.0 1.0";

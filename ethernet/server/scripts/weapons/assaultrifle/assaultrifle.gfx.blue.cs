@@ -131,15 +131,15 @@ datablock LaserBeamData(BlueAssaultRifleProjectileLaserTail)
 
 datablock ExplosionData(BlueAssaultRifleProjectileBounceExplosion)
 {
-	soundProfile	= BlueAssaultRifleProjectileBounceSound;
+	soundProfile = AssaultRifleProjectileBounceSound;
 	
-	lifetimeMS = 200;
+	lifetimeMS = 100;
 	
 	// Dynamic light
 	lightStartRadius = 6;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.8 0.2 1.0";
-	lightEndColor = "1.0 0.8 0.2 0.3";
+	lightStartColor = "0.0 0.0 1.0 1.0";
+	lightEndColor = "0.0 0.0 1.0 0.3";
 };
 
 
