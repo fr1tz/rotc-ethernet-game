@@ -37,11 +37,6 @@ function removeWindow(%control)
 	Canvas.repaint();
 }
 
-function Shell::onWake()
-{
-
-}
-
 function ShellRoot::onMouseDown(%this,%modifier,%coord,%clickCount)
 {
 	//
@@ -53,7 +48,7 @@ function ShellRoot::onMouseDown(%this,%modifier,%coord,%clickCount)
 	else
 	{
 		RootMenu.position = %coord;
-		addWindow(RootMenu);
+		//addWindow(RootMenu);
 		//Canvas.repaint();
 	}
 }
