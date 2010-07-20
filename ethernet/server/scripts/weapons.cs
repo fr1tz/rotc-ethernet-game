@@ -11,6 +11,7 @@
 $MainWeapon::AssaultRifle    = 0;
 $MainWeapon::SniperRifle     = 1;
 $MainWeapon::MissileLauncher = 2;
+$MainWeapon::Chaingun        = 3;
 
 $DamageType::Impact = 0;
 $DamageType::Splash	= 1;
@@ -38,6 +39,7 @@ function executeWeaponScripts()
 	exec("./weapons/assaultrifle/assaultrifle.cs");
 	exec("./weapons/missilelauncher/missilelauncher.cs");
 	exec("./weapons/sniperrifle/sniperrifle.cs");
+	exec("./weapons/chaingun/chaingun.cs");
 }
 
 executeWeaponScripts();

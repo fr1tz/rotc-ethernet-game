@@ -72,12 +72,21 @@ function StandardCat::useWeapon(%this, %obj, %nr)
     
             %validWeapon = true;
 		}
-		else if(false) //%obj.mainWeapon == $MainWeapon::MissileLauncher)
+		else if(%obj.mainWeapon == $MainWeapon::MissileLauncher)
 		{
 			if(%obj.getTeamId() == 1)
 				%obj.mountImage(RedMissileLauncherImage, 0, -1, true);
 			else
 				%obj.mountImage(BlueMissileLauncherImage, 0, -1, true);
+    
+            %validWeapon = true;
+		}
+		else if(%obj.mainWeapon == $MainWeapon::Chaingun)
+		{
+			if(%obj.getTeamId() == 1)
+				%obj.mountImage(RedChaingunImage, 0, -1, true);
+			else
+				%obj.mountImage(BlueChaingunImage, 0, -1, true);
     
             %validWeapon = true;
 		}
