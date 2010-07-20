@@ -45,7 +45,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 
 	trackingAgility = 0;
 	
-	explodesNearEnemies			= true;
+	explodesNearEnemies			= false;
 	explodesNearEnemiesRadius	= 5;
 	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
 
