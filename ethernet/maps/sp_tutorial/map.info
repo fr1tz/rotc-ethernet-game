@@ -5,11 +5,11 @@
 $MapInfo::Name     = "tutorial (sp)";
 $MapInfo::Homepage = "ethernet.wasted.ch";
 
-$MapInfo::MissionFile = "mission.mis";
-$MapInfo::ScriptFile  = "mission.cs";
+$MapInfo::MissionFile = "map.mis";
+$MapInfo::ScriptFile  = "scripts/map.cs";
 
 $MapInfo::DescFile = "desc.rml";
-$MapInfo::CopyrightFile = "copyright.rml";
-$MapInfo::LicenseFile = "";
 $MapInfo::CreditsFile = "credits.rml";
+$MapInfo::CopyrightFile = "copyright.rml";
+
 

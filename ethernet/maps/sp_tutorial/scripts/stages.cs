@@ -9,7 +9,9 @@
 // 8 = jumo wall of beams
 // 9 = jump pit
 // 10 = jumped pit
-
+// 11 = destroy first bot
+// 12 = destroyed first bot
+// 13 = snipe second bot
 
 datablock TriggerData(Map_StageTrigger) {
     tickPeriodMS = 200;
@@ -22,6 +24,9 @@ function Map_StageTrigger::onEnterTrigger(%this, %trigger, %obj) {
 		return;
 
 	if(!%obj.isCAT)
+		return;
+
+	if(%obj.getTeamId() != 1)
 		return;
 
 	if(%trigger.getName() $= "StageTrigger2" && $Map::Stage == 4)
@@ -60,7 +65,24 @@ function Map_StageTrigger::onEnterTrigger(%this, %trigger, %obj) {
 		map_activateInfoPoint(7);
 		map_displayObjective($Map::Text::SeeInfoBot);
 	}
-
+	else if(%trigger.getName() $= "StageTrigger8" && $Map::Stage < 11)
+	{
+		$Map::Stage = 11;
+		map_activateInfoPoint(8);
+		map_displayObjective($Map::Text::SeeInfoBot);
+	}
+	else if(%trigger.getName() $= "StageTrigger9" && $Map::Stage < 12)
+	{
+		$Map::Stage = 12;
+		map_activateInfoPoint(9);
+		map_displayObjective($Map::Text::SeeInfoBot);
+	}
+	else if(%trigger.getName() $= "StageTrigger10" && $Map::Stage < 13)
+	{
+		$Map::Stage = 13;
+		map_activateInfoPoint(10);
+		map_displayObjective($Map::Text::SeeInfoBot);
+	}
 }
 
 function Map_StageTrigger::onLeaveTrigger(%this, %trigger, %obj) {

@@ -69,6 +69,19 @@ function map_useInfoPoint(%num)
 	{
 		map_displayObjective($Map::Text::Continue);
 	}
+	else if(%num == 8)
+	{
+		map_displayObjective("Destroy the blue bot and move on.");
+	}
+	else if(%num == 9)
+	{
+		map_displayObjective($Map::Text::Continue);
+	}
+	else if(%num == 10)
+	{
+		map_displayObjective("Select the sniper ROFL as your special weapon," SPC
+			"snipe the blue bot and move on.");
+	}
 }
 
 function map_activateInfoPoint(%num)
