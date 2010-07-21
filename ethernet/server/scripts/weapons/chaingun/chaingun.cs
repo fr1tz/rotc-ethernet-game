@@ -36,8 +36,8 @@ datablock TracerProjectileData(RedChaingunProjectile)
 	impactDamage        = 0;
 	impactImpulse       = 1000;
 	splashDamage        = 25;
-	splashDamageRadius  = 5;
-	splashDamageFalloff = $SplashDamageFalloff::Exponential;
+	splashDamageRadius  = 3;
+	splashDamageFalloff = $SplashDamageFalloff::Linear;
 	splashImpulse       = 0;
 	
 	// how much energy does firing this projectile drain?...
@@ -46,7 +46,7 @@ datablock TracerProjectileData(RedChaingunProjectile)
 	trackingAgility = 0;
 	
 	explodesNearEnemies			= true;
-	explodesNearEnemiesRadius	= 5;
+	explodesNearEnemiesRadius	= 7;
 	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
 
 	//sound = ChaingunProjectileFlybySound;
@@ -137,7 +137,7 @@ datablock ShapeBaseImageData(RedChaingunImage)
 	correctMuzzleVector = true;
 
 	usesEnergy = true;
-	minEnergy = 5;
+	minEnergy = 15;
 
 	projectile = RedChaingunProjectile;
 
