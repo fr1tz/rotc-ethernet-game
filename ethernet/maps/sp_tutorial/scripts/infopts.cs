@@ -79,8 +79,19 @@ function map_useInfoPoint(%num)
 	}
 	else if(%num == 10)
 	{
-		map_displayObjective("Select the sniper ROFL as your special weapon," SPC
-			"snipe the blue bot and move on.");
+		map_displayObjective("Snipe the blue bot and move on.");
+	}
+	else if(%num == 11)
+	{
+		map_displayObjective("Combine grenades and discs to destroy the bot and move on.");
+	}
+	else if(%num == 12)
+	{
+		map_displayObjective("Make your way through the trench.");
+	}
+	else if(%num == 13)
+	{
+		map_displayObjective("Capture the last zone to end the tutorial.");
 	}
 }
 

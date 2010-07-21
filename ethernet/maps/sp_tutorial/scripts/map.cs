@@ -16,19 +16,24 @@ exec("./stages.cs");
 exec("./text.cs");
 
 package Map {
-    function startNewRound() {
-        /*
-        // Let all players in observer-teams join the red team
-        for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {
-            %client = ClientGroup.getObject( %clientIndex );
+    function startNewRound() 
+	{
 
-            echo(%client);
-            if( %client.team == $Team0 )
-                %client.joinTeam(1);
-        }
-        */
+		if($Map::Stage == 19)
+		{
+			disconnect();
+			return;
+		}
 
         Parent::startNewRound();
+
+		BlueBlasterProjectile.impactDamage = 0;
+
+		if( !isObject($aiPlayers) )
+		{
+			$aiPlayers = new Array();
+			MissionCleanup.add($aiPlayers);
+		}
 
         // show the info box to all players not in the read team
         for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {

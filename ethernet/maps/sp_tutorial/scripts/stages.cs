@@ -10,8 +10,14 @@
 // 9 = jump pit
 // 10 = jumped pit
 // 11 = destroy first bot
-// 12 = destroyed first bot
+// 12 = after first bot
 // 13 = snipe second bot
+// 14 = destroy bot behind fence
+// 15 = after bot behind fence
+// 16 = disc bot #1
+// 17 = disc bot #2
+// 18 = disc bot #3
+// 19 = final info bot
 
 datablock TriggerData(Map_StageTrigger) {
     tickPeriodMS = 200;
@@ -81,6 +87,45 @@ function Map_StageTrigger::onEnterTrigger(%this, %trigger, %obj) {
 	{
 		$Map::Stage = 13;
 		map_activateInfoPoint(10);
+		map_displayObjective($Map::Text::SeeInfoBot);
+	}
+	else if(%trigger.getName() $= "StageTrigger11" && $Map::Stage < 14)
+	{
+		$Map::Stage = 14;
+		map_activateInfoPoint(11);
+		map_displayObjective($Map::Text::SeeInfoBot);
+	}
+	else if(%trigger.getName() $= "StageTrigger12" && $Map::Stage < 15)
+	{
+		$Map::Stage = 15;
+		map_activateInfoPoint(12);
+		map_displayObjective($Map::Text::SeeInfoBot);
+	}
+	else if(%trigger.getName() $= "StageTrigger13" && $Map::Stage < 16)
+	{
+		$Map::Stage = 16;
+		$aiPlayers.push_back("", map_getBlueBotSpawn("/bin/bash").bot);
+		aiStartFire();
+		map_displayObjective($Map::Text::DestroyBlueBot);
+	}
+	else if(%trigger.getName() $= "StageTrigger14" && $Map::Stage < 17)
+	{
+		$Map::Stage = 17;
+		$aiPlayers.push_back("", map_getBlueBotSpawn("/usr/bin/tac").bot);
+		aiStartFire();
+		map_displayObjective($Map::Text::DestroyBlueBot);
+	}
+	else if(%trigger.getName() $= "StageTrigger15" && $Map::Stage < 18)
+	{
+		$Map::Stage = 18;
+		$aiPlayers.push_back("", map_getBlueBotSpawn("/bin/csh").bot);
+		aiStartFire();
+		map_displayObjective($Map::Text::DestroyBlueBot);
+	}
+	else if(%trigger.getName() $= "StageTrigger16" && $Map::Stage < 19)
+	{
+		$Map::Stage = 19;
+		map_activateInfoPoint(13);
 		map_displayObjective($Map::Text::SeeInfoBot);
 	}
 }
