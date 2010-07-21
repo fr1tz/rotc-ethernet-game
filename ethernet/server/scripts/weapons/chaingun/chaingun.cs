@@ -30,7 +30,7 @@ datablock ShapeBaseImageData(HolsteredChaingunImage)
 //-----------------------------------------------------------------------------
 // projectile datablock...
 
-datablock ProjectileData(RedChaingunProjectile)
+datablock TracerProjectileData(RedChaingunProjectile)
 {
 	// script damage properties...
 	impactDamage        = 0;
@@ -41,12 +41,12 @@ datablock ProjectileData(RedChaingunProjectile)
 	splashImpulse       = 0;
 	
 	// how much energy does firing this projectile drain?...
-	energyDrain = 5;
+	energyDrain = 10;
 
 	trackingAgility = 0;
 	
 	explodesNearEnemies			= true;
-	explodesNearEnemiesRadius	= 8;
+	explodesNearEnemiesRadius	= 5;
 	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
 
 	//sound = ChaingunProjectileFlybySound;
@@ -66,7 +66,7 @@ datablock ProjectileData(RedChaingunProjectile)
 	laserTail	    = RedChaingunProjectileLaserTail;
 	laserTailLen    = 2;
 
-	muzzleVelocity		= 400;
+	muzzleVelocity		= 600;
 	velInheritFactor	 = 1.0;
 	
 	isBallistic = true;
@@ -97,7 +97,7 @@ function RedChaingunProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%
 
 //--------------------------------------------------------------------------
 
-datablock ProjectileData(BlueChaingunProjectile : RedChaingunProjectile)
+datablock TracerProjectileData(BlueChaingunProjectile : RedChaingunProjectile)
 {
 //	projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
 	explosion = BlueChaingunProjectileExplosion;
@@ -166,21 +166,19 @@ datablock ShapeBaseImageData(RedChaingunImage)
 		stateName[2]                     = "Ready";
 		stateTransitionOnNoAmmo[2]       = "NoAmmo";
   		stateTransitionOnNotLoaded[2]    = "Disabled";
-		stateTransitionOnTriggerDown[2]  = "SpinUp";
+		stateTransitionOnTriggerDown[2]  = "Fire";
         stateArmThread[2]                = "holdrifle";
 
-		stateName[9]                     = "SpinUp";
-		stateTransitionOnTimeout[9]      = "Fire";
-		stateTransitionOnTriggerUp[9]    = "KeepAiming";
-		stateTimeoutValue[9]             = 0.25;
-		stateSpinThread[9]               = "SpinUp";
-		stateAllowImageChange[9]         = false;
+		stateName[9]                     = "Cooldown";
+		stateTransitionOnTimeout[9]      = "KeepAiming";
+		stateTimeoutValue[9]             = 0.5;
+		stateSpinThread[9]               = "SpinDown";
 		stateArmThread[9]                = "aimrifle";
 		
 		stateName[3]                     = "Fire";
 		stateTransitionOnTimeout[3]      = "Fire";
-		stateTransitionOnTriggerUp[3]    = "KeepAiming";
-		stateTimeoutValue[3]             = 0.15;
+		stateTransitionOnTriggerUp[3]    = "Cooldown";
+		stateTimeoutValue[3]             = 0.21;
 		stateSpinThread[3]               = "FullSpeed";
 		stateFire[3]                     = true;
 		stateFireProjectile[3]           = RedChaingunProjectile;
@@ -190,16 +188,14 @@ datablock ShapeBaseImageData(RedChaingunImage)
 		stateArmThread[3]                = "aimrifle";
 		stateSequence[3]                 = "Fire";
 		stateSound[3]                    = ChaingunFireSound;
-		stateScript[3]                   = "onFire";
 		
 		stateName[4]                     = "KeepAiming";
 		stateTransitionOnNoAmmo[4]       = "NoAmmo";
 		stateTransitionOnNotLoaded[4]    = "Disabled";
-		stateTransitionOnTriggerDown[4]  = "SpinUp";
+		stateTransitionOnTriggerDown[4]  = "Fire";
 		stateTransitionOnTimeout[4]      = "Ready";
 		stateWaitForTimeout[4]           = false;
 		stateTimeoutValue[4]             = 2.00;
-		stateSpinThread[4]               = "SpinDown";
 
         // no ammo...
 		stateName[5]                     = "NoAmmo";
@@ -222,11 +218,6 @@ datablock ShapeBaseImageData(RedChaingunImage)
 	//-------------------------------------------------
 };
 
-function RedChaingunImage::onFire(%this, %obj, %slot)
-{
-	%obj.setEnergyLevel(%obj.getEnergyLevel() - %this.projectile.energyDrain);
-}
-
 //------------------------------------------------------------------------------
 
 datablock ShapeBaseImageData(BlueChaingunImage : RedChaingunImage)
@@ -234,9 +225,4 @@ datablock ShapeBaseImageData(BlueChaingunImage : RedChaingunImage)
 	projectile = BlueChaingunProjectile;
     stateFireProjectile[3] = BlueChaingunProjectile;
 };
-
-function BlueChaingunImage::onFire(%this, %obj, %slot)
-{
-	RedChaingunImage::onFire(%this, %obj, %slot);
-}
 
