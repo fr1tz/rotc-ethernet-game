@@ -178,6 +178,7 @@ datablock ShapeBaseImageData(RedChaingunImage)
 		stateName[3]                     = "Fire";
 		stateTransitionOnTimeout[3]      = "Fire";
 		stateTransitionOnTriggerUp[3]    = "Cooldown";
+		stateTransitionOnNoAmmo[3]       = "NoAmmo";
 		stateTimeoutValue[3]             = 0.21;
 		stateSpinThread[3]               = "FullSpeed";
 		stateFire[3]                     = true;
