@@ -4,6 +4,7 @@ $tutorialText[90] = "No! This is the blue team - you want to join the red team."
 $Map::Text::WrongTeam = "Whoops! This is the blue team - you want to join the red team.";
 
 $Map::Text::SeeInfoBot = "Touch the InfoBot";
+$Map::Text::DestroyBlueBot = "Destroy the blue bot";
 $Map::Text::Continue = "Step into the next zone";
 
 $Map::Text::Info0 = "" @
@@ -42,7 +43,7 @@ $Map::Text::Info6 = "" @
 	"CATs have the ability to ride the ether. This is known as etherboarding" SPC
 	"and allows a CAT to trade agility for speed. Etherboarding uses its own" SPC
 	"dedicated power source and you can't do it for very long before it needs" SPC
-	"to recharge, but it will not drain your energy." SPC
+	"to recharge, but it will not drain power from your armor." SPC
 	"Hold down left control to board down the slope and jump the deadly pit.";
 
 $Map::Text::Info7 = "" @

@@ -84,8 +84,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444694";
             lockCount = "0";
+            checkTaggedThread = "138723";
             Locked = "False";
       };
    };
@@ -106,8 +106,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444695";
             lockCount = "0";
+            checkTaggedThread = "138724";
             Locked = "False";
       };
    };
@@ -128,8 +128,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444696";
             lockCount = "0";
+            checkTaggedThread = "138725";
             Locked = "False";
       };
    };
@@ -260,7 +260,7 @@ new SimGroup(MissionGroup) {
             initiallyProtected = "0";
             numBlues = "0";
             initialOwner = "2";
-            numReds = "2";
+            numReds = "0";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
@@ -278,7 +278,7 @@ new SimGroup(MissionGroup) {
             initiallyProtected = "0";
             numBlues = "0";
             initialOwner = "2";
-            numReds = "0";
+            numReds = "1";
       };
       new TacticalZone() {
          canSaveDynamicFields = "1";
@@ -384,7 +384,7 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             initiallyProtected = "0";
-            numBlues = "0";
+            numBlues = "1";
             initialOwner = "2";
             numReds = "0";
       };
@@ -402,7 +402,7 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             initiallyProtected = "0";
-            numBlues = "0";
+            numBlues = "1";
             initialOwner = "2";
             numReds = "0";
       };
@@ -420,7 +420,7 @@ new SimGroup(MissionGroup) {
          borderRight = "1";
          borderTop = "1";
             initiallyProtected = "0";
-            numBlues = "0";
+            numBlues = "1";
             initialOwner = "2";
             numReds = "0";
       };
@@ -459,8 +459,9 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444697";
             lockCount = "0";
+            checkTaggedThread = "138726";
+            bot = "2004";
             botname = "/usr/bin/emacs";
             Locked = "False";
       };
@@ -478,8 +479,9 @@ new SimGroup(MissionGroup) {
          outdoorWeight = "1";
             homingCount = "0";
             NewDynamicField = "Default Value";
-            checkTaggedThread = "444698";
             lockCount = "0";
+            checkTaggedThread = "138727";
+            bot = "2006";
             botname = "/usr/bin/vi";
             Locked = "False";
       };
@@ -496,8 +498,9 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444699";
             lockCount = "0";
+            checkTaggedThread = "138728";
+            bot = "2008";
             botname = "/usr/bin/perl";
             Locked = "False";
       };
@@ -514,8 +517,9 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444666";
             lockCount = "0";
+            checkTaggedThread = "138729";
+            bot = "2010";
             botname = "/bin/bash";
             Locked = "False";
       };
@@ -532,8 +536,9 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444766";
             lockCount = "0";
+            checkTaggedThread = "138730";
+            bot = "2012";
             botname = "/usr/bin/tac";
             Locked = "False";
       };
@@ -550,8 +555,9 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444751";
             lockCount = "0";
+            checkTaggedThread = "138731";
+            bot = "2014";
             botname = "/bin/csh";
             Locked = "False";
       };
@@ -572,8 +578,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444709";
             lockCount = "0";
+            checkTaggedThread = "138732";
             Locked = "False";
       };
       new SpawnSphere(1) {
@@ -589,8 +595,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444700";
             lockCount = "0";
+            checkTaggedThread = "138733";
             Locked = "False";
       };
       new SpawnSphere(2) {
@@ -606,8 +612,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444701";
             lockCount = "0";
+            checkTaggedThread = "138734";
             Locked = "False";
       };
       new SpawnSphere(3) {
@@ -623,8 +629,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444702";
             lockCount = "0";
+            checkTaggedThread = "138735";
             Locked = "False";
       };
       new SpawnSphere(4) {
@@ -640,8 +646,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444703";
             lockCount = "0";
+            checkTaggedThread = "138736";
             Locked = "False";
       };
       new SpawnSphere(5) {
@@ -657,8 +663,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444704";
             lockCount = "0";
+            checkTaggedThread = "138737";
             Locked = "False";
       };
       new SpawnSphere(6) {
@@ -674,8 +680,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444705";
             lockCount = "0";
+            checkTaggedThread = "138738";
             Locked = "False";
       };
       new SpawnSphere(7) {
@@ -691,8 +697,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444706";
             lockCount = "0";
+            checkTaggedThread = "138739";
             Locked = "False";
       };
       new SpawnSphere(8) {
@@ -708,8 +714,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444707";
             lockCount = "0";
+            checkTaggedThread = "138740";
             Locked = "False";
       };
       new SpawnSphere(9) {
@@ -725,8 +731,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444708";
             lockCount = "0";
+            checkTaggedThread = "138741";
             Locked = "False";
       };
       new SpawnSphere(11) {
@@ -742,8 +748,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444667";
             lockCount = "0";
+            checkTaggedThread = "138742";
             Locked = "False";
       };
       new SpawnSphere(12) {
@@ -759,8 +765,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444760";
             lockCount = "0";
+            checkTaggedThread = "138743";
             Locked = "False";
       };
       new SpawnSphere(13) {
@@ -776,8 +782,8 @@ new SimGroup(MissionGroup) {
          indoorWeight = "1";
          outdoorWeight = "1";
             homingCount = "0";
-            checkTaggedThread = "444689";
             lockCount = "0";
+            checkTaggedThread = "138744";
             Locked = "False";
       };
    };
@@ -786,16 +792,6 @@ new SimGroup(MissionGroup) {
    };
    new SimGroup(interiors) {
       canSaveDynamicFields = "1";
-
-      new InteriorInstance() {
-         canSaveDynamicFields = "1";
-         Position = "3 -312 199.5";
-         rotation = "1 0 0 0";
-         scale = "1 1 1";
-         interiorFile = "share/interiors/malloc/lighttower.dif";
-         useGLLighting = "0";
-         showTerrainInside = "0";
-      };
    };
    new SimGroup(botSpawns) {
       canSaveDynamicFields = "1";
@@ -812,7 +808,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "444710";
+            checkTaggedThread = "138745";
       };
       new SpawnSphere(aiSpawn2) {
          canSaveDynamicFields = "1";
@@ -826,7 +822,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "444711";
+            checkTaggedThread = "138746";
       };
       new SpawnSphere(genericTargetZ2) {
          canSaveDynamicFields = "1";
@@ -840,7 +836,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "444712";
+            checkTaggedThread = "138747";
       };
       new SpawnSphere(aiSpawn3) {
          canSaveDynamicFields = "1";
@@ -854,7 +850,7 @@ new SimGroup(MissionGroup) {
          sphereWeight = "100";
          indoorWeight = "100";
          outdoorWeight = "100";
-            checkTaggedThread = "444713";
+            checkTaggedThread = "138748";
       };
    };
    new Trigger(StageTrigger2) {
@@ -997,14 +993,14 @@ new SimGroup(MissionGroup) {
       removeWetEdges = "0";
       specularColor = "1 1 1 1";
       specularPower = "6";
-         params2 = "0.39 0.39 0.2 0.133";
-         seedPoints = "0 0 1 0 1 1 0 1";
-         floodFill = "1";
          params0 = "0.32 -0.67 0.066 0.5";
-         Extent = "100 100 10";
          params1 = "0.63 -2.41 0.33 0.21";
+         params2 = "0.39 0.39 0.2 0.133";
+         Extent = "100 100 10";
          params3 = "1.21 -0.61 0.13 -0.33";
+         seedPoints = "0 0 1 0 1 1 0 1";
          textureSize = "32 32";
+         floodFill = "1";
    };
    new Trigger(StageTrigger6) {
       canSaveDynamicFields = "1";
