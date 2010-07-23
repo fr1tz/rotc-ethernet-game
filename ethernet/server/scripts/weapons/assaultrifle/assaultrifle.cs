@@ -69,7 +69,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	muzzleVelocity		= 600;
 	velInheritFactor	 = 1.0;
 	
-	isBallistic			= true;
+	isBallistic			= false;
 	gravityMod			 = 7.5;
 
 	armingDelay			= 150;
