@@ -45,7 +45,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 
 	trackingAgility = 0;
 	
-	explodesNearEnemies			= false;
+	explodesNearEnemies			= true;
 	explodesNearEnemiesRadius	= 5;
 	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
 
@@ -72,7 +72,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	isBallistic			= true;
 	gravityMod			 = 7.5;
 
-	armingDelay			= 50;
+	armingDelay			= 150;
 	lifetime				= 1000*10;
 	fadeDelay			  = 5000;
 	
