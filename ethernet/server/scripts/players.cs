@@ -112,7 +112,7 @@ function PlayerData::onAdd(%this,%obj)
 	//
 	// weapon management...
 	//
-	%obj.mainWeapon = %obj.client ? %obj.client.mainWeapon : 0;
+	%obj.specialWeapon = %obj.client ? %obj.client.specialWeapon : 0;
 	if(%obj.getTeamId() == 1)
     {
 		%obj.mountImage(RedDiscImage, 1, -1, %obj.hasDisc());

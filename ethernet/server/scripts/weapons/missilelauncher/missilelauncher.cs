@@ -53,7 +53,7 @@ datablock ShapeBaseImageData(RedMissileLauncherImage)
 
 	// script fields...
 	iconId = 9;
-	mainWeapon = true;
+	specialWeapon = true;
 	armThread = "holdrifle";  // armThread to use when holding this weapon
 	crosshair = "missilelauncher"; // crosshair to display when holding this weapon
     missile = RedMissileLauncherMissile;

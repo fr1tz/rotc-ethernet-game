@@ -136,7 +136,7 @@ datablock ShapeBaseImageData(RedRailgunImage)
 
 	// script fields...
 	iconId = 7;
-	mainWeapon = true;
+	specialWeapon = true;
 	armThread  = "holdrifle";  // armThread to use when holding this weapon
 	crosshair  = "assaultrifle"; // crosshair to display when holding this weapon
 

@@ -144,20 +144,20 @@ function xxx_aiStartFire(%player)
 	%weapon = %player.weapon;
 	switch (%weapon) {
 	case 0:
-		%player.mainWeapon = 0;
+		%player.specialWeapon = 0;
 		%weapon = 3;
 		break;
 	case 1:
-		%player.mainWeapon = 1;
+		%player.specialWeapon = 1;
 		%weapon = 4;
 		break;
 	case 2:
-		%player.mainWeapon = 2;
+		%player.specialWeapon = 2;
 		%weapon = 4;
 		break;
 	case 3:
 	default:
-		%player.mainWeapon = 3;
+		%player.specialWeapon = 3;
 		%weapon = 4;
 		break;
 	}
@@ -260,7 +260,7 @@ function xxx_aiChooseWeapon(%player)
 	%enemypos = %player.getAimLocation();
 	%mypos = %player.getPosition();
 	%dist = VectorDist(%mypos, %enemypos);
-	%mainweapon = %player.mainWeapon;
+	%mainweapon = %player.specialWeapon;
 	%player.charge = 1;
 
 	%player.useWeapon(getRandom(2));

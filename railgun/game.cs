@@ -7,7 +7,7 @@ exec("./railgun/railgun.cs");
 
 function EtherformData::useWeapon(%this, %obj, %nr)
 {
-    messageClient(%obj.client, 'MsgWeaponUsed', "", $MainWeapon::SniperRifle);
+    messageClient(%obj.client, 'MsgWeaponUsed', "", $SpecialWeapon::SniperRifle);
 }
 
 function StandardCat::useWeapon(%this, %obj, %nr)

@@ -8,10 +8,11 @@
 // code for all weapons
 //------------------------------------------------------------------------------
 
-$MainWeapon::AssaultRifle    = 0;
-$MainWeapon::SniperRifle     = 1;
-$MainWeapon::MissileLauncher = 2;
-$MainWeapon::Chaingun        = 3;
+$SpecialWeapon::AssaultRifle    = 0;
+$SpecialWeapon::SniperRifle     = 1;
+$SpecialWeapon::MissileLauncher = 2;
+$SpecialWeapon::Chaingun        = 3;
+$SpecialWeapon::GrenadeLauncher = 4;
 
 $DamageType::Impact = 0;
 $DamageType::Splash	= 1;
@@ -40,6 +41,7 @@ function executeWeaponScripts()
 	exec("./weapons/missilelauncher/missilelauncher.cs");
 	exec("./weapons/sniperrifle/sniperrifle.cs");
 	exec("./weapons/chaingun/chaingun.cs");
+	exec("./weapons/grenadelauncher/grenadelauncher.cs");
 }
 
 executeWeaponScripts();
@@ -60,14 +62,14 @@ function WeaponImage::onMount(%this, %obj, %slot)
 //	// mount secondary...
 //	%obj.mountImage(%this.secondary,1);
 
-//	if(!%this.mainWeapon)
+//	if(!%this.specialWeapon)
 //	{
-//		// holster main weapon...
-//		if(%obj.mainWeapon == $MainWeapon::AssaultRifle)
+//		// holster special weapon...
+//		if(%obj.specialWeapon == $SpecialWeapon::AssaultRifle)
 //			%obj.mountImage(HolsteredAssaultRifleImage,2);
-//		if(%obj.mainWeapon == $MainWeapon::GrenadeLauncher)
+//		if(%obj.specialWeapon == $SpecialWeapon::GrenadeLauncher)
 //			%obj.mountImage(HolsteredGrenadeLauncherImage,2);
-//		if(%obj.mainWeapon == $MainWeapon::SniperRifle)
+//		if(%obj.mainspecialWeaponWeapon == $SpecialWeapon::SniperRifle)
 //			%obj.mountImage(HolsteredSniperRifleImage,2);
 //	}
 	

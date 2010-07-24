@@ -151,7 +151,7 @@ datablock ShapeBaseImageData(RedZapperImage)
 
 	// script fields...
 	iconId = 7;
-	mainWeapon = true;
+	specialWeapon = true;
 	armThread  = "holdblaster";  // armThread to use when holding this weapon
 	crosshair  = "assaultrifle"; // crosshair to display when holding this weapon
 
