@@ -124,9 +124,9 @@ function PlayerData::onAdd(%this,%obj)
 		%obj.mountImage(BlueGrenadeImage, 2, -1, %obj.hasGrenade());
     }
     
-    if(isObject(%obj.client) && %obj.client.lastCATWeapon)
-        %obj.useWeapon(%obj.client.lastCATWeapon);
-    else
+//    if(isObject(%obj.client) && %obj.client.lastCATWeapon)
+//        %obj.useWeapon(%obj.client.lastCATWeapon);
+//    else
     	%obj.useWeapon(1);
      
    // Start sliding thread.
