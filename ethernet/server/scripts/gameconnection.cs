@@ -331,7 +331,7 @@ function GameConnection::togglePlayerForm(%this)
 			//}
 		}
 
-		%obj.setEnergyLevel(%nrg - 50);
+		%obj.setEnergyLevel(%nrg - 25);
 		%obj.applyImpulse(%pos, VectorScale(%vel,100));
 		%obj.playAudio(0, EtherformSpawnSound);
 	}
