@@ -10,7 +10,7 @@ exec("./etherform.gfx.cs");
 
 function EtherformData::useWeapon(%this, %obj, %nr)
 {
-	if(%nr < 1 || %nr > 4)
+	if(%nr < 1 || %nr > 5)
 		return;
 
 	%client = %obj.client;
@@ -22,8 +22,10 @@ function EtherformData::useWeapon(%this, %obj, %nr)
 	else if(%nr == 3)
 		%client.specialWeapon = $SpecialWeapon::AssaultRifle;
 	else if(%nr == 4)
-		%client.specialWeapon = $SpecialWeapon::Chaingun;
+		%client.specialWeapon = $SpecialWeapon::MachineGun;
 	else if(%nr == 5)
+		%client.specialWeapon = $SpecialWeapon::Chaingun;
+	else if(%nr == 6)
 		%client.specialWeapon = $SpecialWeapon::MissileLauncher;
 		
 	messageClient(%client, 'MsgWeaponUsed', "", %client.specialWeapon);

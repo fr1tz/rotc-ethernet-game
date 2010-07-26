@@ -13,6 +13,7 @@ $SpecialWeapon::SniperRifle     = 1;
 $SpecialWeapon::MissileLauncher = 2;
 $SpecialWeapon::Chaingun        = 3;
 $SpecialWeapon::GrenadeLauncher = 4;
+$SpecialWeapon::MachineGun      = 5;
 
 $DamageType::Impact = 0;
 $DamageType::Splash	= 1;
@@ -42,6 +43,7 @@ function executeWeaponScripts()
 	exec("./weapons/sniperrifle/sniperrifle.cs");
 	exec("./weapons/chaingun/chaingun.cs");
 	exec("./weapons/grenadelauncher/grenadelauncher.cs");
+	exec("./weapons/machinegun/machinegun.cs");
 }
 
 executeWeaponScripts();

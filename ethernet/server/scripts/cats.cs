@@ -99,6 +99,17 @@ function StandardCat::useWeapon(%this, %obj, %nr)
     
             %validWeapon = true;
 		}
+		else if(%obj.specialWeapon == $SpecialWeapon::MachineGun)
+		{
+			if(%obj.getTeamId() == 1)
+				%obj.mountImage(RedMachineGunImage, 0, -1, true);
+			else
+				%obj.mountImage(BlueMachineGunImage, 0, -1, true);
+		
+			%obj.setImageAmmo(0, true);
+    
+            %validWeapon = true;
+		}
 	}
 	else if(false) //%nr == 4)
 	{
