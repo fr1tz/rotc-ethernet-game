@@ -241,6 +241,13 @@ Used for ethernet\data\weapons\sniperrifle\sound.charge.wav:
 
 ----------------------------------------------------------------------------------
 
+Used for ethernet\data\weapons\machinegun\sound.fire.wav:
+
+        By pgi (http://www.freesound.org/usersViewSingle.php?id=1654571)
+            minigun.wav (http://www.freesound.org/samplesViewSingle.php?id=98331)
+
+----------------------------------------------------------------------------------
+
 Used for ethernet\data\weapons\missilelauncher\sound.charge.wav:
 
         By Dynamicell (http://www.freesound.org/usersViewSingle.php?id=47052)
