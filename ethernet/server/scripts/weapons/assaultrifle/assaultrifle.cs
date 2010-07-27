@@ -30,57 +30,64 @@ datablock ShapeBaseImageData(HolsteredAssaultRifleImage)
 //-----------------------------------------------------------------------------
 // projectile datablock...
 
-datablock TracerProjectileData(RedAssaultRifleProjectile)
+datablock ShotgunProjectileData(RedAssaultRifleProjectile)
 {
 	// script damage properties...
-	impactDamage        = 0;
-	impactImpulse       = 1000;
-	splashDamage        = 25;
-	splashDamageRadius  = 5;
+	impactDamage        = 15;
+	impactImpulse       = 250;
+	splashDamage        = 0;
+	splashDamageRadius  = 0;
 	splashDamageFalloff = $SplashDamageFalloff::Exponential;
 	splashImpulse       = 0;
 	
 	// how much energy does firing this projectile drain?...
-	energyDrain = 10;
+	energyDrain = 3;
+
+	numBullets = 1; // number of shotgun bullets
+
+	range = 500; // shotgun range
+	muzzleSpreadRadius = 0.0;
+	referenceSpreadRadius = 0.0;
+	referenceSpreadDistance = 40;
 
 	trackingAgility = 0;
 	
-	explodesNearEnemies			= true;
+	explodesNearEnemies			= false;
 	explodesNearEnemiesRadius	= 5;
 	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
 
 	//sound = AssaultRifleProjectileFlybySound;
  
-    projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
+//  projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
 
 	explosion             = RedAssaultRifleProjectileExplosion;
-	bounceExplosion		  = RedAssaultRifleProjectileBounceExplosion;
+//	bounceExplosion		  = RedAssaultRifleProjectileBounceExplosion;
 //	hitEnemyExplosion     = AssaultRifleProjectileImpact;
 //	nearEnemyExplosion    = AssaultRifleProjectileExplosion;
 //	hitTeammateExplosion  = AssaultRifleProjectileImpact;
 //	hitDeflectorExplosion = DiscDeflectedEffect;
 
 //   particleEmitter	= AssaultRifleProjectileParticleEmitter;
-//	laserTrail[0]   = RedAssaultRifleProjectileLaserTrail;
-//	laserTrail[1]   = AssaultRifleProjectileRedLaserTrail;
-	laserTail	    = RedAssaultRifleProjectileLaserTail;
-	laserTailLen    = 20;
+	laserTrail[0]   = RedAssaultRifleProjectileLaserTrail;
+	laserTrail[1]   = RedAssaultRifleProjectileLaserTrail;
+//	laserTail	    = RedAssaultRifleProjectileLaserTail;
+//	laserTailLen    = 10;
 
-	muzzleVelocity		= 600;
-	velInheritFactor	 = 1.0;
+	muzzleVelocity   = 9999;
+	velInheritFactor = 0.0;
 	
-	isBallistic			= false;
-	gravityMod			 = 7.5;
+	isBallistic = false;
+	gravityMod	= 7.5;
 
-	armingDelay			= 150;
-	lifetime				= 1000*10;
-	fadeDelay			  = 5000;
+	armingDelay	= 0;
+	lifetime    = 1000*10;
+	fadeDelay   = 5000;
 	
-	decals[0]	= ExplosionDecalTwo;
+	decals[0] = BulletHoleDecalOne;
 	
-	hasLight	 = true;
+	hasLight	 = false;
 	lightRadius = 6.0;
-	lightColor  = "1.0 0.0 0.0";
+	lightColor  = "1.0 0.8 0.0";
 };
 
 function RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
@@ -97,14 +104,14 @@ function RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%norm
 
 //--------------------------------------------------------------------------
 
-datablock TracerProjectileData(BlueAssaultRifleProjectile : RedAssaultRifleProjectile)
+datablock ShotgunProjectileData(BlueAssaultRifleProjectile : RedAssaultRifleProjectile)
 {
-	projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
-	explosion = BlueAssaultRifleProjectileExplosion;
-	bounceExplosion = BlueAssaultRifleProjectileBounceExplosion;
-	//laserTrail[0]   = BlueAssaultRifleProjectileLaserTrail;
-	laserTail = BlueAssaultRifleProjectileLaserTail;
-	lightColor  = "0.0 0.0 1.0";
+//	projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
+//	explosion = BlueAssaultRifleProjectileExplosion;
+//	bounceExplosion = BlueAssaultRifleProjectileBounceExplosion;
+	laserTrail[0]   = BlueAssaultRifleProjectileLaserTrail;
+//	laserTail = BlueAssaultRifleProjectileLaserTail;
+//	lightColor  = "0.0 0.0 1.0";
 };
 
 function BlueAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
@@ -137,7 +144,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	correctMuzzleVector = true;
 
 	usesEnergy = true;
-	minEnergy = 15;
+	minEnergy = 3;
 
 	projectile = RedAssaultRifleProjectile;
 
@@ -163,26 +170,23 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 
 		// ready to fire, just waiting for the trigger...
 		stateName[2]                     = "Ready";
-		stateTransitionOnNoAmmo[2]       = "NoAmmo";
   		stateTransitionOnNotLoaded[2]    = "Disabled";
 		stateTransitionOnTriggerDown[2]  = "Fire";
         stateArmThread[2]                = "holdrifle";
 		
 		stateName[3]                     = "Fire";
-		stateTransitionOnTimeout[3]      = "Reload";
+		stateTransitionOnNoAmmo[3]       = "Reload";
+		stateTransitionOnTimeout[3]      = "Fire";
+		stateTransitionOnTriggerUp[3]    = "Ready";
 		stateTimeoutValue[3]             = 0.15;
 		stateFire[3]                     = true;
 		stateFireProjectile[3]           = RedAssaultRifleProjectile;
-		stateRecoil[3]                   = LightRecoil;
 		stateAllowImageChange[3]         = false;
 		stateEjectShell[3]               = true;
+		stateRecoil[3]                   = "LightRecoil";
 		stateArmThread[3]                = "aimrifle";
 		stateSequence[3]                 = "Fire";
 		stateSound[3]                    = AssaultRifleFireSound;
-		stateScript[3]                   = "onFire";
-
-		stateName[8]                     = "Reload";
-		stateTransitionOnTriggerUp[8]    = "KeepAiming";
 		
 		stateName[4]                     = "KeepAiming";
 		stateTransitionOnNoAmmo[4]       = "NoAmmo";
@@ -203,7 +207,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateName[6]                     = "DryFire";
 		stateTransitionOnTriggerUp[6]    = "NoAmmo";
 		stateSound[6]                    = WeaponEmptySound;
-  
+    
 		// disabled...
 		stateName[7]                     = "Disabled";
 		stateTransitionOnLoaded[7]       = "Ready";

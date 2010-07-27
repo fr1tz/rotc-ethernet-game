@@ -54,8 +54,8 @@ datablock ParticleEmitterData(BlueAssaultRifleProjectileParticleEmitter)
 datablock MultiNodeLaserBeamData(BlueAssaultRifleProjectileLaserTrail)
 {
 	hasLine   = true;
-	lineColor = "0.00 0.00 1.00 1.0";
-    lineWidth = 2.0;
+	lineColor = "1.00 0.80 0.00 1.0";
+    lineWidth = 1.0;
 
 	hasInner = false;
 	innerColor = "1.00 0.00 1.00 0.3";
@@ -65,7 +65,7 @@ datablock MultiNodeLaserBeamData(BlueAssaultRifleProjectileLaserTrail)
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	bitmap = "~/data/weapons/blaster/lasertrail.blue";
+	bitmap = "~/data/weapons/assaultrifle/lasertrail";
 	bitmapWidth = 0.50;
 
 	blendMode = 1;
@@ -83,11 +83,11 @@ datablock MultiNodeLaserBeamData(BlueAssaultRifleProjectileLaserTrail)
     nodeMoveSpeed[1]    = -0.002;
     nodeMoveSpeedAdd[1] =  0.004;
     // node z movement...
-    nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
+    nodeMoveMode[2]     = $NodeMoveMode::None;
     nodeMoveSpeed[2]    = 3.0;
     nodeMoveSpeedAdd[2] = -6.0;
     
-    nodeDistance = 5;
+//    nodeDistance = 20;
 };
 
 //-----------------------------------------------------------------------------
@@ -376,9 +376,9 @@ datablock ExplosionData(BlueAssaultRifleProjectileExplosion)
 	debrisVelocity = 50.0;
 	debrisVelocityVariance = 10.0;
 	
-	particleEmitter = BlueAssaultRifleProjectileExplosion_CloudEmitter;
-	particleDensity = 100;
-	particleRadius = 1.5;
+//	particleEmitter = BlueAssaultRifleProjectileExplosion_CloudEmitter;
+//	particleDensity = 100;
+//	particleRadius = 0.75;
 
 	emitter[0] = BlueAssaultRifleProjectileExplosion_DustEmitter;
 	emitter[1] = 0; // BlueAssaultRifleProjectileExplosion_SmokeEmitter;
@@ -394,7 +394,7 @@ datablock ExplosionData(BlueAssaultRifleProjectileExplosion)
 	// Dynamic light
 	lightStartRadius = 6;
 	lightEndRadius = 0;
-	lightStartColor = "0.0 0.0 1.0";
+	lightStartColor = "1.0 0.8 0.0";
 	lightEndColor = "0.0 0.0 0.0";
 };
 

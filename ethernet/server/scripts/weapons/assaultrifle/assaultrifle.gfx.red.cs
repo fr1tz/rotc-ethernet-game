@@ -54,8 +54,8 @@ datablock ParticleEmitterData(RedAssaultRifleProjectileParticleEmitter)
 datablock MultiNodeLaserBeamData(RedAssaultRifleProjectileLaserTrail)
 {
 	hasLine   = true;
-	lineColor = "1.00 0.00 0.00 1.0";
-    lineWidth = 2.0;
+	lineColor = "1.00 0.80 0.00 1.0";
+    lineWidth = 1.0;
 
 	hasInner = false;
 	innerColor = "1.00 0.00 1.00 0.3";
@@ -65,7 +65,7 @@ datablock MultiNodeLaserBeamData(RedAssaultRifleProjectileLaserTrail)
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	bitmap = "~/data/weapons/blaster/lasertrail.red";
+	bitmap = "~/data/weapons/assaultrifle/lasertrail";
 	bitmapWidth = 0.50;
 
 	blendMode = 1;
@@ -83,11 +83,11 @@ datablock MultiNodeLaserBeamData(RedAssaultRifleProjectileLaserTrail)
     nodeMoveSpeed[1]    = -0.002;
     nodeMoveSpeedAdd[1] =  0.004;
     // node z movement...
-    nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
+    nodeMoveMode[2]     = $NodeMoveMode::None;
     nodeMoveSpeed[2]    = 3.0;
     nodeMoveSpeedAdd[2] = -6.0;
     
-    nodeDistance = 5;
+//    nodeDistance = 20;
 };
 
 //-----------------------------------------------------------------------------
@@ -118,7 +118,7 @@ datablock LaserBeamData(RedAssaultRifleProjectileLaserTail)
 	outerEndWidth = "0.1";
 	
 	bitmap = "~/data/weapons/blaster/lasertail.red";
-	bitmapWidth = 0.30;
+	bitmapWidth = 0.15;
 	//crossBitmap = "~/data/weapons/blaster/lasertail.red.cross";
 	//crossBitmapWidth = 0.50;
 
@@ -376,9 +376,9 @@ datablock ExplosionData(RedAssaultRifleProjectileExplosion)
 	debrisVelocity = 50.0;
 	debrisVelocityVariance = 10.0;
 	
-	particleEmitter = RedAssaultRifleProjectileExplosion_CloudEmitter;
-	particleDensity = 100;
-	particleRadius = 1.5;
+//	particleEmitter = RedAssaultRifleProjectileExplosion_CloudEmitter;
+//	particleDensity = 100;
+//	particleRadius = 0.75;
 
 	emitter[0] = RedAssaultRifleProjectileExplosion_DustEmitter;
 	emitter[1] = 0; // RedAssaultRifleProjectileExplosion_SmokeEmitter;
@@ -394,7 +394,7 @@ datablock ExplosionData(RedAssaultRifleProjectileExplosion)
 	// Dynamic light
 	lightStartRadius = 6;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.0 0.0";
+	lightStartColor = "1.0 0.8 0.0";
 	lightEndColor = "0.0 0.0 0.0";
 };
 
