@@ -389,7 +389,7 @@ datablock ExplosionData(BlueMachineGunProjectileExplosion)
 	// Dynamic light
 	lightStartRadius = 6;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.0 0.0";
+	lightStartColor = "0.0 0.0 1.0";
 	lightEndColor = "0.0 0.0 0.0";
 };
 

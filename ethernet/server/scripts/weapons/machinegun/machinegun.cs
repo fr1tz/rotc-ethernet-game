@@ -153,7 +153,7 @@ datablock ShapeBaseImageData(RedMachineGunImage)
 		stateName[1]                     = "Activate";
 		stateTransitionOnTimeout[1]      = "Ready";
 		stateTimeoutValue[1]             = 0.5;
-		stateSequence[1]                 = "Activate";
+		stateSequence[1]                 = "idle";
 
 		// ready to fire, just waiting for the trigger...
 		stateName[2]                     = "Ready";
@@ -190,7 +190,7 @@ datablock ShapeBaseImageData(RedMachineGunImage)
 		stateName[5]                     = "NoAmmo";
 		stateTransitionOnAmmo[5]         = "Ready";
         stateTransitionOnTriggerDown[5]  = "DryFire";
-		stateSequence[5]                 = "NoAmmo";
+		stateSequence[5]                 = "idle";
 		stateScript[5]                   = "onNoAmmo";
   
         // dry fire...
