@@ -64,7 +64,7 @@ new GuiControl(OptNetworkWindowForEditing) {
 			Visible = "1";
 			Variable = "$Pref::Server::Name";
 			hovertime = "1000";
-			maxLength = "10";
+			maxLength = "24";
 			historySize = "0";
 			password = "0";
 			tabComplete = "0";
