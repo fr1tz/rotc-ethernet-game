@@ -132,34 +132,39 @@ MoveMap.bind(mouse0, "yaxis", S, $pref::Input::MouseSensitivity, pitch);
 // misc. triggers...
 //------------------------------------------------------------------------------
 
-function primaryFire(%val)
+function trigger0(%val)
 {
 	$mvTriggerCount0++;
 }
 
-function secondaryFire(%val)
+function trigger1(%val)
 {
 	$mvTriggerCount1++;
 }
 
-function jump(%val)
+function trigger2(%val)
 {
 	$mvTriggerCount2++;
 }
 
-function tertiaryFire(%val)
+function trigger3(%val)
 {
 	$mvTriggerCount3++;
 }
 
-function march(%val)
+function trigger4(%val)
 {
 	$mvTriggerCount4++;
 }
 
-function slide(%val)
+function trigger5(%val)
 {
 	$mvTriggerCount5++;
+}
+
+function trigger6(%val)
+{
+	$mvTriggerCount6++;
 }
 
 function instantGrenadeThrow(%val)
@@ -168,13 +173,13 @@ function instantGrenadeThrow(%val)
 		commandToServer('InstantGrenadeThrow');
 }
 
-MoveMap.bind( mouse, button0, primaryFire );
-MoveMap.bind( mouse, button1, secondaryFire );
-MoveMap.bind( mouse, button2, tertiaryFire );
-MoveMap.bind( mouse, "shift button2", instantGrenadeThrow );
-MoveMap.bind( keyboard, space, jump );
-MoveMap.bind( keyboard, lshift, march );
-MoveMap.bind( keyboard, lcontrol, slide );
+MoveMap.bind( mouse, button0, trigger0 ); // left button
+MoveMap.bind( mouse, button2, trigger1 ); // middle button
+MoveMap.bind( mouse, button1, trigger3 ); // right button
+MoveMap.bind( keyboard, space, trigger2 );
+MoveMap.bind( keyboard, lshift, trigger4 );
+MoveMap.bind( keyboard, lcontrol, trigger5 );
+
 
 //------------------------------------------------------------------------------
 // zoom and FOV...

@@ -29,6 +29,8 @@ executeCatScripts();
 
 function StandardCat::useWeapon(%this, %obj, %nr)
 {
+	return;
+
 	%client = %obj.client;
  
     %validWeapon = false;
@@ -38,20 +40,44 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 		if(%obj.getMountedImage(0).specialWeapon)
 			%nr = 1;
 		else
-			%nr = 2;
+			%nr = 3;
 	}
 	
 	if(%nr == 1)
 	{
 		// blaster!
 		if(%obj.getTeamId() == 1)
+		{
 			%obj.mountImage(RedBlasterImage, 0, -1, true);
+			%obj.mountImage(RedGrenadeLauncherImage, 1, -1, true);
+		}
 		else
+		{
 			%obj.mountImage(BlueBlasterImage, 0, -1, true);
+			%obj.mountImage(BlueGrenadeLauncherImage, 1, -1, true);
+		}
    
         %validWeapon = true;
 	}
 	else if(%nr == 2)
+	{
+		if(%obj.getTeamId() == 1)
+			%obj.mountImage(RedGrenadeLauncherImage, 0, -1, true);
+		else
+			%obj.mountImage(BlueGrenadeLauncherImage, 0, -1, true);
+    
+		%validWeapon = true;
+	}
+	else if(%nr == 3)
+	{
+		if(%obj.getTeamId() == 1)
+			%obj.mountImage(RedSniperRifleImage, 0, -1, true);
+		else
+			%obj.mountImage(BlueSniperRifleImage, 0, -1, true);
+    
+		%validWeapon = true;
+	}
+	else if(false)
 	{
 		// special weapon!
 		if(%obj.specialWeapon == $SpecialWeapon::AssaultRifle)

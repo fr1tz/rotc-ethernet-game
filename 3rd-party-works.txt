@@ -84,7 +84,7 @@ Used for ethernet\data\vehicles\etherform\sound.sing.wav
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\assaultrifle\sound.bounce.wav:
+Used for ethernet\data\sfx\bounce1.wav:
 
 	http://www.soundsnap.com/node/12294
 	GATE LATCH
@@ -92,7 +92,7 @@ Used for ethernet\data\weapons\assaultrifle\sound.bounce.wav:
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\assaultrifle\sound.explosion.wav:
+Used for ethernet\data\sfx\explosion1.wav:
 
 	http://www.soundsnap.com/node/98824
 	Grenade explosion 11 SFXBible ss00690
@@ -100,7 +100,7 @@ Used for ethernet\data\weapons\assaultrifle\sound.explosion.wav:
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\assaultrifle\sound.explosion2.wav:
+Used for ethernet\data\sfx\explosion2.wav:
 
         By junggle (http://www.freesound.org/usersViewSingle.php?id=128404)
             btn107.wav (http://www.freesound.org/samplesViewSingle.php?id=28917)
@@ -113,14 +113,14 @@ Used for ethernet\data\weapons\assaultrifle\sound.explosion2.wav:
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\assaultrifle\sound.fire.wav:
+Used for ethernet\data\sfx\fire3.wav:
 
         By Matt_G (http://www.freesound.org/usersViewSingle.php?id=240366)
             m240.wav (http://www.freesound.org/samplesViewSingle.php?id=30749)
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\assaultrifle\sound.fire2.wav:
+Used for ethernet\data\sfx\fire2.wav:
 
         By junggle (http://www.freesound.org/usersViewSingle.php?id=128404)
             btn107.wav (http://www.freesound.org/samplesViewSingle.php?id=28917)
@@ -130,7 +130,7 @@ Used for ethernet\data\weapons\assaultrifle\sound.fire2.wav:
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\blaster\sound_fire.wav:
+Used for ethernet\data\sfx\fire1.wav:
 
 	http://www.soundsnap.com/node/12887
 	SHOTGUN COCK
@@ -142,14 +142,14 @@ Used for ethernet\data\weapons\blaster\sound_fire.wav:
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\blaster\sound_flyby.wav:
+Used for ethernet\data\sfx\flyby1.wav:
 
         By mich3d (http://www.freesound.org/usersViewSingle.php?id=32482)
             Whoosh_Swish_02.wav (http://www.freesound.org/samplesViewSingle.php?id=12657)
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\blaster\sound_impact.wav:
+Used for ethernet\data\sfx\impact1.wav:
 
 	http://www.soundsnap.com/node/111821
 	Mallet hitting a pint glass breaking smash debris
@@ -157,7 +157,7 @@ Used for ethernet\data\weapons\blaster\sound_impact.wav:
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\disc\sound.deflected.wav:
+Used for ethernet\data\sfx\impact2.wav:
 
 	http://www.soundsnap.com/node/43595
 	WARFARE SWORD HIT RESONATE 01
@@ -169,7 +169,7 @@ Used for ethernet\data\weapons\disc\sound.deflected.wav:
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\disc\sound.hit.wav:
+Used for ethernet\data\sfx\slice1.wav:
 
         By Abyssmal (http://www.freesound.org/usersViewSingle.php?id=307822)
             slashkut.wav (http://www.freesound.org/samplesViewSingle.php?id=35213)
@@ -180,14 +180,14 @@ Used for ethernet\data\weapons\disc\sound.hit.wav:
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\disc\sound.denied.wav:
+Used for ethernet\data\sfx\denied1.wav:
 
         By guitarguy1985 (http://www.freesound.org/usersViewSingle.php?id=533680)
             aircraftalarm.wav (http://www.freesound.org/samplesViewSingle.php?id=57806)
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\disc\sound.explosion.wav:
+Used for ethernet\data\sfx\explosion5.wav:
 
         By nthompson (http://www.freesound.org/usersViewSingle.php?id=364925)
             rocketexpl.wav (http://www.freesound.org/samplesViewSingle.php?id=47252)
@@ -197,7 +197,7 @@ Used for ethernet\data\weapons\disc\sound.explosion.wav:
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\disc\sound.projectile.wav:
+Used for ethernet\data\sfx\spin1.wav:
 
 	http://www.soundsnap.com/node/83997
 	Martial arts ninja star throw whip spin twirl BLASTWAVEFX 18176
@@ -205,14 +205,21 @@ Used for ethernet\data\weapons\disc\sound.projectile.wav:
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\disc\sound.throw.wav:
+Used for ethernet\data\sfx\throw1.wav:
 
         By mich3d (http://www.freesound.org/usersViewSingle.php?id=32482)
             Whoosh_Swish_02.wav (http://www.freesound.org/samplesViewSingle.php?id=12657)
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\sniperrifle\sound.debris.wav:
+Used for ethernet\data\sfx\throw1rev.wav:
+
+        By mich3d (http://www.freesound.org/usersViewSingle.php?id=32482)
+            Whoosh_Swish_02.wav (http://www.freesound.org/samplesViewSingle.php?id=12657)
+
+----------------------------------------------------------------------------------
+
+Used for ethernet\data\sfx\debris1.wav:
 
 	http://www.soundsnap.com/node/111746
         Pint glass breaking debris hard
@@ -220,64 +227,48 @@ Used for ethernet\data\weapons\sniperrifle\sound.debris.wav:
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\sniperrifle\sound.explosion.wav:
+Used for ethernet\data\sfx\explosion3.wav:
 
         By ljudman (http://www.freesound.org/usersViewSingle.php?id=65091)
             grenade.wav (http://www.freesound.org/samplesViewSingle.php?id=33245)
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\sniperrifle\sound_fire.wav:
+Used for ethernet\data\sfx\fire5.wav:
 
         By man (http://www.freesound.org/usersViewSingle.php?id=14447)
             canon.aif (http://www.freesound.org/samplesViewSingle.php?id=14615)
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\sniperrifle\sound.charge.wav:
+Used for ethernet\data\sfx\charge1.wav:
 
         By emmanuel (http://www.freesound.org/usersViewSingle.php?id=53045)
             one use camera flash load.wav (http://www.freesound.org/samplesViewSingle.php?id=16462)
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\machinegun\sound.fire.wav:
+Used for ethernet\data\sfx\fire4.wav:
 
         By pgi (http://www.freesound.org/usersViewSingle.php?id=1654571)
             minigun.wav (http://www.freesound.org/samplesViewSingle.php?id=98331)
 
 ----------------------------------------------------------------------------------
 
-Used for ethernet\data\weapons\missilelauncher\sound.charge.wav:
+Used for ethernet\data\sfx\charge2.wav:
 
         By Dynamicell (http://www.freesound.org/usersViewSingle.php?id=47052)
             Fire_huge_lazer.aif (http://www.freesound.org/samplesViewSingle.php?id=17831)
             
         By FreqMan (http://www.freesound.org/usersViewSingle.php?id=92661)
             scanner blip.wav (http://www.freesound.org/samplesViewSingle.php?id=32683)
-
-Used for ethernet\data\weapons\missilelauncher\sound.debris.wav:
-
-	http://www.soundsnap.com/node/111746
-        Pint glass breaking debris hard
-	User: Airborne Sound (http://www.soundsnap.com/user/5118)
-
-Used for ethernet\data\weapons\missilelauncher\sound.explosion.wav:
-
-        By ljudman (http://www.freesound.org/usersViewSingle.php?id=65091)
-            grenade.wav (http://www.freesound.org/samplesViewSingle.php?id=33245)
-
-Used for ethernet\data\weapons\missilelauncher\sound.fire.wav:
-
-        By man (http://www.freesound.org/usersViewSingle.php?id=14447)
-            canon.aif (http://www.freesound.org/samplesViewSingle.php?id=14615)
             
-Used for ethernet\data\weapons\missilelauncher\sound.missile.wav:
+Used for ethernet\data\sfx\missile1.wav:
 
         By qubodup (http://www.freesound.org/usersViewSingle.php?id=71257)
             bgm-71_tow_missile_launch_1_less_echo.flac (http://www.freesound.org/samplesViewSingle.php?id=67542)
             
-Used for ethernet\data\weapons\missilelauncher\sound.noammo.wav:
+Used for ethernet\data\sfx\powerdown2.wav:
 
         By Dynamicell (http://www.freesound.org/usersViewSingle.php?id=47052)
             Fire_huge_lazer.aif (http://www.freesound.org/samplesViewSingle.php?id=17831)

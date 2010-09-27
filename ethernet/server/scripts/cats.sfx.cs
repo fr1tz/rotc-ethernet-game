@@ -31,7 +31,7 @@ datablock AudioProfile(PlayerSlideContactSound)
 
 datablock AudioProfile(CatJumpExplosionSound)
 {
-	filename = "~/data/weapons/sniperrifle/sound.explosion.wav";
+	filename = "~/data/sfx/explosion3.wav";
 	description = AudioFar3D;
 	preload = true;
 };

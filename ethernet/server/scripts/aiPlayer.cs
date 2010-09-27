@@ -66,7 +66,7 @@ function aiAdd(%teamid, %weaponNum)
 	%player.setShapeName("wayne" @ %nameadd);
 	%player.setTransform(%pos);
 
-	%player.weapon = %weaponNum;
+	%player.specialWeapon = %weaponNum;
 	%player.charge = 100;
 
 	$aiPlayers.push_back("",%player);
@@ -141,27 +141,7 @@ function xxx_aiStartMove(%player)
 
 function xxx_aiStartFire(%player)
 {
-	%weapon = %player.weapon;
-	switch (%weapon) {
-	case 0:
-		%player.specialWeapon = 0;
-		%weapon = 3;
-		break;
-	case 1:
-		%player.specialWeapon = 1;
-		%weapon = 4;
-		break;
-	case 2:
-		%player.specialWeapon = 2;
-		%weapon = 4;
-		break;
-	case 3:
-	default:
-		%player.specialWeapon = 3;
-		%weapon = 4;
-		break;
-	}
-	%player.useWeapon(%weapon);
+	%player.useWeapon(2);
 	%player.setImageLoaded(0,true);
 	%player.targetUpdateThread = schedule(100,%player,"xxx_aiUpdateTarget",%player);
 	%player.fireThread = schedule((getRandom(3)+1)*1000,%player,"xxx_aiFire",%player);
@@ -260,7 +240,6 @@ function xxx_aiChooseWeapon(%player)
 	%enemypos = %player.getAimLocation();
 	%mypos = %player.getPosition();
 	%dist = VectorDist(%mypos, %enemypos);
-	%mainweapon = %player.specialWeapon;
 	%player.charge = 1;
 
 	%player.useWeapon(getRandom(2));

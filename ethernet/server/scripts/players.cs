@@ -114,15 +114,17 @@ function PlayerData::onAdd(%this,%obj)
 	//
 	%obj.specialWeapon = %obj.client ? %obj.client.specialWeapon : 0;
 	if(%obj.getTeamId() == 1)
-    {
-		%obj.mountImage(RedDiscImage, 1, -1, %obj.hasDisc());
-		%obj.mountImage(RedGrenadeImage, 2, -1, %obj.hasGrenade());
-    }
+	{
+		%obj.mountImage(RedBlasterImage, 0, -1, true);
+		%obj.mountImage(RedGrenadeImage, 1, -1, true);
+		%obj.mountImage(RedDiscImage, 2, -1, %obj.hasDisc());
+	}
 	else
-    {
-		%obj.mountImage(BlueDiscImage, 1, -1, %obj.hasDisc());
-		%obj.mountImage(BlueGrenadeImage, 2, -1, %obj.hasGrenade());
-    }
+	{
+		%obj.mountImage(BlueBlasterImage, 0, -1, true);
+		%obj.mountImage(BlueGrenadeImage, 1, -1, true);
+		%obj.mountImage(BlueDiscImage, 2, -1, %obj.hasDisc());
+	}
     
 //    if(isObject(%obj.client) && %obj.client.lastCATWeapon)
 //        %obj.useWeapon(%obj.client.lastCATWeapon);
@@ -430,11 +432,15 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 	// as the jump key.
 	
 	//--------------------------------------------------------------------------
-	// second trigger...
+	// 
 	//--------------------------------------------------------------------------
-	if( %triggerNum == 1 )
+	if( %triggerNum == 0 )
 	{
-		// no additional stuff here currently
+		if(%obj.getImageLoaded(0) == false)
+		{
+			%obj.fullForceGrenade = true;
+			%obj.setImageTrigger(1, false);
+		} 
 	}
 	
 	//--------------------------------------------------------------------------
@@ -449,17 +455,50 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 	}
 	
 	//--------------------------------------------------------------------------
-	//FIXME
+	//
 	//--------------------------------------------------------------------------
 	if( %triggerNum == 3 )
+	{
+		if(%val)
+		{
+			if(%obj.getTeamId() == 1)
+			{
+				%obj.mountImage(RedAssaultRifleImage, 0, -1, true);
+				%obj.mountImage(RedGrenadeLauncherImage, 1, -1, true);
+			}
+			else
+			{
+				%obj.mountImage(BlueAssaultRifleImage, 0, -1, true);
+				%obj.mountImage(BlueGrenadeLauncherImage, 1, -1, true);
+			}
+		}
+		else
+		{
+			if(%obj.getTeamId() == 1)
+			{
+				%obj.mountImage(RedBlasterImage, 0, -1, true);
+				%obj.mountImage(RedGrenadeImage, 1, -1, %obj.hasGrenade());
+			}
+			else
+			{
+				%obj.mountImage(BlueBlasterImage, 0, -1, true);	
+				%obj.mountImage(BlueGrenadeImage, 1, -1, %obj.hasGrenade());
+			}
+		}
+	}
+
+	//--------------------------------------------------------------------------
+	// Disc...
+	//--------------------------------------------------------------------------
+	if( %triggerNum == 4 )
 	{
 		%obj.setImageTrigger(2, %val);
 	}
 
 	//--------------------------------------------------------------------------
-	// body pose...
+	// Sliding...
 	//--------------------------------------------------------------------------
-	if( %triggerNum == 4 || %triggerNum == 5 )
+	if( %triggerNum == 5 )
 	{
 		if(%val)
         {
@@ -697,8 +736,8 @@ function Player::setDiscs(%this, %numDiscs)
 		messageClient(%this.client, 'MsgNumDiscs', "", %this.numDiscs);
 
 	%hasDisc = %this.hasDisc();
-	%this.setImageLoaded(1, %hasDisc);
-	%this.setImageAmmo(1, %hasDisc);
+	%this.setImageLoaded(2, %hasDisc);
+	%this.setImageAmmo(2, %hasDisc);
 }
 
 function Player::incDiscs(%this)
@@ -745,9 +784,8 @@ function Player::setGrenadeAmmo(%this, %amount)
             messageClient(%this.client, 'MsgGrenadeAmmo', "", %this.grenadeAmmo);
     }
 
-	%hasGrenade = %this.hasGrenade();
-	%this.setImageLoaded(2, %hasGrenade);
-	%this.setImageAmmo(2, %hasGrenade);
+	if(%this.getMountedImage(1).useGrenadeAmmo)
+		%this.setImageAmmo(1, %this.hasGrenade());
 }
 
 function Player::setGrenadeAmmoDt(%this, %amount)
@@ -775,9 +813,8 @@ function Player::updateGrenadeAmmo(%this)
     else if(%this.grenadeAmmo > 1)
         %this.grenadeAmmo = 1;
 
-	%hasGrenade = %this.hasGrenade();
-	%this.setImageLoaded(2, %hasGrenade);
-	%this.setImageAmmo(2, %hasGrenade);
+	if(%this.getMountedImage(1).useGrenadeAmmo)
+		%this.setImageAmmo(1, %this.hasGrenade());
  
     %this.grenadeAmmoThread = %this.schedule(250, "updateGrenadeAmmo");
 }

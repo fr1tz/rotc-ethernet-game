@@ -8,13 +8,6 @@
 // code for all weapons
 //------------------------------------------------------------------------------
 
-$SpecialWeapon::AssaultRifle    = 0;
-$SpecialWeapon::SniperRifle     = 1;
-$SpecialWeapon::MissileLauncher = 2;
-$SpecialWeapon::Chaingun        = 3;
-$SpecialWeapon::GrenadeLauncher = 4;
-$SpecialWeapon::MachineGun      = 5;
-
 $DamageType::Impact = 0;
 $DamageType::Splash	= 1;
 $DamageType::Force  = 2;
@@ -28,25 +21,22 @@ $TargetingMask::Heat  = 2;
 $TargetingMask::Free1 = 4;
 $TargetingMask::Free2 = 8;
 
-function executeWeaponScripts()
+function executeBaseWeaponScripts()
 {
-	echo(" ----- executing weapon scripts ----- ");
+	echo(" ----- executing base weapon scripts ----- ");
 	
 	exec("./weapons.sfx.cs");
 	exec("./weapons.gfx.cs");
 
 	exec("./weapons/disc/disc.cs");
-	exec("./weapons/grenade/grenade.cs");
-	exec("./weapons/blaster/blaster.cs");
-	exec("./weapons/assaultrifle/assaultrifle.cs");
-	exec("./weapons/missilelauncher/missilelauncher.cs");
-	exec("./weapons/sniperrifle/sniperrifle.cs");
-	exec("./weapons/chaingun/chaingun.cs");
-	exec("./weapons/grenadelauncher/grenadelauncher.cs");
-	exec("./weapons/machinegun/machinegun.cs");
+	exec("./gun/grenade.cs");
+	//exec("./gun/sniperrifle.cs");
+	exec("./gun/assaultrifle.cs");
+	exec("./gun/grenadelauncher.cs");
+	exec("./gun/blaster.cs");
 }
 
-executeWeaponScripts();
+executeBaseWeaponScripts();
 
 //-----------------------------------------------------------------------------
 
