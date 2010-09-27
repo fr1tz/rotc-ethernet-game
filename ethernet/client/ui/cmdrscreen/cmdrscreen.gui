@@ -7,8 +7,8 @@
 new GuiCommanderHud(CmdrScreen) {
 	canSaveDynamicFields = "0";
 	Profile = "GuiDefaultProfile";
-	HorizSizing = "right";
-	VertSizing = "bottom";
+	HorizSizing = "relative";
+	VertSizing = "relative";
 	position = "0 0";
 	Extent = "800 600";
 	MinExtent = "8 2";

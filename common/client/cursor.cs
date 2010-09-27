@@ -45,8 +45,13 @@ package CanvasCursor
 // have the .noCursor attribute set, the cursor is turned off, otherwise it is
 // turned on.
 
+// HACK HACK HACK: ROTC Ethernet uses a simpler model: The cursor is always
+// active unless it has been explicitly disabled.
+
 function GuiCanvas::checkCursor(%this)
 {
+	return;
+
 	%cursorShouldBeOn = false;
 	for(%i = 0; %i < %this.getCount(); %i++)
 	{

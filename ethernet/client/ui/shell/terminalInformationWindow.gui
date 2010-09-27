@@ -1,38 +1,28 @@
-//------------------------------------------------------------------------------
-// Revenge Of The Cats: Ethernet
-// Copyright (C) 2008, mEthLab Interactive
-//------------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------
-// Torque Game Engine
-// Copyright (c) 2001 GarageGames.Com
-//-----------------------------------------------------------------------------
-
 //--- OBJECT WRITE BEGIN ---
-new GuiControl(AboutWindowForEditing) {
+new GuiControl(TerminalInformationWindowForEditing) {
    canSaveDynamicFields = "0";
    Profile = "GuiDefaultProfile";
    HorizSizing = "right";
    VertSizing = "bottom";
    Position = "0 0";
-   Extent = "640 480";
+   Extent = "800 600";
    MinExtent = "8 8";
    canSave = "1";
    Visible = "1";
    hovertime = "1000";
 
-   new GuiWindowCtrl(AboutWindow) {
+   new GuiWindowCtrl(TerminalInformationWindow) {
       canSaveDynamicFields = "0";
       Profile = "GuiWindowProfile";
       HorizSizing = "center";
       VertSizing = "center";
-      Position = "48 60";
-      Extent = "346 385";
+      Position = "212 124";
+      Extent = "232 278";
       MinExtent = "8 8";
       canSave = "1";
       Visible = "1";
       hovertime = "1000";
-      text = "About";
+      text = "Terminal Information";
       maxLength = "255";
       resizeWidth = "0";
       resizeHeight = "0";
@@ -41,15 +31,15 @@ new GuiControl(AboutWindowForEditing) {
       canMinimize = "0";
       canMaximize = "0";
       minSize = "50 50";
-      closeCommand = "removeWindow(AboutWindow);";
+      closeCommand = "removeWindow(TerminalInformationWindow);";
 
       new GuiWindowCtrl() {
          canSaveDynamicFields = "0";
-         Profile = "GuiWindowProfile";
+         Profile = "GuiMinimalWindowProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "8 22";
-         Extent = "330 250";
+         Position = "8 62";
+         Extent = "216 122";
          MinExtent = "8 2";
          canSave = "1";
          Visible = "1";
@@ -68,33 +58,59 @@ new GuiControl(AboutWindowForEditing) {
             Profile = "GuiDefaultProfile";
             HorizSizing = "right";
             VertSizing = "bottom";
-            Position = "5 5";
-            Extent = "320 240";
+            Position = "3 3";
+            Extent = "210 116";
             MinExtent = "8 2";
             canSave = "1";
             Visible = "1";
             hovertime = "1000";
-            bitmap = "./pixmaps/logo.320x240-2.png";
+            bitmap = "./pixmaps/terminal.png";
             wrap = "0";
          };
       };
-      new GuiMLTextCtrl(aboutText) {
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         Position = "70 187";
+         Extent = "95 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Made in Switzerland";
+         maxLength = "1024";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiMediumTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         Position = "13 30";
+         Extent = "205 29";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "BTZ80-LM";
+         maxLength = "1024";
+      };
+      new GuiMLTextCtrl(TerminalInfoWindowText) {
          canSaveDynamicFields = "0";
          Profile = "GuiMLTextProfile";
-         HorizSizing = "left";
+         HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "8 277";
-         Extent = "310 95";
-         MinExtent = "8 8";
+         Position = "10 210";
+         Extent = "214 56";
+         MinExtent = "8 2";
          canSave = "1";
          Visible = "1";
          hovertime = "1000";
          lineSpacing = "2";
          allowColorChars = "0";
          maxChars = "-1";
-         text = "---";
       };
    };
 };
 //--- OBJECT WRITE END ---
-

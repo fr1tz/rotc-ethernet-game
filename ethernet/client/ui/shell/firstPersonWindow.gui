@@ -1,0 +1,82 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2008, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(AvatarWindowForEditing) {
+   canSaveDynamicFields = "0";
+   Profile = "GuiDefaultProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   Position = "0 0";
+   Extent = "800 600";
+   MinExtent = "8 8";
+   canSave = "1";
+   Visible = "1";
+   hovertime = "1000";
+
+   new GuiWindowCtrl(AvatarWindow) {
+      canSaveDynamicFields = "0";
+      Profile = "GuiMinimalWindowProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      Position = "27 28";
+      Extent = "646 486";
+      MinExtent = "8 8";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      maxLength = "255";
+      resizeWidth = "1";
+      resizeHeight = "1";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "0";
+      canMaximize = "1";
+      minSize = "50 50";
+      closeCommand = "removeWindow(AvatarWindow);";
+
+      new GuiControl(AvatarWindowPseudoCanvas) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiDefaultProfile";
+         HorizSizing = "width";
+         VertSizing = "height";
+         Position = "3 3";
+         Extent = "640 480";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+      };
+      new GuiMouseEventCtrl(AvatarWindowMouseDetector) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiDefaultProfile";
+         HorizSizing = "width";
+         VertSizing = "height";
+         Position = "3 3";
+         Extent = "640 480";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         lockMouse = "0";
+      };
+      new GuiPopUpMenuCtrl(AvatarWindowPopupMenu) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiPopUpMenuProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         Position = "5 5";
+         Extent = "20 20";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "0";
+         hovertime = "1000";
+         maxLength = "1024";
+         maxPopupHeight = "200";
+      };
+   };
+};
+//--- OBJECT WRITE END ---
+

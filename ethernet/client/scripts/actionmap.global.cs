@@ -9,6 +9,49 @@
 // misc...
 //------------------------------------------------------------------------------
 
+function InputGrab_Reactivate(%control, %window)
+{
+	for(%i = 0; %i < %control.getCount(); %i++)
+	{
+		%obj = %control.getObject(%i);
+		if(%obj == $window)
+			continue;
+		if(%obj.getCount() > 0)
+			InputGrab_Reactivate(%obj);
+		%obj.setActive(!%obj.wasInactiveBeforeInputGrab);
+	}
+}
+
+function InputGrab_Deactivate(%control, %window)
+{
+	for(%i = 0; %i < %control.getCount(); %i++)
+	{
+		%obj = %control.getObject(%i);
+		if(%obj == $window)
+			continue;
+		if(%obj.getCount() > 0)
+			InputGrab_Deactivate(%obj);
+		%obj.wasInactiveBeforeInputGrab = !%obj.isActive();
+		%obj.setActive(false);
+	}
+}
+
+function activateWindowInputGrab(%window)
+{
+	cursorOff();
+	InputGrab_Deactivate(Canvas, %window);
+}
+
+function cancelInputGrab(%val)
+{
+	if(%val)
+	{
+		cursorOn();
+		InputGrab_Reactivate(Canvas, %window);
+	}
+}
+
+GlobalActionMap.bind(keyboard, "escape", cancelInputGrab);
 GlobalActionMap.bind(keyboard, "tilde", toggleConsole);
 GlobalActionMap.bind(keyboard, "F12", toggleConsole);
 GlobalActionMap.bindCmd(keyboard, "alt enter", "", "toggleFullScreen();");

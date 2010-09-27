@@ -53,6 +53,14 @@ function executeShellScripts()
 	exec("./shell/mapLicense.gui");
 	exec("./shell/mapCredits.cs");
 	exec("./shell/mapCredits.gui");
+	exec("./shell/firstPersonWindow.cs");
+	exec("./shell/firstPersonWindow.gui");
+	exec("./shell/terminalInformationWindow.cs");
+	exec("./shell/terminalInformationWindow.gui");
+	exec("./shell/topDownWindow.cs");
+	exec("./shell/topDownWindow.gui");
+	exec("./shell/reshapeDlg.cs");
+	exec("./shell/reshapeDlg.gui");
 }
 
 executeShellScripts();

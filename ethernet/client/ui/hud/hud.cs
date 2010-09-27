@@ -39,11 +39,11 @@ function Hud::onWake(%this)
 	%this.bringToFront(Scanlines);
 
 	// add message hud dialog...
-	Canvas.pushDialog(MainChatHud);
-	chatHud.attach(HudMessageVector);
+	//Canvas.pushDialog(MainChatHud);
+	//chatHud.attach(HudMessageVector);
 
 	// just update the action map here
-    pushActionMap(MoveMap);
+    //pushActionMap(MoveMap);
 
 	// hack city - these controls are floating around and need to be clamped
 	schedule(0, 0, "refreshCenterTextCtrl");

@@ -17,8 +17,8 @@ new GuiControlProfile(GuiDefaultProfile)
 
 	// fill color
 	opaque = false;
-	fillColor = "130 130 130";
-	fillColorHL = "50 50 50";
+	fillColor = "0 181 37 200";
+	fillColorHL = "0 223 38";
 	fillColorNA = "221 202 173";
 
 	// border color
@@ -28,7 +28,7 @@ new GuiControlProfile(GuiDefaultProfile)
 	borderColorNA = "100 100 100";
 
 	// font
-	fontType = "Arial";
+	fontType = "Times";
 	fontSize = 14;
 
 	fontColor = "0 0 0";
@@ -37,7 +37,7 @@ new GuiControlProfile(GuiDefaultProfile)
 	fontColorSEL= "200 200 200";
 
 	// bitmap information
-	bitmap = "./pixmaps/simpleWindow";
+	bitmap = "./pixmaps/mg_window";
 	bitmapBase = "";
 	textOffset = "0 0";
 
@@ -77,8 +77,8 @@ new GuiControlProfile(GuiButtonProfile : GuiDefaultProfile)
 	opaque = true;
 	border = true;
 	fontColor = "0 0 0";
-	fontColorHL = "255 255 255";
-	borderColor = "100 100 100";
+	fontColorHL = "0 0 0";
+	borderColor = "0 0 0";
 	fixedExtent = true;
 	justify = "center";
 	canKeyFocus = false;
@@ -145,7 +145,7 @@ new GuiControlProfile(GuiCenterTextProfile : GuiTextProfile)
 new GuiControlProfile(GuiTextEditProfile : GuiDefaultProfile)
 {
 	opaque = true;
-	fillColor = "255 255 255";
+	fillColor = "0 181 37";
 	fillColorHL = "128 128 128";
 	border = 3;
 	borderThickness = 2;
@@ -239,7 +239,7 @@ new GuiControlProfile(GuiMLTextEditProfile : GuiDefaultProfile)
 	fontColorLink = "255 96 96";
 	fontColorLinkHL = "0 0 255";
 
-	fillColor = "255 255 255";
+	fillColor = "160 217 172";
 	fillColorHL = "128 128 128";
 
 	fontColor = "0 0 0";
@@ -276,15 +276,30 @@ new GuiControlProfile(GuiBitmapBorderProfile : GuiDefaultProfile)
 
 new GuiControlProfile(GuiWindowProfile : GuiDefaultProfile)
 {
-	opaque = true;
-	border = 2;
-	fillColor = "130 130 130";
-	fillColorHL = "221 202 173";
-	fillColorNA = "221 202 173";
-	fontColor = "255 255 255";
-	fontColorHL = "255 255 255";
+	//opaque = true;
 	text = "GuiWindowCtrl test";
-	bitmap = "./pixmaps/simpleWindow";
+	bitmap = "./pixmaps/mg_window";
+	textOffset = "6 6";
+	hasBitmapArray = true;
+	justify = "center";
+	fillColorNA = "221 202 173";
+};
+
+new GuiControlProfile(GuiMinimalWindowProfile : GuiDefaultProfile)
+{
+	opaque = true;
+	text = "GuiWindowCtrl test";
+	bitmap = "./pixmaps/mg_window2";
+	textOffset = "6 6";
+	hasBitmapArray = true;
+	justify = "center";
+	fillColorNA = "221 202 173";
+};
+
+new GuiControlProfile(GuiReshapelWindowProfile : GuiDefaultProfile)
+{
+	text = "GuiWindowCtrl test";
+	bitmap = "./pixmaps/mg_window3";
 	textOffset = "6 6";
 	hasBitmapArray = true;
 	justify = "center";
@@ -293,11 +308,10 @@ new GuiControlProfile(GuiWindowProfile : GuiDefaultProfile)
 new GuiControlProfile(GuiScrollProfile : GuiDefaultProfile)
 {
 	opaque = true;
-	fillColor = "255 255 255";
 	border = 3;
-	borderThickness = 2;
+	borderThickness = 1;
 	borderColor = "0 0 0";
-	bitmap = "./pixmaps/simpleScroll";
+	bitmap = "./pixmaps/mg_scroll";
 	hasBitmapArray = true;
 };
 

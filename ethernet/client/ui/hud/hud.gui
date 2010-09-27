@@ -7,8 +7,8 @@
 new GameTSCtrl(HUD) {
    canSaveDynamicFields = "1";
    Profile = "HudDefaultProfile";
-   HorizSizing = "right";
-   VertSizing = "bottom";
+   HorizSizing = "relative";
+   VertSizing = "relative";
    Position = "0 0";
    Extent = "640 480";
    MinExtent = "8 8";

@@ -9,8 +9,8 @@ new GuiControl(MapInfoWindowForEditing) {
    Profile = "GuiDefaultProfile";
    HorizSizing = "right";
    VertSizing = "bottom";
-   position = "0 0";
-   Extent = "800 600";
+   Position = "0 0";
+   Extent = "640 480";
    MinExtent = "8 8";
    canSave = "1";
    Visible = "1";
@@ -21,8 +21,8 @@ new GuiControl(MapInfoWindowForEditing) {
       Profile = "GuiWindowProfile";
       HorizSizing = "center";
       VertSizing = "center";
-      position = "165 201";
-      Extent = "510 128";
+      Position = "65 176";
+      Extent = "386 265";
       MinExtent = "8 8";
       canSave = "1";
       Visible = "1";
@@ -38,28 +38,45 @@ new GuiControl(MapInfoWindowForEditing) {
       minSize = "50 50";
       closeCommand = "removeWindow(MapInfoWindow);";
 
-      new GuiButtonCtrl(MapInfoWindow_Button_Desc) {
+      new GuiScrollCtrl() {
          canSaveDynamicFields = "0";
-         Profile = "GuiButtonProfile";
-         HorizSizing = "right";
+         Profile = "GuiScrollProfile";
+         HorizSizing = "width";
          VertSizing = "bottom";
-         position = "9 95";
-         Extent = "117 23";
+         Position = "10 96";
+         Extent = "365 126";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
-         Command = "addWindow(MapDescWindow);";
          hovertime = "1000";
-         text = "Description";
-         groupNum = "-1";
-         buttonType = "PushButton";
+         willFirstRespond = "1";
+         hScrollBar = "dynamic";
+         vScrollBar = "alwaysOn";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiMLTextCtrl(MapDescWindow_Text) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiMLTextProfile";
+            HorizSizing = "width";
+            VertSizing = "bottom";
+            Position = "2 2";
+            Extent = "468 14";
+            MinExtent = "345 14";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            lineSpacing = "2";
+            allowColorChars = "0";
+            maxChars = "-1";
+         };
       };
       new GuiButtonCtrl(MapInfoWindow_Button_Copyright) {
          canSaveDynamicFields = "0";
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "134 95";
+         Position = "196 231";
          Extent = "117 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -70,28 +87,12 @@ new GuiControl(MapInfoWindowForEditing) {
          groupNum = "-1";
          buttonType = "PushButton";
       };
-      new GuiButtonCtrl(MapInfoWindow_Button_License) {
-         canSaveDynamicFields = "0";
-         Profile = "GuiButtonProfile";
-         HorizSizing = "right";
-         VertSizing = "bottom";
-         position = "259 95";
-         Extent = "117 23";
-         MinExtent = "8 8";
-         canSave = "1";
-         Visible = "1";
-         Command = "addWindow(MapLicenseWindow);";
-         hovertime = "1000";
-         text = "License";
-         groupNum = "-1";
-         buttonType = "PushButton";
-      };
       new GuiButtonCtrl(MapInfoWindow_Button_Credits) {
          canSaveDynamicFields = "0";
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "384 95";
+         Position = "70 231";
          Extent = "117 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -107,8 +108,8 @@ new GuiControl(MapInfoWindowForEditing) {
          Profile = "GuiBigTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "10 30";
-         Extent = "84 40";
+         Position = "10 30";
+         Extent = "87 42";
          MinExtent = "8 2";
          canSave = "1";
          Visible = "1";
@@ -121,8 +122,8 @@ new GuiControl(MapInfoWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "12 70";
-         Extent = "54 18";
+         Position = "12 70";
+         Extent = "57 17";
          MinExtent = "8 2";
          canSave = "1";
          Visible = "1";
@@ -135,8 +136,8 @@ new GuiControl(MapInfoWindowForEditing) {
          Profile = "GuiMLTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "70 73";
-         Extent = "254 14";
+         Position = "70 73";
+         Extent = "254 13";
          MinExtent = "8 2";
          canSave = "1";
          Visible = "1";
