@@ -512,6 +512,19 @@ new GameTSCtrl(HUD) {
          wrap = "0";
       };
    };
+   new GuiTextCtrl(HudGameBalance) {
+      canSaveDynamicFields = "0";
+      Profile = "HudMediumTextProfile";
+      HorizSizing = "center";
+      VertSizing = "bottom";
+      Position = "400 10";
+      Extent = "70 40";
+      MinExtent = "8 2";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      maxLength = "1024";
+   };
 };
 //--- OBJECT WRITE END ---
 

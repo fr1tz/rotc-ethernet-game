@@ -58,6 +58,7 @@ function executeServerScripts()
 	exec("./turrets.cs");
 	exec("./objectspawn.cs");
 	exec("./stats.cs");
+	exec("./music.cs");
 }
 
 function onServerCreated()
@@ -240,6 +241,8 @@ function startNewRound()
 		if( %client.team == $Team1 || %client.team == $Team2 )
 			%client.spawnPlayer();
 	}
+
+	serverUpdateMusic();
 	
 	$Game::RoundRestarting = false;
 }

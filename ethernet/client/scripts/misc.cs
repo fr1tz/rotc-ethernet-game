@@ -97,3 +97,65 @@ function CurrentZoneMessageCallback(%msgType, %msgString, %zoneTeamId)
 }
 
 addMessageCallback('MsgCurrentZone', CurrentZoneMessageCallback);
+
+//-----------------------------------------------------------------------------
+// Music
+//-----------------------------------------------------------------------------
+
+function clientPlayMusic(%msgType, %msgString, %profileId, %immediately)
+{
+	echo("clientPlayMusic()" SPC %profileId SPC %immediately);
+	%name = "Music" @ %profileId;
+	%profileId.setName(%name);
+	%profile = %name;
+	if(!alxIsPlaying($CMusic::Handle) || (%immediately && $CMusic::CurrProfile !$= %profile))
+	{
+		alxStop($CMusic::Handle);
+		%len = alxGetWaveLen(%profile.filename);
+		if(%len > 0)
+		{
+			cancel($CMusic::UpdateThread);
+			$CMusic::UpdateThread = schedule(%len, 0, "clientUpdateMusic");
+			$CMusic::Handle = alxPlay(%profile);
+			$CMusic::CurrProfile = %profile;
+		}
+	}
+
+	$CMusic::NextProfile = %profile;
+}
+
+addMessageCallback('MsgMusic', clientPlayMusic);
+
+function clientUpdateMusic()
+{
+	echo("clientUpdateMusic()" SPC $CMusic::CurrProfile SPC "->" SPC $CMusic::NextProfile);
+	if($CMusic::NextProfile !$= $CMusic::CurrProfile)
+	{
+		alxStop($CMusic::Handle);
+		%len = alxGetWaveLen($CMusic::NextProfile.filename);
+		if(%len > 0)
+		{
+			cancel($CMusic::UpdateThread);
+			$CMusic::UpdateThread = schedule(%len, 0, "clientUpdateMusic");
+			$CMusic::Handle = alxPlay($CMusic::NextProfile);
+			$CMusic::CurrProfile = $CMusic::NextProfile;
+		}
+	}
+	else
+	{
+		cancel($CMusic::UpdateThread);
+		%len = alxGetWaveLen($CMusic::CurrProfile.filename);
+		$CMusic::UpdateThread = schedule(%len, 0, "clientUpdateMusic");
+	}
+}
+
+//-----------------------------------------------------------------------------
+// Game balance
+//-----------------------------------------------------------------------------
+
+function GameBalanceMsgCallback(%msgType, %msgString, %balance)
+{
+	HudGameBalance.setText(%balance);
+}
+
+addMessageCallback('MsgGameBalance', GameBalanceMsgCallback);
