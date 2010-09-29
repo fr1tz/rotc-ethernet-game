@@ -105,9 +105,14 @@ addMessageCallback('MsgCurrentZone', CurrentZoneMessageCallback);
 function clientPlayMusic(%msgType, %msgString, %profileId, %immediately)
 {
 	echo("clientPlayMusic()" SPC %profileId SPC %immediately);
-	%name = "Music" @ %profileId;
-	%profileId.setName(%name);
-	%profile = %name;
+	%profile = %profileId.getName();
+	if(%profile $= "")
+	{
+		%name = "Music" @ %profileId;
+		%profileId.setName(%name);
+		%profile = %name;
+	}
+
 	if(!alxIsPlaying($CMusic::Handle) || (%immediately && $CMusic::CurrProfile !$= %profile))
 	{
 		alxStop($CMusic::Handle);
@@ -129,13 +134,13 @@ addMessageCallback('MsgMusic', clientPlayMusic);
 function clientUpdateMusic()
 {
 	echo("clientUpdateMusic()" SPC $CMusic::CurrProfile SPC "->" SPC $CMusic::NextProfile);
+	cancel($CMusic::UpdateThread);
 	if($CMusic::NextProfile !$= $CMusic::CurrProfile)
 	{
 		alxStop($CMusic::Handle);
 		%len = alxGetWaveLen($CMusic::NextProfile.filename);
 		if(%len > 0)
 		{
-			cancel($CMusic::UpdateThread);
 			$CMusic::UpdateThread = schedule(%len, 0, "clientUpdateMusic");
 			$CMusic::Handle = alxPlay($CMusic::NextProfile);
 			$CMusic::CurrProfile = $CMusic::NextProfile;
@@ -143,9 +148,9 @@ function clientUpdateMusic()
 	}
 	else
 	{
-		cancel($CMusic::UpdateThread);
 		%len = alxGetWaveLen($CMusic::CurrProfile.filename);
-		$CMusic::UpdateThread = schedule(%len, 0, "clientUpdateMusic");
+		if(%len > 0)
+			$CMusic::UpdateThread = schedule(%len, 0, "clientUpdateMusic");
 	}
 }
 
