@@ -159,7 +159,7 @@ datablock PlayerData(RedStandardCat)
 	boxHeadFrontPercentage		  = 1;
 
 	// footprints
-	decalData	= StandardCatFootprint;
+	decalData	= RedStandardCatFootprint;
 	decalOffset = 0.25;
 
 	// foot puffs
@@ -240,6 +240,7 @@ datablock PlayerData(BlueStandardCat : RedStandardCat)
 	shapeFile = "~/data/players/standardcat/player.blue.dts";
     shapeFxTexture[1] = "~/data/textures/heat.blue.png";
 	debrisShapeName = "~/data/players/standardcat/debris.blue.dts";
+	decalData = BlueStandardCatFootprint;
 	slideParticleEmitter = BlueSlideEmitter;
 	damageBufferParticleEmitter = BlueCatDamageBufferEmitter;
 	repairParticleEmitter = BlueCatRepairEmitter;

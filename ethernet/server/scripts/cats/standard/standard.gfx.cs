@@ -385,12 +385,20 @@ datablock SplashData(StandardCatSplash)
 // Foot prints
 //----------------------------------------------------------------------------
 
-datablock DecalData(StandardCatFootprint)
+datablock DecalData(RedStandardCatFootprint)
 {
-	sizeX = "0.10";
-	sizeY = "0.20";
-	textureName = "~/data/players/shared/footprint";
-	SelfIlluminated = false;
+	sizeX = "0.60";
+	sizeY = "0.60";
+	textureName = "~/data/textures/footprint.red";
+	SelfIlluminated = true;
+};
+
+datablock DecalData(BlueStandardCatFootprint)
+{
+	sizeX = "0.60";
+	sizeY = "0.60";
+	textureName = "~/data/textures/footprint.blue";
+	SelfIlluminated = true;
 };
 
 //----------------------------------------------------------------------------
