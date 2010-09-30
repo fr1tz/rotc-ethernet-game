@@ -9,7 +9,7 @@
 //-----------------------------------------------------------------------------
 
 $GameNameString = "rotc-ethernet";
-$GameVersionString = "prototype1.10+devA";
+$GameVersionString = "prototype1.10+devB";
 
 //------------------------------------------------------------------------------
 

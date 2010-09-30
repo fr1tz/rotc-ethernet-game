@@ -28,12 +28,12 @@ function executeBaseWeaponScripts()
 	exec("./weapons.sfx.cs");
 	exec("./weapons.gfx.cs");
 
-	exec("./weapons/disc/disc.cs");
-	exec("./gun/grenade.cs");
-	//exec("./gun/sniperrifle.cs");
-	exec("./gun/assaultrifle.cs");
-	exec("./gun/grenadelauncher.cs");
-	exec("./gun/blaster.cs");
+	exec("./weapons/disc.cs");
+	exec("./weapons/grenade.cs");
+	exec("./weapons/sniperrifle.cs");
+	exec("./weapons/assaultrifle.cs");
+	exec("./weapons/grenadelauncher.cs");
+	exec("./weapons/blaster.cs");
 }
 
 executeBaseWeaponScripts();

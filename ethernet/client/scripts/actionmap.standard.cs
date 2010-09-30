@@ -162,20 +162,9 @@ function trigger5(%val)
 	$mvTriggerCount5++;
 }
 
-function trigger6(%val)
-{
-	$mvTriggerCount6++;
-}
-
-function instantGrenadeThrow(%val)
-{
-    if(%val)
-		commandToServer('InstantGrenadeThrow');
-}
-
 MoveMap.bind( mouse, button0, trigger0 ); // left button
-MoveMap.bind( mouse, button2, trigger1 ); // middle button
-MoveMap.bind( mouse, button1, trigger3 ); // right button
+MoveMap.bind( mouse, button2, trigger3 ); // middle button
+MoveMap.bind( mouse, button1, trigger1 ); // right button
 MoveMap.bind( keyboard, space, trigger2 );
 MoveMap.bind( keyboard, lshift, trigger4 );
 MoveMap.bind( keyboard, lcontrol, trigger5 );

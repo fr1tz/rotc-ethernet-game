@@ -94,12 +94,12 @@ function RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%norm
 {
     Parent::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
 
-	if( !(%col.getType() & $TypeMasks::ShapeBaseObjectType) )
-		return;
-
-    %src =  %obj.getSourceObject();
-    if(%src)
-        %src.setDiscTarget(%col);
+//	if( !(%col.getType() & $TypeMasks::ShapeBaseObjectType) )
+//		return;
+//
+//    %src =  %obj.getSourceObject();
+//    if(%src)
+//        %src.setDiscTarget(%col);
 }
 
 //--------------------------------------------------------------------------
@@ -178,12 +178,12 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateTransitionOnNoAmmo[3]       = "Reload";
 		stateTransitionOnTimeout[3]      = "Fire";
 		stateTransitionOnTriggerUp[3]    = "Ready";
-		stateTimeoutValue[3]             = 0.15;
+		stateTimeoutValue[3]             = 0.1;
 		stateFire[3]                     = true;
 		stateFireProjectile[3]           = RedAssaultRifleProjectile;
 		stateAllowImageChange[3]         = false;
 		stateEjectShell[3]               = true;
-		stateRecoil[3]                   = "LightRecoil";
+		//stateRecoil[3]                   = "LightRecoil";
 		stateArmThread[3]                = "aimrifle";
 		stateSequence[3]                 = "Fire";
 		stateSound[3]                    = AssaultRifleFireSound;

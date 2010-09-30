@@ -37,15 +37,15 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "~/data/weapons/blaster/image.red.dts";
+	shapeFile = "~/data/weapons/missilelauncher/image.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
 	mountPoint  = 0;
 	offset      = "0 0 0";
 	rotation    = "0 0 0";
-	eyeOffset   = "0.275 -0.25 -0.2";
-	eyeRotation = "0 0 0";
+    eyeOffset   = "0.5 -0.2 -0.2";
+	eyeRotation = "0 0 0 0";
 
 	// Adjust firing vector to eye's LOS point?
 	correctMuzzleVector = true;

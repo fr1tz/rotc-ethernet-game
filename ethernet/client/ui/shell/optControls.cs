@@ -54,7 +54,7 @@ $RemapCount++;
 $RemapName[$RemapCount] = "Trigger 2 (Jump/Up)";
 $RemapCmd[$RemapCount] = "trigger2";
 $RemapCount++;
-$RemapName[$RemapCount] = "Trigger 3 (Alt Fire)";
+$RemapName[$RemapCount] = "Trigger 3 (Grenade/Disc)";
 $RemapCmd[$RemapCount] = "trigger3";
 $RemapCount++;
 $RemapName[$RemapCount] = "Trigger 4 (Disc)";

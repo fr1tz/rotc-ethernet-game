@@ -26,8 +26,8 @@ datablock ShapeBaseImageData(RedGrenadeImage)
 	emap = true;
 
 	// mount point & mount offset...
-	mountPoint  = 0;
-	offset		= "0 1 0";
+	mountPoint  = 1;
+	offset		= "0 0 0";
 	rotation	 = "0 0 0";
 	eyeOffset   = "0 0 0";
 	eyeRotation = "0 0 0 0";
@@ -75,7 +75,6 @@ datablock ShapeBaseImageData(RedGrenadeImage)
    		stateTimeoutValue[7]            = 0.10;
    		stateAllowImageChange[7]        = false;
    		stateSequence[7]                = "AllVisible";
-        stateSound[7]                   = GrenadeThrowSound;
         stateScript[7]                  = "grenadeAttackStart";
         stateFire[7]                    = true;
 
@@ -102,6 +101,7 @@ datablock ShapeBaseImageData(RedGrenadeImage)
 		stateName[16]                    = "DryFire";
 		stateTransitionOnTriggerUp[16]   = "NoAmmo";
 		stateSound[16]                   = WeaponEmptySound;
+		stateScript[16]                  = "onDryFire";
 
 		stateName[17]                    = "Disabled";
 		stateTransitionOnLoaded[17]      = "Ready";
@@ -124,27 +124,32 @@ function RedGrenadeImage::onUnmount(%this, %obj, %slot)
 function RedGrenadeImage::onReady(%this, %obj, %slot)
 {
     %obj.setImageLoaded(0, true);
+    %obj.setImageLoaded(1, true);
 	%obj.fullForceGrenade = false;
+	%obj.noGrenade = false;
 }
 
 function RedGrenadeImage::onCharge(%this, %obj, %slot)
 {
     %obj.setImageLoaded(0, false);
+    %obj.setImageLoaded(1, false);
 }
-
 
 function RedGrenadeImage::grenadeAttackStart(%this, %obj, %slot)
 {
-	// disable main weapon until we threw the grenade...
-	//%obj.setImageLoaded(0, false);
-	// play throw animation...
-	//%obj.setArmThread("look");
-	//%obj.playThread(0, "throwSidearm");
-    //%obj.playThread(0, "throwInterceptor");
+	if(%obj.noGrenade)
+		return;
+
+	%obj.setArmThread("look");
+    %obj.playThread(0, "throwInterceptor");
+	%obj.playAudio(0, GrenadeThrowSound);
 }
 
 function RedGrenadeImage::grenadeAttackFire(%this, %obj, %slot)
 {
+	if(%obj.noGrenade)
+		return;
+
 	%projectile = %this.projectile;
 
 	// drain some energy...
@@ -165,7 +170,7 @@ function RedGrenadeImage::grenadeAttackFire(%this, %obj, %slot)
     //%throwCoefficient = %throwCoefficient/2;
     %throwForce = %projectile.muzzleVelocity * %throwCoefficient;
 
-    %vec = %obj.getMuzzleVector(0);
+    %vec = %obj.getMuzzleVector(%slot);
     %vec = vectorScale(%vec, %throwForce);
 
     // add a vertical component to give the grenade a better arc
@@ -178,7 +183,7 @@ function RedGrenadeImage::grenadeAttackFire(%this, %obj, %slot)
     %vec = vectorAdd( %vec, VectorScale(%obj.getVelocity(), %projectile.velInheritFactor));
 
     // get initial position...
-    %pos = %obj.getMuzzlePoint(0);
+    %pos = %obj.getMuzzlePoint(%slot);
 
 	// create the grenade...
 	%grenade = new (Projectile)() {
@@ -204,8 +209,14 @@ function RedGrenadeImage::afterThrow(%this, %obj, %slot)
 	// ensure image is marked as loaded...
 	%obj.setImageLoaded(%slot, true);
 
-	// re-enable main weapon...
 	%obj.setImageLoaded(0, true);
+	%obj.setImageLoaded(1, true);
+}
+
+function RedGrenadeImage::onDryFire(%this, %obj, %slot)
+{
+    %obj.setImageLoaded(0, false);
+    %obj.setImageLoaded(1, false);
 }
 
 //------------------------------------------------------------------------------
@@ -250,3 +261,7 @@ function BlueGrenadeImage::afterThrow(%this, %obj, %slot)
 	RedGrenadeImage::afterThrow(%this, %obj, %slot);
 }
 
+function BlueGrenadeImage::onDryFire(%this, %obj, %slot)
+{
+	RedGrenadeImage::onDryFire(%this, %obj, %slot);
+}

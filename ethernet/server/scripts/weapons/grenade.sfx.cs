@@ -14,7 +14,7 @@
 
 datablock AudioProfile(GrenadeThrowSound)
 {
-   filename = "~/data/sfx/fire2.wav";
+   filename = "~/data/sfx/throw1.wav";
    description = AudioDefault3D;
 	preload = true;
 };
