@@ -449,5 +449,8 @@ function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %dmg)
     %obj.incGrenadeAmmo(%dmg / 250);
 
     %obj.setInflictedDamageSoundPitch(%enemy.getDamagePercent());
+
+	$Music::LastHitTime = getSimTime();
+	serverUpdateMusic(); // might have to change music immediately
 }
 

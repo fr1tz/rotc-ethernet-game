@@ -19,6 +19,7 @@
 $GuiAudioType	  = 1;
 $SimAudioType	  = 2;
 $MessageAudioType = 3;
+$MusicAudioType   = 4;
 //-----------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
@@ -158,6 +159,14 @@ datablock AudioDescription(AudioCritical2D)
 	isLooping = false;
 	is3D = false;
 	type = $GuiAudioType;
+};
+
+datablock AudioDescription(AudioMusic)
+{
+	volume = 1.0;
+	isLooping = true;
+	is3D = false;
+	type = $MusicAudioType;
 };
 
 //-----------------------------------------------------------------------------
