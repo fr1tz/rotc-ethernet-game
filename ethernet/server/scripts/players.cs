@@ -113,7 +113,18 @@ function PlayerData::onAdd(%this,%obj)
 	// weapon management...
 	//
 	%obj.specialWeapon = %obj.client ? %obj.client.specialWeapon : 0;
+	if(%obj.getTeamId() == 1)
+	{
+		%obj.mountImage(RedGrenadeImage, 2, -1, true);
+		%obj.mountImage(RedDiscImage, 3, -1, %obj.hasDisc());
+	}
+	else
+	{
+		%obj.mountImage(BlueGrenadeImage, 2, -1, true);
+		%obj.mountImage(BlueDiscImage, 3, -1, %obj.hasDisc());
+	}
 	%obj.useWeapon(1);
+
      
    // Start sliding thread.
    %obj.sliding = 0.5;
@@ -274,7 +285,7 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
 		// release the weapon triggers
 		%obj.setImageTrigger(0, false);
 		%obj.setImageTrigger(1, false);
-  
+
         // to remove the zone light
         %obj.getDataBlock().updateZone(%obj, 0);
   

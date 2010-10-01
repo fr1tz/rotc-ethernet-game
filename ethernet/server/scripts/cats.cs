@@ -47,15 +47,11 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 		{
 			%obj.mountImage(RedBlasterImage, 0, -1, true);
 			%obj.mountImage(RedAssaultRifleImage, 1, -1, true);
-			%obj.mountImage(RedGrenadeImage, 2, -1, true);
-			%obj.mountImage(RedDiscImage, 3, -1, %obj.hasDisc());
 		}
 		else
 		{
 			%obj.mountImage(BlueBlasterImage, 0, -1, true);
 			%obj.mountImage(BlueAssaultRifleImage, 1, -1, true);
-			%obj.mountImage(BlueGrenadeImage, 2, -1, true);
-			%obj.mountImage(BlueDiscImage, 3, -1, %obj.hasDisc());
 		}
    
         %validWeapon = true;
