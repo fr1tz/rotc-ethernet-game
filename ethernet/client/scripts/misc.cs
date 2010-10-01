@@ -104,8 +104,6 @@ addMessageCallback('MsgCurrentZone', CurrentZoneMessageCallback);
 
 function clientPlayMusic(%msgType, %msgString, %profileId, %immediately)
 {
-	return;
-
 	echo("clientPlayMusic()" SPC %profileId SPC %immediately);
 	%profile = %profileId.getName();
 	if(%profile $= "")
