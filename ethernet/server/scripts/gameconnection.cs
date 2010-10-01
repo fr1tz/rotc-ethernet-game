@@ -68,6 +68,9 @@ function GameConnection::onClientEnterGame(%this)
 	//
 	
 	%this.joinTeam(0);
+
+	// Start sky color thread.
+	%this.updateSkyColor();
 }
 
 // *** callback function: called by script code in "common"
@@ -337,4 +340,78 @@ function GameConnection::togglePlayerForm(%this)
 	}
 
 	%this.player = %obj;
+}
+
+//-----------------------------------------------------------------------------
+
+function GameConnection::setSkyColor(%this, %color)
+{
+	if(%this.skyColor $= %color)
+		return;
+
+	echo("wee" SPC %color);
+
+	messageClient(%this, 'MsgSkyColor', "", %color);
+
+	%this.skyColor = %color;
+}
+
+function GameConnection::updateSkyColor(%this)
+{
+	cancel(%this.skyColorThread);
+
+	%player = %this.player;
+	if(!isObject(%player))
+		%player = %this.camera;
+
+	%pos = %player.getPosition();
+	InitContainerRadiusSearch(%pos, 0.0001, $TypeMasks::TacticalZoneObjectType);
+	%zone = containerSearchNext();
+
+	if(%zone == 0)
+	{
+		%this.setSkyColor("0.2 0.2 0.2");
+	}
+	else if(%zone.getTeamId() == 0 && %zone.isProtected())
+	{
+		%this.setSkyColor("0 1 0");
+	}
+	else if(%zone.getTeamId() == 0 && %zone.numReds == 0 && %zone.numBlues == 0)
+	{
+		%this.setSkyColor("1 1 1");
+	}
+	else if(%zone.getTeamId() == 1)
+	{
+		%this.setSkyColor("1 0 0");
+	}
+	else if(%zone.getTeamId() == 2)
+	{
+		%this.setSkyColor("0 0 1");
+	}
+	else
+	{
+		%health[1] = 0;
+		%health[2] = 0;
+		for(%i = 0; %i < %zone.getNumObjects(); %i++)
+		{
+			%obj = %zone.getObject(%i);
+			if(%obj.getType() & $TypeMasks::PlayerObjectType && %obj.isCAT)
+			{
+				%health[%obj.teamId] += %obj.getDataBlock().maxDamage
+					- %obj.getDamageLevel() + %obj.getDamageBufferLevel();
+			}
+		}
+		if(%health[1] > %health[2])
+		{
+			%ratio = %health[2] / %health[1];
+			%this.setSkyColor("1 0.5" SPC %ratio);
+		}
+		else
+		{
+			%ratio = %health[1] / %health[2];
+			%this.setSkyColor(%ratio SPC "0.5 1");
+		}
+	}
+
+	%this.skyColorThread = %this.schedule(500, "updateSkyColor");
 }

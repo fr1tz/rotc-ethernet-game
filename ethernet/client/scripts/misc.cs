@@ -82,21 +82,16 @@ function selectMainWeapon(%weapon)
 }
 
 //-----------------------------------------------------------------------------
-// Eyecandy stuff...
+// Sky colorization
 //-----------------------------------------------------------------------------
 
-function CurrentZoneMessageCallback(%msgType, %msgString, %zoneTeamId)
+function SkyColorMsgCallback(%msgType, %msgString, %color)
 {
-	switch(%zoneTeamId)
-	{
-		case 0:  $sky.changeColor("1 1 1");
-		case 1:  $sky.changeColor("1 0 0");
-		case 2:  $sky.changeColor("0 0 1");
-		default: $sky.changeColor("1 1 1");
-	}
+	error("change:" SPC %color);
+	$sky.changeColor(%color);
 }
 
-addMessageCallback('MsgCurrentZone', CurrentZoneMessageCallback);
+addMessageCallback('MsgSkyColor', SkyColorMsgCallback);
 
 //-----------------------------------------------------------------------------
 // Music
