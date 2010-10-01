@@ -97,6 +97,7 @@ datablock ShapeBaseImageData(RedGrenadeImage)
 		stateTransitionOnAmmo[15]        = "Ready";
 		stateTransitionOnTriggerDown[15] = "DryFire";
 		stateSequence[15]                = "Invisible";
+		stateScript[15]                  = "onNoAmmo";
 
 		stateName[16]                    = "DryFire";
 		stateTransitionOnTriggerUp[16]   = "NoAmmo";
@@ -219,6 +220,12 @@ function RedGrenadeImage::onDryFire(%this, %obj, %slot)
     %obj.setImageLoaded(1, false);
 }
 
+function RedGrenadeImage::onNoAmmo(%this, %obj, %slot)
+{
+    %obj.setImageLoaded(0, true);
+    %obj.setImageLoaded(1, true);
+}
+
 //------------------------------------------------------------------------------
 
 datablock ShapeBaseImageData(BlueGrenadeImage : RedGrenadeImage)
@@ -264,4 +271,9 @@ function BlueGrenadeImage::afterThrow(%this, %obj, %slot)
 function BlueGrenadeImage::onDryFire(%this, %obj, %slot)
 {
 	RedGrenadeImage::onDryFire(%this, %obj, %slot);
+}
+
+function BlueGrenadeImage::onNoAmmo(%this, %obj, %slot)
+{
+	RedGrenadeImage::onNoAmmo(%this, %obj, %slot);
 }
