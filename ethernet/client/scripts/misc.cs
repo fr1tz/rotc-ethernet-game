@@ -87,7 +87,6 @@ function selectMainWeapon(%weapon)
 
 function SkyColorMsgCallback(%msgType, %msgString, %color)
 {
-	error("change:" SPC %color);
 	$sky.changeColor(%color);
 }
 

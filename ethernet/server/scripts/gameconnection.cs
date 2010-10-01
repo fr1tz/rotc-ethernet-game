@@ -349,8 +349,6 @@ function GameConnection::setSkyColor(%this, %color)
 	if(%this.skyColor $= %color)
 		return;
 
-	echo("wee" SPC %color);
-
 	messageClient(%this, 'MsgSkyColor', "", %color);
 
 	%this.skyColor = %color;
