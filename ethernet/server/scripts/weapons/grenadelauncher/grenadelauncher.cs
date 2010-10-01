@@ -118,14 +118,14 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "~/data/weapons/grenadelauncher/image.red.dts";
+	shapeFile = "~/data/misc/nothing.dts";
 	emap = true;
 
 	// mount point & mount offset...
 	mountPoint  = 0;
 	offset		= "0 0 0";
 	rotation	 = "0 0 0";
-	eyeOffset	= "0.3 -0.4 -0.2";
+	eyeOffset   = "0.275 -0.25 -0.2";
 	eyeRotation = "0 0 0 0";
 
 	// Adjust firing vector to eye's LOS point?
@@ -141,13 +141,14 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 	specialWeapon = true;
 	armThread  = "holdrifle";  // armThread to use when holding this weapon
 	crosshair  = "assaultrifle"; // crosshair to display when holding this weapon
+    bigGrenade = RedGrenade;
 
 	//-------------------------------------------------
 	// image states...
 	//
 		// preactivation...
 		stateName[0]                     = "Preactivate";
-		stateTransitionOnAmmo[0]         = "Activate";
+		stateTransitionOnAmmo[0]         = "Ready";
 		stateTransitionOnNoAmmo[0]		 = "NoAmmo";
 
 		// when mounted...
@@ -163,19 +164,20 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
   		stateTransitionOnNotLoaded[2]    = "Disabled";
 		stateTransitionOnTriggerDown[2]  = "Fire1";
         stateArmThread[2]                = "holdrifle";
+		stateSpinThread[2]               = "Stop";
 
 		stateName[3]                     = "Fire1";
 		stateTransitionOnTimeout[3]      = "Fire2";
 		stateTransitionOnTriggerUp[3]    = "Cooldown";
 		stateTransitionOnNoAmmo[3]       = "Cooldown";
 		stateTimeoutValue[3]             = 0.17;
-		stateSpinThread[3]               = "FullSpeed";
 		stateFire[3]                     = true;
 		stateFireProjectile[3]           = RedGrenadeLauncherProjectile;
 		stateAllowImageChange[3]         = false;
 		stateArmThread[3]                = "aimrifle";
 		stateSequence[3]                 = "Fire";
 		stateSound[3]                    = GrenadeLauncherFireSound;
+		stateScript[3]                   = "onFire";
 
 		stateName[4]                     = "Fire2";
 		stateTransitionOnTimeout[4]      = "Fire3";
@@ -244,6 +246,68 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 	// ...end of image states
 	//-------------------------------------------------
 };
+
+function RedGrenadeLauncherImage::onFire(%this, %obj, %slot)
+{
+	%obj.throwGrenade = false;
+}
+
+function RedGrenadeLauncherImage::fireBigGrenade(%this, %obj, %slot)
+{
+	%projectile = %this.bigGrenade;
+
+	// drain some energy...
+	%obj.setEnergyLevel( %obj.getEnergyLevel() - %projectile.energyDrain );
+
+    // %throwForce is based on how long the trigger has been hold down...
+    %throwCoefficient = 0;
+    if(false)
+    {
+        %throwCoefficient = 1;
+    }
+    else
+    {
+        %throwCoefficient = (getSimTime() - %obj.grenadeStart) / 1000;
+		error(%throwCoefficient);
+        if( %throwCoefficient > 1 )
+            %throwCoefficient = 1;
+    }
+    //%throwCoefficient = %throwCoefficient/2;
+    %throwForce = %projectile.muzzleVelocity * %throwCoefficient;
+
+    %vec = %obj.getMuzzleVector(%slot);
+    %vec = vectorScale(%vec, %throwForce);
+
+    // add a vertical component to give the grenade a better arc
+    %verticalForce = %throwForce / 8;
+    %dot = vectorDot("0 0 1",%eye);
+    if (%dot < 0) %dot = -%dot;
+    %vec = vectorAdd(%vec,VectorScale("0 0 " @ %verticalForce,1 - %dot));
+
+    // add velocity inherited from player...
+    %vec = vectorAdd( %vec, VectorScale(%obj.getVelocity(), %projectile.velInheritFactor));
+
+    // get initial position...
+    %pos = %obj.getMuzzlePoint(%slot);
+
+	// create the grenade...
+	%grenade = new (Projectile)() {
+		dataBlock        = %projectile;
+        teamId           = %obj.teamId;
+		initialVelocity  = %vec;
+		initialPosition  = %pos;
+		sourceObject     = %obj;
+		sourceSlot       = %slot;
+		client           = %obj.client;
+	};
+	MissionCleanup.add(%grenade);
+
+    //%disc.schedule(2000,"explode");
+
+	%obj.decGrenadeAmmo(1.0);
+
+	return %grenade;
+}
 
 //------------------------------------------------------------------------------
 
