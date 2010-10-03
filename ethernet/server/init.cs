@@ -20,7 +20,6 @@
 //	 (c) Server::Dedicated					Bool
 //	 ( ) Server::MissionFile				 Mission .mis file name
 //	 (c) Server::MissionName				 Map Name from $MapInfo::Name
-//	 (c) Server::MissionHomepage			Map WWW Link from $MapInfo::Homepage
 //	 (c) Server::MissionType				 Not used
 //	 (c) Server::PlayerCount				 Current player count
 //	 (c) Server::GuidList					 Player GUID (record list?)

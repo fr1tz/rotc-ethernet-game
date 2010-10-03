@@ -65,8 +65,6 @@ function onServerCreated()
 {
 	// Server::GameType is sent to the master server.
 	$Server::GameType = $GameNameString;
-	$Server::GameVersion = $GameVersionString;
-    $Server::ModString = "-";
 
 	// GameStartTime is the sim time the game started. Used to calculated
 	// game elapsed time.

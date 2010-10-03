@@ -100,12 +100,10 @@ function JoinServerWindow::onRemovedAsWindow()
 function JoinServerWindow::onWake()
 {
 	JS_HeaderList.setRowById(0,
-		"Game Version" TAB
 		"Server Name" TAB
 		"Ping" TAB
-		"Mod" TAB
-		"Players" TAB
-		"Map Name" TAB
+		"Users" TAB
+		"Info" TAB
 		"Server Index" // <- This will never be visible
 	);
 	JS_HeaderList.setActive(false);
@@ -133,7 +131,7 @@ function JoinServerWindow::join(%this)
 
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%index = getField(JS_ServerList.getRowTextById(%id), 6);
+	%index = getField(JS_ServerList.getRowTextById(%id), 4);
 	if (setServerInfo(%index)) {
 		%conn = new GameConnection(ServerConnection);
 		%conn.setConnectArgs($pref::Player::Name);
@@ -152,18 +150,10 @@ function JoinServerWindow::refreshServer(%this)
 
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%serverindex = getField(JS_serverList.getRowTextById(%id), 6);
+	%serverindex = getField(JS_serverList.getRowTextById(%id), 4);
 	if(setServerInfo(%serverindex)) {
 		querySingleServer( $ServerInfo::Address, 0 );
 	}
-}
-
-//----------------------------------------
-
-function JoinServerWindow::gotoMapHomepage(%this)
-{
-	%id = JS_ServerList.getSelectedId();
-	gotoWebPage(getField(JS_ServerList.getRowTextById(%id), 6));
 }
 
 //----------------------------------------
@@ -185,13 +175,18 @@ function JoinServerWindow::update(%this)
 	%sc = getServerCount();
 	for (%i = 0; %i < %sc; %i++) {
 		setServerInfo(%i);
+
+		%npos = strstr($ServerInfo::Info, "\n");
+		if(%npos > 0)
+			%shortInfo = getSubStr($ServerInfo::Info, 0, %npos);
+		else
+			%shortInfo = "(no summary)";
+
 		JS_ServerList.addRow(%i,
-			$ServerInfo::GameVersion TAB
 			$ServerInfo::Name TAB
 			$ServerInfo::Ping TAB
-			$ServerInfo::ModString TAB
 			$ServerInfo::PlayerCount @ "/" @ $ServerInfo::MaxPlayers TAB
-			$ServerInfo::MissionName TAB
+			%shortInfo TAB
 			%i);  // ServerInfo index stored also
 	}
  
@@ -216,16 +211,11 @@ function JS_ServerList::onSelect(%this, %id, %text)
 {
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%serverindex = getField(JS_ServerList.getRowTextById(%id), 6);
+	%serverindex = getField(JS_ServerList.getRowTextById(%id), 4);
 	
 	if(setServerInfo(%serverindex))
 	{
-        %mapHomepage = $ServerInfo::MissionHomepage;
-        JS_MapHomepage.setText(
-    		"<a:" @ %mapHomepage @ ">" @ %mapHomepage @ "</a>");
-      
         JS_ServerInfo.setText($ServerInfo::Info);
- 
 		JS_RefreshServer.setActive(true);
 		JS_JoinServer.setActive(true);
 	}

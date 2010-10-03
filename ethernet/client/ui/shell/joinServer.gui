@@ -132,7 +132,7 @@ new GuiControl(JoinServerWindowForEditing) {
             hovertime = "1000";
             enumerate = "0";
             resizeCell = "1";
-            columns = "0 100 250 300 350 400 5000";
+            columns = "0 150 200 250 5000";
             fitParentWidth = "0";
             clipColumnText = "0";
          };
@@ -167,7 +167,7 @@ new GuiControl(JoinServerWindowForEditing) {
             hovertime = "1000";
             enumerate = "0";
             resizeCell = "0";
-            columns = "0 100 250 300 350 400";
+            columns = "0 150 200 250";
             fitParentWidth = "0";
             clipColumnText = "1";
          };
@@ -285,36 +285,6 @@ new GuiControl(JoinServerWindowForEditing) {
          Visible = "1";
          hovertime = "1000";
          text = "Server Info:";
-         maxLength = "1024";
-      };
-      new GuiMLTextCtrl(JS_MapHomepage) {
-         canSaveDynamicFields = "0";
-         Profile = "GuiMLTextProfile";
-         HorizSizing = "right";
-         VertSizing = "bottom";
-         position = "90 290";
-         Extent = "420 14";
-         MinExtent = "8 2";
-         canSave = "1";
-         Visible = "1";
-         hovertime = "1000";
-         lineSpacing = "2";
-         allowColorChars = "0";
-         maxChars = "-1";
-         text = "-";
-      };
-      new GuiTextCtrl() {
-         canSaveDynamicFields = "0";
-         Profile = "GuiTextProfile";
-         HorizSizing = "right";
-         VertSizing = "bottom";
-         position = "10 287";
-         Extent = "76 18";
-         MinExtent = "8 2";
-         canSave = "1";
-         Visible = "1";
-         hovertime = "1000";
-         text = "Map homepage:";
          maxLength = "1024";
       };
    };
