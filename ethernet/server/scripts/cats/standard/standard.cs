@@ -140,7 +140,7 @@ datablock PlayerData(RedStandardCat)
 	minJumpSpeed = 20;
 	maxJumpSpeed = 30;
 
-	horizMaxSpeed = 45;
+	horizMaxSpeed = 200;
 	horizResistSpeed = 30;
 	horizResistFactor = 0.35;
 
