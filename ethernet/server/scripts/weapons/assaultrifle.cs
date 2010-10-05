@@ -154,6 +154,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateTransitionOnTimeout[1]      = "Ready";
 		stateTimeoutValue[1]             = 0.5;
 		stateSequence[1]                 = "idle";
+		stateSpinThread[1]               = "SpinUp";
 
 		// ready to fire, just waiting for the trigger...
 		stateName[2]                     = "Ready";
@@ -161,7 +162,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
   		stateTransitionOnNotLoaded[2]    = "Disabled";
 		stateTransitionOnTriggerDown[2]  = "Fire";
         stateArmThread[2]                = "holdrifle";
-		stateSpinThread[2]               = "Stop";
+		stateSpinThread[2]               = "FullSpeed";
 		
 		stateName[3]                     = "Fire";
 		stateTransitionOnTimeout[3]      = "KeepAiming";
@@ -174,7 +175,6 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateArmThread[3]                = "aimrifle";
 		stateSequence[3]                 = "Fire";
 		stateSound[3]                    = AssaultRifleFireSound;
-		stateSpinThread[3]               = "FullSpeed";
 		stateScript[3]                   = "onFire";
 		
 		stateName[4]                     = "KeepAiming";
@@ -184,7 +184,6 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateTransitionOnTimeout[4]      = "Ready";
 		stateWaitForTimeout[4]           = false;
 		stateTimeoutValue[4]             = 2.00;
-		stateSpinThread[4]               = "SpinDown";
 
         // no ammo...
 		stateName[5]                     = "NoAmmo";

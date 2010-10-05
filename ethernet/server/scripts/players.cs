@@ -115,13 +115,13 @@ function PlayerData::onAdd(%this,%obj)
 	%obj.specialWeapon = %obj.client ? %obj.client.specialWeapon : 0;
 	if(%obj.getTeamId() == 1)
 	{
+		%obj.mountImage(RedDiscImage, 1, -1, %obj.hasDisc());
 		%obj.mountImage(RedGrenadeImage, 2, -1, true);
-		%obj.mountImage(RedDiscImage, 3, -1, %obj.hasDisc());
 	}
 	else
 	{
+		%obj.mountImage(BlueDiscImage, 1, -1, %obj.hasDisc());
 		%obj.mountImage(BlueGrenadeImage, 2, -1, true);
-		%obj.mountImage(BlueDiscImage, 3, -1, %obj.hasDisc());
 	}
 	%obj.useWeapon(1);
 
@@ -439,23 +439,6 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 	}
 
 	//--------------------------------------------------------------------------
-	// Secondary fire
-	//--------------------------------------------------------------------------
-	if( %triggerNum == 1 )
-	{
-		if(%val == false)
-		{
-			%obj.setImageTrigger(3, false);
-		}	
-		else if(%obj.getImageLoaded(0) == false)
-		{
-			%obj.noGrenade = true;
-			%obj.setImageTrigger(2, false);
-			%obj.setImageTrigger(3, true);
-		}
-	}
-	
-	//--------------------------------------------------------------------------
 	// Jump
 	//--------------------------------------------------------------------------
 	if( %triggerNum == 2 )
@@ -472,14 +455,6 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 	if( %triggerNum == 3 )
 	{
 		%obj.setImageTrigger(2, %val);
-	}
-
-	//--------------------------------------------------------------------------
-	// Disc
-	//--------------------------------------------------------------------------
-	if( %triggerNum == 4 )
-	{
-		%obj.setImageTrigger(3, %val);
 	}
 
 	//--------------------------------------------------------------------------
@@ -723,8 +698,8 @@ function Player::setDiscs(%this, %numDiscs)
 		messageClient(%this.client, 'MsgNumDiscs', "", %this.numDiscs);
 
 	%hasDisc = %this.hasDisc();
-	%this.setImageLoaded(3, %hasDisc);
-	%this.setImageAmmo(3, %hasDisc);
+	%this.setImageLoaded(1, %hasDisc);
+	%this.setImageAmmo(1, %hasDisc);
 }
 
 function Player::incDiscs(%this)

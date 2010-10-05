@@ -118,14 +118,14 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "~/data/misc/nothing.dts";
+	shapeFile = "~/data/weapons/missilelauncher/image.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
 	mountPoint  = 0;
-	offset		= "0 1 0";
-	rotation	 = "0 0 0";
-	eyeOffset   = "0 0 0";
+	offset      = "0 0 0";
+	rotation    = "0 0 0";
+    eyeOffset   = "0.5 -0.2 -0.2";
 	eyeRotation = "0 0 0 0";
 
 	// Adjust firing vector to eye's LOS point?
@@ -313,6 +313,7 @@ function RedGrenadeLauncherImage::fireBigGrenade(%this, %obj, %slot)
 
 datablock ShapeBaseImageData(BlueGrenadeLauncherImage : RedGrenadeLauncherImage)
 {
+	shapeFile = "~/data/weapons/missilelauncher/image.blue.dts";
 	projectile = BlueGrenadeLauncherProjectile;
     stateFireProjectile[3] = BlueGrenadeLauncherProjectile;
 	stateFireProjectile[4] = BlueGrenadeLauncherProjectile;

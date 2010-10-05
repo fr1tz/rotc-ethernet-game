@@ -372,7 +372,7 @@ MoveMap.bindCmd(keyboard, "ctrl k", "commandToServer('suicide');", "");
 // weapons...
 //------------------------------------------------------------------------------
 
-MoveMap.bindCmd(keyboard, "q", "commandToServer('useWeapon',0);", "");
+MoveMap.bindCmd(keyboard, "0", "commandToServer('useWeapon',0);", "");
 MoveMap.bindCmd(keyboard, "1", "commandToServer('useWeapon',1);", "");
 MoveMap.bindCmd(keyboard, "2", "commandToServer('useWeapon',2);", "");
 MoveMap.bindCmd(keyboard, "3", "commandToServer('useWeapon',3);", "");
@@ -382,7 +382,9 @@ MoveMap.bindCmd(keyboard, "6", "commandToServer('useWeapon',6);", "");
 MoveMap.bindCmd(keyboard, "7", "commandToServer('useWeapon',7);", "");
 MoveMap.bindCmd(keyboard, "8", "commandToServer('useWeapon',8);", "");
 MoveMap.bindCmd(keyboard, "9", "commandToServer('useWeapon',9);", "");
-MoveMap.bindCmd(keyboard, "0", "commandToServer('useWeapon',10);", "");
+MoveMap.bindCmd(keyboard, "q", "commandToServer('useWeapon',10);", "");
+MoveMap.bindCmd(keyboard, "e", "commandToServer('useWeapon',11);", "");
+
 
 function mouseWheelWeaponSelect(%val)
 {
