@@ -42,6 +42,12 @@ function EtherformData::onAdd(%this, %obj)
 	
 	// start singing...
 	%obj.playAudio(1, EtherformSingSound);
+
+	// lights...
+	if(%obj.getTeamId() == 1)
+		%obj.mountImage(RedEtherformLightImage, 3);
+	else
+		%obj.mountImage(BlueEtherformLightImage, 3);
 }
 
 function EtherformData::onDamage(%this, %obj, %delta)

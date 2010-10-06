@@ -394,38 +394,11 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
 	{
 		//echo(" in zone");
         %this.onEnterMissionArea(%obj);
-
-        if(%obj.getClassName() $= "Etherform")
-        {
-            %datablock = WhiteZoneLightImage;
-
-            if(%inEnemyZone)
-            {
-                //echo(" in enemy zone");
-                if(%ownTeamId == 1)
-                    %datablock = BlueZoneLightImage;
-                else
-                    %datablock = RedZoneLightImage;
-            }
-            else if(%inOwnZone)
-            {
-                //echo(" in own zone");
-                if(%ownTeamId == 1)
-                    %datablock = RedZoneLightImage;
-                else
-                    %datablock = BlueZoneLightImage;
-            }
-
-            %obj.mountImage(%datablock, 3);
-        }
 	}
 	else
 	{
 		//echo(" not in zone");
-        %this.onLeaveMissionArea(%obj);
-        
-        if(%obj.getClassName() $= "Etherform")
-    		%obj.unmountImage(3); // remove light
+        %this.onLeaveMissionArea(%obj);  
 	}
 }
 

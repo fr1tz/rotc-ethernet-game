@@ -139,39 +139,6 @@ datablock AudioProfile(ZoneAttackedSound)
 	preload = true;
 };
 
-//-----------------------------------------------------------------------------
-// Territory Zone Lights
-
-datablock ShapeBaseImageData(WhiteZoneLightImage)
-{
-	// basic item properties
-	shapeFile = "~/data/misc/nothing.dts";
-	emap = true;
-
-	// mount point & mount offset...
-	mountPoint  = 4;
-	offset = "0 0 0";
-	
-	// light properties...
-	lightType = "ConstantLight";
-	lightColor = "0.4 0.4 0.4";
-	lightTime = 1000;
-	lightRadius = 10;
-	lightCastsShadows = false;
-	lightAffectsShapes = false;
-
-	stateName[0] = "DoNothing";
-};
-
-datablock ShapeBaseImageData(RedZoneLightImage : WhiteZoneLightImage)
-{
-	lightColor = "0.4 0.0 0.0";
-};
-
-datablock ShapeBaseImageData(BlueZoneLightImage : WhiteZoneLightImage)
-{
-	lightColor = "0.0 0.0 0.4";
-};
 
 //-----------------------------------------------------------------------------
 // Territory Zone
