@@ -362,14 +362,14 @@ function JetConnectionsCheckBox::updateCheckBox()
 function AISaveMissionObjectives()
 {
 	// once we have created all objecitves, save out the mis file
-	if(!isObject(MissionGroup))
+	if(!isObject(MissionEnvironment))
 	{
-		error("No mission exists!");
+		error("No mission environment exists!");
 		return;
 	}
 	
 	// check for read-only
-	%file = "FixMe/missions/" @ $Client::MissionFile;
+	%file = "FixMe/missions/" @ $Client::MissionEnvironmentFile;
 	if(!isWriteableFileName(%file))
 	{
 		error("Mission file '" @ %file @ "' is not writeable.");
@@ -377,16 +377,16 @@ function AISaveMissionObjectives()
 	}
 	
 	// ok, were good to save.
-	missionGroup.save("missions/" @ $Client::MissionFile);
+	MissionEnvironment.save("missions/" @ $Client::MissionEnvironmentFile);
 }
 
 function AIObjectivesLock(%lock)
 {
-	%numTeams = nameToId("MissionGroup/Teams").getCount();
+	%numTeams = nameToId("MissionEnvironment/Teams").getCount();
 
 	for(%j = 0; %j < %numTeams; %j++)
 	{
-		%objGroup = nameToId("MissionGroup/Teams/team" @ %j @ "/AIObjectives");
+		%objGroup = nameToId("MissionEnvironment/Teams/team" @ %j @ "/AIObjectives");
 		if(%objGroup == -1)
 			continue;
 
@@ -412,12 +412,12 @@ function addNewObjective(%type)
 	else 
 		%team = 1;
 	
-	%tGroup = nameToId("MissionGroup/Teams/team" @ %team @ "/AIObjectives");
+	%tGroup = nameToId("MissionEnvironment/Teams/team" @ %team @ "/AIObjectives");
 	
 	if(%tGroup < 1)
 		return;
 		
-	if($InstantGroup $= "MissionGroup")
+	if($InstantGroup $= "MissionEnvironment")
 		$InstantGroup = %tGroup;
 		
 	switch$(%type)

@@ -85,7 +85,7 @@ function AIEFrameSetDlg::onSleep(%this)
 {
 	$AIEdit = false;
 	AIEditorMap.pop();
-	EditorTree.open("MissionGroup");
+	EditorTree.open("MissionEnvironment");
 }
 
 function AIEFrameSetDlg::init(%this)
@@ -139,15 +139,15 @@ function AIEFrameSetDlg::resetFrames(%this)
 
 function AIEFrameSetDlg::addTool(%this, %tool)
 {
-	%group = nameToId("MissionGroup/Teams/team" @ $AIEditor::inspectTeam @ "/AIObjectives");
+	%group = nameToId("MissionEnvironment/Teams/team" @ $AIEditor::inspectTeam @ "/AIObjectives");
 	
 	if(%group == -1)
 		return false;
 	
 	if($AIEditor::inspectTeam == 1)
-		EditorTree.open("MissionGroup/Teams/team1/AIObjectives");
+		EditorTree.open("MissionEnvironment/Teams/team1/AIObjectives");
 	else
-		EditorTree.open("MissionGroup/Teams/team2/AIObjectives");
+		EditorTree.open("MissionEnvironment/Teams/team2/AIObjectives");
 	
 	AIEToolFrameSet.add(%tool);
 	%this.resetFrames();

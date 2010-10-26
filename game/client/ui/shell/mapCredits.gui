@@ -1,0 +1,76 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2008, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(MapCreditsWindowForEditing) {
+	canSaveDynamicFields = "0";
+	Profile = "GuiDefaultProfile";
+	HorizSizing = "right";
+	VertSizing = "bottom";
+	position = "0 0";
+	Extent = "800 600";
+	MinExtent = "8 8";
+	canSave = "1";
+	Visible = "1";
+	hovertime = "1000";
+
+	new GuiWindowCtrl(MapCreditsWindow) {
+		canSaveDynamicFields = "0";
+		Profile = "GuiWindowProfile";
+		HorizSizing = "center";
+		VertSizing = "center";
+		position = "331 208";
+		Extent = "400 300";
+		MinExtent = "150 150";
+		canSave = "1";
+		Visible = "1";
+		hovertime = "1000";
+		text = "Map Credits";
+		maxLength = "255";
+		resizeWidth = "1";
+		resizeHeight = "1";
+		canMove = "1";
+		canClose = "1";
+		canMinimize = "0";
+		canMaximize = "0";
+		minSize = "50 50";
+		closeCommand = "removeWindow(MapCreditsWindow);";
+
+		new GuiScrollCtrl() {
+			canSaveDynamicFields = "0";
+			Profile = "GuiScrollProfile";
+			HorizSizing = "width";
+			VertSizing = "height";
+			position = "10 30";
+			Extent = "380 260";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			hovertime = "1000";
+			willFirstRespond = "1";
+			hScrollBar = "dynamic";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = "0";
+			childMargin = "0 0";
+
+			new GuiMLTextCtrl(MapCreditsWindow_Text) {
+				canSaveDynamicFields = "0";
+				Profile = "GuiMLTextProfile";
+				HorizSizing = "width";
+				VertSizing = "bottom";
+				position = "2 2";
+				Extent = "355 14";
+				MinExtent = "355 14";
+				canSave = "1";
+				Visible = "1";
+				hovertime = "1000";
+				lineSpacing = "2";
+				allowColorChars = "0";
+				maxChars = "-1";
+			};
+		};
+	};
+};
+//--- OBJECT WRITE END ---

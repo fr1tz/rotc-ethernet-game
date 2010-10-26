@@ -23,14 +23,14 @@
 // Phase 1 
 //----------------------------------------------------------------------------
 
-function clientCmdMissionStartPhase1(%seq, %missionFile, %musicTrack)
+function clientCmdMissionStartPhase1(%seq, %missionEnvFile, %musicTrack)
 {
-	$Client::MissionFile = %missionFile;
+	$Client::MissionEnvironmentFile = %missionEnvFile;
 
 	// These need to come after the cls.
 	echo ("*** New Mission: " @ %missionFile);
 	echo ("*** Phase 1: Download Datablocks & Targets");
-	onMissionDownloadPhase1(%missionFile, %musicTrack);
+	onMissionDownloadPhase1(%missionEnvFile, %musicTrack);
 	commandToServer('MissionStartPhase1Ack', %seq);
 }
 

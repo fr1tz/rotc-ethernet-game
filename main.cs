@@ -15,7 +15,7 @@ $GameVersionString = "prototype1.10+devD";
 
 // The "creator" mod is needed for editors and the
 // "share" mod is used to make content available to all mods.
-$defaultMod = "ethernet";
+$defaultMod = "game";
 $userMods = "creator;share;" @ $defaultMod;
 $modcount = 2;
 

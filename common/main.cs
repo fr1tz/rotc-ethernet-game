@@ -52,7 +52,7 @@ function initBaseServer()
 	exec("./server/server.cs");
 	exec("./server/message.cs");
 	exec("./server/commands.cs");
-	exec("./server/mapInfo.cs");
+	exec("./server/missionInfo.cs");
 	exec("./server/missionLoad.cs");
 	exec("./server/missionDownload.cs");
 	exec("./server/clientConnection.cs");

@@ -1,0 +1,18 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2008, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiBackgroundCtrl(ShellDlg) {
+	profile = "GuiContentProfile";
+	horizSizing = "left";
+	vertSizing = "top";
+	position = "0 0";
+	extent = "800 600";
+	minExtent = "8 8";
+	visible = "1";
+};
+//--- OBJECT WRITE END ---
+
+

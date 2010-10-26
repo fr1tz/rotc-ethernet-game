@@ -16,24 +16,16 @@
 // the initial mission info is downloaded to the client.
 $MissionLoadPause = 5000;
 
-// function to execute server-side map script (added for ROTC) -mag
-function executeServerMapScript()
-{
-	echo(" ----- executing server map script ----- ");
-	%script = filePath($MapInfo::File) @ "/" @ $MapInfo::ScriptFile;
-	exec(%script);
-}
-
 //-----------------------------------------------------------------------------
 
-function loadMission( %mapInfoFile, %isFirstMission )
+function loadMission(%missionFile, %isFirstMission)
 {
 	endMission();
 	
-	echo("*** LOADING MISSION: " @ %mapInfoFile);
+	echo("*** LOADING MISSION: " @ %missionFile);
 	echo("*** Stage 1 load");
 	
-	MapInfo::load(%mapInfoFile);
+	MissionInfo::load(%missionFile);
 
 	// Reset all of these
 	clearCenterPrintAll();
@@ -44,11 +36,15 @@ function loadMission( %mapInfoFile, %isFirstMission )
 	$missionRunning = false;
 	
 	// set server vars...
-	$Server::MissionFile = filePath($MapInfo::File) @ "/" @ $MapInfo::MissionFile;
-	$Server::MissionName = $MapInfo::Name;
-	
-	executeServerMapScript();
+	//$Server::MissionFile = filePath($MapInfo::File) @ "/" @ $MapInfo::MissionFile;
+	$Server::MissionFile = %missionFile;
+	$Server::MissionName = "";
+	$Server::MissionType = "";
 
+	exec($MissionInfo::ScriptFile);
+
+	initMission();
+	
 	// Download map info to the clients
 	%count = ClientGroup.getCount();
 	for( %cl = 0; %cl < %count; %cl++ ) {
@@ -76,11 +72,16 @@ function loadMissionStage2()
 	echo("*** Stage 2 load");
 	$instantGroup = ServerGroup;
 
-	// Make sure the mission exists
-	%file = $Server::MissionFile;
+	// Make sure the mission environment exists
+	if(getSubStr($MissionInfo::EnvFile, 0, 2) $= "./")
+		%file = filePath($MissionInfo::File) @ "/" @ $MissionInfo::EnvFile;
+	else
+		%file = $MissionInfo::EnvFile;
+
+	echo("Loading mission environment file:" SPC %file);
 	
 	if( !isFile( %file ) ) {
-		error( "Could not find mission " @ %file );
+		error( "Could not find mission environment " @ %file );
 		return;
 	}
 
@@ -88,15 +89,17 @@ function loadMissionStage2()
 	// to caching mission lighting.
 	$missionCRC = getFileCRC( %file );
 
-	// Exec the mission, objects are added to the ServerGroup
+	// Exec the mission environment, objects are added to the ServerGroup
 	exec(%file);
 	
 	// If there was a problem with the load, let's try another mission
-	if( !isObject(MissionGroup) ) {
-		error( "No 'MissionGroup' found in mission \"" @ $missionName @ "\"." );
+	if( !isObject(MissionEnvironment) ) {
+		error( "No 'MissionEnvironment' found in file \"" @ %file @ "\"." );
 		schedule( 3000, ServerGroup, CycleMissions );
 		return;
 	}
+
+	$Server::MissionEnvironmentFile = %file;
 
 	// Mission cleanup group
 	new SimGroup( MissionCleanup );
@@ -123,7 +126,7 @@ function loadMissionStage2()
 
 function endMission()
 {
-	if (!isObject( MissionGroup ))
+	if (!isObject(MissionEnvironment))
 		return;
 
 	echo("*** ENDING MISSION");
@@ -141,7 +144,7 @@ function endMission()
 	}
 	
 	// Delete everything
-	MissionGroup.delete();
+	MissionEnvironment.delete();
 	MissionCleanup.delete();
 
 	$ServerGroup.delete();

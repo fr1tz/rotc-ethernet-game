@@ -1,0 +1,15 @@
+//------------------------------------------------------------------------------
+// Map info file
+//------------------------------------------------------------------------------
+
+$MapInfo::Name     = "tutorial (sp)";
+$MapInfo::Homepage = "ethernet.wasted.ch";
+
+$MapInfo::MissionFile = "map.mis";
+$MapInfo::ScriptFile  = "scripts/map.cs";
+
+$MapInfo::DescFile = "desc.rml";
+$MapInfo::CreditsFile = "credits.rml";
+$MapInfo::CopyrightFile = "copyright.rml";
+
+

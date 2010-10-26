@@ -329,8 +329,8 @@ function EditorNewMission()
 {
 	if(ETerrainEditor.isMissionDirty || ETerrainEditor.isDirty || EWorldEditor.isDirty)
 	{
-		MessageBoxYesNo("Mission Modified", "Would you like to save changes to the current mission \"" @
-			$Server::MissionFile @ "\" before creating a new mission?", "EditorDoNewMission(true);", "EditorDoNewMission(false);");
+		MessageBoxYesNo("Mission Modified", "Would you like to save changes to the current mission environment \"" @
+			$Server::MissionEnvironmentFile @ "\" before creating a new mission?", "EditorDoNewMission(true);", "EditorDoNewMission(false);");
 	}
 	else
 		EditorDoNewMission(false);
@@ -355,9 +355,9 @@ function EditorSaveMission()
 	// just save the mission without renaming it
 
 	// first check for dirty and read-only files:
-	if((EWorldEditor.isDirty || ETerrainEditor.isMissionDirty) && !isWriteableFileName($Server::MissionFile))
+	if((EWorldEditor.isDirty || ETerrainEditor.isMissionDirty) && !isWriteableFileName($Server::MissionEnvironmentFile))
 	{
-		MessageBoxOK("Error", "Mission file \""@ $Server::MissionFile @ "\" is read-only.");
+		MessageBoxOK("Error", "Mission file \""@ $Server::MissionEnvironmentFile @ "\" is read-only.");
 		return false;
 	}
 	if(ETerrainEditor.isDirty && !isWriteableFileName(Terrain.terrainFile))
@@ -369,7 +369,7 @@ function EditorSaveMission()
 	// now write the terrain and mission files out:
 
 	if(EWorldEditor.isDirty || ETerrainEditor.isMissionDirty)
-		MissionGroup.save($Server::MissionFile);
+		MissionEnvironment.save($Server::MissionEnvironmentFile);
 	if(ETerrainEditor.isDirty)
 		Terrain.save(Terrain.terrainFile);
 	EWorldEditor.isDirty = false;
@@ -384,15 +384,15 @@ function EditorDoSaveAs(%missionName)
 {
 	ETerrainEditor.isDirty = true;
 	EWorldEditor.isDirty = true;
-	%saveMissionFile = $Server::MissionFile;
+	%saveMissionFile = $Server::MissionEnvironmentFile;
 	%saveTerrName = Terrain.terrainFile;
 
-	$Server::MissionFile = %missionName;
+	$Server::MissionEnvironmentFile = %missionName;
 	Terrain.terrainFile = filePath(%missionName) @ "/" @ fileBase(%missionName) @ ".ter";
 
 	if(!EditorSaveMission())
 	{
-		$Server::MissionFile = %saveMissionFile;
+		$Server::MissionEnvironmentFile = %saveMissionFile;
 		Terrain.terrainFile = %saveTerrName;
 	}
 }
@@ -400,7 +400,7 @@ function EditorDoSaveAs(%missionName)
 function EditorSaveMissionAs()
 {
 	if ($BlockSave!=1) {
-		getSaveFilename("*.mis", "EditorDoSaveAs", $Server::MissionFile);
+		getSaveFilename("*.env", "EditorDoSaveAs", $Server::MissionEnvironmentFile);
 	}  else {
 		echo("To enable mission saving, make \$BlockSave=0.");
 		MessageBoxOK("Save Function Disabled","The Save Mission function has been disabled for this demo walkthrough.\n\n  If you are sure you want to make changes to this mission and save them, go to the console (tilde \"~\" key) and type \"$BlockSave=0;\" first.");
@@ -424,7 +424,7 @@ function EditorDoLoadMission(%file)
 function EditorSaveBeforeLoad()
 {
 	if(EditorSaveMission())
-		getLoadFilename("*.mis", "EditorDoLoadMission");
+		getLoadFilename("*.env", "EditorDoLoadMission");
 }
 
 function EditorDoNewMission(%saveFirst)
@@ -432,7 +432,7 @@ function EditorDoNewMission(%saveFirst)
 	if(%saveFirst)
 		EditorSaveMission();
 
-	EditorDoLoadMission(expandFilename("~/data/newMission.mis"));
+	EditorDoLoadMission(expandFilename("~/data/newMission.env"));
 	EditorGui.saveAs = true;
 	EWorldEditor.isDirty = true;
 	ETerrainEditor.isDirty = true;
@@ -442,11 +442,11 @@ function EditorOpenMission()
 {
 	if(ETerrainEditor.isMissionDirty || ETerrainEditor.isDirty || EWorldEditor.isDirty)
 	{
-		MessageBoxYesNo("Mission Modified", "Would you like to save changes to the current mission \"" @
-			$Server::MissionFile @ "\" before opening a new mission?", "EditorSaveBeforeLoad();", "getLoadFilename(\"*.mis\", \"EditorDoLoadMission\");");
+		MessageBoxYesNo("Mission Modified", "Would you like to save changes to the current mission environment \"" @
+			$Server::MissionEnvironmentFile @ "\" before opening a new mission?", "EditorSaveBeforeLoad();", "getLoadFilename(\"*.env\", \"EditorDoLoadMission\");");
 	}
 	else
-		getLoadFilename("*.mis", "EditorDoLoadMission");
+		getLoadFilename("*.env", "EditorDoLoadMission");
 }
 
 function EditorMenuBar::onMenuSelect(%this, %menuId, %menu)
@@ -815,7 +815,7 @@ function EditorGui::setWorldEditorVisible(%this)
 	EditorMenuBar.setMenuVisible("Action", false);
 	EditorMenuBar.setMenuVisible("Brush", false);
 	EWorldEditor.makeFirstResponder(true);
-	EditorTree.open(MissionGroup,true);
+	EditorTree.open(MissionEnvironment,true);
 }
 
 function EditorGui::setTerrainEditorVisible(%this)
@@ -1021,7 +1021,7 @@ function EditorTree::onClearSelected(%this)
 
 function EditorTree::init(%this)
 {
-	//%this.open(MissionGroup);
+	//%this.open(MissionEnvironment);
 
 	// context menu
 	new GuiControl(ETContextPopupDlg)
@@ -1168,7 +1168,7 @@ function WorldEditor::export(%this)
 
 function WorldEditor::doExport(%this, %file)
 {
-	missionGroup.save("~/editor/" @ %file, true);
+	MissionEnvironment.save("~/editor/" @ %file, true);
 }
 
 function WorldEditor::import(%this)
@@ -1278,7 +1278,7 @@ function WorldEditorToolbarDlg::init(%this)
 function Creator::init( %this ) 
 {
 	//%this.clear();
-	$InstantGroup = "MissionGroup";
+	$InstantGroup = "MissionEnvironment";
 
 	// ---------- INTERIORS	 
 	%base = %this.insertItem( 0, "Interiors" );
@@ -2756,7 +2756,7 @@ function Heightfield::saveBitmap(%name)
 {
 	if(%name $= "")
 		getSaveFilename("*.png", "Heightfield::doSaveBitmap",
-			$TerraformerHeightfieldDir @ "/" @ fileBase($Client::MissionFile) @ ".png");
+			$TerraformerHeightfieldDir @ "/" @ fileBase($Client::MissionEnvironmentFile) @ ".png");
 	else
 		Heightfield::doSaveBitmap(%name);
 }

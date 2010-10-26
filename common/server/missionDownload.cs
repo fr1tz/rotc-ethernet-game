@@ -37,7 +37,7 @@ function GameConnection::loadMission(%this)
 	else
 	{
 		commandToClient(%this, 'MissionStartPhase1', $missionSequence,
-			$Server::MissionFile, MissionGroup.musicTrack);
+			$Server::MissionEnvironmentFile);
 			
 		echo("*** Sending mission load to client: " @ $Server::MissionFile);
 	}

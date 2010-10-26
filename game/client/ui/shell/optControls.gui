@@ -1,0 +1,177 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2008, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(OptControlsWindowForEditing) {
+   canSaveDynamicFields = "0";
+   Profile = "GuiDefaultProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   position = "0 0";
+   Extent = "640 480";
+   MinExtent = "8 8";
+   canSave = "1";
+   Visible = "1";
+   hovertime = "1000";
+
+   new GuiWindowCtrl(OptControlsWindow) {
+      canSaveDynamicFields = "0";
+      Profile = "GuiWindowProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      position = "113 26";
+      Extent = "476 378";
+      MinExtent = "8 8";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      text = "Controls";
+      maxLength = "255";
+      resizeWidth = "0";
+      resizeHeight = "0";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "0";
+      canMaximize = "0";
+      minSize = "50 50";
+      closeCommand = "removeWindow(OptControlsWindow);";
+
+      new GuiScrollCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiScrollProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "10 56";
+         Extent = "457 293";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         willFirstRespond = "1";
+         hScrollBar = "alwaysOff";
+         vScrollBar = "alwaysOn";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiTextListCtrl(OptRemapList) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiTextListProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "2 2";
+            Extent = "435 336";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            AltCommand = "OptRemapList.doRemap();";
+            hovertime = "1000";
+            enumerate = "0";
+            resizeCell = "1";
+            columns = "0 260";
+            fitParentWidth = "1";
+            clipColumnText = "0";
+         };
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "15 32";
+         Extent = "64 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Control Name";
+         maxLength = "255";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "176 32";
+         Extent = "72 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Control Binding";
+         maxLength = "255";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "10 353";
+         Extent = "86 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Mouse sensitivity:";
+         maxLength = "1024";
+      };
+      new GuiSliderCtrl(OptControlsMouseSensitivity) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiSliderProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "105 354";
+         Extent = "241 16";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "OptControlsUpdateMouse();";
+         hovertime = "1000";
+         range = "0 1";
+         ticks = "20";
+         value = "0.198795";
+      };
+      new GuiTextEditCtrl(OptControlsMouseSensitivityNum) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextEditProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "355 353";
+         Extent = "27 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "OptControlsUpdateMouse();";
+         hovertime = "1000";
+         text = "-";
+         maxLength = "4";
+         historySize = "0";
+         password = "0";
+         tabComplete = "0";
+         sinkAllKeyEvents = "0";
+         password = "0";
+         passwordMask = "*";
+      };
+      new GuiCheckBoxCtrl(OptControlsMouseInvertYAxis) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiCheckBoxProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "389 353";
+         Extent = "77 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "OptControlsUpdateMouse();";
+         hovertime = "1000";
+         text = "Invert y-axis";
+         groupNum = "-1";
+         buttonType = "ToggleButton";
+         useInactiveState = "0";
+      };
+   };
+};
+//--- OBJECT WRITE END ---
+
+

@@ -1,0 +1,17 @@
+//------------------------------------------------------------------------------
+// Map info file
+//------------------------------------------------------------------------------
+
+$MapInfo::Name     = "HighTeX";
+$MapInfo::Rev      = 0;
+$MapInfo::RevDate  = "Mar. 7, 2009";
+$MapInfo::Homepage = "maps.ethernet.wasted.ch";
+
+$MapInfo::MissionFile = "hightex.mis";
+$MapInfo::ScriptFile  = "hightex.cs";
+
+$MapInfo::DescFile = "hightex.desc.rml";
+$MapInfo::CopyrightFile = "hightex.copyright.rml";
+$MapInfo::LicenseFile = "";
+$MapInfo::CreditsFile = "hightex.credits.rml";
+

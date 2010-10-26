@@ -1,0 +1,97 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2008, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(TeamplayDlg) {
+	profile = "GuiModelessDialogProfile";
+	horizSizing = "left";
+	vertSizing = "top";
+	position = "0 0";
+	extent = "800 600";
+	minExtent = "8 8";
+	visible = "1";
+		helpTag = "0";
+		noCursor = "1";
+
+	new GuiBitmapCtrl() {
+		profile = "HudScrollProfile";
+		horizSizing = "left";
+		vertSizing = "top";
+		position = "631 288";
+		extent = "150 100";
+		minExtent = "8 8";
+		visible = "1";
+		bitmap = "./hudfill.png";
+		wrap = "0";
+			helpTag = "0";
+			
+		new GuiInputCtrl(TeamplayDlgInputCtrl) {
+			profile = "GuiInputCtrlProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "64 64";
+			minExtent = "8 8";
+			visible = "1";
+			helpTag = "0";
+		};
+
+		new GuiTextCtrl() {
+			profile = "HudTextProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "50 5";
+			extent = "50 20";
+			minExtent = "8 8";
+			visible = "1";
+			text = "select option";
+			maxLength = "255";
+				helpTag = "0";
+		};
+		new GuiMLTextCtrl(TeamplayDlgText) {
+			profile = "HudTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "10 20";
+			extent = "130 12";
+			minExtent = "8 2";
+			visible = "1";
+			lineSpacing = "2";
+			allowColorChars = "0";
+			maxChars = "-1";
+			text = "--- stand by ---";
+		};
+	};
+};
+//--- OBJECT WRITE END ---
+
+function TeamplayDlg::onWake(%this)
+{
+	TeamplayDlgText.setText("");
+	TeamplayDlgText.addText("W: create waypoint at current tagged position\n",false);
+	TeamplayDlgText.addText("T: teleport to selected player\n",false);
+	TeamplayDlgText.addText("C: get currently tagged position from player\n",false);
+}
+
+function TeamplayDlgInputCtrl::onInputEvent( %this, %device, %action )
+{
+	if ( %device $= "keyboard" )
+	{
+		// cancel...
+		if ( %action $= "escape" )
+		{
+			// do nothing...
+			Canvas.popDialog(TeamplayDlg);
+			return;
+		}
+		
+		if( %action $= "t" )
+			commandToServer('Teleport',playerListHudList.getSelectedId());
+		else
+			commandToServer('TeamplayCommand',%action,playerListHudList.getSelectedId());
+			
+		Canvas.popDialog(TeamplayDlg);
+	}
+}

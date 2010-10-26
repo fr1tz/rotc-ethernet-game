@@ -20,15 +20,16 @@ function portInit(%port)
 	}
 }
  
-function createServer(%serverType, %mapInfoFile)
+function createServer(%serverType, %missionFile)
 {
-	if(%mapInfoFile $= "")
+	if(%missionFile $= "")
 	{
-		error("createServer: no map info file specified!");
+		error("createServer: no .mis file specified!");
 		return;
 	}
 	
 	destroyServer();
+	initServer();
 	
 	//
 	$missionSequence = 0;
@@ -52,10 +53,20 @@ function createServer(%serverType, %mapInfoFile)
 	$ServerGroup = new SimGroup(ServerGroup);
 	$MaterialMappings = new Array(MaterialMappings);
 	onServerCreated();
-	loadMission(%mapInfoFile, true);
+	loadMission(%missionFile, true);
 }
 
 //-----------------------------------------------------------------------------
+
+function initServer()
+{
+	// Server::Status is returned in the Game Info Query and represents the
+	// current status of the server. This string sould be very short.
+	$Server::Status = "Unknown";
+
+	// Load basic server functionality
+	initBaseServer();
+}
 
 function destroyServer()
 {
@@ -69,8 +80,8 @@ function destroyServer()
 	onServerDestroyed();
 
 	// Delete all the server objects
-	if (isObject(MissionGroup))
-		MissionGroup.delete();
+	if (isObject(MissionEnvironment))
+		MissionEnvironment.delete();
 	if (isObject(MissionCleanup))
 		MissionCleanup.delete();
 	if (isObject($MaterialMappings))

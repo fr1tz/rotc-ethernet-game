@@ -1,0 +1,272 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2008, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(StartServerWindowForEditing) {
+	canSaveDynamicFields = "0";
+	Profile = "GuiDefaultProfile";
+	HorizSizing = "right";
+	VertSizing = "bottom";
+	position = "0 0";
+	Extent = "800 600";
+	MinExtent = "8 8";
+	canSave = "1";
+	Visible = "1";
+	hovertime = "1000";
+
+	new GuiWindowCtrl(StartServerWindow) {
+		canSaveDynamicFields = "0";
+		Profile = "GuiWindowProfile";
+		HorizSizing = "center";
+		VertSizing = "center";
+		position = "34 30";
+		Extent = "500 420";
+		MinExtent = "8 8";
+		canSave = "1";
+		Visible = "1";
+		hovertime = "1000";
+		text = "Start Server";
+		maxLength = "255";
+		resizeWidth = "0";
+		resizeHeight = "0";
+		canMove = "1";
+		canClose = "1";
+		canMinimize = "1";
+		canMaximize = "0";
+		minSize = "50 50";
+		closeCommand = "removeWindow(StartServerWindow);";
+
+		new GuiScrollCtrl() {
+			canSaveDynamicFields = "0";
+			Profile = "GuiScrollProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "10 75";
+			Extent = "270 310";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			hovertime = "1000";
+			willFirstRespond = "1";
+			hScrollBar = "dynamic";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = "0";
+			childMargin = "0 0";
+
+			new GuiMLTextEditCtrl(SS_ServerInfo) {
+				canSaveDynamicFields = "0";
+				Profile = "GuiMLTextEditProfile";
+				HorizSizing = "width";
+				VertSizing = "height";
+				position = "2 2";
+				Extent = "245 310";
+				MinExtent = "245 310";
+				canSave = "1";
+				Visible = "1";
+				hovertime = "1000";
+				lineSpacing = "2";
+				allowColorChars = "1";
+				maxChars = "255";
+			};
+		};
+		new GuiScrollCtrl() {
+			canSaveDynamicFields = "0";
+			Profile = "GuiScrollProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "290 75";
+			Extent = "200 310";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			hovertime = "1000";
+			willFirstRespond = "1";
+			hScrollBar = "dynamic";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = "0";
+			childMargin = "0 0";
+
+			new GuiTextListCtrl(SS_missionList) {
+				canSaveDynamicFields = "0";
+				Profile = "GuiTextArrayProfile";
+				HorizSizing = "width";
+				VertSizing = "bottom";
+				position = "2 2";
+				Extent = "178 8";
+				MinExtent = "8 8";
+				canSave = "1";
+				Visible = "1";
+				hovertime = "1000";
+				enumerate = "0";
+				resizeCell = "1";
+				columns = "0";
+				fitParentWidth = "1";
+				clipColumnText = "0";
+			};
+			new GuiMLTextCtrl(SS_NoMaps_Text) {
+				canSaveDynamicFields = "0";
+				Profile = "GuiMLTextProfile";
+				HorizSizing = "right";
+				VertSizing = "bottom";
+				position = "0 110";
+				Extent = "170 14";
+				MinExtent = "170 10";
+				canSave = "1";
+				Visible = "0";
+				hovertime = "1000";
+				lineSpacing = "2";
+				allowColorChars = "0";
+				maxChars = "-1";
+			};
+		};
+		new GuiTextCtrl() {
+			canSaveDynamicFields = "0";
+			Profile = "GuiTextProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "292 55";
+			Extent = "56 18";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			hovertime = "1000";
+			text = "Select map:";
+			maxLength = "255";
+		};
+		new GuiButtonCtrl(SS_StartMissionButton) {
+			canSaveDynamicFields = "0";
+			Profile = "GuiButtonProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "410 390";
+			Extent = "80 20";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			Command = "SS_StartMission();";
+			hovertime = "1000";
+			text = "Start Server";
+			groupNum = "-1";
+			buttonType = "PushButton";
+		};
+		new GuiTextEditCtrl() {
+			canSaveDynamicFields = "0";
+			Profile = "GuiTextEditProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "80 30";
+			Extent = "250 18";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			Variable = "Pref::Server::Name";
+			hovertime = "1000";
+			maxLength = "24";
+			historySize = "0";
+			password = "0";
+			tabComplete = "0";
+			sinkAllKeyEvents = "0";
+			password = "0";
+			passwordMask = "*";
+		};
+		new GuiTextCtrl() {
+			canSaveDynamicFields = "0";
+			Profile = "GuiTextProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "10 30";
+			Extent = "65 18";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			hovertime = "1000";
+			text = "Server name:";
+			maxLength = "255";
+		};
+		new GuiCheckBoxCtrl(ML_isMultiplayer) {
+			canSaveDynamicFields = "0";
+			Profile = "GuiCheckBoxProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "422 27";
+			Extent = "69 23";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			Variable = "Pref::HostMultiPlayer";
+			hovertime = "1000";
+			text = "Multiplayer";
+			groupNum = "-1";
+			buttonType = "ToggleButton";
+			useInactiveState = "0";
+		};
+		new GuiTextCtrl() {
+			canSaveDynamicFields = "0";
+			Profile = "GuiTextProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "10 55";
+			Extent = "57 18";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			hovertime = "1000";
+			text = "Server info:";
+			maxLength = "255";
+		};
+		new GuiTextCtrl() {
+			canSaveDynamicFields = "0";
+			Profile = "GuiTextProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "340 30";
+			Extent = "22 18";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			hovertime = "1000";
+			text = "Port:";
+			maxLength = "255";
+		};
+		new GuiTextEditCtrl() {
+			canSaveDynamicFields = "0";
+			Profile = "GuiTextEditProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "370 30";
+			Extent = "40 18";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			Variable = "Pref::Server::Port";
+			hovertime = "1000";
+			maxLength = "255";
+			historySize = "0";
+			password = "0";
+			tabComplete = "0";
+			sinkAllKeyEvents = "0";
+			password = "0";
+			passwordMask = "*";
+		};
+		new GuiButtonCtrl(SS_ShowMapInfoButton) {
+			canSaveDynamicFields = "0";
+			Profile = "GuiButtonProfile";
+			HorizSizing = "right";
+			VertSizing = "bottom";
+			position = "320 390";
+			Extent = "80 20";
+			MinExtent = "8 8";
+			canSave = "1";
+			Visible = "1";
+			Command = "SS_ShowMapInfo();";
+			hovertime = "1000";
+			text = "Map Info";
+			groupNum = "-1";
+			buttonType = "PushButton";
+		};
+	};
+};
+//--- OBJECT WRITE END ---
+
