@@ -28,7 +28,7 @@ datablock AudioProfile(GrenadeBounceSound)
 
 datablock AudioProfile(GrenadeExplodeSound)
 {
-   filename = "~/data/sfx/explosion5.wav";
+   filename = "~/data/sfx/explosion7.wav";
    description = AudioFar3D;
 	preload = true;
 };
