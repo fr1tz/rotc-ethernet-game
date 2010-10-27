@@ -1,5 +1,29 @@
-This file is maintained to keep track of copyrighted 3rd-party
-works that were used to create "Revenge Of The Cats: Ethernet".
+This file is maintained to keep track of contributions and copyrighted
+3rd-party works that were used to create "Revenge Of The Cats: Ethernet".
+
+----------------------------------------------------------------------------------
+
+ethernet/data/sfx/fire6.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+----------------------------------------------------------------------------------
+
+ethernet/data/sfx/fire7.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+----------------------------------------------------------------------------------
+
+ethernet/data/sfx/explosion7.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+----------------------------------------------------------------------------------
+
+ethernet/data/sfx/deploy1.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
 
 ----------------------------------------------------------------------------------
 
