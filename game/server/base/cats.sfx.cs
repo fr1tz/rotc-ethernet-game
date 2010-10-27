@@ -10,7 +10,7 @@
 
 datablock AudioProfile(CatSpawnSound)
 {
-	filename	 = "~/data/players/shared/sound.spawn.wav";
+	filename	 = "~/data/sfx/deploy1.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
