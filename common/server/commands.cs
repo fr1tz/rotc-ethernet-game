@@ -31,7 +31,6 @@ function serverCmdSADSetPassword(%client, %password)
 		$Pref::Server::AdminPassword = %password;
 }
 
-
 //----------------------------------------------------------------------------
 // Server chat message handlers
 
@@ -47,5 +46,13 @@ function serverCmdMessageSent(%client, %text)
 	if(strlen(%text) >= $Pref::Server::MaxChatLen)
 		%text = getSubStr(%text, 0, $Pref::Server::MaxChatLen);
 	chatMessageAll(%client, '\c4%1: %2', %client.name, %text);
+}
+
+//----------------------------------------------------------------------------
+// Server commands wrapper
+
+function serverCmdSimpleCommand(%client, %cmd, %arg)
+{
+	call("serverCmd" @ %cmd, %client, %arg);
 }
 

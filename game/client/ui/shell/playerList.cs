@@ -9,14 +9,12 @@
 //-----------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
-// Hook into the client update messages to maintain our player list
-// and scoreboard.
+// Hook into the client update messages to maintain our player list.
 //-----------------------------------------------------------------------------
 
 addMessageCallback('MsgClientJoin', handleClientJoin);
 addMessageCallback('MsgClientDrop', handleClientDrop);
 addMessageCallback('MsgClientJoinTeam', handleClientJoinTeam);
-addMessageCallback('MsgClientScoreChanged', handleClientScoreChanged);
 
 //-----------------------------------------------------------------------------
 
@@ -35,15 +33,10 @@ function handleClientDrop(%msgType, %msgString, %clientName, %clientId)
 	PlayerListWindow.remove(%clientId);
 }
 
-function handleClientScoreChanged(%msgType, %msgString, %score, %clientId)
-{
-	PlayerListWindow.updateScore(%clientId,%score);
-}
-
 // PlayerListWindowList field layout:
 //	 0: player name + tag
 //	 1: team name
-//	 2: score
+//	 2: unused
 //	 3: team id
 
 function PlayerListWindow::update(%this,%clientId,%name,%teamName,%teamId,%isSuperAdmin,%isAdmin,%isAI,%score)
@@ -65,14 +58,6 @@ function PlayerListWindow::update(%this,%clientId,%name,%teamName,%teamId,%isSup
 		PlayerListWindowList.setRowById(%clientId, %text);
 
 	// sort by team
-	PlayerListWindowList.sortNumerical(3);
-}
-
-function PlayerListWindow::updateScore(%this,%clientId,%score)
-{
-	%text = PlayerListWindowList.getRowTextById(%clientId);
-	%text = setField(%text,2,%score);
-	PlayerListWindowList.setRowById(%clientId, %text);
 	PlayerListWindowList.sortNumerical(3);
 }
 

@@ -172,4 +172,132 @@ function serverCmdInstantGrenadeThrow(%client)
     %player.setImageTrigger(2, false);
 }
 
+//-----------------------------------------------------------------------------
 
+function serverCmdMainMenu(%client)
+{
+	%client.clearMenuText();
+	%client.addMenuText(
+		"Welcome to" SPC $Pref::Server::Name SPC ".\n\n" @
+		$Pref::Server::Info @ "\n\n" @
+		"<spush><font:Arial:24>Main Menu<spop>\n\n" @
+		"   [<a:cmd JoinTeam 0>Become observer</a>]\n" @
+		"   [<a:cmd JoinTeam 1>Become red</a>]\n" @
+		"   [<a:cmd JoinTeam 2>Become blue</a>]\n\n" @
+		"   \>\> <a:cmd ShowPlayerList>Detailed Player List</a>\n" @
+		""
+	);
+}
+
+function serverCmdShowPlayerList(%client, %show)
+{
+	%client.clearMenuText();
+	%client.addMenuText(
+		"\<\< <a:cmd MainMenu>Back</a>\n\n" @
+		"<spush><font:Arial:24>Detailed Player List" SPC
+		"[ <a:cmd ShowPlayerList" SPC %show @ ">Refresh</a> ]<spop>\n\n" @
+		""
+	);
+
+	if(%show $= "")
+		%show = "latency";
+
+	%array = new Array();
+
+	%count = ClientGroup.getCount();
+	for(%cl= 0; %cl < %count; %cl++)
+	{
+		%k = ClientGroup.getObject(%cl);
+		%s = %k.stats;
+
+		if(%show $= "latency")
+			%v = %k.getPing();
+		else if(%show $= "dmgdealt")
+			%v = %s.damageDealt;
+		else if(%show $= "dmgtaken")
+			%v = %s.healthLost;
+		else if(%show $= "dmgratio")
+			%v = trimStat(%s.damageDealt / %s.healthLost);
+		else if(%show $= "time")
+			%v = trimStat(($Sim::Time-%s.joinTime)/60);
+			
+		%array.push_back(%k, %v);
+	}
+
+	%array.sortnd();
+
+	if(%show $= "latency")
+		%showtext = "Latency (MS)";
+	else if(%show $= "dmgdealt")
+		%showtext = "Damage dealt";
+	else if(%show $= "dmgtaken")
+		%showtext = "Damage taken";
+	else if(%show $= "dmgratio")
+		%showtext = "Damage ratio";
+	else if(%show $= "time")
+		%showtext = "Time played (mins)";
+
+	%client.addMenuText(
+		"Show:\n" @
+		"<lmargin:25>" @
+		"<a:cmd ShowPlayerList latency>Latency</a> |" SPC
+		"<a:cmd ShowPlayerList dmgdealt>Damage dealt</a> |" SPC
+		"<a:cmd ShowPlayerList dmgtaken>Damage taken</a> |" SPC
+		"<a:cmd ShowPlayerList dmgratio>Damage ratio</a> |" SPC
+		"<a:cmd ShowPlayerList time>Time played</a>" @
+		"<lmargin:0>\n\n" @
+		"<tab:100, 175, 300, 400>" @
+		"Name\tTeam" TAB %showtext @ "\n\n" @
+		""
+	);
+
+	%idx = %array.moveFirst();
+	while(%idx != -1)
+	{
+		%k = %array.getKey(%idx);
+		%v = %array.getValue(%idx);
+		
+		%name = %k.nameBase;
+		if(%k.team == $Team0)
+			%team = "Observers";
+		else if(%k.team == $Team1)
+			%team = "Reds";
+		else
+			%team = "Blues";
+
+		if(%k == %client)
+			%client.addMenuText("<spush><color:FF00FF>");
+
+		%client.addMenuText(%name TAB %team TAB %v TAB 
+			"\>\> <a:cmd ShowPlayerInfo" SPC %k @ ">More</a>\n");
+
+		if(%k == %client)
+			%client.addMenuText("<spop>");
+
+		%idx = %array.moveNext();
+	}
+
+
+	%array.delete();
+}
+
+function serverCmdShowPlayerInfo(%client, %player)
+{
+	if(!isObject(%player))
+		return;
+
+	%stats = %player.stats;
+
+	%client.clearMenuText();
+	%client.addMenuText(
+		"\<\< <a:cmd ShowPlayerList>Back</a>\n\n" @
+		"<spush><font:Arial:24>Info on" SPC %player.nameBase @ 
+		" [ <a:cmd ShowPlayerInfo" SPC %player @ ">Refresh</a> ]<spop>\n\n" @
+		"<tab:100, 200, 300, 400>" @
+		"Time played:" TAB trimStat(($Sim::Time-%stats.joinTime)/60) SPC "mins" @ "\n" @
+		"Damage dealt:" TAB trimStat(%stats.damageDealt) @ "\n" @
+		"Damage taken:" TAB trimStat(%stats.healthLost) @ "\n" @
+		"Damage ratio:" TAB trimStat(%stats.damageDealt / %stats.healthLost) @ "\n" @
+		""
+	);
+}

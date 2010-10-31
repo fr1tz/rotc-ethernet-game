@@ -342,7 +342,7 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
     }
     if(%realSourceObject.client)
     {
-        %realSourceObject.client.stats.healthTaken += %damageDealt;
+        %realSourceObject.client.stats.damageDealt += %damageDealt;
         %realSourceObject.client.updateStats();
     }
 

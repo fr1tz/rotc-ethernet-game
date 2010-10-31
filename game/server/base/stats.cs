@@ -18,7 +18,7 @@ function trimStat(%stat)
 
 function GameConnection::updateStats(%this)
 {
-    %this.stats.kills = %this.stats.healthTaken / 75;
+    %this.stats.kills = %this.stats.damageDealt / 75;
     %this.stats.deaths = %this.stats.healthLost / 75;
 	%this.score = trimStat(%this.stats.kills) SPC "/" SPC trimStat(%this.stats.deaths);
 }

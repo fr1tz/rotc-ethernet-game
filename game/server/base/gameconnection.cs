@@ -40,11 +40,10 @@ function GameConnection::onClientEnterGame(%this)
     // ScriptObject used to store statistics...
 	%this.stats = new ScriptObject()
     {
-        healthTaken = 0;
+		joinTime = $Sim::Time;
+        damageDealt = 0;
         healthLost = 0;
 	};
-    %this.score = "- / -";
-    %this.updateScoreOnClients();
 	
 	// "simple control (tm)" info...
 	%this.simpleControl = new Array();
@@ -71,6 +70,8 @@ function GameConnection::onClientEnterGame(%this)
 
 	// Start sky color thread.
 	%this.updateSkyColor();
+
+	serverCmdMainMenu(%this);
 }
 
 // *** callback function: called by script code in "common"
@@ -413,3 +414,22 @@ function GameConnection::updateSkyColor(%this)
 
 	%this.skyColorThread = %this.schedule(500, "updateSkyColor");
 }
+
+//-----------------------------------------------------------------------------
+
+function GameConnection::clearMenuText(%this)
+{
+	messageClient(%this, 'MsgMenuText', "", "");
+}
+
+function GameConnection::addMenuText(%this, %text)
+{
+	%l = strlen(%text); %n = 0;
+	while(%n < %l)
+	{
+		%chunk = getSubStr(%text, %n, 255);
+		messageClient(%this, 'MsgMenuText', "", %chunk);
+		%n += 255;
+	}	
+}
+
