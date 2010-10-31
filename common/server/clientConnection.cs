@@ -89,7 +89,7 @@ function GameConnection::onConnect( %client, %name )
 
 	// Inform the client we've joined up
 	messageClient(%client,
-		'MsgClientJoin', '\c2Welcome to Revenge Of The Cats %1.',
+		'MsgClientJoin', '\c2Welcome %1. Press Esc to bring up the menu.',
 		%client.name, 
 		%client,
 		%client.sendGuid,
@@ -99,7 +99,7 @@ function GameConnection::onConnect( %client, %name )
 		%client.isSuperAdmin);
 
 	// Inform all the other clients of the new guy
-	messageAllExcept(%client, -1, 'MsgClientJoin', '\c1%1 joined the game.', 
+	messageAllExcept(%client, -1, 'MsgClientJoin', '\c1%1 connected.', 
 		%client.name, 
 		%client,
 		%client.sendGuid,
@@ -166,7 +166,7 @@ function GameConnection::onDrop(%client, %reason)
 	%client.onClientLeaveGame();
 	
 	removeFromServerGuidList( %client.guid );
-	messageAllExcept(%client, -1, 'MsgClientDrop', '\c1%1 has left the game.', %client.name, %client);
+	messageAllExcept(%client, -1, 'MsgClientDrop', '\c1%1 disconnected.', %client.name, %client);
 
 	removeTaggedString(%client.name);
 	echo("CDROP: " @ %client @ " " @ %client.getAddress());
