@@ -35,7 +35,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	impactDamage       = 0;
 	impactImpulse      = 1000;
 	splashDamage       = 25;
-	splashDamageRadius = 3;
+	splashDamageRadius = 2;
 	splashImpulse      = 0;
 	
 	// how much energy does firing this projectile drain?...
@@ -44,7 +44,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	trackingAgility = 0;
 	
 	explodesNearEnemies			= true;
-	explodesNearEnemiesRadius	= 3;
+	explodesNearEnemiesRadius	= 2;
 	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
 
 	//sound = AssaultRifleProjectileFlybySound;
