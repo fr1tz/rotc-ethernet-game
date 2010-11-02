@@ -58,7 +58,6 @@ function initBaseServer()
 	exec("./server/missionDownload.cs");
 	exec("./server/clientConnection.cs");
 	exec("./server/kickban.cs");
-	exec("./server/game.cs");
 	exec("./server/materialMappings.cs");
 }	
 
