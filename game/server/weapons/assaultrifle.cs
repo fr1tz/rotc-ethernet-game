@@ -88,9 +88,9 @@ function RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%norm
 	if( !(%col.getType() & $TypeMasks::ShapeBaseObjectType) )
 		return;
 
-    %src =  %obj.getSourceObject();
-    if(%src)
-        %src.setDiscTarget(%col);
+    //%src =  %obj.getSourceObject();
+    //if(%src)
+    //    %src.setDiscTarget(%col);
 }
 
 //--------------------------------------------------------------------------
