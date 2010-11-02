@@ -35,11 +35,13 @@ function onConnectionInitiated()
 // Phase 1
 //----------------------------------------------------------------------------
 
-function onMissionDownloadPhase1(%missionName, %musicTrack)
+function onMissionDownloadPhase1(%missionEnvFile, %musicTrack)
 {
 	// Close and clear the message hud (in case it's open)
 	MessageHud.close();
 	//cls();
+
+	LOAD_Title.setText(%missionEnvFile);
 
 	// Reset the loading progress controls:
 	LoadingProgress.setValue(0);
@@ -136,9 +138,7 @@ addMessageCallback( 'MsgMapInfoDone', handleMapInfoDoneMessage );
 
 function handleMapInfoBasicsMessage(%msgType, %msgString, %mapName, %mapHomepage)
 {
-	LOAD_MapName.setText(%mapName);
-	LOAD_MapHomepage.setText(
-		"<a:" @ %mapHomepage @ ">" @ %mapHomepage @ "</a>");
+	LOAD_Title.setText($ServerInfo::Name);
 	
 	MapInfoWindow_MapName.setText(%mapName);
 	MapInfoWindow_MapHomepage.setText(
