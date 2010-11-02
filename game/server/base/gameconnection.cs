@@ -37,13 +37,18 @@ function GameConnection::onClientEnterGame(%this)
 {
 	commandToClient(%this, 'SyncClock', $Sim::Time - $Game::StartTime);
  
-    // ScriptObject used to store statistics...
-	%this.stats = new ScriptObject()
-    {
-		joinTime = $Sim::Time;
-        damageDealt = 0;
-        healthLost = 0;
-	};
+    // ScriptObject used to store raw statistics...
+	%this.stats                    = new ScriptObject();
+	%this.stats.joinTime           = $Sim::Time;
+	%this.stats.dmgDealtApplied    = new Array();
+	%this.stats.dmgDealtCaused     = new Array();
+	%this.stats.dmgReceivedApplied = new Array();
+	%this.stats.dmgReceivedCaused  = new Array();
+	%this.stats.healthLost         = new Array();
+	%this.stats.healthRegained     = new Array();
+	%this.stats.fired              = new Array();
+    // ScriptObject used to store processed statistics...
+	%this.pstats = new ScriptObject();
 	
 	// "simple control (tm)" info...
 	%this.simpleControl = new Array();
@@ -72,6 +77,9 @@ function GameConnection::onClientEnterGame(%this)
 	%this.updateSkyColor();
 
 	serverCmdMainMenu(%this);
+
+	// Start thread to process player stats...
+	%this.processPlayerStats();
 }
 
 // *** callback function: called by script code in "common"
@@ -83,7 +91,19 @@ function GameConnection::onClientLeaveGame(%this)
 	%this.clearSimpleControl();
  
 	if(isObject(%this.stats))
+	{
+		%this.stats.dmgDealtApplied.delete();
+		%this.stats.dmgDealtCaused.delete();
+		%this.stats.dmgReceivedApplied.delete();
+		%this.stats.dmgReceivedCaused.delete();
+		%this.stats.healthLost.delete();
+		%this.stats.healthRegained.delete();
+		%this.stats.fired.delete();
 		%this.stats.delete();
+	}
+
+	if(isObject(%this.pstats))
+		%this.pstats.delete();
 
 	if(isObject(%this.simpleControl))
 		%this.simpleControl.delete();

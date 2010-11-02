@@ -69,7 +69,14 @@ function WeaponImage::onFire(%this, %obj, %slot)
 
 function ProjectileData::onAdd(%this, %obj)
 {
-    // avoid console spam
+	%client = %obj.sourceObject.client;
+	if(!isObject(%client))
+		return;
+
+	%a = %client.stats.fired;
+	%n = %this.getName();
+	arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + 1);
+	arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + 1);
 }
 
 function ProjectileData::onRemove(%this, %obj)

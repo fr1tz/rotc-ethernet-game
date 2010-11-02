@@ -300,6 +300,11 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 {
     %dmgstor = %damage;
 
+	if(%damageType == $DamageType::Force)
+		%n = "Force";
+	else
+		%n = %sourceObject.getDataBlock().getName();
+
 	// reduce damage based on energy level...
 	%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
 	%damage -= %damage * %energyScale * 0.50;
@@ -318,11 +323,21 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	&& %realSourceObject.teamId != %obj.teamId
 	&& %realSourceObject.getDamageState() $= "Enabled")
 	{
+		%stor = %realSourceObject.getDamageLevel();
+		
         %this.onHitEnemy(
             %realSourceObject,
             %obj,
             %damageDealt+%bufDamageDealt
         );
+
+    	if(%realSourceObject.client)
+  		{
+			%healthRestored = %stor - %realSourceObject.getDamageLevel();
+			%a = %realSourceObject.client.stats.healthRegained;
+			arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %healthRestored);
+			arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %healthRestored);
+		}
 	}
 	
 	// eyecandy: ain't got time to bleed?...
@@ -334,16 +349,26 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		createExplosionOnClients(%bleed, %bpos, %norm);
 	}
  
-    // Update stats...
     if(%obj.client)
     {
-        %obj.client.stats.healthLost += %damageDealt;
-        %obj.client.updateStats();
+		%a = %obj.client.stats.dmgReceivedApplied;
+		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %dmgstor);
+		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %dmgstor);
+		%a =%obj.client.stats.dmgReceivedCaused;
+		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %damageDealt+%bufDamageDealt);
+		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %damageDealt+%bufDamageDealt);
+		%a =%obj.client.stats.healthLost;
+		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %damageDealt);
+		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %damageDealt);
     }
     if(%realSourceObject.client)
     {
-        %realSourceObject.client.stats.damageDealt += %damageDealt;
-        %realSourceObject.client.updateStats();
+		%a = %realSourceObject.client.stats.dmgDealtApplied;
+		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %dmgstor);
+		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %dmgstor);
+		%a = %realSourceObject.client.stats.dmgDealtCaused;
+		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %damageDealt+%bufDamageDealt);
+		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %damageDealt+%bufDamageDealt);
     }
 
 	return %damageDealt;

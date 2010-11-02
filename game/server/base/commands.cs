@@ -191,13 +191,14 @@ function serverCmdMainMenu(%client)
 
 function serverCmdShowPlayerList(%client, %show)
 {
+	%newtxt = "";
 	%client.clearMenuText();
-	%client.addMenuText(
+
+	%newtxt = %newtxt @
 		"\<\< <a:cmd MainMenu>Back</a>\n\n" @
 		"<spush><font:Arial:24>Detailed Player List" SPC
 		"[ <a:cmd ShowPlayerList" SPC %show @ ">Refresh</a> ]<spop>\n\n" @
-		""
-	);
+		"";
 
 	if(%show $= "")
 		%show = "latency";
@@ -208,18 +209,34 @@ function serverCmdShowPlayerList(%client, %show)
 	for(%cl= 0; %cl < %count; %cl++)
 	{
 		%k = ClientGroup.getObject(%cl);
-		%s = %k.stats;
+		%p = %k.pstats;
 
 		if(%show $= "latency")
 			%v = %k.getPing();
-		else if(%show $= "dmgdealt")
-			%v = %s.damageDealt;
-		else if(%show $= "dmgtaken")
-			%v = %s.healthLost;
 		else if(%show $= "dmgratio")
-			%v = trimStat(%s.damageDealt / %s.healthLost);
+			%v = trimStat(%p.totalDmgCaused / %p.totalDmgTaken);
+		else if(%show $= "healthlost")
+			%v = trimStat((%p.totalHealthLost-%p.totalHealthRegained)/%p.timePlayed);
+		else if(%show $= "totalF")
+			%v = trimStat(%p.totalEffectiveness);
+		else if(%show $= "discF")
+			%v = trimStat(%p.discEffectiveness);
+		else if(%show $= "grenadeF")
+			%v = trimStat(%p.grenadeEffectiveness);
+		else if(%show $= "tridentF")
+			%v = trimStat(%p.tridentEffectiveness);
+		else if(%show $= "mgF")
+			%v = trimStat(%p.mgEffectiveness);
+		else if(%show $= "sniperF")
+			%v = trimStat(%p.sniperEffectiveness);
+		else if(%show $= "glF")
+			%v = trimStat(%p.glEffectiveness);
+		else if(%show $= "PvE")
+			%v = trimStat(%p.forceDmgTaken / %p.timePlayed);
+		else if(%show $= "chuck")
+			%v = trimStat(%p.totalDmgTaken / %p.totalHealthLost);
 		else if(%show $= "time")
-			%v = trimStat(($Sim::Time-%s.joinTime)/60);
+			%v = trimStat(%p.timePlayed);
 			
 		%array.push_back(%k, %v);
 	}
@@ -228,28 +245,52 @@ function serverCmdShowPlayerList(%client, %show)
 
 	if(%show $= "latency")
 		%showtext = "Latency (MS)";
-	else if(%show $= "dmgdealt")
-		%showtext = "Damage dealt";
-	else if(%show $= "dmgtaken")
-		%showtext = "Damage taken";
 	else if(%show $= "dmgratio")
-		%showtext = "Damage ratio";
+		%showtext = "Damage ratio (total dmg caused / taken)";
+	else if(%show $= "healthlost")
+		%showtext = "Effective health loss ( (lost - regained) / time played )";
+	else if(%show $= "totalF")
+		%showtext = "Weapon effectiveness total (%)";
+	else if(%show $= "discF")
+		%showtext = "Disc effectiveness (%)";
+	else if(%show $= "grenadeF")
+		%showtext = "Grenade effectiveness (%)";
+	else if(%show $= "tridentF")
+		%showtext = "Trident effectiveness (%)";
+	else if(%show $= "mgF")
+		%showtext = "MG effectiveness (%)";
+	else if(%show $= "sniperF")
+		%showtext = "Sniper effectiveness (%)";
+	else if(%show $= "glF")
+		%showtext = "GL effectivenes (%)";
+	else if(%show $= "PvE")
+		%showtext = "PvE (Damage taken from environment / time played)";
+	else if(%show $= "chuck")
+		%showtext = "Invincibility (total damage taken / total health lost)";
 	else if(%show $= "time")
 		%showtext = "Time played (mins)";
 
-	%client.addMenuText(
+	%newtxt = %newtxt @
 		"Show:\n" @
 		"<lmargin:25>" @
 		"<a:cmd ShowPlayerList latency>Latency</a> |" SPC
-		"<a:cmd ShowPlayerList dmgdealt>Damage dealt</a> |" SPC
-		"<a:cmd ShowPlayerList dmgtaken>Damage taken</a> |" SPC
 		"<a:cmd ShowPlayerList dmgratio>Damage ratio</a> |" SPC
+		"<a:cmd ShowPlayerList healthlost>Effective health loss</a> |" SPC
+		"\nWeapon effectiveness:" SPC
+		"<a:cmd ShowPlayerList totalF>Total</a>," SPC
+		"<a:cmd ShowPlayerList discF>Disc</a>," SPC
+		"<a:cmd ShowPlayerList grenadeF>Grenade</a>," SPC
+		"<a:cmd ShowPlayerList tridentF>Trident</a>," SPC
+		"<a:cmd ShowPlayerList mgF>MG</a>," SPC
+		"<a:cmd ShowPlayerList sniperF>Sniper</a>," SPC
+		"<a:cmd ShowPlayerList glF>GL</a> |\n" SPC
+		"<a:cmd ShowPlayerList PvE>PvE</a> |" SPC
+		"<a:cmd ShowPlayerList chuck>Invincibility</a> |" SPC
 		"<a:cmd ShowPlayerList time>Time played</a>" @
 		"<lmargin:0>\n\n" @
-		"<tab:100, 175, 300, 400>" @
-		"Name\tTeam" TAB %showtext @ "\n\n" @
-		""
-	);
+		"<tab:25, 125, 200, 300, 400>" @
+		"\tName\tTeam" TAB %showtext @ "\n\n" @
+		"";
 
 	%idx = %array.moveFirst();
 	while(%idx != -1)
@@ -266,38 +307,78 @@ function serverCmdShowPlayerList(%client, %show)
 			%team = "Blues";
 
 		if(%k == %client)
-			%client.addMenuText("<spush><color:FF00FF>");
+			%newtxt = %newtxt @ "<spush><color:FF00FF>";
 
-		%client.addMenuText(%name TAB %team TAB %v TAB 
-			"\>\> <a:cmd ShowPlayerInfo" SPC %k @ ">More</a>\n");
+		%newtxt = %newtxt @ 
+			"\>\>\t<a:cmd ShowPlayerInfo" SPC %k @ ">" @ %name @ "</a>" TAB %team TAB %v @ "\n";
 
 		if(%k == %client)
-			%client.addMenuText("<spop>");
+			%newtxt = %newtxt @ "<spop>";
 
 		%idx = %array.moveNext();
 	}
 
+	%client.addMenuText(%newtxt);
 
 	%array.delete();
 }
 
 function serverCmdShowPlayerInfo(%client, %player)
 {
-	if(!isObject(%player))
+	%p = %player.pstats;
+	if(!isObject(%p))
 		return;
-
-	%stats = %player.stats;
 
 	%client.clearMenuText();
 	%client.addMenuText(
 		"\<\< <a:cmd ShowPlayerList>Back</a>\n\n" @
 		"<spush><font:Arial:24>Info on" SPC %player.nameBase @ 
 		" [ <a:cmd ShowPlayerInfo" SPC %player @ ">Refresh</a> ]<spop>\n\n" @
-		"<tab:100, 200, 300, 400>" @
-		"Time played:" TAB trimStat(($Sim::Time-%stats.joinTime)/60) SPC "mins" @ "\n" @
-		"Damage dealt:" TAB trimStat(%stats.damageDealt) @ "\n" @
-		"Damage taken:" TAB trimStat(%stats.healthLost) @ "\n" @
-		"Damage ratio:" TAB trimStat(%stats.damageDealt / %stats.healthLost) @ "\n" @
+		"(last updated @" SPC removeDecimals(%p.lastUpdate) SPC "secs)\n\n" @
+		"<tab:200>" @
+		"Time played:" TAB trimStat(%p.timePlayed) SPC "mins" @ "\n" @
+		"Total damage caused:" TAB trimStat(%p.totalDmgCaused)  @ "\n" @
+		"Total damage taken:" TAB trimStat(%p.totalDmgTaken) @ "\n" @
+		"Total health lost:" TAB trimStat(%p.totalHealthLost) @ "\n" @
+		"Total health regained:" TAB trimStat(%p.totalHealthRegained) @ "\n" @
+		"\n<tab:150,200,250,300,350,400,450>" @
+		"\tDisc\tGrenade\tTrident\tMG\tSniper\tGL\tEnvironment\n\n" @
+		"Damage caused:" TAB 
+		trimStat(%p.discDmgCaused) TAB
+		trimStat(%p.grenadeDmgCaused) TAB
+		trimStat(%p.tridentDmgCaused) TAB
+		trimStat(%p.mgDmgCaused) TAB
+		trimStat(%p.sniperDmgCaused) TAB
+		trimStat(%p.glDmgCaused) TAB
+		"\n\n" @
+		"Damage taken:" TAB 
+		trimStat(%p.discDmgTaken) TAB
+		trimStat(%p.grenadeDmgTaken) TAB
+		trimStat(%p.tridentDmgTaken) TAB
+		trimStat(%p.mgDmgTaken) TAB
+		trimStat(%p.sniperDmgTaken) TAB
+		trimStat(%p.glDmgTaken) TAB
+		trimStat(%p.forceDmgTaken) TAB
+		"\n\n" @
+		"Health lost:" TAB 
+		trimStat(%p.discHealthLost) TAB
+		trimStat(%p.grenadeHealthLost) TAB
+		trimStat(%p.tridentHealthLost) TAB
+		trimStat(%p.mgHealthLost) TAB
+		trimStat(%p.sniperHealthLost) TAB
+		trimStat(%p.glHealthLost) TAB
+		trimStat(%p.forceHealthLost) TAB
+		"\n\n" @
+		"\nWeapon effectiveness:\n\n" @
+		"<tab:75,150>" @
+		"\tFired\tEffectiveness\n\n" @
+		"Disc" TAB %p.discFired TAB trimStat(%p.discEffectiveness) @ "%" @ "\n\n" @
+		"Grenade" TAB %p.grenadeFired TAB trimStat(%p.grenadeEffectiveness) @ "%" @ "\n\n" @
+		"Trident" TAB %p.tridentFired TAB trimStat(%p.tridentEffectiveness) @ "%" @ "\n\n" @
+		"MG" TAB %p.mgFired TAB trimStat(%p.mgEffectiveness) @ "%" @ "\n\n" @
+		"Sniper" TAB %p.sniperFired TAB trimStat(%p.sniperEffectiveness) @ "%" @ "\n\n" @
+		"GL" TAB %p.glFired TAB trimStat(%p.glEffectiveness) @ "%" @ "\n\n" @
+		"Total" TAB %p.totalFired TAB trimStat(%p.totalEffectiveness) @ "%" @ "\n\n" @
 		""
 	);
 }

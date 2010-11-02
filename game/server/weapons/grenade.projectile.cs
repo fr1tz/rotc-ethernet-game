@@ -54,12 +54,12 @@ datablock ProjectileData(RedGrenade)
 
 function RedGrenade::onAdd(%this, %obj)
 {
-
+	Parent::onAdd(%this, %obj);
 }
 
 function RedGrenade::onRemove(%this, %obj)
-{
-
+{	
+	Parent::onRemove(%this, %obj);
 }
 
 function RedGrenade::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)

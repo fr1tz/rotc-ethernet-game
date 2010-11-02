@@ -73,11 +73,13 @@ datablock NortDiscData(RedSeekerDisc)
 
 function RedSeekerDisc::onAdd(%this,%obj)
 {
+	Parent::onAdd(%this,%obj);
     %obj.setTargetingMask($TargetingMask::Disc);
 }
 
 function RedSeekerDisc::onRemove(%this,%obj)
 {
+	Parent::onRemove(%this,%obj);
     if(%obj.state() == $NortDisc::Attacking)
         %obj.getTarget().removeAttackingDisc(%obj);
 
