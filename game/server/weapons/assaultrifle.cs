@@ -62,7 +62,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	laserTrail[0]   = AssaultRifleProjectileLaserTrail;
 //	laserTrail[1]   = AssaultRifleProjectileRedLaserTrail;
 	laserTail	    = AssaultRifleProjectileLaserTail;
-	laserTailLen    = 2;
+	laserTailLen    = 10;
 
 	muzzleVelocity		= 600;
 	velInheritFactor	 = 1.0;
