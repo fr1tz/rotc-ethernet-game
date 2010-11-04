@@ -97,7 +97,10 @@ function onStart()
 		echo("\n--------- Starting Dedicated Server ---------");
 		// The server isn't started unless a mission has been specified.
 		if($misArg !$= "")
+		{
+			initBaseServer(); // The common module provides basic server functionality
 			createServer("MultiPlayer", $misArg);
+		}
 		else
 			echo("No mission file (.mis) specified (use -mis <filename>)");
 	}
