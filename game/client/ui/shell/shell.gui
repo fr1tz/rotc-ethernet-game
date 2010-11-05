@@ -67,7 +67,7 @@ new GuiBitmapCtrl(Shell) {
          Visible = "1";
          Command = "addWindow(JoinServerWindow);";
          hovertime = "1000";
-         text = "Join Server";
+         text = "Join Arena";
          groupNum = "-1";
          buttonType = "PushButton";
       };
