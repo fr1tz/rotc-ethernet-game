@@ -20,7 +20,7 @@
 //	 (c) Server::Dedicated                     Bool
 //	 ( ) Server::MissionFile                   Mission .mis file name
 //	 ( ) Server::MissionEnvironmentFile        Mission .env file name
-//	 (c) Server::MissionName                   Not used
+//	 (c) Server::MissionName                   Mission name
 //	 (c) Server::MissionType                   Not used
 //	 (c) Server::PlayerCount                   Current player count
 //	 (c) Server::GuidList                      Player GUID (record list?)
