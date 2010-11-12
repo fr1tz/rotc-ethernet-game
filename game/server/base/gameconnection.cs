@@ -391,7 +391,7 @@ function GameConnection::updateSkyColor(%this)
 	{
 		%this.setSkyColor("0.2 0.2 0.2");
 	}
-	else if(%zone.getTeamId() == 0 && %zone.isProtected())
+	else if(%zone.getTeamId() == 0 && %zone.protected)
 	{
 		%this.setSkyColor("0 1 0");
 	}
@@ -423,12 +423,12 @@ function GameConnection::updateSkyColor(%this)
 		if(%health[1] > %health[2])
 		{
 			%ratio = %health[2] / %health[1];
-			%this.setSkyColor("1 0.5" SPC %ratio);
+			%this.setSkyColor("1 0.75" SPC %ratio);
 		}
 		else
 		{
 			%ratio = %health[1] / %health[2];
-			%this.setSkyColor(%ratio SPC "0.5 1");
+			%this.setSkyColor(%ratio SPC "0.75 1");
 		}
 	}
 

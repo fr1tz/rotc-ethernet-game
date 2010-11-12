@@ -150,14 +150,27 @@ datablock TacticalZoneData(TerritoryZone)
 	// The period is value is used to control how often the console
 	// onTick callback is called while there are any objects
 	// in the zone.  The default value is 100 MS.
-	tickPeriodMS          = 250;
-	neutralColor          = "1 1 1 0.05";
-	neutralColorProtected = "0 1 0 0.4";
-	team1Color            = "1 0 0 0.2";
-	team1ColorProtected   = "1 0 0 0.5";
-	team2Color            = "0 0 1 0.2";
-    team2ColorProtected   = "0 0 1 0.5";
-    
+	tickPeriodMS = 200;
+
+	colorChangeTimeMS = 200;
+
+	colors[ 0] = "1 1 1 0.1";  // neutral
+	colors[ 1] = "0 1 0 0.4";   // protected
+	colors[ 2] = "1 0 0 0.1";   // red
+	colors[ 3] = "0 0 1 0.1";   // blue
+
+	colors[ 4] = "1.0 0.0 0.0 0.4"; // red flash min
+	colors[ 5] = "1.0 0.0 0.0 1.0"; // red flash max
+	colors[ 6] = "0.0 0.0 1.0 0.4"; // blue flash min
+	colors[ 7] = "0.0 0.0 1.0 1.0"; // blue flash max
+
+	colors[ 8] = "1.0 1.0 0.0 0.1";
+	colors[ 9] = "1.0 0.0 0.0 0.1";
+	colors[10] = "0.0 1.0 1.0 0.1";
+	colors[11] = "0.0 0.0 1.0 0.1";
+
+	colors[15] = "1 1 1 1"; 
+
     texture = "~/data/textures/zone";
 };
 
@@ -165,6 +178,8 @@ function TerritoryZone::onAdd(%this, %zone)
 {
 	%zone.numReds = 0;
 	%zone.numBlues = 0;
+
+	%this.schedule(0, "colorTick", %zone);
 }
 
 function TerritoryZone::onEnter(%this,%zone,%obj)
@@ -199,6 +214,8 @@ function TerritoryZone::onTick(%this, %zone)
 {
 	%zone.numReds = 0;
 	%zone.numBlues = 0;
+	%zone.redHealth = 0;
+	%zone.blueHealth = 0;
 	
 	for(%i = 0; %i < %zone.getNumObjects(); %i++)
 	{
@@ -206,32 +223,79 @@ function TerritoryZone::onTick(%this, %zone)
 		if(%obj.getType() & $TypeMasks::PlayerObjectType
 		&& %obj.isCAT)
 		{
-            if(%zone.isProtected() && %obj.getTeamId() != %zone.getTeamId())
+			%health = %obj.getDataBlock().maxDamage - %obj.getDamageLevel()
+				+ %obj.getDamageBufferLevel();
+            if(%zone.protected && %obj.getTeamId() != %zone.getTeamId())
+			{
                 %obj.kill();
+			}
             else if(%obj.getTeamId() == $Team1.teamId)
+			{
 				%zone.numReds++;
+				%zone.redHealth += %health;
+			}
 			else if(%obj.getTeamId() == $Team2.teamId)
+			{
 				%zone.numBlues++;
+				%zone.blueHealth += %health;
+			}
 		}
 	}
 
-	%this.updateOwner(%zone);
+	%zone.change += (%zone.redHealth - %zone.blueHealth) / 2500;
 }
 
-function TerritoryZone::updateOwner(%this, %zone)
+function TerritoryZone::colorTick(%this, %zone)
 {
-	if(%zone.numReds != 0 && %zone.numBlues == 0)
+	if(!isObject(%zone))
+		return;
+
+ 	%zone.change += %zone.side*0.1;
+
+	%flash = false;
+	if(%zone.change != 0 && mAbs(%zone.side) != 1)
+		%flash = true;
+	if(%zone.side > 0 && %zone.numBlues > 0)
+		%flash = true;
+	if(%zone.side < 0 && %zone.numReds > 0)
+		%flash = true;
+
+	if(%flash)
 	{
+		error(%zone.change);
+		%f = mAbs(%zone.change);
+		if(%zone.change > 0)
+			%zone.flash(4, 5, %f);
+		else if(%zone.change < 0)
+			%zone.flash(6, 7, %f);
+		else
+			%zone.flash(15, 15, 0);			
+	}
+
+	%zone.side += %zone.change;
+
+	if(%zone.side > 1)
+		%zone.side = 1;
+	else if(%zone.side < -1)
+		%zone.side = -1;
+
+	if(%zone.side == 1)
 		%this.setZoneOwner(%zone, 1);
-	}
-	else if(%zone.numBlues != 0 && %zone.numReds == 0)
-	{
+	else if(%zone.side == -1)
 		%this.setZoneOwner(%zone, 2);
-	}
-	else if(%zone.numReds != 0 && %zone.numBlues != 0)
-	{
+	else
 		%this.setZoneOwner(%zone, 0);
-	}
+
+	if(%zone.side > 0)
+		%zone.setColor(8, 9, %zone.side);
+	else if(%zone.side < 0)
+		%zone.setColor(10, 11, -%zone.side);
+	else
+		%zone.setColor(0, 0, 0);
+
+	%zone.change = 0;
+
+	%this.schedule(2000, "colorTick", %zone);
 }
 
 function TerritoryZone::setZoneOwner(%this, %zone, %teamId)
@@ -249,9 +313,19 @@ function TerritoryZone::setZoneOwner(%this, %zone, %teamId)
 	%zone.setTeamId(%teamId);
 	
 	if(%teamId == 1)
+	{
+		%zone.side = 1;
 		$Team1.numTerritoryZones++;
+	}
 	else if(%teamId == 2)
+	{
+		%zone.side = -1;
 		$Team2.numTerritoryZones++;
+	}
+	else
+	{
+		%zone.side = 0;
+	}
 
 	for(%idx = 0; %idx < ClientGroup.getCount(); %idx++)
 	{
@@ -299,10 +373,7 @@ function TerritoryZone::reset(%this, %zone)
 	else
 		%this.setZoneOwner(%zone, 0);
 
-	if( %zone.initiallyProtected != 0 )
-		%zone.setProtected(true);
-	else
-		%zone.setProtected(false);
+	%zone.protected = %zone.initiallyProtected;
 }
 
 
