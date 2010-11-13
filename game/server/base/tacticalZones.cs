@@ -262,7 +262,6 @@ function TerritoryZone::colorTick(%this, %zone)
 
 	if(%flash)
 	{
-		error(%zone.change);
 		%f = mAbs(%zone.change);
 		if(%zone.change > 0)
 			%zone.flash(4, 5, %f);
@@ -321,10 +320,6 @@ function TerritoryZone::setZoneOwner(%this, %zone, %teamId)
 	{
 		%zone.side = -1;
 		$Team2.numTerritoryZones++;
-	}
-	else
-	{
-		%zone.side = 0;
 	}
 
 	for(%idx = 0; %idx < ClientGroup.getCount(); %idx++)
