@@ -148,6 +148,9 @@ function TerritoryZones_reset()
 	}
 	else
 		error("TerritoryZones_reset(): missing TerritoryZones group!");
+
+	TerritoryZones_call("TerritoryZone_resetAllowed");
+	TerritoryZones_call("TerritoryZone_computeAllowed");
 }
 
 //-----------------------------------------------------------------------------
@@ -207,25 +210,20 @@ datablock TacticalZoneData(TerritoryZone)
 
 	colorChangeTimeMS = 200;
 
-	colors[ 0] = "1 1 1 0.05";  // neutral
-	colors[ 1] = "0 1 0 0.4";   // protected
-	colors[ 2] = "1 0 0 0.1";   // red
-	colors[ 3] = "0 0 1 0.1";   // blue
+	colors[1]  = "1 1 1 0.05";  // neutral
+	colors[2]  = "1 0 0 0.1";   // red
+	colors[3]  = "0 0 1 0.1";   // blue
 
-	colors[ 4] = "1.0 0.0 0.0 0.4"; // red flash min
-	colors[ 5] = "1.0 0.0 0.0 1.0"; // red flash max
-	colors[ 6] = "0.0 0.0 1.0 0.4"; // blue flash min
-	colors[ 7] = "0.0 0.0 1.0 1.0"; // blue flash max
+	colors[4]  = "1 0.5 0 0.1";   // red endangered
+	colors[5]  = "0 0.5 1 0.1";   // blue endangered
 
-	colors[ 8] = "1.0 1.0 0.0 0.1";
-	colors[ 9] = "1.0 0.0 0.0 0.1";
-	colors[10] = "0.0 1.0 1.0 0.1";
-	colors[11] = "0.0 0.0 1.0 0.1";
+	colors[6]  = "1 1 1 0.75";  // white flash
+	colors[7]  = "1 0 0 0.75";   // red flash
+	colors[8]  = "0 0 1 0.75";   // blue flash
+	colors[9]  = "1 0.5 0 0.75";   // red endangered flash
+	colors[10] = "0 0.5 1 0.75";   // blue endangered flash
 
-	colors[12] = "0 0.5 0 0.75"; 
-	colors[13] = "1 0.5 0 0.75"; 
-	colors[14] = "0 0.5 1 0.75"; 
-
+	colors[14] = "0 1 0 0.4";   // protected
 	colors[15] = "1 1 1 1"; 
 
     texture = "~/data/textures/zone";
@@ -237,8 +235,6 @@ function TerritoryZone::onAdd(%this, %zone)
 
 	%zone.numReds = 0;
 	%zone.numBlues = 0;
-
-	%this.schedule(0, "colorTick", %zone);
 }
 
 function TerritoryZone::onEnter(%this,%zone,%obj)
@@ -282,9 +278,9 @@ function TerritoryZone::onTick(%this, %zone)
 		{
             if(%zone.protected && %obj.getTeamId() != %zone.getTeamId())
                 %obj.kill();
-			else if(!%zone.redAllowed && %obj.getTeamId() == $Team1.teamId)
+			else if(%zone.getTeamId() == $Team2.teamId && !%zone.redAllowed && %obj.getTeamId() == $Team1.teamId)
                 %obj.kill();
-			else if(!%zone.blueAllowed && %obj.getTeamId() == $Team2.teamId)
+			else if(%zone.getTeamId() == $Team1.teamId && !%zone.blueAllowed && %obj.getTeamId() == $Team2.teamId)
                 %obj.kill();
             else if(%obj.getTeamId() == $Team1.teamId)
 				%zone.numReds++;
@@ -312,24 +308,6 @@ function TerritoryZone::updateOwner(%this, %zone)
 	}
 }
 
-function TerritoryZone::colorTick(%this, %zone)
-{
-	if(!isObject(%zone))
-		return;
-
-	if(%zone.getTeamId() == 0 && %zone.redAllowed && %zone.blueAllowed)
-		%flash = true;
-	else if(%zone.redAllowed && %zone.getTeamId() != 1)
-		%flash = true;
-	else if(%zone.blueAllowed && %zone.getTeamId() != 2)
-		%flash = true;
-
-	if(%flash)
-		%zone.flash(12, 12, 0);
-
-	%this.schedule(1000, "colorTick", %zone);
-}
-
 function TerritoryZone::setZoneOwner(%this, %zone, %teamId)
 {
 	%oldTeamId = %zone.getTeamId();
@@ -345,17 +323,9 @@ function TerritoryZone::setZoneOwner(%this, %zone, %teamId)
 	%zone.setTeamId(%teamId);
 	
 	if(%teamId == 1)
-	{
-		%zone.setColor(2, 2, 1);
 		$Team1.numTerritoryZones++;
-	}
 	else if(%teamId == 2)
-	{
-		%zone.setColor(3, 3, 1);
 		$Team2.numTerritoryZones++;
-	}
-	else
-		%zone.setColor(0, 0, 1);
 
 	for(%idx = 0; %idx < ClientGroup.getCount(); %idx++)
 	{
@@ -391,6 +361,7 @@ function TerritoryZone::setZoneOwner(%this, %zone, %teamId)
 
 	TerritoryZones_call("TerritoryZone_resetAllowed");
 	TerritoryZones_call("TerritoryZone_computeAllowed");
+	TerritoryZones_call("TerritoryZone_selectColor");
 		
 	echo("Number of zones:" SPC
 		$Team1.numTerritoryZones SPC "red /" SPC
@@ -418,6 +389,27 @@ function TerritoryZone_computeAllowed(%zone)
 				%z.blueAllowed = true;
 		}
 	}
+}
+
+function TerritoryZone_selectColor(%zone)
+{
+	%color = 1;
+
+	if(%zone.redAllowed && %zone.getTeamId() == 2)
+		%color = 5;
+	else if(%zone.blueAllowed && %zone.getTeamId() == 1)
+		%color = 4;
+	else if(%zone.getTeamId() == 2)
+		%color = 3;
+	else if(%zone.getTeamId() == 1)
+		%color = 2;
+
+	%zone.setColor(%color, %color, 1);
+
+	if(%color != %zone.color)
+		%zone.flash(%color + 5, %color + 5, 1);
+
+	%zone.color = %color;
 }
 
 function TerritoryZone::reset(%this, %zone)
