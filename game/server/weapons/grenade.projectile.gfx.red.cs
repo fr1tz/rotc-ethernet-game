@@ -13,27 +13,26 @@ datablock ParticleData(RedGrenade_ParticleEmitter_Particles)
    windCoefficient      = 0.0;
    inheritedVelFactor   = 0.0;
    constantAcceleration = 0.0;
-   lifetimeMS           = 100;
-   lifetimeVarianceMS   = 0;
-   textureName          = "~/data/particles/smoke_particle";
-   colors[0]     = "1.0 1.0 0.0 1.0";
-   colors[1]     = "1.0 0.0 0.0 1.0";
-   colors[2]     = "1.0 0.0 0.0 0.0";
-   sizes[0]      = 0.80;
-   sizes[1]      = 0.80;
+   lifetimeMS           = 400;
+   lifetimeVarianceMS   = 100;
+   textureName          = "~/data/particles/star2.red";
+   colors[0]     = "1.0 1.0 1.0 1.0";
+   colors[1]     = "1.0 1.0 1.0 0.5";
+   colors[2]     = "1.0 1.0 1.0 0.0";
+   sizes[0]      = 0.90;
+   sizes[1]      = 0.70;
    sizes[2]      = 0.50;
    times[0]      = 0.0;
    times[1]      = 0.5;
    times[2]      = 1.0;
-
 };
 
 datablock ParticleEmitterData(RedGrenade_ParticleEmitter)
 {
    ejectionPeriodMS = 5;
    periodVarianceMS = 0;
-   ejectionVelocity = 0;
-   velocityVariance = 0;
+   ejectionVelocity = 7;
+   velocityVariance = 3;
    ejectionOffset   = 0;
    thetaMin         = 0;
    thetaMax         = 180;
@@ -61,8 +60,8 @@ datablock MultiNodeLaserBeamData(RedGrenade_Lasertrail)
 	outerColor = "1.00 0.00 0.00 1.00";
 	outerWidth = "0.20";
 
-	bitmap = "~/data/weapons/blaster/image.barrel.red";
-	bitmapWidth = 0.25;
+	bitmap = "~/data/weapons/grenade/lasertrail.red";
+	bitmapWidth = 0.50;
 
 	blendMode = 1;
 

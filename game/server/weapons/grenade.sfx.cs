@@ -36,7 +36,7 @@ datablock AudioProfile(GrenadeExplodeSound)
 datablock AudioProfile(GrenadeProjectileSound)
 {
 	filename = "~/data/sfx/missile1.wav";
-	description = AudioCloseLooping3d;
+	description = AudioDefaultLooping3d;
 	preload = true;
 };
 
@@ -46,4 +46,3 @@ datablock AudioProfile(GrenadeChargeSound)
 	description = AudioCloseLooping3D;
 	preload = true;
 };
-
