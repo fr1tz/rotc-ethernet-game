@@ -21,7 +21,31 @@ ethernet/data/sfx/explosion7.wav
 
 ----------------------------------------------------------------------------------
 
+ethernet/data/sfx/explosion8.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+----------------------------------------------------------------------------------
+
+ethernet/data/sfx/explosion9.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+----------------------------------------------------------------------------------
+
 ethernet/data/sfx/deploy1.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+----------------------------------------------------------------------------------
+
+ethernet/data/sfx/powerdown3.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+----------------------------------------------------------------------------------
+
+ethernet/data/sfx/other1.wav
 
 	Contributed by Alberto de Victoria (RomeoX)
 
