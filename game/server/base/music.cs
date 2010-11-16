@@ -98,7 +98,25 @@ function serverUpdateMusic()
 
 	%gameBalance = %teamHealth[1] - %teamHealth[2];
 
-	messageAll('MsgGameBalance', "", mFloatLength(%gameBalance,1));
+	%f = mFloatLength(%gameBalance,1);
+	messageTeam($Team0, 'MsgGameBalance', "", "=" @ %f);
+
+	if(%f > 0)
+	{
+		messageTeam($Team1, 'MsgGameBalance', "", "+" @ %f);
+		messageTeam($Team2, 'MsgGameBalance', "", -%f);
+	}
+	else if(%f < 0)
+	{
+		messageTeam($Team1, 'MsgGameBalance', "", %f);
+		messageTeam($Team2, 'MsgGameBalance', "", "+" @ -%f);
+	}
+	else
+	{
+		messageTeam($Team1, 'MsgGameBalance', "", "---");
+		messageTeam($Team2, 'MsgGameBalance', "", "---");
+	}
+	
 
 	%t = getSimTime();
 	if(%t - $Music::LastHitTime > 30000)
