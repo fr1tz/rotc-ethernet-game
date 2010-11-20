@@ -21,7 +21,7 @@
 //	 ( ) Server::MissionFile                   Mission .mis file name
 //	 ( ) Server::MissionEnvironmentFile        Mission .env file name
 //	 (c) Server::MissionName                   Mission name
-//	 (c) Server::MissionType                   Not used
+//	 (c) Server::MissionType                   Mission type
 //	 (c) Server::PlayerCount                   Current player count
 //	 (c) Server::GuidList                      Player GUID (record list?)
 //	 (c) Server::Status                        Current server status

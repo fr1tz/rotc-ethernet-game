@@ -38,8 +38,8 @@ function loadMission(%missionFile, %isFirstMission)
 	// set server vars...
 	//$Server::MissionFile = filePath($MapInfo::File) @ "/" @ $MapInfo::MissionFile;
 	$Server::MissionFile = %missionFile;
-	$Server::MissionName = $MissionInfo::Name;
-	$Server::MissionType = "";
+	$Server::MissionName = $MissionInfo::Name SPC "(" @ $MissionInfo::Version @ ")";
+	$Server::MissionType = $MissionInfo::Type;
 
 	exec($MissionInfo::ScriptFile);
 

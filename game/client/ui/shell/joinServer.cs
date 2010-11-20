@@ -184,7 +184,7 @@ function JoinServerWindow::update(%this)
 			%shortInfo = "(no summary)";
 
 		JS_ServerList.addRow(%i,
-			$ServerInfo::MissionName TAB
+			$ServerInfo::MissionType SPC $ServerInfo::MissionName TAB
 			$ServerInfo::Name TAB
 			$ServerInfo::Ping TAB
 			$ServerInfo::PlayerCount @ "/" @ $ServerInfo::MaxPlayers TAB
