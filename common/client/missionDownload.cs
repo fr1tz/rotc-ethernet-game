@@ -28,7 +28,7 @@ function clientCmdMissionStartPhase1(%seq, %missionEnvFile, %musicTrack)
 	$Client::MissionEnvironmentFile = %missionEnvFile;
 
 	// These need to come after the cls.
-	echo ("*** New Mission: " @ %missionFile);
+	echo ("*** New Mission: " @ %missionEnvFile);
 	echo ("*** Phase 1: Download Datablocks & Targets");
 	onMissionDownloadPhase1(%missionEnvFile, %musicTrack);
 	commandToServer('MissionStartPhase1Ack', %seq);
