@@ -31,8 +31,8 @@ datablock ParticleEmitterData(RedGrenade_ParticleEmitter)
 {
    ejectionPeriodMS = 5;
    periodVarianceMS = 0;
-   ejectionVelocity = 7;
-   velocityVariance = 3;
+   ejectionVelocity = 3;
+   velocityVariance = 2;
    ejectionOffset   = 0;
    thetaMin         = 0;
    thetaMax         = 180;
