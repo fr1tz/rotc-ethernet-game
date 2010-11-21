@@ -29,7 +29,7 @@ datablock ShapeBaseImageData(RedEtherformLightImage)
 
 datablock ShapeBaseImageData(BlueEtherformLightImage : RedEtherformLightImage)
 {
-	lightColor = "0.0 0.0 0.8";
+	lightColor = "0.0 0.4 0.8";
 };
 
 //------------------------------------------------------------------------------

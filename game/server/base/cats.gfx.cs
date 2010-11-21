@@ -34,7 +34,7 @@ datablock ShapeBaseImageData(RedCatLightImage)
 
 datablock ShapeBaseImageData(BlueCatLightImage : RedCatLightImage)
 {
-	lightColor = "0 0 1";
+	lightColor = "0 0.5 1";
 };
 
 //------------------------------------------------------------------------------
