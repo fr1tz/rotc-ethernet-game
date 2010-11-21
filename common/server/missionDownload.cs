@@ -38,8 +38,10 @@ function GameConnection::loadMission(%this)
 	{
 		commandToClient(%this, 'MissionStartPhase1', $missionSequence,
 			$Server::MissionEnvironmentFile);
-			
+		
 		echo("*** Sending mission load to client: " @ $Server::MissionFile);
+
+		sendMaterialMappingsToClient(%this);
 	}
 }
 

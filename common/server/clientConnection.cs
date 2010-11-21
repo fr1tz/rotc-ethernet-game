@@ -33,10 +33,6 @@ function GameConnection::onConnect( %client, %name )
 	// error occures.
 	messageClient(%client,'MsgConnectionError',"",$Pref::Server::ConnectionError);
 
-	// Send map information to the client
-	MapInfo::sendToClient(%client);
-	sendMaterialMappingsToClient(%client);
-
 	// Simulated client lag for testing...
 	// %client.setSimulatedNetParams(0.1, 30);
 

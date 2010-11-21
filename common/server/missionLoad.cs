@@ -25,8 +25,6 @@ function loadMission(%missionFile, %isFirstMission)
 	echo("*** LOADING MISSION: " @ %missionFile);
 	echo("*** Stage 1 load");
 	
-	MissionInfo::load(%missionFile);
-
 	// Reset all of these
 	clearCenterPrintAll();
 	clearBottomPrintAll();
@@ -34,10 +32,15 @@ function loadMission(%missionFile, %isFirstMission)
 	// increment the mission sequence (used for ghost sequencing)
 	$missionSequence++;
 	$missionRunning = false;
+
+	MissionInfo::load(%missionFile);
 	
 	// set server vars...
-	//$Server::MissionFile = filePath($MapInfo::File) @ "/" @ $MapInfo::MissionFile;
 	$Server::MissionFile = %missionFile;
+	if(getSubStr($MissionInfo::EnvFile, 0, 2) $= "./")
+		$Server::MissionEnvironmentFile = filePath($MissionInfo::File) @ "/" @ $MissionInfo::EnvFile;
+	else
+		$Server::MissionEnvironmentFile = $MissionInfo::EnvFile;
 	$Server::MissionName = $MissionInfo::Name SPC "(" @ $MissionInfo::Version @ ")";
 	$Server::MissionType = $MissionInfo::Type;
 
@@ -45,17 +48,6 @@ function loadMission(%missionFile, %isFirstMission)
 
 	initMission();
 	
-	// Download map info to the clients
-	%count = ClientGroup.getCount();
-	for( %cl = 0; %cl < %count; %cl++ ) {
-		%client = ClientGroup.getObject( %cl );
-		if (!%client.isAIControlled())
-		{
-			MapInfo::sendToClient(%client);
-			sendMaterialMappingsToClient(%client);
-		}
-	}
-
 	// if this isn't the first mission, allow some time for the server
 	// to transmit information to the clients:
 	if( %isFirstMission || $Server::ServerType $= "SinglePlayer" )
@@ -73,13 +65,8 @@ function loadMissionStage2()
 	$instantGroup = ServerGroup;
 
 	// Make sure the mission environment exists
-	if(getSubStr($MissionInfo::EnvFile, 0, 2) $= "./")
-		%file = filePath($MissionInfo::File) @ "/" @ $MissionInfo::EnvFile;
-	else
-		%file = $MissionInfo::EnvFile;
-
+	%file = $Server::MissionEnvironmentFile;
 	echo("Loading mission environment file:" SPC %file);
-	
 	if( !isFile( %file ) ) {
 		error( "Could not find mission environment " @ %file );
 		return;
@@ -98,8 +85,6 @@ function loadMissionStage2()
 		schedule( 3000, ServerGroup, CycleMissions );
 		return;
 	}
-
-	$Server::MissionEnvironmentFile = %file;
 
 	// Mission cleanup group
 	new SimGroup( MissionCleanup );
