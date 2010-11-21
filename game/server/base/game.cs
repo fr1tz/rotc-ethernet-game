@@ -170,14 +170,14 @@ function checkRoundEnd()
 	if($Game::RoundRestarting)
 		return;
 
-	if($Team1.numTerritoryZones == 0 && $Team1.numCATs == 0)
+	if($Team1.numTerritoryZones == 0)
 	{
 		centerPrintAll($Team2.name @ " have won!",3);
 		serverPlay2D(BlueVictorySound);
 		schedule(5000,0,"startNewRound");
 		$Game::RoundRestarting = true;
 	}
-	else if($Team2.numTerritoryZones == 0 && $Team2.numCATs == 0)
+	else if($Team2.numTerritoryZones == 0)
 	{
 		centerPrintAll($Team1.name @ " have won!",3);
 		serverPlay2D(RedVictorySound);

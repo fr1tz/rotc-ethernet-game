@@ -268,6 +268,7 @@ function GameConnection::togglePlayerForm(%this)
 		while((%srchObj = containerSearchNext()) != 0)
 		{
 			%zoneTeamId = %srchObj.getTeamId();
+			%zoneBlocked = %srchObj.blocked;
 
 			if(%zoneTeamId != %ownTeamId && %zoneTeamId != 0)
 			{
@@ -288,6 +289,11 @@ function GameConnection::togglePlayerForm(%this)
 		else if(!%inOwnZone)
 		{
 			bottomPrint(%this, "You can only manifest in your team's zones!", 3, 1 );
+			return;
+		}
+		else if(%zoneBlocked)
+		{
+			bottomPrint(%this, "You can not manifest in a blocked zone!", 3, 1 );
 			return;
 		}
 
@@ -399,11 +405,11 @@ function GameConnection::updateSkyColor(%this)
 	{
 		%this.setSkyColor("1 1 1");
 	}
-	else if(%zone.getTeamId() == 1)
+	else if(%zone.getTeamId() == 1 && !%zone.blocked)
 	{
 		%this.setSkyColor("1 0 0");
 	}
-	else if(%zone.getTeamId() == 2)
+	else if(%zone.getTeamId() == 2 && !%zone.blocked)
 	{
 		%this.setSkyColor("0 0 1");
 	}
