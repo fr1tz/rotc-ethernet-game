@@ -135,7 +135,7 @@ function JoinServerWindow::join(%this)
 	%index = getField(JS_ServerList.getRowTextById(%id), 5);
 	if (setServerInfo(%index)) {
 		%conn = new GameConnection(ServerConnection);
-		%conn.setConnectArgs($pref::Player::Name);
+		%conn.setConnectArgs($GameNameString, $GameVersionString, $Pref::Player::Name);
 		%conn.setJoinPassword($Client::Password);
 		%conn.connect($ServerInfo::Address);
 		onConnectionInitiated();

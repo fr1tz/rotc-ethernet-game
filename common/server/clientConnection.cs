@@ -15,19 +15,33 @@
 // anything else will be sent back as an error to the client.
 // All the connect args are passed also to onConnectRequest
 //
-function GameConnection::onConnectRequest( %client, %netAddress, %name )
+function GameConnection::onConnectRequest( %client, %netAddress, 
+	%arg0, %arg1, %arg2, %arg3, %arg4, %arg5, %arg6, %arg7,  
+	%arg8, %arg9, %arg10, %arg11, %arg12, %arg13, %arg14, %arg15 )
 {
-	echo("Connect request from: " @ %netAddress);
+	%args = "";
+	for(%i = 0; %i < 16; %i++)
+		%args = %args SPC %arg[%i];
+
+	echo("Connect request from: " @ %netAddress SPC "args:" SPC %args);
+
 	if($Server::PlayerCount >= $pref::Server::MaxPlayers)
 		return "CR_SERVERFULL";
+
 	return "";
 }
 
 //-----------------------------------------------------------------------------
 // This script function is the first called on a client accept
 //
-function GameConnection::onConnect( %client, %name )
-{
+function GameConnection::onConnect( %client, 
+	%arg0, %arg1, %arg2, %arg3, %arg4, %arg5, %arg6, %arg7,  
+	%arg8, %arg9, %arg10, %arg11, %arg12, %arg13, %arg14, %arg15 )
+{	
+	%gameNameString = %arg0;
+	%gameVersionString = %arg1;
+	%name = %arg2;
+
 	// Send down the connection error info, the client is
 	// responsible for displaying this message if a connection
 	// error occures.
@@ -53,6 +67,8 @@ function GameConnection::onConnect( %client, %name )
 	}
 
 	// Save client preferences on the connection object for later use.
+	%client.gameNameString = %gameNameString;
+	%client.gameVersionString = %gameVersionString;
 	%client.gender = "Male";
 	%client.armor = "Light";
 	%client.race = "Human";

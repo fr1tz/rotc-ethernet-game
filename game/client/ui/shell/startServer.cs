@@ -64,7 +64,7 @@ function SS_StartMission()
 	createServer(%serverType, %mapInfoFile);
 	%conn = new GameConnection(ServerConnection);
 	RootGroup.add(ServerConnection);
-	%conn.setConnectArgs($pref::Player::Name);
+	%conn.setConnectArgs($GameNameString, $GameVersionString, $Pref::Player::Name);
 	%conn.setJoinPassword($Client::Password);
 	%conn.connectLocal();
 	onConnectionInitiated();
