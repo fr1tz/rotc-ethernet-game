@@ -95,7 +95,6 @@ function Hud::matchControlObject(%this, %obj)
    
             GrenadeIcon.setVisible(true);
             GrenadeAmmo.setVisible(true);
-            Heat.setVisible(true);
 		}
 	}
 

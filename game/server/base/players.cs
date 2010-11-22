@@ -131,9 +131,9 @@ function PlayerData::onAdd(%this,%obj)
 	else
 		%obj.mountImage(BlueCatLightImage, 3);
   
-   // Start sliding thread.
-   %obj.sliding = 0.5;
-   %obj.updateSliding();
+   // No more limited sliding for now.
+   // %obj.sliding = 0.5;
+   // %obj.updateSliding();
 }
 
 // callback function: called by engine
