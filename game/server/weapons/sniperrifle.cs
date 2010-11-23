@@ -179,26 +179,26 @@ function RedSniperRifleImage::onUnmount(%this, %obj, %slot)
 
 function RedSniperRifleImage::onReady(%this, %obj, %slot)
 {
-	error("onReady");
+	//error("onReady");
     %obj.setSniping(false);
 }
 
 function RedSniperRifleImage::onCharge(%this, %obj, %slot)
 {
-	error("onCharge");
+	//error("onCharge");
     %obj.sniperTarget = "";
     %obj.setSniping(true);
 }
 
 function RedSniperRifleImage::onFire(%this, %obj, %slot)
 {
-	error("onFire");
+	//error("onFire");
 	%obj.playAudio(1, SniperRifleFireSound);
 }
 
 function RedSniperRifleImage::onNoAmmo(%this, %obj, %slot)
 {
-	error("onNoAmmo");
+	//error("onNoAmmo");
     %obj.setSniping(false);
 }
 
