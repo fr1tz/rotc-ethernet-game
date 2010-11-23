@@ -21,8 +21,13 @@
 
 function onConnectionInitiated()
 {
-	// Show the loading window
-	addWindow(LoadingWindow);
+	// Reset all the loading stuff...
+	LoadingProgressTxt.setText("WAITING FOR SERVER");
+	LoadingWidgets.setVisible(true);
+	MissionWidgets.setVisible(false);
+	IngameMenuText.setText("");
+
+	addWindow(MissionWindow);
 }
 
 //----------------------------------------------------------------------------
@@ -39,13 +44,17 @@ function onMissionDownloadPhase1(%missionEnvFile, %musicTrack)
 {
 	// Close and clear the message hud (in case it's open)
 	MessageHud.close();
-	//cls();
 
-	LOAD_Title.setText(%missionEnvFile);
+	// Make sure we're displaying the shell
+	Canvas.setContent(Shell);
 
 	// Reset the loading progress controls:
 	LoadingProgress.setValue(0);
 	LoadingProgressTxt.setValue("LOADING DATABLOCKS");
+	LoadingWidgets.setVisible(true);
+	MissionWidgets.setVisible(false);
+
+	addWindow(MissionWindow);
 }
 
 function onPhase1Progress(%progress)
@@ -119,6 +128,10 @@ function onMissionDownloadComplete()
 	%mapBitmap = filePath($Client::MissionEnvironmentFile) @ "/map.png";
 	MiniMap.setMapBitmap(%mapBitmap);
 	BigMap.setMapBitmap(%mapBitmap);
+
+	// Replace mission window loading controls with in-game controls
+	LoadingWidgets.setVisible(false);
+	MissionWidgets.setVisible(true);
 }
 
 

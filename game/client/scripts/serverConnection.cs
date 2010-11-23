@@ -28,7 +28,6 @@ function handleConnectionErrorMessage(%msgType, %msgString, %msgError)
 	$ServerConnectionErrorMessage = %msgError;
 }
 
-
 //----------------------------------------------------------------------------
 // GameConnection client callbacks
 //----------------------------------------------------------------------------
@@ -44,7 +43,10 @@ function GameConnection::initialControlSet(%this)
 	if (!Editor::checkActiveLoadDone())
 	{
 		if (Canvas.getContent() == Shell.getId())
+		{
 			Canvas.setContent(Hud);
+			toggleShellDlg();
+		}
 	}
 }
 
@@ -170,10 +172,10 @@ function disconnectedCleanup()
 	clientCmdclearBottomPrint();
 	clientCmdClearCenterPrint();
 	
-	// Make sure the load map window will not be visible
-	removeWindow(LoadingWindow);
+	// Make sure the mission window will not be visible
+	removeWindow(MissionWindow);
 
-	// Back to the launch screen
+	// Make sure we're displaying the shell
 	Canvas.setContent(Shell);
 
 	// Dump anything we're not using

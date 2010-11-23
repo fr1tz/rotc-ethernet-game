@@ -37,8 +37,8 @@ function executeShellScripts()
 	exec("./shell/endGameGui.gui");
 	exec("./shell/loadMap.cs");
 	exec("./shell/loadMap.gui");
-	exec("./shell/ingameMenu.cs");
-	exec("./shell/ingameMenu.gui");
+	exec("./shell/mission.cs");
+	exec("./shell/mission.gui");
 	exec("./shell/joinTeam.cs");
 	exec("./shell/joinTeam.gui");
 	exec("./shell/playerList.cs");

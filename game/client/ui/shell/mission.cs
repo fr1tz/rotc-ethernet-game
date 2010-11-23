@@ -15,7 +15,7 @@ function handleMsgMenuText(%msgType, %msgString, %text)
 		IngameMenuText.setText(IngameMenuText.getText() @ %text);
 }
 
-function IngameMenuWindow::onWake(%this)
+function MissionWindow::onWake(%this)
 {
 	if($Server::ServerType $= "SinglePlayer")
 		IngameMenuDisconnect.text = "Quit Mission";

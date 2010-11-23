@@ -51,51 +51,7 @@ new GuiControl(LoadingWindowForEditing) {
 			hovertime = "1000";
 			maxLength = "255";
 		};
-		new GuiProgressCtrl(LoadingProgress) {
-			canSaveDynamicFields = "0";
-			Profile = "GuiProgressProfile";
-			HorizSizing = "right";
-			VertSizing = "top";
-			position = "80 78";
-			Extent = "360 20";
-			MinExtent = "8 8";
-			canSave = "1";
-			Visible = "1";
-			hovertime = "1000";
-			maxLength = "1024";
 
-			new GuiTextCtrl(LoadingProgressTxt) {
-				canSaveDynamicFields = "0";
-				Profile = "GuiProgressTextProfile";
-				HorizSizing = "right";
-				VertSizing = "bottom";
-				position = "0 0";
-				Extent = "360 20";
-				MinExtent = "8 8";
-				canSave = "1";
-				Visible = "1";
-				hovertime = "1000";
-				text = "WAITING FOR SERVER";
-				maxLength = "255";
-			};
-		};
-		new GuiButtonCtrl() {
-			canSaveDynamicFields = "0";
-			Profile = "GuiButtonProfile";
-			HorizSizing = "right";
-			VertSizing = "top";
-			position = "10 78";
-			Extent = "65 20";
-			MinExtent = "20 15";
-			canSave = "1";
-			Visible = "1";
-			Command = "disconnect();";
-			Accelerator = "escape";
-			hovertime = "1000";
-			text = "CANCEL";
-			groupNum = "-1";
-			buttonType = "PushButton";
-		};
 	};
 };
 //--- OBJECT WRITE END ---

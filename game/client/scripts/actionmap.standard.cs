@@ -31,7 +31,7 @@ function toggleShellDlg()
 	else
 	{
 		Canvas.pushDialog(ShellDlg);
-		addWindow(IngameMenuWindow);
+		addWindow(MissionWindow);
 	}
 }
 

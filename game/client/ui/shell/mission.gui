@@ -1,0 +1,243 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2008, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(MissionWindowForEditing) {
+   canSaveDynamicFields = "0";
+   Profile = "GuiDefaultProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   Position = "0 0";
+   Extent = "800 600";
+   MinExtent = "8 8";
+   canSave = "1";
+   Visible = "1";
+   hovertime = "1000";
+
+   new GuiWindowCtrl(MissionWindow) {
+      canSaveDynamicFields = "0";
+      Profile = "GuiWindowProfile";
+      HorizSizing = "right";
+      VertSizing = "bottom";
+      Position = "10 10";
+      Extent = "517 450";
+      MinExtent = "8 8";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      text = "Arena";
+      maxLength = "255";
+      resizeWidth = "1";
+      resizeHeight = "1";
+      canMove = "1";
+      canClose = "0";
+      canMinimize = "0";
+      canMaximize = "0";
+      minSize = "50 50";
+
+      new GuiScrollCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiScrollProfile";
+         HorizSizing = "width";
+         VertSizing = "height";
+         Position = "9 61";
+         Extent = "497 201";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         willFirstRespond = "1";
+         hScrollBar = "alwaysOn";
+         vScrollBar = "alwaysOn";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiMLTextCtrl(IngameMenuText) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiMLTextProfile";
+            HorizSizing = "width";
+            VertSizing = "height";
+            Position = "2 2";
+            Extent = "475 13";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            lineSpacing = "2";
+            allowColorChars = "0";
+            maxChars = "-1";
+         };
+      };
+      new GuiScrollCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiScrollProfile";
+         HorizSizing = "width";
+         VertSizing = "top";
+         Position = "9 269";
+         Extent = "497 172";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         willFirstRespond = "1";
+         hScrollBar = "dynamic";
+         vScrollBar = "alwaysOn";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiTextListCtrl(PlayerListWindowList) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiDefaultProfile";
+            HorizSizing = "width";
+            VertSizing = "bottom";
+            Position = "2 2";
+            Extent = "477 14";
+            MinExtent = "355 14";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            enumerate = "0";
+            resizeCell = "1";
+            columns = "10 200 9000 10000";
+            fitParentWidth = "1";
+            clipColumnText = "0";
+         };
+      };
+      new GuiControl(LoadingWidgets) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiDefaultProfile";
+         HorizSizing = "width";
+         VertSizing = "bottom";
+         Position = "9 29";
+         Extent = "496 23";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+
+         new GuiButtonCtrl() {
+            canSaveDynamicFields = "0";
+            Profile = "GuiButtonProfile";
+            HorizSizing = "left";
+            VertSizing = "top";
+            Position = "380 0";
+            Extent = "116 23";
+            MinExtent = "20 15";
+            canSave = "1";
+            Visible = "1";
+            Command = "disconnect();";
+            hovertime = "1000";
+            text = "CANCEL";
+            groupNum = "-1";
+            buttonType = "PushButton";
+         };
+         new GuiProgressCtrl(LoadingProgress) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiProgressProfile";
+            HorizSizing = "width";
+            VertSizing = "top";
+            Position = "0 0";
+            Extent = "370 23";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            maxLength = "1024";
+
+            new GuiTextCtrl(LoadingProgressTxt) {
+               canSaveDynamicFields = "0";
+               Profile = "GuiProgressTextProfile";
+               HorizSizing = "relative";
+               VertSizing = "bottom";
+               Position = "0 0";
+               Extent = "372 23";
+               MinExtent = "8 8";
+               canSave = "1";
+               Visible = "1";
+               hovertime = "1000";
+               maxLength = "255";
+            };
+         };
+      };
+      new GuiControl(MissionWidgets) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiDefaultProfile";
+         HorizSizing = "width";
+         VertSizing = "bottom";
+         Position = "9 29";
+         Extent = "496 23";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+
+         new GuiButtonCtrl(IngameMenuMapEditor) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiButtonProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            Position = "253 0";
+            Extent = "117 23";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            Command = "toggleEditor(1);";
+            hovertime = "1000";
+            text = "Mission Editor";
+            groupNum = "-1";
+            buttonType = "PushButton";
+         };
+         new GuiButtonCtrl(IngameMenuOptions) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiButtonProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            Position = "126 0";
+            Extent = "117 23";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            Command = "addWindow(OptionsWindow);";
+            hovertime = "1000";
+            text = "Options";
+            groupNum = "-1";
+            buttonType = "PushButton";
+         };
+         new GuiButtonCtrl(IngameMenuDisconnect) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiButtonProfile";
+            HorizSizing = "left";
+            VertSizing = "bottom";
+            Position = "380 0";
+            Extent = "116 23";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            Command = "disconnect();";
+            hovertime = "1000";
+            text = "Disconnect";
+            groupNum = "-1";
+            buttonType = "PushButton";
+         };
+         new GuiButtonCtrl(IngameMenuReturn) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiButtonProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            Position = "0 0";
+            Extent = "117 23";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            Command = "toggleShellDlg();";
+            hovertime = "1000";
+            text = "Return to game";
+            groupNum = "-1";
+            buttonType = "PushButton";
+         };
+      };
+   };
+};
+//--- OBJECT WRITE END ---
