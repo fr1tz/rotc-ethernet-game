@@ -1,0 +1,13 @@
+After joining a team, players spawn as Etherform. Etherforms  can move freely around the map, but can't pass through solid objects. As Etherform, players can move quickly from zone to zone and manifest as CAT anywhere within their team's zones. In addition, players regenerate their health while they are in Etherform in a zone that's owned by their team.
+
+<spush><font:Arial:18>Manifesting as CAT<spop>
+
+In order to get anything done, players need to change from Etherform into CAT form. This is done by pressing TAB while beinginside a zone that's owned by the player's team. Manifesting as CAT requires at least 25% health and 50% energy.
+
+<spush><font:Arial:18>Etherform Controls<spop>
+W A S D 	Movement
+Space / Control 	Up / Down Movement
+Mouse X & Y axis 	Look
+Mouse Z axis (wheel) 	Zoom
+Tab 	Manifest as CAT
+y 	Show bigger minimap

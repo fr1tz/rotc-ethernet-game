@@ -41,6 +41,8 @@ function GameConnection::loadMission(%this)
 		
 		echo("*** Sending mission load to client: " @ $Server::MissionFile);
 
+		%this.onClientLoadMission();
+
 		sendMaterialMappingsToClient(%this);
 	}
 }

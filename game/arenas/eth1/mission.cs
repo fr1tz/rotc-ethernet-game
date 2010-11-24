@@ -1,5 +1,4 @@
 
-
 function executeEnvironmentScript()
 {
 	exec($Server::MissionEnvironmentFile @ ".cs"); 
@@ -8,6 +7,7 @@ function executeEnvironmentScript()
 function executeGameScripts()
 {
 	exec("~/server/base/exec.cs");
+	exec("~/server/eth/exec.cs");
 	exec("~/server/weapons/exec.cs");	
 }
 

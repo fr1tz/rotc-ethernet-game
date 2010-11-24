@@ -33,8 +33,18 @@ function GameConnection::control(%this, %shapebase)
 //------------------------------------------------------------------------------
 
 // *** callback function: called by script code in "common"
+function GameConnection::onClientLoadMission(%this)
+{
+	%this.loadingMission = true;
+	serverCmdMainMenu(%this);
+}
+
+
+// *** callback function: called by script code in "common"
 function GameConnection::onClientEnterGame(%this)
 {
+	%this.loadingMission = false;
+
 	commandToClient(%this, 'SyncClock', $Sim::Time - $Game::StartTime);
  
     // ScriptObject used to store raw statistics...
@@ -76,7 +86,8 @@ function GameConnection::onClientEnterGame(%this)
 	// Start sky color thread.
 	%this.updateSkyColor();
 
-	serverCmdMainMenu(%this);
+	if(%this.menu $= "mainmenu")
+		serverCmdMainMenu(%this);
 
 	// Start thread to process player stats...
 	%this.processPlayerStats();

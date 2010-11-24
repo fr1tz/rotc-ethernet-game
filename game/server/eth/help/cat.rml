@@ -1,0 +1,61 @@
+CATs are the physical manifestations of the Reds and Blues that can capture zones, tag enemies, shoot and be destroyed.
+The Reds and Blues have the following basic properties:
+
+    * Health: 75
+    * Health buffer: 25
+    * Energy: 100
+
+In addition, every CAT has energy-based armor, an Etherboard, two Discs, Grenades, the Trident and the primary weapon that was selected while in Etherform.
+
+<spush><font:Arial:18>Health<spop>
+
+Players start with 75 health points. At least 25% health is needed to manifest as a CAT. Health is lost if a player takes more damage than the health buffer can absorb. To regain health, players can either change back into Etherform and rest in a zone owned by their team or inflict damage on an enemy CAT. If you damage another CAT, 50% of the inflicted damage is returned to you first as health and then put into your health buffer, possibly overflowing it.
+
+<spush><font:Arial:18>Health buffer<spop>
+
+Players have a health buffer that constantly re-/degenerates to 25 points. Damage first hits the health buffer before affecting a player's health. The health buffer can overflow if players inflict enough damage on enemies.
+
+<spush><font:Arial:18>Energy<spop>
+
+A CAT needs energy to power its armor and fire its weapons. The energy consumed when firing a shot from a weapon is restoredif the shot hits an enemy.
+
+<spush><font:Arial:18>Armor<spop>
+
+Every CAT has energy-based armor that can absorb up to 50% damage if the CAT has full energy. The damage absorbed by the armor decreases in a linear fashion with decreased energy.
+
+<spush><font:Arial:18>Etherboard<spop>
+
+By holding down the left control key, CATs can trade agility for speed by using the Etherboard to ride the ether.
+
+<spush><font:Arial:18>Tagging<spop>
+
+Players are tagged when they take damage from an enemy. Tagged enemies appear on the HUD.
+
+<spush><font:Arial:18>Returning to Etherform<spop>
+
+By pressing TAB, players manifested as CAT can dissolve their physical bodies at any time.
+
+<spush><font:Arial:18>CAT Controls<spop>
+
+W A S D 	Movement
+Mouse X & Y axis 	Look
+Mouse Z axis (wheel) 	Zoom
+Left mouse button 	Fire equipped weapon
+Right mouse button 	Fire disc
+Middle mouse button 	Throw grenade
+Left shift + middle mouse button 	Throw grenade at full force
+Tab 	Return immediately to Etherform
+Left shift 	Walk slowly
+Left control 	Use Etherboard
+1 	Equip Trident
+2 	Equip primary weapon
+q 	Toggle equipped weapon
+y 	Show bigger minimap
+
+<spush><font:Arial:18>Pictures<spop>
+
+<bitmap:share/misc/help/cat_full.png> CAT with full health and full health buffer<sbreak>
+<bitmap:share/misc/help/cat_noenergy.png> CAT with almost no health<sbreak>
+<bitmap:share/misc/help/cat_dmgbufempty.png> CAT with full health but empty health buffer<sbreak>
+<bitmap:share/misc/help/cat_dmgbufoverflow.png> CAT with overflowing health buffer<sbreak>
+<bitmap:share/misc/help/cat_etherboard.png> CAT using etherboard<sbreak>

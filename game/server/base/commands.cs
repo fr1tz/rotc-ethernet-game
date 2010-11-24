@@ -176,17 +176,58 @@ function serverCmdInstantGrenadeThrow(%client)
 
 function serverCmdMainMenu(%client)
 {
+	%newtxt = "";
 	%client.clearMenuText();
-	%client.addMenuText(
-		"Welcome to" SPC $Pref::Server::Name SPC ".\n\n" @
-		$Pref::Server::Info @ "\n\n" @
-		"<spush><font:Arial:24>Main Menu<spop>\n\n" @
-		"   [<a:cmd JoinTeam 0>Become observer</a>]\n" @
-		"   [<a:cmd JoinTeam 1>Become red</a>]\n" @
-		"   [<a:cmd JoinTeam 2>Become blue</a>]\n\n" @
-		"   \>\> <a:cmd ShowPlayerList>Detailed Player List</a>\n" @
-		""
-	);
+
+	%newtxt = %newtxt @
+		"<spush><font:Arial:24>Main Menu<spop>\n\n" @	
+		"<spush><font:Arial:18>" @
+		"Welcome to" SPC $Server::MissionType SPC 
+		$Server::MissionName @ 
+		"<spop>\n\n" @
+		"Hosted by" SPC $Pref::Server::Name @ "\n\n" @
+		"";
+
+	if(%client.loadingMission || %client.menu $= "mainmenu")
+	{
+		%newtxt = %newtxt @
+			"If you're playing this arena for the first time, loading" SPC
+			"might take\nsome time while the game downloads needed" SPC
+			"art from the server.\nConsider using the time to read up on" SPC
+			"<a:cmd HowToPlay>how to play in this arena</a>.\n" @
+			"This main menu can be used to join the game once loading" SPC
+			"has finished.\n\n" @
+			"";
+	}
+
+	%newtxt = %newtxt @	
+		"<spush><font:Arial:16>Actions<spop>\n" @
+		"";
+
+	if(%client.loadingMission)
+	{
+		%newtxt = %newtxt @	
+			"   No actions available while arena is loading.\n" @
+			"";
+	}
+	else
+	{
+		%newtxt = %newtxt @	
+			"   [<a:cmd JoinTeam 0>Become observer</a>]\n" @
+			"   [<a:cmd JoinTeam 1>Become red</a>]\n" @
+			"   [<a:cmd JoinTeam 2>Become blue</a>]\n" @
+			"";
+	}
+
+	%newtxt = %newtxt @	
+		"\n<spush><font:Arial:16>Information<spop>\n" @
+		"   \>\> <a:cmd ShowPlayerList>Player statistics</a>\n" @
+		"   \>\> <a:cmd HowToPlay>How to play in this arena?</a>\n" @
+		"";
+
+	%client.addMenuText(%newtxt);
+
+	%client.menu = "mainmenu";
 }
 
 function serverCmdShowPlayerList(%client, %show)
@@ -196,7 +237,7 @@ function serverCmdShowPlayerList(%client, %show)
 
 	%newtxt = %newtxt @
 		"\<\< <a:cmd MainMenu>Back</a>\n\n" @
-		"<spush><font:Arial:24>Detailed Player List" SPC
+		"<spush><font:Arial:24>Player statistics" SPC
 		"[ <a:cmd ShowPlayerList" SPC %show @ ">Refresh</a> ]<spop>\n\n" @
 		"";
 
@@ -321,6 +362,8 @@ function serverCmdShowPlayerList(%client, %show)
 	%client.addMenuText(%newtxt);
 
 	%array.delete();
+
+	%client.menu = "playerlist";
 }
 
 function serverCmdShowPlayerInfo(%client, %player)
@@ -381,4 +424,6 @@ function serverCmdShowPlayerInfo(%client, %player)
 		"Total" TAB %p.totalFired TAB trimStat(%p.totalEffectiveness) @ "%" @ "\n\n" @
 		""
 	);
+
+	%client.menu = "playerinfo";
 }
