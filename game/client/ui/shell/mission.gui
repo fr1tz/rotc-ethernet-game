@@ -185,7 +185,7 @@ new GuiControl(MissionWindowForEditing) {
             Visible = "1";
             Command = "toggleEditor(1);";
             hovertime = "1000";
-            text = "Mission Editor";
+            text = "Editor";
             groupNum = "-1";
             buttonType = "PushButton";
          };
