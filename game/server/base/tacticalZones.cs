@@ -148,9 +148,6 @@ function TerritoryZones_reset()
 	}
 	else
 		error("TerritoryZones_reset(): missing TerritoryZones group!");
-
-	TerritoryZones_call("TerritoryZone_resetAllowed");
-	TerritoryZones_call("TerritoryZone_computeAllowed");
 }
 
 //-----------------------------------------------------------------------------
