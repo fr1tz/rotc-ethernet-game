@@ -9,7 +9,7 @@
 datablock ShapeBaseImageData(RedEtherformLightImage)
 {
 	// basic item properties
-	shapeFile = "~/data/misc/nothing.dts";
+	shapeFile = "share/shapes/rotc/misc/nothing.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -54,7 +54,7 @@ datablock ParticleData(RedEtherformDamageBufferEmitter_Particle)
 	times[2]		= 1.0;
 	spinRandomMin = 0.0;
 	spinRandomMax = 0.0;
-	textureName	= "~/data/particles/corona";
+	textureName	= "share/textures/rotc/corona";
 	allowLighting = false;
 };
 
@@ -96,7 +96,7 @@ datablock ParticleData(BlueEtherformDamageBufferEmitter_Particle)
 	times[2]		= 1.0;
 	spinRandomMin = 0.0;
 	spinRandomMax = 0.0;
-	textureName	= "~/data/particles/corona";
+	textureName	= "share/textures/rotc/corona";
 	allowLighting = false;
 };
 
@@ -139,7 +139,7 @@ datablock ParticleData(RedEtherformRepairEmitter_Particle)
 	times[2]		= 1.0;
 	spinRandomMin = 0.0;
 	spinRandomMax = 0.0;
-	textureName	= "~/data/particles/cross1";
+	textureName	= "share/textures/rotc/cross1";
 	allowLighting = false;
 };
 
@@ -181,7 +181,7 @@ datablock ParticleData(BlueEtherformRepairEmitter_Particle)
 	times[2]		= 1.0;
 	spinRandomMin = 0.0;
 	spinRandomMax = 0.0;
-	textureName	= "~/data/particles/cross1";
+	textureName	= "share/textures/rotc/cross1";
 	allowLighting = false;
 };
 
@@ -224,7 +224,7 @@ datablock ParticleData(RedEtherformBufferRepairEmitter_Particle)
 	times[2]		= 1.0;
 	spinRandomMin = 0.0;
 	spinRandomMax = 0.0;
-	textureName	= "~/data/particles/cross1";
+	textureName	= "share/textures/rotc/cross1";
 	allowLighting = false;
 };
 
@@ -266,7 +266,7 @@ datablock ParticleData(BlueEtherformBufferRepairEmitter_Particle)
 	times[2]		= 1.0;
 	spinRandomMin = 0.0;
 	spinRandomMax = 0.0;
-	textureName	= "~/data/particles/cross1";
+	textureName	= "share/textures/rotc/cross1";
 	allowLighting = false;
 };
 
@@ -303,7 +303,7 @@ datablock MultiNodeLaserBeamData(RedEtherform_LaserTrailOne)
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	//bitmap = "~/data/vehicles/team1scoutflyer/lasertrail";
+	//bitmap = "share/shapes/rotc/vehicles/team1scoutflyer/lasertrail";
 	//bitmapWidth = 1;
 
 	blendMode = 1;
@@ -323,7 +323,7 @@ datablock MultiNodeLaserBeamData(RedEtherform_LaserTrailTwo)
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	//bitmap = "~/data/vehicles/team1scoutflyer/lasertrail";
+	//bitmap = "share/shapes/rotc/vehicles/team1scoutflyer/lasertrail";
 	//bitmapWidth = 1;
 
 	blendMode = 1;
@@ -343,7 +343,7 @@ datablock MultiNodeLaserBeamData(BlueEtherform_LaserTrailOne)
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	//bitmap = "~/data/vehicles/team1scoutflyer/lasertrail";
+	//bitmap = "share/shapes/rotc/vehicles/team1scoutflyer/lasertrail";
 	//bitmapWidth = 1;
 
 	blendMode = 1;
@@ -363,7 +363,7 @@ datablock MultiNodeLaserBeamData(BlueEtherform_LaserTrailTwo)
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	//bitmap = "~/data/vehicles/team1scoutflyer/lasertrail";
+	//bitmap = "share/shapes/rotc/vehicles/team1scoutflyer/lasertrail";
 	//bitmapWidth = 1;
 
 	blendMode = 1;
@@ -381,7 +381,7 @@ datablock ParticleData(RedEtherform_ContrailParticle)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 1000;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/small_particle4";
+	textureName			 = "share/textures/rotc/small_particle4";
 	colors[0]	  = "1.0 0.0 0.0 1.0";
 	colors[1]	  = "1.0 0.0 1.0 0.66";
 	colors[2]	  = "1.0 1.0 0.0 0.33";
@@ -422,7 +422,7 @@ datablock ParticleData(BlueEtherform_ContrailParticle)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 1000;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/small_particle4";
+	textureName			 = "share/textures/rotc/small_particle4";
 	colors[0]	  = "0.0 0.0 1.0 1.0";
 	colors[1]	  = "1.0 0.0 1.0 0.66";
 	colors[2]	  = "0.0 1.0 1.0 0.33";

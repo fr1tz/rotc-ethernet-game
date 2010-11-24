@@ -37,7 +37,7 @@ datablock ProjectileData(RedMissileLauncherMissile)
 	explodesNearEnemies		 = false;
 	explodesNearEnemiesRadius = 10;
  
-    projectileShapeName = "~/data/weapons/missilelauncher/missile/shape.dts";
+    projectileShapeName = "share/shapes/rotc/weapons/missilelauncher/missile/shape.dts";
 
 	explosion				 = RedMissileLauncherMissileExplosion;
 	//bounceExplosion		 = MissileLauncherRifleBounce;
@@ -98,7 +98,7 @@ function RedMissileLauncherMissile::onExplode(%this,%obj,%pos,%normal,%fade,%dis
 datablock ProjectileData(RedSlowMissileLauncherMissile : RedMissileLauncherMissile)
 {
 	hyperSpeed = false;
-	//projectileShapeName = "~/data/weapons/missilelauncher/projectile/shape.dts";
+	//projectileShapeName = "share/shapes/rotc/weapons/missilelauncher/projectile/shape.dts";
 	missEnemyEffect = 0;
 	particleEmitter = RedSlowMissileLauncherMissileEmitter;
     laserTail = 0;
@@ -114,7 +114,7 @@ datablock ProjectileData(RedSlowMissileLauncherMissile : RedMissileLauncherMissi
 
 datablock ProjectileData(BlueMissileLauncherMissile : RedMissileLauncherMissile)
 {
-    //projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
+    //projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.blue.dts";
 	explosion = BlueMissileLauncherMissileExplosion;
 	missEnemyEffect = BlueMissileLauncherNearEnemyExplosion;
 	laserTail = BlueMissileLauncherMissileTail;
@@ -151,7 +151,7 @@ function BlueMissileLauncherMissile::onExplode(%this,%obj,%pos,%normal,%fade,%di
 datablock ProjectileData(BlueSlowMissileLauncherMissile : BlueMissileLauncherMissile)
 {
 	hyperSpeed = false;
-	//projectileShapeName = "~/data/weapons/missilelauncher/projectile/shape.dts";
+	//projectileShapeName = "share/shapes/rotc/weapons/missilelauncher/projectile/shape.dts";
 	missEnemyEffect = 0;
 	particleEmitter = BlueSlowMissileLauncherMissileEmitter;
 	isBallistic = true;

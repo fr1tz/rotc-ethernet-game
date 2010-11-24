@@ -16,7 +16,7 @@ exec("./assaultrifle.gfx.cs");
 datablock ShapeBaseImageData(HolsteredAssaultRifleImage)
 {
 	// basic item properties
-	shapeFile = "~/data/weapons/assaultrifle/image_holstered.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image_holstered.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -49,7 +49,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 
 	//sound = AssaultRifleProjectileFlybySound;
  
-    projectileShapeName = "~/data/weapons/assaultrifle/projectile.dts";
+    projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile.dts";
 
 	explosion             = AssaultRifleProjectileImpact;
 	bounceExplosion		  = AssaultRifleProjectileBounceExplosion;
@@ -117,7 +117,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "~/data/weapons/assaultrifle/image.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image.dts";
 	emap = true;
 
 	// mount point & mount offset...

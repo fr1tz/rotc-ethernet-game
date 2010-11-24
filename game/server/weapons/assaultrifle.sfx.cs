@@ -10,21 +10,21 @@
 
 datablock AudioProfile(AssaultRifleFireSound)
 {
-	filename = "~/data/sfx/fire3.wav";
+	filename = "share/sounds/rotc/fire3.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(AssaultRifleProjectileExplosionSound)
 {
-	filename = "~/data/sfx/explosion2.wav";
+	filename = "share/sounds/rotc/explosion2.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(AssaultRifleProjectileImpactSound)
 {
-	filename = "~/data/sfx/explosion2.wav";
+	filename = "share/sounds/rotc/explosion2.wav";
 	description = AudioDefault3D;
 	preload = true;
 };

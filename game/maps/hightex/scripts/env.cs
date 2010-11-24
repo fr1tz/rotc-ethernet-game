@@ -25,25 +25,25 @@ datablock AudioDescription(MAP_AudioExplosion3d)
 
 datablock AudioProfile(MAP_thunderCrash1)
 {
-	filename  = "~/data/sound/fx/environment/thunder1.wav";
+	filename  = "share/sounds/rotc/fx/environment/thunder1.wav";
 	description = AudioThunder3d;
 };
 
 datablock AudioProfile(MAP_thunderCrash2)
 {
-	filename  = "~/data/sound/fx/environment/thunder2.wav";
+	filename  = "share/sounds/rotc/fx/environment/thunder2.wav";
 	description = AudioThunder3d;
 };
 
 datablock AudioProfile(MAP_thunderCrash3)
 {
-	filename  = "~/data/sound/fx/environment/thunder3.wav";
+	filename  = "share/sounds/rotc/fx/environment/thunder3.wav";
 	description = AudioThunder3d;
 };
 
 datablock AudioProfile(MAP_thunderCrash4)
 {
-	filename  = "~/data/sound/fx/environment/thunder4.wav";
+	filename  = "share/sounds/rotc/fx/environment/thunder4.wav";
 	description = AudioThunder3d;
 };
 

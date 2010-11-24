@@ -17,7 +17,7 @@ exec("./chaingun.gfx.blue.cs");
 datablock ShapeBaseImageData(HolsteredChaingunImage)
 {
 	// basic item properties
-	shapeFile = "~/data/weapons/assaultrifle/image_holstered.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image_holstered.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -51,7 +51,7 @@ datablock TracerProjectileData(RedChaingunProjectile)
 
 	//sound = ChaingunProjectileFlybySound;
  
-//	projectileShapeName = "~/data/weapons/assaultrifle/projectile.dts";
+//	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile.dts";
 
 	explosion             = RedChaingunProjectileExplosion;
 	bounceExplosion		  = RedChaingunProjectileBounceExplosion;
@@ -94,7 +94,7 @@ function RedChaingunProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%
 
 datablock TracerProjectileData(BlueChaingunProjectile : RedChaingunProjectile)
 {
-//	projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
+//	projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.blue.dts";
 	explosion = RedMissileLauncherMissileExplosion;
 	bounceExplosion = BlueChaingunProjectileBounceExplosion;
 	//laserTrail[0]   = BlueChaingunProjectileLaserTrail;
@@ -118,7 +118,7 @@ datablock ShapeBaseImageData(RedChaingunImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "~/data/weapons/chaingun/image.red.dts";
+	shapeFile = "share/shapes/rotc/weapons/chaingun/image.red.dts";
 	emap = true;
 
 	// mount point & mount offset...

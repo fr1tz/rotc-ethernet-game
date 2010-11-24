@@ -35,9 +35,9 @@ datablock LaserBeamData(RedInterceptorDiscLaserTail)
 	outerBetweenWidth = "0.25";
 	outerEndWidth = "0.1";
 
-	bitmap = "~/data/weapons/blaster/lasertail.red";
+	bitmap = "share/shapes/rotc/weapons/blaster/lasertail.red";
 	bitmapWidth = 0.40;
-//	crossBitmap = "~/data/weapons/blaster/lasertail.red.cross";
+//	crossBitmap = "share/shapes/rotc/weapons/blaster/lasertail.red.cross";
 //	crossBitmapWidth = 0.10;
 
 	betweenFactor = 0.5;
@@ -60,7 +60,7 @@ datablock MultiNodeLaserBeamData(RedInterceptorDiscInnerLaserTrail)
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	bitmap = "~/data/weapons/disc/lasertrail.red";
+	bitmap = "share/shapes/rotc/weapons/disc/lasertrail.red";
 	bitmapWidth = 0.50;
 
 	blendMode = 1;
@@ -111,7 +111,7 @@ datablock ParticleData(RedInterceptorDiscExplosion_Emitter_Particle)
 	times[2]		= 1.0;
 	spinRandomMin = 0.0;
 	spinRandomMax = 0.0;
-	textureName	= "~/data/particles/smoke_particle";
+	textureName	= "share/textures/rotc/smoke_particle";
 	allowLighting = false;
 };
 
@@ -139,7 +139,7 @@ datablock ExplosionData(RedInterceptorDiscExplosion)
 	lifetimeMS = 200;
 
  	// shape...
-	explosionShape = "~/data/effects/explosion4_red.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion4_red.dts";
 	faceViewer	  = false;
 	playSpeed = 3.0;
 	sizes[0] = "0.2 0.2 0.2";
@@ -170,7 +170,7 @@ datablock ExplosionData(RedInterceptorDiscDeflectedEffect)
 {
 	soundProfile	= DiscDeflectedSound;
 
-	explosionShape = "~/data/effects/explosion_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion_white.dts";
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.2 0.2 0.2";
@@ -210,7 +210,7 @@ datablock ExplosionData(RedInterceptorDiscBounceEffect)
 	soundProfile	= DiscBounceSound;
 
 	// shape...
-	explosionShape = "~/data/effects/explosion_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion_white.dts";
 	faceViewer	  = false;
 	playSpeed = 4.0;
 	sizes[0] = "0.2 0.2 0.2";
@@ -248,7 +248,7 @@ datablock ExplosionData(RedInterceptorDiscBounceEffect)
 datablock DebrisData(RedInterceptorDiscHit_Debris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris1.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
 
 	// bounce...
 	staticOnMaxBounce = true;

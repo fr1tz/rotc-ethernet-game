@@ -35,9 +35,9 @@ datablock LaserBeamData(BlueMissileLauncherProjectileLaserTail)
 	outerBetweenWidth = "0.25";
 	outerEndWidth = "0.1";
 	
-	bitmap = "~/data/weapons/blaster/lasertail.blue";
+	bitmap = "share/shapes/rotc/weapons/blaster/lasertail.blue";
 	bitmapWidth = 0.20;
-//	crossBitmap = "~/data/weapons/blaster/lasertail.blue.cross";
+//	crossBitmap = "share/shapes/rotc/weapons/blaster/lasertail.blue.cross";
 //	crossBitmapWidth = 0.10;
 
 	betweenFactor = 0.5;
@@ -60,7 +60,7 @@ datablock MultiNodeLaserBeamData(BlueMissileLauncherProjectileLaserTrail)
 	outerColor = "0.50 0.50 1.00 0.2";
 	outerWidth = "0.05";
 
-	//bitmap = "~/data/weapons/missilelauncher/lasertrail.blue";
+	//bitmap = "share/shapes/rotc/weapons/missilelauncher/lasertrail.blue";
 	//bitmapWidth = 0.25;
 
 	blendMode = 1;
@@ -99,7 +99,7 @@ datablock ParticleData(BlueMissileLauncherProjectileImpact_Smoke)
 
 	useInvAlpha =  true;
 
-	textureName = "~/data/particles/smoke_particle";
+	textureName = "share/textures/rotc/smoke_particle";
 
 	colors[0]	  = "1.0 1.0 1.0 0.5";
 	colors[1]	  = "1.0 1.0 1.0 0.0";
@@ -132,7 +132,7 @@ datablock ParticleEmitterData(BlueMissileLauncherProjectileImpact_SmokeEmitter)
 datablock DebrisData(BlueMissileLauncherProjectileImpact_Debris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris1.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
 
 	// bounce...
 	staticOnMaxBounce = true;
@@ -159,7 +159,7 @@ datablock ExplosionData(BlueMissileLauncherProjectileImpact)
 	lifetimeMS = 3000;
 
  	// shape...
-	explosionShape = "~/data/weapons/blaster/projectile.impact.blue.dts";
+	explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.blue.dts";
 	faceViewer = false;
 	playSpeed = 0.4;
 	sizes[0] = "1 1 1";
@@ -212,7 +212,7 @@ datablock ExplosionData(BlueMissileLauncherProjectileMissedEnemyEffect)
 	soundProfile = MissileLauncherProjectileMissedEnemySound;
 
 	// shape...
-	explosionShape = "~/data/effects/explosion2_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
 	faceViewer	  = true;
 	playSpeed = 8.0;
 	sizes[0] = "0.07 0.07 0.07";

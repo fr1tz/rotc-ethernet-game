@@ -17,7 +17,7 @@ exec("./assaultrifle.gfx.blue.cs");
 datablock ShapeBaseImageData(HolsteredAssaultRifleImage)
 {
 	// basic item properties
-	shapeFile = "~/data/weapons/assaultrifle/image_holstered.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image_holstered.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -58,7 +58,7 @@ datablock ShotgunProjectileData(RedAssaultRifleProjectile)
 
 	//sound = AssaultRifleProjectileFlybySound;
  
-//  projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
+//  projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.red.dts";
 
 	explosion             = RedAssaultRifleProjectileExplosion;
 //	bounceExplosion		  = RedAssaultRifleProjectileBounceExplosion;
@@ -106,7 +106,7 @@ function RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%norm
 
 datablock ShotgunProjectileData(BlueAssaultRifleProjectile : RedAssaultRifleProjectile)
 {
-//	projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
+//	projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.blue.dts";
 //	explosion = BlueAssaultRifleProjectileExplosion;
 //	bounceExplosion = BlueAssaultRifleProjectileBounceExplosion;
 	laserTrail[0]   = BlueAssaultRifleProjectileLaserTrail;
@@ -130,7 +130,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "~/data/weapons/assaultrifle/image.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image.dts";
 	emap = true;
 
 	// mount point & mount offset...

@@ -24,7 +24,7 @@ datablock MultiNodeLaserBeamData(RedSeekerDiscInnerLaserTrail)
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	bitmap = "~/data/weapons/disc/lasertrail.red";
+	bitmap = "share/shapes/rotc/weapons/disc/lasertrail.red";
 	bitmapWidth = 0.50;
 
 	blendMode = 1;
@@ -75,7 +75,7 @@ datablock ParticleData(RedSeekerDiscExplosion_Emitter_Particle)
 	times[2]		= 1.0;
 	spinRandomMin = 0.0;
 	spinRandomMax = 0.0;
-	textureName	= "~/data/particles/smoke_particle";
+	textureName	= "share/textures/rotc/smoke_particle";
 	allowLighting = false;
 };
 
@@ -103,7 +103,7 @@ datablock ExplosionData(RedSeekerDiscExplosion)
 	lifetimeMS = 200;
 
  	// shape...
-	explosionShape = "~/data/effects/explosion4_red.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion4_red.dts";
 	faceViewer	  = false;
 	playSpeed = 3.0;
 	sizes[0] = "0.2 0.2 0.2";
@@ -134,7 +134,7 @@ datablock ExplosionData(RedSeekerDiscDeflectedEffect)
 {
 	soundProfile	= DiscDeflectedSound;
 
-	explosionShape = "~/data/effects/explosion_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion_white.dts";
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.2 0.2 0.2";
@@ -174,7 +174,7 @@ datablock ExplosionData(RedSeekerDiscBounceEffect)
 	soundProfile	= DiscBounceSound;
 
 	// shape...
-	explosionShape = "~/data/effects/explosion_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion_white.dts";
 	faceViewer	  = false;
 	playSpeed = 4.0;
 	sizes[0] = "0.2 0.2 0.2";
@@ -212,7 +212,7 @@ datablock ExplosionData(RedSeekerDiscBounceEffect)
 datablock DebrisData(RedSeekerDiscHit_Debris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris1.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
 
 	// bounce...
 	staticOnMaxBounce = true;

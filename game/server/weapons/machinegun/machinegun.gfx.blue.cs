@@ -15,7 +15,7 @@ datablock ParticleData(BlueMachineGunProjectileParticleEmitter_Particles)
 	constantAcceleration = 0.0;
 	lifetimeMS			 = 1000;
 	lifetimeVarianceMS	 = 0;
-	textureName			 = "~/data/particles/smoke_particle";
+	textureName			 = "share/textures/rotc/smoke_particle";
 	colors[0]	    = "1.0 1.0 1.0 0.2";
 	colors[1]	    = "1.0 1.0 1.0 0.0";
 	sizes[0]		= 1.5;
@@ -60,7 +60,7 @@ datablock MultiNodeLaserBeamData(BlueMachineGunProjectileLaserTrail)
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	bitmap = "~/data/weapons/blaster/lasertrail.red";
+	bitmap = "share/shapes/rotc/weapons/blaster/lasertrail.red";
 	bitmapWidth = 0.50;
 
 	blendMode = 1;
@@ -112,9 +112,9 @@ datablock LaserBeamData(BlueMachineGunProjectileLaserTail)
 	outerBetweenWidth = "0.25";
 	outerEndWidth = "0.1";
 	
-	bitmap = "~/data/weapons/blaster/lasertail.blue";
+	bitmap = "share/shapes/rotc/weapons/blaster/lasertail.blue";
 	bitmapWidth = 0.15;
-	//crossBitmap = "~/data/weapons/blaster/lasertail.blue.cross";
+	//crossBitmap = "share/shapes/rotc/weapons/blaster/lasertail.blue.cross";
 	//crossBitmapWidth = 0.50;
 
 	betweenFactor = 0.5;
@@ -154,7 +154,7 @@ datablock ParticleData(BlueMachineGunProjectileExplosion_Cloud)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/corona.png";
+	textureName = "share/textures/rotc/corona.png";
 
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "1.0 1.0 1.0 0.0";
@@ -196,7 +196,7 @@ datablock ParticleData(BlueMachineGunProjectileExplosion_Dust)
 	useInvAlpha			 = true;
 	spinRandomMin		  = -90.0;
 	spinRandomMax		  = 500.0;
-	textureName			 = "~/data/particles/smoke_particle.png";
+	textureName			 = "share/textures/rotc/smoke_particle.png";
 	colors[0]	  = "0.9 0.9 0.9 0.5";
 	colors[1]	  = "0.9 0.9 0.9 0.5";
 	colors[2]	  = "0.9 0.9 0.9 0.0";
@@ -239,7 +239,7 @@ datablock ParticleData(BlueMachineGunProjectileExplosion_Smoke)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/smoke_particle.png";
+	textureName = "share/textures/rotc/smoke_particle.png";
 
 	colors[0]	  = "0.9 0.9 0.9 0.4";
 	colors[1]	  = "0.9 0.9 0.9 0.2";
@@ -278,7 +278,7 @@ datablock ParticleData(BlueMachineGunProjectileExplosion_Sparks)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 500;
 	lifetimeVarianceMS	= 350;
-	textureName			 = "~/data/particles/particle1.png";
+	textureName			 = "share/textures/rotc/particle1.png";
 	colors[0]	  = "0.56 0.36 0.26 1.0";
 	colors[1]	  = "0.56 0.36 0.26 1.0";
 	colors[2]	  = "1.0 0.36 0.26 0.0";
@@ -321,7 +321,7 @@ datablock MultiNodeLaserBeamData(BlueMachineGunProjectileExplosion_Debris_LaserT
 	outerColor = "1.00 1.00 0.00 0.3";
 	outerWidth = "0.40";
 
-//	bitmap = "~/data/weapons/hegrenade/lasertrail";
+//	bitmap = "share/shapes/rotc/weapons/hegrenade/lasertrail";
 //	bitmapWidth = 0.1;
 
 	blendMode = 1;
@@ -331,7 +331,7 @@ datablock MultiNodeLaserBeamData(BlueMachineGunProjectileExplosion_Debris_LaserT
 
 datablock DebrisData(BlueMachineGunProjectileExplosion_Debris)
 {
-//	shapeFile = "~/data/weapons/hegrenade/grenade.dts";
+//	shapeFile = "share/shapes/rotc/weapons/hegrenade/grenade.dts";
 //	emitters[0] = GrenadeLauncherParticleEmitter;
 
 	laserTrail = BlueMachineGunProjectileExplosion_Debris_LaserTrail;
@@ -356,7 +356,7 @@ datablock ExplosionData(BlueMachineGunProjectileExplosion)
 	lifetimeMS = 200;
  
 	// shape...
-	explosionShape = "~/data/effects/explosion2_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
 	faceViewer	  = true;
 	playSpeed = 8.0;
 	sizes[0] = "0.07 0.07 0.07";
@@ -407,7 +407,7 @@ datablock ParticleData(BlueMachineGunProjectileImpact_Smoke)
 
 	useInvAlpha =  true;
 
-	textureName = "~/data/particles/smoke_particle";
+	textureName = "share/textures/rotc/smoke_particle";
 
 	colors[0]	  = "1.0 1.0 1.0 0.5";
 	colors[1]	  = "1.0 1.0 1.0 0.0";
@@ -440,7 +440,7 @@ datablock ParticleEmitterData(BlueMachineGunProjectileImpact_SmokeEmitter)
 datablock DebrisData(BlueMachineGunProjectileImpact_Debris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris1.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
 
 	// bounce...
 	staticOnMaxBounce = true;

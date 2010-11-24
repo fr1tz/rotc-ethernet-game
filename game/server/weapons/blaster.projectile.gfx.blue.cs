@@ -35,9 +35,9 @@ datablock LaserBeamData(BlueBlasterProjectileLaserTail)
 	outerBetweenWidth = "0.25";
 	outerEndWidth = "0.1";
 	
-	bitmap = "~/data/weapons/blaster/lasertail.blue";
+	bitmap = "share/shapes/rotc/weapons/blaster/lasertail.blue";
 	bitmapWidth = 0.20;
-//	crossBitmap = "~/data/weapons/blaster/lasertail.blue.cross";
+//	crossBitmap = "share/shapes/rotc/weapons/blaster/lasertail.blue.cross";
 //	crossBitmapWidth = 0.10;
 
 	betweenFactor = 0.5;
@@ -61,7 +61,7 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailMissed)
 	outerColor = "0.00 0.00 0.00 0.1";
 	outerWidth = "0.10";
 
-	bitmap = "~/data/weapons/blaster/lasertrail.blue";
+	bitmap = "share/shapes/rotc/weapons/blaster/lasertrail.blue";
 	bitmapWidth = 0.90;
 
 	blendMode = 1;
@@ -100,7 +100,7 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailHit)
 	outerColor = "0.00 0.00 0.00 0.1";
 	outerWidth = "0.10";
 
-	bitmap = "~/data/weapons/blaster/lasertrail.blue";
+	bitmap = "share/shapes/rotc/weapons/blaster/lasertrail.blue";
 	bitmapWidth = 0.90;
 
 	blendMode = 1;
@@ -139,7 +139,7 @@ datablock ParticleData(BlueBlasterProjectileImpact_Smoke)
 
 	useInvAlpha =  true;
 
-	textureName = "~/data/particles/smoke_particle";
+	textureName = "share/textures/rotc/smoke_particle";
 
 	colors[0]	  = "1.0 1.0 1.0 0.5";
 	colors[1]	  = "1.0 1.0 1.0 0.0";
@@ -172,7 +172,7 @@ datablock ParticleEmitterData(BlueBlasterProjectileImpact_SmokeEmitter)
 datablock DebrisData(BlueBlasterProjectileImpact_Debris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris1.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
 
 	// bounce...
 	staticOnMaxBounce = true;
@@ -199,7 +199,7 @@ datablock ExplosionData(BlueBlasterProjectileImpact)
 	lifetimeMS = 3000;
 
  	// shape...
-	explosionShape = "~/data/weapons/blaster/projectile.impact.blue.dts";
+	explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.blue.dts";
 	faceViewer = false;
 	playSpeed = 0.4;
 	sizes[0] = "1 1 1";
@@ -242,7 +242,7 @@ datablock ParticleData(BlueBlasterProjectileHit_Particle)
 
 	useInvAlpha =  false;
 
-	textureName	= "~/data/particles/star1";
+	textureName	= "share/textures/rotc/star1";
 
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "0.0 0.0 1.0 1.0";
@@ -302,7 +302,7 @@ datablock ExplosionData(BlueBlasterProjectileMissedEnemyEffect)
 	soundProfile = BlasterProjectileMissedEnemySound;
 
 	// shape...
-	explosionShape = "~/data/effects/explosion2_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
 	faceViewer	  = true;
 	playSpeed = 8.0;
 	sizes[0] = "0.07 0.07 0.07";

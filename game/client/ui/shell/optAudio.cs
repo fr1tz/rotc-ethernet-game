@@ -108,7 +108,7 @@ function OptAudioUpdateMasterVolume(%volume)
 	$pref::Audio::masterVolume = %volume;
 	if (!alxIsPlaying($AudioTestHandle))
 	{
-		$AudioTestHandle = alxCreateSource("AudioChannel0", expandFilename("~/data/sound/testing.wav"));
+		$AudioTestHandle = alxCreateSource("AudioChannel0", expandFilename("share/sounds/rotc/testing.wav"));
 		alxPlay($AudioTestHandle);
 	}
 }
@@ -125,7 +125,7 @@ function OptAudioUpdateChannelVolume(%channel, %volume)
 	$pref::Audio::channelVolume[%channel] = %volume;
 	if (!alxIsPlaying($AudioTestHandle))
 	{
-		$AudioTestHandle = alxCreateSource("AudioChannel"@%channel, expandFilename("~/data/sound/testing.wav"));
+		$AudioTestHandle = alxCreateSource("AudioChannel"@%channel, expandFilename("share/sounds/rotc/testing.wav"));
 		alxPlay($AudioTestHandle);
 	}
 }

@@ -23,7 +23,7 @@ datablock ShapeBaseImageData(RedMissileLauncherImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "~/data/weapons/missilelauncher/image.red.dts";
+	shapeFile = "share/shapes/rotc/weapons/missilelauncher/image.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -256,7 +256,7 @@ function RedMissileLauncherImage::fireMissile(%this, %obj, %slot)
 
 datablock ShapeBaseImageData(BlueMissileLauncherImage : RedMissileLauncherImage)
 {
-	shapeFile = "~/data/weapons/missilelauncher/image.blue.dts";
+	shapeFile = "share/shapes/rotc/weapons/missilelauncher/image.blue.dts";
 
 	projectile = BlueMissileLauncherProjectile;
     missile = BlueMissileLauncherMissile;

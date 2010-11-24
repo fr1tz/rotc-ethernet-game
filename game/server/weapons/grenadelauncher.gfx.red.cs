@@ -15,7 +15,7 @@ datablock ParticleData(RedGrenadeLauncherProjectileParticleEmitter_Particles)
 	constantAcceleration = 0.0;
 	lifetimeMS			 = 1000;
 	lifetimeVarianceMS	 = 0;
-	textureName			 = "~/data/particles/smoke_particle";
+	textureName			 = "share/textures/rotc/smoke_particle";
 	colors[0]	    = "1.0 1.0 1.0 0.5";
 	colors[1]	    = "1.0 1.0 1.0 0.0";
 	sizes[0]		= 1.5;
@@ -59,7 +59,7 @@ datablock MultiNodeLaserBeamData(RedGrenadeLauncherProjectileLaserTrail)
 	outerColor = "1.00 1.00 1.00 0.02";
 	outerWidth = "0.05";
 
-	bitmap = "~/data/particles/smoke_particle";
+	bitmap = "share/textures/rotc/smoke_particle";
 	bitmapWidth = 0.5;
 
 	blendMode = 1;
@@ -98,7 +98,7 @@ datablock MultiNodeLaserBeamData(RedGrenadeLauncherProjectileLaserTrail2)
 	outerColor = "1.00 0.00 0.00 0.5";
 	outerWidth = "0.25";
 
-//	bitmap = "~/data/weapons/assaultrifle/lasertrail";
+//	bitmap = "share/shapes/rotc/weapons/assaultrifle/lasertrail";
 //	bitmapWidth = 0.25;
 
 	blendMode = 1;
@@ -148,9 +148,9 @@ datablock LaserBeamData(RedGrenadeLauncherProjectileLaserTail)
 	outerBetweenWidth = "0.3";
 	outerEndWidth	  = "0.0";
 
-	bitmap = "~/data/weapons/assaultrifle/lasertail";
+	bitmap = "share/shapes/rotc/weapons/assaultrifle/lasertail";
 	bitmapWidth = 0.2;
-//	crossBitmap = "~/data/weapons/assaultrifle/lasertail.cross";
+//	crossBitmap = "share/shapes/rotc/weapons/assaultrifle/lasertail.cross";
 //	crossBitmapWidth = 0.25;
 
 	betweenFactor = 0.5;
@@ -182,7 +182,7 @@ datablock ParticleData(RedGrenadeLauncherProjectileExplosion_Cloud)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/corona.png";
+	textureName = "share/textures/rotc/corona.png";
 
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "1.0 1.0 1.0 0.0";
@@ -224,7 +224,7 @@ datablock ParticleData(RedGrenadeLauncherProjectileExplosion_Dust)
 	useInvAlpha			 = true;
 	spinRandomMin		  = -90.0;
 	spinRandomMax		  = 500.0;
-	textureName			 = "~/data/particles/smoke_particle.png";
+	textureName			 = "share/textures/rotc/smoke_particle.png";
 	colors[0]	  = "0.9 0.9 0.9 0.5";
 	colors[1]	  = "0.9 0.9 0.9 0.5";
 	colors[2]	  = "0.9 0.9 0.9 0.0";
@@ -267,7 +267,7 @@ datablock ParticleData(RedGrenadeLauncherProjectileExplosion_Smoke)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/smoke_particle.png";
+	textureName = "share/textures/rotc/smoke_particle.png";
 
 	colors[0]	  = "0.9 0.9 0.9 0.4";
 	colors[1]	  = "0.9 0.9 0.9 0.2";
@@ -306,7 +306,7 @@ datablock ParticleData(RedGrenadeLauncherProjectileExplosion_Sparks)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 500;
 	lifetimeVarianceMS	= 350;
-	textureName			 = "~/data/particles/particle1.png";
+	textureName			 = "share/textures/rotc/particle1.png";
 	colors[0]	  = "0.56 0.36 0.26 1.0";
 	colors[1]	  = "0.56 0.36 0.26 1.0";
 	colors[2]	  = "1.0 0.36 0.26 0.0";
@@ -339,7 +339,7 @@ datablock ParticleEmitterData(RedGrenadeLauncherProjectileExplosion_SparksEmitte
 datablock DebrisData(RedGrenadeLauncherProjectileExplosion_SmallDebris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris1.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
 
 	// bounce...
 	staticOnMaxBounce = true;
@@ -372,7 +372,7 @@ datablock MultiNodeLaserBeamData(RedGrenadeLauncherProjectileExplosion_LargeDebr
 	outerColor = "1.00 1.00 1.00 0.2";
 	outerWidth = "0.40";
 
-//	bitmap = "~/data/weapons/missilelauncher/explosion.trail";
+//	bitmap = "share/shapes/rotc/weapons/missilelauncher/explosion.trail";
 //	bitmapWidth = 0.25;
 
 	blendMode = 1;
@@ -389,7 +389,7 @@ datablock ParticleData(RedGrenadeLauncherProjectileExplosion_LargeDebris_Particl
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 1000;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/cross1";
+	textureName			 = "share/textures/rotc/cross1";
 	colors[0]	  = "1.0 1.0 1.0 0.6";
 	colors[1]	  = "1.0 1.0 1.0 0.4";
 	colors[2]	  = "1.0 1.0 1.0 0.2";
@@ -430,7 +430,7 @@ datablock ParticleData(RedGrenadeLauncherProjectileExplosion_LargeDebris_Particl
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 100;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/cross1";
+	textureName			 = "share/textures/rotc/cross1";
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "1.0 1.0 1.0 1.0";
 	colors[2]	  = "1.0 1.0 1.0 0.5";
@@ -477,7 +477,7 @@ datablock ExplosionData(RedGrenadeLauncherProjectileExplosion_LargeDebris_Explos
 datablock DebrisData(RedGrenadeLauncherProjectileExplosion_LargeDebris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris2.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris2.white.dts";
 
 	explosion = RedGrenadeLauncherProjectileExplosion_LargeDebris_Explosion;
 
@@ -556,7 +556,7 @@ datablock ParticleData(RedGrenadeLauncherProjectileImpact_Smoke)
 
 	useInvAlpha =  true;
 
-	textureName = "~/data/particles/smoke_particle";
+	textureName = "share/textures/rotc/smoke_particle";
 
 	colors[0]	  = "1.0 1.0 1.0 0.5";
 	colors[1]	  = "1.0 1.0 1.0 0.0";
@@ -589,7 +589,7 @@ datablock ParticleEmitterData(RedGrenadeLauncherProjectileImpact_SmokeEmitter)
 datablock DebrisData(RedGrenadeLauncherProjectileImpact_Debris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris1.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
 
 	// bounce...
 	staticOnMaxBounce = true;

@@ -13,7 +13,7 @@
 
 datablock MultiNodeLaserBeamData(BlueMissileLauncherMissileTrail)
 {
-	//bitmap = "~/data/weapons/missilelauncher/lasertrail_blue";
+	//bitmap = "share/shapes/rotc/weapons/missilelauncher/lasertrail_blue";
 	bitmapWidth = 0.50;
 
 	blendMode = 1;
@@ -70,7 +70,7 @@ datablock ParticleData(BlueSlowMissileLauncherMissileEmitter_Particles)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/smoke_particle.png";
+	textureName = "share/textures/rotc/smoke_particle.png";
 
 	colors[0]	  = "0.9 0.9 0.9 0.4";
 	colors[1]	  = "0.9 0.9 0.9 0.2";
@@ -119,7 +119,7 @@ datablock ParticleData(BlueMissileLauncherMissileEmitter_Particles)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/smoke_particle.png";
+	textureName = "share/textures/rotc/smoke_particle.png";
 
 	colors[0]	  = "0.9 0.9 0.9 0.8";
 	colors[1]	  = "0.9 0.9 0.9 0.4";
@@ -163,7 +163,7 @@ datablock ParticleData(BlueMissileLauncherFireEmitter_Particles)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 200;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/smoke_particle";
+	textureName			 = "share/textures/rotc/smoke_particle";
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "0.0 0.0 1.0 1.0";
 	colors[2]	  = "0.0 0.0 1.0 0.0";
@@ -206,7 +206,7 @@ datablock ParticleData( BlueMissileLauncherNearEnemyExplosionDebrisSmokeParticle
 	lifetimeMS			  = 400;
 	lifetimeVarianceMS	= 0;
 
-	textureName			 = "~/data/particles/small_particle4";
+	textureName			 = "share/textures/rotc/small_particle4";
 
 	//spinRandomMin = -60.0;
 	//spinRandomMax = 60.0;
@@ -267,7 +267,7 @@ datablock ParticleData(BlueMissileLauncherNearEnemyExplosionCloud)
 	lifetimeVarianceMS	= 350;
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
-	textureName			 = "~/data/particles/particle1";
+	textureName			 = "share/textures/rotc/particle1";
 	colors[0]	  = "1.00 1.00 1.00 0.8";
 	colors[1]	  = "0.00 0.00 1.00 0.4";
 	colors[2]	  = "0.00 0.00 1.00 0.0";
@@ -336,7 +336,7 @@ datablock ParticleData(BlueMissileLauncherMissileExplosion_Cloud)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/corona.png";
+	textureName = "share/textures/rotc/corona.png";
 
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "1.0 1.0 1.0 0.0";
@@ -378,7 +378,7 @@ datablock ParticleData(BlueMissileLauncherMissileExplosion_Dust)
 	useInvAlpha			 = true;
 	spinRandomMin		  = -90.0;
 	spinRandomMax		  = 500.0;
-	textureName			 = "~/data/particles/smoke_particle.png";
+	textureName			 = "share/textures/rotc/smoke_particle.png";
 	colors[0]	  = "0.9 0.9 0.9 0.5";
 	colors[1]	  = "0.9 0.9 0.9 0.5";
 	colors[2]	  = "0.9 0.9 0.9 0.0";
@@ -421,7 +421,7 @@ datablock ParticleData(BlueMissileLauncherMissileExplosion_Smoke)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/smoke_particle.png";
+	textureName = "share/textures/rotc/smoke_particle.png";
 
 	colors[0]	  = "0.9 0.9 0.9 0.4";
 	colors[1]	  = "0.9 0.9 0.9 0.2";
@@ -460,7 +460,7 @@ datablock ParticleData(BlueMissileLauncherMissileExplosion_Sparks)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 500;
 	lifetimeVarianceMS	= 350;
-	textureName			 = "~/data/particles/particle1.png";
+	textureName			 = "share/textures/rotc/particle1.png";
 	colors[0]	  = "0.56 0.36 0.26 1.0";
 	colors[1]	  = "0.56 0.36 0.26 1.0";
 	colors[2]	  = "1.0 0.36 0.26 0.0";
@@ -493,7 +493,7 @@ datablock ParticleEmitterData(BlueMissileLauncherMissileExplosion_SparksEmitter)
 datablock DebrisData(BlueMissileLauncherMissileExplosion_SmallDebris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris1.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
 
 	// bounce...
 	staticOnMaxBounce = true;
@@ -526,7 +526,7 @@ datablock MultiNodeLaserBeamData(BlueMissileLauncherMissileExplosion_LargeDebris
 	outerColor = "1.00 1.00 1.00 0.2";
 	outerWidth = "0.40";
 
-//	bitmap = "~/data/weapons/missilelauncher/explosion.trail";
+//	bitmap = "share/shapes/rotc/weapons/missilelauncher/explosion.trail";
 //	bitmapWidth = 0.25;
 
 	blendMode = 1;
@@ -543,7 +543,7 @@ datablock ParticleData(BlueMissileLauncherMissileExplosion_LargeDebris_Particles
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 1000;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/cross1";
+	textureName			 = "share/textures/rotc/cross1";
 	colors[0]	  = "1.0 1.0 1.0 0.6";
 	colors[1]	  = "1.0 1.0 1.0 0.4";
 	colors[2]	  = "1.0 1.0 1.0 0.2";
@@ -584,7 +584,7 @@ datablock ParticleData(BlueMissileLauncherMissileExplosion_LargeDebris_Particles
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 100;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/cross1";
+	textureName			 = "share/textures/rotc/cross1";
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "1.0 1.0 1.0 1.0";
 	colors[2]	  = "1.0 1.0 1.0 0.5";
@@ -631,7 +631,7 @@ datablock ExplosionData(BlueMissileLauncherMissileExplosion_LargeDebris_Explosio
 datablock DebrisData(BlueMissileLauncherMissileExplosion_LargeDebris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris2.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris2.white.dts";
 
 	explosion = BlueMissileLauncherMissileExplosion_LargeDebris_Explosion;
 

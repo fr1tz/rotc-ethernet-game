@@ -15,7 +15,7 @@ datablock ParticleData(BlueGrenade_ParticleEmitter_Particles)
    constantAcceleration = 0.0;
    lifetimeMS           = 500;
    lifetimeVarianceMS   = 0;
-   textureName          = "~/data/particles/smoke_particle";
+   textureName          = "share/textures/rotc/smoke_particle";
    colors[0]     = "0.0 1.0 1.0 1.0";
    colors[1]     = "0.0 0.0 1.0 1.0";
    colors[2]     = "0.0 0.0 1.0 0.0";
@@ -61,7 +61,7 @@ datablock MultiNodeLaserBeamData(BlueGrenade_Lasertrail)
 	outerColor = "0.00 0.00 1.00 1.00";
 	outerWidth = "0.20";
 
-//	bitmap = "~/data/weapons/assaultrifle/lasertrail";
+//	bitmap = "share/shapes/rotc/weapons/assaultrifle/lasertrail";
 //	bitmapWidth = 0.25;
 
 	blendMode = 1;
@@ -108,7 +108,7 @@ datablock ParticleData(BlueGrenadeExplosion_Cloud)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/corona.png";
+	textureName = "share/textures/rotc/corona.png";
 
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "0.0 0.0 1.0 0.0";
@@ -150,7 +150,7 @@ datablock ParticleData(BlueGrenadeExplosion_Dust)
 	useInvAlpha			 = true;
 	spinRandomMin		  = -90.0;
 	spinRandomMax		  = 500.0;
-	textureName			 = "~/data/particles/smoke_particle.png";
+	textureName			 = "share/textures/rotc/smoke_particle.png";
 	colors[0]	  = "0.9 0.9 0.9 0.5";
 	colors[1]	  = "0.9 0.9 0.9 0.5";
 	colors[2]	  = "0.9 0.9 0.9 0.0";
@@ -193,7 +193,7 @@ datablock ParticleData(BlueGrenadeExplosion_Smoke)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/smoke_particle.png";
+	textureName = "share/textures/rotc/smoke_particle.png";
 
 	colors[0]	  = "0.9 0.9 0.9 0.4";
 	colors[1]	  = "0.9 0.9 0.9 0.2";
@@ -232,7 +232,7 @@ datablock ParticleData(BlueGrenadeExplosion_Sparks)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 500;
 	lifetimeVarianceMS	= 350;
-	textureName			 = "~/data/particles/particle1.png";
+	textureName			 = "share/textures/rotc/particle1.png";
 	colors[0]	  = "0.56 0.36 0.26 1.0";
 	colors[1]	  = "0.56 0.36 0.26 1.0";
 	colors[2]	  = "1.0 0.36 0.26 0.0";

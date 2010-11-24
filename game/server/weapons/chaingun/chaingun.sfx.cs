@@ -5,28 +5,28 @@
 
 datablock AudioProfile(ChaingunFireSound)
 {
-	filename = "~/data/weapons/assaultrifle/sound.fire2.wav";
+	filename = "share/shapes/rotc/weapons/assaultrifle/sound.fire2.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(ChaingunProjectileBounceSound)
 {
-	filename = "~/data/weapons/assaultrifle/sound.bounce.wav";
+	filename = "share/shapes/rotc/weapons/assaultrifle/sound.bounce.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(ChaingunProjectileExplosionSound)
 {
-	filename = "~/data/weapons/assaultrifle/sound.explosion2.wav";
+	filename = "share/shapes/rotc/weapons/assaultrifle/sound.explosion2.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(ChaingunProjectileImpactSound)
 {
-	filename = "~/data/weapons/blaster/sound_impact.wav";
+	filename = "share/shapes/rotc/weapons/blaster/sound_impact.wav";
 	description = AudioDefault3D;
 	preload = true;
 };

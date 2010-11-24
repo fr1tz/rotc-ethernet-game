@@ -14,77 +14,77 @@
 
 datablock AudioProfile(GrenadeThrowSound)
 {
-   filename = "~/data/weapons/disc/sound.throw.wav";
+   filename = "share/shapes/rotc/weapons/disc/sound.throw.wav";
    description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeBounceSound)
 {
-   filename = "~/data/weapons/assaultrifle/sound.bounce.wav";
+   filename = "share/shapes/rotc/weapons/assaultrifle/sound.bounce.wav";
    description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeExplodeSound)
 {
-   filename = "~/data/weapons/disc/sound.explosion.wav";
+   filename = "share/shapes/rotc/weapons/disc/sound.explosion.wav";
    description = AudioFar3D;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeProjectileSound)
 {
-	filename = "~/data/weapons/disc/sound.projectile.wav";
+	filename = "share/shapes/rotc/weapons/disc/sound.projectile.wav";
 	description = AudioCloseLooping3d;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeChargeSound)
 {
-	filename = "~/data/weapons/disc/sound.charge.wav";
+	filename = "share/shapes/rotc/weapons/disc/sound.charge.wav";
 	description = AudioCloseLooping3D;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeTargetSound)
 {
-	filename = "~/data/weapons/disc/sound.target.wav";
+	filename = "share/shapes/rotc/weapons/disc/sound.target.wav";
 	description = AudioCloseLooping3D;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeTargetAquiredSound)
 {
-	filename = "~/data/weapons/disc/sound.targetaquired.wav";
+	filename = "share/shapes/rotc/weapons/disc/sound.targetaquired.wav";
 	description = AudioCloseLooping3D;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeThrowSound)
 {
-	filename = "~/data/weapons/disc/sound.throw.wav";
+	filename = "share/shapes/rotc/weapons/disc/sound.throw.wav";
 	description = AudioClose3d;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeDeflectedSound)
 {
-	filename = "~/data/weapons/disc/sound.deflected.wav";
+	filename = "share/shapes/rotc/weapons/disc/sound.deflected.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeHitSound)
 {
-	filename = "~/data/weapons/disc/sound.hit.wav";
+	filename = "share/shapes/rotc/weapons/disc/sound.hit.wav";
 	description = AudioDefault3d;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeExplosionSound)
 {
-	filename = "~/data/weapons/disc/sound.vanish.wav";
+	filename = "share/shapes/rotc/weapons/disc/sound.vanish.wav";
 	description = AudioDefault3d;
 	preload = true;
 };

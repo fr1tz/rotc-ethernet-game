@@ -14,35 +14,35 @@
 
 datablock AudioProfile(GrenadeThrowSound)
 {
-   filename = "~/data/sfx/throw1.wav";
+   filename = "share/sounds/rotc/throw1.wav";
    description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeBounceSound)
 {
-   filename = "~/data/sfx/bounce1.wav";
+   filename = "share/sounds/rotc/bounce1.wav";
    description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeExplodeSound)
 {
-   filename = "~/data/sfx/explosion7.wav";
+   filename = "share/sounds/rotc/explosion7.wav";
    description = AudioFar3D;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeProjectileSound)
 {
-	filename = "~/data/sfx/missile1.wav";
+	filename = "share/sounds/rotc/missile1.wav";
 	description = AudioDefaultLooping3d;
 	preload = true;
 };
 
 datablock AudioProfile(GrenadeChargeSound)
 {
-	filename = "~/data/sfx/charge3.wav";
+	filename = "share/sounds/rotc/charge3.wav";
 	description = AudioCloseLooping3D;
 	preload = true;
 };

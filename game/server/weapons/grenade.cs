@@ -22,7 +22,7 @@ datablock ShapeBaseImageData(RedGrenadeImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "~/data/misc/nothing.dts";
+	shapeFile = "share/shapes/rotc/misc/nothing.dts";
 	emap = true;
 
 	// mount point & mount offset...

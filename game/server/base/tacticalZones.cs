@@ -180,14 +180,14 @@ function TerritoryZones_call(%func)
 
 datablock AudioProfile(ZoneAquiredSound)
 {
-	filename = "~/data/sound/events/zone.aquired.wav";
+	filename = "share/sounds/rotc/events/zone.aquired.wav";
 	description = AudioCritical2D;
 	preload = true;
 };
 
 datablock AudioProfile(ZoneAttackedSound)
 {
-	filename = "~/data/sound/events/zone.attacked.wav";
+	filename = "share/sounds/rotc/events/zone.attacked.wav";
 	description = AudioCritical2D;
 	preload = true;
 };
@@ -222,7 +222,7 @@ datablock TacticalZoneData(TerritoryZone)
 	colors[14] = "0 1 0 0.4";   // protected
 	colors[15] = "1 1 1 1"; 
 
-    texture = "~/data/textures/zone";
+    texture = "share/textures/rotc/zone";
 };
 
 function TerritoryZone::onAdd(%this, %zone)

@@ -17,7 +17,7 @@ exec("./machinegun.gfx.blue.cs");
 datablock ShapeBaseImageData(HolsteredMachineGunImage)
 {
 	// basic item properties
-	shapeFile = "~/data/weapons/assaultrifle/image_holstered.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image_holstered.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -51,7 +51,7 @@ datablock TracerProjectileData(RedMachineGunProjectile)
 
 	//sound = MachineGunProjectileFlybySound;
  
-//  projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
+//  projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.red.dts";
 
 	explosion             = RedMachineGunProjectileImpact;
 //	bounceExplosion		  = RedMachineGunProjectileBounceExplosion;
@@ -94,7 +94,7 @@ function RedMachineGunProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal
 
 datablock TracerProjectileData(BlueMachineGunProjectile : RedMachineGunProjectile)
 {
-//	projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
+//	projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.blue.dts";
 	explosion = RedMachineGunProjectileImpact;
 //	bounceExplosion = BlueMachineGunProjectileBounceExplosion;
 	nearEnemyExplosion    = BlueMachineGunProjectileExplosion;
@@ -119,7 +119,7 @@ datablock ShapeBaseImageData(RedMachineGunImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "~/data/weapons/machinegun/image.dts";
+	shapeFile = "share/shapes/rotc/weapons/machinegun/image.dts";
 	emap = true;
 
 	// mount point & mount offset...

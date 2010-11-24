@@ -27,7 +27,7 @@ datablock ParticleData(WhiteSlideEmitter_Particle)
 	times[0]		= 0.0;
 	times[1]		= 0.5;
 	times[2]		= 1.0;
-	textureName	= "~/data/particles/dustParticle";
+	textureName	= "share/textures/rotc/dustParticle";
 	allowLighting = false;
 };
 
@@ -70,7 +70,7 @@ datablock ParticleData(RedSlideEmitter_Particle)
 	times[1]		= 0.333;
 	times[2]		= 0.666;
 	times[3]		= 1.0;
-	textureName	= "~/data/particles/small_particle4";
+	textureName	= "share/textures/rotc/small_particle4";
 	allowLighting = false;
 };
 
@@ -113,7 +113,7 @@ datablock ParticleData(BlueSlideEmitter_Particle)
 	times[1]		= 0.333;
 	times[2]		= 0.666;
 	times[3]		= 1.0;
-	textureName	= "~/data/particles/small_particle4";
+	textureName	= "share/textures/rotc/small_particle4";
 	allowLighting = false;
 };
 
@@ -177,7 +177,7 @@ datablock ParticleData(StandardCatSplashMist)
 	useInvAlpha			 = false;
 	spinRandomMin		  = -90.0;
 	spinRandomMax		  = 500.0;
-	textureName			 = "~/data/players/shared/splash";
+	textureName			 = "share/shapes/rotc/players/shared/splash";
 	colors[0]	  = "0.7 0.8 1.0 1.0";
 	colors[1]	  = "0.7 0.8 1.0 0.5";
 	colors[2]	  = "0.7 0.8 1.0 0.0";
@@ -215,7 +215,7 @@ datablock ParticleData(StandardCatBubbleParticle)
 	lifetimeMS			  = 400;
 	lifetimeVarianceMS	= 100;
 	useInvAlpha			 = false;
-	textureName			 = "~/data/players/shared/splash";
+	textureName			 = "share/shapes/rotc/players/shared/splash";
 	colors[0]	  = "0.7 0.8 1.0 0.4";
 	colors[1]	  = "0.7 0.8 1.0 0.4";
 	colors[2]	  = "0.7 0.8 1.0 0.0";
@@ -253,7 +253,7 @@ datablock ParticleData(StandardCatFoamParticle)
 	useInvAlpha			 = false;
 	spinRandomMin		  = -90.0;
 	spinRandomMax		  = 500.0;
-	textureName			 = "~/data/players/shared/splash";
+	textureName			 = "share/shapes/rotc/players/shared/splash";
 	colors[0]	  = "0.7 0.8 1.0 0.20";
 	colors[1]	  = "0.7 0.8 1.0 0.20";
 	colors[2]	  = "0.7 0.8 1.0 0.00";
@@ -289,7 +289,7 @@ datablock ParticleData(StandardCatFoamDropletsParticle)
 	constantAcceleration = -0.0;
 	lifetimeMS			  = 600;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/players/shared/splash";
+	textureName			 = "share/shapes/rotc/players/shared/splash";
 	colors[0]	  = "0.7 0.8 1.0 1.0";
 	colors[1]	  = "0.7 0.8 1.0 0.5";
 	colors[2]	  = "0.7 0.8 1.0 0.0";
@@ -366,7 +366,7 @@ datablock SplashData(StandardCatSplash)
 	acceleration = -3.0;
 	texWrap = 5.0;
 
-	texture = "~/data/players/shared/splash";
+	texture = "share/shapes/rotc/players/shared/splash";
 
 	emitter[0] = StandardCatSplashEmitter;
 	emitter[1] = StandardCatSplashMistEmitter;
@@ -389,7 +389,7 @@ datablock DecalData(RedStandardCatFootprint)
 {
 	sizeX = "0.60";
 	sizeY = "0.60";
-	textureName = "~/data/textures/footprint.red";
+	textureName = "share/textures/rotc/footprint.red";
 	SelfIlluminated = true;
 };
 
@@ -397,7 +397,7 @@ datablock DecalData(BlueStandardCatFootprint)
 {
 	sizeX = "0.60";
 	sizeY = "0.60";
-	textureName = "~/data/textures/footprint.blue";
+	textureName = "share/textures/rotc/footprint.blue";
 	SelfIlluminated = true;
 };
 
@@ -422,7 +422,7 @@ datablock ParticleData(StandardCatLightPuff)
 	sizes[1]		= 0.8;
 	times[0]		= 0.3;
 	times[1]		= 1.0;
-	textureName	= "~/data/particles/dustParticle";
+	textureName	= "share/textures/rotc/dustParticle";
 };
 
 datablock ParticleEmitterData(StandardCatLightPuffEmitter)
@@ -459,7 +459,7 @@ datablock ParticleData(StandardCatLiftoffDust)
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	sizes[0]		= 1.0;
 	times[0]		= 1.0;
-	textureName	= "~/data/particles/dustParticle";
+	textureName	= "share/textures/rotc/dustParticle";
 };
 
 datablock ParticleEmitterData(StandardCatLiftoffDustEmitter)

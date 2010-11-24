@@ -32,7 +32,7 @@ datablock ProjectileData(RedGrenade)
 	bounceFriction   = 0.5;
     //numBounces           = 3;
 
-    projectileShapeName = "~/data/weapons/disc/projectile.red.dts";
+    projectileShapeName = "share/shapes/rotc/weapons/disc/projectile.red.dts";
 
 	explosion             = RedGrenadeExplosion;
 //	hitEnemyExplosion     = RedDiscHitEnemy;
@@ -93,7 +93,7 @@ function RedGrenade::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 
 datablock ProjectileData(BlueGrenade : RedGrenade)
 {
-    projectileShapeName = "~/data/weapons/disc/projectile.blue.dts";
+    projectileShapeName = "share/shapes/rotc/weapons/disc/projectile.blue.dts";
 	explosion = BlueGrenadeExplosion;
 	bounceExplosion = BlueGrenadeBounceEffect;
     particleEmitter = BlueGrenade_ParticleEmitter;

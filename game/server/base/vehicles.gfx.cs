@@ -28,7 +28,7 @@ datablock ParticleData(HugeVehicleParticleEmitter_Particle)
 	times[1]		= 0.3;
 	times[2]		= 0.6;
 	times[4]		= 1.0;
-	textureName	= "~/data/particles/smoke_particle";
+	textureName	= "share/textures/rotc/smoke_particle";
 };
 
 datablock ParticleEmitterData(HugeVehicleParticleEmitter)
@@ -60,7 +60,7 @@ datablock ParticleData(HugeVehicleExplosion_Dust)
 	lifetimeVarianceMS	= 100;
 	spinRandomMin		  = -90.0;
 	spinRandomMax		  = 500.0;
-	textureName			 = "~/data/particles/smoke_particle.png";
+	textureName			 = "share/textures/rotc/smoke_particle.png";
 	colors[0]	  = "0.3 0.3 0.3 0.5";
 	colors[1]	  = "0.3 0.3 0.3 0.5";
 	colors[2]	  = "0.3 0.3 0.3 0.0";
@@ -99,7 +99,7 @@ datablock ParticleData(HugeVehicleExplosion_Smoke)
 	lifetimeVarianceMS	= 0;
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
-	textureName = "~/data/particles/smoke_particle.png";
+	textureName = "share/textures/rotc/smoke_particle.png";
 	colors[0]	  = "0.7 0.7 0.7 1.0";
 	colors[1]	  = "0.2 0.2 0.2 1.0";
 	colors[2]	  = "0.1 0.1 0.1 0.0";
@@ -138,7 +138,7 @@ datablock ParticleData(HugeVehicleExplosion_Sparks)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 500;
 	lifetimeVarianceMS	= 350;
-	textureName			 = "~/data/particles/particle1.png";
+	textureName			 = "share/textures/rotc/particle1.png";
 	colors[0]	  = "0.56 0.36 0.26 1.0";
 	colors[1]	  = "0.56 0.36 0.26 1.0";
 	colors[2]	  = "1.0 0.36 0.26 0.0";
@@ -205,7 +205,7 @@ datablock ParticleData(HugeVehicleExplosion_Debris_Emitter_Particles)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 200;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/smoke_particle";
+	textureName			 = "share/textures/rotc/smoke_particle";
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "1.0 1.0 0.0 1.0";
 	colors[2]	  = "1.0 1.0 0.0 0.0";
@@ -258,7 +258,7 @@ datablock MultiNodeLaserBeamData(HugeVehicleExplosion_Debris_LaserTrail)
 
 datablock DebrisData(HugeVehicleExplosion_Debris)
 {
-//	shapeFile = "~/data/weapons/hegrenade/grenade.dts";
+//	shapeFile = "share/shapes/rotc/weapons/hegrenade/grenade.dts";
 	emitters[0] = HugeVehicleExplosion_Debris_Emitter;
 
 	laserTrail = HugeVehicleExplosion_Debris_LaserTrail;
@@ -353,7 +353,7 @@ datablock ParticleData(NoDamageVehicleExplosion_Sparks)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 400;
 	lifetimeVarianceMS	= 50;
-	textureName			 = "~/data/particles/spark01";
+	textureName			 = "share/textures/rotc/spark01";
 	colors[0]	  = "1.0 1.0 0.0 1.0";
 	colors[1]	  = "1.0 1.0 0.0 1.0";
 	colors[2]	  = "1.0 1.0 0.0 0.0";
@@ -388,7 +388,7 @@ datablock ExplosionData(NoDamageVehicleExplosion)
 	soundProfile	= AssaultRifleProjectileImpactSound;
 	
 	// shape...
-	explosionShape = "~/data/effects/explosion_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion_white.dts";
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.0 0.0 0.0";

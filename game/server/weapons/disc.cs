@@ -23,7 +23,7 @@ datablock ShapeBaseImageData(RedDiscImage)
 	className = WeaponImage;
 
 	// basic item properties
-    shapeFile = "~/data/weapons/disc/image.red.dts";
+    shapeFile = "share/shapes/rotc/weapons/disc/image.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -374,7 +374,7 @@ function RedDiscImage::afterThrow(%this, %obj, %slot)
 datablock ShapeBaseImageData(BlueDiscImage : RedDiscImage)
 {
 	// basic item properties
-	shapeFile = "~/data/weapons/disc/image.blue.dts";
+	shapeFile = "share/shapes/rotc/weapons/disc/image.blue.dts";
 	emap = true;
 
 	// script fields...

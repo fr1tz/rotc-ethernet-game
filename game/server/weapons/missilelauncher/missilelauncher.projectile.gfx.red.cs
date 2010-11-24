@@ -35,9 +35,9 @@ datablock LaserBeamData(RedMissileLauncherProjectileLaserTail)
 	outerBetweenWidth = "0.25";
 	outerEndWidth = "0.1";
 	
-	bitmap = "~/data/weapons/blaster/lasertail.red";
+	bitmap = "share/shapes/rotc/weapons/blaster/lasertail.red";
 	bitmapWidth = 0.20;
-//	crossBitmap = "~/data/weapons/blaster/lasertail.red.cross";
+//	crossBitmap = "share/shapes/rotc/weapons/blaster/lasertail.red.cross";
 //	crossBitmapWidth = 0.10;
 
 	betweenFactor = 0.5;
@@ -60,7 +60,7 @@ datablock MultiNodeLaserBeamData(RedMissileLauncherProjectileLaserTrail)
 	outerColor = "1.00 0.50 0.50 0.2";
 	outerWidth = "0.05";
 
-	//bitmap = "~/data/weapons/missilelauncher/lasertrail.red";
+	//bitmap = "share/shapes/rotc/weapons/missilelauncher/lasertrail.red";
 	//bitmapWidth = 0.25;
 
 	blendMode = 1;
@@ -99,7 +99,7 @@ datablock ParticleData(RedMissileLauncherProjectileImpact_Smoke)
 
 	useInvAlpha =  true;
 
-	textureName = "~/data/particles/smoke_particle";
+	textureName = "share/textures/rotc/smoke_particle";
 
 	colors[0]	  = "1.0 1.0 1.0 0.5";
 	colors[1]	  = "1.0 1.0 1.0 0.0";
@@ -132,7 +132,7 @@ datablock ParticleEmitterData(RedMissileLauncherProjectileImpact_SmokeEmitter)
 datablock DebrisData(RedMissileLauncherProjectileImpact_Debris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris1.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
 
 	// bounce...
 	staticOnMaxBounce = true;
@@ -159,7 +159,7 @@ datablock ExplosionData(RedMissileLauncherProjectileImpact)
 	lifetimeMS = 3000;
  
  	// shape...
-	explosionShape = "~/data/weapons/blaster/projectile.impact.red.dts";
+	explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.red.dts";
 	faceViewer = false;
 	playSpeed = 0.4;
 	sizes[0] = "1 1 1";
@@ -212,7 +212,7 @@ datablock ExplosionData(RedMissileLauncherProjectileMissedEnemyEffect)
 	soundProfile = MissileLauncherProjectileMissedEnemySound;
 
 	// shape...
-	explosionShape = "~/data/effects/explosion2_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
 	faceViewer	  = true;
 	playSpeed = 8.0;
 	sizes[0] = "0.07 0.07 0.07";

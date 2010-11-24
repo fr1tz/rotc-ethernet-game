@@ -8,7 +8,7 @@
 // Code for the standard CAT
 //------------------------------------------------------------------------------
 
-exec("~/data/players/standardcat/player.cs");
+exec("share/shapes/rotc/players/standardcat/player.cs");
 
 exec("./standard.sfx.cs");
 exec("./standard.gfx.cs");
@@ -35,13 +35,13 @@ datablock PlayerData(RedStandardCat)
 	cameraMinDist = 1;
 	cameraMaxDist = 5;
 
-	shapeFile = "~/data/players/standardcat/player.red.dts";
+	shapeFile = "share/shapes/rotc/players/standardcat/player.red.dts";
  
-    //cloakTexture = "~/data/effects/explosion_white.png";
-    shapeFxTexture[0] = "~/data/textures/heating.png";
-    shapeFxTexture[1] = "~/data/textures/heat.red.png";
-    shapeFxTexture[2] = "~/data/textures/locked.png";
-    shapeFxTexture[3] = "~/data/textures/energy.png";
+    //cloakTexture = "share/shapes/rotc/effects/explosion_white.png";
+    shapeFxTexture[0] = "share/textures/rotc/heating.png";
+    shapeFxTexture[1] = "share/textures/rotc/heat.red.png";
+    shapeFxTexture[2] = "share/textures/rotc/locked.png";
+    shapeFxTexture[3] = "share/textures/rotc/energy.png";
 
 	computeCRC = true;
 
@@ -49,7 +49,7 @@ datablock PlayerData(RedStandardCat)
 	cmdCategory = "Clients";
 
 	renderWhenDestroyed = false;
-	debrisShapeName = "~/data/players/standardcat/debris.red.dts";
+	debrisShapeName = "share/shapes/rotc/players/standardcat/debris.red.dts";
 	debris = StandardCatDebris;
 
 	aiAvoidThis = true;
@@ -237,9 +237,9 @@ datablock PlayerData(RedStandardCat)
 
 datablock PlayerData(BlueStandardCat : RedStandardCat)
 {
-	shapeFile = "~/data/players/standardcat/player.blue.dts";
-    shapeFxTexture[1] = "~/data/textures/heat.blue.png";
-	debrisShapeName = "~/data/players/standardcat/debris.blue.dts";
+	shapeFile = "share/shapes/rotc/players/standardcat/player.blue.dts";
+    shapeFxTexture[1] = "share/textures/rotc/heat.blue.png";
+	debrisShapeName = "share/shapes/rotc/players/standardcat/debris.blue.dts";
 	decalData = BlueStandardCatFootprint;
 	slideParticleEmitter = BlueSlideEmitter;
 	damageBufferParticleEmitter = BlueCatDamageBufferEmitter;

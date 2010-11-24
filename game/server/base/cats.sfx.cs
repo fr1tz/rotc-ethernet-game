@@ -10,35 +10,35 @@
 
 datablock AudioProfile(CatSpawnSound)
 {
-	filename	 = "~/data/sfx/deploy1.wav";
+	filename	 = "share/sounds/rotc/deploy1.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(PlayerSlideSound)
 {
-	filename	 = "~/data/players/standardcat/slide.wav";
+	filename	 = "share/shapes/rotc/players/standardcat/slide.wav";
 	description = AudioCloseLooping3D;
 	preload = true;
 };
 
 datablock AudioProfile(PlayerSlideContactSound)
 {
-	filename	 = "~/data/players/standardcat/slidecontact.wav";
+	filename	 = "share/shapes/rotc/players/standardcat/slidecontact.wav";
 	description = AudioCloseLooping3D;
 	preload = true;
 };
 
 datablock AudioProfile(CatJumpExplosionSound)
 {
-	filename = "~/data/sfx/explosion3.wav";
+	filename = "share/sounds/rotc/explosion3.wav";
 	description = AudioFar3D;
 	preload = true;
 };
 
 //datablock AudioProfile(ExitingWaterLightSound)
 //{
-//	filename	 = "~/data/sound/replaceme.wav";
+//	filename	 = "share/sounds/rotc/replaceme.wav";
 //	description = AudioClose3d;
 //	preload = true;
 //};
@@ -59,14 +59,14 @@ datablock AudioProfile(CatJumpExplosionSound)
 
 //datablock AudioProfile(PlayerSharedMoveBubblesSound)
 //{
-//	filename	 = "~/data/sound/replaceme.wav";
+//	filename	 = "share/sounds/rotc/replaceme.wav";
 //	description = AudioCloseLooping3d;
 //	preload = true;
 //};
 
 //datablock AudioProfile(WaterBreathMaleSound)
 //{
-//	filename	 = "~/data/sound/replaceme.wav";
+//	filename	 = "share/sounds/rotc/replaceme.wav";
 //	description = AudioClosestLooping3d;
 //	preload = true;
 //};

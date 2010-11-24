@@ -16,7 +16,7 @@ exec("./sniperrifle.projectile.cs");
 datablock ShapeBaseImageData(HolsteredSniperRifleImage)
 {
 	// basic item properties
-	shapeFile = "~/data/weapons/sniperrifle/image_holstered.dts";
+	shapeFile = "share/shapes/rotc/weapons/sniperrifle/image_holstered.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -37,7 +37,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "~/data/weapons/missilelauncher/image.red.dts";
+	shapeFile = "share/shapes/rotc/weapons/missilelauncher/image.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -206,7 +206,7 @@ function RedSniperRifleImage::onNoAmmo(%this, %obj, %slot)
 
 datablock ShapeBaseImageData(BlueSniperRifleImage : RedSniperRifleImage)
 {
-	shapeFile = "~/data/weapons/missilelauncher/image.blue.dts";
+	shapeFile = "share/shapes/rotc/weapons/missilelauncher/image.blue.dts";
 
 	projectile = BlueSniperProjectile;
     missile = BlueSniperMissile;

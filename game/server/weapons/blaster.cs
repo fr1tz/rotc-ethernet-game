@@ -24,7 +24,7 @@ datablock ParticleData(RedBlasterFireEmitter_Particles)
 	constantAcceleration  = 0.0;
 	lifetimeMS            = 100;
 	lifetimeVarianceMS    = 0;
-	textureName           = "~/data/particles/smoke_particle";
+	textureName           = "share/textures/rotc/smoke_particle";
 	colors[0]             = "1.0 1.0 1.0 1.0";
 	colors[1]             = "1.0 0.0 0.0 1.0";
 	colors[2]             = "1.0 0.0 0.0 0.0";
@@ -63,7 +63,7 @@ datablock ParticleData(BlueBlasterFireEmitter_Particles)
 	constantAcceleration  = 0.0;
 	lifetimeMS            = 100;
 	lifetimeVarianceMS    = 0;
-	textureName           = "~/data/particles/smoke_particle";
+	textureName           = "share/textures/rotc/smoke_particle";
 	colors[0]             = "1.0 1.0 1.0 1.0";
 	colors[1]             = "0.0 0.0 1.0 1.0";
 	colors[2]             = "0.0 0.0 1.0 0.0";
@@ -104,7 +104,7 @@ datablock ShapeBaseImageData(RedBlasterImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "~/data/weapons/blaster/image.red.dts";
+	shapeFile = "share/shapes/rotc/weapons/blaster/image.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -208,7 +208,7 @@ datablock ShapeBaseImageData(RedBlasterImage)
 
 datablock ShapeBaseImageData(BlueBlasterImage : RedBlasterImage)
 {
-	shapeFile = "~/data/weapons/blaster/image.blue.dts";
+	shapeFile = "share/shapes/rotc/weapons/blaster/image.blue.dts";
 	projectile = BlueBlasterProjectile;
 	stateFireProjectile[3] = BlueBlasterProjectile;
     stateEmitter[3] = BlueBlasterFireEmitter;

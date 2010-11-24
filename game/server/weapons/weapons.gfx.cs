@@ -12,7 +12,7 @@ datablock DecalData(SlashDecalOne)
 {
 	sizeX = "1.00";
 	sizeY = "1.00";
-	textureName = "~/data/textures/slashdecal1";
+	textureName = "share/textures/rotc/slashdecal1";
 	SelfIlluminated = false;
 };
 
@@ -20,7 +20,7 @@ datablock DecalData(BulletHoleDecalOne)
 {
 	sizeX = "0.15";
 	sizeY = "0.15";
-	textureName = "~/data/textures/bullethole1";
+	textureName = "share/textures/rotc/bullethole1";
 	SelfIlluminated = false;
 };
 
@@ -28,7 +28,7 @@ datablock DecalData(ExplosionDecalOne)
 {
 	sizeX = "2.0";
 	sizeY = "2.0";
-	textureName = "~/data/textures/explosiondecal1";
+	textureName = "share/textures/rotc/explosiondecal1";
 	SelfIlluminated = false;
 };
 
@@ -36,7 +36,7 @@ datablock DecalData(ExplosionDecalTwo)
 {
 	sizeX = "1.0";
 	sizeY = "1.0";
-	textureName = "~/data/textures/explosiondecal1";
+	textureName = "share/textures/rotc/explosiondecal1";
 	SelfIlluminated = false;
 };
 
@@ -53,7 +53,7 @@ datablock ParticleData(DefaultProjectileNearEnemyExplosion_ExplosionCloud)
 	lifetimeVarianceMS	= 350;
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
-	textureName			 = "~/data/particles/particle1";
+	textureName			 = "share/textures/rotc/particle1";
 	colors[0]	  = "1.00 1.00 1.00 0.8";
 	colors[1]	  = "0.90 0.90 0.00 0.4";
 	colors[2]	  = "0.90 0.90 0.00 0.0";
@@ -88,7 +88,7 @@ datablock ExplosionData(DefaultProjectileNearEnemyExplosion)
 	soundProfile = DefaultProjectileNearEnemyExplosionSound;
 
 	// shape...
-	explosionShape = "~/data/effects/explosion_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion_white.dts";
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.1 0.1 0.1";

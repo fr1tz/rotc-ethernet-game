@@ -35,9 +35,9 @@ datablock LaserBeamData(RedSniperProjectileLaserTail)
 	outerBetweenWidth = "0.25";
 	outerEndWidth = "0.1";
 	
-	bitmap = "~/data/weapons/blaster/lasertail.red";
+	bitmap = "share/shapes/rotc/weapons/blaster/lasertail.red";
 	bitmapWidth = 0.20;
-//	crossBitmap = "~/data/weapons/blaster/lasertail.red.cross";
+//	crossBitmap = "share/shapes/rotc/weapons/blaster/lasertail.red.cross";
 //	crossBitmapWidth = 0.10;
 
 	betweenFactor = 0.5;
@@ -61,7 +61,7 @@ datablock MultiNodeLaserBeamData(RedSniperProjectileLaserTrailMissed)
 	outerColor = "1.00 0.00 0.00 0.75";
 	outerWidth = "0.20";
 
-	//bitmap = "~/data/weapons/blaster/lasertrail.red";
+	//bitmap = "share/shapes/rotc/weapons/blaster/lasertrail.red";
 	//bitmapWidth = 0.15;
 
 	blendMode = 1;
@@ -100,7 +100,7 @@ datablock MultiNodeLaserBeamData(RedSniperProjectileLaserTrailHit)
 	outerColor = "1.00 0.00 0.00 0.75";
 	outerWidth = "0.20";
 
-	//bitmap = "~/data/weapons/blaster/lasertrail.red";
+	//bitmap = "share/shapes/rotc/weapons/blaster/lasertrail.red";
 	//bitmapWidth = 0.15;
 
 	blendMode = 1;
@@ -139,7 +139,7 @@ datablock ParticleData(RedSniperProjectileImpact_Smoke)
 
 	useInvAlpha =  true;
 
-	textureName = "~/data/particles/smoke_particle";
+	textureName = "share/textures/rotc/smoke_particle";
 
 	colors[0]	  = "1.0 1.0 1.0 0.5";
 	colors[1]	  = "1.0 1.0 1.0 0.0";
@@ -172,7 +172,7 @@ datablock ParticleEmitterData(RedSniperProjectileImpact_SmokeEmitter)
 datablock DebrisData(RedSniperProjectileImpact_Debris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris1.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
 
 	// bounce...
 	staticOnMaxBounce = true;
@@ -199,7 +199,7 @@ datablock ExplosionData(RedSniperProjectileImpact)
 	lifetimeMS = 3000;
  
  	// shape...
-	explosionShape = "~/data/weapons/blaster/projectile.impact.red.dts";
+	explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.red.dts";
 	faceViewer = false;
 	playSpeed = 0.4;
 	sizes[0] = "1 1 1";
@@ -252,7 +252,7 @@ datablock ExplosionData(RedSniperProjectileMissedEnemyEffect)
 	soundProfile = SniperProjectileMissedEnemySound;
 
 	// shape...
-	explosionShape = "~/data/effects/explosion2_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
 	faceViewer	  = true;
 	playSpeed = 8.0;
 	sizes[0] = "0.07 0.07 0.07";
@@ -284,7 +284,7 @@ datablock ParticleData(RedSniperProjectileExplosion_Cloud)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/corona.png";
+	textureName = "share/textures/rotc/corona.png";
 
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "1.0 0.0 0.0 1.0";
@@ -326,7 +326,7 @@ datablock ParticleData(RedSniperProjectileExplosion_Dust)
 	useInvAlpha			 = true;
 	spinRandomMin		  = -90.0;
 	spinRandomMax		  = 500.0;
-	textureName			 = "~/data/particles/smoke_particle.png";
+	textureName			 = "share/textures/rotc/smoke_particle.png";
 	colors[0]	  = "0.9 0.9 0.9 0.5";
 	colors[1]	  = "0.9 0.9 0.9 0.5";
 	colors[2]	  = "0.9 0.9 0.9 0.0";
@@ -369,7 +369,7 @@ datablock ParticleData(RedSniperProjectileExplosion_Smoke)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/smoke_particle.png";
+	textureName = "share/textures/rotc/smoke_particle.png";
 
 	colors[0]	  = "0.9 0.9 0.9 0.4";
 	colors[1]	  = "0.9 0.9 0.9 0.2";
@@ -408,7 +408,7 @@ datablock ParticleData(RedSniperProjectileExplosion_Sparks)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 500;
 	lifetimeVarianceMS	= 350;
-	textureName			 = "~/data/particles/particle1.png";
+	textureName			 = "share/textures/rotc/particle1.png";
 	colors[0]	  = "0.56 0.36 0.26 1.0";
 	colors[1]	  = "0.56 0.36 0.26 1.0";
 	colors[2]	  = "1.0 0.36 0.26 0.0";
@@ -441,7 +441,7 @@ datablock ParticleEmitterData(RedSniperProjectileExplosion_SparksEmitter)
 datablock DebrisData(RedSniperProjectileExplosion_SmallDebris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris1.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
 
 	// bounce...
 	staticOnMaxBounce = true;
@@ -474,7 +474,7 @@ datablock MultiNodeLaserBeamData(RedSniperProjectileExplosion_LargeDebris_LaserT
 	outerColor = "1.00 1.00 1.00 0.05";
 	outerWidth = "1.00";
 
-//	bitmap = "~/data/weapons/sniperrifle/explosion.trail";
+//	bitmap = "share/shapes/rotc/weapons/sniperrifle/explosion.trail";
 //	bitmapWidth = 0.25;
 
 	blendMode = 1;
@@ -491,7 +491,7 @@ datablock ParticleData(RedSniperProjectileExplosion_LargeDebris_Particles2)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 1000;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/cross1";
+	textureName			 = "share/textures/rotc/cross1";
 	colors[0]	  = "1.0 1.0 1.0 0.6";
 	colors[1]	  = "1.0 1.0 1.0 0.4";
 	colors[2]	  = "1.0 1.0 1.0 0.2";
@@ -532,7 +532,7 @@ datablock ParticleData(RedSniperProjectileExplosion_LargeDebris_Particles1)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 100;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/cross1";
+	textureName			 = "share/textures/rotc/cross1";
 	colors[0]	  = "1.0 1.0 1.0 1.0";
 	colors[1]	  = "1.0 1.0 1.0 1.0";
 	colors[2]	  = "1.0 1.0 1.0 0.5";
@@ -579,7 +579,7 @@ datablock ExplosionData(RedSniperProjectileExplosion_LargeDebris_Explosion)
 datablock DebrisData(RedSniperProjectileExplosion_LargeDebris)
 {
 	// shape...
-	shapeFile = "~/data/misc/debris2.white.dts";
+	shapeFile = "share/shapes/rotc/misc/debris2.white.dts";
 
 	explosion = RedSniperProjectileExplosion_LargeDebris_Explosion;
 
@@ -610,7 +610,7 @@ datablock ExplosionData(RedSniperProjectileExplosion)
 	soundProfile	= SniperExplosionSound;
 
   	// shape...
-	//explosionShape = "~/data/weapons/blaster/projectile.impact.red.dts";
+	//explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.red.dts";
 	faceViewer = false;
 	playSpeed = 0.4;
 	sizes[0] = "1 1 1";

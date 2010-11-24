@@ -21,7 +21,7 @@ datablock ParticleData(RedPlayerBleedEffect_Cloud)
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
-	textureName = "~/data/particles/corona.png";
+	textureName = "share/textures/rotc/corona.png";
 
 	colors[0]	  = "1.0 0.2 0.0 1.0";
 	colors[1]	  = "1.0 0.2 0.0 0.5";
@@ -51,7 +51,7 @@ datablock ParticleEmitterData(RedPlayerBleedEffect_CloudEmitter)
 datablock ExplosionData(RedPlayerBleedEffect_Heavy)
 {
 	// shape...
-	explosionShape = "~/data/effects/explosion_red.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion_red.dts";
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.1 0.1 0.1";
@@ -77,7 +77,7 @@ datablock ExplosionData(RedPlayerBleedEffect_Heavy)
 datablock ExplosionData(RedPlayerBleedEffect_Medium)
 {
 	// shape...
-	explosionShape = "~/data/effects/explosion_red.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion_red.dts";
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.1 0.1 0.1";
@@ -103,7 +103,7 @@ datablock ExplosionData(RedPlayerBleedEffect_Medium)
 datablock ExplosionData(RedPlayerBleedEffect_Light)
 {
 	// shape...
-	explosionShape = "~/data/effects/explosion_red.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion_red.dts";
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.0 0.0 0.0";
@@ -129,7 +129,7 @@ datablock ExplosionData(RedPlayerBleedEffect_Light)
 datablock ExplosionData(RedPlayerBleedEffect_Sting)
 {
 	// shape...
-	explosionShape = "~/data/effects/explosion_red.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion_red.dts";
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.0 0.0 0.0";
@@ -155,7 +155,7 @@ datablock ExplosionData(RedPlayerBleedEffect_Sting)
 datablock ExplosionData(RedPlayerBleedEffect_Buffer)
 {
 	// shape...
-	explosionShape = "~/data/effects/explosion_white.dts";
+	explosionShape = "share/shapes/rotc/effects/explosion_white.dts";
 	faceViewer	  = true;
 	playSpeed = 4.0;
 	sizes[0] = "0.0 0.0 0.0";

@@ -50,7 +50,7 @@ datablock NortDiscData(RedInterceptorDisc)
 	bounceFriction		 = 0.0;
     numBounces           = 3;
 
-	projectileShapeName = "~/data/weapons/disc/projectile_red.dts";
+	projectileShapeName = "share/shapes/rotc/weapons/disc/projectile_red.dts";
 
 	explosion             = RedInterceptorDiscExplosion;
 	hitEnemyExplosion     = RedInterceptorDiscHitEnemy;
@@ -106,7 +106,7 @@ function RedInterceptorDisc::onLostTarget(%this, %obj)
 
 datablock NortDiscData(BlueInterceptorDisc : RedInterceptorDisc)
 {
-	projectileShapeName = "~/data/weapons/disc/projectile_blue.dts";
+	projectileShapeName = "share/shapes/rotc/weapons/disc/projectile_blue.dts";
 
 	explosion             = BlueInterceptorDiscExplosion;
 	hitEnemyExplosion     = BlueInterceptorDiscHitEnemy;

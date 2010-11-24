@@ -32,10 +32,10 @@ function playMessageSound(%message, %voice, %pitch)
 
 	%wav = getSubStr(%message, %wavStart + 2, 1000);
 	if (%voice !$= "") {
-		%wavFile = "~/data/sound/voice/" @ %voice @ "/" @ %wav;
+		%wavFile = "share/sounds/rotc/voice/" @ %voice @ "/" @ %wav;
 	}
 	else {
-		%wavFile = "~/data/sound/" @ %wav;
+		%wavFile = "share/sounds/rotc/" @ %wav;
 	}
 	if (strstr(%wavFile, ".wav") != (strlen(%wavFile) - 4)) {
 		%wavFile = %wavFile @ ".wav";

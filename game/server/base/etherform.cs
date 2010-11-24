@@ -65,7 +65,7 @@ datablock EtherformData(RedEtherform)
 	thirdPersonOnly = true;
 
     //category = "Vehicles"; don't appear in mission editor
-	shapeFile = "~/data/vehicles/etherform/vehicle.red.dts";
+	shapeFile = "share/shapes/rotc/vehicles/etherform/vehicle.red.dts";
 	emap = true;
  
 	cameraDefaultFov = 110.0;
@@ -78,7 +78,7 @@ datablock EtherformData(RedEtherform)
 	//explosion = FlyerExplosion;
 	//defunctEffect = FlyerDefunctEffect;
 	//debris = BomberDebris;
-	//debrisShapeName = "~/data/vehicles/bomber/vehicle.dts";
+	//debrisShapeName = "share/shapes/rotc/vehicles/bomber/vehicle.dts";
 
 	mass = 90;
 	drag = 0.99;
@@ -131,7 +131,7 @@ datablock EtherformData(RedEtherform)
 
 datablock EtherformData(BlueEtherform : RedEtherform)
 {
-	shapeFile = "~/data/vehicles/etherform/vehicle.blue.dts";
+	shapeFile = "share/shapes/rotc/vehicles/etherform/vehicle.blue.dts";
 	damageBufferParticleEmitter = BlueEtherformDamageBufferEmitter;
 	repairParticleEmitter = BlueEtherformRepairEmitter;
 	bufferRepairParticleEmitter = BlueEtherformBufferRepairEmitter;

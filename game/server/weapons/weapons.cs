@@ -28,7 +28,7 @@ $TargetingMask::Free2 = 8;
 
 datablock AudioProfile(WeaponSwitchSound)
 {
-	filename = "~/data/sound/weaponSwitch.wav";
+	filename = "share/sounds/rotc/weaponSwitch.wav";
 	description = AudioClosest3D;
 	preload = true;
 };

@@ -17,7 +17,7 @@ exec("./grenadelauncher.gfx.blue.cs");
 datablock ShapeBaseImageData(HolsteredGrenadeLauncherImage)
 {
 	// basic item properties
-	shapeFile = "~/data/weapons/assaultrifle/image_holstered.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image_holstered.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -51,7 +51,7 @@ datablock TracerProjectileData(RedGrenadeLauncherProjectile)
 
 	sound = GrenadeLauncherProjectileSound;
  
-	projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
+	projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.red.dts";
 
 	explosion             = RedGrenadeLauncherProjectileExplosion;
 	bounceExplosion		  = RedGrenadeLauncherProjectileBounceExplosion;
@@ -94,7 +94,7 @@ function RedGrenadeLauncherProjectile::onCollision(%this,%obj,%col,%fade,%pos,%n
 
 datablock TracerProjectileData(BlueGrenadeLauncherProjectile : RedGrenadeLauncherProjectile)
 {
-	projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
+	projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.blue.dts";
 	explosion = BlueGrenadeLauncherProjectileExplosion;
 	bounceExplosion = BlueGrenadeLauncherProjectileBounceExplosion;
 	laserTrail[0]   = BlueGrenadeLauncherProjectileLaserTrail;
@@ -118,7 +118,7 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "~/data/weapons/grenadelauncher/image.red.dts";
+	shapeFile = "share/shapes/rotc/weapons/grenadelauncher/image.red.dts";
 	emap = true;
 
 	// mount point & mount offset...

@@ -39,7 +39,7 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 
 	//sound = BlasterProjectileFlybySound;
 
-	//projectileShapeName = "~/data/weapons/blaster/projectile.red.dts";
+	//projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.red.dts";
 
 	explosion               = RedBlasterProjectileImpact;
 	hitEnemyExplosion       = RedBlasterProjectileHit;
@@ -106,7 +106,7 @@ function RedBlasterProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%d
 
 datablock ShotgunProjectileData(BlueBlasterProjectile : RedBlasterProjectile)
 {
-	//projectileShapeName = "~/data/weapons/blaster/projectile.blue.dts";
+	//projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.blue.dts";
 
 	explosion            = BlueBlasterProjectileImpact;
 	hitEnemyExplosion    = BlueBlasterProjectileHit;

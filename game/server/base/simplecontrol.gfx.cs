@@ -19,7 +19,7 @@ datablock ParticleData(SimpleControlMoveEffect_Spark)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 400;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/spark01.png";
+	textureName			 = "share/textures/rotc/spark01.png";
 	colors[0]	  = "0.0 1.0 0.0 1.0";
 	colors[1]	  = "0.0 1.0 0.0 1.0";
 	colors[2]	  = "0.0 1.0 0.0 0.0";
@@ -66,7 +66,7 @@ datablock ParticleData(SimpleControlAttackEffect_Spark)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 400;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/spark01.png";
+	textureName			 = "share/textures/rotc/spark01.png";
 	colors[0]	  = "1.0 0.0 0.0 1.0";
 	colors[1]	  = "1.0 0.0 0.0 1.0";
 	colors[2]	  = "1.0 0.0 0.0 0.0";
@@ -113,7 +113,7 @@ datablock ParticleData(SimpleControlFollowEffect_Spark)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 400;
 	lifetimeVarianceMS	= 0;
-	textureName			 = "~/data/particles/spark01.png";
+	textureName			 = "share/textures/rotc/spark01.png";
 	colors[0]	  = "0.0 1.0 1.0 1.0";
 	colors[1]	  = "0.0 1.0 1.0 1.0";
 	colors[2]	  = "0.0 1.0 1.0 0.0";

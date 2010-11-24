@@ -10,7 +10,7 @@
 
 //datablock AudioProfile(SaufenSaufenSaufenSound)
 //{
-//	filename = "~/data/sound/events/saufen.wav";
+//	filename = "share/sounds/rotc/events/saufen.wav";
 //	description = Audio2D;
 //	preload = true;
 //};

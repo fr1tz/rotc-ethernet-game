@@ -10,21 +10,21 @@
 
 datablock AudioProfile(BlasterProjectileImpactSound)
 {
-	filename = "~/data/sfx/impact1.wav";
+	filename = "share/sounds/rotc/impact1.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(BlasterProjectileFlybySound)
 {
-	filename = "~/data/sfx/flyby1.wav";
+	filename = "share/sounds/rotc/flyby1.wav";
 	description = AudioCloseLooping3D;
 	preload = true;
 };
 
 datablock AudioProfile(BlasterProjectileMissedEnemySound)
 {
-	filename = "~/data/sfx/flyby1.wav";
+	filename = "share/sounds/rotc/flyby1.wav";
 	description = AudioClose3D;
 	preload = true;
 };

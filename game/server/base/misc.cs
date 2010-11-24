@@ -36,35 +36,35 @@ function fxLightData::create(%data)
 
 datablock AudioProfile(ClownSound)
 {
-	filename = "~/data/sound/events/clown.wav";
+	filename = "share/sounds/rotc/events/clown.wav";
 	description = Audio2D;
 	preload = true;
 };
 
 datablock AudioProfile(RedVictorySound)
 {
-	filename = "~/data/sound/events/victory.wav";
+	filename = "share/sounds/rotc/events/victory.wav";
 	description = Audio2D;
 	preload = true;
 };
 
 datablock AudioProfile(BlueVictorySound)
 {
-	filename = "~/data/sound/events/victory.wav";
+	filename = "share/sounds/rotc/events/victory.wav";
 	description = Audio2D;
 	preload = true;
 };
 
 datablock AudioProfile(DamageSoundOne)
 {
-	filename = "~/data/sound/damage1.wav";
+	filename = "share/sounds/rotc/damage1.wav";
 	description = Audio2D;
 	preload = true;
 };
 
 datablock AudioProfile(DamageSoundTwo)
 {
-	filename = "~/data/sound/damage2.wav";
+	filename = "share/sounds/rotc/damage2.wav";
 	description = Audio2D;
 	preload = true;
 };
