@@ -216,7 +216,7 @@ function mouseZoom(%val)
 
 function toggleMessageHud(%val)
 {
-	if(%make)
+	if(%val)
 	{
 		MessageHud.isTeamMsg = false;
 		MessageHud.toggleState();
@@ -225,7 +225,7 @@ function toggleMessageHud(%val)
 
 function teamMessageHud(%val)
 {
-	if(%make)
+	if(%val)
 	{
 		MessageHud.isTeamMsg = true;
 		MessageHud.toggleState();
