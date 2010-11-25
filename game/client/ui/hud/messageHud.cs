@@ -94,25 +94,3 @@ function MessageHud_Edit::eval(%this)
 	MessageHud.close();
 }
 
-
-//----------------------------------------------------------------------------
-// MessageHud key handlers
-
-function toggleMessageHud(%make)
-{
-	if(%make)
-	{
-		MessageHud.isTeamMsg = false;
-		MessageHud.toggleState();
-	}
-}
-
-function teamMessageHud(%make)
-{
-	if(%make)
-	{
-		MessageHud.isTeamMsg = true;
-		MessageHud.toggleState();
-	}
-}
-

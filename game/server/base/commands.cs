@@ -10,8 +10,32 @@
 
 //-----
 // commands.cs
-// Misc. server commands avialable to clients
+// Server commands available to clients
 //-----
+
+function serverCmdPlayerAction(%client, %nr)
+{	
+	if(%client.player == 0)
+		return false;
+
+
+	if(%nr == 0)
+	{
+		%client.togglePlayerForm();
+	}
+	else if(%nr <= 10)
+	{
+		%client.getControlObject().useWeapon(%nr);
+	}
+	else if(%nr == 11)
+	{
+		%client.getControlObject().useWeapon(0);
+	}
+	else if(%nr == 12)
+	{
+		// TODO: max force grenade throw.
+	}
+}
 
 //-----------------------------------------------------------------------------
 // Inventory server commands
@@ -100,12 +124,6 @@ function serverCmdJoinTeam(%client, %teamId)
 {
 	%client.joinTeam(%teamId);
 }
-
-function serverCmdTogglePlayerForm(%client)
-{
-	%client.togglePlayerForm();
-}
-
 
 function serverCmdSuicide(%client)
 {

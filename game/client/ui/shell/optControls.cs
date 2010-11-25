@@ -17,69 +17,6 @@ function OptControlsWindow::onSleep(%this)
 	moveMap.save( "~/client/config.cs" );
 }
 
-$RemapCount = 0;
-$RemapName[$RemapCount] = "Toggle player form";
-$RemapCmd[$RemapCount] = "togglePlayerForm";
-$RemapCount++;
-$RemapName[$RemapCount] = "Forward";
-$RemapCmd[$RemapCount] = "moveforward";
-$RemapCount++;
-$RemapName[$RemapCount] = "Backward";
-$RemapCmd[$RemapCount] = "movebackward";
-$RemapCount++;
-$RemapName[$RemapCount] = "Strafe Left";
-$RemapCmd[$RemapCount] = "moveleft";
-$RemapCount++;
-$RemapName[$RemapCount] = "Strafe Right";
-$RemapCmd[$RemapCount] = "moveright";
-$RemapCount++;
-$RemapName[$RemapCount] = "Turn Left";
-$RemapCmd[$RemapCount] = "turnLeft";
-$RemapCount++;
-$RemapName[$RemapCount] = "Turn Right";
-$RemapCmd[$RemapCount] = "turnRight";
-$RemapCount++;
-$RemapName[$RemapCount] = "Look Up";
-$RemapCmd[$RemapCount] = "panUp";
-$RemapCount++;
-$RemapName[$RemapCount] = "Look Down";
-$RemapCmd[$RemapCount] = "panDown";
-$RemapCount++;
-$RemapName[$RemapCount] = "Trigger 0 (Primary Fire)";
-$RemapCmd[$RemapCount] = "trigger0";
-$RemapCount++;
-$RemapName[$RemapCount] = "Trigger 1 (Secondary Fire)";
-$RemapCmd[$RemapCount] = "trigger1";
-$RemapCount++;
-$RemapName[$RemapCount] = "Trigger 2 (Jump/Up)";
-$RemapCmd[$RemapCount] = "trigger2";
-$RemapCount++;
-$RemapName[$RemapCount] = "Trigger 3 (Grenade/Disc)";
-$RemapCmd[$RemapCount] = "trigger3";
-$RemapCount++;
-$RemapName[$RemapCount] = "Trigger 4 (Disc)";
-$RemapCmd[$RemapCount] = "trigger4";
-$RemapCount++;
-$RemapName[$RemapCount] = "Trigger 5 (Etherboard/Down)";
-$RemapCmd[$RemapCount] = "trigger5";
-$RemapCount++;
-$RemapName[$RemapCount] = "Chat";
-$RemapCmd[$RemapCount] = "toggleMessageHud";
-$RemapCount++;
-$RemapName[$RemapCount] = "Team chat";
-$RemapCmd[$RemapCount] = "teamMessageHud";
-$RemapCount++;
-$RemapName[$RemapCount] = "Message Hud PageUp";
-$RemapCmd[$RemapCount] = "pageMessageHudUp";
-$RemapCount++;
-$RemapName[$RemapCount] = "Message Hud PageDown";
-$RemapCmd[$RemapCount] = "pageMessageHudDown";
-$RemapCount++;
-$RemapName[$RemapCount] = "Resize Message Hud";
-$RemapCmd[$RemapCount] = "resizeMessageHud";
-$RemapCount++;
-
-
 function restoreDefaultMappings()
 {
 	moveMap.delete();
@@ -165,8 +102,11 @@ function buildFullMapString( %index )
 function OptRemapList::fillList( %this )
 {
 	%this.clear();
-	for ( %i = 0; %i < $RemapCount; %i++ )
-		%this.addRow( %i, buildFullMapString( %i ) );
+	for ( %i = 1; %i < $RemapCount; %i++ )
+	{
+		if($RemapName[%i] !$= "")
+			%this.addRow( %i, buildFullMapString( %i ) );
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -181,9 +121,19 @@ function OptRemapList::doRemap( %this )
 }
 
 //------------------------------------------------------------------------------
+
+function clearMapping(%cmd)
+{
+	%temp = moveMap.getBinding(%cmd);
+	%device = getField( %temp, 0 );
+	%action = getField( %temp, 1 );
+	moveMap.unbind(%device, %action);
+}
+
 function redoMapping( %device, %action, %cmd, %oldIndex, %newIndex )
 {
-	//%actionMap.bind( %device, %action, $RemapCmd[%newIndex] );
+	clearMapping(%cmd);
+	moveMap.unbind(%device, %action);
 	moveMap.bind( %device, %action, %cmd );
 	OptRemapList.setRowById( %oldIndex, buildFullMapString( %oldIndex ) );
 	OptRemapList.setRowById( %newIndex, buildFullMapString( %newIndex ) );
@@ -192,7 +142,7 @@ function redoMapping( %device, %action, %cmd, %oldIndex, %newIndex )
 //------------------------------------------------------------------------------
 function findRemapCmdIndex( %command )
 {
-	for ( %i = 0; %i < $RemapCount; %i++ )
+	for ( %i = 1; %i < $RemapCount; %i++ )
 	{
 		if ( %command $= $RemapCmd[%i] )
 			return( %i );
@@ -225,6 +175,7 @@ function OptRemapInputCtrl::onInputEvent( %this, %device, %action )
 	{
 		if ( %prevMap $= "" )
 		{
+			clearMapping(%cmd);
             moveMap.unbind(%device, %action);
 			moveMap.bind(%device, %action, %cmd);
 			OptRemapList.setRowById(%this.index, buildFullMapString(%this.index));

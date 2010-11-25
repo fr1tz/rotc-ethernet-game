@@ -93,7 +93,7 @@ new GuiControl(OptControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "176 32";
+         position = "276 32";
          Extent = "72 18";
          MinExtent = "8 8";
          canSave = "1";

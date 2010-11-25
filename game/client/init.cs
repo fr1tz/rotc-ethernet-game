@@ -72,6 +72,8 @@ function initClient()
 	exec("./scripts/game.cs");
 	exec("./scripts/misc.cs");
  	exec("./scripts/mumble.cs");
+ 	exec("./scripts/remap.list.cs");
+ 	exec("./scripts/remap.functions.cs");
 
 	// default key bindings
 	exec("./scripts/actionmap.global.cs");

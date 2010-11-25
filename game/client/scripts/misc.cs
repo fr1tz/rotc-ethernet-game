@@ -8,6 +8,13 @@
 // client-side functions which are too small to jusitfy an own file for them
 //------------------------------------------------------------------------------
 
+function getMouseAdjustAmount(%val)
+{
+	// based on a default camera fov of 90'
+	return(%val * ($cameraFov / 90) * 0.01);
+}
+
+
 function clientCmdSetTimeScale(%x)
 {
 	$timeScale = %x;
