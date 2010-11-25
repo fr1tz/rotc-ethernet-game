@@ -88,5 +88,5 @@ MoveMap.bind( keyboard, "8", action8 );
 MoveMap.bind( keyboard, "9", action9 );
 MoveMap.bind( keyboard, "0", action10);
 MoveMap.bind( keyboard, "q", action11);
-MoveMap.bind( keyboard, "shift button2", action12);
+moveMap.bind( mouse0, "shift button2", action12);
 MoveMap.bind( keyboard, "alt c", action39 );

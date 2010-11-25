@@ -33,7 +33,9 @@ function serverCmdPlayerAction(%client, %nr)
 	}
 	else if(%nr == 12)
 	{
-		// TODO: max force grenade throw.
+		%client.player.fullForceGrenade = true;
+		%client.player.setImageTrigger(2, true);
+		%client.player.setImageTrigger(2, false);
 	}
 }
 
