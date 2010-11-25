@@ -5,14 +5,13 @@
 
 function serverCmdHowToPlay(%client, %page)
 {
-	%newtxt = "";
+	%newtxt = om_init();
 	%client.clearMenuText();
 
 	if(%page $= "")
 		%page = 1;
 
 	%newtxt = %newtxt @ 
-		"<font:Arial:16>" @
 		"<< <a:cmd MainMenu>Main Menu</a>\n\n" @
 		"<just:center><spush><font:Arial:20>How to play ROTC: Ethernet?<spop>\n\n";
 

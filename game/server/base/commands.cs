@@ -196,12 +196,12 @@ function serverCmdInstantGrenadeThrow(%client)
 
 function serverCmdMainMenu(%client)
 {
-	%newtxt = "";
+	%newtxt = om_init();
 	%client.clearMenuText();
 
 	%newtxt = %newtxt @
-		"<spush><font:Arial:24>Main Menu<spop>\n\n" @	
-		"<spush><font:Arial:18>" @
+		om_head("Main Menu") @
+		"<spush><font:Arial:20>" @
 		"Welcome to" SPC $Server::MissionType SPC 
 		$Server::MissionName @ 
 		"<spop>\n\n" @
@@ -215,7 +215,7 @@ function serverCmdMainMenu(%client)
 			"might take\nsome time while the game downloads needed" SPC
 			"art from the server.\nConsider using the time to read up on" SPC
 			"<a:cmd HowToPlay>how to play in this arena</a>.\n" @
-			"This main menu can be used to join the game once loading" SPC
+			"This main menu can be used to join a team once loading" SPC
 			"has finished.\n\n" @
 			"";
 	}
@@ -252,14 +252,11 @@ function serverCmdMainMenu(%client)
 
 function serverCmdShowPlayerList(%client, %show)
 {
-	%newtxt = "";
+	%newtxt = om_init();
 	%client.clearMenuText();
 
-	%newtxt = %newtxt @
-		"\<\< <a:cmd MainMenu>Back</a>\n\n" @
-		"<spush><font:Arial:24>Player statistics" SPC
-		"[ <a:cmd ShowPlayerList" SPC %show @ ">Refresh</a> ]<spop>\n\n" @
-		"";
+	%newtxt = %newtxt @ 
+		om_head("Player statistics", "MainMenu", "ShowPlayerList");
 
 	if(%show $= "")
 		%show = "latency";
@@ -337,6 +334,8 @@ function serverCmdShowPlayerList(%client, %show)
 		"<a:cmd ShowPlayerList latency>Latency</a> |" SPC
 		"<a:cmd ShowPlayerList dmgratio>Damage ratio</a> |" SPC
 		"<a:cmd ShowPlayerList healthlost>Effective health loss</a> |" SPC
+		"<a:cmd ShowPlayerList PvE>PvE</a> |" SPC
+		"<a:cmd ShowPlayerList chuck>Invincibility</a> |" SPC
 		"\nWeapon effectiveness:" SPC
 		"<a:cmd ShowPlayerList totalF>Total</a>," SPC
 		"<a:cmd ShowPlayerList discF>Disc</a>," SPC
@@ -345,8 +344,6 @@ function serverCmdShowPlayerList(%client, %show)
 		"<a:cmd ShowPlayerList mgF>MG</a>," SPC
 		"<a:cmd ShowPlayerList sniperF>Sniper</a>," SPC
 		"<a:cmd ShowPlayerList glF>GL</a> |\n" SPC
-		"<a:cmd ShowPlayerList PvE>PvE</a> |" SPC
-		"<a:cmd ShowPlayerList chuck>Invincibility</a> |" SPC
 		"<a:cmd ShowPlayerList time>Time played</a>" @
 		"<lmargin:0>\n\n" @
 		"<tab:25, 125, 200, 300, 400>" @
@@ -368,7 +365,7 @@ function serverCmdShowPlayerList(%client, %show)
 			%team = "Blues";
 
 		if(%k == %client)
-			%newtxt = %newtxt @ "<spush><color:FF00FF>";
+			%newtxt = %newtxt @ "<spush><shadowcolor:00FF00><shadow:1:1>";
 
 		%newtxt = %newtxt @ 
 			"\>\>\t<a:cmd ShowPlayerInfo" SPC %k @ ">" @ %name @ "</a>" TAB %team TAB %v @ "\n";
@@ -394,9 +391,9 @@ function serverCmdShowPlayerInfo(%client, %player)
 
 	%client.clearMenuText();
 	%client.addMenuText(
-		"\<\< <a:cmd ShowPlayerList>Back</a>\n\n" @
-		"<spush><font:Arial:24>Info on" SPC %player.nameBase @ 
-		" [ <a:cmd ShowPlayerInfo" SPC %player @ ">Refresh</a> ]<spop>\n\n" @
+		om_init() @
+		om_head("Info on" SPC %player.nameBase, 
+			"ShowPlayerList", "ShowPlayerInfo" SPC %player) @
 		"(last updated @" SPC removeDecimals(%p.lastUpdate) SPC "secs)\n\n" @
 		"<tab:200>" @
 		"Time played:" TAB trimStat(%p.timePlayed) SPC "mins" @ "\n" @
