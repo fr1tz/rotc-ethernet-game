@@ -25,6 +25,7 @@ function initCommon()
 	exec("./client/canvas.cs");
 	exec("./client/audio.cs");
 	exec("./auxiliary/array.cs");
+	exec("./auxiliary/missionInfo.cs");
 }
 
 function initBaseClient()
@@ -53,7 +54,6 @@ function initBaseServer()
 	exec("./server/server.cs");
 	exec("./server/message.cs");
 	exec("./server/commands.cs");
-	exec("./server/missionInfo.cs");
 	exec("./server/missionLoad.cs");
 	exec("./server/missionDownload.cs");
 	exec("./server/clientConnection.cs");
