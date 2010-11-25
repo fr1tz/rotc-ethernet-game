@@ -19,7 +19,11 @@ function StartServerWindow::onAddedAsWindow()
 			
 		MissionInfo::load(%file);
 			
-		SS_missionList.addRow(%i++, $MissionInfo::Name @ "\t" @ $MissionInfo::File );
+		SS_missionList.addRow(%i++, 
+			$MissionInfo::Type SPC
+			$MissionInfo::Name SPC
+			"(" @ $MissionInfo::Version @ ")" @
+			"\t" @ $MissionInfo::File );
 	}
 	
 	SS_missionList.sort(0);
@@ -41,7 +45,10 @@ function StartMissionWindow::onRemovedAsWindow()
 
 function SS_missionList::onSelect(%this, %id, %text)
 {
-    SS_UpdateMapInfo();
+	%id = SS_missionList.getSelectedId();
+	%missionFile = getField(SS_missionList.getRowTextById(%id), 1);
+	MissionInfo::load(%missionFile);
+	SS_ServerInfo.setText($MissionInfo::Desc);
 }
 
 //----------------------------------------
@@ -51,8 +58,6 @@ function SS_StartMission()
 	%id = SS_missionList.getSelectedId();
 	
 	%mapInfoFile = getField(SS_missionList.getRowTextById(%id), 1);
-
-	//$Server::MissionType = getWord(getField(SS_missionList.getRowTextById(%id), 0),0);
 
 	if ($pref::HostMultiPlayer)
 		%serverType = "MultiPlayer";
@@ -71,37 +76,3 @@ function SS_StartMission()
 }
 
 
-//----------------------------------------
-
-function SS_UpdateMapInfo()
-{
-	// this is kinda hackish...
-
-	%id = SS_missionList.getSelectedId();
-
-	%missionFile = getField(SS_missionList.getRowTextById(%id), 1);
-	MissionInfo::load(%missionFile);
-
-	handleMapInfoBasicsMessage('MsgMapInfoBasics', "",
-		$MapInfo::Name, $MapInfo::Homepage);
-
-	for( %i = 0; %i < $MapInfo::Desc.count(); %i++ )
-		handleMapDescMessage('MsgMapDesc', "", $MapInfo::Desc.getValue(%i));
-
-	for( %i = 0; %i < $MapInfo::Copyright.count(); %i++ )
-		handleMapCopyrightMessage('MsgMapCopyright', "", $MapInfo::Copyright.getValue(%i));
-
-	for( %i = 0; %i < $MapInfo::License.count(); %i++ )
-		handleMapLicenseMessage('MsgMapLicense', "", $MapInfo::License.getValue(%i));
-
-	for( %i = 0; %i < $MapInfo::Credits.count(); %i++ )
-		handleMapCreditsMessage('MsgMapCredits', "", $MapInfo::Credits.getValue(%i));
-
-	handleMapInfoDoneMessage('MsgMapInfoDone');
-}
-
-function SS_ShowMapInfo()
-{
-    SS_UpdateMapInfo();
-	addWindow(MapInfoWindow);
-}

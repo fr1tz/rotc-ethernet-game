@@ -14,8 +14,8 @@ $Pref::Server::RegionMask = 2;
 $pref::Master[0] = "2:master.garagegames.com:28002";
 
 // Information about the server
-$Pref::Server::Name = "ROTC: Ethernet Server";
-$Pref::Server::Info = "Visit http://ethernet.wasted.ch";
+$Pref::Server::Name = "Newbie"; // Appears as "hosted by:" on the client
+$Pref::Server::Info = ""; // Appears as "arena description" on the client
 
 // The connection error message is transmitted to the client immediatly
 // on connection, if any further error occures during the connection
