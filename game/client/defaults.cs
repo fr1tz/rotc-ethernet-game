@@ -38,7 +38,7 @@ $Pref::Net::PacketRateToServer = 32;
 
 $pref::Input::MouseEnabled = 0;
 $pref::Input::LinkMouseSensitivity = 1; // really used? -mag
-$pref::Input::MouseSensitivity = 1;
+$pref::Input::MouseSensitivity = 0.3;
 $pref::Input::InvertMouse = 0;
 $pref::Input::InvertMouseWhileFlying = 1;
 $pref::Input::JoystickEnabled = 0;
