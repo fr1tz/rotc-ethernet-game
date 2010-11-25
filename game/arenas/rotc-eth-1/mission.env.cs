@@ -1,7 +1,7 @@
 // Mission environment script
 // This script is executed on the server
 
-$ENV_ROOT = "ethernet/arenas/eth1/";
+$ENV_ROOT = "game/arenas/rotc-eth-1/";
 
 //------------------------------------------------------------------------------
 // Lights
