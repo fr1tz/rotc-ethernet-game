@@ -12,7 +12,29 @@ function handleMsgMenuText(%msgType, %msgString, %text)
 	if(%text $= "")
 		IngameMenuText.setText("");
 	else
-		IngameMenuText.setText(IngameMenuText.getText() @ %text);
+	{
+		%newtext = IngameMenuText.getText() @ %text;
+
+		while(true)
+		{
+			%p = strstr(%newtext, "@bind");
+			if(%p == -1)
+				break;
+
+			%s = getSubStr(%newtext, %p, 7);
+			%n = getSubStr(%s, 5, 2);
+
+			%cmd = $RemapCmd[%n];
+			%temp = moveMap.getBinding( %cmd );
+			%device = getField( %temp, 0 );
+			%object = getField( %temp, 1 );
+			%mapString = getMapDisplayName( %device, %object );
+
+			%newtext = strreplace(%newtext, %s, %mapString);
+		} 
+
+		IngameMenuText.setText(%newtext);
+	}
 }
 
 function MissionWindow::onWake(%this)
