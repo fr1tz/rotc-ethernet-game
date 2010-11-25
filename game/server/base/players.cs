@@ -463,9 +463,9 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 	}
 
 	//--------------------------------------------------------------------------
-	// Sliding
+	// Marching & Sliding
 	//--------------------------------------------------------------------------
-	if( %triggerNum == 5 )
+	if( %triggerNum == 4 || %triggerNum == 5 )
 	{
 		if(%val)
         {
