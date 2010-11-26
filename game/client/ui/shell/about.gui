@@ -15,7 +15,7 @@ new GuiControl(AboutWindowForEditing) {
    HorizSizing = "right";
    VertSizing = "bottom";
    Position = "0 0";
-   Extent = "640 480";
+   Extent = "800 600";
    MinExtent = "8 8";
    canSave = "1";
    Visible = "1";
@@ -26,16 +26,16 @@ new GuiControl(AboutWindowForEditing) {
       Profile = "GuiWindowProfile";
       HorizSizing = "center";
       VertSizing = "center";
-      Position = "48 60";
-      Extent = "326 385";
-      MinExtent = "8 8";
+      Position = "58 56";
+      Extent = "600 400";
+      MinExtent = "300 200";
       canSave = "1";
       Visible = "1";
       hovertime = "1000";
       text = "About";
       maxLength = "255";
-      resizeWidth = "0";
-      resizeHeight = "0";
+      resizeWidth = "1";
+      resizeHeight = "1";
       canMove = "1";
       canClose = "1";
       canMinimize = "0";
@@ -43,35 +43,73 @@ new GuiControl(AboutWindowForEditing) {
       minSize = "50 50";
       closeCommand = "removeWindow(AboutWindow);";
 
-      new GuiBitmapCtrl() {
+      new GuiScrollCtrl() {
          canSaveDynamicFields = "0";
-         Profile = "GuiDefaultProfile";
+         Profile = "GuiScrollProfile";
          HorizSizing = "right";
-         VertSizing = "bottom";
-         Position = "3 22";
-         Extent = "320 240";
-         MinExtent = "8 2";
-         canSave = "1";
-         Visible = "1";
-         hovertime = "1000";
-         bitmap = "./pixmaps/logo.png";
-         wrap = "0";
-      };
-      new GuiMLTextCtrl(aboutText) {
-         canSaveDynamicFields = "0";
-         Profile = "GuiMLTextProfile";
-         HorizSizing = "left";
-         VertSizing = "bottom";
-         Position = "8 272";
-         Extent = "310 95";
+         VertSizing = "height";
+         Position = "8 30";
+         Extent = "75 359";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
          hovertime = "1000";
-         lineSpacing = "2";
-         allowColorChars = "0";
-         maxChars = "-1";
-         text = "---";
+         willFirstRespond = "1";
+         hScrollBar = "alwaysOff";
+         vScrollBar = "dynamic";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiTextListCtrl(AboutFileList) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiTextListProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            Position = "2 2";
+            Extent = "128 8";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            enumerate = "0";
+            resizeCell = "1";
+            columns = "0";
+            fitParentWidth = "1";
+            clipColumnText = "0";
+         };
+      };
+      new GuiScrollCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiScrollProfile";
+         HorizSizing = "width";
+         VertSizing = "height";
+         Position = "91 30";
+         Extent = "500 359";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         willFirstRespond = "1";
+         hScrollBar = "alwaysOff";
+         vScrollBar = "alwaysOn";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiMLTextCtrl(AboutText) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiMLTextProfile";
+            HorizSizing = "width";
+            VertSizing = "bottom";
+            Position = "2 2";
+            Extent = "482 13";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            lineSpacing = "2";
+            allowColorChars = "0";
+            maxChars = "-1";
+         };
       };
    };
 };

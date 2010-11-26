@@ -5,10 +5,33 @@
 
 function AboutWindow::onWake(%this)
 {
-	%text="<just:center><font:Arial:24>Revenge Of The Cats: Ethernet\n"@
-			"<font:Arial:22>"@ $GameVersionString @"\n"@
-			"<font:Arial:12>\nEngine version: "@ getVersionString() @", "@ getBuildString() @"Build\n\n"@
-			"<font:Arial:16>See the <a:manual.html>manual</a> for complete credits.";
-	aboutText.setText(%text);	
-}	
+	AboutFileList.entryCount = 0;
+	AboutFileList.clear();
+
+	%files[0] = "README";
+	%files[1] = "AUTHORS";
+	%files[2] = "COPYING";
+
+	for(%i = 0; %i < 3; %i++)
+	{
+		%file = %files[%i];
+		AboutFileList.fileName[AboutFileList.entryCount] = %file;
+		AboutFileList.addRow(AboutFileList.entryCount, %file);
+		AboutFileList.entryCount++;
+	}
+	AboutFileList.setSelectedRow(0);
+}
+
+function AboutFileList::onSelect(%this, %row)
+{
+	%fo = new FileObject();
+	%fo.openForRead(%this.fileName[%row]);
+	%text = "";
+	while(!%fo.isEOF())
+		%text = %text @ %fo.readLine() @ "\n";
+
+	%fo.delete();
+
+	AboutText.setText("<font:monospace:12>" @ %text);
+}
 
