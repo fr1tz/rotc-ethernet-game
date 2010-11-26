@@ -3,4 +3,4 @@ $MissionInfo::Type       = "ROTC: Ethernet";
 $MissionInfo::Version    = $GameVersionString;
 $MissionInfo::EnvFile    = "game/arenas/rotc-eth-1/mission.env";
 $MissionInfo::ScriptFile = "game/arenas/rotc-eth-1/mission.cs";
-$MissionInfo::Desc       = "Capture all the opposing team's zones to win";
+$MissionInfo::Desc       = "Capture all the opposing team's zones to win.\n";
