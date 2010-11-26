@@ -200,7 +200,7 @@ function serverCmdMainMenu(%client)
 	%client.clearMenuText();
 
 	%newtxt = %newtxt @
-		om_head("Main Menu") @
+		om_head(%client, "Main Menu") @
 		"<spush><font:Arial:20>" @
 		"Welcome to" SPC $Server::MissionType SPC 
 		$Server::MissionName @ 
@@ -215,27 +215,8 @@ function serverCmdMainMenu(%client)
 			"might take\nsome time while the game downloads needed" SPC
 			"art from the server.\nConsider using the time to read up on" SPC
 			"<a:cmd HowToPlay>how to play in this arena</a>.\n" @
-			"This main menu can be used to join a team once loading" SPC
+			"Commands to join a team will appear at the top once loading" SPC
 			"has finished.\n\n" @
-			"";
-	}
-
-	%newtxt = %newtxt @	
-		"<spush><font:Arial:16>Actions<spop>\n" @
-		"";
-
-	if(%client.loadingMission)
-	{
-		%newtxt = %newtxt @	
-			"   No actions available while arena is loading.\n" @
-			"";
-	}
-	else
-	{
-		%newtxt = %newtxt @	
-			"   [<a:cmd JoinTeam 0>Become observer</a>]\n" @
-			"   [<a:cmd JoinTeam 1>Become red</a>]\n" @
-			"   [<a:cmd JoinTeam 2>Become blue</a>]\n" @
 			"";
 	}
 
@@ -256,7 +237,7 @@ function serverCmdShowPlayerList(%client, %show)
 	%client.clearMenuText();
 
 	%newtxt = %newtxt @ 
-		om_head("Player statistics", "MainMenu", "ShowPlayerList");
+		om_head(%client, "Player statistics", "MainMenu", "ShowPlayerList" SPC %show);
 
 	if(%show $= "")
 		%show = "latency";
@@ -392,7 +373,7 @@ function serverCmdShowPlayerInfo(%client, %player)
 	%client.clearMenuText();
 	%client.addMenuText(
 		om_init() @
-		om_head("Info on" SPC %player.nameBase, 
+		om_head(%client, "Info on" SPC %player.nameBase, 
 			"ShowPlayerList", "ShowPlayerInfo" SPC %player) @
 		"(last updated @" SPC removeDecimals(%p.lastUpdate) SPC "secs)\n\n" @
 		"<tab:200>" @
