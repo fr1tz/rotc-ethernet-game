@@ -1,57 +1,92 @@
-This file is maintained to keep track of contributions and copyrighted
-3rd-party works that were used to create "Revenge Of The Cats: Ethernet".
+ 
+           Made by Michael Goldener <mg@wasted.ch>
 
-----------------------------------------------------------------------------------
+              Powered by the Torque Game Engine 
+                 (http://www.garagegames.com)
 
-ethernet/data/sfx/fire6.wav
+                  Hosted at http://wasted.ch 
 
-	Contributed by Alberto de Victoria (RomeoX)
 
-----------------------------------------------------------------------------------
+Thanks go out to...
+===================
 
-ethernet/data/sfx/fire7.wav
+Wanja Chresta
+Michael Wagner
+Alberto de Victoria
 
-	Contributed by Alberto de Victoria (RomeoX)
+dD0t and Timer of http://www.dbclan.de
 
-----------------------------------------------------------------------------------
+Toumal
+eee
+RaZzZiel
+LinuxGameCast (http://linuxgamecast.com)
+kurrata
 
-ethernet/data/sfx/explosion7.wav
+Melvin May
+Matt Webster
+Pixellent Interactive
+Xavier Amado
+Paul Dana
 
-	Contributed by Alberto de Victoria (RomeoX)
+...and of course
+Peter Hajba 
 
-----------------------------------------------------------------------------------
 
-ethernet/data/sfx/explosion8.wav
 
-	Contributed by Alberto de Victoria (RomeoX)
+Attributions
+============
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-ethernet/data/sfx/explosion9.wav
-
-	Contributed by Alberto de Victoria (RomeoX)
-
-----------------------------------------------------------------------------------
-
-ethernet/data/sfx/deploy1.wav
-
-	Contributed by Alberto de Victoria (RomeoX)
-
-----------------------------------------------------------------------------------
-
-ethernet/data/sfx/powerdown3.wav
-
-	Contributed by Alberto de Victoria (RomeoX)
-
-----------------------------------------------------------------------------------
-
-ethernet/data/sfx/other1.wav
+share/sounds/rotc/fire6.wav
 
 	Contributed by Alberto de Victoria (RomeoX)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\players\shared\sound.spawn.wav
+share/sounds/rotc/fire7.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+--------------------------------------------
+
+share/sounds/rotc/explosion7.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+--------------------------------------------
+
+share/sounds/rotc/explosion8.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+--------------------------------------------
+
+share/sounds/rotc/explosion9.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+--------------------------------------------
+
+share/sounds/rotc/deploy1.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+--------------------------------------------
+
+share/sounds/rotc/powerdown3.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+--------------------------------------------
+
+share/sounds/rotc/other1.wav
+
+	Contributed by Alberto de Victoria (RomeoX)
+
+--------------------------------------------
+
+Used for share/shapes/rotc/players/shared/sound.spawn.wav
 
 	http://www.soundsnap.com/node/101781
 	Laser shot burst 03 SFXBible ss06006
@@ -61,94 +96,94 @@ Used for ethernet\data\players\shared\sound.spawn.wav
 	Pixie dust burst shine BLASTWAVEFX 25833
 	User: BLASTWAVE FX (http://www.soundsnap.com/user/19113)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\players\standardcat\slide.wav
+Used for share/shapes/rotc/players/standardcat/slide.wav
 
 	http://www.soundsnap.com/node/102024
 	Crystal glow 01 SFXBible ss05663
 	User: SFX Bible (http://www.soundsnap.com/user/7410)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\players\standardcat\slidecontact.wav
+Used for share/shapes/rotc/players/standardcat/slidecontact.wav
 
 	http://www.soundsnap.com/node/48276
 	FOLEY GLASS PIECE GRIND CEMENT 01
 	User: SFX Bible (http://www.soundsnap.com/user/7410)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sound\weaponEmpty.wav
+Used for share/sounds/rotc/weaponEmpty.wav
 
         By Vosvoy (http://www.freesound.org/usersViewSingle.php?id=527687)
             glock_reloadsequence.wav (http://www.freesound.org/samplesViewSingle.php?id=69872)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sound\weaponSwitch.wav
+Used for share/sounds/rotc/weaponSwitch.wav
 
         By LAGtheNoggin (http://www.freesound.org/usersViewSingle.php?id=48428)
             Reload.mp3 (http://www.freesound.org/samplesViewSingle.php?id=15545)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sound\events\clown.wav
+Used for share/sounds/rotc/events/clown.wav
 
         By NoiseCollector (http://www.freesound.org/usersViewSingle.php?id=4948)
             noisemaker1.wav (http://www.freesound.org/samplesViewSingle.php?id=55210)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sound\events\victory.wav
+Used for share/sounds/rotc/events/victory.wav
 
 	http://www.soundsnap.com/node/35359
 	victory orchestral
 	User: dimlif (http://www.soundsnap.com/user/784) 
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\vehicles\etherform\sound.impact.wav
+Used for share/shapes/rotc/vehicles/etherform/sound.impact.wav
 
 	http://www.soundsnap.com/node/99600
 	Crystal glass tap 01 SFXBible ss00892
 	User: SFX Bible (http://www.soundsnap.com/user/7410)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\vehicles\etherform\sound.spawn.wav
+Used for share/shapes/rotc/vehicles/etherform/sound.spawn.wav
 
 	http://www.soundsnap.com/node/66540
 	Sound design crystal accent distortion front to rear BLASTWAVEFX 04567
 	User: BLASTWAVE FX (http://www.soundsnap.com/user/19113)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\vehicles\etherform\sound.sing.wav
+Used for share/shapes/rotc/vehicles/etherform/sound.sing.wav
 
 	http://www.soundsnap.com/node/102024
 	Crystal glow 01 SFXBible ss05663
 	User: SFX Bible (http://www.soundsnap.com/user/7410)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\bounce1.wav:
+Used for share/sounds/rotc/bounce1.wav:
 
 	http://www.soundsnap.com/node/12294
 	GATE LATCH
 	User: Justine Angus (http://www.soundsnap.com/user/25)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\explosion1.wav:
+Used for share/sounds/rotc/explosion1.wav:
 
 	http://www.soundsnap.com/node/98824
 	Grenade explosion 11 SFXBible ss00690
 	User: SFX Bible (http://www.soundsnap.com/user/7410)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\explosion2.wav:
+Used for share/sounds/rotc/explosion2.wav:
 
         By junggle (http://www.freesound.org/usersViewSingle.php?id=128404)
             btn107.wav (http://www.freesound.org/samplesViewSingle.php?id=28917)
@@ -159,16 +194,16 @@ Used for ethernet\data\sfx\explosion2.wav:
         By gezortenplotz (http://www.freesound.org/usersViewSingle.php?id=11536)
             308_rifle_02.wav (http://www.freesound.org/samplesViewSingle.php?id=43756)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\fire3.wav:
+Used for share/sounds/rotc/fire3.wav:
 
         By Matt_G (http://www.freesound.org/usersViewSingle.php?id=240366)
             m240.wav (http://www.freesound.org/samplesViewSingle.php?id=30749)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\fire2.wav:
+Used for share/sounds/rotc/fire2.wav:
 
         By junggle (http://www.freesound.org/usersViewSingle.php?id=128404)
             btn107.wav (http://www.freesound.org/samplesViewSingle.php?id=28917)
@@ -176,9 +211,9 @@ Used for ethernet\data\sfx\fire2.wav:
         By PhreaKsAccount (http://www.freesound.org/usersViewSingle.php?id=89025)
             Coachgun_Fire1.wav (http://www.freesound.org/samplesViewSingle.php?id=46261)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\fire1.wav:
+Used for share/sounds/rotc/fire1.wav:
 
 	http://www.soundsnap.com/node/12887
 	SHOTGUN COCK
@@ -188,24 +223,24 @@ Used for ethernet\data\sfx\fire1.wav:
 	12 gauge SPAS 12 shotgun single shot close perspective 04 SFXBible ss06853
 	User: SFX Bible (http://www.soundsnap.com/user/7410)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\flyby1.wav:
+Used for share/sounds/rotc/flyby1.wav:
 
         By mich3d (http://www.freesound.org/usersViewSingle.php?id=32482)
             Whoosh_Swish_02.wav (http://www.freesound.org/samplesViewSingle.php?id=12657)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\impact1.wav:
+Used for share/sounds/rotc/impact1.wav:
 
 	http://www.soundsnap.com/node/111821
 	Mallet hitting a pint glass breaking smash debris
 	User: Airborne Sound (http://www.soundsnap.com/user/5118)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\impact2.wav:
+Used for share/sounds/rotc/impact2.wav:
 
 	http://www.soundsnap.com/node/43595
 	WARFARE SWORD HIT RESONATE 01
@@ -215,9 +250,9 @@ Used for ethernet\data\sfx\impact2.wav:
 	Gunshot Ricochet Cartoon
 	User: Fred Weinberg (http://www.soundsnap.com/user/19)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\slice1.wav:
+Used for share/sounds/rotc/slice1.wav:
 
         By Abyssmal (http://www.freesound.org/usersViewSingle.php?id=307822)
             slashkut.wav (http://www.freesound.org/samplesViewSingle.php?id=35213)
@@ -226,16 +261,16 @@ Used for ethernet\data\sfx\slice1.wav:
 	Mallet hitting a pint glass breaking smash debris
 	User: Airborne Sound (http://www.soundsnap.com/user/5118)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\denied1.wav:
+Used for share/sounds/rotc/denied1.wav:
 
         By guitarguy1985 (http://www.freesound.org/usersViewSingle.php?id=533680)
             aircraftalarm.wav (http://www.freesound.org/samplesViewSingle.php?id=57806)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\explosion5.wav:
+Used for share/sounds/rotc/explosion5.wav:
 
         By nthompson (http://www.freesound.org/usersViewSingle.php?id=364925)
             rocketexpl.wav (http://www.freesound.org/samplesViewSingle.php?id=47252)
@@ -243,67 +278,67 @@ Used for ethernet\data\sfx\explosion5.wav:
         By themfish (http://www.freesound.org/usersViewSingle.php?id=223338)
             glass_house1.wav (http://www.freesound.org/samplesViewSingle.php?id=34201)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\spin1.wav:
+Used for share/sounds/rotc/spin1.wav:
 
 	http://www.soundsnap.com/node/83997
 	Martial arts ninja star throw whip spin twirl BLASTWAVEFX 18176
 	User: BLASTWAVE FX (http://www.soundsnap.com/user/19113)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\throw1.wav:
-
-        By mich3d (http://www.freesound.org/usersViewSingle.php?id=32482)
-            Whoosh_Swish_02.wav (http://www.freesound.org/samplesViewSingle.php?id=12657)
-
-----------------------------------------------------------------------------------
-
-Used for ethernet\data\sfx\throw1rev.wav:
+Used for share/sounds/rotc/throw1.wav:
 
         By mich3d (http://www.freesound.org/usersViewSingle.php?id=32482)
             Whoosh_Swish_02.wav (http://www.freesound.org/samplesViewSingle.php?id=12657)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\debris1.wav:
+Used for share/sounds/rotc/throw1rev.wav:
+
+        By mich3d (http://www.freesound.org/usersViewSingle.php?id=32482)
+            Whoosh_Swish_02.wav (http://www.freesound.org/samplesViewSingle.php?id=12657)
+
+--------------------------------------------
+
+Used for share/sounds/rotc/debris1.wav:
 
 	http://www.soundsnap.com/node/111746
         Pint glass breaking debris hard
 	User: Airborne Sound (http://www.soundsnap.com/user/5118)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\explosion3.wav:
+Used for share/sounds/rotc/explosion3.wav:
 
         By ljudman (http://www.freesound.org/usersViewSingle.php?id=65091)
             grenade.wav (http://www.freesound.org/samplesViewSingle.php?id=33245)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\fire5.wav:
+Used for share/sounds/rotc/fire5.wav:
 
         By man (http://www.freesound.org/usersViewSingle.php?id=14447)
             canon.aif (http://www.freesound.org/samplesViewSingle.php?id=14615)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\charge1.wav:
+Used for share/sounds/rotc/charge1.wav:
 
         By emmanuel (http://www.freesound.org/usersViewSingle.php?id=53045)
             one use camera flash load.wav (http://www.freesound.org/samplesViewSingle.php?id=16462)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\fire4.wav:
+Used for share/sounds/rotc/fire4.wav:
 
         By pgi (http://www.freesound.org/usersViewSingle.php?id=1654571)
             minigun.wav (http://www.freesound.org/samplesViewSingle.php?id=98331)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
-Used for ethernet\data\sfx\charge2.wav:
+Used for share/sounds/rotc/charge2.wav:
 
         By Dynamicell (http://www.freesound.org/usersViewSingle.php?id=47052)
             Fire_huge_lazer.aif (http://www.freesound.org/samplesViewSingle.php?id=17831)
@@ -311,28 +346,30 @@ Used for ethernet\data\sfx\charge2.wav:
         By FreqMan (http://www.freesound.org/usersViewSingle.php?id=92661)
             scanner blip.wav (http://www.freesound.org/samplesViewSingle.php?id=32683)
             
-Used for ethernet\data\sfx\missile1.wav:
+Used for share/sounds/rotc/missile1.wav:
 
         By qubodup (http://www.freesound.org/usersViewSingle.php?id=71257)
             bgm-71_tow_missile_launch_1_less_echo.flac (http://www.freesound.org/samplesViewSingle.php?id=67542)
             
-Used for ethernet\data\sfx\powerdown2.wav:
+Used for share/sounds/rotc/powerdown2.wav:
 
         By Dynamicell (http://www.freesound.org/usersViewSingle.php?id=47052)
             Fire_huge_lazer.aif (http://www.freesound.org/samplesViewSingle.php?id=17831)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
 Used for share/sounds/eth1/ambient1.ogg:
 
         By daveincamas (http://www.freesound.org/usersViewSingle.php?id=111413)
             StormInOregonRainforest-Wind.wav (http://www.freesound.org/samplesViewSingle.php?id=45480)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
 
 Used for share/sounds/eth1/ambient2.ogg:
 
         By sagetyrtle (http://www.freesound.org/usersViewSingle.php?id=43834)
             lakeontariofree.wav (http://www.freesound.org/samplesViewSingle.php?id=20694)
 
-----------------------------------------------------------------------------------
+--------------------------------------------
+
+
