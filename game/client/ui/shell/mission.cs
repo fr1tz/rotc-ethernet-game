@@ -37,6 +37,20 @@ function handleMsgMenuText(%msgType, %msgString, %text)
 	}
 }
 
+function MissionWindow::resizeIdeal(%this)
+{
+	%s  = %this.getParent().getExtent();
+	%sw = getWord(%s, 0);
+	%sh = getWord(%s, 1);
+
+	%w = getWord(%this.MinExtent, 0);
+	%h = %sh - 20;
+
+	%this.setPosition(%sw - %w - 10, 10);
+	%this.setExtent(%w, %h);
+}
+
+
 function MissionWindow::onWake(%this)
 {
 	if($Server::ServerType $= "SinglePlayer")

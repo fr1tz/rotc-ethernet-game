@@ -28,6 +28,7 @@ function onConnectionInitiated()
 	IngameMenuText.setText("");
 
 	addWindow(MissionWindow);
+	MissionWindow.resizeIdeal();
 }
 
 //----------------------------------------------------------------------------
