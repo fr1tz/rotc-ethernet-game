@@ -9,10 +9,11 @@ function AboutWindow::onWake(%this)
 	AboutFileList.clear();
 
 	%files[0] = "README";
-	%files[1] = "AUTHORS";
-	%files[2] = "COPYING";
+	%files[1] = "NEWS";
+	%files[2] = "AUTHORS";
+	%files[3] = "COPYING";
 
-	for(%i = 0; %i < 3; %i++)
+	for(%i = 0; %i < 4; %i++)
 	{
 		%file = %files[%i];
 		AboutFileList.fileName[AboutFileList.entryCount] = %file;
