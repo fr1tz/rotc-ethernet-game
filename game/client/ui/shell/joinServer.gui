@@ -284,7 +284,7 @@ new GuiControl(JoinServerWindowForEditing) {
          canSave = "1";
          Visible = "1";
          hovertime = "1000";
-         text = "Server Info:";
+         text = "Arena description:";
          maxLength = "1024";
       };
    };
