@@ -21,6 +21,7 @@ $Camera::movementSpeed = 40;
 datablock CameraData(ObserverCamera)
 {
 	mode = "Observer";
+	thirdPersonOnly = true;
 };
 
 //-----------------------------------------------------------------------------
