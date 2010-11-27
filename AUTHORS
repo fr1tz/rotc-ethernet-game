@@ -39,50 +39,28 @@ Attributions
 --------------------------------------------
 
 share/sounds/rotc/fire6.wav
-
-	Contributed by Alberto de Victoria (RomeoX)
-
---------------------------------------------
-
 share/sounds/rotc/fire7.wav
-
-	Contributed by Alberto de Victoria (RomeoX)
-
---------------------------------------------
-
 share/sounds/rotc/explosion7.wav
-
-	Contributed by Alberto de Victoria (RomeoX)
-
---------------------------------------------
-
 share/sounds/rotc/explosion8.wav
-
-	Contributed by Alberto de Victoria (RomeoX)
-
---------------------------------------------
-
 share/sounds/rotc/explosion9.wav
-
-	Contributed by Alberto de Victoria (RomeoX)
-
---------------------------------------------
-
 share/sounds/rotc/deploy1.wav
-
-	Contributed by Alberto de Victoria (RomeoX)
-
---------------------------------------------
-
 share/sounds/rotc/powerdown3.wav
-
-	Contributed by Alberto de Victoria (RomeoX)
-
---------------------------------------------
-
 share/sounds/rotc/other1.wav
 
 	Contributed by Alberto de Victoria (RomeoX)
+
+--------------------------------------------
+
+share/music/eth1/work1_ethernet_defeat1.wav
+share/music/eth1/work1_ethernet_defeat2.wav
+share/music/eth1/work1_ethernet_defeat3.wav
+share/music/eth1/work1_ethernet_idle.wav
+share/music/eth1/work1_ethernet_startup.wav
+share/music/eth1/work1_ethernet_victory1.wav
+share/music/eth1/work1_ethernet_victory2.wav
+share/music/eth1/work1_ethernet_victory3.wav
+
+	Contributed by Toumal
 
 --------------------------------------------
 
