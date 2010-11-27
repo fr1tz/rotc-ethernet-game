@@ -61,7 +61,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 
 <spush><font:Arial:20>The Sniper ROFL<spop>
 
-<bitmap:share/misc/help/wpn_sniperrifle.png>The Sniper ROFL is... kind of a sniper rifle. The sniper rofl needs to be charged before it can fire. While charging doesn't take long and doesn't consume energy, you can't run fast or use the Etherboard while doing it. Hold down the left mouse button to charge, release it to fire.
+<bitmap:share/misc/help/wpn_sniperrifle.png>The Sniper ROFL is... kind of a sniper rifle. The sniper rofl needs to be charged before it can fire. While charging doesn't take long and doesn't consume energy, you can't run fast or use the Etherboard while doing it. Hold down @bind16 to charge, release it to fire.
 <sbreak><tab:15,200>
 	Armor cost	<spush><font:Arial Bold:16>75<spop>
 	Impact damage	<spush><font:Arial Bold:16>120<spop>
