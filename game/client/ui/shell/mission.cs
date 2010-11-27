@@ -23,6 +23,10 @@ function handleMsgMenuText(%msgType, %msgString, %text)
 
 			%s = getSubStr(%newtext, %p, 7);
 			%n = getSubStr(%s, 5, 2);
+
+			if(strlen(%n) != 2)
+				break;
+
 			%n = %n + 0; // interpet as numeric
 
 			%cmd = $RemapCmd[%n];
