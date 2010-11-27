@@ -6,13 +6,14 @@ Copyright (C) 2008, mEthLab Interactive
 
 Revenge Of The Cats: Ethernet is licensed under the pretty restrictive
 Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 
-License.
+License (http://creativecommons.org/licenses/by-nc-nd/3.0/).
 
 However, all game content is made available under the permissive 
-Creative Commons Attribution 3.0 License. Game content refers to all
-files except the engine binaries (rotc.exe, rotc.bin and rotcd.bin)
-and the third-party library binaries (the .dll files and everything 
-in the lib/ directory).
+Creative Commons Attribution 3.0 License
+(http://creativecommons.org/licenses/by/3.0/).
+Game content refers to all files except the engine binaries (rotc.exe,
+rotc.bin and rotcd.bin) and the third-party library binaries (the .dll
+files and everything in the lib/ directory).
 
 **********************************************************************
 
