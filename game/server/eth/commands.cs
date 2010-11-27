@@ -46,8 +46,15 @@ function serverCmdHowToPlay(%client, %page)
 		case 5:
 			%title = "5. Weapons";
 			%prev = "<a:cmd HowToPlay 4>Playing in CAT form</a>";
-			%next = "";
+			%next = "<a:cmd HowToPlay 6>Controls reference</a>";
 			%fileName = "game/server/eth/help/weapons.rml";
+			break;
+
+		case 6:
+			%title = "6. Controls reference";
+			%prev = "<a:cmd HowToPlay 5>Weapons</a>";
+			%next = "";
+			%fileName = "game/server/eth/help/controls.rml";
 			break;
 
 		default:
