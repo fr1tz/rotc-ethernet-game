@@ -76,16 +76,18 @@ function Hud::matchControlObject(%this, %obj)
 	{
 		PrimaryWeaponIcon.setVisible(false);
 
+		HealthIcon.setVisible(false);
 		HealthMeter.setVisible(false);
+		EnergyIcon.setVisible(false);
 		EnergyMeter.setVisible(false);
 
 		%this.showDiscIcons = false;
 	}
 	else
 	{
-		PrimaryWeaponIcon.setVisible(true);
-
+		HealthIcon.setVisible(true);
 		HealthMeter.setVisible(true);
+		EnergyIcon.setVisible(true);
 		EnergyMeter.setVisible(true);
 
 		if(%obj.getType() & $TypeMasks::PlayerObjectType)
