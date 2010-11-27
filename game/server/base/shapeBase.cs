@@ -165,6 +165,9 @@ function ShapeBase::setDiscTarget(%this, %target)
     if(!%target.isCAT)
         return;
 
+    if(%target.getTeamId() == %this.getTeamId())
+        return;
+
     cancel(%this.discTargetThread);
 	%pos = %target.getWorldBoxCenter();
     %this.setCurrTarget(%target, %pos);
