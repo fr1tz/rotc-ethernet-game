@@ -166,7 +166,7 @@ function ChatHud::addLine(%this,%text)
 	%textHeight = %this.profile.fontSize;
 	if (%textHeight <= 0)
 		%textHeight = 12;
-	%chatScrollHeight = getWord(%this.getGroup().getGroup().extent, 1);
+	%chatScrollHeight = getWord(%this.getGroup().extent, 1);
 	%chatPosition = getWord(%this.extent, 1) - %chatScrollHeight + getWord(%this.position, 1);
 	%linesToScroll = mFloor((%chatPosition / %textHeight) + 0.5);
 	if (%linesToScroll > 0)
@@ -204,7 +204,7 @@ function ChatHud::pageUp(%this)
 		%textHeight = 12;
 
 	// Find out how many lines per page are visible
-	%chatScrollHeight = getWord(%this.getGroup().getGroup().extent, 1);
+	%chatScrollHeight = getWord(%this.getGroup().extent, 1);
 	if (%chatScrollHeight <= 0)
 		return;
 
@@ -241,7 +241,7 @@ function ChatHud::pageDown(%this)
 		%textHeight = 12;
 
 	// Find out how many lines per page are visible
-	%chatScrollHeight = getWord(%this.getGroup().getGroup().extent, 1);
+	%chatScrollHeight = getWord(%this.getGroup().extent, 1);
 	if (%chatScrollHeight <= 0)
 		return;
 
