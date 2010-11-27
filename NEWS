@@ -8,6 +8,35 @@ Released: Nov. 27, 2010
 
 - Replaced HTML manual with server-driven in-game online help
   and README, NEWS, AUTHORS and COPYING files.
+- Changes to Ethernet zone mechanics:
+  CATs can only capture zones adjacent to their own zones, but can
+  enter any enemy zone to prevent the enemy from manifesting there.
+- Unlimited etherboarding.
+- Higher maximum speed for CATs.
+- No more weapon sets: CATs carry both MG and Sniper ROFL.
+- Reduced MG splash damage radius from 3 to 2 and removed 
+  influence of player trajectory on MG projectile trajectory.
+- Increased lenght of no-disc grace period from 3 to 6 seconds.
+- Slightly increased bullet spread of Trident.
+- The "Controls" dialog now allows rebinding almost every control
+  and should finally work properly (keep your fingers crossed).
+- Early version of dynamic in-game music.
+- More player statistics.
+- More useful minimap.
+- Color of sniper projectile trail now shows if the shot hit.
+- Revert to simpler (uglier and faster) zone rendering for now.
+- Zones now flash when they change color.
+- The sky now changes color to show which team has more health
+  in a disputed zone.
+- Reverted to always equipping the Trident when manifesting as CAT.
+- New sound effects for manifesting and grenade explosion.
+- Reverted to default Torque Game Engine server query protocol.
+  (Prototype 1.11 servers will not show up in the server browser
+   of previous releases.)
+- This release does not include the severlist mod or the "nort1"
+  arena of previous releases.
+- Minor visual changes
+- Bugfixes
 
 
 Prototype 1.10
