@@ -581,7 +581,7 @@ function Player::startNoDiscGracePeriod(%this)
     if(%this.endDiscGracePeriodThread !$= "")
         cancel(%this.endDiscGracePeriodThread);
 
-    %gracePeriodTime = 6.0;
+    %gracePeriodTime = 3.0;
 
     %this.noDiscGracePeriod = true;
 
