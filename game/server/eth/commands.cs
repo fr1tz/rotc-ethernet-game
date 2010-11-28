@@ -34,35 +34,30 @@ function serverCmdHowToPlay(%client, %page)
 			%prev = "<a:cmd HowToPlay 2>Basics</a>";
 			%next = "<a:cmd HowToPlay 4>Playing in CAT form</a>";
 			%fileName = "game/server/eth/help/etherform.rml";
-			break;
 
 		case 4:
 			%title = "4. Playing in CAT form";
 			%prev = "<a:cmd HowToPlay 3>Playing as Etherform</a>";
 			%next = "<a:cmd HowToPlay 5>Weapons</a>";
 			%fileName = "game/server/eth/help/cat.rml";
-			break;
 
 		case 5:
 			%title = "5. Weapons";
 			%prev = "<a:cmd HowToPlay 4>Playing in CAT form</a>";
 			%next = "<a:cmd HowToPlay 6>Controls reference</a>";
 			%fileName = "game/server/eth/help/weapons.rml";
-			break;
 
 		case 6:
 			%title = "6. Controls reference";
 			%prev = "<a:cmd HowToPlay 5>Weapons</a>";
 			%next = "";
 			%fileName = "game/server/eth/help/controls.rml";
-			break;
 
 		default:
 			%title = "0. Index";
 			%prev = "";
 			%next = "<a:cmd HowToPlay 1>ROTC: Ethernet in a nutshell</a>";
 			%fileName = "game/server/eth/help/index.rml";
-			break;
 	}
 
 	%nav = "<spush><font:Arial:13>";
