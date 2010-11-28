@@ -31,7 +31,7 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 	range = 500; // shotgun range
 	muzzleSpreadRadius = 0.5;
 	referenceSpreadRadius = 2.0;
-	referenceSpreadDistance = 55;
+	referenceSpreadDistance = 45;
 
 	explodesNearEnemies	      = false;
 	explodesNearEnemiesRadius = 4;
