@@ -17,13 +17,13 @@ exec("./sniperrifle.projectile.gfx.blue.cs");
 datablock ShotgunProjectileData(RedSniperProjectile)
 {
 	// script damage properties...
-	impactDamage       = 120;
+	impactDamage       = 60;
 	impactImpulse      = 1000;
 	splashDamage       = 0;
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
 
-	energyDrain = 75; // how much energy does firing this projectile drain?
+	energyDrain = 30; // how much energy does firing this projectile drain?
 
 	numBullets = 1; // number of shotgun bullets
 	range = 2000; // shotgun range
@@ -40,8 +40,8 @@ datablock ShotgunProjectileData(RedSniperProjectile)
     //projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.red.dts";
 
 	explosion               = RedSniperProjectileExplosion;
-	hitEnemyExplosion       = RedSniperProjectileExplosion;
-    hitTeammateExplosion    = RedSniperProjectileExplosion;
+	hitEnemyExplosion       = RedSniperProjectileHit;
+    hitTeammateExplosion    = RedSniperProjectileHit;
     //nearEnemyExplosion	= DefaultProjectileNearEnemyExplosion;
     //hitDeflectorExplosion = SeekerDiscBounceEffect;
 
@@ -96,8 +96,8 @@ datablock ShotgunProjectileData(BlueSniperProjectile : RedSniperProjectile)
     //projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.blue.dts";
 
 	explosion            = BlueSniperProjectileExplosion;
-	hitEnemyExplosion    = BlueSniperProjectileExplosion;
-    hitTeammateExplosion = BlueSniperProjectileExplosion;
+	hitEnemyExplosion    = BlueSniperProjectileHit;
+    hitTeammateExplosion = BlueSniperProjectileHit;
 
 	missEnemyEffect    = BlueSniperProjectileMissedEnemyEffect;
 

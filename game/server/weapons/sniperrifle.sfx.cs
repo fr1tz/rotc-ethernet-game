@@ -10,14 +10,14 @@
 
 datablock AudioProfile(SniperRifleFireSound)
 {
-	filename = "share/sounds/rotc/explosion3.wav";
+	filename = "share/sounds/rotc/fire6.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(SniperExplosionSound)
 {
-	filename = "share/sounds/rotc/explosion5.wav";
+	filename = "share/sounds/rotc/fire2.wav";
 	description = AudioFar3D;
 	preload = true;
 };

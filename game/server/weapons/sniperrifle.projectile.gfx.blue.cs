@@ -55,7 +55,7 @@ datablock MultiNodeLaserBeamData(BlueSniperProjectileLaserTrailMissed)
 
 	hasInner = true;
 	innerColor = "0.50 0.50 1.00 0.5";
-	innerWidth = "0.15";
+	innerWidth = "0.08";
 
 	hasOuter = false;
 	outerColor = "1.00 0.00 0.00 0.75";
@@ -94,7 +94,7 @@ datablock MultiNodeLaserBeamData(BlueSniperProjectileLaserTrailHit)
 
 	hasInner = true;
 	innerColor = "0.00 0.00 1.00 1.0";
-	innerWidth = "0.15";
+	innerWidth = "0.08";
 
 	hasOuter = false;
 	outerColor = "1.00 0.00 0.00 0.75";
@@ -287,8 +287,8 @@ datablock ParticleData(BlueSniperProjectileExplosion_Cloud)
 	textureName = "share/textures/rotc/corona.png";
 
 	colors[0]	  = "1.0 1.0 1.0 1.0";
-	colors[1]	  = "0.0 0.0 1.0 1.0";
-	colors[2]	  = "0.0 0.0 1.0 0.0";
+	colors[1]	  = "1.0 0.0 0.0 1.0";
+	colors[2]	  = "1.0 0.0 0.0 0.0";
 	sizes[0]		= 3.0;
 	sizes[1]		= 3.0;
 	sizes[2]		= 0.0;
@@ -362,7 +362,7 @@ datablock ParticleData(BlueSniperProjectileExplosion_Smoke)
 	gravityCoefficient	= -0.5;	// rises slowly
 	inheritedVelFactor	= 0.025;
 
-	lifetimeMS			  = 1250;
+	lifetimeMS			  = 1000;
 	lifetimeVarianceMS	= 0;
 
 	useInvAlpha =  true;
@@ -371,12 +371,12 @@ datablock ParticleData(BlueSniperProjectileExplosion_Smoke)
 
 	textureName = "share/textures/rotc/smoke_particle.png";
 
-	colors[0]	  = "0.9 0.9 0.9 0.4";
-	colors[1]	  = "0.9 0.9 0.9 0.2";
+	colors[0]	  = "0.9 0.9 0.9 1.0";
+	colors[1]	  = "0.9 0.9 0.9 0.5";
 	colors[2]	  = "0.9 0.9 0.9 0.0";
-	sizes[0]		= 2.0;
-	sizes[1]		= 6.0;
-	sizes[2]		= 2.0;
+	sizes[0]		= 0.5;
+	sizes[1]		= 2.0;
+	sizes[2]		= 8.0;
 	times[0]		= 0.0;
 	times[1]		= 0.5;
 	times[2]		= 1.0;
@@ -386,16 +386,16 @@ datablock ParticleData(BlueSniperProjectileExplosion_Smoke)
 
 datablock ParticleEmitterData(BlueSniperProjectileExplosion_SmokeEmitter)
 {
-	ejectionPeriodMS = 5;
+	ejectionPeriodMS = 200;
 	periodVarianceMS = 0;
 
-	ejectionVelocity = 6.25;
-	velocityVariance = 0.25;
+	ejectionVelocity = 0;
+	velocityVariance = 0;
 
 	thetaMin			= 0.0;
 	thetaMax			= 180.0;
 
-	lifetimeMS		 = 250;
+	lifetimeMS		 = 2000;
 
 	particles = "BlueSniperProjectileExplosion_Smoke";
 };
@@ -408,10 +408,10 @@ datablock ParticleData(BlueSniperProjectileExplosion_Sparks)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 500;
 	lifetimeVarianceMS	= 350;
-	textureName			 = "share/textures/rotc/particle1.png";
-	colors[0]	  = "0.56 0.36 0.26 1.0";
-	colors[1]	  = "0.56 0.36 0.26 1.0";
-	colors[2]	  = "1.0 0.36 0.26 0.0";
+	textureName			 = "share/textures/rotc/corona2.png";
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 1.0 1.0 1.0";
+	colors[2]	  = "1.0 1.0 1.0 0.0";
 	sizes[0]		= 0.5;
 	sizes[1]		= 0.5;
 	sizes[2]		= 0.75;
@@ -433,7 +433,7 @@ datablock ParticleEmitterData(BlueSniperProjectileExplosion_SparksEmitter)
 	phiReferenceVel  = 0;
 	phiVariance		= 360;
 	overrideAdvances = false;
-	orientParticles  = true;
+	orientParticles  = false;
 	lifetimeMS		 = 100;
 	particles = "BlueSniperProjectileExplosion_Sparks";
 };
@@ -472,7 +472,7 @@ datablock MultiNodeLaserBeamData(BlueSniperProjectileExplosion_LargeDebris_Laser
 
 	hasOuter = true;
 	outerColor = "1.00 1.00 1.00 0.05";
-	outerWidth = "1.00";
+	outerWidth = "0.40";
 
 //	bitmap = "share/shapes/rotc/weapons/sniperrifle/explosion.trail";
 //	bitmapWidth = 0.25;
@@ -605,36 +605,18 @@ datablock DebrisData(BlueSniperProjectileExplosion_LargeDebris)
 	lifetimeVariance = 0.0;
 };
 
-datablock ExplosionData(BlueSniperProjectileExplosion)
+datablock ExplosionData(BlueSniperProjectileHit)
 {
 	soundProfile	= SniperExplosionSound;
 
-  	// shape...
-	//explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.red.dts";
-	faceViewer = false;
-	playSpeed = 0.4;
-	sizes[0] = "1 1 1";
-	sizes[1] = "1 1 1";
-	times[0] = 0.0;
-	times[1] = 1.0;
+	lifetimeMS = 2000;
 
-	lifetimeMS = 200;
+	//particleEmitter = BlueSniperProjectileExplosion_CloudEmitter;
+	//particleDensity = 15;
+	//particleRadius = 1;
 
-	debris = BlueSniperProjectileExplosion_LargeDebris;
-	debrisThetaMin = 0;
-	debrisThetaMax = 60;
-	debrisNum = 3;
-    debrisNumVariance = 0;
-	debrisVelocity = 60.0;
-	debrisVelocityVariance = 10.0;
-
-	particleEmitter = BlueSniperProjectileExplosion_CloudEmitter;
-	particleDensity = 15;
-	particleRadius = 1;
-
- 	emitter[0] = BlueSniperProjectileExplosion_SmokeEmitter;
-	//emitter[1] = BlueSniperProjectileExplosion_DustEmitter;
-	//emitter[2] = BlueSniperProjectileExplosion_SparksEmitter;
+	emitter[0] = BlueSniperProjectileExplosion_SparksEmitter;
+	//emitter[2] = BlueSniperProjectileExplosion_DustEmitter;
 
 	// Camera shake
 	shakeCamera = false;
@@ -644,9 +626,38 @@ datablock ExplosionData(BlueSniperProjectileExplosion)
 	camShakeRadius = 20.0;
 
 	// Dynamic light
-	lightStartRadius = 3;
-	lightEndRadius = 10;
-	lightStartColor = "0.0 0.0 1.0";
+	lightStartRadius = 0;
+	lightEndRadius = 0;
+	lightStartColor = "1.0 0.0 0.0";
 	lightEndColor = "0.0 0.0 0.0";
 };
+
+datablock ExplosionData(BlueSniperProjectileExplosion : BlueSniperProjectileHit)
+{
+ 	// shape...
+	explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.blue.dts";
+	faceViewer = false;
+	playSpeed = 0.4;
+	sizes[0] = "1 1 1";
+	sizes[1] = "1 1 1";
+	times[0] = 0.0;
+	times[1] = 1.0;
+
+	lifetimeMS = 2000;
+
+	debris = BlueSniperProjectileExplosion_LargeDebris;
+	debrisThetaMin = 0;
+	debrisThetaMax = 60;
+	debrisNum = 3;
+    debrisNumVariance = 0;
+	debrisVelocity = 60.0;
+	debrisVelocityVariance = 10.0;
+
+	//particleEmitter = BlueSniperProjectileExplosion_CloudEmitter;
+	//particleDensity = 15;
+	//particleRadius = 1;
+
+	emitter[1] = BlueSniperProjectileExplosion_SmokeEmitter;
+};
+
 

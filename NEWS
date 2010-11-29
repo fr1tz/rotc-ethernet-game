@@ -16,6 +16,7 @@ Released: Nov. 27, 2010
 - No more weapon sets: CATs carry both MG and Sniper ROFL.
 - Reduced MG splash damage radius from 3 to 2 and removed 
   influence of player trajectory on MG projectile trajectory.
+- Reduced Sniper ROFL damage & armor cost.
 - The "Controls" dialog now allows rebinding almost every control
   and should finally work properly (keep your fingers crossed).
 - Early version of dynamic in-game music.
@@ -27,7 +28,8 @@ Released: Nov. 27, 2010
 - The sky now changes color to show which team has more health
   in a disputed zone.
 - Reverted to always equipping the Trident when manifesting as CAT.
-- New sound effects for manifesting and grenade explosion.
+- Changed sound effects for manifesting, grenade explosion, sniper
+  firing and sniper & MG projectile explosion.
 - Reverted to default Torque Game Engine server query protocol.
   (Prototype 1.11 servers will not show up in the server browser
    of previous releases.)

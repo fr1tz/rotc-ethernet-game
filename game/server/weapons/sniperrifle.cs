@@ -52,7 +52,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 
 	// Use energy for ammo?
 	usesEnergy = true;
-	minEnergy = 75;
+	minEnergy = 30;
 	
     // charging...
     minCharge = 0.4;
@@ -194,6 +194,7 @@ function RedSniperRifleImage::onFire(%this, %obj, %slot)
 {
 	//error("onFire");
 	%obj.playAudio(1, SniperRifleFireSound);
+    %obj.setSniping(false);
 }
 
 function RedSniperRifleImage::onNoAmmo(%this, %obj, %slot)
