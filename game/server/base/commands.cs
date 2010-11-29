@@ -41,7 +41,7 @@ function serverCmdPlayerAction(%client, %nr, %val)
 		if(%val)
 			%client.getControlObject().useWeapon(-1);
 		else
-			%client.getControlObject().useWeapon(%client.lastCATweapon);
+			%client.getControlObject().useWeapon(-2);
 	}
 	else if(%nr == 39 && %val)
 	{		
