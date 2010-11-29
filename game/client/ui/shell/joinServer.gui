@@ -98,7 +98,7 @@ new GuiControl(JoinServerWindowForEditing) {
          Visible = "1";
          Command = "JoinServerWindow.join();";
          hovertime = "1000";
-         text = "Join Server";
+         text = "Join Arena";
          groupNum = "-1";
          buttonType = "PushButton";
       };
@@ -132,7 +132,7 @@ new GuiControl(JoinServerWindowForEditing) {
             hovertime = "1000";
             enumerate = "0";
             resizeCell = "1";
-            columns = "0 300 350 400 5000";
+            columns = "0 300 350 400 9999";
             fitParentWidth = "0";
             clipColumnText = "0";
          };
@@ -167,7 +167,7 @@ new GuiControl(JoinServerWindowForEditing) {
             hovertime = "1000";
             enumerate = "0";
             resizeCell = "0";
-            columns = "0 300 350 400 5000";
+            columns = "0 300 350 400";
             fitParentWidth = "0";
             clipColumnText = "1";
          };
