@@ -80,7 +80,7 @@ function getMapDisplayName( %device, %action )
 		}
 	}
 
-	return( "??" );
+	return( "(unbound)" );
 }
 
 function buildFullMapString( %index )
