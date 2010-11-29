@@ -11,6 +11,7 @@
 exec("./sniperrifle.projectile.gfx.red.cs");
 exec("./sniperrifle.projectile.gfx.blue.cs");
 
+
 //-----------------------------------------------------------------------------
 // projectile datablock...
 
@@ -49,6 +50,8 @@ datablock ShotgunProjectileData(RedSniperProjectile)
 
 	missEnemyEffect		 = RedSniperProjectileMissedEnemyEffect;
 
+	fireExplosion = RedSniperProjectileFireExplosion; // script field
+
     //laserTail	 = RedSniperProjectileLaserTail;
     //laserTailLen = 10.0;
 
@@ -74,6 +77,16 @@ datablock ShotgunProjectileData(RedSniperProjectile)
 	lightRadius = 10.0;
 	lightColor  = "1.0 0.0 0.0";
 };
+
+function RedSniperProjectile::onAdd(%this, %obj)
+{
+	Parent::onAdd(%this, %obj);
+	%vel = %obj.initialVelocity;
+	%pos = %obj.initialPosition;
+	%pos = VectorAdd(VectorScale(VectorNormalize(%vel),4), %pos);
+	%norm = "0 0 1";
+	createExplosionOnClients(%this.fireExplosion, %pos, %norm);
+}
 
 function RedSniperProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 {
@@ -103,6 +116,8 @@ datablock ShotgunProjectileData(BlueSniperProjectile : RedSniperProjectile)
 
 	//laserTail          = BlueSniperProjectileLaserTail;
 
+	fireExplosion = BlueSniperProjectileFireExplosion; // script field
+
 	laserTrail[0] = BlueSniperProjectileLaserTrailMissed;
 	laserTrail[1] = BlueSniperProjectileLaserTrailHit;
 
@@ -112,4 +127,9 @@ datablock ShotgunProjectileData(BlueSniperProjectile : RedSniperProjectile)
 function BlueSniperProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 {
     RedSniperProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
+}
+
+function BlueSniperProjectile::onAdd(%this, %obj)
+{
+	RedSniperProjectile::onAdd(%this, %obj);
 }

@@ -9,6 +9,62 @@
 //------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
+// fire explosion
+
+datablock ParticleData(RedSniperProjectileFireExplosion_CloudParticles)
+{
+	dragCoeffiecient	  = 0.4;
+	gravityCoefficient	= 0;
+	inheritedVelFactor	= 0.025;
+
+	lifetimeMS			  = 1250;
+	lifetimeVarianceMS	= 0;
+
+	useInvAlpha =  false;
+	spinRandomMin = -200.0;
+	spinRandomMax =  200.0;
+
+	textureName = "share/textures/rotc/corona.png";
+
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 0.0 0.0 1.0";
+	colors[2]	  = "1.0 0.0 0.0 0.0";
+	sizes[0]		= 2.0;
+	sizes[1]		= 2.0;
+	sizes[2]		= 2.0;
+	times[0]		= 0.0;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+
+	allowLighting = false;
+};
+
+datablock ParticleEmitterData(RedSniperProjectileFireExplosion_CloudEmitter)
+{
+	ejectionPeriodMS = 5;
+	periodVarianceMS = 0;
+
+	ejectionVelocity = 0;
+	velocityVariance = 0;
+
+	thetaMin			= 0.0;
+	thetaMax			= 90.0;
+
+	lifetimeMS		 = 100;
+
+	particles = "RedSniperProjectileFireExplosion_CloudParticles";
+};
+
+datablock ExplosionData(RedSniperProjectileFireExplosion)
+{
+	soundProfile = SniperRifleFireSound;
+
+	particleEmitter = RedSniperProjectileFireExplosion_CloudEmitter;
+	particleDensity = 5;
+	particleRadius = 0.1;
+};
+
+//-----------------------------------------------------------------------------
 // laser tail...
 
 datablock LaserBeamData(RedSniperProjectileLaserTail)

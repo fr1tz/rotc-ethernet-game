@@ -193,7 +193,6 @@ function RedSniperRifleImage::onCharge(%this, %obj, %slot)
 function RedSniperRifleImage::onFire(%this, %obj, %slot)
 {
 	//error("onFire");
-	%obj.playAudio(1, SniperRifleFireSound);
     %obj.setSniping(false);
 }
 
