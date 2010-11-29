@@ -35,10 +35,10 @@ function StandardCat::useWeapon(%this, %obj, %nr)
  
 	if(%nr == 0)
 	{
-		if(%obj.client.lastCATWeapon == 2)
-			%nr = 1;
+		if(%obj.client.lastCATWeapon == 1)
+			%nr = 2;
 		else
-			%nr = %obj.client.lastCATWeapon + 1;
+			%nr = 1;
 	}
 
 	if(%nr == 1)
