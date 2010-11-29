@@ -33,8 +33,7 @@ Released: Nov. 27, 2010
 - Reverted to default Torque Game Engine server query protocol.
   (Prototype 1.11 servers will not show up in the server browser
    of previous releases.)
-- This release does not include the severlist mod or the "nort1"
-  arena of previous releases.
+- This release does not include the "nort1" arena of previous releases.
 - Minor visual changes
 - Bugfixes
 
