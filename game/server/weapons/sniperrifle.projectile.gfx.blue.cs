@@ -59,9 +59,9 @@ datablock ExplosionData(BlueSniperProjectileFireExplosion)
 {
 	soundProfile = SniperRifleFireSound;
 
-	particleEmitter = BlueSniperProjectileFireExplosion_CloudEmitter;
-	particleDensity = 5;
-	particleRadius = 0.1;
+//	particleEmitter = BlueSniperProjectileFireExplosion_CloudEmitter;
+//	particleDensity = 5;
+//	particleRadius = 0.1;
 };
 
 //-----------------------------------------------------------------------------
@@ -421,13 +421,13 @@ datablock ParticleData(BlueSniperProjectileExplosion_Smoke)
 	lifetimeMS			  = 1000;
 	lifetimeVarianceMS	= 0;
 
-	useInvAlpha =  true;
+	useInvAlpha =  false;
 	spinRandomMin = -200.0;
 	spinRandomMax =  200.0;
 
 	textureName = "share/textures/rotc/smoke_particle.png";
 
-	colors[0]	  = "0.9 0.9 0.9 1.0";
+	colors[0]	  = "0.0 0.0 0.9 1.0";
 	colors[1]	  = "0.9 0.9 0.9 0.5";
 	colors[2]	  = "0.9 0.9 0.9 0.0";
 	sizes[0]		= 0.5;
@@ -437,7 +437,7 @@ datablock ParticleData(BlueSniperProjectileExplosion_Smoke)
 	times[1]		= 0.5;
 	times[2]		= 1.0;
 
-	allowLighting = true;
+	allowLighting = false;
 };
 
 datablock ParticleEmitterData(BlueSniperProjectileExplosion_SmokeEmitter)
