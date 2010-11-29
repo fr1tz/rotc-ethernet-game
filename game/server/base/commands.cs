@@ -43,6 +43,10 @@ function serverCmdPlayerAction(%client, %nr, %val)
 		else
 			%client.getControlObject().useWeapon(%client.lastCATweapon);
 	}
+	else if(%nr == 39 && %val)
+	{		
+		serverCmdToggleCamera(%client);
+	}
 }
 
 //-----------------------------------------------------------------------------
