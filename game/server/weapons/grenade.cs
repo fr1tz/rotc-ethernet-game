@@ -124,16 +124,18 @@ function RedGrenadeImage::onUnmount(%this, %obj, %slot)
 
 function RedGrenadeImage::onReady(%this, %obj, %slot)
 {
-    %obj.setImageLoaded(0, true);
-    %obj.setImageLoaded(1, true);
+//    %obj.setImageLoaded(0, true);
+//    %obj.setImageLoaded(1, true);
+	%obj.chargingGrenade = false;
 	%obj.fullForceGrenade = false;
 	%obj.noGrenade = false;
 }
 
 function RedGrenadeImage::onCharge(%this, %obj, %slot)
 {
-    %obj.setImageLoaded(0, false);
-    %obj.setImageLoaded(1, false);
+	%obj.chargingGrenade = true;
+//    %obj.setImageLoaded(0, false);
+//    %obj.setImageLoaded(1, false);
 }
 
 function RedGrenadeImage::grenadeAttackStart(%this, %obj, %slot)
@@ -210,20 +212,20 @@ function RedGrenadeImage::afterThrow(%this, %obj, %slot)
 	// ensure image is marked as loaded...
 	%obj.setImageLoaded(%slot, true);
 
-	%obj.setImageLoaded(0, true);
-	%obj.setImageLoaded(1, true);
+//	%obj.setImageLoaded(0, true);
+//	%obj.setImageLoaded(1, true);
 }
 
 function RedGrenadeImage::onDryFire(%this, %obj, %slot)
 {
-    %obj.setImageLoaded(0, false);
-    %obj.setImageLoaded(1, false);
+//    %obj.setImageLoaded(0, false);
+//    %obj.setImageLoaded(1, false);
 }
 
 function RedGrenadeImage::onNoAmmo(%this, %obj, %slot)
 {
-    %obj.setImageLoaded(0, true);
-    %obj.setImageLoaded(1, true);
+//    %obj.setImageLoaded(0, true);
+//    %obj.setImageLoaded(1, true);
 }
 
 //------------------------------------------------------------------------------
