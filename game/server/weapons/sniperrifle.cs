@@ -101,7 +101,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 		//stateTransitionOnNoAmmo[3]       = "NoAmmo";
 		stateTarget[3]                   = true;
 		stateCharge[3]                   = true;
-		stateAllowImageChange[3]         = false;
+		stateAllowImageChange[3]         = true;
 		stateArmThread[3]                = "aimrifle";
 		stateSound[3]                    = SniperPowerUpSound;
 		stateSequence[3]                 = "charge";
