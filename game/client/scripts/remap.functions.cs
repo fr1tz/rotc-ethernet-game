@@ -283,241 +283,241 @@ function stopRecordingDemo( %val )
 
 function action0(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 0);
+	commandToServer('PlayerAction', 0, %val);
 }
+
 
 function action1(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 1);
+	commandToServer('PlayerAction', 1, %val);
 }
+
 
 function action2(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 2);
+	commandToServer('PlayerAction', 2, %val);
 }
+
 
 function action3(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 3);
+	commandToServer('PlayerAction', 3, %val);
 }
+
 
 function action4(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 4);
+	commandToServer('PlayerAction', 4, %val);
 }
+
 
 function action5(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 5);
+	commandToServer('PlayerAction', 5, %val);
 }
+
 
 function action6(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 6);
+	commandToServer('PlayerAction', 6, %val);
 }
+
 
 function action7(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 7);
+	commandToServer('PlayerAction', 7, %val);
 }
+
 
 function action8(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 8);
+	commandToServer('PlayerAction', 8, %val);
 }
+
 
 function action9(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 9);
+	commandToServer('PlayerAction', 9, %val);
 }
+
 
 function action10(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 10);
+	commandToServer('PlayerAction', 10, %val);
 }
+
 
 function action11(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 11);
+	commandToServer('PlayerAction', 11, %val);
 }
+
 
 function action12(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 12);
+	commandToServer('PlayerAction', 12, %val);
 }
+
 
 function action13(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 13);
+	commandToServer('PlayerAction', 13, %val);
 }
+
 
 function action14(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 14);
+	commandToServer('PlayerAction', 14, %val);
 }
+
 
 function action15(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 15);
+	commandToServer('PlayerAction', 15, %val);
 }
+
 
 function action16(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 16);
+	commandToServer('PlayerAction', 16, %val);
 }
+
 
 function action17(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 17);
+	commandToServer('PlayerAction', 17, %val);
 }
+
 
 function action18(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 18);
+	commandToServer('PlayerAction', 18, %val);
 }
+
 
 function action19(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 19);
+	commandToServer('PlayerAction', 19, %val);
 }
+
 
 function action20(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 20);
+	commandToServer('PlayerAction', 20, %val);
 }
+
 
 function action21(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 21);
+	commandToServer('PlayerAction', 21, %val);
 }
+
 
 function action22(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 22);
+	commandToServer('PlayerAction', 22, %val);
 }
+
 
 function action23(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 23);
+	commandToServer('PlayerAction', 23, %val);
 }
+
 
 function action24(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 24);
+	commandToServer('PlayerAction', 24, %val);
 }
+
 
 function action25(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 25);
+	commandToServer('PlayerAction', 25, %val);
 }
+
 
 function action26(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 26);
+	commandToServer('PlayerAction', 26, %val);
 }
+
 
 function action27(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 27);
+	commandToServer('PlayerAction', 27, %val);
 }
+
 
 function action28(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 28);
+	commandToServer('PlayerAction', 28, %val);
 }
+
 
 function action29(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 29);
+	commandToServer('PlayerAction', 29, %val);
 }
+
 
 function action30(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 30);
+	commandToServer('PlayerAction', 30, %val);
 }
+
 
 function action31(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 31);
+	commandToServer('PlayerAction', 31, %val);
 }
+
 
 function action32(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 32);
+	commandToServer('PlayerAction', 32, %val);
 }
+
 
 function action33(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 33);
+	commandToServer('PlayerAction', 33, %val);
 }
+
 
 function action34(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 34);
+	commandToServer('PlayerAction', 34, %val);
 }
+
 
 function action35(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 35);
+	commandToServer('PlayerAction', 35, %val);
 }
+
 
 function action36(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 36);
+	commandToServer('PlayerAction', 36, %val);
 }
+
 
 function action37(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 37);
+	commandToServer('PlayerAction', 37, %val);
 }
+
 
 function action38(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 38);
+	commandToServer('PlayerAction', 38, %val);
 }
+
 
 function action39(%val)
 {
-	if(%val)
-		commandToServer('PlayerAction', 39);
+	commandToServer('PlayerAction', 39, %val);
 }
+
 

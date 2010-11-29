@@ -13,25 +13,24 @@
 // Server commands available to clients
 //-----
 
-function serverCmdPlayerAction(%client, %nr)
+function serverCmdPlayerAction(%client, %nr, %val)
 {	
 	if(%client.player == 0)
 		return false;
 
-
-	if(%nr == 0)
+	if(%nr == 0 && %val)
 	{
 		%client.togglePlayerForm();
 	}
-	else if(%nr <= 10)
+	else if(%nr <= 10 && %val)
 	{
 		%client.getControlObject().useWeapon(%nr);
 	}
-	else if(%nr == 11)
+	else if(%nr == 11 && %val)
 	{
 		%client.getControlObject().useWeapon(0);
 	}
-	else if(%nr == 12)
+	else if(%nr == 12 && %val)
 	{
 		%client.player.fullForceGrenade = true;
 		%client.player.setImageTrigger(2, true);
@@ -382,7 +381,7 @@ function serverCmdShowPlayerInfo(%client, %player)
 		"Total damage taken:" TAB trimStat(%p.totalDmgTaken) @ "\n" @
 		"Total health lost:" TAB trimStat(%p.totalHealthLost) @ "\n" @
 		"Total health regained:" TAB trimStat(%p.totalHealthRegained) @ "\n" @
-		"\n<tab:150,200,250,300,350,400,450>" @
+		"\n<tab:150,225,300,375,450,525,600>" @
 		"\tDisc\tGrenade\tTrident\tMG\tSniper\tGL\tEnvironment\n\n" @
 		"Damage caused:" TAB 
 		trimStat(%p.discDmgCaused) TAB
