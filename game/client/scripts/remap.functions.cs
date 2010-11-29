@@ -112,7 +112,28 @@ function pitch(%val)
 
 function trigger0(%val)
 {
-	$mvTriggerCount0++;
+	// hack hack hack: players should really be able
+    // to configure arbitrary chords.
+	if($triggerDown[3] && %val)
+	{
+		// chord initiated
+		$chording[0] = true;
+		action12(1);
+	}
+
+	if($chording[0])
+	{
+		if(!%val)
+		{
+			// chord finished
+			$chording[0] = false;
+			action12(0);
+		}			
+	}
+	else
+	{
+		$mvTriggerCount0++;
+	}
 }
 
 function trigger1(%val)
@@ -128,6 +149,7 @@ function trigger2(%val)
 function trigger3(%val)
 {
 	$mvTriggerCount3++;
+	$triggerDown[3] = %val;
 }
 
 function trigger4(%val)

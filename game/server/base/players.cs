@@ -436,11 +436,7 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 	//--------------------------------------------------------------------------
 	if( %triggerNum == 0 )
 	{
-		if(%val && %obj.chargingGrenade)
-		{
-			%obj.fullForceGrenade = true;
-			%obj.setImageTrigger(2, false);
-		} 
+
 	}
 
 	//--------------------------------------------------------------------------
