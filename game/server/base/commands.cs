@@ -36,6 +36,13 @@ function serverCmdPlayerAction(%client, %nr, %val)
 		%client.player.setImageTrigger(2, true);
 		%client.player.setImageTrigger(2, false);
 	}
+	else if(%nr == 13)
+	{
+		if(%val)
+			%client.getControlObject().useWeapon(-1);
+		else
+			%client.getControlObject().useWeapon(%client.lastCATweapon);
+	}
 }
 
 //-----------------------------------------------------------------------------

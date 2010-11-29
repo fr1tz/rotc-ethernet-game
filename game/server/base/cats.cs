@@ -35,7 +35,7 @@ function StandardCat::useWeapon(%this, %obj, %nr)
  
 	if(%nr == 0)
 	{
-		if(%obj.client.lastCATWeapon == 3)
+		if(%obj.client.lastCATWeapon == 2)
 			%nr = 1;
 		else
 			%nr = %obj.client.lastCATWeapon + 1;
@@ -59,14 +59,15 @@ function StandardCat::useWeapon(%this, %obj, %nr)
    
         %validWeapon = true;
 	}
-	else if(%nr == 3)
+	else if(%nr == 3 || %nr == -1)
 	{
 		if(%obj.getTeamId() == 1)
 			%obj.mountImage(RedSniperRifleImage, 0, -1, true);
 		else
 			%obj.mountImage(BlueSniperRifleImage, 0, -1, true);
     
-		%validWeapon = true;
+		if(%nr == 3)
+			%validWeapon = true;
 	}
 	else if(false)
 	{
