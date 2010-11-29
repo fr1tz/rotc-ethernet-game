@@ -17,7 +17,7 @@ datablock AudioProfile(SniperRifleFireSound)
 
 datablock AudioProfile(SniperExplosionSound)
 {
-	filename = "share/sounds/rotc/fire2.wav";
+	filename = "share/sounds/rotc/explosion5.wav";
 	description = AudioFar3D;
 	preload = true;
 };
