@@ -44,7 +44,6 @@ MoveMap.bind( mouse, "button0", trigger0 ); // left button
 MoveMap.bind( mouse, "button2", trigger3 ); // middle button
 MoveMap.bind( mouse, "button1", trigger1 ); // right button
 MoveMap.bind( keyboard, "space", trigger2 );
-MoveMap.bind( keyboard, "lshift", trigger4 );
 MoveMap.bind( keyboard, "lcontrol", trigger5 );
 
 //------------------------------------------------------------------------------
@@ -88,5 +87,6 @@ MoveMap.bind( keyboard, "8", action8 );
 MoveMap.bind( keyboard, "9", action9 );
 MoveMap.bind( keyboard, "0", action10);
 MoveMap.bind( keyboard, "q", action11);
-moveMap.bind( mouse0, "shift button2", action12);
+moveMap.bind( mouse0, "alt button2", action12);
+MoveMap.bind( keyboard, "lshift", action13 );
 MoveMap.bind( keyboard, "alt c", action39 );
