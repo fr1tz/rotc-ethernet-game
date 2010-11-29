@@ -31,7 +31,7 @@ Players are tagged when they take damage from an enemy. Tagged enemies appear on
 
 By pressing @bind34, players manifested as CAT can dissolve their physical bodies at any time.
 
-<tab:15,200><spush><font:Arial:18>CAT Controls<spop>
+<tab:15,215><spush><font:Arial:18>CAT Controls<spop>
 	Return to Etherform	<spush><font:Arial Bold:16>@bind34<spop>
 	Run forward	<spush><font:Arial Bold:16>@bind06<spop>
 	Run backward	<spush><font:Arial Bold:16>@bind07<spop>
@@ -44,10 +44,11 @@ By pressing @bind34, players manifested as CAT can dissolve their physical bodie
 	Disc	<spush><font:Arial Bold:16>@bind17<spop>
 	Grenade	<spush><font:Arial Bold:16>@bind19<spop>
 	Grenade (max. force)	<spush><font:Arial Bold:16>@bind46<spop> or chord <spush><font:Arial Bold:16>@bind19<spop>-<spush><font:Arial Bold:16>@bind16<spop>
-	Cycle weapons	<spush><font:Arial Bold:16>@bind45<spop>
 	Equip Trident	<spush><font:Arial Bold:16>@bind35<spop>
 	Equip MG	<spush><font:Arial Bold:16>@bind36<spop>
 	Equip Sniper ROFL	<spush><font:Arial Bold:16>@bind37<spop>
+	Switch between Trident & MG	<spush><font:Arial Bold:16>@bind45<spop>
+	Temp. equip Sniper ROFL	<spush><font:Arial Bold:16>@bind47<spop>
 
 <spush><font:Arial:18>Pictures<spop>
 
