@@ -33,6 +33,6 @@ function AboutFileList::onSelect(%this, %row)
 
 	%fo.delete();
 
-	AboutText.setText("<font:monospace:12>" @ %text);
+	AboutText.setText("<font:Arial:14>" @ %text);
 }
 
