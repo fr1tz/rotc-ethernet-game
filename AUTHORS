@@ -46,6 +46,20 @@ share/sounds/rotc/explosion9.wav
 share/sounds/rotc/deploy1.wav
 share/sounds/rotc/powerdown3.wav
 share/sounds/rotc/other1.wav
+share/sounds/rotc/footsteps1/land.hard.wav
+share/sounds/rotc/footsteps1/land.metal.wav
+share/sounds/rotc/footsteps1/land.snow.wav
+share/sounds/rotc/footsteps1/land.soft.wav
+share/sounds/rotc/footsteps1/lf.hard.wav
+share/sounds/rotc/footsteps1/lf.metal.wav
+share/sounds/rotc/footsteps1/lf.snow.wav
+share/sounds/rotc/footsteps1/lf.soft.wav
+share/sounds/rotc/footsteps1/lf.water.wav
+share/sounds/rotc/footsteps1/rf.hard.wav
+share/sounds/rotc/footsteps1/rf.metal.wav
+share/sounds/rotc/footsteps1/rf.snow.wav
+share/sounds/rotc/footsteps1/rf.soft.wav
+share/sounds/rotc/footsteps1/rf.water.wav
 
 	Contributed by Alberto de Victoria (RomeoX)
 
