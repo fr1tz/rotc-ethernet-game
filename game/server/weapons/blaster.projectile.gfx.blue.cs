@@ -66,7 +66,7 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailMissed)
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
-	fadeTime = 100;
+	fadeTime = 200;
  
 	windCoefficient = 0.0;
     
@@ -105,7 +105,7 @@ datablock MultiNodeLaserBeamData(BlueBlasterProjectileLaserTrailHit)
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
-	fadeTime = 100;
+	fadeTime = 200;
  
 	windCoefficient = 0.0;
     
