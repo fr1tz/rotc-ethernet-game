@@ -218,6 +218,17 @@ function serverCmdMainMenu(%client)
 		"Hosted by" SPC $Pref::Server::Name @ "\n\n" @
 		"";
 
+	if(%client.gameVersionString !$= $GameVersionString)
+	{
+		%newtxt = %newtxt @
+			"<just:center><spush><color:ff0000>" @
+			"Note: This arena runs" SPC $GameVersionString SPC 
+			"while you are running" SPC %client.gameVersionString @ 
+			"\n<a:cmd News>What has changed?</a>" @
+			"<spop><just:left>\n\n" @
+			"";
+	}
+
 	if(%client.loadingMission || %client.menu $= "mainmenu")
 	{
 		%newtxt = %newtxt @
@@ -240,6 +251,30 @@ function serverCmdMainMenu(%client)
 
 	%client.menu = "mainmenu";
 }
+
+function serverCmdNews(%client)
+{
+	%newtxt = om_init();
+	%client.clearMenuText();
+
+	if(%page $= "")
+		%page = 1;
+
+	%newtxt = %newtxt @ om_head(%client, "", "MainMenu");
+
+	%filename = "NEWS";
+
+	%file = new FileObject();
+	%file.openForRead(%fileName);
+	while(!%file.isEOF())
+		%newtxt = %newtxt @ strreplace(%file.readLine(), "<br>", "\n") @ "\n";
+	%file.delete();
+
+	%client.addMenuText(%newtxt);
+
+	%client.menu = "news";
+}
+
 
 function serverCmdShowPlayerList(%client, %show)
 {
