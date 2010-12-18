@@ -29,17 +29,17 @@ datablock ShapeBaseImageData(HolsteredAssaultRifleImage)
 //-----------------------------------------------------------------------------
 // projectile datablock...
 
-datablock TracerProjectileData(RedAssaultRifleProjectile)
+datablock TracerProjectileData(RedAssaultRifleProjectile1)
 {
 	// script damage properties...
 	impactDamage       = 0;
-	impactImpulse      = 1000;
-	splashDamage       = 25;
+	impactImpulse      = 500;
+	splashDamage       = 12.5;
 	splashDamageRadius = 2;
 	splashImpulse      = 0;
 	
 	// how much energy does firing this projectile drain?...
-	energyDrain = 10;
+	energyDrain = 4;
 
 	trackingAgility = 0;
 	
@@ -49,7 +49,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 
 	//sound = AssaultRifleProjectileFlybySound;
  
-    projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile.dts";
+    projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.dts";
 
 	explosion             = AssaultRifleProjectileImpact;
 	bounceExplosion		  = AssaultRifleProjectileBounceExplosion;
@@ -59,10 +59,13 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 //	hitDeflectorExplosion = DiscDeflectedEffect;
 
 //   particleEmitter	= AssaultRifleProjectileParticleEmitter;
-	laserTrail[0]   = AssaultRifleProjectileLaserTrail;
+//	laserTrail[0]   = AssaultRifleProjectileLaserTrail;
 //	laserTrail[1]   = AssaultRifleProjectileRedLaserTrail;
 	laserTail	    = AssaultRifleProjectileLaserTail;
 	laserTailLen    = 10;
+
+	posOffset = "0 0 0";
+	velOffset = "0 0.005";
 
 	muzzleVelocity		= 600;
 	velInheritFactor	 = 0.0;
@@ -77,11 +80,17 @@ datablock TracerProjectileData(RedAssaultRifleProjectile)
 	decals[0]	= ExplosionDecalTwo;
 	
 	hasLight	 = true;
-	lightRadius = 8.0;
+	lightRadius = 4.0;
 	lightColor  = "1.0 0.8 0.2";
 };
 
-function RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
+datablock TracerProjectileData(RedAssaultRifleProjectile2 : RedAssaultRifleProjectile1)
+{
+	posOffset = "0 0 0.1";
+	velOffset = "0 0.025";
+};
+
+function RedAssaultRifleProjectile1::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 {
     Parent::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
 
@@ -93,17 +102,33 @@ function RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%norm
         %src.setDiscTarget(%col);
 }
 
+function RedAssaultRifleProjectile2::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
+{
+    RedAssaultRifleProjectile1::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
+}
+
 //--------------------------------------------------------------------------
 
-datablock TracerProjectileData(BlueAssaultRifleProjectile : RedAssaultRifleProjectile)
+datablock TracerProjectileData(BlueAssaultRifleProjectile1 : RedAssaultRifleProjectile1)
 {
     dummyFieldToAvoidSyntaxError = 0;
 //	laserTrail[1] = AssaultRifleProjectileBlueLaserTrail;
 };
 
-function BlueAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
+datablock TracerProjectileData(BlueAssaultRifleProjectile2 : RedAssaultRifleProjectile2)
 {
-    RedAssaultRifleProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
+    dummyFieldToAvoidSyntaxError = 0;
+//	laserTrail[1] = AssaultRifleProjectileBlueLaserTrail;
+};
+
+function BlueAssaultRifleProjectile1::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
+{
+    RedAssaultRifleProjectile1::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
+}
+
+function BlueAssaultRifleProjectile2::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
+{
+    RedAssaultRifleProjectile1::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
 }
 
 //--------------------------------------------------------------------------
@@ -117,14 +142,14 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image2.dts";
 	emap = true;
 
 	// mount point & mount offset...
 	mountPoint  = 0;
 	offset		= "0 0 0";
 	rotation	 = "0 0 0";
-	eyeOffset	= "0.325 0.4 -0.35";
+	eyeOffset	= "0.275 0.1 -0.05";
 	eyeRotation = "0 0 0 0";
 
 	// Adjust firing vector to eye's LOS point?
@@ -133,7 +158,15 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	usesEnergy = true;
 	minEnergy = 15;
 
-	projectile = RedAssaultRifleProjectile;
+	projectile = RedAssaultRifleProjectile1;
+
+	// light properties...
+	lightType = "WeaponFireLight";
+	lightColor = "0 1 0";
+	lightTime = 1000;
+	lightRadius = 8;
+	lightCastsShadows = false;
+	lightAffectsShapes = true;
 
 	// script fields...
 	iconId = 7;
@@ -165,10 +198,10 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateSpinThread[2]               = "FullSpeed";
 		
 		stateName[3]                     = "Fire";
-		stateTransitionOnTimeout[3]      = "KeepAiming";
-		stateTimeoutValue[3]             = 0.15;
-		stateFire[3]                     = true;
-		stateFireProjectile[3]           = RedAssaultRifleProjectile;
+		stateTransitionOnTimeout[3]      = "Fire2";
+		stateTimeoutValue[3]             = 0.0;
+		stateFire[8]                     = true;
+		stateFireProjectile[3]           = RedAssaultRifleProjectile1;
 		stateRecoil[3]                   = LightRecoil;
 		stateAllowImageChange[3]         = false;
 		stateEjectShell[3]               = true;
@@ -176,6 +209,12 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateSequence[3]                 = "Fire";
 		stateSound[3]                    = AssaultRifleFireSound;
 		stateScript[3]                   = "onFire";
+
+		stateName[8]                     = "Fire2";
+		stateTransitionOnTimeout[8]      = "KeepAiming";
+		stateTimeoutValue[8]             = 0.15;
+		stateFireProjectile[8]           = RedAssaultRifleProjectile2;
+		stateAllowImageChange[8]         = false;
 		
 		stateName[4]                     = "KeepAiming";
 		stateTransitionOnNoAmmo[4]       = "NoAmmo";
@@ -210,7 +249,8 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 
 datablock ShapeBaseImageData(BlueAssaultRifleImage : RedAssaultRifleImage)
 {
-	projectile = BlueAssaultRifleProjectile;
-    stateFireProjectile[3] = BlueAssaultRifleProjectile;
+	projectile = BlueAssaultRifleProjectile1;
+    stateFireProjectile[3] = BlueAssaultRifleProjectile1;
+    stateFireProjectile[8] = BlueAssaultRifleProjectile2;
 };
 

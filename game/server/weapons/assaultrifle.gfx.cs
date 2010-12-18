@@ -155,7 +155,7 @@ datablock LaserBeamData(AssaultRifleProjectileLaserTail)
 	outerEndWidth	  = "0.0";
 
 	bitmap = "share/shapes/rotc/weapons/assaultrifle/lasertail";
-	bitmapWidth = 0.2;
+	bitmapWidth = 0.1;
 //	crossBitmap = "share/shapes/rotc/weapons/assaultrifle/lasertail.cross";
 //	crossBitmapWidth = 0.25;
 

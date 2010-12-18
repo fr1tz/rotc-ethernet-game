@@ -10,7 +10,7 @@
 
 datablock AudioProfile(AssaultRifleFireSound)
 {
-	filename = "share/sounds/rotc/fire3.wav";
+	filename = "share/sounds/rotc/fire2.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
