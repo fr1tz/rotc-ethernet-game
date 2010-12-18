@@ -1,0 +1,6 @@
+$MissionInfo::Name       = "1 X-Mas Edition";
+$MissionInfo::Type       = "ROTC: Ethernet";
+$MissionInfo::Version    = "[0.0 | " @ $GameVersionString @ "]";
+$MissionInfo::EnvFile    = "game/arenas/rotc-eth-1xmas/mission.env";
+$MissionInfo::ScriptFile = "game/arenas/rotc-eth-1xmas/mission.cs";
+$MissionInfo::Desc       = "Capture all the opposing team's zones to win.\n";
