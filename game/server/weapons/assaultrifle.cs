@@ -13,10 +13,12 @@ exec("./assaultrifle.gfx.cs");
 
 //-----------------------------------------------------------------------------
 
+// This is not used in-game but makes sure that clients have the image shape
+// file downloaded and ready when they try to load the actual image.
 datablock ShapeBaseImageData(HolsteredAssaultRifleImage)
 {
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image_holstered.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image2.dts";
 	emap = true;
 
 	// mount point & mount offset...
