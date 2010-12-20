@@ -109,6 +109,10 @@ datablock ParticleData(TextureDummyFile_share_shapes_eth1_white)
 	textureName = "share/shapes/eth1/white";
 };
 
+datablock ParticleData(TextureDummyFile_share_textures_eth1_snowflakes)
+{
+	textureName = "share/textures/eth1/snowflakes";
+};
 
 
 
