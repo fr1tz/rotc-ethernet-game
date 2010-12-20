@@ -15,7 +15,7 @@ function om_init()
 
 function om_head(%client, %title, %prev, %refresh)
 {
-	%r = "<just:center><spush><shadowcolor:888888><linkcolor:000000><shadow:1:1><font:Arial Bold:16>";
+	%r = "<just:center><spush><shadowcolor:888888><linkcolor:000000><shadow:1:1><font:Arial:16>";
 
 	if(%client.loadingMission)
 	{
