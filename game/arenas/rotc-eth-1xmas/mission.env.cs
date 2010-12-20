@@ -94,22 +94,29 @@ datablock ShapeBaseImageData(BlueCatLightImage)
 	stateName[0] = "DoNothing";
 };
 
-datablock ParticleData(TextureDummyFile_share_shapes_eth1_red)
+datablock AudioProfile(AudioFileDummy_share_sounds_eth1_windy1)
+{
+	filename = "share/sounds/eth1/windy1";
+	description = AudioMusic;
+	preload = true;
+};
+
+datablock ParticleData(TextureFileDummy_share_shapes_eth1_red)
 {
 	textureName = "share/shapes/eth1/red";
 };
 
-datablock ParticleData(TextureDummyFile_share_shapes_eth1_blue)
+datablock ParticleData(TextureFileDummy_share_shapes_eth1_blue)
 {
 	textureName = "share/shapes/eth1/blue";
 };
 
-datablock ParticleData(TextureDummyFile_share_shapes_eth1_white)
+datablock ParticleData(TextureFileDummy_share_shapes_eth1_white)
 {
 	textureName = "share/shapes/eth1/white";
 };
 
-datablock ParticleData(TextureDummyFile_share_textures_eth1_snowflakes)
+datablock ParticleData(TextureFileDummy_share_textures_eth1_snowflakes)
 {
 	textureName = "share/textures/eth1/snowflakes";
 };
