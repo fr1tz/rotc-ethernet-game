@@ -41,7 +41,7 @@ function loadMission(%missionFile, %isFirstMission)
 		$Server::MissionEnvironmentFile = filePath($MissionInfo::File) @ "/" @ $MissionInfo::EnvFile;
 	else
 		$Server::MissionEnvironmentFile = $MissionInfo::EnvFile;
-	$Server::MissionName = $MissionInfo::Name SPC "(" @ $MissionInfo::Version @ ")";
+	$Server::MissionName = $MissionInfo::Name;
 	$Server::MissionType = $MissionInfo::Type;
 
 	exec($MissionInfo::ScriptFile);

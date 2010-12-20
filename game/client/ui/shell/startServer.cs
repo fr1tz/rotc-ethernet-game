@@ -21,8 +21,7 @@ function StartServerWindow::onAddedAsWindow()
 			
 		SS_missionList.addRow(%i++, 
 			$MissionInfo::Type SPC
-			$MissionInfo::Name SPC
-			"(" @ $MissionInfo::Version @ ")" @
+			$MissionInfo::Name @
 			"\t" @ $MissionInfo::File );
 	}
 	
