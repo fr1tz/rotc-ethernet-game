@@ -1,4 +1,9 @@
 
+function executeFilesScript()
+{
+	exec("./files.cs"); 
+}
+
 function executeEnvironmentScript()
 {
 	exec($Server::MissionEnvironmentFile @ ".cs"); 
@@ -13,6 +18,7 @@ function executeGameScripts()
 
 function initMission()
 {
+	executeFilesScript();
 	executeGameScripts();
 	executeEnvironmentScript();
 }
