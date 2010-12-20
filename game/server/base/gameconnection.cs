@@ -279,7 +279,7 @@ function GameConnection::togglePlayerForm(%this)
 		while((%srchObj = containerSearchNext()) != 0)
 		{
 			%zoneTeamId = %srchObj.getTeamId();
-			%zoneBlocked = %srchObj.blocked;
+			%zoneBlocked = %srchObj.zBlocked;
 
 			if(%zoneTeamId != %ownTeamId && %zoneTeamId != 0)
 			{
@@ -408,19 +408,19 @@ function GameConnection::updateSkyColor(%this)
 	{
 		%this.setSkyColor("0.2 0.2 0.2");
 	}
-	else if(%zone.getTeamId() == 0 && %zone.protected)
+	else if(%zone.getTeamId() == 0 && %zone.zProtected)
 	{
 		%this.setSkyColor("0 1 0");
 	}
-	else if(%zone.getTeamId() == 0 && %zone.numReds == 0 && %zone.numBlues == 0)
+	else if(%zone.getTeamId() == 0 && %zone.zNumReds == 0 && %zone.zNumBlues == 0)
 	{
 		%this.setSkyColor("1 1 1");
 	}
-	else if(%zone.getTeamId() == 1 && !%zone.blocked)
+	else if(%zone.getTeamId() == 1 && !%zone.zBlocked)
 	{
 		%this.setSkyColor("1 0 0");
 	}
-	else if(%zone.getTeamId() == 2 && !%zone.blocked)
+	else if(%zone.getTeamId() == 2 && !%zone.zBlocked)
 	{
 		%this.setSkyColor("0 0 1");
 	}
