@@ -4,7 +4,7 @@ datablock sgLightObjectData(LandingPadDifLight) {
    className = "sgLightObjectData";
    targetLockTimeMS = "480";
    LightOn = "1";
-   radius = "7";
+   radius = "5";
    Brightness = "1";
    Colour = "0.564706 0.713726 0.564706 1";
    FlareOn = "0";
@@ -31,7 +31,7 @@ datablock sgLightObjectData(LandingPadDifLight) {
    MinBrightness = "0";
    MaxBrightness = "1";
    MinRadius = "0.1";
-   MaxRadius = "7";
+   MaxRadius = "5";
    StartOffset = "-5 0 0";
    EndOffset = "5 0 0";
    MinRotation = "0";
@@ -59,7 +59,7 @@ datablock sgLightObjectData(LandingPadDifLight) {
    SpotAngle = "1";
    AdvancedLightingModel = "1";
    EffectsDTSObjects = "0";
-   castsShadows = "0";
+   castsShadows = "1";
    DiffuseRestrictZone = "0";
    AmbientRestrictZone = "0";
    LocalAmbientAmount = "0";
@@ -72,6 +72,7 @@ datablock sgLightObjectData(LandingPadDifLight) {
    MountRotation = "1 0 0 0";
 };
 //--- OBJECT WRITE END ---
+
 
 
 

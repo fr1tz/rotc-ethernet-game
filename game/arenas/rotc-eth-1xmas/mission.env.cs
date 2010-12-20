@@ -30,6 +30,14 @@ sgLoadDataBlocks($sgLightEditor::filterDBPath);
 // 
 //------------------------------------------------------------------------------
 
+function GameConnection::updateSkyColor(%this)
+{
+	cancel(%this.skyColorThread);
+	%this.setSkyColor("1 1 1");
+	%this.skyColorThread = %this.schedule(500, "updateSkyColor");
+}
+
+
 datablock PrecipitationData(MissionSnow)
 {
    dropTexture = "share/textures/eth1/snowflakes";
