@@ -141,17 +141,24 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 		if (%coverage == 0)
 			continue;
 
-		%dist = containerSearchCurrRadiusDist();
+        %center = %targetObject.getWorldBoxCenter();
+
+		%dist1 = containerSearchCurrRadiusDist();
+
+		%col = containerRayCast(%pos, %center, $TypeMasks::ShapeBaseObjectType, 0);
+		%col = getWord(%col, 1) SPC getWord(%col, 2) SPC getWord(%col, 3);
+		%dist2 = VectorLen(VectorSub(%col, %pos));
+
+		%dist = %dist2;
 		%prox = %radius - %dist;
 		if(%this.splashDamageFalloff == $SplashDamageFalloff::Exponential)
 			%distScale = (%prox*%prox) / (%radius*%radius);
 		else
 			%distScale = %prox / %radius;
-		
+
 		// apply impulse...
 		if(%this.splashImpulse > 0)
 		{
-            %center = %targetObject.getWorldBoxCenter();
 			%impulseVec = VectorNormalize(VectorSub(%center, %pos));
 			%impulseVec = VectorScale(%impulseVec, %this.splashImpulse);
 			%targetObject.applyImpulse(%pos, %impulseVec);
