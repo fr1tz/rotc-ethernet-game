@@ -216,7 +216,7 @@ function serverCmdMainMenu(%client)
 		$Server::MissionName @ 
 		"<spop>\n\n" @
 		"Hosted by" SPC $Pref::Server::Name @ "\n\n" @
-		$MissionInfo::Desc @ "\n\n" @
+		$Pref::Server::Info @ "\n\n" @
 		"";
 
 	if(%client.gameVersionString !$= $GameVersionString)
