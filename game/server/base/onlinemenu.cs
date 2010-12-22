@@ -15,18 +15,18 @@ function om_init()
 
 function om_head(%client, %title, %prev, %refresh)
 {
-	%r = "<just:center><spush><shadowcolor:888888><linkcolor:000000><shadow:1:1><font:Arial:16>";
+	%r = "<just:center><spush><font:Arial:12>";
 
 	if(%client.loadingMission)
 	{
 		%r = %r @	
-			"No actions available while arena is loading" @
+			"Arena is loading" @
 			"";
 	}
 	else
 	{
 		%r = %r @	
-			"<a:cmd JoinTeam 0>Join observers</a>    " @
+			"<a:cmd JoinTeam 0>Join Observers</a>    " @
 			"<a:cmd JoinTeam 1>Join Reds</a>     " @
 			"<a:cmd JoinTeam 2>Join Blues</a>" @
 			"";

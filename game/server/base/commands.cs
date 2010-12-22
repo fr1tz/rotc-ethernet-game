@@ -216,6 +216,7 @@ function serverCmdMainMenu(%client)
 		$Server::MissionName @ 
 		"<spop>\n\n" @
 		"Hosted by" SPC $Pref::Server::Name @ "\n\n" @
+		$MissionInfo::Desc @ "\n\n" @
 		"";
 
 	if(%client.gameVersionString !$= $GameVersionString)
@@ -236,8 +237,30 @@ function serverCmdMainMenu(%client)
 			"might take\nsome time while the game downloads needed" SPC
 			"art from the server.\nConsider using the time to read up on" SPC
 			"<a:cmd HowToPlay>how to play in this arena</a>.\n" @
-			"Commands to join a team will appear at the top once loading" SPC
+			"This main menu can be used to join a team once loading" SPC
 			"has finished.\n\n" @
+			"";
+	}
+
+	if(%client.loadingMission)
+	{
+		%newtxt = %newtxt @	
+			"<spush><font:Arial:16>Join team (can't" SPC
+			"join while arena is loading)<spop>\n" @
+			"<spush><color:888888>" @
+			"   \> Join Observers \<\n" @
+			"   \> Join Reds \<\n" @
+			"   \> Join Blues \<\n" @
+			"<spop>" @
+			"";
+	}
+	else
+	{
+		%newtxt = %newtxt @	
+			"<spush><font:Arial:16>Join team<spop>\n" @
+			"   \> <a:cmd JoinTeam 0>Join Observers</a> \<\n" @
+			"   \> <a:cmd JoinTeam 1>Join Reds</a> \<\n" @
+			"   \> <a:cmd JoinTeam 2>Join Blues</a> \<\n" @
 			"";
 	}
 
