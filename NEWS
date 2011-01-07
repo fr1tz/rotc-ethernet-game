@@ -1,11 +1,17 @@
 What's new?
 ===========
 
-Prototype 1.11+dev1
+Prototype 1.11+dev2
 -------------------
 
+Universal changes:
+- Make MG double barreled and increase damage from 25/2 to 30/2
+  per projectile.
 - Increased minimum speed needed to suffer impact damage.
 - Minor visual tweaks.
+
+ROTC: Ethernet changes:
+- Damaging enemies no longer restores a player's health.
 
 Prototype 1.11
 --------------
