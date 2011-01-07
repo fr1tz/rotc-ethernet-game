@@ -219,17 +219,6 @@ function serverCmdMainMenu(%client)
 		"<spush>" @ $Pref::Server::Info @ "<spop>\n\n" @
 		"";
 
-	if(%client.gameVersionString !$= $GameVersionString)
-	{
-		%newtxt = %newtxt @
-			"<just:center><spush><color:ff0000>" @
-			"Note: This arena runs" SPC $GameVersionString SPC 
-			"while you are running" SPC %client.gameVersionString @ 
-			"\n<a:cmd News>What has changed?</a>" @
-			"<spop><just:left>\n\n" @
-			"";
-	}
-
 	if(%client.loadingMission || %client.menu $= "mainmenu")
 	{
 		%newtxt = %newtxt @
@@ -268,6 +257,7 @@ function serverCmdMainMenu(%client)
 		"\n<spush><font:Arial:16>Information<spop>\n" @
 		"   \>\> <a:cmd ShowPlayerList>Player statistics</a>\n" @
 		"   \>\> <a:cmd HowToPlay>How to play in this arena?</a>\n" @
+		"   \>\> <a:cmd News>What's new in" SPC $Server::MissionType @ "?</a>\n" @
 		"";
 
 	%client.addMenuText(%newtxt);
