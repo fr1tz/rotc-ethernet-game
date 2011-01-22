@@ -41,7 +41,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile1)
 	splashImpulse      = 0;
 	
 	// how much energy does firing this projectile drain?...
-	energyDrain = 4;
+	energyDrain = 8;
 
 	trackingAgility = 0;
 	
