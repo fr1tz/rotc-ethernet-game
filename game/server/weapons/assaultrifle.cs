@@ -35,8 +35,8 @@ datablock TracerProjectileData(RedAssaultRifleProjectile1)
 {
 	// script damage properties...
 	impactDamage       = 0;
-	impactImpulse      = 500;
-	splashDamage       = 15;
+	impactImpulse      = 1000;
+	splashDamage       = 30;
 	splashDamageRadius = 2;
 	splashImpulse      = 0;
 	
@@ -69,11 +69,11 @@ datablock TracerProjectileData(RedAssaultRifleProjectile1)
 	posOffset = "0 0 0";
 	velOffset = "0 0.005";
 
-	muzzleVelocity		= 600;
-	velInheritFactor	 = 0.0;
+	muzzleVelocity		= 300;
+	velInheritFactor	 = 0.75;
 	
 	isBallistic			= true;
-	gravityMod			 = 7.5;
+	gravityMod			 = 5.0;
 
 	armingDelay			= 0;
 	lifetime				= 1000*10;
@@ -213,8 +213,8 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateScript[3]                   = "onFire";
 
 		stateName[8]                     = "Fire2";
-		stateTransitionOnTimeout[8]      = "KeepAiming";
-		stateTimeoutValue[8]             = 0.15;
+		stateTransitionOnTriggerUp[8]    = "KeepAiming";
+		stateTimeoutValue[8]             = 0.35;
 		stateFireProjectile[8]           = RedAssaultRifleProjectile2;
 		stateAllowImageChange[8]         = false;
 		

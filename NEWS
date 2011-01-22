@@ -1,12 +1,17 @@
 What's new?
 ===========
 
-Prototype 1.11+dev2
+Prototype 1.11+dev3
 -------------------
 
 Universal changes:
-- Make MG double barreled and increase damage from 25/2 to 30/2
-  per projectile.
+- Micro-grenade Launcher changes:
+  - Now called Battle Rifle.
+  - Now semi-automatic and fires two projectiles at once.
+  - Increase damage from 25/2 to 60/2 per projectile.
+  - Reduce projectile speed.
+  - Re-intruduced influence of player trajectory
+    on projectile trajectory (although lower than before).
 - Increased minimum speed needed to suffer impact damage.
 - Minor visual tweaks.
 
