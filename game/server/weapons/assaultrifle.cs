@@ -204,7 +204,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateTimeoutValue[3]             = 0.0;
 		stateFire[8]                     = true;
 		stateFireProjectile[3]           = RedAssaultRifleProjectile1;
-		stateRecoil[3]                   = LightRecoil;
+		stateRecoil[3]                   = MediumRecoil;
 		stateAllowImageChange[3]         = false;
 		stateEjectShell[3]               = true;
 		stateArmThread[3]                = "aimrifle";
@@ -214,7 +214,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 
 		stateName[8]                     = "Fire2";
 		stateTransitionOnTriggerUp[8]    = "KeepAiming";
-		stateTimeoutValue[8]             = 0.35;
+		stateTimeoutValue[8]             = 0.10;
 		stateFireProjectile[8]           = RedAssaultRifleProjectile2;
 		stateAllowImageChange[8]         = false;
 		
