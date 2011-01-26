@@ -101,10 +101,6 @@ function destroyServer()
 	// Delete all the data blocks...
 	deleteDataBlocks();
 	
-	// Save any server settings
-	echo( "Exporting server prefs..." );
-	export( "$Pref::Server::*", "~/prefs.cs", false );
-
 	// Dump anything we're not using
 	purgeResources();
 }

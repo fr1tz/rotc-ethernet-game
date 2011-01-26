@@ -151,13 +151,6 @@ function onStart()
 
 function onExit()
 {
-	echo("Exporting client prefs");
-	export("$pref::*", "./client/prefs.cs", False);
-
-	echo("Exporting server prefs");
-	export("$Pref::Server::*", "./server/prefs.cs", False);
-	BanList::Export("./server/banlist.cs");
-
 	OpenALShutdown();
 	Parent::onExit();
 }
