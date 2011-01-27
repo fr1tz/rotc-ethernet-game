@@ -14,7 +14,7 @@
 // $pref::Master[0] = "2:master.garagegames.com:28002";
 
 $pref::backgroundSleepTime = "0";
-$pref::Shadows = "2";
+$pref::Shadows = "0.3";
 $pref::EnvironmentMaps = "1";
 $pref::HostMultiPlayer = "1";
 $pref::HudMessageLogSize = 40;
