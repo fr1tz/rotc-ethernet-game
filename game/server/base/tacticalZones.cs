@@ -223,7 +223,7 @@ datablock TacticalZoneData(TerritoryZone)
 	colors[14] = "0 1 0 0.4";   // protected
 	colors[15] = "1 1 1 1"; 
 
-    texture = "share/textures/rotc/zone";
+    texture = "share/textures/rotc/zone.grid";
 };
 
 function TerritoryZone::onAdd(%this, %zone)
