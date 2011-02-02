@@ -26,6 +26,10 @@ $pref::Player::ZoomSpeed = 200;
 $pref::Player::MouseZoomSteps = 3;
 $pref::Player::RenderMyPlayer = 0;
 $pref::Player::RenderMyItems = 1;
+$Pref::Player::Trails::Amount = 5;
+$Pref::Player::Trails::Detail = 0.5;
+$Pref::Player::Trails::Scale = 0.125;
+$Pref::Player::Trails::Visibility = 0.9;
 
 $pref::Commander::PanSpeed = 100;
 $pref::Commander::ZoomSpeed = 0.1;

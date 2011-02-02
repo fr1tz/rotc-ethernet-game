@@ -57,6 +57,8 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 	laserTrail[0]			= RedBlasterProjectileLaserTrailMissed;
 	laserTrail[1]			= RedBlasterProjectileLaserTrailHit;
 
+	smoothLaserTrail = true;
+
 	//particleEmitter	  = RedBlasterProjectileParticleEmitter;
 
 	muzzleVelocity   = 9999;
