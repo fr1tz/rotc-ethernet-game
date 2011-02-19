@@ -66,3 +66,14 @@ function createTeams()
 		MissionCleanup.add($Team2.repairObjects);
 	}
 }
+
+function setTeamHudMenuT(%team, %slot, %text, %repetitions, %visible)
+{
+	%count = ClientGroup.getCount();
+	for(%cl= 0; %cl < %count; %cl++)
+	{
+		%recipient = ClientGroup.getObject(%cl);
+		if(%recipient.team == %team)
+			%recipient.setHudMenuT(%slot, %text, %repetitions, %visible);
+	}
+}

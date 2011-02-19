@@ -75,6 +75,7 @@ function GameConnection::onClientEnterGame(%this)
 	// HUD Menus...
 	%this.setHudMenuL("*", " ", 1, 0);
 	%this.setHudMenuR("*", " ", 1, 0);
+	%this.setHudMenuT("*", " ", 1, 0);
  	
 	//
 	// setup observer camera object...
@@ -595,5 +596,40 @@ function GameConnection::setHudMenuR(%this, %slot, %text, %repetitions, %visible
 	messageClient(%this, 'MsgHudMenuR', "", %slot, %text, %repetitions, %visible);
 }
 
+function GameConnection::setHudMenuT(%this, %slot, %text, %repetitions, %visible)
+{
+	if(%slot $= "*")
+	{
+		for(%i = 0; %i < 10; %i++)
+		{
+			if(%text !$= "") %this.hudMenuTText[%i] = %text;
+			if(%repetitions !$= "") %this.hudMenuTRepetitions[%i] = %repetitions;
+			if(%visible !$= "") %this.hudMenuTVisible[%i] = %visible;
+		}
+	}
+	else
+	{
+		if(%this.hudMenuTText[%slot] $= %text)
+			%text = "";
+		else
+			%this.hudMenuTText[%slot] = %text;	
+
+		if(%this.hudMenuTRepetitions[%slot] $= %repetitions)
+			%repetitions= "";
+		else
+			%this.hudMenuTRepetitions[%slot] = %repetitions;
+
+		if(%this.hudMenuTVisible[%slot] $= %visible)
+			%visible = "";
+		else
+			%this.hudMenuTVisible[%slot] = %visible;	
+
+		if(%text $= "" && %repetitions $= "" && %visible $= "")
+			return;
+	}
+
+	//error("Sending 'MsgHudMenuT' to" SPC %this SPC ": [" SPC %slot SPC "][" SPC %text SPC "][" SPC %repetitions SPC "][" SPC %visible SPC "]");
+	messageClient(%this, 'MsgHudMenuT', "", %slot, %text, %repetitions, %visible);
+}
 
 

@@ -154,14 +154,3 @@ function clientUpdateMusic()
 			$CMusic::UpdateThread = schedule(%len, 0, "clientUpdateMusic");
 	}
 }
-
-//-----------------------------------------------------------------------------
-// Game balance
-//-----------------------------------------------------------------------------
-
-function GameBalanceMsgCallback(%msgType, %msgString, %balance)
-{
-	HudGameBalance.setText(%balance);
-}
-
-addMessageCallback('MsgGameBalance', GameBalanceMsgCallback);

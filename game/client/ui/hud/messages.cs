@@ -177,8 +177,44 @@ function HudMenuRMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, 
 	HudMenuR.setText(%menutxt);
 }
 
+function HudMenuTMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
+{
+	%slot = %a1;
+	%text = %a2;
+	%repetitions = %a3;
+	%visible = %a4;
+
+	if(%slot $= "*")
+	{
+		for(%i = 0; %i < 10; %i++)
+		{
+			HUD.zMenuTText[%i] = %text;
+			HUD.zMenuTRepetitions[%i] = %repetitions;
+			HUD.zMenuTVisible[%i] = %visible;
+		}
+	}
+	else
+	{
+		if(%text!$= "") HUD.zMenuTText[%slot] = %text;
+		if(%repetitions !$= "") HUD.zMenuTRepetitions[%slot] = %repetitions;
+		if(%visible !$= "") HUD.zMenuTVisible[%slot] = %visible;
+	}
+
+	%menutxt = "";
+	for(%i = 0; %i < 10; %i++)
+	{
+		if(HUD.zMenuTVisible[%i])
+		{
+			for(%j = 0; %j < HUD.zMenuTRepetitions[%i]; %j++)
+				%menutxt = %menutxt @ Hud.zMenuTText[%i];
+		}
+	}
+
+	HudMenuT.setText(%menutxt);
+}
 
 addMessageCallback('MsgHudMenuL', HudMenuLMessageCallback);
 addMessageCallback('MsgHudMenuR', HudMenuRMessageCallback);
+addMessageCallback('MsgHudMenuT', HudMenuTMessageCallback);
 
 //------------------------------------------------------------------------------
