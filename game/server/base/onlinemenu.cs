@@ -10,12 +10,12 @@
 
 function om_init()
 {
-	return "<font:Arial:16>";
+	return "<font:NovaSquare:16>";
 }
 
 function om_head(%client, %title, %prev, %refresh)
 {
-	%r = "<just:center><spush><font:Arial:12>";
+	%r = "<just:center><spush><font:NovaSquare:12>";
 
 	if(%client.loadingMission)
 	{
@@ -42,7 +42,7 @@ function om_head(%client, %title, %prev, %refresh)
 	if(%title !$= "")
 	{
 		%r = %r @
-			"<spush><font:Arial:24>" @ %title;
+			"<spush><font:NovaSquare:24>" @ %title;
 
 		if(%refresh !$= "")
 		{

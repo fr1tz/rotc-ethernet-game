@@ -1,4 +1,4 @@
-<tab:15,215><spush><font:Arial:18>Basic Controls<spop>
+<tab:15,215><spush><font:NovaSquare:18>Basic Controls<spop>
 	Toggle console	<spush><font:Arial Bold:16>F12<spop>
 	Toggle in-game shell	<spush><font:Arial Bold:16>@bind01<spop>
 	Move forward	<spush><font:Arial Bold:16>@bind06<spop>
@@ -15,7 +15,7 @@
 	Start recording (unstable)	<spush><font:Arial Bold:16>@bind32<spop>
 	Stop recording (unstable)	<spush><font:Arial Bold:16>@bind33<spop>
 
-<spush><font:Arial:18>Etherform Controls<spop>
+<spush><font:NovaSquare:18>Etherform Controls<spop>
 	Manifest as CAT	<spush><font:Arial Bold:16>@bind34<spop>
 	Fly forward	<spush><font:Arial Bold:16>@bind06<spop>
 	Fly backward	<spush><font:Arial Bold:16>@bind07<spop>
@@ -24,7 +24,7 @@
 	Fly up	<spush><font:Arial Bold:16>@bind18<spop>
 	Fly down	<spush><font:Arial Bold:16>@bind21<spop>
 
-<spush><font:Arial:18>CAT Controls<spop>
+<spush><font:NovaSquare:18>CAT Controls<spop>
 	Return to Etherform	<spush><font:Arial Bold:16>@bind34<spop>
 	Run forward	<spush><font:Arial Bold:16>@bind06<spop>
 	Run backward	<spush><font:Arial Bold:16>@bind07<spop>

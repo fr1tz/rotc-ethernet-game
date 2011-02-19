@@ -1,8 +1,8 @@
-<spush><font:Arial:20>The Disc<spop>
+<spush><font:NovaSquare:20>The Disc<spop>
 
 Every CAT carries a head-mounted disc launcher and two discs.
 
-<spush><font:Arial:18>Seeker Disc<spop>
+<spush><font:NovaSquare:18>Seeker Disc<spop>
 
 <bitmap:share/misc/help/wpn_disc.png>A seeker Disc will track its target until it has hit it, missed it, was deflected by another Disc, has bounced a few times or has expired. While a disc does not deal a lot of damage compared to its rate of fire, it uses absolutely no energy and will give 20 points of armor to the CAT that launched it when it hits its target. To throw a disc, you first need to get a target-lock on an enemy CAT. The seeker is then thrown by a pressing @bind17. These are the rules to get a target lock:
 - Hit the target with a seeker Disc
@@ -18,12 +18,12 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
 <sbreak>
-<spush><font:Arial:18>Deflecting Discs<spop>
+<spush><font:NovaSquare:18>Deflecting Discs<spop>
 
 <bitmap:share/misc/help/wpn_discdeflect.png>To deflect an incoming seeker Disc, keep the crosshair over it until it's locked, then press @bind17. For deflecting a disc, CATs are rewarded with a six second grace period, during which they can not be attacked by another disc.
 <sbreak>
 
-<spush><font:Arial:20>Grenades<spop>
+<spush><font:NovaSquare:20>Grenades<spop>
 
 <bitmap:share/misc/help/wpn_grenade.png>A grenade will implode shortly after it has been thrown. To throw a grenade you need to hold down and then release @bind19. The grenade is thrown farther the longer the mouse button was held down. There's also the possibility to throw a Grenade instantly at full force by pressing @bind46 or by pressing @bind16 while holding down @bind19. Throwing grenades does not draw power away from a CAT's armor. Instead they draw from their own separate ammo supply. The grenade ammo supply regenerates slowly by itself, but the regeneration can be sped up by dealing damage to enemies.
 <sbreak><tab:15,200>
@@ -35,7 +35,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
 <sbreak>
 
-<spush><font:Arial:20>The Trident<spop>
+<spush><font:NovaSquare:20>The Trident<spop>
 
 <bitmap:share/misc/help/wpn_blaster.png>Every CAT carries a Trident. The Trident is a powerful but tricky weapon. It always fires 9 shots at once. Because of this, it uses a lot of energy and has a huge recoil, but is able to deal up to 90 points of damage at once. The properties of an individual Trident shot:
 <sbreak><tab:15,200>
@@ -47,7 +47,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
 <sbreak>
 
-<spush><font:Arial:20>The Micro-Grenade Launcher AKA The MG<spop>
+<spush><font:NovaSquare:20>The Micro-Grenade Launcher AKA The MG<spop>
 
 <bitmap:share/misc/help/wpn_assaultrifle.png>The MG fires tiny grenades that explode near enemies or on impact. While a single grenade is pretty weak, the fact that you don't have to be 100% accurate to deal damage to enemies combined with a relatively high rate of fire turn the MG into a formidable weapon.
 <sbreak><tab:15,200>
@@ -59,7 +59,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
 <sbreak>
 
-<spush><font:Arial:20>The Sniper ROFL<spop>
+<spush><font:NovaSquare:20>The Sniper ROFL<spop>
 
 <bitmap:share/misc/help/wpn_sniperrifle.png>The Sniper ROFL is... kind of a sniper rifle. The sniper rofl needs to be charged before it can fire. While charging doesn't take long and doesn't consume energy, you can't run fast or use the Etherboard while doing it. Hold down @bind16 to charge, release it to fire.
 <sbreak><tab:15,200>

@@ -211,7 +211,7 @@ function serverCmdMainMenu(%client)
 
 	%newtxt = %newtxt @
 		om_head(%client, "Main Menu") @
-		"<spush><font:Arial:20>" @
+		"<spush><font:NovaSquare:20>" @
 		"Welcome to" SPC $Server::MissionType SPC 
 		$Server::MissionName @ 
 		"<spop>\n\n" @
@@ -234,7 +234,7 @@ function serverCmdMainMenu(%client)
 	if(%client.loadingMission)
 	{
 		%newtxt = %newtxt @	
-			"<spush><font:Arial:16>Join team (can't" SPC
+			"<spush><font:NovaSquare:16>Join team (can't" SPC
 			"join while arena is loading)<spop>\n" @
 			"<spush><color:888888>" @
 			"   \> Join Observers \<\n" @
@@ -246,7 +246,7 @@ function serverCmdMainMenu(%client)
 	else
 	{
 		%newtxt = %newtxt @	
-			"<spush><font:Arial:16>Join team<spop>\n" @
+			"<spush><font:NovaSquare:16>Join team<spop>\n" @
 			"   \> <a:cmd JoinTeam 0>Join Observers</a> \<\n" @
 			"   \> <a:cmd JoinTeam 1>Join Reds</a> \<\n" @
 			"   \> <a:cmd JoinTeam 2>Join Blues</a> \<\n" @
@@ -254,7 +254,7 @@ function serverCmdMainMenu(%client)
 	}
 
 	%newtxt = %newtxt @	
-		"\n<spush><font:Arial:16>Information<spop>\n" @
+		"\n<spush><font:NovaSquare:16>Information<spop>\n" @
 		"   \>\> <a:cmd ShowPlayerList>Player statistics</a>\n" @
 		"   \>\> <a:cmd HowToPlay>How to play in this arena?</a>\n" @
 		"   \>\> <a:cmd News>What's new in" SPC $Server::MissionType @ "?</a>\n" @

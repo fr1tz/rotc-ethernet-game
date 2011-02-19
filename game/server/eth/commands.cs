@@ -13,7 +13,7 @@ function serverCmdHowToPlay(%client, %page)
 
 	%newtxt = %newtxt @ 
 		om_head(%client, "", "MainMenu") @
-		"<just:center><spush><font:Arial:20>How to play ROTC: Ethernet?<spop>\n\n";
+		"<just:center><spush><font:NovaSquare:20>How to play ROTC: Ethernet?<spop>\n\n";
 
 	switch(%page)
 	{
@@ -60,7 +60,7 @@ function serverCmdHowToPlay(%client, %page)
 			%fileName = "game/server/eth/help/index.rml";
 	}
 
-	%nav = "<spush><font:Arial:13>";
+	%nav = "<spush><font:NovaSquare:13>";
 	if(%prev !$= "")
 		%nav = %nav @ "Prev:" SPC %prev SPC "|";
 	%nav = %nav SPC "<a:cmd HowToPlay 0>Index</a>";
@@ -69,7 +69,7 @@ function serverCmdHowToPlay(%client, %page)
 	%nav = %nav @ "<spop>";
 
 	%newtxt = %newtxt @ %nav @ "\n\n" @
-		"<spush><font:Arial:24>" @ %title @ "<spop><just:left>\n\n";
+		"<spush><font:NovaSquare:24>" @ %title @ "<spop><just:left>\n\n";
 
 	%file = new FileObject();
 	%file.openForRead(%fileName);

@@ -28,7 +28,7 @@ new GuiControlProfile(GuiDefaultProfile)
 	borderColorNA = "100 100 100";
 
 	// font
-	fontType = "Arial";
+	fontType = "NovaSquare";
 	fontSize = 14;
 
 	fontColor = "0 0 0";
@@ -60,7 +60,7 @@ new GuiControlProfile(GuiDefaultProfile)
 //
 new GuiControlProfile(GuiConsoleProfile : GuiDefaultProfile)
 {
-	fontType = "Lucida Console";
+	//fontType = "Lucida Console";
 	fontSize = 12;
 	fontColor = "0 0 255";
 	fontColorHL = "130 130 130";
