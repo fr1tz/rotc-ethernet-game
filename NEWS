@@ -1,13 +1,14 @@
 What's new?
 ===========
 
-Prototype 1.11+dev4
+Prototype 1.11+dev5
 -------------------
 
 Client changes: 
 - Render player trails to make it easier to gauge
   players' velocities from a distance. (currently windows-only)
 - Minor rendering fixes (currently windows-only)
+- Warnings on the HUD for low health / armor.
 
 Universal ROTC changes:
 - Micro-grenade Launcher changes:

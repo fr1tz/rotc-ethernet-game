@@ -63,6 +63,14 @@ function GameConnection::onClientEnterGame(%this)
 	// "simple control (tm)" info...
 	%this.simpleControl = new Array();
 	MissionCleanup.add(%this.simpleControl);
+
+	// HUD Warnings...
+	for(%i = 1; %i <= 6; %i++)
+	{
+		%this.hudWarningString[%i] = "";
+		%this.hudWarningVisible[%i] = "";
+	}
+	%this.updateHudWarningsThread();
 	
 	//
 	// setup observer camera object...
@@ -469,4 +477,46 @@ function GameConnection::addMenuText(%this, %text)
 		%n += 255;
 	}	
 }
+
+//-----------------------------------------------------------------------------
+
+function GameConnection::setHudWarning(%this, %slot, %text, %visibility)
+{
+	if(%this.hudWarningString[%slot] $= %text)
+		%text = "";
+	else
+		%this.hudWarningString[%slot] = %text;	
+
+	if(%this.hudWarningVisible[%slot] $= %visibility)
+		%visibility = "";
+	else
+		%this.hudWarningVisible[%slot] = %visibility;	
+
+	if(%text $= "" && %visibility $= "")
+		return;
+
+	//error("Sending MsgWarning to" SPC %this SPC ": [" SPC %slot SPC "][" SPC %text SPC "][" SPC %visibility SPC "]");
+	messageClient(%this, 'MsgWarning', "", %slot, %text, %visibility);
+}
+
+function GameConnection::updateHudWarningsThread(%this)
+{
+	cancel(%this.updateHudWarningsThread);
+	%this.updateHudWarningsThread = %this.schedule(100,"updateHudWarningsThread");
+
+	%player = %this.player;
+	if(!%player)
+		return;
+
+	%health = %player.getDataBlock().maxDamage 
+		- %player.getDamageLevel() 
+		+ %player.getDamageBufferLevel();
+	%health = %health / %player.getDataBlock().maxDamage;
+
+	%this.setHudWarning(1, "[HEALTH]", %health < 0.25);
+	%this.setHudWarning(3, "[ARMOR]", %player.getEnergyPercent() < 0.5);
+}
+
+//-----------------------------------------------------------------------------
+
 

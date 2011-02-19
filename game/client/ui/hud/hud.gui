@@ -9,7 +9,7 @@ new GameTSCtrl(HUD) {
    Profile = "HudDefaultProfile";
    HorizSizing = "right";
    VertSizing = "bottom";
-   Position = "0 0";
+   position = "0 0";
    Extent = "800 600";
    MinExtent = "8 8";
    canSave = "1";
@@ -18,19 +18,21 @@ new GameTSCtrl(HUD) {
    applyFilterToChildren = "1";
    cameraZRot = "0";
    forceFOV = "0";
-      numDiscs = "2";
+      showDiscIcons = "1";
       noCursor = "1";
+      flashWarningsThread = "355";
+      grenadeAmmoThread = "24859";
       helpTag = "0";
       heatThread = "127884";
-      grenadeAmmoThread = "24859";
-      showDiscIcons = "1";
+      zWarningsFlash = "1";
+      numDiscs = "2";
 
    new GuiScannerHud(ScannerHud) {
       canSaveDynamicFields = "0";
       Profile = "HudDefaultProfile";
       HorizSizing = "relative";
       VertSizing = "relative";
-      Position = "0 0";
+      position = "0 0";
       Extent = "800 600";
       MinExtent = "8 8";
       canSave = "1";
@@ -49,7 +51,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "center";
       VertSizing = "top";
-      Position = "240 400";
+      position = "240 400";
       Extent = "320 32";
       MinExtent = "8 2";
       canSave = "1";
@@ -62,7 +64,7 @@ new GameTSCtrl(HUD) {
          Profile = "HudDefaultProfile";
          HorizSizing = "center";
          VertSizing = "center";
-         Position = "5 0";
+         position = "5 0";
          Extent = "310 32";
          MinExtent = "8 2";
          canSave = "1";
@@ -76,7 +78,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudScrollProfile";
       HorizSizing = "left";
       VertSizing = "top";
-      Position = "600 420";
+      position = "600 420";
       Extent = "180 100";
       MinExtent = "8 8";
       canSave = "1";
@@ -90,7 +92,7 @@ new GameTSCtrl(HUD) {
          Profile = "HudScrollProfile";
          HorizSizing = "relative";
          VertSizing = "relative";
-         Position = "0 0";
+         position = "0 0";
          Extent = "300 100";
          MinExtent = "8 8";
          canSave = "1";
@@ -107,7 +109,7 @@ new GameTSCtrl(HUD) {
             Profile = "HudDefaultProfile";
             HorizSizing = "relative";
             VertSizing = "relative";
-            Position = "1 1";
+            position = "1 1";
             Extent = "298 8";
             MinExtent = "8 8";
             canSave = "1";
@@ -126,7 +128,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "left";
       VertSizing = "top";
-      Position = "451 567";
+      position = "451 567";
       Extent = "300 25";
       MinExtent = "8 8";
       canSave = "1";
@@ -138,7 +140,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "center";
       VertSizing = "center";
-      Position = "100 250";
+      position = "100 250";
       Extent = "600 100";
       MinExtent = "600 100";
       canSave = "1";
@@ -152,7 +154,7 @@ new GameTSCtrl(HUD) {
          Profile = "HudDefaultProfile";
          HorizSizing = "center";
          VertSizing = "center";
-         Position = "20 15";
+         position = "20 15";
          Extent = "565 80";
          MinExtent = "565 80";
          canSave = "1";
@@ -168,7 +170,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "left";
       VertSizing = "top";
-      Position = "450 360";
+      position = "450 360";
       Extent = "300 200";
       MinExtent = "300 200";
       canSave = "1";
@@ -182,7 +184,7 @@ new GameTSCtrl(HUD) {
          Profile = "HudScrollProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "5 25";
+         position = "5 25";
          Extent = "290 171";
          MinExtent = "8 2";
          canSave = "1";
@@ -199,8 +201,8 @@ new GameTSCtrl(HUD) {
             Profile = "HudDefaultProfile";
             HorizSizing = "center";
             VertSizing = "center";
-            Position = "1 0";
-            Extent = "300 13";
+            position = "0 0";
+            Extent = "300 14";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -216,7 +218,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "right";
       VertSizing = "bottom";
-      Position = "572 3";
+      position = "572 3";
       Extent = "32 32";
       MinExtent = "8 8";
       canSave = "1";
@@ -230,12 +232,13 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "relative";
       VertSizing = "relative";
-      Position = "158 58";
+      position = "158 58";
       Extent = "469 469";
       MinExtent = "8 2";
       canSave = "1";
       Visible = "0";
       hovertime = "1000";
+      rotate = "1";
       visRadius = "4000";
    };
    new GuiClockHud(HudClock) {
@@ -243,7 +246,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "left";
       VertSizing = "bottom";
-      Position = "764 0";
+      position = "764 0";
       Extent = "36 14";
       MinExtent = "8 8";
       canSave = "1";
@@ -257,14 +260,14 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "left";
       VertSizing = "top";
-      Position = "728 546";
+      position = "728 546";
       Extent = "23 14";
       MinExtent = "8 8";
       canSave = "1";
       Visible = "1";
       Variable = "$fps::real";
       hovertime = "1000";
-      text = "49.2";
+      text = "149.6";
       maxLength = "255";
    };
    new GuiMiniMapHud(MiniMap) {
@@ -272,12 +275,13 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "right";
       VertSizing = "top";
-      Position = "40 450";
+      position = "40 450";
       Extent = "150 150";
       MinExtent = "8 2";
       canSave = "1";
       Visible = "1";
       hovertime = "1000";
+      rotate = "1";
       visRadius = "1000";
    };
    new GuiTankControlHud() {
@@ -285,7 +289,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "center";
       VertSizing = "center";
-      Position = "300 200";
+      position = "300 200";
       Extent = "200 200";
       MinExtent = "8 2";
       canSave = "1";
@@ -297,7 +301,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "right";
       VertSizing = "top";
-      Position = "190 529";
+      position = "190 529";
       Extent = "50 66";
       MinExtent = "8 2";
       canSave = "1";
@@ -311,7 +315,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "right";
       VertSizing = "top";
-      Position = "240 529";
+      position = "240 529";
       Extent = "50 66";
       MinExtent = "8 2";
       canSave = "1";
@@ -325,7 +329,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "right";
       VertSizing = "top";
-      Position = "290 531";
+      position = "290 531";
       Extent = "50 66";
       MinExtent = "8 2";
       canSave = "1";
@@ -339,7 +343,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "left";
       VertSizing = "bottom";
-      Position = "590 30";
+      position = "590 30";
       Extent = "100 43";
       MinExtent = "8 2";
       canSave = "1";
@@ -353,7 +357,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudDefaultProfile";
       HorizSizing = "right";
       VertSizing = "top";
-      Position = "300 546";
+      position = "300 546";
       Extent = "25 33";
       MinExtent = "8 2";
       canSave = "1";
@@ -367,7 +371,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudProgressProfile";
       HorizSizing = "right";
       VertSizing = "top";
-      Position = "326 558";
+      position = "326 558";
       Extent = "100 16";
       MinExtent = "8 2";
       canSave = "1";
@@ -380,7 +384,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudProgressProfile";
       HorizSizing = "right";
       VertSizing = "top";
-      Position = "188 572";
+      position = "188 572";
       Extent = "100 18";
       MinExtent = "8 2";
       canSave = "1";
@@ -393,19 +397,97 @@ new GameTSCtrl(HUD) {
       Profile = "GuiDefaultProfile";
       HorizSizing = "center";
       VertSizing = "center";
-      Position = "240 140";
+      position = "240 140";
       Extent = "320 320";
       MinExtent = "8 2";
       canSave = "1";
       Visible = "1";
       hovertime = "1000";
 
+      new GuiTextCtrl(HudWarning1) {
+         canSaveDynamicFields = "0";
+         Profile = "HudWarningFlashProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "0 120";
+         Extent = "96 17";
+         MinExtent = "96 17";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         maxLength = "1024";
+      };
+      new GuiTextCtrl(HudWarning2) {
+         canSaveDynamicFields = "0";
+         Profile = "HudWarningFlashProfile";
+         HorizSizing = "center";
+         VertSizing = "bottom";
+         position = "0 80";
+         Extent = "320 17";
+         MinExtent = "320 17";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         maxLength = "1024";
+      };
+      new GuiTextCtrl(HudWarning3) {
+         canSaveDynamicFields = "0";
+         Profile = "HudWarningFlashProfile";
+         HorizSizing = "left";
+         VertSizing = "bottom";
+         position = "223 120";
+         Extent = "96 17";
+         MinExtent = "96 17";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         maxLength = "1024";
+      };
+      new GuiTextCtrl(HudWarning4) {
+         canSaveDynamicFields = "0";
+         Profile = "HudWarningFlashProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "0 170";
+         Extent = "96 17";
+         MinExtent = "96 17";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         maxLength = "1024";
+      };
+      new GuiTextCtrl(HudWarning5) {
+         canSaveDynamicFields = "0";
+         Profile = "HudWarningFlashProfile";
+         HorizSizing = "center";
+         VertSizing = "bottom";
+         position = "0 210";
+         Extent = "320 17";
+         MinExtent = "320 17";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         maxLength = "1024";
+      };
+      new GuiTextCtrl(HudWarning6) {
+         canSaveDynamicFields = "0";
+         Profile = "HudWarningFlashProfile";
+         HorizSizing = "left";
+         VertSizing = "bottom";
+         position = "223 170";
+         Extent = "96 17";
+         MinExtent = "96 17";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         maxLength = "1024";
+      };
       new GuiCrossHairHud(Crosshair) {
          canSaveDynamicFields = "0";
          Profile = "HudDefaultProfile";
          HorizSizing = "center";
          VertSizing = "center";
-         Position = "96 96";
+         position = "96 96";
          Extent = "128 128";
          MinExtent = "8 8";
          canSave = "1";
@@ -421,7 +503,7 @@ new GameTSCtrl(HUD) {
          Profile = "HudMediumTextProfile";
          HorizSizing = "center";
          VertSizing = "top";
-         Position = "112 226";
+         position = "112 226";
          Extent = "96 96";
          MinExtent = "8 2";
          canSave = "1";
@@ -439,7 +521,7 @@ new GameTSCtrl(HUD) {
       Profile = "GuiDefaultProfile";
       HorizSizing = "relative";
       VertSizing = "height";
-      Position = "0 100";
+      position = "0 100";
       Extent = "800 500";
       MinExtent = "8 2";
       canSave = "1";
@@ -451,7 +533,7 @@ new GameTSCtrl(HUD) {
          Profile = "HudDefaultProfile";
          HorizSizing = "left";
          VertSizing = "top";
-         Position = "760 460";
+         position = "760 460";
          Extent = "40 40";
          MinExtent = "8 2";
          canSave = "1";
@@ -465,7 +547,7 @@ new GameTSCtrl(HUD) {
          Profile = "HudDefaultProfile";
          HorizSizing = "right";
          VertSizing = "height";
-         Position = "0 0";
+         position = "0 0";
          Extent = "40 460";
          MinExtent = "8 8";
          canSave = "1";
@@ -484,7 +566,7 @@ new GameTSCtrl(HUD) {
          Profile = "HudDefaultProfile";
          HorizSizing = "left";
          VertSizing = "height";
-         Position = "760 0";
+         position = "760 0";
          Extent = "40 460";
          MinExtent = "8 8";
          canSave = "1";
@@ -502,7 +584,7 @@ new GameTSCtrl(HUD) {
          Profile = "HudDefaultProfile";
          HorizSizing = "right";
          VertSizing = "top";
-         Position = "0 460";
+         position = "0 460";
          Extent = "40 40";
          MinExtent = "8 2";
          canSave = "1";
@@ -517,7 +599,7 @@ new GameTSCtrl(HUD) {
       Profile = "HudMediumTextProfile";
       HorizSizing = "center";
       VertSizing = "bottom";
-      Position = "365 10";
+      position = "365 10";
       Extent = "70 40";
       MinExtent = "8 2";
       canSave = "1";

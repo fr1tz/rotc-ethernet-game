@@ -55,6 +55,18 @@ new GuiControlProfile(HudDefaultProfile)
 	soundButtonOver = "";
 };
 
+new GuiControlProfile(HudWarningProfile : HudDefaultProfile)
+{
+	fontColor = "255 255 255 200";
+	justify = "center";
+};
+
+new GuiControlProfile(HudWarningFlashProfile : HudDefaultProfile)
+{
+	fontColor = "0 255 0 255";
+	justify = "center";
+};
+
 new GuiControlProfile (ChatHudEditProfile)
 {
 	opaque = false;
@@ -93,7 +105,7 @@ new GuiControlProfile (ChatHudTextProfile)
 
 new GuiControlProfile(HudChatMessageProfile : HudDefaultProfile)
 {
-	fontType = "Arial";
+	//fontType = "Arial";
 	fontSize = 14;
 	fontColor = "255 0 0";		// default color (death msgs, scoring, inventory)
 	fontColors[1] = "0 255 0";	// client join/drop, tournament mode

@@ -48,6 +48,8 @@ function Hud::onWake(%this)
 	// hack city - these controls are floating around and need to be clamped
 	schedule(0, 0, "refreshCenterTextCtrl");
 	schedule(0, 0, "refreshBottomTextCtrl");
+
+	%this.flashWarnings();
 }
 
 function Hud::onSleep(%this)
@@ -56,6 +58,24 @@ function Hud::onSleep(%this)
 
 	// pop the keymaps
 	popActionMap(MoveMap);
+
+	cancel(%this.flashWarningsThread);
+}
+
+function Hud::flashWarnings(%this)
+{
+	cancel(%this.flashWarningsThread);
+
+	%this.zWarningsFlash = !%this.zWarningsFlash;
+	%profile = %this.zWarningsFlash ? HudWarningFlashProfile : HudWarningProfile;
+	HudWarning1.setProfile(%profile);
+	HudWarning2.setProfile(%profile);
+	HudWarning3.setProfile(%profile);
+	HudWarning4.setProfile(%profile);
+	HudWarning5.setProfile(%profile);
+	HudWarning6.setProfile(%profile);
+
+	%this.flashWarningsThread = %this.schedule(500, "flashWarnings");
 }
 
 function Hud::matchControlObject(%this, %obj)
@@ -210,6 +230,8 @@ function Hud::setColor(%this, %color)
 		HudProgressProfile.borderColor	= "255 0 0 200";
 		HudProgressProfile.borderColorHL = "255 0 0 200";
 		HudProgressProfile.borderColorNA = "255 0 0 200";
+
+		HudWarningFlashProfile.fontColor = "255 0 0 255";
 	}
 
 	if(%color $= "blue")
@@ -253,6 +275,8 @@ function Hud::setColor(%this, %color)
 		HudProgressProfile.borderColor	= "0 100 255 200";
 		HudProgressProfile.borderColorHL = "0 100 255 200";
 		HudProgressProfile.borderColorNA = "0 100 255 200";
+
+		HudWarningFlashProfile.fontColor = "0 100 255 255";
 	}
 }
 
