@@ -43,6 +43,13 @@ function EtherformData::onAdd(%this, %obj)
 	// start singing...
 	%obj.playAudio(1, EtherformSingSound);
 
+	// Clear HUD menus...
+	if(isObject(%obj.client))
+	{
+		%obj.client.setHudMenuL("*", " ", 1, 0);
+		%obj.client.setHudMenuR("*", " ", 1, 0);
+	}
+
 	// lights...
 	if(%obj.getTeamId() == 1)
 		%obj.mountImage(RedEtherformLightImage, 3);

@@ -701,6 +701,9 @@ function Player::setDiscs(%this, %numDiscs)
 	%hasDisc = %this.hasDisc();
 	%this.setImageLoaded(1, %hasDisc);
 	%this.setImageAmmo(1, %hasDisc);
+
+	if(isObject(%this.client))
+		%this.client.setHudMenuL(0, "<bitmap:share/hud/rotc/icon.disc.png><sbreak>", %numDiscs, 1);
 }
 
 function Player::incDiscs(%this)

@@ -71,7 +71,11 @@ function GameConnection::onClientEnterGame(%this)
 		%this.hudWarningVisible[%i] = "";
 	}
 	%this.updateHudWarningsThread();
-	
+
+	// HUD Menus...
+	%this.setHudMenuL("*", " ", 1, 0);
+	%this.setHudMenuR("*", " ", 1, 0);
+ 	
 	//
 	// setup observer camera object...
 	//
@@ -518,5 +522,78 @@ function GameConnection::updateHudWarningsThread(%this)
 }
 
 //-----------------------------------------------------------------------------
+
+function GameConnection::setHudMenuL(%this, %slot, %text, %repetitions, %visible)
+{
+	if(%slot $= "*")
+	{
+		for(%i = 0; %i < 10; %i++)
+		{
+			if(%text !$= "") %this.hudMenuLText[%i] = %text;
+			if(%repetitions !$= "") %this.hudMenuLRepetitions[%i] = %repetitions;
+			if(%visible !$= "") %this.hudMenuLVisible[%i] = %visible;
+		}
+	}
+	else
+	{
+		if(%this.hudMenuLText[%slot] $= %text)
+			%text = "";
+		else
+			%this.hudMenuLText[%slot] = %text;	
+
+		if(%this.hudMenuLRepetitions[%slot] $= %repetitions)
+			%repetitions= "";
+		else
+			%this.hudMenuLRepetitions[%slot] = %repetitions;
+
+		if(%this.hudMenuLVisible[%slot] $= %visible)
+			%visible = "";
+		else
+			%this.hudMenuLVisible[%slot] = %visible;	
+
+		if(%text $= "" && %repetitions $= "" && %visible $= "")
+			return;
+	}
+
+	//error("Sending 'MsgHudMenuL' to" SPC %this SPC ": [" SPC %slot SPC "][" SPC %text SPC "][" SPC %repetitions SPC "][" SPC %visible SPC "]");
+	messageClient(%this, 'MsgHudMenuL', "", %slot, %text, %repetitions, %visible);
+}
+
+function GameConnection::setHudMenuR(%this, %slot, %text, %repetitions, %visible)
+{
+	if(%slot $= "*")
+	{
+		for(%i = 0; %i < 10; %i++)
+		{
+			if(%text !$= "") %this.hudMenuRText[%i] = %text;
+			if(%repetitions !$= "") %this.hudMenuRRepetitions[%i] = %repetitions;
+			if(%visible !$= "") %this.hudMenuRVisible[%i] = %visible;
+		}
+	}
+	else
+	{
+		if(%this.hudMenuRText[%slot] $= %text)
+			%text = "";
+		else
+			%this.hudMenuRText[%slot] = %text;	
+
+		if(%this.hudMenuRRepetitions[%slot] $= %repetitions)
+			%repetitions= "";
+		else
+			%this.hudMenuRRepetitions[%slot] = %repetitions;
+
+		if(%this.hudMenuRVisible[%slot] $= %visible)
+			%visible = "";
+		else
+			%this.hudMenuRVisible[%slot] = %visible;	
+
+		if(%text $= "" && %repetitions $= "" && %visible $= "")
+			return;
+	}
+
+	//error("Sending 'MsgHudMenuR' to" SPC %this SPC ": [" SPC %slot SPC "][" SPC %text SPC "][" SPC %repetitions SPC "][" SPC %visible SPC "]");
+	messageClient(%this, 'MsgHudMenuR', "", %slot, %text, %repetitions, %visible);
+}
+
 
 

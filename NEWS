@@ -1,7 +1,7 @@
 What's new?
 ===========
 
-Prototype 1.11+dev6
+Prototype 1.11+dev7
 -------------------
 
 Client changes: 
@@ -10,6 +10,8 @@ Client changes:
 - Minor rendering fixes (currently windows-only)
 - Warnings on the HUD for low health / armor.
 - New default font.
+- Add two universal HUD menus and use one to display number
+  of discs.
 
 Universal ROTC changes:
 - Micro-grenade Launcher changes:
