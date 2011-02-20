@@ -1,10 +1,11 @@
 What's new?
 ===========
 
-Prototype 2-dev1
+Prototype 2-dev2
 ----------------
 
-- Breaks backwards compatibility to p.1.x
+- Breaks backwards compatibility to older versions.
+- Change display of team health balance from numerical to graphical.
 
 Prototype 1.11+dev7
 -------------------

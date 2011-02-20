@@ -160,6 +160,7 @@ function startNewRound()
 	}
 
 	serverUpdateMusic();
+	serverUpdateGameStatus();
 	
 	$Game::RoundRestarting = false;
 }

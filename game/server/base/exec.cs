@@ -44,3 +44,4 @@ exec("./objectspawn.cs");
 exec("./stats.cs");
 exec("./music.cs");
 exec("./onlinemenu.cs");
+exec("./gamestatus.cs");

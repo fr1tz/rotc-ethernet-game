@@ -109,30 +109,6 @@ function serverUpdateMusic()
 
 	%gameBalance = %teamHealth[1] - %teamHealth[2];
 
-	setTeamHudMenuT($Team0, 0, "<just:center><font:NovaSquare:36><color:888888>", 1, 1);
-	setTeamHudMenuT($Team1, 0, "<just:center><font:NovaSquare:36><color:888888>", 1, 1);
-	setTeamHudMenuT($Team2, 0, "<just:center><font:NovaSquare:36><color:888888>", 1, 1);
-
-	%f = mFloatLength(%gameBalance,1);
-	setTeamHudMenuT($Team0, 1, "=" @ %f, 1, 1);
-
-	if(%f > 0)
-	{
-		setTeamHudMenuT($Team1, 1, "+" @ %f, 1, 1);
-		setTeamHudMenuT($Team2, 1, -%f, 1, 1);
-	}
-	else if(%f < 0)
-	{
-		setTeamHudMenuT($Team1, 1, %f, 1, 1);
-		setTeamHudMenuT($Team2, 1, "+" @ -%f, 1, 1);
-	}
-	else
-	{
-		setTeamHudMenuT($Team1, 1, "---", 1, 1);
-		setTeamHudMenuT($Team2, 1, "---", 1, 1);
-	}
-	
-
 	%t = getSimTime();
 	if(%t - $Music::LastHitTime > 30000)
 	{
