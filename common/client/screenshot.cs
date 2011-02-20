@@ -80,6 +80,3 @@ function doScreenShot( %val )
 }
 
 
-// bind key to take screenshots
-GlobalActionMap.bind(keyboard, "ctrl p", doScreenShot);
-

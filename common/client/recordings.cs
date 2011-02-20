@@ -133,6 +133,14 @@ function stopDemoRecord()
 	}
 }
 
+function toggleDemoRecord()
+{
+	if(ServerConnection.isDemoRecording())
+		stopDemoRecord();
+	else
+		startDemoRecord();
+}
+
 //------------------------------------------------------------------------------
 // GUI stuff...
 

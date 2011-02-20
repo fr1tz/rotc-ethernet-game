@@ -69,8 +69,8 @@ MoveMap.bind(keyboard, "i", resizeMessageHud );
 
 MoveMap.bind(keyboard, "y", biggerMiniMap );
 MoveMap.bind(keyboard, "c", activateCmdrScreen );
-MoveMap.bind( keyboard, "F3", startRecordingDemo );
-MoveMap.bind( keyboard, "F4", stopRecordingDemo );
+MoveMap.bind(keyboard, "alt r", toggleRecordingDemo);
+MoveMap.bind(keyboard, "alt p", takeScreenshot);
 
 //------------------------------------------------------------------------------
 // Player actions
@@ -90,4 +90,29 @@ MoveMap.bind( keyboard, "0", action10);
 MoveMap.bind( keyboard, "q", action11);
 moveMap.bind( mouse0, "shift button2", action12);
 MoveMap.bind( keyboard, "e", action13 );
+MoveMap.bind( keyboard, "r", action14 );
+MoveMap.bind( keyboard, "f", action15 );
+MoveMap.bind( keyboard, "g", action16 );
+MoveMap.bind( keyboard, "x", action17 );
+MoveMap.bind( keyboard, "v", action18 );
+MoveMap.bind( keyboard, "b", action19 );
+MoveMap.bind( keyboard, "m", action20 );
+MoveMap.bind( keyboard, "shift 1", action21 );
+MoveMap.bind( keyboard, "shift 2", action22 );
+MoveMap.bind( keyboard, "shift 3", action23 );
+MoveMap.bind( keyboard, "shift 4", action24 );
+MoveMap.bind( keyboard, "shift 5", action25 );
+MoveMap.bind( keyboard, "shift 6", action26 );
+MoveMap.bind( keyboard, "shift 7", action27 );
+MoveMap.bind( keyboard, "shift 8", action28 );
+MoveMap.bind( keyboard, "shift 9", action29 );
+MoveMap.bind( keyboard, "shift 0", action30 );
+MoveMap.bind( keyboard, "F1", action31 );
+MoveMap.bind( keyboard, "F2", action32 );
+MoveMap.bind( keyboard, "F3", action33 );
+MoveMap.bind( keyboard, "F4", action34 );
+MoveMap.bind( keyboard, "F5", action35 );
+MoveMap.bind( keyboard, "F6", action36 );
+MoveMap.bind( keyboard, "F7", action37 );
+MoveMap.bind( keyboard, "F8", action38 );
 MoveMap.bind( keyboard, "alt c", action39 );

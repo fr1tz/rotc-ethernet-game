@@ -287,16 +287,16 @@ function activateCmdrScreen(%val)
 		Canvas.setContent(CmdrScreen);
 }
 
-function startRecordingDemo( %val )
+function toggleRecordingDemo( %val )
 {
 	if ( %val )
-		startDemoRecord();
+		toggleDemoRecord();
 }
 
-function stopRecordingDemo( %val )
+function takeScreenshot( %val )
 {
 	if ( %val )
-		stopDemoRecord();
+		doScreenshot(1);
 }
 
 //------------------------------------------------------------------------------
