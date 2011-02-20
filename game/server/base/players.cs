@@ -695,9 +695,6 @@ function Player::setDiscs(%this, %numDiscs)
 {
 	%this.numDiscs = %numDiscs;
 
-	if(isObject(%this.client))
-		messageClient(%this.client, 'MsgNumDiscs', "", %this.numDiscs);
-
 	%hasDisc = %this.hasDisc();
 	%this.setImageLoaded(1, %hasDisc);
 	%this.setImageAmmo(1, %hasDisc);

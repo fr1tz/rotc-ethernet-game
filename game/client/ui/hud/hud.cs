@@ -83,9 +83,6 @@ function Hud::matchControlObject(%this, %obj)
 	%data = %obj.getDataBlock().getName();
 
 	Scanlines.setVisible(false);
-	DiscIcon1.setVisible(false);
-	DiscIcon2.setVisible(false);
-	DiscIcon3.setVisible(false);
  
     GrenadeIcon.setVisible(false);
     GrenadeAmmo.setVisible(false);
@@ -100,8 +97,6 @@ function Hud::matchControlObject(%this, %obj)
 		HealthMeter.setVisible(false);
 		EnergyIcon.setVisible(false);
 		EnergyMeter.setVisible(false);
-
-		%this.showDiscIcons = false;
 	}
 	else
 	{
@@ -111,10 +106,7 @@ function Hud::matchControlObject(%this, %obj)
 		EnergyMeter.setVisible(true);
 
 		if(%obj.getType() & $TypeMasks::PlayerObjectType)
-		{
-			%this.showDiscIcons = true;
-			%this.updateDiscIcons();
-   
+		{   
             GrenadeIcon.setVisible(true);
             GrenadeAmmo.setVisible(true);
 		}
@@ -122,46 +114,6 @@ function Hud::matchControlObject(%this, %obj)
 
 	if(%data $= "PlayerThirdEye")
 		Scanlines.setVisible(true);
-}
-
-function Hud::updateDiscIcons(%this)
-{
-	if(!%this.showDiscIcons)
-	{
-		DiscIcon1.setVisible(false);
-		DiscIcon2.setVisible(false);
-		DiscIcon3.setVisible(false);
-		return;
-	}
-
-	if(%this.numDiscs $= "")
-		%this.numDiscs = 2;
-
-	switch(%this.numDiscs)
-	{
-		case 1:
-			DiscIcon1.setVisible(true);
-			DiscIcon2.setVisible(false);
-			DiscIcon3.setVisible(false);
-			break;
-
-		case 2:
-			DiscIcon1.setVisible(true);
-			DiscIcon2.setVisible(true);
-			DiscIcon3.setVisible(false);
-			break;
-
-		case 3:
-			DiscIcon1.setVisible(true);
-			DiscIcon2.setVisible(true);
-			DiscIcon3.setVisible(true);
-			break;
-
-		default:
-			DiscIcon1.setVisible(false);
-			DiscIcon2.setVisible(false);
-			DiscIcon3.setVisible(false);
-	}
 }
 
 function Hud::updateGrenadeAmmo(%this)

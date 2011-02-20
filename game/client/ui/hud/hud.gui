@@ -296,48 +296,6 @@ new GameTSCtrl(HUD) {
       Visible = "1";
       hovertime = "1000";
    };
-   new GuiAdditiveBitmapCtrl(DiscIcon1) {
-      canSaveDynamicFields = "0";
-      Profile = "HudDefaultProfile";
-      HorizSizing = "right";
-      VertSizing = "top";
-      position = "190 409";
-      Extent = "50 66";
-      MinExtent = "8 2";
-      canSave = "1";
-      Visible = "0";
-      hovertime = "1000";
-      bitmap = "./pixmaps/icon.disc.png";
-      wrap = "0";
-   };
-   new GuiAdditiveBitmapCtrl(DiscIcon2) {
-      canSaveDynamicFields = "0";
-      Profile = "HudDefaultProfile";
-      HorizSizing = "right";
-      VertSizing = "top";
-      position = "240 409";
-      Extent = "50 66";
-      MinExtent = "8 2";
-      canSave = "1";
-      Visible = "0";
-      hovertime = "1000";
-      bitmap = "./pixmaps/icon.disc.png";
-      wrap = "0";
-   };
-   new GuiAdditiveBitmapCtrl(DiscIcon3) {
-      canSaveDynamicFields = "0";
-      Profile = "HudDefaultProfile";
-      HorizSizing = "right";
-      VertSizing = "top";
-      position = "290 411";
-      Extent = "50 66";
-      MinExtent = "8 2";
-      canSave = "1";
-      Visible = "0";
-      hovertime = "1000";
-      bitmap = "./pixmaps/icon.disc.png";
-      wrap = "0";
-   };
    new GuiAdditiveBitmapCtrl(PrimaryWeaponIcon) {
       canSaveDynamicFields = "0";
       Profile = "HudDefaultProfile";

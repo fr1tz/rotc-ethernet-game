@@ -13,16 +13,6 @@ $WeaponIcons[1] = "icon.sniperrifle.png";
 
 //------------------------------------------------------------------------------
 
-function NumDiscsMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
-{
-	Hud.numDiscs = %a1;
-	Hud.updateDiscIcons();
-}
-
-addMessageCallback('MsgNumDiscs', NumDiscsMessageCallback);
-
-//------------------------------------------------------------------------------
-
 function GrenadeAmmoMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
 {
     GrenadeAmmo.setValue(%a1);
