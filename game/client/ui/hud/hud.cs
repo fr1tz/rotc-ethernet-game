@@ -83,10 +83,7 @@ function Hud::matchControlObject(%this, %obj)
 	%data = %obj.getDataBlock().getName();
 
 	Scanlines.setVisible(false);
- 
-    GrenadeIcon.setVisible(false);
-    GrenadeAmmo.setVisible(false);
-    
+     
     Heat.setVisible(false);
 
 	if(%obj.getType() & $TypeMasks::CameraObjectType)
@@ -104,12 +101,6 @@ function Hud::matchControlObject(%this, %obj)
 		HealthMeter.setVisible(true);
 		EnergyIcon.setVisible(true);
 		EnergyMeter.setVisible(true);
-
-		if(%obj.getType() & $TypeMasks::PlayerObjectType)
-		{   
-            GrenadeIcon.setVisible(true);
-            GrenadeAmmo.setVisible(true);
-		}
 	}
 
 	if(%data $= "PlayerThirdEye")
@@ -125,6 +116,8 @@ function Hud::updateGrenadeAmmo(%this)
         / (GrenadeAmmo.interval/50);
     
     GrenadeAmmo.setValue(GrenadeAmmo.getValue() + %dt);
+
+    GrenadeAmmo.setVisible(GrenadeAmmo.getValue() < 1);   
     
     %this.grenadeAmmoThread = %this.schedule(50, "updateGrenadeAmmo");
 }
@@ -174,14 +167,6 @@ function Hud::setColor(%this, %color)
 		HudMediumTextProfile.fillColor = "255 0 0 100";
 		HudMediumTextProfile.fillColorHL = "255 0 0 100";
 		HudMediumTextProfile.fillColorNA = "255 0 0 100";
-  
-		HudProgressProfile.fillColor = "255 0 0 100";
-		HudProgressProfile.fillColorHL = "255 0 0 100";
-		HudProgressProfile.fillColorNA = "255 0 0 100";
-
-		HudProgressProfile.borderColor	= "255 0 0 200";
-		HudProgressProfile.borderColorHL = "255 0 0 200";
-		HudProgressProfile.borderColorNA = "255 0 0 200";
 
 		HudWarningFlashProfile.fontColor = "255 0 0 255";
 	}
@@ -219,14 +204,6 @@ function Hud::setColor(%this, %color)
 		HudMediumTextProfile.fillColor = "0 100 255 100";
 		HudMediumTextProfile.fillColorHL = "0 100 255 100";
 		HudMediumTextProfile.fillColorNA = "0 100 255 100";
-  
-		HudProgressProfile.fillColor = "0 100 255 100";
-		HudProgressProfile.fillColorHL = "0 100 255 100";
-		HudProgressProfile.fillColorNA = "0 100 255 100";
-
-		HudProgressProfile.borderColor	= "0 100 255 200";
-		HudProgressProfile.borderColorHL = "0 100 255 200";
-		HudProgressProfile.borderColorNA = "0 100 255 200";
 
 		HudWarningFlashProfile.fontColor = "0 100 255 255";
 	}

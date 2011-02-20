@@ -137,6 +137,8 @@ new GuiControlProfile(HudMediumTextProfile : HudDefaultProfile)
 new GuiControlProfile(HudProgressProfile : HudDefaultProfile)
 {
 	border = true;
+	borderColor = "100 100 100 200";
+	fillColor = "200 200 200 200";
 };
 
 
