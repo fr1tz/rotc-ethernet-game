@@ -10,3 +10,4 @@ exec("./sniperrifle.cs");
 exec("./assaultrifle.cs");
 exec("./grenadelauncher.cs");
 exec("./blaster.cs");
+exec("./minigun.cs");

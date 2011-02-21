@@ -1,11 +1,17 @@
 What's new?
 ===========
 
+Prototype 2-dev3
+----------------
+
+- Add Minigun
+
 Prototype 2-dev2
 ----------------
 
 - Breaks backwards compatibility to older versions.
-- Change display of team health balance from numerical to graphical.
+- Replace numerical display of team health balance
+  with graphical one.
 
 Prototype 1.11+dev7
 -------------------
