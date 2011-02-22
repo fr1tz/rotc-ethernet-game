@@ -30,28 +30,20 @@ executeCatScripts();
 function StandardCat::useWeapon(%this, %obj, %nr)
 {
 	%client = %obj.client;
+
  
 	if(%nr == 0)
 	{
-		if(%obj.getMountedImage(0).crosshair $= "blaster") // hack hack ;)
+		if(%obj.currWeapon == 1)
 			%nr = 2;
 		else
 			%nr = 1;
 	}
 
-	if(%nr == -2)
-	{
-		%obj.mountImage(%obj.prevWeaponImage, 0, -1, true);
-	}
-	else if(%nr == -1)
-	{
-		%obj.prevWeaponImage = %obj.getMountedImage(0);
+	%obj.currWeapon = %nr;
 
-		if(%obj.getTeamId() == 1)
-			%obj.mountImage(RedSniperRifleImage, 0, -1, true);
-		else
-			%obj.mountImage(BlueSniperRifleImage, 0, -1, true);
-	}
+	%nr = %client.weapon[%nr];
+
 	if(%nr == 1)
 	{
 		if(%obj.getTeamId() == 1)

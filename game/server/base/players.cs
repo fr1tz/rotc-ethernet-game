@@ -94,6 +94,12 @@ function PlayerData::onAdd(%this,%obj)
 	%obj.isCAT = true;
 	%obj.getTeamObject().numCATs++;
 
+	// Clear HUD menus...
+	if(isObject(%obj.client))
+	{
+		%obj.client.setHudMenuL("*", " ", 1, 0);
+		%obj.client.setHudMenuR("*", " ", 1, 0);
+	}
 
 	// Vehicle timeout
 	%obj.mountVehicle = true;

@@ -89,6 +89,12 @@ function GameConnection::onClientEnterGame(%this)
 		
 	%this.camera.setTransform(pickObserverPoint(%this));
 	%this.camera.setVelocity("0 0 0");
+
+	//
+	// inventory...
+	//
+	%this.weapon[1] = 1;
+	%this.weapon[2] = 2;
 	
 	//
 	// join observer team...

@@ -10,25 +10,27 @@ exec("./etherform.gfx.cs");
 
 function EtherformData::useWeapon(%this, %obj, %nr)
 {
-	if(%nr < 1 || %nr > 5)
-		return;
-
 	%client = %obj.client;
 
-	if(%nr == 1)
-		%client.specialWeapon = $SpecialWeapon::GrenadeLauncher;
-	else if(%nr == 2)
-		%client.specialWeapon = $SpecialWeapon::SniperRifle;
-	else if(%nr == 3)
-		%client.specialWeapon = $SpecialWeapon::AssaultRifle;
-	else if(%nr == 4)
-		%client.specialWeapon = $SpecialWeapon::MachineGun;
-	else if(%nr == 5)
-		%client.specialWeapon = $SpecialWeapon::Chaingun;
-	else if(%nr == 6)
-		%client.specialWeapon = $SpecialWeapon::MissileLauncher;
-		
-	messageClient(%client, 'MsgWeaponUsed', "", %client.specialWeapon);
+	if(%obj.inventoryMode $= "show")
+	{
+		if(%nr < 1 || %nr > 2)
+			return;
+
+		%obj.inventoryMode = "select";
+		%obj.inventoryMode[1] = %nr;
+		%this.displayInventory(%obj);
+	}
+	else if(%obj.inventoryMode $= "select")
+	{
+		if(%nr < 1 || %nr > 4)
+			return;
+
+		%client.weapon[%obj.inventoryMode[1]] = %nr;
+
+		%obj.inventoryMode = "show";
+		%this.displayInventory(%obj);
+	}
 }
 
 function EtherformData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType)
@@ -55,11 +57,51 @@ function EtherformData::onAdd(%this, %obj)
 		%obj.mountImage(RedEtherformLightImage, 3);
 	else
 		%obj.mountImage(BlueEtherformLightImage, 3);
+
+	%obj.inventoryMode = "show";
+	%this.displayInventory(%obj);
 }
 
 function EtherformData::onDamage(%this, %obj, %delta)
 {
 	// don't do anything
+}
+
+//-----------------------------------------------------------------------------
+
+function EtherformData::displayInventory(%this, %obj)
+{
+	%client = %obj.client;
+	if(!isObject(%client))
+		return;
+
+	%weapons[1] = "blaster";
+	%weapons[2] = "rifle";
+	%weapons[3] = "sniper";
+	%weapons[4] = "minigun";
+	%weapons[5] = "grenadelauncher";
+
+	if(%obj.inventoryMode $= "show")
+	{
+		for(%i = 1; %i <= 2; %i++)
+			%icon[%i] = %weapons[%client.weapon[%i]];
+	
+		%client.setHudMenuL("*", " ", 1, 0);
+		%client.setHudMenuL(1, "Weapon #1:\n", 1, 1);
+		%client.setHudMenuL(2, "<bitmap:share/hud/rotc/icon." @ %icon[1] @ ">", 1, 1);
+		%client.setHudMenuL(3, "<sbreak>(Press 1 to change)", 1, 1);
+		
+		%client.setHudMenuL(4, "\n\n\n\n\n\n\n\nWeapon #2:\n", 1, 1);
+		%client.setHudMenuL(5, "<bitmap:share/hud/rotc/icon." @ %icon[2] @ ">", 1, 1);
+		%client.setHudMenuL(6, "<sbreak>(Press 2 to change)", 1, 1);
+	}
+	else if(%obj.inventoryMode $= "select")
+	{
+		%client.setHudMenuL("*", " ", 1, 0);
+		%client.setHudMenuL(0, "Select weapon #" @ %obj.inventoryMode[1] @ ":\n\n", 1, 1);
+		for(%i = 1; %i <= 4; %i++)
+			%client.setHudMenuL(%i, %i @ "<bitmap:share/hud/rotc/icon." @ %weapons[%i] @ "><sbreak>\n", 1, 1);		
+	}
 }
 
 //-----------------------------------------------------------------------------
