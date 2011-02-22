@@ -1,12 +1,14 @@
 What's new?
 ===========
 
-Prototype 2-dev5
+Prototype 2-dev6
 ----------------
 
 - Windows version only.
 - Breaks backwards compatibility to older versions.
 - New etherboarding effects.
+- Deflecting discs should now be easier/possible
+  at higher latencies.
 
 Prototype 2-dev4
 ----------------

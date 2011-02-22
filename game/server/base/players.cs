@@ -93,7 +93,27 @@ function PlayerData::onAdd(%this,%obj)
 	
 	%obj.isCAT = true;
 	%obj.getTeamObject().numCATs++;
-	
+
+
+	// Vehicle timeout
+	%obj.mountVehicle = true;
+
+	//
+	// weapon management...
+	//
+	%obj.specialWeapon = %obj.client ? %obj.client.specialWeapon : 0;
+	if(%obj.getTeamId() == 1)
+	{
+		%obj.mountImage(RedDiscImage, 1, -1, true);
+		%obj.mountImage(RedGrenadeImage, 2, -1, true);
+	}
+	else
+	{
+		%obj.mountImage(BlueDiscImage, 1, -1, true);
+		%obj.mountImage(BlueGrenadeImage, 2, -1, true);
+	}
+	%obj.useWeapon(1);
+
 	//
 	// disc management...
 	//
@@ -105,25 +125,6 @@ function PlayerData::onAdd(%this,%obj)
 	//
 	%obj.setGrenadeAmmo(1);
     %obj.setGrenadeAmmoDt(0.125);
-
-	// Vehicle timeout
-	%obj.mountVehicle = true;
-
-	//
-	// weapon management...
-	//
-	%obj.specialWeapon = %obj.client ? %obj.client.specialWeapon : 0;
-	if(%obj.getTeamId() == 1)
-	{
-		%obj.mountImage(RedDiscImage, 1, -1, %obj.hasDisc());
-		%obj.mountImage(RedGrenadeImage, 2, -1, true);
-	}
-	else
-	{
-		%obj.mountImage(BlueDiscImage, 1, -1, %obj.hasDisc());
-		%obj.mountImage(BlueGrenadeImage, 2, -1, true);
-	}
-	%obj.useWeapon(1);
 
 	// lights...
 	if(%obj.getTeamId() == 1)
@@ -696,7 +697,6 @@ function Player::setDiscs(%this, %numDiscs)
 	%this.numDiscs = %numDiscs;
 
 	%hasDisc = %this.hasDisc();
-	%this.setImageLoaded(1, %hasDisc);
 	%this.setImageAmmo(1, %hasDisc);
 
 	if(isObject(%this.client))
