@@ -235,7 +235,6 @@ function GameConnection::spawnPlayer(%this)
 	// player setup...
 	%pos = getRandomHorizontalPos(%spawnSphere.position, %spawnSphere.radius);
 	%obj.setTransform(%pos);
-	%obj.useWeapon(1);
 	%obj.setCurrTagged(0);
 	%obj.setCurrTaggedPos("0 0 0");
 
