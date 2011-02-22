@@ -104,14 +104,14 @@ datablock ShapeBaseImageData(RedBlasterImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/blaster/image.red.dts";
+	shapeFile = "share/shapes/rotc/weapons/blaster/image.old.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
 	mountPoint  = 0;
 	offset      = "0 0 0";
 	rotation    = "0 0 0";
-	eyeOffset   = "0.275 -0.25 -0.2";
+	eyeOffset	= "0.3 -0.34 -0.5";
 	eyeRotation = "0 0 0";
 
 	// Adjust firing vector to eye's LOS point?
@@ -208,7 +208,7 @@ datablock ShapeBaseImageData(RedBlasterImage)
 
 datablock ShapeBaseImageData(BlueBlasterImage : RedBlasterImage)
 {
-	shapeFile = "share/shapes/rotc/weapons/blaster/image.blue.dts";
+	shapeFile = "share/shapes/rotc/weapons/blaster/image.old.blue.dts";
 	projectile = BlueBlasterProjectile;
 	stateFireProjectile[3] = BlueBlasterProjectile;
     stateEmitter[3] = BlueBlasterFireEmitter;

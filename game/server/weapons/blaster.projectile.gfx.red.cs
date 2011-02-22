@@ -121,11 +121,11 @@ datablock MultiNodeLaserBeamData(RedBlasterProjectileLaserTrailMissed)
 	nodeMoveSpeed[1]    = -0.002;
 	nodeMoveSpeedAdd[1] =  0.004;
 	// node z movement...
-	nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
+	nodeMoveMode[2]     = $NodeMoveMode::None;
 	nodeMoveSpeed[2]    = 1.0;
 	nodeMoveSpeedAdd[2] = -2.0;
     
-	//nodeDistance = 5;
+	nodeDistance = 5;
 };
 
 datablock MultiNodeLaserBeamData(RedBlasterProjectileLaserTrailHit)
@@ -160,11 +160,11 @@ datablock MultiNodeLaserBeamData(RedBlasterProjectileLaserTrailHit)
 	nodeMoveSpeed[1]    = -0.002;
 	nodeMoveSpeedAdd[1] =  0.004;
 	// node z movement...
-	nodeMoveMode[2]     = $NodeMoveMode::DynamicSpeed;
+	nodeMoveMode[2]     = $NodeMoveMode::None;
 	nodeMoveSpeed[2]    = 1.0;
 	nodeMoveSpeedAdd[2] = -2.0;
     
-	//nodeDistance = 5;
+	nodeDistance = 5;
 };
 
 //-----------------------------------------------------------------------------
