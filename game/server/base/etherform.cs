@@ -23,7 +23,7 @@ function EtherformData::useWeapon(%this, %obj, %nr)
 	}
 	else if(%obj.inventoryMode $= "select")
 	{
-		if(%nr < 1 || %nr > 4)
+		if(%nr < 1 || %nr > 5)
 			return;
 
 		%client.weapon[%obj.inventoryMode[1]] = %nr;
@@ -99,7 +99,7 @@ function EtherformData::displayInventory(%this, %obj)
 	{
 		%client.setHudMenuL("*", " ", 1, 0);
 		%client.setHudMenuL(0, "Select weapon #" @ %obj.inventoryMode[1] @ ":\n\n", 1, 1);
-		for(%i = 1; %i <= 4; %i++)
+		for(%i = 1; %i <= 5; %i++)
 			%client.setHudMenuL(%i, %i @ "<bitmap:share/hud/rotc/icon." @ %weapons[%i] @ "><sbreak>\n", 1, 1);		
 	}
 }

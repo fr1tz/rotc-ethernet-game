@@ -72,79 +72,12 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 		else
 			%obj.mountImage(BlueMinigunImage, 0, -1, true);
 	}
-	else if(false)
+	else if(%nr == 5)
 	{
 		if(%obj.getTeamId() == 1)
 			%obj.mountImage(RedGrenadeLauncherImage, 0, -1, true);
 		else
 			%obj.mountImage(BlueGrenadeLauncherImage, 0, -1, true);
-	}
-	else if(false)
-	{
-		// special weapon!
-		if(%obj.specialWeapon == $SpecialWeapon::AssaultRifle)
-		{
-			if(%obj.getTeamId() == 1)
-				%obj.mountImage(RedAssaultRifleImage, 0, -1, true);
-			else
-				%obj.mountImage(BlueAssaultRifleImage, 0, -1, true);
-    
-            %validWeapon = true;
-		}
-		else if(%obj.specialWeapon == $SpecialWeapon::SniperRifle)
-		{
-			if(%obj.getTeamId() == 1)
-				%obj.mountImage(RedSniperRifleImage, 0, -1, true);
-			else
-				%obj.mountImage(BlueSniperRifleImage, 0, -1, true);
-    
-            %validWeapon = true;
-		}
-		else if(%obj.specialWeapon == $SpecialWeapon::MissileLauncher)
-		{
-			if(%obj.getTeamId() == 1)
-				%obj.mountImage(RedMissileLauncherImage, 0, -1, true);
-			else
-				%obj.mountImage(BlueMissileLauncherImage, 0, -1, true);
-    
-            %validWeapon = true;
-		}
-		else if(%obj.specialWeapon == $SpecialWeapon::Chaingun)
-		{
-			if(%obj.getTeamId() == 1)
-				%obj.mountImage(RedChaingunImage, 0, -1, true);
-			else
-				%obj.mountImage(BlueChaingunImage, 0, -1, true);
-    
-            %validWeapon = true;
-		}
-		else if(%obj.specialWeapon == $SpecialWeapon::GrenadeLauncher)
-		{
-			if(%obj.getTeamId() == 1)
-				%obj.mountImage(RedGrenadeLauncherImage, 0, -1, true);
-			else
-				%obj.mountImage(BlueGrenadeLauncherImage, 0, -1, true);
-    
-            %validWeapon = true;
-		}
-		else if(%obj.specialWeapon == $SpecialWeapon::MachineGun)
-		{
-			if(%obj.getTeamId() == 1)
-				%obj.mountImage(RedMachineGunImage, 0, -1, true);
-			else
-				%obj.mountImage(BlueMachineGunImage, 0, -1, true);
-		
-			%obj.setImageAmmo(0, true);
-    
-            %validWeapon = true;
-		}
-	}
-	else if(false) //%nr == 4)
-	{
-		if(%obj.getTeamId() == 1)
-			%obj.mountImage(RedStilettoImage, 0, -1, true);
-		else
-			%obj.mountImage(BlueStilettoImage, 0, -1, true);
 	}
 }
 
