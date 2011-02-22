@@ -167,8 +167,11 @@ datablock PlayerData(RedStandardCat)
 	footPuffNumParts = 10;
 	footPuffRadius = 0.25;
 
-	// slide emitter
-	slideParticleEmitter = RedSlideEmitter;
+	// slide emitters
+	//slideContactParticleFootEmitter = RedSlideEmitter;
+	slideContactParticleTrailEmitter = CatSlideContactTrailEmitter;
+	slideParticleFootEmitter = RedCatSlideFootEmitter;
+	//slideParticleTrailEmitter = BlueSlideEmitter;
 	
 	// damage info eyecandy...
 	damageBufferParticleEmitter = RedCatDamageBufferEmitter;
@@ -241,7 +244,7 @@ datablock PlayerData(BlueStandardCat : RedStandardCat)
     shapeFxTexture[1] = "share/textures/rotc/heat.blue.png";
 	debrisShapeName = "share/shapes/rotc/players/standardcat/debris.blue.dts";
 	decalData = BlueStandardCatFootprint;
-	slideParticleEmitter = BlueSlideEmitter;
+	slideParticleFootEmitter = BlueCatSlideFootEmitter;
 	damageBufferParticleEmitter = BlueCatDamageBufferEmitter;
 	repairParticleEmitter = BlueCatRepairEmitter;
 	bufferRepairParticleEmitter = BlueCatBufferRepairEmitter;

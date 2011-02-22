@@ -17,14 +17,14 @@ datablock AudioProfile(CatSpawnSound)
 
 datablock AudioProfile(PlayerSlideSound)
 {
-	filename	 = "share/shapes/rotc/players/standardcat/slide.wav";
+	filename	 = "share/sounds/rotc/slide2.wav";
 	description = AudioCloseLooping3D;
 	preload = true;
 };
 
 datablock AudioProfile(PlayerSlideContactSound)
 {
-	filename	 = "share/shapes/rotc/players/standardcat/slidecontact.wav";
+	filename	 = "share/sounds/rotc/slide1.wav";
 	description = AudioCloseLooping3D;
 	preload = true;
 };
