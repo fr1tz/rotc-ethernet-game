@@ -95,9 +95,10 @@ function ShapeBase::useWeapon(%this, %nr)
 
 //-----------------------------------------------------------------------------
 
-function ShapeBase::checkTagged(%this, %tagger)
+function ShapeBase::checkTaggedThread(%this)
 {
-	%this.checkTaggedThread = %this.schedule(500,"checkTagged");
+	cancel(%this.checkTaggedThread);
+	%this.checkTaggedThread = %this.schedule(500,"checkTaggedThread");
 
 	%pos = %this.getPosition();
 	%sky = nameToID("Sky");
@@ -229,8 +230,9 @@ function ShapeBaseData::onAdd(%this,%obj)
 	%obj.setDamageBufferDischargeRate(%this.damageBufferDischargeRate);
 	%obj.setEnergyRechargeRate(%this.energyRechargeRate);
 	%obj.setRepairRate(0);
-	
-	%obj.checkTaggedThread = %obj.schedule(500,"checkTagged");
+
+	// Start threads...
+	%obj.checkTaggedThread();
 }
 
 // *** callback function: called by engine
@@ -238,7 +240,6 @@ function ShapeBaseData::onRemove(%this, %obj)
 {
 	%obj.beingRemoved = true;
 
-	cancel(%obj.checkTaggedThread);
 	cancel(%obj.damageSchedule);
 	
 	// relieve obj from simple control if needed...
