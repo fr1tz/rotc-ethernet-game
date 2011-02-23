@@ -42,7 +42,22 @@ datablock AudioProfile(GrenadeProjectileSound)
 
 datablock AudioProfile(GrenadeChargeSound)
 {
-	filename = "share/sounds/rotc/charge3.wav";
+	filename = "share/sounds/rotc/charge4.wav";
 	description = AudioCloseLooping3D;
 	preload = true;
 };
+
+datablock AudioProfile(GrenadeOverchargeSound)
+{
+	filename = "share/sounds/rotc/charge5.wav";
+	description = AudioDefaultLooping3d;
+	preload = true;
+};
+
+datablock AudioProfile(GrenadeOverchargeExplosionSound)
+{
+	filename = "share/sounds/rotc/explosion10.wav";
+	description = AudioFar3D;
+	preload = true;
+};
+

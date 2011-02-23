@@ -58,8 +58,8 @@ $PlayerDeathAnim::ExplosionBlowBack = 11;
 // player shape fx slots...
 //
 
-$PlayerShapeFxSlot::Energy = 0;
-$PlayerShapeFxSlot::Heat   = 1;
+$PlayerShapeFxSlot::Charge = 0;
+$PlayerShapeFxSlot::Energy = 1;
 $PlayerShapeFxSlot::NoDisc = 2;
 
 //-----------------------------------------------------------------------------
@@ -275,7 +275,7 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
     %fadeValue = %energyScale;
     %fadeDelta = -1.5;
     %obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 3);
-    %obj.shapeFxSetBalloon($PlayerShapeFxSlot::Energy, 1.05);
+    %obj.shapeFxSetBalloon($PlayerShapeFxSlot::Energy, 1.05, 0);
     %obj.shapeFxSetFade($PlayerShapeFxSlot::Energy, %fadeValue, %fadeDelta);
     %obj.shapeFxSetActive($PlayerShapeFxSlot::Energy, true, false);
 
@@ -560,7 +560,7 @@ function Player::addAttackingDisc(%this, %disc)
     %this.attackingDiscs += 1;
     
     %this.shapeFxSetTexture($PlayerShapeFxSlot::NoDisc, 2);
-    %this.shapeFxSetBalloon($PlayerShapeFxSlot::NoDisc, 1.10);
+    %this.shapeFxSetBalloon($PlayerShapeFxSlot::NoDisc, 1.10, 0);
     %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true, true);
 }
 

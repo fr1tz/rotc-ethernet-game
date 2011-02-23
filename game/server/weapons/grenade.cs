@@ -10,6 +10,7 @@
 
 exec("./grenade.sfx.cs");
 exec("./grenade.projectile.cs");
+exec("./grenade.overcharge.gfx.cs");
 
 //--------------------------------------------------------------------------
 // weapon image which does all the work...
@@ -62,51 +63,56 @@ datablock ShapeBaseImageData(RedGrenadeImage)
 		stateScript[2]                  = "onReady";
 
 		// charge...
-		stateName[4]                    = "Charge";
-		stateTransitionOnTriggerUp[4]   = "GrenadeAttackStart";
+		stateName[3]                    = "Charge";
+		stateTransitionOnTriggerUp[3]   = "Throw";
+		stateTransitionOnTimeout[3]     = "Overcharge";
+		stateWaitForTimeout[3]          = false;
+		stateTimeoutValue[3]            = 1.0;
+		stateCharge[3]                  = true;
+		stateSound[3]                   = GrenadeChargeSound;
+   		stateAllowImageChange[3]        = false;
+		stateScript[3]                  = "onCharge";
+
+		// overcharge...
+		stateName[4]                    = "Overcharge";
+		stateTransitionOnTriggerUp[4]   = "Explode";
 		stateCharge[4]                  = true;
-		stateSound[4]                   = GrenadeChargeSound;
+		stateSound[4]                   = GrenadeOverchargeSound;
    		stateAllowImageChange[4]        = false;
-		stateScript[4]                  = "onCharge";
 
-        // grenade attack...
-       	stateName[7]                    = "GrenadeAttackStart";
-       	stateTransitionOnTimeout[7]     = "GrenadeAttackFire";
-   		stateTimeoutValue[7]            = 0.10;
-   		stateAllowImageChange[7]        = false;
-   		stateSequence[7]                = "AllVisible";
-        stateScript[7]                  = "grenadeAttackStart";
-        stateFire[7]                    = true;
+        	// throw grenade...
+       	stateName[5]                    = "Throw";
+       	stateTransitionOnTimeout[5]     = "NoAmmo";
+   		stateTimeoutValue[5]            = 0.0;
+   		stateAllowImageChange[5]        = false;
+		stateFire[5]                    = true;
+		stateSound[5]                   = GrenadeThrowSound;
+		stateScript[5]                  = "throw";
 
-   		stateName[8]                    = "GrenadeAttackFire";
-   		stateTransitionOnTimeout[8]     = "AfterThrow";
-   		stateFire[8]                    = true;
-   		stateTimeoutValue[8]            = 0.25;
-   		stateAllowImageChange[8]        = false;
-        stateSequence[8]                = "Invisible";
-        stateScript[8]                  = "grenadeAttackFire";
+		// overcharge explosion...
+   		stateName[6]                    = "Explode";
+   		stateTransitionOnTimeout[6]     = "NoAmmo";
+   		stateTimeoutValue[6]            = 0.0;
+   		stateAllowImageChange[6]        = false;
+		stateScript[6]                  = "explode";
 
-		stateName[14]                    = "AfterThrow";
-		stateTransitionOnTimeout[14]     = "NoAmmo";
-		stateTimeoutValue[14]            = 0.0;
-		stateAllowImageChange[14]        = false;
-		stateSequence[14]                = "Invisible";
-		stateScript[14]                  = "afterThrow";
+		// no ammo...
+		stateName[7]                    = "NoAmmo";
+		stateTransitionOnAmmo[7]        = "Ready";
+		stateTransitionOnTriggerDown[7] = "DryFire";
+		stateSequence[7]                = "Invisible";
+		stateScript[7]                  = "onNoAmmo";
 
-		stateName[15]                    = "NoAmmo";
-		stateTransitionOnAmmo[15]        = "Ready";
-		stateTransitionOnTriggerDown[15] = "DryFire";
-		stateSequence[15]                = "Invisible";
-		stateScript[15]                  = "onNoAmmo";
+		// dry fire...
+		stateName[8]                    = "DryFire";
+		stateTransitionOnTriggerUp[8]   = "NoAmmo";
+		stateSound[8]                   = WeaponEmptySound;
+		stateScript[8]                  = "onDryFire";
 
-		stateName[16]                    = "DryFire";
-		stateTransitionOnTriggerUp[16]   = "NoAmmo";
-		stateSound[16]                   = WeaponEmptySound;
-		stateScript[16]                  = "onDryFire";
-
-		stateName[17]                    = "Disabled";
-		stateTransitionOnLoaded[17]      = "Ready";
-		stateSequence[17]                = "Invisible";
+		// disabled...
+		stateName[9]                    = "Disabled";
+		stateTransitionOnLoaded[9]      = "Ready";
+		stateSequence[9]                = "Invisible";
 	//
 	// ...end of image states
 	//-------------------------------------------------
@@ -124,72 +130,67 @@ function RedGrenadeImage::onUnmount(%this, %obj, %slot)
 
 function RedGrenadeImage::onReady(%this, %obj, %slot)
 {
-//    %obj.setImageLoaded(0, true);
-//    %obj.setImageLoaded(1, true);
 	%obj.fullForceGrenade = false;
 	%obj.noGrenade = false;
 }
 
 function RedGrenadeImage::onCharge(%this, %obj, %slot)
 {
-//    %obj.setImageLoaded(0, false);
-//    %obj.setImageLoaded(1, false);
+	%obj.shapeFxSetTexture($PlayerShapeFxSlot::Charge, 0);
+	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Charge, 1.025, 0);	
+	%obj.shapeFxSetFade($PlayerShapeFxSlot::Charge, 0, 1);
+	%obj.shapeFxSetActive($PlayerShapeFxSlot::Charge, true, true);
 }
 
-function RedGrenadeImage::grenadeAttackStart(%this, %obj, %slot)
+function RedGrenadeImage::throw(%this, %obj, %slot)
 {
 	if(%obj.noGrenade)
 		return;
 
 	%obj.setArmThread("look");
-    %obj.playThread(0, "throwInterceptor");
-	%obj.playAudio(0, GrenadeThrowSound);
-}
-
-function RedGrenadeImage::grenadeAttackFire(%this, %obj, %slot)
-{
-	if(%obj.noGrenade)
-		return;
+	%obj.playThread(0, "throwInterceptor");
+	%obj.shapeFxSetActive($PlayerShapeFxSlot::Charge, false, false);
 
 	%projectile = %this.projectile;
 
 	// drain some energy...
 	%obj.setEnergyLevel( %obj.getEnergyLevel() - %projectile.energyDrain );
 
-    // %throwForce is based on how long the trigger has been hold down...
-    %throwCoefficient = 0;
-    if(%obj.fullForceGrenade)
-    {
-        %throwCoefficient = 1;
-    }
-    else
-    {
-        %throwCoefficient = %obj.getImageCharge(%slot);
-        if( %throwCoefficient > 1 )
-            %throwCoefficient = 1;
-    }
-    //%throwCoefficient = %throwCoefficient/2;
-    %throwForce = %projectile.muzzleVelocity * %throwCoefficient;
+	// %throwForce is based on how long the trigger has been hold down...
+	%throwCoefficient = 0;
+	if(%obj.fullForceGrenade)
+	{
+		%throwCoefficient = 1;
+	}
+	else
+	{
+		%throwCoefficient = %obj.getImageCharge(%slot);
+		if( %throwCoefficient > 1 )
+	            %throwCoefficient = 1;
+	}
 
-    %vec = %obj.getMuzzleVector(%slot);
-    %vec = vectorScale(%vec, %throwForce);
+	//%throwCoefficient = %throwCoefficient/2;
+	%throwForce = %projectile.muzzleVelocity * %throwCoefficient;
 
-    // add a vertical component to give the grenade a better arc
-    %verticalForce = %throwForce / 8;
-    %dot = vectorDot("0 0 1",%eye);
-    if (%dot < 0) %dot = -%dot;
-    %vec = vectorAdd(%vec,VectorScale("0 0 " @ %verticalForce,1 - %dot));
+	%vec = %obj.getMuzzleVector(%slot);
+	%vec = vectorScale(%vec, %throwForce);
 
-    // add velocity inherited from player...
-    %vec = vectorAdd( %vec, VectorScale(%obj.getVelocity(), %projectile.velInheritFactor));
+	// add a vertical component to give the grenade a better arc
+	%verticalForce = %throwForce / 8;
+	%dot = vectorDot("0 0 1",%eye);
+	if (%dot < 0) %dot = -%dot;
+	%vec = vectorAdd(%vec,VectorScale("0 0 " @ %verticalForce,1 - %dot));
 
-    // get initial position...
-    %pos = %obj.getMuzzlePoint(%slot);
+	// add velocity inherited from player...
+	%vec = vectorAdd( %vec, VectorScale(%obj.getVelocity(), %projectile.velInheritFactor));
+
+	// get initial position...
+	%pos = %obj.getMuzzlePoint(%slot);
 
 	// create the grenade...
 	%grenade = new (Projectile)() {
 		dataBlock        = %projectile;
-        teamId           = %obj.teamId;
+		teamId           = %obj.teamId;
 		initialVelocity  = %vec;
 		initialPosition  = %pos;
 		sourceObject     = %obj;
@@ -198,32 +199,77 @@ function RedGrenadeImage::grenadeAttackFire(%this, %obj, %slot)
 	};
 	MissionCleanup.add(%grenade);
 
-    //%disc.schedule(2000,"explode");
-
 	%obj.decGrenadeAmmo(1.0);
 
 	return %grenade;
 }
 
-function RedGrenadeImage::afterThrow(%this, %obj, %slot)
+function RedGrenadeImage::explode(%this, %obj, %slot)
 {
-	// ensure image is marked as loaded...
-	%obj.setImageLoaded(%slot, true);
+	if(%obj.noGrenade)
+		return;
 
-//	%obj.setImageLoaded(0, true);
-//	%obj.setImageLoaded(1, true);
+	%pos = %obj.getWorldBoxCenter();
+	%radius = 10;
+
+	// source explosion effects...
+	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Charge, 1.025, 100);
+	%obj.shapeFxSetFade($PlayerShapeFxSlot::Charge, 1, -1/0.15);
+	createExplosionOnClients(GrenadeOverchargeSourceExplosion, %pos, "0 0 1");
+
+	%hitEnemy = false;
+
+	InitContainerRadiusSearch(%pos, %radius, $TypeMasks::PlayerObjectType);
+	%halfRadius = %radius / 2;
+	while ((%targetObject = containerSearchNext()) != 0)
+	{
+		if(%targetObject.getTeamId() == %obj.getTeamId())
+			continue;
+
+		// Calculate how much exposure the current object has to
+		// the effect.  The object types listed are objects
+		// that will block an explosion. 
+		%coverage = calcExplosionCoverage(%pos, %targetObject,
+			$TypeMasks::InteriorObjectType |  $TypeMasks::TerrainObjectType |
+			$TypeMasks::ForceFieldObjectType | $TypeMasks::VehicleObjectType |
+			$TypeMasks::TurretObjectType);
+			
+		if (%coverage == 0)
+			continue;
+
+		%hitEnemy = true;
+
+		%vec = %targetObject.getVelocity();
+		%vec = VectorScale(%vec, -1);
+		%targetObject.setVelocity(%vec);
+
+		%speed = VectorLen(%vec);
+		//error("speed:" SPC %speed);
+
+		%exp = GrenadeOverchargeExplosion5;
+		if(%speed < 10)
+			%exp = GrenadeOverchargeExplosion1;	
+		else if(%speed < 25)
+			%exp = GrenadeOverchargeExplosion2;			
+		else if(%speed < 50)
+			%exp = GrenadeOverchargeExplosion3;			
+		else if(%speed < 70)
+			%exp = GrenadeOverchargeExplosion4;		
+		createExplosionOnClients(%exp, %targetObject.getWorldBoxCenter(), "0 0 1");
+	}
+
+	if(!%hitEnemy)
+		%obj.decGrenadeAmmo(1.0);
 }
 
 function RedGrenadeImage::onDryFire(%this, %obj, %slot)
 {
-//    %obj.setImageLoaded(0, false);
-//    %obj.setImageLoaded(1, false);
+
 }
 
 function RedGrenadeImage::onNoAmmo(%this, %obj, %slot)
 {
-//    %obj.setImageLoaded(0, true);
-//    %obj.setImageLoaded(1, true);
+
 }
 
 //------------------------------------------------------------------------------
@@ -253,19 +299,14 @@ function BlueGrenadeImage::onCharge(%this, %obj, %slot)
     RedGrenadeImage::onCharge(%this, %obj, %slot);
 }
 
-function BlueGrenadeImage::grenadeAttackStart(%this, %obj, %slot)
+function BlueGrenadeImage::throw(%this, %obj, %slot)
 {
-	RedGrenadeImage::grenadeAttackStart(%this,%obj,%slot);
+	RedGrenadeImage::throw(%this,%obj,%slot);
 }
 
-function BlueGrenadeImage::grenadeAttackFire(%this, %obj, %slot)
+function BlueGrenadeImage::explode(%this, %obj, %slot)
 {
-	RedGrenadeImage::grenadeAttackFire(%this, %obj, %slot);
-}
-
-function BlueGrenadeImage::afterThrow(%this, %obj, %slot)
-{
-	RedGrenadeImage::afterThrow(%this, %obj, %slot);
+	RedGrenadeImage::explode(%this, %obj, %slot);
 }
 
 function BlueGrenadeImage::onDryFire(%this, %obj, %slot)

@@ -292,3 +292,5 @@ datablock ExplosionData(RedGrenadeExplosion)
 	lightStartColor = "1.0 0.0 0.0";
 	lightEndColor = "0.0 0.0 0.0";
 };
+
+

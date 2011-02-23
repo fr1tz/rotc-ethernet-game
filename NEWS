@@ -1,33 +1,21 @@
 What's new?
 ===========
 
-Prototype 2-dev8
+Prototype 2-dev9
 ----------------
 
-- Windows version only.
+- Windows version only!
+- Breaks backwards compatibility to older versions!
 - Limit CATs to two weapons.
 - Re-introduce grenade launcher to ROTC: Ethernet arenas.
-
-Prototype 2-dev6
-----------------
-
-- Windows version only.
-- Breaks backwards compatibility to older versions.
+- Grenades can be overcharged to create a field that
+  inverses the velocities of enemy CATs in it.
 - New etherboarding effects.
 - Deflecting discs should now be easier/possible
   at higher latencies.
-
-Prototype 2-dev4
-----------------
-
 - Add Minigun
 - Change Trident shape to original version since
   the minigun uses the new one.
-
-Prototype 2-dev2
-----------------
-
-- Breaks backwards compatibility to older versions.
 - Replace numerical display of team health balance
   with graphical one.
 
