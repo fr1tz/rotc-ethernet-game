@@ -15,7 +15,8 @@
 
 function serverCmdPlayerAction(%client, %nr, %val)
 {	
-	if(%client.player == 0)
+	%player = %client.player;
+	if(%player == 0)
 		return false;
 
 	if(%nr == 0 && %val)
@@ -42,6 +43,10 @@ function serverCmdPlayerAction(%client, %nr, %val)
 			%client.getControlObject().useWeapon(-1);
 		else
 			%client.getControlObject().useWeapon(-2);
+	}
+	else if(%nr == 17 && %val)
+	{		
+		deployRepel(%player);
 	}
 	else if(%nr == 39 && %val)
 	{		

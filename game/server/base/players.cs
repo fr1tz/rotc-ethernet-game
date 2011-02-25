@@ -58,7 +58,7 @@ $PlayerDeathAnim::ExplosionBlowBack = 11;
 // player shape fx slots...
 //
 
-$PlayerShapeFxSlot::Charge = 0;
+$PlayerShapeFxSlot::Repel  = 0;
 $PlayerShapeFxSlot::Energy = 1;
 $PlayerShapeFxSlot::NoDisc = 2;
 

@@ -3,12 +3,10 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
-exec("./weapons.cs");
-exec("./disc.cs");
-exec("./grenade.cs");
-exec("./sniperrifle.cs");
-exec("./assaultrifle.cs");
-exec("./grenadelauncher.cs");
-exec("./blaster.cs");
-exec("./minigun.cs");
-exec("./repel.cs");
+datablock AudioProfile(RepelExplosionSound)
+{
+	filename = "share/sounds/rotc/explosion10.wav";
+	description = AudioFar3D;
+	preload = true;
+};
+

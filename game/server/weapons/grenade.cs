@@ -10,7 +10,6 @@
 
 exec("./grenade.sfx.cs");
 exec("./grenade.projectile.cs");
-exec("./grenade.overcharge.gfx.cs");
 
 //--------------------------------------------------------------------------
 // weapon image which does all the work...
@@ -65,20 +64,10 @@ datablock ShapeBaseImageData(RedGrenadeImage)
 		// charge...
 		stateName[3]                    = "Charge";
 		stateTransitionOnTriggerUp[3]   = "Throw";
-		stateTransitionOnTimeout[3]     = "Overcharge";
-		stateWaitForTimeout[3]          = false;
-		stateTimeoutValue[3]            = 1.0;
 		stateCharge[3]                  = true;
 		stateSound[3]                   = GrenadeChargeSound;
    		stateAllowImageChange[3]        = false;
 		stateScript[3]                  = "onCharge";
-
-		// overcharge...
-		stateName[4]                    = "Overcharge";
-		stateTransitionOnTriggerUp[4]   = "Explode";
-		stateCharge[4]                  = true;
-		stateSound[4]                   = GrenadeOverchargeSound;
-   		stateAllowImageChange[4]        = false;
 
         	// throw grenade...
        	stateName[5]                    = "Throw";
@@ -204,64 +193,6 @@ function RedGrenadeImage::throw(%this, %obj, %slot)
 	return %grenade;
 }
 
-function RedGrenadeImage::explode(%this, %obj, %slot)
-{
-	if(%obj.noGrenade)
-		return;
-
-	%pos = %obj.getWorldBoxCenter();
-	%radius = 10;
-
-	// source explosion effects...
-	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Charge, 1.025, 100);
-	%obj.shapeFxSetFade($PlayerShapeFxSlot::Charge, 1, -1/0.15);
-	createExplosionOnClients(GrenadeOverchargeSourceExplosion, %pos, "0 0 1");
-
-	%hitEnemy = false;
-
-	InitContainerRadiusSearch(%pos, %radius, $TypeMasks::PlayerObjectType);
-	%halfRadius = %radius / 2;
-	while ((%targetObject = containerSearchNext()) != 0)
-	{
-		if(%targetObject.getTeamId() == %obj.getTeamId())
-			continue;
-
-		// Calculate how much exposure the current object has to
-		// the effect.  The object types listed are objects
-		// that will block an explosion. 
-		%coverage = calcExplosionCoverage(%pos, %targetObject,
-			$TypeMasks::InteriorObjectType |  $TypeMasks::TerrainObjectType |
-			$TypeMasks::ForceFieldObjectType | $TypeMasks::VehicleObjectType |
-			$TypeMasks::TurretObjectType);
-			
-		if (%coverage == 0)
-			continue;
-
-		%hitEnemy = true;
-
-		%vec = %targetObject.getVelocity();
-		%vec = VectorScale(%vec, -1);
-		%targetObject.setVelocity(%vec);
-
-		%speed = VectorLen(%vec);
-		//error("speed:" SPC %speed);
-
-		%exp = GrenadeOverchargeExplosion5;
-		if(%speed < 10)
-			%exp = GrenadeOverchargeExplosion1;	
-		else if(%speed < 25)
-			%exp = GrenadeOverchargeExplosion2;			
-		else if(%speed < 50)
-			%exp = GrenadeOverchargeExplosion3;			
-		else if(%speed < 70)
-			%exp = GrenadeOverchargeExplosion4;		
-		createExplosionOnClients(%exp, %targetObject.getWorldBoxCenter(), "0 0 1");
-	}
-
-	if(!%hitEnemy)
-		%obj.decGrenadeAmmo(1.0);
-}
-
 function RedGrenadeImage::onDryFire(%this, %obj, %slot)
 {
 
@@ -302,11 +233,6 @@ function BlueGrenadeImage::onCharge(%this, %obj, %slot)
 function BlueGrenadeImage::throw(%this, %obj, %slot)
 {
 	RedGrenadeImage::throw(%this,%obj,%slot);
-}
-
-function BlueGrenadeImage::explode(%this, %obj, %slot)
-{
-	RedGrenadeImage::explode(%this, %obj, %slot);
 }
 
 function BlueGrenadeImage::onDryFire(%this, %obj, %slot)
