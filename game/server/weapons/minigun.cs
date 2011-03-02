@@ -167,7 +167,7 @@ datablock ShapeBaseImageData(RedMinigunImage)
 		stateTransitionOnTimeout[4]      = "Fire";
 		stateTransitionOnTriggerUp[4]    = "Cooldown";
 		stateTransitionOnNoAmmo[4]       = "Cooldown";
-		stateTimeoutValue[4]             = 0.1;
+		stateTimeoutValue[4]             = 0.075;
 		stateFire[4]                     = true;
 		stateAllowImageChange[4]         = false;
 		stateEjectShell[4]               = true;

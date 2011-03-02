@@ -46,7 +46,7 @@ datablock ProjectileData(RedMinigunProjectile)
 
 	//particleEmitter	  = RedMinigunProjectileParticleEmitter;
 
-	muzzleVelocity   = 600;
+	muzzleVelocity   = 400;
 	velInheritFactor = 1.0;
 
 	isBallistic = false;
