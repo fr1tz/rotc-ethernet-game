@@ -9,8 +9,8 @@ new GuiControl(MissionWindowForEditing) {
    Profile = "GuiDefaultProfile";
    HorizSizing = "right";
    VertSizing = "bottom";
-   Position = "0 0";
-   Extent = "800 600";
+   position = "0 0";
+   Extent = "640 480";
    MinExtent = "8 8";
    canSave = "1";
    Visible = "1";
@@ -21,7 +21,7 @@ new GuiControl(MissionWindowForEditing) {
       Profile = "GuiWindowProfile";
       HorizSizing = "right";
       VertSizing = "bottom";
-      Position = "10 10";
+      position = "10 10";
       Extent = "517 450";
       MinExtent = "517 300";
       canSave = "1";
@@ -42,7 +42,7 @@ new GuiControl(MissionWindowForEditing) {
          Profile = "GuiScrollProfile";
          HorizSizing = "width";
          VertSizing = "height";
-         Position = "9 61";
+         position = "9 61";
          Extent = "497 201";
          MinExtent = "8 2";
          canSave = "1";
@@ -59,8 +59,8 @@ new GuiControl(MissionWindowForEditing) {
             Profile = "GuiMLTextProfile";
             HorizSizing = "width";
             VertSizing = "height";
-            Position = "2 2";
-            Extent = "475 13";
+            position = "2 2";
+            Extent = "475 14";
             MinExtent = "8 2";
             canSave = "1";
             Visible = "1";
@@ -75,7 +75,7 @@ new GuiControl(MissionWindowForEditing) {
          Profile = "GuiScrollProfile";
          HorizSizing = "width";
          VertSizing = "top";
-         Position = "9 269";
+         position = "9 269";
          Extent = "497 172";
          MinExtent = "8 8";
          canSave = "1";
@@ -92,7 +92,7 @@ new GuiControl(MissionWindowForEditing) {
             Profile = "GuiDefaultProfile";
             HorizSizing = "width";
             VertSizing = "bottom";
-            Position = "2 2";
+            position = "2 2";
             Extent = "477 14";
             MinExtent = "355 14";
             canSave = "1";
@@ -110,7 +110,7 @@ new GuiControl(MissionWindowForEditing) {
          Profile = "GuiDefaultProfile";
          HorizSizing = "width";
          VertSizing = "bottom";
-         Position = "9 29";
+         position = "9 29";
          Extent = "496 23";
          MinExtent = "8 2";
          canSave = "1";
@@ -122,7 +122,7 @@ new GuiControl(MissionWindowForEditing) {
             Profile = "GuiButtonProfile";
             HorizSizing = "left";
             VertSizing = "top";
-            Position = "380 0";
+            position = "380 0";
             Extent = "116 23";
             MinExtent = "20 15";
             canSave = "1";
@@ -138,7 +138,7 @@ new GuiControl(MissionWindowForEditing) {
             Profile = "GuiProgressProfile";
             HorizSizing = "width";
             VertSizing = "top";
-            Position = "0 0";
+            position = "0 0";
             Extent = "370 23";
             MinExtent = "8 8";
             canSave = "1";
@@ -151,7 +151,7 @@ new GuiControl(MissionWindowForEditing) {
                Profile = "GuiProgressTextProfile";
                HorizSizing = "relative";
                VertSizing = "bottom";
-               Position = "0 0";
+               position = "0 0";
                Extent = "372 23";
                MinExtent = "8 8";
                canSave = "1";
@@ -166,7 +166,7 @@ new GuiControl(MissionWindowForEditing) {
          Profile = "GuiDefaultProfile";
          HorizSizing = "width";
          VertSizing = "bottom";
-         Position = "9 29";
+         position = "9 29";
          Extent = "496 23";
          MinExtent = "8 2";
          canSave = "1";
@@ -178,8 +178,8 @@ new GuiControl(MissionWindowForEditing) {
             Profile = "GuiButtonProfile";
             HorizSizing = "right";
             VertSizing = "bottom";
-            Position = "253 0";
-            Extent = "117 23";
+            position = "300 0";
+            Extent = "95 23";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -194,8 +194,8 @@ new GuiControl(MissionWindowForEditing) {
             Profile = "GuiButtonProfile";
             HorizSizing = "right";
             VertSizing = "bottom";
-            Position = "126 0";
-            Extent = "117 23";
+            position = "200 0";
+            Extent = "95 23";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -210,8 +210,8 @@ new GuiControl(MissionWindowForEditing) {
             Profile = "GuiButtonProfile";
             HorizSizing = "left";
             VertSizing = "bottom";
-            Position = "380 0";
-            Extent = "116 23";
+            position = "400 0";
+            Extent = "95 23";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -226,14 +226,30 @@ new GuiControl(MissionWindowForEditing) {
             Profile = "GuiButtonProfile";
             HorizSizing = "right";
             VertSizing = "bottom";
-            Position = "0 0";
-            Extent = "117 23";
+            position = "0 0";
+            Extent = "95 23";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
             Command = "toggleShellDlg();";
             hovertime = "1000";
             text = "Return to game";
+            groupNum = "-1";
+            buttonType = "PushButton";
+         };
+         new GuiButtonCtrl(IngameMenuChat) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiButtonProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "100 0";
+            Extent = "95 23";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            Command = "addWindow(IrcWindow);";
+            hovertime = "1000";
+            text = "Player Chat";
             groupNum = "-1";
             buttonType = "PushButton";
          };

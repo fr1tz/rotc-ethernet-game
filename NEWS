@@ -1,12 +1,13 @@
 What's new?
 ===========
 
-Prototype 2-dev11
+Prototype 2-dev12
 -----------------
 
 - Move grenade overcharge into seperate armor-draining
   ability to fire B.O.U.N.C.E. (Burst Of Usomething 
   eNgaging Close Enemies).
+- Add in-game player chat (implemented as uber-minimalist IRC client).
 
 Prototype 2-dev10
 -----------------

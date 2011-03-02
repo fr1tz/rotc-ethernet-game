@@ -290,6 +290,22 @@ new GuiControlProfile(GuiWindowProfile : GuiDefaultProfile)
 	justify = "center";
 };
 
+new GuiControlProfile(GuiTransparentWindowProfile : GuiDefaultProfile)
+{
+	opaque = true;
+	border = 0;
+	fillColor = "130 130 130 230";
+	fillColorHL = "221 202 173 230";
+	fillColorNA = "221 202 173 230";
+	fontColor = "255 255 255";
+	fontColorHL = "255 255 255";
+	text = "GuiWindowCtrl test";
+	bitmap = "./pixmaps/simpleWindow";
+	textOffset = "6 6";
+	hasBitmapArray = true;
+	justify = "center";
+};
+
 new GuiControlProfile(GuiScrollProfile : GuiDefaultProfile)
 {
 	opaque = true;

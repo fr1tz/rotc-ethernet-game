@@ -20,6 +20,14 @@ $pref::HostMultiPlayer = "1";
 $pref::HudMessageLogSize = 40;
 $pref::ChatHudLength = 1;
 
+$Pref::IRC::Name = "newbie";
+$Pref::IRC::Server = "irc.freenode.net";
+$Pref::IRC::Channel = "#rotc";
+$Pref::IRC::ToChat::Status = true;
+$Pref::IRC::ToChat::Talk = true;
+$Pref::IRC::ToChat::Topic = true;
+$Pref::IRC::ToChat::Users = true;
+
 $pref::Player::Name = "/bin/cat";
 $pref::Player::DefaultFov = 110;
 $pref::Player::ZoomSpeed = 200;

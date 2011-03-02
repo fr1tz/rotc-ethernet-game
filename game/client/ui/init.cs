@@ -53,6 +53,8 @@ function executeShellScripts()
 	exec("./shell/mapLicense.gui");
 	exec("./shell/mapCredits.cs");
 	exec("./shell/mapCredits.gui");
+	exec("./shell/irc.cs");
+	exec("./shell/irc.gui");
 }
 
 executeShellScripts();
