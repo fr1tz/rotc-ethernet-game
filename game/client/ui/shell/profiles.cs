@@ -37,7 +37,7 @@ new GuiControlProfile(GuiDefaultProfile)
 	fontColorSEL= "200 200 200";
 
 	// bitmap information
-	bitmap = "./pixmaps/simpleWindow";
+	bitmap = "./pixmaps/mg_window4";
 	bitmapBase = "";
 	textOffset = "0 0";
 
@@ -284,7 +284,7 @@ new GuiControlProfile(GuiWindowProfile : GuiDefaultProfile)
 	fontColor = "255 255 255";
 	fontColorHL = "255 255 255";
 	text = "GuiWindowCtrl test";
-	bitmap = "./pixmaps/simpleWindow";
+	bitmap = "./pixmaps/mg_window4";
 	textOffset = "6 6";
 	hasBitmapArray = true;
 	justify = "center";
@@ -300,7 +300,7 @@ new GuiControlProfile(GuiTransparentWindowProfile : GuiDefaultProfile)
 	fontColor = "255 255 255";
 	fontColorHL = "255 255 255";
 	text = "GuiWindowCtrl test";
-	bitmap = "./pixmaps/simpleWindow";
+	bitmap = "./pixmaps/mg_window4";
 	textOffset = "6 6";
 	hasBitmapArray = true;
 	justify = "center";
