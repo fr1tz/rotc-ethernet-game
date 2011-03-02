@@ -8,13 +8,8 @@
 // Copyright (C) GarageGames.com, Inc.
 //-----------------------------------------------------------------------------
 
-// List of master servers to query, each one is tried in order
-// until one responds
-$Pref::Server::RegionMask = 2;
-$pref::Master[0] = "2:master.garagegames.com:28002";
-$Pref::Master[1] = "2:74.63.12.22:28002";
-
 // Information about the server
+$Pref::Server::RegionMask = 2;
 $Pref::Server::Name = "Newbie"; // Appears as "hosted by:" on the client
 $Pref::Server::Info = ""; // Appears as "arena description" on the client
 

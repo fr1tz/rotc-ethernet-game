@@ -8,10 +8,10 @@
 // Copyright (C) GarageGames.com, Inc.
 //-----------------------------------------------------------------------------
 
-// The master server is declared with the server defaults, which is
-// loaded on both clients & dedicated servers.  If the server mod
-// is not loaded on a client, then the master must be defined. 
-// $pref::Master[0] = "2:master.garagegames.com:28002";
+// List of master servers to query, each one 
+// is tried in order until one responds...
+$Pref::Master[0] = "2:master.garagegames.com:28002";
+$Pref::Master[1] = "2:spica.thruhere.net:28002";
 
 $pref::backgroundSleepTime = "0";
 $pref::Shadows = "0.3";
