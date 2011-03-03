@@ -8,6 +8,8 @@ exec("./grenade.projectile.gfx.blue.cs");
 
 datablock ProjectileData(RedGrenade)
 {
+	stat = "grenade";
+
 	// script damage properties...
 	impactDamage       = 0;
  	impactImpulse      = 0;

@@ -12,6 +12,8 @@ exec("./minigun.projectile.gfx.blue.cs");
 
 datablock ProjectileData(RedMinigunProjectile)
 {
+	stat = "minigun";
+
 	// script damage properties...
 	impactDamage       = 20;
 	impactImpulse      = 150;

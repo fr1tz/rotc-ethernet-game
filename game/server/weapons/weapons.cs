@@ -74,7 +74,7 @@ function ProjectileData::onAdd(%this, %obj)
 		return;
 
 	%a = %client.stats.fired;
-	%n = %this.getName();
+	%n = %this.stat;
 	arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + 1);
 	arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + 1);
 }

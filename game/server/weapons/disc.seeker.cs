@@ -16,6 +16,8 @@ exec("./disc.seeker.gfx.blue.cs");
 
 datablock NortDiscData(RedSeekerDisc)
 {
+	stat = "seeker";
+
 	// script damage properties...
 	impactDamage		 = 60;
 	impactImpulse		= 1000;

@@ -332,10 +332,12 @@ function serverCmdShowPlayerList(%client, %show)
 			%v = trimStat(%p.discEffectiveness);
 		else if(%show $= "grenadeF")
 			%v = trimStat(%p.grenadeEffectiveness);
-		else if(%show $= "tridentF")
-			%v = trimStat(%p.tridentEffectiveness);
-		else if(%show $= "mgF")
-			%v = trimStat(%p.mgEffectiveness);
+		else if(%show $= "blasterF")
+			%v = trimStat(%p.blasterEffectiveness);
+		else if(%show $= "brF")
+			%v = trimStat(%p.brEffectiveness);
+		else if(%show $= "minigunF")
+			%v = trimStat(%p.minigunEffectiveness);			
 		else if(%show $= "sniperF")
 			%v = trimStat(%p.sniperEffectiveness);
 		else if(%show $= "glF")
@@ -364,10 +366,12 @@ function serverCmdShowPlayerList(%client, %show)
 		%showtext = "Disc effectiveness (%)";
 	else if(%show $= "grenadeF")
 		%showtext = "Grenade effectiveness (%)";
-	else if(%show $= "tridentF")
-		%showtext = "Trident effectiveness (%)";
-	else if(%show $= "mgF")
-		%showtext = "MG effectiveness (%)";
+	else if(%show $= "blasterF")
+		%showtext = "Blaster effectiveness (%)";
+	else if(%show $= "brF")
+		%showtext = "Battle Rifle effectiveness (%)";
+	else if(%show $= "minigunF")
+		%showtext = "Minigun effectiveness (%)";
 	else if(%show $= "sniperF")
 		%showtext = "Sniper effectiveness (%)";
 	else if(%show $= "glF")
@@ -391,8 +395,9 @@ function serverCmdShowPlayerList(%client, %show)
 		"<a:cmd ShowPlayerList totalF>Total</a>," SPC
 		"<a:cmd ShowPlayerList discF>Disc</a>," SPC
 		"<a:cmd ShowPlayerList grenadeF>Grenade</a>," SPC
-		"<a:cmd ShowPlayerList tridentF>Trident</a>," SPC
-		"<a:cmd ShowPlayerList mgF>MG</a>," SPC
+		"<a:cmd ShowPlayerList blasterF>Blaster</a>," SPC
+		"<a:cmd ShowPlayerList brF>BR</a>," SPC
+		"<a:cmd ShowPlayerList minigunF>Minigun</a>," SPC
 		"<a:cmd ShowPlayerList sniperF>Sniper</a>," SPC
 		"<a:cmd ShowPlayerList glF>GL</a> |\n" SPC
 		"<a:cmd ShowPlayerList time>Time played</a>" @
@@ -452,41 +457,25 @@ function serverCmdShowPlayerInfo(%client, %player)
 		"Total damage taken:" TAB trimStat(%p.totalDmgTaken) @ "\n" @
 		"Total health lost:" TAB trimStat(%p.totalHealthLost) @ "\n" @
 		"Total health regained:" TAB trimStat(%p.totalHealthRegained) @ "\n" @
-		"\n<tab:150,225,300,375,450,525,600>" @
-		"\tDisc\tGrenade\tTrident\tMG\tSniper\tGL\tEnvironment\n\n" @
-		"Damage caused:" TAB 
-		trimStat(%p.discDmgCaused) TAB
-		trimStat(%p.grenadeDmgCaused) TAB
-		trimStat(%p.tridentDmgCaused) TAB
-		trimStat(%p.mgDmgCaused) TAB
-		trimStat(%p.sniperDmgCaused) TAB
-		trimStat(%p.glDmgCaused) TAB
-		"\n\n" @
-		"Damage taken:" TAB 
-		trimStat(%p.discDmgTaken) TAB
-		trimStat(%p.grenadeDmgTaken) TAB
-		trimStat(%p.tridentDmgTaken) TAB
-		trimStat(%p.mgDmgTaken) TAB
-		trimStat(%p.sniperDmgTaken) TAB
-		trimStat(%p.glDmgTaken) TAB
-		trimStat(%p.forceDmgTaken) TAB
-		"\n\n" @
-		"Health lost:" TAB 
-		trimStat(%p.discHealthLost) TAB
-		trimStat(%p.grenadeHealthLost) TAB
-		trimStat(%p.tridentHealthLost) TAB
-		trimStat(%p.mgHealthLost) TAB
-		trimStat(%p.sniperHealthLost) TAB
-		trimStat(%p.glHealthLost) TAB
-		trimStat(%p.forceHealthLost) TAB
+		"\n<tab:100,200,300>" @
+		"\tDMG Caused\tDMG Taken\tHealth Lost\n\n" @
+		"Disc" TAB trimStat(%p.discDmgCaused) TAB trimStat(%p.discDmgTaken) TAB trimStat(%p.discHealthLost) @ "\n\n" @
+		"Grenade" TAB trimStat(%p.grenadeDmgCaused) TAB trimStat(%p.grenadeDmgTaken) TAB trimStat(%p.grenadeHealthLost) @ "\n\n" @
+		"Blaster" TAB trimStat(%p.blasterDmgCaused) TAB trimStat(%p.blasterDmgTaken) TAB trimStat(%p.blasterHealthLost) @ "\n\n" @
+		"Battle Rifle" TAB trimStat(%p.brDmgCaused) TAB trimStat(%p.brDmgTaken) TAB trimStat(%p.brHealthLost) @ "\n\n" @
+		"Minigun" TAB trimStat(%p.minigunDmgCaused) TAB trimStat(%p.minigunDmgTaken) TAB trimStat(%p.minigunHealthLost) @ "\n\n" @
+		"Sniper" TAB trimStat(%p.sniperDmgCaused) TAB trimStat(%p.sniperDmgTaken) TAB trimStat(%p.sniperHealthLost) @ "\n\n" @
+		"GL" TAB trimStat(%p.glDmgCaused) TAB trimStat(%p.glDmgTaken) TAB trimStat(%p.glHealthLost) @ "\n\n" @
+		"Environment" TAB "" TAB trimStat(%p.forceDmgTaken) TAB trimStat(%p.forceHealthLost) @ "\n\n" @
 		"\n\n" @
 		"\nWeapon effectiveness:\n\n" @
 		"<tab:75,150>" @
 		"\tFired\tEffectiveness\n\n" @
 		"Disc" TAB %p.discFired TAB trimStat(%p.discEffectiveness) @ "%" @ "\n\n" @
 		"Grenade" TAB %p.grenadeFired TAB trimStat(%p.grenadeEffectiveness) @ "%" @ "\n\n" @
-		"Trident" TAB %p.tridentFired TAB trimStat(%p.tridentEffectiveness) @ "%" @ "\n\n" @
-		"MG" TAB %p.mgFired TAB trimStat(%p.mgEffectiveness) @ "%" @ "\n\n" @
+		"Blaster" TAB %p.blasterFired TAB trimStat(%p.blasterEffectiveness) @ "%" @ "\n\n" @
+		"BR" TAB %p.brFired TAB trimStat(%p.brEffectiveness) @ "%" @ "\n\n" @
+		"Minigun" TAB %p.minigunFired TAB trimStat(%p.minigunEffectiveness) @ "%" @ "\n\n" @
 		"Sniper" TAB %p.sniperFired TAB trimStat(%p.sniperEffectiveness) @ "%" @ "\n\n" @
 		"GL" TAB %p.glFired TAB trimStat(%p.glEffectiveness) @ "%" @ "\n\n" @
 		"Total" TAB %p.totalFired TAB trimStat(%p.totalEffectiveness) @ "%" @ "\n\n" @

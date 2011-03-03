@@ -307,7 +307,7 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	if(%damageType == $DamageType::Force)
 		%n = "Force";
 	else
-		%n = %sourceObject.getDataBlock().getName();
+		%n = %sourceObject.getDataBlock().stat;
 
 	// reduce damage based on energy level...
 	%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;

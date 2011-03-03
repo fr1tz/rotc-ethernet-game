@@ -33,6 +33,8 @@ datablock ShapeBaseImageData(HolsteredAssaultRifleImage)
 
 datablock TracerProjectileData(RedAssaultRifleProjectile1)
 {
+	stat = "br";
+
 	// script damage properties...
 	impactDamage       = 0;
 	impactImpulse      = 1000;

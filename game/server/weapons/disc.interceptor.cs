@@ -16,6 +16,8 @@ exec("./disc.interceptor.gfx.blue.cs");
 
 datablock NortDiscData(RedInterceptorDisc)
 {
+	stat = "interceptor";
+
 	// script damage properties...
 	impactDamage         = 0;
 	impactImpulse        = 1000;

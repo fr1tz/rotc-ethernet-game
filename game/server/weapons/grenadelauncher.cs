@@ -32,6 +32,8 @@ datablock ShapeBaseImageData(HolsteredGrenadeLauncherImage)
 
 datablock TracerProjectileData(RedGrenadeLauncherProjectile)
 {
+	stat = "gl";
+
 	// script damage properties...
 	impactDamage        = 0;
 	impactImpulse       = 1000;
