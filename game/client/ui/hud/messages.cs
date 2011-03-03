@@ -128,7 +128,7 @@ function HudMenuLMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, 
 		}
 	}
 
-	HudMenuL.setText(%menutxt);
+	HudMenuL.setText(replaceBindVars(%menutxt));
 }
 
 function HudMenuRMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
@@ -164,7 +164,7 @@ function HudMenuRMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, 
 		}
 	}
 
-	HudMenuR.setText(%menutxt);
+	HudMenuR.setText(replaceBindVars(%menutxt));
 }
 
 function HudMenuTMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
@@ -200,7 +200,7 @@ function HudMenuTMessageCallback(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, 
 		}
 	}
 
-	HudMenuT.setText(%menutxt);
+	HudMenuT.setText(replaceBindVars(%menutxt));
 }
 
 addMessageCallback('MsgHudMenuL', HudMenuLMessageCallback);

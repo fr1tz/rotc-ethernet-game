@@ -89,11 +89,11 @@ function EtherformData::displayInventory(%this, %obj)
 		%client.setHudMenuL("*", " ", 1, 0);
 		%client.setHudMenuL(1, "Weapon #1:\n", 1, 1);
 		%client.setHudMenuL(2, "<bitmap:share/hud/rotc/icon." @ %icon[1] @ ">", 1, 1);
-		%client.setHudMenuL(3, "<sbreak>(Press 1 to change)", 1, 1);
+		%client.setHudMenuL(3, "<sbreak>(Press @bind35 to change)", 1, 1);
 		
 		%client.setHudMenuL(4, "\n\n\n\n\n\n\n\nWeapon #2:\n", 1, 1);
 		%client.setHudMenuL(5, "<bitmap:share/hud/rotc/icon." @ %icon[2] @ ">", 1, 1);
-		%client.setHudMenuL(6, "<sbreak>(Press 2 to change)", 1, 1);
+		%client.setHudMenuL(6, "<sbreak>(Press @bind36 to change)", 1, 1);
 	}
 	else if(%obj.inventoryMode $= "select")
 	{

@@ -24,11 +24,13 @@ function clientCmdCenterPrint( %message, %time, %append )
 		Crosshair.visible = 0;
 		$centerPrintActive = 1;
 	}
-
+	
 	if(%append)
-		CenterPrintText.setText( CenterPrintText.getText() @ %message );
+		%text = CenterPrintText.getText() @ %message;
 	else
-		CenterPrintText.setText( "<just:center>" @ %message );
+		%text = "<just:center>" @ %message;
+		
+	CenterPrintText.setText(replaceBindVars(%text));		
 
 	if (%time > 0)
 		CenterPrint.removePrint = schedule( ( %time * 1000 ), 0, "clientCmdClearCenterPrint" );
@@ -50,9 +52,11 @@ function clientCmdBottomPrint( %message, %time )
 
 	// if bottomprint already visible, change text and reset time...
 	if($bottomPrintActive && bottomPrintText.getText() !$= "" )
-		bottomPrintText.setText("<just:center>" @ %message @ "\n\n" @ bottomPrintText.getText() );
+		%text = "<just:center>" @ %message @ "\n\n" @ bottomPrintText.getText();
 	else
-		bottomPrintText.setText( "<just:center>" @ %message );
+		%text = "<just:center>" @ %message;
+		
+	bottomPrintText.setText(replaceBindVars(%text));				
 
 	if(%time > 0)
 		BottomPrint.removePrint = schedule( %time*1000, 0, "clientCmdClearbottomPrint" );

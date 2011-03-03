@@ -14,31 +14,7 @@ function handleMsgMenuText(%msgType, %msgString, %text)
 	else
 	{
 		%newtext = IngameMenuText.getText() @ %text;
-
-		while(true)
-		{
-			%p = strstr(%newtext, "@bind");
-			if(%p == -1)
-				break;
-
-			%s = getSubStr(%newtext, %p, 7);
-			%n = getSubStr(%s, 5, 2);
-
-			if(strlen(%n) != 2)
-				break;
-
-			%n = %n + 0; // interpet as numeric
-
-			%cmd = $RemapCmd[%n];
-			%temp = moveMap.getBinding( %cmd );
-			%device = getField( %temp, 0 );
-			%object = getField( %temp, 1 );
-			%mapString = getMapDisplayName( %device, %object );
-
-			%newtext = strreplace(%newtext, %s, %mapString);
-		} 
-
-		IngameMenuText.setText(%newtext);
+		IngameMenuText.setText(replaceBindVars(%newtext));
 	}
 }
 

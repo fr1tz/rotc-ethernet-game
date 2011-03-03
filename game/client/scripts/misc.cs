@@ -20,6 +20,34 @@ function clientCmdSetTimeScale(%x)
 	$timeScale = %x;
 }
 
+function replaceBindVars(%text)
+{
+		while(true)
+		{
+			%p = strstr(%text, "@bind");
+			if(%p == -1)
+				break;
+
+			%s = getSubStr(%text, %p, 7);
+			%n = getSubStr(%s, 5, 2);
+
+			if(strlen(%n) != 2)
+				break;
+
+			%n = %n + 0; // interpet as numeric
+
+			%cmd = $RemapCmd[%n];
+			%temp = moveMap.getBinding( %cmd );
+			%device = getField( %temp, 0 );
+			%object = getField( %temp, 1 );
+			%mapString = getMapDisplayName( %device, %object );
+
+			%text = strreplace(%text, %s, %mapString);
+		} 		
+		
+		return %text;
+}
+
 //-----------------------------------------------------------------------------
 // weapons stuff...
 //-----------------------------------------------------------------------------
