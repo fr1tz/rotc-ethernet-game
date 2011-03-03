@@ -101,7 +101,7 @@ function GameConnection::onConnect( %client,
 
 	// Inform the client we've joined up
 	messageClient(%client,
-		'MsgClientJoin', '\c2Welcome %1. Press Esc to bring up the menu.',
+		'MsgClientJoin', '\c2Welcome %1.',
 		%client.name, 
 		%client,
 		%client.sendGuid,
