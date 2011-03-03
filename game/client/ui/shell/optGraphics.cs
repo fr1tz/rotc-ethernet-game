@@ -36,6 +36,16 @@ function OptGraphicsWindow::onWake(%this)
         OptGraphicsTextureFilteringMenu.setSelected(2);
     else
         OptGraphicsTextureFilteringMenu.setSelected(1);
+        
+	// Player trails...
+	OptGraphicsTrailsAmount.setValue($Pref::Player::Trails::Amount);
+	OptGraphicsTrailsAmountNum.setValue($Pref::Player::Trails::Amount);        
+	OptGraphicsTrailsScale.setValue($Pref::Player::Trails::Scale);
+	OptGraphicsTrailsScaleNum.setValue($Pref::Player::Trails::Scale);   	
+	OptGraphicsTrailsVisibility.setValue($Pref::Player::Trails::Visibility);
+	OptGraphicsTrailsVisibilityNum.setValue($Pref::Player::Trails::Visibility);   	
+	OptGraphicsTrailsDetail.setValue($Pref::Player::Trails::Detail);
+	OptGraphicsTrailsDetailNum.setValue($Pref::Player::Trails::Detail);   	
 }
 
 function OptGraphicsDriverMenu::onSelect( %this, %id, %text )
@@ -198,4 +208,39 @@ function OptGraphicsWindow::applyGraphics( %this )
 		setScreenMode( firstWord( %newRes ), getWord( %newRes, 1 ), %newBpp, %newFullScreen );
   
     flushTextureCache();
+}
+
+function OptGraphicsWindowUpdateTrails()
+{
+	%oldVal = $Pref::Player::Trails::Amount;
+	%newVal = OptGraphicsTrailsAmount.getValue();
+	if(%newVal == %oldVal)
+		%newVal = OptGraphicsTrailsAmountNum.getValue();		
+	$Pref::Player::Trails::Amount = getSubStr(%newVal, 0, 5);
+	OptGraphicsTrailsAmount.setValue($Pref::Player::Trails::Amount);
+	OptGraphicsTrailsAmountNum.setValue($Pref::Player::Trails::Amount);	
+	
+	%oldVal = $Pref::Player::Trails::Scale;
+	%newVal = OptGraphicsTrailsScale.getValue();
+	if(%newVal == %oldVal)
+		%newVal = OptGraphicsTrailsScaleNum.getValue();		
+	$Pref::Player::Trails::Scale = getSubStr(%newVal, 0, 5);
+	OptGraphicsTrailsScale.setValue($Pref::Player::Trails::Scale);
+	OptGraphicsTrailsScaleNum.setValue($Pref::Player::Trails::Scale);		
+	
+	%oldVal = $Pref::Player::Trails::Visibility;
+	%newVal = OptGraphicsTrailsVisibility.getValue();
+	if(%newVal == %oldVal)
+		%newVal = OptGraphicsTrailsVisibilityNum.getValue();		
+	$Pref::Player::Trails::Visibility = getSubStr(%newVal, 0, 5);
+	OptGraphicsTrailsVisibility.setValue($Pref::Player::Trails::Visibility);
+	OptGraphicsTrailsVisibilityNum.setValue($Pref::Player::Trails::Visibility);	
+	
+	%oldVal = $Pref::Player::Trails::Detail;
+	%newVal = OptGraphicsTrailsDetail.getValue();
+	if(%newVal == %oldVal)
+		%newVal = OptGraphicsTrailsDetailNum.getValue();		
+	$Pref::Player::Trails::Detail = getSubStr(%newVal, 0, 5);
+	OptGraphicsTrailsDetail.setValue($Pref::Player::Trails::Detail);
+	OptGraphicsTrailsDetailNum.setValue($Pref::Player::Trails::Detail);			 
 }
