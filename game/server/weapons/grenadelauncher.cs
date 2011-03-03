@@ -41,7 +41,7 @@ datablock TracerProjectileData(RedGrenadeLauncherProjectile)
 	splashImpulse       = 0;
 	
 	// how much energy does firing this projectile drain?...
-	energyDrain = 10;
+	energyDrain = 15;
 
 	trackingAgility = 0;
 	
@@ -74,7 +74,7 @@ datablock TracerProjectileData(RedGrenadeLauncherProjectile)
 	bounceElasticity = 0.5;
 	bounceFriction   = 0.5;
 
-	armingDelay	= 500;
+	armingDelay	= 1000;
 	lifetime    = 1000*10;
 	fadeDelay   = 5000;
 	

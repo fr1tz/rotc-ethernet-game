@@ -1,7 +1,7 @@
 What's new?
 ===========
 
-Prototype 2-dev13
+Prototype 2-dev14
 -----------------
 
 - Move grenade overcharge into seperate armor-draining
@@ -10,6 +10,7 @@ Prototype 2-dev13
 - Add in-game player chat (implemented as uber-minimalist IRC client).
 - Minigun changes: increase fire rate & decrease projectile
   velocity.
+- Increase grenade launcher energy cost and projectile arming delay.
 
 Prototype 2-dev10
 -----------------
