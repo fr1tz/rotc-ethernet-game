@@ -50,6 +50,7 @@ function Hud::onWake(%this)
 	schedule(0, 0, "refreshBottomTextCtrl");
 
 	%this.flashWarnings();
+	%this.updateMetrics();
 }
 
 function Hud::onSleep(%this)
@@ -77,6 +78,26 @@ function Hud::flashWarnings(%this)
 
 	%this.flashWarningsThread = %this.schedule(500, "flashWarnings");
 }
+
+function Hud::updateMetrics(%this)
+{
+	cancel(%this.zUpdateMetricsThread);
+
+	HudFpsGraph.setVisible($Pref::Hud::ShowFPSGraph);
+	
+	%txt = "";
+	if($Pref::Hud::ShowPing)
+		%txt = %txt @ "PING:" SPC ServerConnection.getPing() @ "   ";
+	if($Pref::Hud::ShowPacketloss)
+		%txt = %txt @ "PACKETLOSS:" SPC ServerConnection.getPacketloss() @ "   ";
+	if($Pref::Hud::ShowFPS)
+		%txt = %txt @ "FPS:" SPC ($FPS::Real);
+		
+	HudMetrics.setText(%txt);
+	
+	%this.zUpdateMetricsThread = %this.schedule(50, "updateMetrics");
+}
+
 
 function Hud::matchControlObject(%this, %obj)
 {

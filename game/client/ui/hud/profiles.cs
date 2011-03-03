@@ -134,6 +134,11 @@ new GuiControlProfile(HudMediumTextProfile : HudDefaultProfile)
 	fontSize = 36;
 };
 
+new GuiControlProfile(HudMetricsProfile : HudDefaultProfile)
+{
+	justify = "right";
+};
+
 new GuiControlProfile(HudProgressProfile : HudDefaultProfile)
 {
 	border = true;

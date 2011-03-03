@@ -39,6 +39,11 @@ $Pref::Player::Trails::Detail = 0.5;
 $Pref::Player::Trails::Scale = 0.125;
 $Pref::Player::Trails::Visibility = 0.9;
 
+$Pref::Hud::ShowPing = true;
+$Pref::Hud::ShowPacketloss = false;
+$Pref::Hud::ShowFPS = true;
+$Pref::Hud::ShowFPSGraph = false;
+
 $pref::Commander::PanSpeed = 100;
 $pref::Commander::ZoomSpeed = 0.1;
 
