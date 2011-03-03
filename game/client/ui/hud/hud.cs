@@ -8,9 +8,9 @@
 // Code for the TSControl through which the game is viewed
 //------------------------------------------------------------------------------
 
-function clientCmdSetHudColor(%color)
+function clientCmdSetHudColor(%darkcolor, %lightcolor)
 {
-	Hud.setColor(%color);
+	Hud.setColor(%darkcolor, %lightcolor);
 }
 
 function refreshBottomTextCtrl()
@@ -132,81 +132,15 @@ function Hud::updateHeat(%this)
     %this.heatThread = %this.schedule(50, "updateHeat");
 }
 
-function Hud::setColor(%this, %color)
+function Hud::setColor(%this, %dark, %light)
 {
-	if(%color $= "red")
-	{
-		Scanlines.color = "255 50 50 50";
-
-		HudDefaultProfile.fillColor = "255 0 0 100";
-		HudDefaultProfile.fillColorHL = "255 0 0 100";
-		HudDefaultProfile.fillColorNA = "255 0 0 100";
-
-		HudDefaultProfile.borderColor	= "255 0 0 200";
-		HudDefaultProfile.borderColorHL = "255 0 0 200";
-		HudDefaultProfile.borderColorNA = "255 0 0 200";
-
-		HudDefaultProfile.fontColor	= "255 200 200 255";
-		HudDefaultProfile.fontColorHL = "255 200 200 255";
-		HudDefaultProfile.fontColorNA = "255 200 200 255";
-		HudDefaultProfile.fontColorSEL= "200 200 200";
-
-		HudButtonProfile.fillColor = "255 0 0 100";
-		HudButtonProfile.fillColorHL = "255 0 0 100";
-		HudButtonProfile.fillColorNA = "255 0 0 100";
-
-		HudButtonProfile.borderColor	= "255 0 0 200";
-		HudButtonProfile.borderColorHL = "255 0 0 200";
-		HudButtonProfile.borderColorNA = "255 0 0 200";
-
-		HudButtonProfile.fontColor	= "255 0 0 200";
-		HudButtonProfile.fontColorHL = "255 0 0 200";
-		HudButtonProfile.fontColorNA = "255 0 0 200";
-		HudButtonProfile.fontColorSEL= "200 200 200";
-
-		HudMediumTextProfile.fillColor = "255 0 0 100";
-		HudMediumTextProfile.fillColorHL = "255 0 0 100";
-		HudMediumTextProfile.fillColorNA = "255 0 0 100";
-
-		HudWarningFlashProfile.fontColor = "255 0 0 255";
-	}
-
-	if(%color $= "blue")
-	{
-		Scanlines.color = "50 50 255 50";
-
-		HudDefaultProfile.fillColor = "0 100 255 100";
-		HudDefaultProfile.fillColorHL = "0 100 255 100";
-		HudDefaultProfile.fillColorNA = "0 100 255 100";
-
-		HudDefaultProfile.borderColor	= "0 100 255 200";
-		HudDefaultProfile.borderColorHL = "0 100 255 200";
-		HudDefaultProfile.borderColorNA = "0 100 255 200";
-
-		HudDefaultProfile.fontColor	= "200 200 255 255";
-		HudDefaultProfile.fontColorHL = "200 200 255 255";
-		HudDefaultProfile.fontColorNA = "200 200 255 255";
-		HudDefaultProfile.fontColorSEL= "200 200 200";
-
-		HudButtonProfile.fillColor = "0 100 255 100";
-		HudButtonProfile.fillColorHL = "0 100 255 100";
-		HudButtonProfile.fillColorNA = "0 100 255 100";
-
-		HudButtonProfile.borderColor	= "0 100 255 200";
-		HudButtonProfile.borderColorHL = "0 100 255 200";
-		HudButtonProfile.borderColorNA = "0 100 255 200";
-
-		HudButtonProfile.fontColor	= "0 100 255 200";
-		HudButtonProfile.fontColorHL = "0 100 255 200";
-		HudButtonProfile.fontColorNA = "0 100 255 200";
-		HudButtonProfile.fontColorSEL= "200 200 200";
-
-		HudMediumTextProfile.fillColor = "0 100 255 100";
-		HudMediumTextProfile.fillColorHL = "0 100 255 100";
-		HudMediumTextProfile.fillColorNA = "0 100 255 100";
-
-		HudWarningFlashProfile.fontColor = "0 100 255 255";
-	}
+	HudDefaultProfile.fillColor = %dark SPC "100";
+	HudDefaultProfile.borderColor	= %dark SPC "200";
+	HudDefaultProfile.fontColor	= %light SPC "255";
+	HudButtonProfile.fillColor = %dark SPC "100";
+	HudButtonProfile.borderColor	= %dark SPC "200";
+	HudButtonProfile.fontColor	= %dark SPC "200";
+	HudWarningFlashProfile.fontColor = %dark SPC "255";
 }
 
 

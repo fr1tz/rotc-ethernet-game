@@ -171,18 +171,19 @@ function GameConnection::joinTeam(%this, %teamId)
 	{
 		%this.team = $Team0;
 		$Team0.numPlayers++;
+		commandToClient(%this,'SetHudColor', "150 150 150", "255 255 255");
 	}
 	if(%teamId == 1)
 	{
 		%this.team = $Team1;
 		$Team1.numPlayers++;
-		commandToClient(%this,'SetHudColor',"red");
+		commandToClient(%this,'SetHudColor', "255 0 0", "255 200 200");
 	}
 	if(%teamId == 2)
 	{
 		%this.team = $Team2;
 		$Team2.numPlayers++;
-		commandToClient(%this,'SetHudColor',"blue");
+		commandToClient(%this,'SetHudColor', "0 100 255", "200 200 255");
 	}
 
 	// full and simple control cleanup...
