@@ -209,6 +209,13 @@ function serverCmdInstantGrenadeThrow(%client)
 
 //-----------------------------------------------------------------------------
 
+function serverCmdMenuVisible(%client, %visible)
+{
+  %client.menuVisible = %visible;
+}
+
+//-----------------------------------------------------------------------------
+
 function serverCmdMainMenu(%client)
 {
 	%newtxt = om_init();

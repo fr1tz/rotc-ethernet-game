@@ -62,6 +62,13 @@ function MissionWindow::onWake(%this)
 		IngameMenuDisconnect.text = "Quit Mission";
 	else
 		IngameMenuDisconnect.text = "Disconnect";
+		
+  commandToServer('MenuVisible', true); 
+}
+
+function MissionWindow::onSleep(%this)
+{
+  commandToServer('MenuVisible', false); 
 }
 
 function IngameMenuText::onURL(%this, %url)
