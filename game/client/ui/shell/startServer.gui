@@ -9,7 +9,7 @@ new GuiControl(StartServerWindowForEditing) {
    Profile = "GuiDefaultProfile";
    HorizSizing = "right";
    VertSizing = "bottom";
-   Position = "0 0";
+   position = "0 0";
    Extent = "640 480";
    MinExtent = "8 8";
    canSave = "1";
@@ -21,7 +21,7 @@ new GuiControl(StartServerWindowForEditing) {
       Profile = "GuiWindowProfile";
       HorizSizing = "center";
       VertSizing = "center";
-      Position = "70 30";
+      position = "70 30";
       Extent = "500 420";
       MinExtent = "8 8";
       canSave = "1";
@@ -29,8 +29,8 @@ new GuiControl(StartServerWindowForEditing) {
       hovertime = "1000";
       text = "Create Arena";
       maxLength = "255";
-      resizeWidth = "0";
-      resizeHeight = "0";
+      resizeWidth = "1";
+      resizeHeight = "1";
       canMove = "1";
       canClose = "1";
       canMinimize = "0";
@@ -41,10 +41,10 @@ new GuiControl(StartServerWindowForEditing) {
       new GuiScrollCtrl() {
          canSaveDynamicFields = "0";
          Profile = "GuiScrollProfile";
-         HorizSizing = "right";
-         VertSizing = "bottom";
-         Position = "220 75";
-         Extent = "270 310";
+         HorizSizing = "width";
+         VertSizing = "top";
+         position = "10 299";
+         Extent = "480 81";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -60,8 +60,8 @@ new GuiControl(StartServerWindowForEditing) {
             Profile = "GuiMLTextEditProfile";
             HorizSizing = "width";
             VertSizing = "height";
-            Position = "2 2";
-            Extent = "245 310";
+            position = "2 2";
+            Extent = "455 310";
             MinExtent = "245 310";
             canSave = "1";
             Visible = "1";
@@ -74,10 +74,10 @@ new GuiControl(StartServerWindowForEditing) {
       new GuiScrollCtrl() {
          canSaveDynamicFields = "0";
          Profile = "GuiScrollProfile";
-         HorizSizing = "right";
-         VertSizing = "bottom";
-         Position = "10 75";
-         Extent = "200 310";
+         HorizSizing = "width";
+         VertSizing = "height";
+         position = "10 75";
+         Extent = "480 200";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -93,8 +93,8 @@ new GuiControl(StartServerWindowForEditing) {
             Profile = "GuiTextArrayProfile";
             HorizSizing = "width";
             VertSizing = "bottom";
-            Position = "2 2";
-            Extent = "180 8";
+            position = "2 2";
+            Extent = "460 8";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -110,8 +110,8 @@ new GuiControl(StartServerWindowForEditing) {
             Profile = "GuiMLTextProfile";
             HorizSizing = "right";
             VertSizing = "bottom";
-            Position = "0 110";
-            Extent = "170 13";
+            position = "0 110";
+            Extent = "170 14";
             MinExtent = "170 10";
             canSave = "1";
             Visible = "0";
@@ -126,8 +126,8 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "12 55";
-         Extent = "68 17";
+         position = "12 55";
+         Extent = "68 18";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -138,9 +138,9 @@ new GuiControl(StartServerWindowForEditing) {
       new GuiButtonCtrl(SS_StartMissionButton) {
          canSaveDynamicFields = "0";
          Profile = "GuiButtonProfile";
-         HorizSizing = "right";
-         VertSizing = "bottom";
-         Position = "410 390";
+         HorizSizing = "left";
+         VertSizing = "top";
+         position = "410 390";
          Extent = "80 20";
          MinExtent = "8 8";
          canSave = "1";
@@ -156,8 +156,8 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiTextEditProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "80 30";
-         Extent = "250 17";
+         position = "80 30";
+         Extent = "220 18";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -176,8 +176,8 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "10 30";
-         Extent = "53 17";
+         position = "10 30";
+         Extent = "54 18";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -188,10 +188,10 @@ new GuiControl(StartServerWindowForEditing) {
       new GuiCheckBoxCtrl(ML_isMultiplayer) {
          canSaveDynamicFields = "0";
          Profile = "GuiCheckBoxProfile";
-         HorizSizing = "right";
+         HorizSizing = "left";
          VertSizing = "bottom";
-         Position = "422 27";
-         Extent = "69 23";
+         position = "412 27";
+         Extent = "78 23";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -206,9 +206,9 @@ new GuiControl(StartServerWindowForEditing) {
          canSaveDynamicFields = "0";
          Profile = "GuiTextProfile";
          HorizSizing = "right";
-         VertSizing = "bottom";
-         Position = "220 55";
-         Extent = "60 17";
+         VertSizing = "top";
+         position = "10 279";
+         Extent = "61 18";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -219,10 +219,10 @@ new GuiControl(StartServerWindowForEditing) {
       new GuiTextCtrl() {
          canSaveDynamicFields = "0";
          Profile = "GuiTextProfile";
-         HorizSizing = "right";
+         HorizSizing = "left";
          VertSizing = "bottom";
-         Position = "340 30";
-         Extent = "24 17";
+         position = "330 30";
+         Extent = "26 18";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -233,10 +233,10 @@ new GuiControl(StartServerWindowForEditing) {
       new GuiTextEditCtrl() {
          canSaveDynamicFields = "0";
          Profile = "GuiTextEditProfile";
-         HorizSizing = "right";
+         HorizSizing = "left";
          VertSizing = "bottom";
-         Position = "370 30";
-         Extent = "40 17";
+         position = "360 30";
+         Extent = "40 18";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
