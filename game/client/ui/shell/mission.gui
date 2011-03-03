@@ -93,7 +93,7 @@ new GuiControl(MissionWindowForEditing) {
             HorizSizing = "width";
             VertSizing = "bottom";
             position = "2 2";
-            Extent = "477 14";
+            Extent = "475 14";
             MinExtent = "355 14";
             canSave = "1";
             Visible = "1";
@@ -252,6 +252,110 @@ new GuiControl(MissionWindowForEditing) {
             text = "Player Chat";
             groupNum = "-1";
             buttonType = "PushButton";
+         };
+      };
+      new GuiControl(MissionServerInput) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTransparentWindowProfile";
+         HorizSizing = "width";
+         VertSizing = "height";
+         position = "9 61";
+         Extent = "497 201";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "0";
+         hovertime = "1000";
+
+         new GuiControl() {
+            canSaveDynamicFields = "0";
+            Profile = "GuiDefaultProfile";
+            HorizSizing = "center";
+            VertSizing = "center";
+            position = "94 25";
+            Extent = "300 150";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+
+            new GuiTextCtrl(MissionServerInputLabel) {
+               canSaveDynamicFields = "0";
+               Profile = "GuiTextProfile";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               position = "0 0";
+               Extent = "8 18";
+               MinExtent = "8 2";
+               canSave = "1";
+               Visible = "1";
+               hovertime = "1000";
+               maxLength = "1024";
+            };
+            new GuiButtonCtrl() {
+               canSaveDynamicFields = "0";
+               Profile = "GuiButtonProfile";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               position = "35 126";
+               Extent = "95 23";
+               MinExtent = "8 2";
+               canSave = "1";
+               Visible = "1";
+               Command = "MissionWindow.cancelInput();";
+               hovertime = "1000";
+               text = "Cancel";
+               groupNum = "-1";
+               buttonType = "PushButton";
+            };
+            new GuiButtonCtrl() {
+               canSaveDynamicFields = "0";
+               Profile = "GuiButtonProfile";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               position = "172 126";
+               Extent = "95 23";
+               MinExtent = "8 2";
+               canSave = "1";
+               Visible = "1";
+               Command = "MissionWindow.sendInput();";
+               hovertime = "1000";
+               text = "Ok";
+               groupNum = "-1";
+               buttonType = "PushButton";
+            };
+            new GuiScrollCtrl() {
+               canSaveDynamicFields = "0";
+               Profile = "GuiScrollProfile";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               position = "0 17";
+               Extent = "300 100";
+               MinExtent = "8 8";
+               canSave = "1";
+               Visible = "1";
+               hovertime = "1000";
+               willFirstRespond = "1";
+               hScrollBar = "dynamic";
+               vScrollBar = "alwaysOn";
+               constantThumbHeight = "0";
+               childMargin = "0 0";
+
+               new GuiMLTextEditCtrl(MissionServerInputText) {
+                  canSaveDynamicFields = "0";
+                  Profile = "GuiMLTextEditProfile";
+                  HorizSizing = "width";
+                  VertSizing = "height";
+                  position = "2 2";
+                  Extent = "278 100";
+                  MinExtent = "100 100";
+                  canSave = "1";
+                  Visible = "1";
+                  hovertime = "1000";
+                  lineSpacing = "2";
+                  allowColorChars = "1";
+                  maxChars = "255";
+               };
+            };
          };
       };
    };

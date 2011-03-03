@@ -71,6 +71,24 @@ function MissionWindow::onSleep(%this)
   commandToServer('MenuVisible', false); 
 }
 
+function MissionWindow::showTextInputBox(%this, %label, %text)
+{
+	MissionServerInputLabel.setText(%label);
+	MissionServerInputText.setText(%text);
+	MissionServerInput.setVisible(true);
+}
+
+function MissionWindow::sendInput(%this)
+{
+	commandToServer('TextInput', MissionWindowServerInputText.getText()); 
+	MissionServerInput.setVisible(false);
+}
+
+function MissionWindow::cancelInput(%this)
+{
+	MissionServerInput.setVisible(false);
+}
+
 function IngameMenuText::onURL(%this, %url)
 {
 	if(getWord(%url, 0) $= "cmd")

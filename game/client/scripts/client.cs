@@ -76,3 +76,10 @@ function clientCmdPushActionMap(%map)
 {
     pushActionMap(%map);
 }
+
+//------------------------------------------------------------------------------
+
+function clientCmdRequestTextInput(%label, %text)
+{
+	MissionWindow.showTextInputBox(%label, %text);
+}
