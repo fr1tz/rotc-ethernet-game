@@ -22,9 +22,9 @@ function MessageHud::open(%this)
 		return;
 
 	if(%this.isTeamMsg)
-		%text = "TEAM:";
+		%text = "TEAM CHAT:";
 	else
-		%text = "GLOBAL:";
+		%text = "ARENA CHAT:";
 
 	MessageHud_Text.setValue(%text);
 
