@@ -162,6 +162,8 @@ function Hud::setColor(%this, %dark, %light)
 	HudButtonProfile.borderColor	= %dark SPC "200";
 	HudButtonProfile.fontColor	= %dark SPC "200";
 	HudWarningFlashProfile.fontColor = %dark SPC "255";
+	HudMediumTextProfile.fillColor = %dark SPC "200";
+	HudMediumTextProfile.fontColor = %light SPC "200";
 }
 
 
