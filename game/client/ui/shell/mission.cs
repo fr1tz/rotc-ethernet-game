@@ -27,8 +27,10 @@ function clientCmdEndMenuTxt()
 {
 	IngameMenuText.setText(replaceBindVars(IngameMenuText.zText));
 	IngameMenuText.forceReflow();
-	IngameMenuScroll.setScrollPosition(IngameMenuScroll.zPrevPosX,
-		IngameMenuScroll.zPrevPosY);
+	IngameMenuScroll.setScrollPosition(
+		IngameMenuScroll.zPrevPosX,
+		IngameMenuScroll.zPrevPosY
+	);
 }
 
 //-----------------------------------------------------------------------------
@@ -54,12 +56,23 @@ function MissionWindow::onWake(%this)
 	else
 		IngameMenuDisconnect.text = "Disconnect";
 		
-  commandToServer('MenuVisible', true); 
+	commandToServer('MenuVisible', true); 
 }
 
 function MissionWindow::onSleep(%this)
 {
-  commandToServer('MenuVisible', false); 
+	commandToServer('MenuVisible', false); 
+}
+
+function IngameMenuScroll::onWake(%this)
+{
+	%this.schedule(0, "setScrollPosition", %this.zPrevPosX, %this.zPrevPosY);	
+}
+
+function IngameMenuScroll::onSleep(%this)
+{
+	%this.zPrevPosX = %this.getScrollPositionX();
+	%this.zPrevPosY = %this.getScrollPositionY();  
 }
 
 function MissionWindow::showTextInputBox(%this, %label, %text)

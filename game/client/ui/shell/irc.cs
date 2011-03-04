@@ -331,3 +331,14 @@ function IrcNames::update(%this)
 		%idx = $IRC::Names.moveNext();
 	}
 }
+
+function IrcTextScroll::onWake(%this)
+{
+	%this.schedule(0, "setScrollPosition", %this.zPrevPosX, %this.zPrevPosY);	
+}
+
+function IrcTextScroll::onSleep(%this)
+{
+	%this.zPrevPosX = %this.getScrollPositionX();
+	%this.zPrevPosY = %this.getScrollPositionY();  
+}
