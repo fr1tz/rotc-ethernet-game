@@ -171,7 +171,13 @@ for ($i = 1; $i < $Game::argc ; $i++)
 				error("Error: Missing Command Line argument. Usage: -jDebug <journal_name>");
 
 		//-------------------
+		case "--help":
+			$displayHelp = true;
+			$argUsed[$i]++;
 		case "-help":
+			$displayHelp = true;
+			$argUsed[$i]++;
+		case "-h":
 			$displayHelp = true;
 			$argUsed[$i]++;
 
