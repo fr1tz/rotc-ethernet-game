@@ -125,10 +125,7 @@ function RedGrenadeImage::onReady(%this, %obj, %slot)
 
 function RedGrenadeImage::onCharge(%this, %obj, %slot)
 {
-	%obj.shapeFxSetTexture($PlayerShapeFxSlot::Charge, 0);
-	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Charge, 1.025, 0);	
-	%obj.shapeFxSetFade($PlayerShapeFxSlot::Charge, 0, 1);
-	%obj.shapeFxSetActive($PlayerShapeFxSlot::Charge, true, true);
+
 }
 
 function RedGrenadeImage::throw(%this, %obj, %slot)
