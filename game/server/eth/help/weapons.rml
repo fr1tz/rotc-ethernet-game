@@ -7,8 +7,8 @@ Every CAT carries a head-mounted disc launcher and two discs.
 <bitmap:share/misc/help/wpn_disc.png>A seeker Disc will track its target until it has hit it, missed it, was deflected by another Disc, has bounced a few times or has expired. While a disc does not deal a lot of damage compared to its rate of fire, it uses absolutely no energy and will give 20 points of armor to the CAT that launched it when it hits its target. To throw a disc, you first need to get a target-lock on an enemy CAT. The seeker is then thrown by a pressing @bind17. These are the rules to get a target lock:
 - Hit the target with a seeker Disc
 - Damage the target with a Grenade
-- Hit the target with at least 3 of the 9 shots fired by the Trident
-- Land a direct hit on the target with the MG
+- Hit the target with at least 3 of the 9 shots fired by the Blaster
+- Land a direct hit on the target with the Battle Rifle (proximity explosions do not count)
 A target-lock lasts for two seconds. Also note that a CAT can only be attacked by one disc at a time.
 <sbreak><tab:15,200>
 	Armor cost	<spush><font:Arial Bold:16>-<spop>
@@ -20,7 +20,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 <sbreak>
 <spush><font:NovaSquare:18>Deflecting Discs<spop>
 
-<bitmap:share/misc/help/wpn_discdeflect.png>To deflect an incoming seeker Disc, keep the crosshair over it until it's locked, then press @bind17. For deflecting a disc, CATs are rewarded with a six second grace period, during which they can not be attacked by another disc.
+<bitmap:share/misc/help/wpn_discdeflect.png>To deflect an incoming seeker Disc, keep the crosshair over it until it's locked, then press @bind17. For deflecting a disc, CATs are rewarded with a three second grace period, during which they can not be attacked by another disc.
 <sbreak>
 
 <spush><font:NovaSquare:20>Grenades<spop>
@@ -35,9 +35,9 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
 <sbreak>
 
-<spush><font:NovaSquare:20>The Trident<spop>
+<spush><font:NovaSquare:20>The Blaster<spop>
 
-<bitmap:share/misc/help/wpn_blaster.png>Every CAT carries a Trident. The Trident is a powerful but tricky weapon. It always fires 9 shots at once. Because of this, it uses a lot of energy and has a huge recoil, but is able to deal up to 90 points of damage at once. The properties of an individual Trident shot:
+<bitmap:share/misc/help/wpn_oldblaster.png>The Blaster is a powerful but tricky weapon. It always fires 9 shots at once. Because of this, it uses a lot of energy and has a huge recoil, but is able to deal up to 90 points of damage at once. The properties of an individual Blaster shot:
 <sbreak><tab:15,200>
 	Armor cost	<spush><font:Arial Bold:16>2<spop>
 	Impact damage	<spush><font:Arial Bold:16>10<spop>
@@ -47,21 +47,21 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
 <sbreak>
 
-<spush><font:NovaSquare:20>The Micro-Grenade Launcher AKA The MG<spop>
+<spush><font:NovaSquare:20>The Battle Rifle<spop>
 
-<bitmap:share/misc/help/wpn_assaultrifle.png>The MG fires tiny grenades that explode near enemies or on impact. While a single grenade is pretty weak, the fact that you don't have to be 100% accurate to deal damage to enemies combined with a relatively high rate of fire turn the MG into a formidable weapon.
+<bitmap:share/misc/help/wpn_br.png>The Battle Rifle fires tiny grenades that explode near enemies or on impact. It always fires two mini-grenades at once. The properties of a single mini-grenade:
 <sbreak><tab:15,200>
-	Armor cost	<spush><font:Arial Bold:16>10<spop>
+	Armor cost	<spush><font:Arial Bold:16>8<spop>
 	Impact damage	<spush><font:Arial Bold:16>-<spop>
 	Impact impulse	<spush><font:Arial Bold:16>1000<spop>
-	Splash damage	<spush><font:Arial Bold:16>25<spop>
+	Splash damage	<spush><font:Arial Bold:16>30<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>2<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
 <sbreak>
 
 <spush><font:NovaSquare:20>The Sniper ROFL<spop>
 
-<bitmap:share/misc/help/wpn_sniperrifle.png>The Sniper ROFL is... kind of a sniper rifle. The sniper rofl needs to be charged before it can fire. While charging doesn't take long and doesn't consume energy, you can't run fast or use the Etherboard while doing it. Hold down @bind16 to charge, release it to fire.
+<bitmap:share/misc/help/wpn_sniperrifle.png>The Sniper rofl is a long range weapon. It needs to be charged before it can fire. While charging doesn't take long and doesn't consume energy, you can't run fast or use the Etherboard while doing it. Hold down @bind16 to charge, release it to fire.
 <sbreak><tab:15,200>
 	Armor cost	<spush><font:Arial Bold:16>30<spop>
 	Impact damage	<spush><font:Arial Bold:16>60<spop>
@@ -69,4 +69,28 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage	<spush><font:Arial Bold:16>-<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+<sbreak>
+
+<spush><font:NovaSquare:20>The Minigun<spop>
+
+<bitmap:share/misc/help/wpn_blaster.png>The Minigun (a.k.a. The Trident because of its shape) sprays a lot of bullets but has a short wind-up delay before firing and a short cooldown delay after firing.
+<sbreak><tab:15,200>
+	Armor cost	<spush><font:Arial Bold:16>2<spop>
+	Impact damage	<spush><font:Arial Bold:16>20<spop>
+	Impact impulse	<spush><font:Arial Bold:16>150<spop>
+	Splash damage	<spush><font:Arial Bold:16>-<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+<sbreak>
+
+<spush><font:NovaSquare:20>The Grenade Launcher<spop>
+
+<bitmap:share/misc/help/wpn_gl.png>The Grenade Launcher can fire up to four heavily-arching grenades in quick succession. The grenade launcher's strength lies in the ability to fire at enemies that the shooter can't see and not in its fire power (the grenades are actually pretty weak).
+<sbreak><tab:15,200>
+	Armor cost	<spush><font:Arial Bold:16>15<spop>
+	Impact damage	<spush><font:Arial Bold:16>-<spop>
+	Impact impulse	<spush><font:Arial Bold:16>1000<spop>
+	Splash damage	<spush><font:Arial Bold:16>40<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>18<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>0<spop>
 <sbreak>

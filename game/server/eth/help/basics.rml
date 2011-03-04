@@ -4,19 +4,19 @@ Players start out in Etherform and need to find a zone owned by their team in or
 
 The game is won if the opposing team has lost all their zones.
 
-<tab:15,200><spush><font:NovaSquare:18>Basic Controls<spop>
+<tab:15,215><spush><font:NovaSquare:18>Basic Controls<spop>
 	Toggle console	<spush><font:Arial Bold:16>F12<spop>
 	Toggle in-game shell	<spush><font:Arial Bold:16>@bind01<spop>
 	Move forward	<spush><font:Arial Bold:16>@bind06<spop>
 	Move backward	<spush><font:Arial Bold:16>@bind07<spop>
 	Move left	<spush><font:Arial Bold:16>@bind04<spop>
 	Move right	<spush><font:Arial Bold:16>@bind05<spop>
-	Global chat	<spush><font:Arial Bold:16>@bind25<spop>
+	Arena chat	<spush><font:Arial Bold:16>@bind25<spop>
 	Team chat	<spush><font:Arial Bold:16>@bind26<spop>
 	Messages PageUp	<spush><font:Arial Bold:16>@bind27<spop>
 	Messages PageDown	<spush><font:Arial Bold:16>@bind28<spop>
 	Resize messages	<spush><font:Arial Bold:16>@bind29<spop>
 	Bigger Minimap	<spush><font:Arial Bold:16>@bind30<spop>
 	Activate Cmdr View	<spush><font:Arial Bold:16>@bind31<spop>
-	Start recording (unstable)	<spush><font:Arial Bold:16>@bind32<spop>
-	Stop recording (unstable)	<spush><font:Arial Bold:16>@bind33<spop>
+	Toggle recording (unstable)	<spush><font:Arial Bold:16>@bind32<spop>
+	Take screenshot	<spush><font:Arial Bold:16>@bind33<spop>

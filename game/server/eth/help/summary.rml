@@ -16,18 +16,18 @@
 
 <lmargin:0>In CAT form...
 
-<lmargin:0>*<lmargin:10>Press @bind45 to cycle through your weapons. @bind35, @bind36, @bind37, @bind38, @bind39, @bind40, @bind41, @bind42, @bind43, @bind44 to select a weapon directly.
+<lmargin:0>*<lmargin:10>Press @bind45 to switch between the two weapons you selected in Etherform.
 
 <lmargin:0>*<lmargin:10>Use @bind16 to fire your mounted weapon, but keep in mind that this draws power away from your armor.
 
-<lmargin:0>*<lmargin:10>If you damage enemies you will receive half the damage back as health. It will also restore your armor.
-
 <lmargin:0>*<lmargin:10>Hold and release @bind19 to throw grenades. Pressing @bind46 or chording @bind19-@bind16 (pressing @bind16 while holding down @bind19) will throw a grenade at maximum force.
 
-<lmargin:0>*<lmargin:10>Press @bind17 to launch a disc. If you're aiming at an enemy disc this this will launch a disc to deflect it. Otherwise you need a disc-lock on an enemy CAT to launch a disc at it.
+<lmargin:0>*<lmargin:10>Damaging enemies will restore your armor and decrease the time before you'll be able to throw another grenade.
 
-<lmargin:0>*<lmargin:10>You can obtain a disc lock on an enemy CAT by hitting it with 3 of the 9 shots from a trident charge, landing a direct hit with the MG or damaging it with a grenade. A disc hit will also lead to another disc-lock. The lock lasts for two seconds.
+<lmargin:0>*<lmargin:10>Press @bind17 to launch a disc. If you're aiming at an enemy disc this this will launch a disc to deflect it. Otherwise you need a disc-lock on an enemy CAT to launch a disc at it. See the <a:cmd HowToPlay 5>Weapons section of this manual</a> for ways to get a disc lock.
 
 <lmargin:0>*<lmargin:10>Hold @bind21 to ride your etherboard. This allows higher movement speeds at the cost of lower agility.
 
 <lmargin:0>*<lmargin:10>Pressing @bind18 in mid-air will fire your jump boosters. Beware that this draws power away from your armor.
+
+<lmargin:0>*<lmargin:10>Pressing @bind51 will fire a B.O.U.N.C.E. that will revert the velocities of nearby enemy CATs. If no enemy CAT is nearby this will drain 50% of your armor.

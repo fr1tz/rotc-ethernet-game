@@ -5,15 +5,15 @@
 	Move backward	<spush><font:Arial Bold:16>@bind07<spop>
 	Move left	<spush><font:Arial Bold:16>@bind04<spop>
 	Move right	<spush><font:Arial Bold:16>@bind05<spop>
-	Global chat	<spush><font:Arial Bold:16>@bind25<spop>
+	Arena chat	<spush><font:Arial Bold:16>@bind25<spop>
 	Team chat	<spush><font:Arial Bold:16>@bind26<spop>
 	Messages PageUp	<spush><font:Arial Bold:16>@bind27<spop>
 	Messages PageDown	<spush><font:Arial Bold:16>@bind28<spop>
 	Resize messages	<spush><font:Arial Bold:16>@bind29<spop>
 	Bigger Minimap	<spush><font:Arial Bold:16>@bind30<spop>
 	Activate Cmdr View	<spush><font:Arial Bold:16>@bind31<spop>
-	Start recording (unstable)	<spush><font:Arial Bold:16>@bind32<spop>
-	Stop recording (unstable)	<spush><font:Arial Bold:16>@bind33<spop>
+	Toggle recording (unstable)	<spush><font:Arial Bold:16>@bind32<spop>
+	Take screenshot	<spush><font:Arial Bold:16>@bind33<spop>
 
 <spush><font:NovaSquare:18>Etherform Controls<spop>
 	Manifest as CAT	<spush><font:Arial Bold:16>@bind34<spop>
@@ -37,8 +37,5 @@
 	Disc	<spush><font:Arial Bold:16>@bind17<spop>
 	Grenade	<spush><font:Arial Bold:16>@bind19<spop>
 	Grenade (max. force)	<spush><font:Arial Bold:16>@bind46<spop> or chord <spush><font:Arial Bold:16>@bind19<spop>-<spush><font:Arial Bold:16>@bind16<spop>
-	Equip Trident	<spush><font:Arial Bold:16>@bind35<spop>
-	Equip MG	<spush><font:Arial Bold:16>@bind36<spop>
-	Equip Sniper ROFL	<spush><font:Arial Bold:16>@bind37<spop>
-	Switch between Trident & MG	<spush><font:Arial Bold:16>@bind45<spop>
-	Temp. equip Sniper ROFL	<spush><font:Arial Bold:16>@bind47<spop>
+	Switch weapons	<spush><font:Arial Bold:16>@bind45<spop>
+	Fire B.O.U.N.C.E.	<spush><font:Arial Bold:16>@bind51<spop>

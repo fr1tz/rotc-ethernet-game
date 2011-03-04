@@ -7,11 +7,11 @@ The Reds and Blues have the following basic properties:
 
 <spush><font:NovaSquare:18>Health<spop>
 
-Players start with 75 health points. At least 25% health is needed to manifest as a CAT. Health is lost if a player takes more damage than the health buffer can absorb. To regain health, players can either change back into Etherform and rest in a zone owned by their team or inflict damage on an enemy CAT. If you damage another CAT, 50% of the inflicted damage is returned to you first as health and then put into your health buffer, possibly overflowing it.
+Players start with 75 health points. At least 25% health is needed to manifest as a CAT. Health is lost if a player takes more damage than the health buffer can absorb. To regain health, players must change back into Etherform and rest in a zone owned by their team. 
 
 <spush><font:NovaSquare:18>Health buffer<spop>
 
-Players have a health buffer that constantly re-/degenerates to 25 points. Damage first hits the health buffer before affecting a player's health. The health buffer can overflow if players inflict enough damage on enemies.
+Players have a health buffer that constantly re-/degenerates to 25 points. Damage first hits the health buffer before affecting a player's health.
 
 <spush><font:NovaSquare:18>Armor<spop>
 
@@ -22,6 +22,10 @@ Guns draw away power from a CAT's armor when fired. The removed armor is restore
 <spush><font:NovaSquare:18>Etherboard<spop>
 
 By holding down @bind21, CATs can trade agility for speed by using the Etherboard to ride the ether.
+
+<spush><font:NovaSquare:18>B.O.U.N.C.E.<spop>
+
+CATs are equipped with a Chrestmann-Goldberg device that can be used to reverse the momentum of nearby enemy CATs. This is commonly called firing a B.O.U.N.C.E. (Burst Of Ultraons eNgaging Close Enemies). Pressing @bind51 activates the burst. If no enemy CATs are close this process drains 50% of the CAT's armor. Because it uses an enemy CAT's momentum against it, a B.O.U.N.C.E. is most effective against fast-moving CATs that don't have any footing on the ground.
 
 <spush><font:NovaSquare:18>Tagging<spop>
 
@@ -44,16 +48,12 @@ By pressing @bind34, players manifested as CAT can dissolve their physical bodie
 	Disc	<spush><font:Arial Bold:16>@bind17<spop>
 	Grenade	<spush><font:Arial Bold:16>@bind19<spop>
 	Grenade (max. force)	<spush><font:Arial Bold:16>@bind46<spop> or chord <spush><font:Arial Bold:16>@bind19<spop>-<spush><font:Arial Bold:16>@bind16<spop>
-	Equip Trident	<spush><font:Arial Bold:16>@bind35<spop>
-	Equip MG	<spush><font:Arial Bold:16>@bind36<spop>
-	Equip Sniper ROFL	<spush><font:Arial Bold:16>@bind37<spop>
-	Switch between Trident & MG	<spush><font:Arial Bold:16>@bind45<spop>
-	Temp. equip Sniper ROFL	<spush><font:Arial Bold:16>@bind47<spop>
+	Switch weapons	<spush><font:Arial Bold:16>@bind45<spop>
+	Fire B.O.U.N.C.E.	<spush><font:Arial Bold:16>@bind51<spop>
 
 <spush><font:NovaSquare:18>Pictures<spop>
 
 <bitmap:share/misc/help/cat_full.png> CAT with full health and full health buffer<sbreak>
 <bitmap:share/misc/help/cat_noenergy.png> CAT with almost no health<sbreak>
 <bitmap:share/misc/help/cat_dmgbufempty.png> CAT with full health but empty health buffer<sbreak>
-<bitmap:share/misc/help/cat_dmgbufoverflow.png> CAT with overflowing health buffer<sbreak>
 <bitmap:share/misc/help/cat_etherboard.png> CAT using etherboard<sbreak>
