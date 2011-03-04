@@ -10,21 +10,21 @@ exec("./minigun.sfx.cs");
 //-----------------------------------------------------------------------------
 // fire particle emitter
 
-datablock ParticleData(RedMinigunFireEmitter_Particles)
+datablock ParticleData(MinigunFireEmitter_Particles)
 {
 	dragCoefficient       = 1;
 	gravityCoefficient    = 0.0;
 	windCoefficient       = 0.0;
-	inheritedVelFactor    = 1.0;
+	inheritedVelFactor    = 0.5;
 	constantAcceleration  = 0.0;
-	lifetimeMS            = 100;
+	lifetimeMS            = 50;
 	lifetimeVarianceMS    = 0;
 	textureName           = "share/textures/rotc/smoke_particle";
 	colors[0]             = "1.0 1.0 1.0 1.0";
-	colors[1]             = "1.0 0.0 0.0 1.0";
-	colors[2]             = "1.0 0.0 0.0 0.0";
-	sizes[0]              = 0.5;
-	sizes[1]              = 0.5;
+	colors[1]             = "1.0 1.0 1.0 1.0";
+	colors[2]             = "1.0 1.0 1.0 0.0";
+	sizes[0]              = 0.3;
+	sizes[1]              = 0.3;
 	sizes[2]              = 0.0;
 	times[0]              = 0.0;
 	times[1]              = 0.5;
@@ -32,11 +32,11 @@ datablock ParticleData(RedMinigunFireEmitter_Particles)
 
 };
 
-datablock ParticleEmitterData(RedMinigunFireEmitter)
+datablock ParticleEmitterData(MinigunFireEmitter)
 {
 	ejectionPeriodMS = 10;
 	periodVarianceMS = 0;
-	ejectionVelocity = 5.0*10;
+	ejectionVelocity = 20.0;
 	velocityVariance = 0.2;
 	ejectionOffset   = 0;
 	thetaMin         = 0;
@@ -46,46 +46,7 @@ datablock ParticleEmitterData(RedMinigunFireEmitter)
 	overrideAdvances = false;
 	orientParticles  = false;
 	lifetimeMS       = 0;
-	particles        = "RedMinigunFireEmitter_Particles";
-};
-
-datablock ParticleData(BlueMinigunFireEmitter_Particles)
-{
-	dragCoefficient       = 1;
-	gravityCoefficient    = 0.0;
-	windCoefficient       = 0.0;
-	inheritedVelFactor    = 1.0;
-	constantAcceleration  = 0.0;
-	lifetimeMS            = 100;
-	lifetimeVarianceMS    = 0;
-	textureName           = "share/textures/rotc/smoke_particle";
-	colors[0]             = "1.0 1.0 1.0 1.0";
-	colors[1]             = "0.0 0.0 1.0 1.0";
-	colors[2]             = "0.0 0.0 1.0 0.0";
-	sizes[0]              = 0.5;
-	sizes[1]              = 0.5;
-	sizes[2]              = 0.0;
-	times[0]              = 0.0;
-	times[1]              = 0.5;
-	times[2]              = 1.0;
-
-};
-
-datablock ParticleEmitterData(BlueMinigunFireEmitter)
-{
-	ejectionPeriodMS = 10;
-	periodVarianceMS = 0;
-	ejectionVelocity = 5.0*10;
-	velocityVariance = 0.2;
-	ejectionOffset   = 0;
-	thetaMin         = 0;
-	thetaMax         = 0;
-	phiReferenceVel  = 0;
-	phiVariance      = 360;
-	overrideAdvances = false;
-	orientParticles  = false;
-	lifetimeMS       = 0;
-	particles        = "BlueMinigunFireEmitter_Particles";
+	particles        = "MinigunFireEmitter_Particles";
 };
 
 //------------------------------------------------------------------------------
@@ -99,7 +60,7 @@ datablock ShapeBaseImageData(RedMinigunImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/blaster/image.red.dts";
+	shapeFile = "share/shapes/rotc/weapons/minigun/image.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -174,9 +135,9 @@ datablock ShapeBaseImageData(RedMinigunImage)
 		stateArmThread[4]                = "aimblaster";
 		stateSequence[4]                 = "fire";
 		stateSound[4]                    = MinigunFireSound;
-		//stateEmitter[4]                  = RedMinigunFireEmitter;
-		//stateEmitterNode[4]              = "fireparticles";
-		//stateEmitterTime[4]              = 0.1;
+		stateEmitter[4]                  = MinigunFireEmitter;
+		stateEmitterNode[4]              = "fireparticles";
+		stateEmitterTime[4]              = 0.1;
 		stateSpinThread[4]               = "FullSpeed";
 		stateScript[4]                   = "onFire";
 
@@ -265,7 +226,7 @@ function RedMinigunImage::onFire(%this, %obj, %slot)
 
 datablock ShapeBaseImageData(BlueMinigunImage : RedMinigunImage)
 {
-	shapeFile = "share/shapes/rotc/weapons/blaster/image.blue.dts";
+	shapeFile = "share/shapes/rotc/weapons/minigun/image.blue.dts";
 	projectile = BlueMinigunProjectile;
 	//stateEmitter[3] = BlueMinigunFireEmitter;
 };
