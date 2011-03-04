@@ -219,7 +219,7 @@ function serverCmdMenuVisible(%client, %visible)
 function serverCmdMainMenu(%client)
 {
 	%newtxt = om_init();
-	%client.beginMenuText();
+	%client.beginMenuText(%client.menu $= "mainmenu");
 
 	%newtxt = %newtxt @
 		om_head(%client, "Main Menu") @
@@ -236,8 +236,8 @@ function serverCmdMainMenu(%client)
 		%newtxt = %newtxt @
 			"If you're playing this arena for the first time, loading" SPC
 			"might take\nsome time while the game downloads needed" SPC
-			"art from the server.\nConsider using the time to read up on" SPC
-			"<a:cmd HowToPlay>how to play in this arena</a>.\n" @
+			"art from the server.\nConsider using the time to read" SPC
+			"<a:cmd HowToPlay 1>ROTC: Ethernet in a nutshell</a>.\n" @
 			"This main menu can be used to join a team once loading" SPC
 			"has finished.\n\n" @
 			"";
@@ -268,8 +268,14 @@ function serverCmdMainMenu(%client)
 	%newtxt = %newtxt @	
 		"\n<spush><font:NovaSquare:16>Information<spop>\n" @
 		"   \>\> <a:cmd ShowPlayerList>Player statistics</a>\n" @
-		"   \>\> <a:cmd HowToPlay>How to play in this arena?</a>\n" @
 		"   \>\> <a:cmd News>What's new in" SPC $Server::MissionType @ "?</a>\n" @
+		"   \>\> <a:cmd HowToPlay 0>How to play ROTC: Ethernet</a>\n" @		
+		"      \>\> <a:cmd HowToPlay 1>1. ROTC: Ethernet in a nutshell</a>\n" @
+		"      \>\> <a:cmd HowToPlay 2>2. Basics</a>\n" @
+		"      \>\> <a:cmd HowToPlay 3>3. Playing as Etherform</a>\n" @
+		"      \>\> <a:cmd HowToPlay 4>4. Playing in CAT form</a>\n" @
+		"      \>\> <a:cmd HowToPlay 5>5. Weapons</a>\n" @
+		"      \>\> <a:cmd HowToPlay 6>6. Controls reference</a>\n" @
 		"";
 
 	%client.addMenuText(%newtxt);
