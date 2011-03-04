@@ -219,7 +219,7 @@ function serverCmdMenuVisible(%client, %visible)
 function serverCmdMainMenu(%client)
 {
 	%newtxt = om_init();
-	%client.clearMenuText();
+	%client.beginMenuText();
 
 	%newtxt = %newtxt @
 		om_head(%client, "Main Menu") @
@@ -273,6 +273,7 @@ function serverCmdMainMenu(%client)
 		"";
 
 	%client.addMenuText(%newtxt);
+	%client.endMenuText();
 
 	%client.menu = "mainmenu";
 }
@@ -280,7 +281,7 @@ function serverCmdMainMenu(%client)
 function serverCmdNews(%client)
 {
 	%newtxt = om_init();
-	%client.clearMenuText();
+	%client.beginMenuText();
 
 	if(%page $= "")
 		%page = 1;
@@ -296,6 +297,7 @@ function serverCmdNews(%client)
 	%file.delete();
 
 	%client.addMenuText(%newtxt);
+	%client.endMenuText();
 
 	%client.menu = "news";
 }
@@ -304,10 +306,10 @@ function serverCmdNews(%client)
 function serverCmdShowPlayerList(%client, %show)
 {
 	%newtxt = om_init();
-	%client.clearMenuText();
+	%client.beginMenuText(%client.menu $= "playerlist");
 
 	%newtxt = %newtxt @ 
-		om_head(%client, "Player statistics", "MainMenu", "ShowPlayerList" SPC %show);
+		om_head(%client, "Player statistics", "MainMenu");
 
 	if(%show $= "")
 		%show = "latency";
@@ -431,12 +433,14 @@ function serverCmdShowPlayerList(%client, %show)
 
 		%idx = %array.moveNext();
 	}
+	
+	%array.delete();	
 
 	%client.addMenuText(%newtxt);
-
-	%array.delete();
+	%client.endMenuText();
 
 	%client.menu = "playerlist";
+	%client.menuArgs = %show;
 }
 
 function serverCmdShowPlayerInfo(%client, %player)
@@ -445,11 +449,11 @@ function serverCmdShowPlayerInfo(%client, %player)
 	if(!isObject(%p))
 		return;
 
-	%client.clearMenuText();
+	%client.beginMenuText(%client.menu $= "playerinfo");
 	%client.addMenuText(
 		om_init() @
 		om_head(%client, "Info on" SPC %player.nameBase, 
-			"ShowPlayerList", "ShowPlayerInfo" SPC %player) @
+			"ShowPlayerList") @
 		"(last updated @" SPC removeDecimals(%p.lastUpdate) SPC "secs)\n\n" @
 		"<tab:200>" @
 		"Time played:" TAB trimStat(%p.timePlayed) SPC "mins" @ "\n" @
@@ -481,6 +485,8 @@ function serverCmdShowPlayerInfo(%client, %player)
 		"Total" TAB %p.totalFired TAB trimStat(%p.totalEffectiveness) @ "%" @ "\n\n" @
 		""
 	);
+	%client.endMenuText();
 
 	%client.menu = "playerinfo";
+	%client.menuArgs = %player;
 }

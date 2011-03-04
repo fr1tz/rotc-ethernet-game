@@ -473,9 +473,9 @@ function GameConnection::updateSkyColor(%this)
 
 //-----------------------------------------------------------------------------
 
-function GameConnection::clearMenuText(%this)
+function GameConnection::beginMenuText(%this, %update)
 {
-	messageClient(%this, 'MsgMenuText', "", "");
+	commandToClient(%this, 'BeginMenuTxt', %update);
 }
 
 function GameConnection::addMenuText(%this, %text)
@@ -484,9 +484,14 @@ function GameConnection::addMenuText(%this, %text)
 	while(%n < %l)
 	{
 		%chunk = getSubStr(%text, %n, 255);
-		messageClient(%this, 'MsgMenuText', "", %chunk);
+		commandToClient(%this, 'AddMenuTxt', %chunk);
 		%n += 255;
 	}	
+}
+
+function GameConnection::endMenuText(%this)
+{
+	commandToClient(%this, 'EndMenuTxt');
 }
 
 //-----------------------------------------------------------------------------

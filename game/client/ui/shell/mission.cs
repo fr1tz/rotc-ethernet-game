@@ -3,20 +3,35 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
-addMessageCallback('MsgMenuText', handleMsgMenuText);
-
-//-----------------------------------------------------------------------------
-
-function handleMsgMenuText(%msgType, %msgString, %text)
+function clientCmdBeginMenuTxt(%update)
 {
-	if(%text $= "")
-		IngameMenuText.setText("");
+	IngameMenuText.zText = "";
+	if(%update)
+	{
+		IngameMenuScroll.zPrevPosX = IngameMenuScroll.getScrollPositionX();
+		IngameMenuScroll.zPrevPosY = IngameMenuScroll.getScrollPositionY();
+	}
 	else
 	{
-		%newtext = IngameMenuText.getText() @ %text;
-		IngameMenuText.setText(replaceBindVars(%newtext));
+		IngameMenuScroll.zPrevPosX = 0;
+		IngameMenuScroll.zPrevPosY = 0;
 	}
 }
+
+function clientCmdAddMenuTxt(%text)
+{
+	IngameMenuText.zText = IngameMenuText.zText @ %text;
+}
+
+function clientCmdEndMenuTxt()
+{
+	IngameMenuText.setText(replaceBindVars(IngameMenuText.zText));
+	IngameMenuText.forceReflow();
+	IngameMenuScroll.setScrollPosition(IngameMenuScroll.zPrevPosX,
+		IngameMenuScroll.zPrevPosY);
+}
+
+//-----------------------------------------------------------------------------
 
 function MissionWindow::resizeIdeal(%this)
 {

@@ -37,7 +37,7 @@ new GuiControl(MissionWindowForEditing) {
       canMaximize = "0";
       minSize = "50 50";
 
-      new GuiScrollCtrl() {
+      new GuiScrollCtrl(IngameMenuScroll) {
          canSaveDynamicFields = "0";
          Profile = "GuiScrollProfile";
          HorizSizing = "width";

@@ -108,6 +108,14 @@ function GameConnection::processPlayerStats(%this)
 	%p.sniperEffectiveness = (%p.sniperDmgApplied / %p.sniperDmgPossible) * 100;
 	%p.glEffectiveness = (%p.glDmgApplied / %p.glDmgPossible) * 100;
 	%p.totalEffectiveness = (%p.totalDmgApplied / %p.totalDmgPossible) * 100;
-
+	
+	if(%this.menuVisible)
+	{
+		if(%this.menu $= "playerlist")
+			serverCmdShowPlayerList(%this, %this.menuArgs);
+		else if(%this.menu $= "playerinfo")
+			serverCmdShowPlayerInfo(%this, %this.menuArgs);			
+	}
+		
 	%this.schedule(3000, "processPlayerStats");
 }

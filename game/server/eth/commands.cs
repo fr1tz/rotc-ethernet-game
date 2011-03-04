@@ -6,7 +6,7 @@
 function serverCmdHowToPlay(%client, %page)
 {
 	%newtxt = om_init();
-	%client.clearMenuText();
+	%client.beginMenuText();
 
 	if(%page $= "")
 		%page = 1;
@@ -80,6 +80,7 @@ function serverCmdHowToPlay(%client, %page)
 	%newtxt = %newtxt @ "\n<just:center>" @ %nav @ "\n";
 
 	%client.addMenuText(%newtxt);
+	%client.endMenuText(%newtxt);
 
 	%client.menu = "howtoplay" @ %page;
 }
