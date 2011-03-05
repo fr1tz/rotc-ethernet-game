@@ -16,7 +16,10 @@ $IRC::Colors = "" @
 $IRC::NumColors = getWordCount($IRC::Colors);
 
 if(!isObject(IRCconn))
+{
 	new TCPObject(IRCconn);
+	$IRC::Offline = true;
+}
 
 if(!isObject($IRC::Names))
 	$IRC::Names = new Array();
