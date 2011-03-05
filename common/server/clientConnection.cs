@@ -183,6 +183,8 @@ function GameConnection::onDrop(%client, %reason)
 	removeTaggedString(%client.name);
 	echo("CDROP: " @ %client @ " " @ %client.getAddress());
 	$Server::PlayerCount--;
+	if($Server::PlayerCount < 0)
+		$Server::PlayerCount = 0;
 	
 	// Reset the server if everyone has left the game
 //	if( $Server::PlayerCount == 0 && $Server::Dedicated)
