@@ -22,7 +22,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
       HorizSizing = "center";
       VertSizing = "center";
       position = "67 94";
-      Extent = "264 343";
+      Extent = "264 370";
       MinExtent = "8 8";
       canSave = "1";
       Visible = "1";
@@ -71,7 +71,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          Profile = "GuiCheckBoxProfile";
          HorizSizing = "right";
          VertSizing = "top";
-         position = "21 265";
+         position = "21 297";
          Extent = "137 25";
          MinExtent = "8 8";
          canSave = "1";
@@ -88,7 +88,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "top";
-         position = "165 301";
+         position = "165 328";
          Extent = "78 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -244,7 +244,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          hovertime = "1000";
          range = "0 25";
          ticks = "25";
-         value = "5";
+         value = "0";
       };
       new GuiTextCtrl() {
          canSaveDynamicFields = "0";
@@ -308,7 +308,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          hovertime = "1000";
          range = "0 1";
          ticks = "100";
-         value = "0.12";
+         value = "0.125";
       };
       new GuiTextEditCtrl(OptGraphicsTrailsScaleNum) {
          canSaveDynamicFields = "0";
@@ -429,6 +429,23 @@ new GuiControl(OptGraphicsWindowForEditing) {
          sinkAllKeyEvents = "0";
          password = "0";
          passwordMask = "*";
+      };
+      new GuiCheckBoxCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiCheckBoxProfile";
+         HorizSizing = "right";
+         VertSizing = "top";
+         position = "21 272";
+         Extent = "215 25";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         Variable = "$Pref::Precipitation::Enabled";
+         hovertime = "1000";
+         text = "Render precipitation (rain, snow, etc.)";
+         groupNum = "-1";
+         buttonType = "ToggleButton";
+         useInactiveState = "0";
       };
    };
 };
