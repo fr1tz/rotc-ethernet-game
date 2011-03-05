@@ -46,6 +46,10 @@ function GameConnection::initialControlSet(%this)
 		{
 			Canvas.setContent(Hud);
 			toggleShellDlg();
+			
+			// Make sure we're displaying the IRC window if we're not offline...
+			if(!$IRC::Offline)
+				addWindow(IrcWindow);
 		}
 	}
 }
@@ -177,6 +181,10 @@ function disconnectedCleanup()
 
 	// Make sure we're displaying the shell
 	Canvas.setContent(Shell);
+	
+	// Make sure we're displaying the IRC window if we're not offline...
+	if(!$IRC::Offline)
+		addWindow(IrcWindow);
 
 	// Dump anything we're not using
 	clearTextureHolds();
