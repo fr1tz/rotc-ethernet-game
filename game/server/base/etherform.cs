@@ -51,6 +51,9 @@ function EtherformData::onAdd(%this, %obj)
 		%obj.client.setHudMenuL("*", " ", 1, 0);
 		%obj.client.setHudMenuR("*", " ", 1, 0);
 	}
+	
+	// Make sure grenade ammo bar is not visible...
+	messageClient(%obj.client, 'MsgGrenadeAmmo', "", 1);
 
 	// lights...
 	if(%obj.getTeamId() == 1)
