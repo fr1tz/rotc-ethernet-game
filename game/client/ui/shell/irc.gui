@@ -50,19 +50,19 @@ new GuiControl(IrcWindowForEditing) {
          Visible = "1";
          hovertime = "1000";
 
-         new GuiButtonCtrl(IrcDisconnect) {
+         new GuiButtonCtrl() {
             canSaveDynamicFields = "0";
             Profile = "GuiButtonProfile";
             HorizSizing = "right";
             VertSizing = "top";
-            position = "0 366";
+            position = "0 337";
             Extent = "115 20";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
-            Command = "irc_disconnect(\"Disconnected\");";
+            Command = "irc_grab_attention();";
             hovertime = "1000";
-            text = "Leave Chat";
+            text = "Get attention!";
             groupNum = "-1";
             buttonType = "PushButton";
          };
@@ -71,8 +71,8 @@ new GuiControl(IrcWindowForEditing) {
             Profile = "GuiScrollProfile";
             HorizSizing = "width";
             VertSizing = "height";
-            position = "125 30";
-            Extent = "375 327";
+            position = "125 0";
+            Extent = "375 357";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -123,8 +123,8 @@ new GuiControl(IrcWindowForEditing) {
             Profile = "GuiScrollProfile";
             HorizSizing = "right";
             VertSizing = "height";
-            position = "0 30";
-            Extent = "115 327";
+            position = "0 0";
+            Extent = "115 330";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -150,40 +150,6 @@ new GuiControl(IrcWindowForEditing) {
                allowColorChars = "0";
                maxChars = "-1";
             };
-         };
-         new GuiTextEditCtrl(IrcTopic) {
-            canSaveDynamicFields = "0";
-            Profile = "GuiTextEditProfile";
-            HorizSizing = "width";
-            VertSizing = "bottom";
-            position = "40 0";
-            Extent = "460 18";
-            MinExtent = "100 18";
-            canSave = "1";
-            Visible = "1";
-            hovertime = "1000";
-            text = "";
-            maxLength = "1024";
-            historySize = "0";
-            password = "0";
-            tabComplete = "0";
-            sinkAllKeyEvents = "0";
-            password = "0";
-            passwordMask = "*";
-         };
-         new GuiTextCtrl() {
-            canSaveDynamicFields = "0";
-            Profile = "GuiTextProfile";
-            HorizSizing = "right";
-            VertSizing = "bottom";
-            position = "4 0";
-            Extent = "28 18";
-            MinExtent = "8 2";
-            canSave = "1";
-            Visible = "1";
-            hovertime = "1000";
-            text = "Topic:";
-            maxLength = "1024";
          };
          new GuiTextCtrl() {
             canSaveDynamicFields = "0";
@@ -280,6 +246,22 @@ new GuiControl(IrcWindowForEditing) {
             groupNum = "-1";
             buttonType = "ToggleButton";
             useInactiveState = "0";
+         };
+         new GuiButtonCtrl(IrcDisconnect) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiButtonProfile";
+            HorizSizing = "right";
+            VertSizing = "top";
+            position = "0 366";
+            Extent = "115 20";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            Command = "irc_disconnect(\"Disconnected\");";
+            hovertime = "1000";
+            text = "Leave Chat";
+            groupNum = "-1";
+            buttonType = "PushButton";
          };
       };
       new GuiControl(IrcConnect) {

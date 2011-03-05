@@ -198,9 +198,6 @@ function irc_process_line(%line)
 		%topic = irc_after_colon(%params);
 		IrcText.addLine("* The topic is:" SPC 
 			%topic, $IRC::MsgType::Topic);
-		IrcTopic.setActive(true);
-		IrcTopic.setText(%topic);
-		IrcTopic.setActive(false);
 	}
 	else if(%command >= 431 && %command <= 436)
 	{
@@ -235,6 +232,24 @@ function irc_talk(%usr, %msg)
 		%txt = "<spush><shadowcolor:00ff00><shadow:1:1>" @ %txt @ "<spop>";	
 
 	IrcText.addLine(%txt, $IRC::MsgType::Talk);
+}
+
+function irc_grab_attention()
+{
+	%txt = "[" SPC
+	$IRC::Names.sorta();
+	%idx = $IRC::Names.moveFirst();
+	while(%idx != -1)
+	{
+		%k = $IRC::Names.getKey(%idx);
+		%v = $IRC::Names.getValue(%idx);
+		
+		%txt = %txt SPC %v;
+
+		%idx = $IRC::Names.moveNext();
+	}
+	%txt = %txt SPC "]";
+	IrcSend.setText(IrcSend.getText() @ %txt);
 }
 
 //------------------------------------------------------------------------------
