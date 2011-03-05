@@ -86,9 +86,9 @@ function Hud::updateMetrics(%this)
 	HudFpsGraph.setVisible($Pref::Hud::ShowFPSGraph);
 	
 	%txt = "";
-	if($Pref::Hud::ShowPing)
+	if($Pref::Hud::ShowPing && isObject(ServerConnection))
 		%txt = %txt @ "PING:" SPC ServerConnection.getPing() @ "   ";
-	if($Pref::Hud::ShowPacketloss)
+	if($Pref::Hud::ShowPacketloss && isObject(ServerConnection))
 		%txt = %txt @ "PACKETLOSS:" SPC ServerConnection.getPacketloss() @ "   ";
 	if($Pref::Hud::ShowFPS)
 		%txt = %txt @ "FPS:" SPC ($FPS::Real);
