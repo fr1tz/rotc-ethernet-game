@@ -21,6 +21,10 @@ http://ethernet.wasted.ch//index.php?page=contrib
 Known Issues
 ------------
 
+- As of Mar. 5, 2011, the main master server is still down. That's why this
+  version has support for a backup master server. If the backup master server
+  is down as well, you can use the in-game "Player Chat" to find servers.
+
 - The game is still not very optimized in terms of speed, but the Linux version
   seems to run incredibly slow on systems with ATI graphics drivers (to the
   point where it's unplayable).
