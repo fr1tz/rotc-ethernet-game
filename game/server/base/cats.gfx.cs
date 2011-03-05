@@ -209,7 +209,7 @@ datablock ParticleEmitterData(BlueCatRepairEmitter)
 };
 
 //------------------------------------------------------------------------------
-// damage buffer repair particle emitter...
+// buffer repair particle emitter...
 
 datablock ParticleData(RedCatBufferRepairEmitter_Particle)
 {
@@ -236,7 +236,7 @@ datablock ParticleData(RedCatBufferRepairEmitter_Particle)
 
 datablock ParticleEmitterData(RedCatBufferRepairEmitter)
 {
-	ejectionPeriodMS = 500;
+	ejectionPeriodMS = 10;
 	periodVarianceMS = 0;
 	ejectionVelocity = -20.0;
 	velocityVariance = 0;
@@ -278,7 +278,7 @@ datablock ParticleData(BlueCatBufferRepairEmitter_Particle)
 
 datablock ParticleEmitterData(BlueCatBufferRepairEmitter)
 {
-	ejectionPeriodMS = 500;
+	ejectionPeriodMS = 10;
 	periodVarianceMS = 0;
 	ejectionVelocity = -20.0;
 	velocityVariance = 0;
@@ -291,6 +291,192 @@ datablock ParticleEmitterData(BlueCatBufferRepairEmitter)
 	orientParticles  = false;
 	lifetimeMS		 = 0; // forever
 	particles = BlueCatBufferRepairEmitter_Particle;
+};
+
+//------------------------------------------------------------------------------
+// damage particle emitter
+
+datablock ParticleData(RedCatDamageEmitter_Particle)
+{
+	spinSpeed = 200;
+	spinRandomMin = -200.0;
+	spinRandomMax =  200.0;
+	dragCoefficient		= 1;
+	gravityCoefficient	= 3.0;
+	windCoefficient		= 0.0;
+	inheritedVelFactor	= 0.0;
+	constantAcceleration = 0.0;
+	lifetimeMS			  = 1000;
+	lifetimeVarianceMS	= 0;
+	textureName = "share/shapes/rotc/misc/debris1.red";
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 1.0 1.0 1.0";
+	colors[2]	  = "1.0 1.0 1.0 0.0";
+	sizes[0]		= 0.25;
+	sizes[1]		= 0.25;
+	sizes[2]		= 0.25;
+	times[0]		= 0.0;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+	useInvAlpha =  false;
+	allowLighting = false;
+};
+
+datablock ParticleEmitterData(RedCatDamageEmitter)
+{
+	ejectionPeriodMS = 10;
+	periodVarianceMS = 0;
+	ejectionVelocity = 15.0;
+	velocityVariance = 5.0;
+	ejectionOffset	= 0.0;
+	thetaMin			= 0;
+	thetaMax			= 50;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	lifetimeMS		 = 0; // forever
+	lifetimeVarianceMS = 0;
+	overrideAdvances = false;
+	orientParticles  = true;
+	particles = "RedCatDamageEmitter_Particle";
+};
+
+//-------------------------------
+
+datablock ParticleData(BlueCatDamageEmitter_Particle)
+{
+	spinSpeed = 200;
+	spinRandomMin = -200.0;
+	spinRandomMax =  200.0;
+	dragCoefficient		= 1;
+	gravityCoefficient	= 3.0;
+	windCoefficient		= 0.0;
+	inheritedVelFactor	= 0.0;
+	constantAcceleration = 0.0;
+	lifetimeMS			  = 1000;
+	lifetimeVarianceMS	= 0;
+	textureName = "share/shapes/rotc/misc/debris1.blue";
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 1.0 1.0 1.0";
+	colors[2]	  = "1.0 1.0 1.0 0.0";
+	sizes[0]		= 0.25;
+	sizes[1]		= 0.25;
+	sizes[2]		= 0.25;
+	times[0]		= 0.0;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+	useInvAlpha =  false;
+	allowLighting = false;
+};
+
+datablock ParticleEmitterData(BlueCatDamageEmitter)
+{
+	ejectionPeriodMS = 10;
+	periodVarianceMS = 0;
+	ejectionVelocity = 15.0;
+	velocityVariance = 5.0;
+	ejectionOffset	= 0.0;
+	thetaMin			= 0;
+	thetaMax			= 50;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	lifetimeMS		 = 0; // forever
+	lifetimeVarianceMS = 0;
+	overrideAdvances = false;
+	orientParticles  = true;
+	particles = "BlueCatDamageEmitter_Particle";
+};
+
+//------------------------------------------------------------------------------
+// buffer damage particle emitter
+
+datablock ParticleData(RedCatBufferDamageEmitter_Particle)
+{
+	spinSpeed = 200;
+	spinRandomMin = -200.0;
+	spinRandomMax =  200.0;
+	dragCoefficient		= 1;
+	gravityCoefficient	= 3.0;
+	windCoefficient		= 0.0;
+	inheritedVelFactor	= 0.0;
+	constantAcceleration = 0.0;
+	lifetimeMS			  = 1000;
+	lifetimeVarianceMS	= 0;
+	textureName = "share/shapes/rotc/misc/debris1.white";
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 1.0 1.0 1.0";
+	colors[2]	  = "1.0 1.0 1.0 0.0";
+	sizes[0]		= 0.25;
+	sizes[1]		= 0.25;
+	sizes[2]		= 0.25;
+	times[0]		= 0.0;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+	useInvAlpha =  false;
+	allowLighting = false;
+};
+
+datablock ParticleEmitterData(RedCatBufferDamageEmitter)
+{
+	ejectionPeriodMS = 10;
+	periodVarianceMS = 0;
+	ejectionVelocity = 15.0;
+	velocityVariance = 5.0;
+	ejectionOffset	= 0.0;
+	thetaMin			= 0;
+	thetaMax			= 50;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	lifetimeMS		 = 0; // forever
+	lifetimeVarianceMS = 0;
+	overrideAdvances = false;
+	orientParticles  = true;
+	particles = "RedCatBufferDamageEmitter_Particle";
+};
+
+//-------------------------------
+
+datablock ParticleData(BlueCatBufferDamageEmitter_Particle)
+{
+	spinSpeed = 200;
+	spinRandomMin = -200.0;
+	spinRandomMax =  200.0;
+	dragCoefficient		= 1;
+	gravityCoefficient	= 3.0;
+	windCoefficient		= 0.0;
+	inheritedVelFactor	= 0.0;
+	constantAcceleration = 0.0;
+	lifetimeMS			  = 1000;
+	lifetimeVarianceMS	= 0;
+	textureName = "share/shapes/rotc/misc/debris1.white";
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 1.0 1.0 1.0";
+	colors[2]	  = "1.0 1.0 1.0 0.0";
+	sizes[0]		= 0.25;
+	sizes[1]		= 0.25;
+	sizes[2]		= 0.25;
+	times[0]		= 0.0;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+	useInvAlpha =  false;
+	allowLighting = false;
+};
+
+datablock ParticleEmitterData(BlueCatBufferDamageEmitter)
+{
+	ejectionPeriodMS = 10;
+	periodVarianceMS = 0;
+	ejectionVelocity = 15.0;
+	velocityVariance = 5.0;
+	ejectionOffset	= 0.0;
+	thetaMin			= 0;
+	thetaMax			= 50;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	lifetimeMS		 = 0; // forever
+	lifetimeVarianceMS = 0;
+	overrideAdvances = false;
+	orientParticles  = true;
+	particles = "BlueCatBufferDamageEmitter_Particle";
 };
 
 //------------------------------------------------------------------------------

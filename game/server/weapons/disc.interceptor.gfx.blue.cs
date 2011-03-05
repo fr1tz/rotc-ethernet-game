@@ -276,14 +276,16 @@ datablock ExplosionData(BlueInterceptorDiscHit)
 	explosionScale = "0.8 0.8 0.8";
 
 	lifetimeMS = 250;
+	
+	emitter[0] = DefaultSmallWhiteDebrisEmitter;
 
-	debris = BlueInterceptorDiscHit_Debris;
-	debrisThetaMin = 0;
-	debrisThetaMax = 60;
-	debrisNum = 3;
-	debrisNumVariance = 1;
-	debrisVelocity = 10.0;
-	debrisVelocityVariance = 5.0;
+	//debris = BlueInterceptorDiscHit_Debris;
+	//debrisThetaMin = 0;
+	//debrisThetaMax = 60;
+	//debrisNum = 3;
+	//debrisNumVariance = 1;
+	//debrisVelocity = 10.0;
+	//debrisVelocityVariance = 5.0;
 
 	// Dynamic light
 	lightStartRadius = 1;

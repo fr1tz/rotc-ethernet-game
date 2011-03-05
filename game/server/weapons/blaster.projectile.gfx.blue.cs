@@ -207,15 +207,16 @@ datablock ExplosionData(BlueBlasterProjectileImpact)
 	times[0] = 0.0;
 	times[1] = 1.0;
 
-	emitter[0] = BlueBlasterProjectileImpact_SmokeEmitter;
+	emitter[0] = DefaultSmallWhiteDebrisEmitter;
+	emitter[1] = BlueBlasterProjectileImpact_SmokeEmitter;
 
-	debris = BlueBlasterProjectileImpact_Debris;
-	debrisThetaMin = 0;
-	debrisThetaMax = 60;
-	debrisNum = 1;
-	debrisNumVariance = 1;
-	debrisVelocity = 10.0;
-	debrisVelocityVariance = 5.0;
+	//debris = BlueBlasterProjectileImpact_Debris;
+	//debrisThetaMin = 0;
+	//debrisThetaMax = 60;
+	//debrisNum = 1;
+	//debrisNumVariance = 1;
+	//debrisVelocity = 10.0;
+	//debrisVelocityVariance = 5.0;
 
 	// Dynamic light
 	lightStartRadius = 0;

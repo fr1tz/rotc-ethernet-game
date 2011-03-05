@@ -1,10 +1,11 @@
 What's new?
 ===========
 
-Prototype 2-dev19
+Prototype 2-dev20
 -----------------
 
 - Currently windows version only!
+- Breaks backwards compatibility to older versions!
 - Bugfixes
 - Ability to turn off precipitation.
 

@@ -241,13 +241,15 @@ datablock ExplosionData(BlueSeekerDiscHit)
 
 	lifetimeMS = 250;
 
-	debris = BlueSeekerDiscHit_Debris;
-	debrisThetaMin = 0;
-	debrisThetaMax = 60;
-	debrisNum = 3;
-	debrisNumVariance = 1;
-	debrisVelocity = 10.0;
-	debrisVelocityVariance = 5.0;
+	emitter[0] = DefaultSmallWhiteDebrisEmitter;
+
+	//debris = BlueSeekerDiscHit_Debris;
+	//debrisThetaMin = 0;
+	//debrisThetaMax = 60;
+	//debrisNum = 3;
+	//debrisNumVariance = 1;
+	//debrisVelocity = 10.0;
+	//debrisVelocityVariance = 5.0;
 
 	// Dynamic light
 	lightStartRadius = 1;

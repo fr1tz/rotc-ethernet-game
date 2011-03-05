@@ -263,15 +263,16 @@ datablock ExplosionData(RedSniperProjectileImpact)
 	times[0] = 0.0;
 	times[1] = 1.0;
 
-	emitter[0] = RedSniperProjectileImpact_SmokeEmitter;
+	emitter[0] = DefaultSmallWhiteDebrisEmitter;
+	emitter[1] = RedSniperProjectileImpact_SmokeEmitter;
 
-	debris = RedSniperProjectileImpact_Debris;
-	debrisThetaMin = 0;
-	debrisThetaMax = 60;
-	debrisNum = 1;
-	debrisNumVariance = 1;
-	debrisVelocity = 10.0;
-	debrisVelocityVariance = 5.0;
+	//debris = RedSniperProjectileImpact_Debris;
+	//debrisThetaMin = 0;
+	//debrisThetaMax = 60;
+	//debrisNum = 1;
+	//debrisNumVariance = 1;
+	//debrisVelocity = 10.0;
+	//debrisVelocityVariance = 5.0;
 
 	// Dynamic light
 	lightStartRadius = 0;
@@ -606,13 +607,15 @@ datablock ParticleEmitterData(RedSniperProjectileExplosion_LargeDebris_Emitter1)
 datablock ExplosionData(RedSniperProjectileExplosion_LargeDebris_Explosion)
 {
 	soundProfile	= SniperDebrisSound;
+	
+	emitter[0] = DefaultMediumWhiteDebrisEmitter;	
 
-	debris = RedSniperProjectileExplosion_SmallDebris;
-	debrisThetaMin = 0;
-	debrisThetaMax = 60;
-	debrisNum = 5;
-	debrisVelocity = 15.0;
-	debrisVelocityVariance = 10.0;
+	//debris = RedSniperProjectileExplosion_SmallDebris;
+	//debrisThetaMin = 0;
+	//debrisThetaMax = 60;
+	//debrisNum = 5;
+	//debrisVelocity = 15.0;
+	//debrisVelocityVariance = 10.0;
 };
 
 datablock DebrisData(RedSniperProjectileExplosion_LargeDebris)

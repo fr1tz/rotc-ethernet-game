@@ -406,12 +406,12 @@ datablock ExplosionData(AssaultRifleProjectileExplosion)
 	times[0] = 0.0;
 	times[1] = 1.0;
 
-	debris = 0; //AssaultRifleProjectileExplosion_Debris;
-	debrisThetaMin = 0;
-	debrisThetaMax = 180;
-	debrisNum = 3;
-	debrisVelocity = 50.0;
-	debrisVelocityVariance = 10.0;
+	//debris = 0; //AssaultRifleProjectileExplosion_Debris;
+	//debrisThetaMin = 0;
+	//debrisThetaMax = 180;
+	//debrisNum = 3;
+	//debrisVelocity = 50.0;
+	//debrisVelocityVariance = 10.0;
 	
 	particleEmitter = AssaultRifleProjectileExplosion_CloudEmitter;
 	particleDensity = 25;
@@ -511,15 +511,16 @@ datablock ExplosionData(AssaultRifleProjectileImpact)
 
 	lifetimeMS = 250;
 
-	emitter[0] = AssaultRifleProjectileImpact_SmokeEmitter;
+	emitter[0] = DefaultMediumWhiteDebrisEmitter;
+	emitter[1] = AssaultRifleProjectileImpact_SmokeEmitter;
 
-	debris = AssaultRifleProjectileImpact_Debris;
-	debrisThetaMin = 0;
-	debrisThetaMax = 60;
-	debrisNum = 2;
-	debrisNumVariance = 1;
-	debrisVelocity = 10.0;
-	debrisVelocityVariance = 5.0;
+	//debris = AssaultRifleProjectileImpact_Debris;
+	//debrisThetaMin = 0;
+	//debrisThetaMax = 60;
+	//debrisNum = 2;
+	//debrisNumVariance = 1;
+	//debrisVelocity = 10.0;
+	//debrisVelocityVariance = 5.0;
 
 	// Dynamic light
 	lightStartRadius = 0.25;

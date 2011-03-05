@@ -166,6 +166,48 @@ datablock ParticleEmitterData(RedMinigunProjectileImpact_SmokeEmitter)
 	particles = "RedMinigunProjectileImpact_Smoke";
 };
 
+datablock ParticleData(RedMinigunProjectileImpact_DebrisParticle)
+{
+	dragCoefficient		= 1;
+	gravityCoefficient	= 5.0;
+	windCoefficient		= 0.0;
+	inheritedVelFactor	= 0.0;
+	constantAcceleration = 0.0;
+	lifetimeMS			  = 3000;
+	lifetimeVarianceMS	= 0;
+	textureName = "share/shapes/rotc/misc/debris1.white";
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 1.0 1.0 1.0";
+	colors[2]	  = "1.0 1.0 1.0 0.0";
+	sizes[0]		= 0.25;
+	sizes[1]		= 0.25;
+	sizes[2]		= 0.25;
+	times[0]		= 0.0;
+	times[1]		= 0.9;
+	times[2]		= 1.0;
+	useInvAlpha =  false;
+	allowLighting = false;
+};
+
+datablock ParticleEmitterData(RedMinigunProjectileImpact_DebrisEmitter)
+{
+	ejectionPeriodMS = 10;
+	periodVarianceMS = 0;
+	ejectionVelocity = 20.0;
+	velocityVariance = 1.0;
+	ejectionOffset	= 0.0;
+	thetaMin			= 0;
+	thetaMax			= 50;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	lifetimeMS		 = 10;
+	lifetimeVarianceMS = 0;
+	overrideAdvances = false;
+	orientParticles  = true;
+	particles = "RedMinigunProjectileImpact_DebrisParticle";
+};
+
+
 datablock DebrisData(RedMinigunProjectileImpact_Debris)
 {
 	// shape...
@@ -204,15 +246,16 @@ datablock ExplosionData(RedMinigunProjectileImpact)
 	times[0] = 0.0;
 	times[1] = 1.0;
 
-	emitter[0] = RedMinigunProjectileImpact_SmokeEmitter;
+	emitter[0] = DefaultSmallWhiteDebrisEmitter;
+	emitter[1] = RedMinigunProjectileImpact_SmokeEmitter;
 
-	debris = RedMinigunProjectileImpact_Debris;
-	debrisThetaMin = 0;
-	debrisThetaMax = 60;
-	debrisNum = 1;
-	debrisNumVariance = 1;
-	debrisVelocity = 10.0;
-	debrisVelocityVariance = 5.0;
+	//debris = RedMinigunProjectileImpact_Debris;
+	//debrisThetaMin = 0;
+	//debrisThetaMax = 60;
+	//debrisNum = 1;
+	//debrisNumVariance = 1;
+	//debrisVelocity = 10.0;
+	//debrisVelocityVariance = 5.0;
 
 	// Dynamic light
 	lightStartRadius = 0;
