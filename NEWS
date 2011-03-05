@@ -1,77 +1,27 @@
 What's new?
 ===========
 
-Prototype 2-dev21
------------------
-
-- Linux binaries up to date.
-
-Prototype 2-dev20
------------------
-
-- Currently windows version only!
-- Breaks backwards compatibility to older versions!
-- Bugfixes
-- Ability to turn off precipitation.
-
-Prototype 2-dev18
------------------
-
-- Breaks backwards compatibility to older versions!
-
-Prototype 2-dev14
------------------
-
-- Move grenade overcharge into seperate armor-draining
-  ability to fire B.O.U.N.C.E. (Burst Of Usomething 
-  eNgaging Close Enemies).
-- Add in-game player chat (implemented as uber-minimalist IRC client).
-- Minigun changes: increase fire rate & decrease projectile
-  velocity.
-- Increase grenade launcher energy cost and projectile arming delay.
-
-Prototype 2-dev10
------------------
-
-- Breaks backwards compatibility to older versions!
-- Limit CATs to two weapons.
-- Re-introduce grenade launcher to ROTC: Ethernet arenas.
-- Grenades can be overcharged to create a field that
-  inverses the velocities of enemy CATs in it.
-- New etherboarding effects.
-- Deflecting discs should now be easier/possible
-  at higher latencies.
-- Add Minigun
-- Change Trident shape to original version since
-  the minigun uses the new one.
-- Replace numerical display of team health balance
-  with graphical one.
-
-Prototype 1.11+dev7
+Prototype 2-testing
 -------------------
 
-Client changes: 
-- Render player trails to make it easier to gauge
-  players' velocities from a distance. (currently windows-only)
-- Minor rendering fixes (currently windows-only)
-- Warnings on the HUD for low health / armor.
-- New default font.
-- Add two universal HUD menus and use one to display number
-  of discs.
+Released: Mar. 5, 2011
 
-Universal ROTC changes:
-- Micro-grenade Launcher changes:
-  - Now called Battle Rifle.
-  - Now semi-automatic and fires two projectiles at once.
-  - Increase damage from 25/2 to 60/2 per projectile.
-  - Reduce projectile speed.
-  - Re-intruduced influence of player trajectory
-    on projectile trajectory (although lower than before).
+- Breaks backwards compatibility to older versions!
+- In-game player chat (implemented as uber-minimalist IRC client).
+- New weapons.
+- CATs can now fire a B.O.U.N.C.E. that reverses the momentum of
+  nearby enemy CATs.
+- In Ethernet arenas, damaging enemies no longer restores a player's health.
+- In Ethernet arenas, CATs are limited to carrying 2 weapons (not
+  counting discs, grenades and B.O.U.N.C.E.).
+- Deflecting discs should now be easier/possible at higher latencies.
+- Render player trails to make it easier to gauge CATs' velocities from a distance.
 - Increased minimum speed needed to suffer impact damage.
-- Minor visual tweaks.
+- New default font & slightly fancier GUI.
+- Warnings on the HUD for low health / armor.
+- New etherboarding effects.
+- Bugfixes & all kinds of minor improvements.
 
-ROTC: Ethernet changes:
-- Damaging enemies no longer restores a player's health.
 
 Prototype 1.11
 --------------

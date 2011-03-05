@@ -1,5 +1,5 @@
-Revenge Of The Cats: Ethernet Prototype 1.11
-============================================
+Revenge Of The Cats: Ethernet p.2-testing
+=========================================
 
 Revenge Of The Cats: Ethernet wants to be a fast-paced, teamwork-
 oriented, non-stop-action multiplayer FPS game that allows players to
@@ -10,6 +10,17 @@ Its main influences are:
 - Starsiege: Tribes (http://en.wikipedia.org/wiki/Starsiege_Tribes)
 - Tron (http://en.wikipedia.org/wiki/Tron_%28film%29)
  
-This is Prototype 1.11 of the game. The primary purpose of the 1.x
-prototypes is to test and experiment with the core gameplay mechanics,
-so don't expect any fancy graphics or great maps. 
+This is a testing version of prototype 2 of the game. It has only been
+tested quickly by a few people. There shouldn't be any *major* bugs, but who 
+knows? - That's why the "testing" designation is there.
+Just like with the 1.x prototypes, don't expect any fancy graphics or great maps.
+
+If you're interested in helping with development, check out 
+http://ethernet.wasted.ch//index.php?page=contrib
+
+Known Issues
+------------
+
+- The game is still not very optimized in terms of speed, but the Linux version
+  seems to run incredibly slow on systems with ATI graphics drivers (to the
+  point where it's unplayable).
