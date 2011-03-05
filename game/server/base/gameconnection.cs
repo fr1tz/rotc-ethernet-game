@@ -521,8 +521,12 @@ function GameConnection::updateHudWarningsThread(%this)
 	%this.updateHudWarningsThread = %this.schedule(100,"updateHudWarningsThread");
 
 	%player = %this.player;
-	if(!%player)
+	if(!isObject(%player))
+	{
+		%this.setHudWarning(1, "", false);
+		%this.setHudWarning(3, "", false);	
 		return;
+	}
 
 	%health = %player.getDataBlock().maxDamage 
 		- %player.getDamageLevel() 
