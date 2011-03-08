@@ -435,7 +435,7 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
 function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %dmg)
 {
     // health takeback...
-    %healthTakeback = %dmg * 0.0;
+    %healthTakeback = %dmg * 0.5;
     %newSrcDamage = %obj.getDamageLevel() - %healthTakeback;
     %obj.setDamageLevel(%newSrcDamage);
     if(%newSrcDamage < 0)
