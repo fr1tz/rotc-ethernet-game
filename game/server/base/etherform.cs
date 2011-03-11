@@ -137,11 +137,11 @@ datablock EtherformData(RedEtherform)
 	density = 10;
 
 	maxDamage = 75;
-	damageBuffer = 25;
+	damageBuffer = 0; // 25
 	maxEnergy = 100;
 
-	damageBufferRechargeRate = 0.15;
-	damageBufferDischargeRate = 0.05;
+	damageBufferRechargeRate = 0.00; // 0.15
+	damageBufferDischargeRate = 0.00; // 0.05
 	energyRechargeRate = 0.4;
  
     // collision box...

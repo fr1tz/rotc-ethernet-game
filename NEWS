@@ -1,11 +1,12 @@
 What's new?
 ===========
 
-Prototype 2+dev2
+Prototype 2+dev3
 -------------------
 
-- Damaging enemies again restores a player's health.
 - Increase Battle Rifle's impact impulse dramatically.
+- No more damage buffer but damaging enemies again
+  restores a player's health
 
 
 Prototype 2-testing
