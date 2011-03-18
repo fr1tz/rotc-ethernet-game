@@ -70,12 +70,12 @@ datablock PlayerData(RedStandardCat)
 	density = 10;
 
 	maxDamage = 75;
-	damageBuffer = 0; // 25
+	damageBuffer = 25;
 	maxEnergy = 100;
 
 	repairRate = 0.8;
-	damageBufferRechargeRate = 0.00; // 0.15
-	damageBufferDischargeRate = 0.00; // 0.05
+	damageBufferRechargeRate = 0.15;
+	damageBufferDischargeRate = 0.05;
 	energyRechargeRate = 0.4;
 
 	flyForce = 10 * 90;
