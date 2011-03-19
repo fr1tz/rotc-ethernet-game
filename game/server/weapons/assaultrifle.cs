@@ -10,6 +10,8 @@
 
 exec("./assaultrifle.sfx.cs");
 exec("./assaultrifle.gfx.cs");
+exec("./assaultrifle.gfx.orange.cs");
+exec("./assaultrifle.gfx.cyan.cs");
 
 //-----------------------------------------------------------------------------
 
@@ -41,6 +43,7 @@ datablock TracerProjectileData(RedAssaultRifleProjectile1)
 	splashDamage       = 30;
 	splashDamageRadius = 2;
 	splashImpulse      = 0;
+	bypassDamageBuffer = true;
 	
 	// how much energy does firing this projectile drain?...
 	energyDrain = 8;
@@ -53,19 +56,19 @@ datablock TracerProjectileData(RedAssaultRifleProjectile1)
 
 	//sound = AssaultRifleProjectileFlybySound;
  
-    projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.dts";
+    projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.orange.dts";
 
-	explosion             = AssaultRifleProjectileImpact;
-	bounceExplosion		  = AssaultRifleProjectileBounceExplosion;
-	hitEnemyExplosion     = AssaultRifleProjectileImpact;
-	nearEnemyExplosion    = AssaultRifleProjectileExplosion;
-//	hitTeammateExplosion  = AssaultRifleProjectileImpact;
+	explosion             = OrangeAssaultRifleProjectileImpact;
+	bounceExplosion       = OrangeAssaultRifleProjectileBounceExplosion;
+	hitEnemyExplosion     = OrangeAssaultRifleProjectileHit;
+	nearEnemyExplosion    = OrangeAssaultRifleProjectileExplosion;
+	hitTeammateExplosion  = OrangeAssaultRifleProjectileHit;
 //	hitDeflectorExplosion = DiscDeflectedEffect;
 
 //   particleEmitter	= AssaultRifleProjectileParticleEmitter;
 //	laserTrail[0]   = AssaultRifleProjectileLaserTrail;
 //	laserTrail[1]   = AssaultRifleProjectileRedLaserTrail;
-	laserTail	    = AssaultRifleProjectileLaserTail;
+	laserTail	    = OrangeAssaultRifleProjectileLaserTail;
 	laserTailLen    = 10;
 
 	posOffset = "0 0 0";
@@ -115,14 +118,26 @@ function RedAssaultRifleProjectile2::onCollision(%this,%obj,%col,%fade,%pos,%nor
 
 datablock TracerProjectileData(BlueAssaultRifleProjectile1 : RedAssaultRifleProjectile1)
 {
-    dummyFieldToAvoidSyntaxError = 0;
-//	laserTrail[1] = AssaultRifleProjectileBlueLaserTrail;
+	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.cyan.dts";    
+	explosion = CyanAssaultRifleProjectileImpact;
+	bounceExplosion = CyanAssaultRifleProjectileBounceExplosion;
+	hitEnemyExplosion = CyanAssaultRifleProjectileHit;
+	nearEnemyExplosion = CyanAssaultRifleProjectileExplosion;
+	hitTeammateExplosion = CyanAssaultRifleProjectileHit;	
+	laserTail = CyanAssaultRifleProjectileLaserTail;
+	lightColor  = "0.0 0.8 1.0";
 };
 
 datablock TracerProjectileData(BlueAssaultRifleProjectile2 : RedAssaultRifleProjectile2)
 {
-    dummyFieldToAvoidSyntaxError = 0;
-//	laserTrail[1] = AssaultRifleProjectileBlueLaserTrail;
+	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.cyan.dts";    
+	explosion = CyanAssaultRifleProjectileImpact;
+	bounceExplosion = CyanAssaultRifleProjectileBounceExplosion;
+	hitEnemyExplosion = CyanAssaultRifleProjectileHit;
+	nearEnemyExplosion = CyanAssaultRifleProjectileExplosion;
+	hitTeammateExplosion = CyanAssaultRifleProjectileHit;	
+	laserTail = CyanAssaultRifleProjectileLaserTail;	
+	lightColor  = "0.0 0.8 1.0";	
 };
 
 function BlueAssaultRifleProjectile1::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
@@ -146,7 +161,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image2.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image2.orange.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -253,8 +268,9 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 
 datablock ShapeBaseImageData(BlueAssaultRifleImage : RedAssaultRifleImage)
 {
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image2.cyan.dts";
 	projectile = BlueAssaultRifleProjectile1;
-    stateFireProjectile[3] = BlueAssaultRifleProjectile1;
-    stateFireProjectile[8] = BlueAssaultRifleProjectile2;
+	stateFireProjectile[3] = BlueAssaultRifleProjectile1;
+	stateFireProjectile[8] = BlueAssaultRifleProjectile2;
 };
 
