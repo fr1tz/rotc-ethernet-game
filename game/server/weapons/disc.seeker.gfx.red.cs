@@ -24,33 +24,33 @@ datablock MultiNodeLaserBeamData(RedSeekerDiscInnerLaserTrail)
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	bitmap = "share/shapes/rotc/weapons/disc/lasertrail.red";
-	bitmapWidth = 0.50;
+	bitmap = "share/shapes/rotc/weapons/disc/lasertrail2.red";
+	bitmapWidth = 0.60;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
-	fadeTime = 200;
+	fadeTime = 250;
 };
 
 datablock MultiNodeLaserBeamData(RedSeekerDiscOuterLaserTrail)
 {
-	hasLine = true;
-	lineColor	= "1.00 0.00 0.00 0.5";
+	hasLine = false;
+	lineColor	= "1.00 0.00 0.00 0.3";
 
-	hasInner = true;
-	innerColor = "1.00 0.00 0.00 0.3";
-	innerWidth = "0.50";
+	hasInner = false;
+	innerColor = "1.00 0.00 1.00 0.3";
+	innerWidth = "0.05";
 
 	hasOuter = false;
 	outerColor = "1.00 0.00 1.00 0.1";
 	outerWidth = "0.10";
 
-	//bitmap = "~/data/projectiles/Disc/lasertrail";
-	//bitmapWidth = 1.00;
+	bitmap = "share/shapes/rotc/weapons/disc/lasertrail2.red";
+	bitmapWidth = 0.60;
 
 	blendMode = 1;
 	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
-	fadeTime = 200;
+	fadeTime = 750;
 };
 
 //-----------------------------------------------------------------------------
