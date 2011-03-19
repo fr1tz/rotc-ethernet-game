@@ -312,11 +312,23 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	// reduce damage based on energy level...
 	%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
 	%damage -= %damage * %energyScale * 0.50;
-
-	%damageBufStore = %obj.getDamageBufferLevel();
-
-	%damageDealt = %obj.applyDamage(%damage);
-    %bufDamageDealt = %damageBufStore - %obj.getDamageBufferLevel();
+	
+	if(%sourceObject.getDataBlock().bypassDamageBuffer)
+	{
+		%maxDamage = %obj.getDataBlock().maxDamage;
+		%dmgLevel = %obj.getDamageLevel();
+		if(%dmgLevel + %damage > %maxDamage)
+			%damage = %maxDamage - %dmgLevel;
+		%obj.setDamageLevel(%dmgLevel + %damage);
+		%healthDamageDealt = %damage;
+		%bufDamageDealt = 0;
+	}
+	else
+	{
+		%damageBufStore = %obj.getDamageBufferLevel();
+		%healthDamageDealt = %obj.applyDamage(%damage);
+		%bufDamageDealt = %damageBufStore - %obj.getDamageBufferLevel();		
+	}
 
 	%realSourceObject = 0;
 	if(%sourceObject.getType() & $TypeMasks::ProjectileObjectType)
@@ -332,7 +344,8 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
         %this.onHitEnemy(
             %realSourceObject,
             %obj,
-            %damageDealt+%bufDamageDealt
+            %healthDamageDealt,
+            %bufDamageDealt
         );
 
     	if(%realSourceObject.client)
@@ -345,7 +358,7 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	}
 	
 	// eyecandy: ain't got time to bleed?...
-	%bleed = %this.getBleed(%obj, %damageDealt);
+	%bleed = %this.getBleed(%obj, %healthDamageDealt);
 	if(isObject(%bleed))
 	{
 		%norm = VectorNormalize(VectorSub(%pos, %obj.getWorldBoxCenter()));
@@ -375,7 +388,7 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %damageDealt+%bufDamageDealt);
     }
 
-	return %damageDealt;
+	return %healthDamageDealt;
 }
 
 // script function called by territory zone code
@@ -432,10 +445,10 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
 }
 
 // called by script code...
-function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %dmg)
+function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %healthDmg, %bufDmg)
 {
     // health takeback...
-    %healthTakeback = %dmg * 0.5;
+    %healthTakeback = %healthDmg * 0.5;
     %newSrcDamage = %obj.getDamageLevel() - %healthTakeback;
     %obj.setDamageLevel(%newSrcDamage);
     //if(%newSrcDamage < 0)
@@ -445,7 +458,7 @@ function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %dmg)
     %enemy.setTagged();
     %obj.setCurrTagged(%enemy);
     
-    %obj.incGrenadeAmmo(%dmg / 250);
+    %obj.incGrenadeAmmo(%healthDmg +  %bufDmg/ 250);
 
     %obj.setInflictedDamageSoundPitch(%enemy.getDamagePercent());
 
