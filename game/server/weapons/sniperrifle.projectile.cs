@@ -9,7 +9,9 @@
 //------------------------------------------------------------------------------
 
 exec("./sniperrifle.projectile.gfx.red.cs");
+exec("./sniperrifle.projectile.gfx.orange.cs");
 exec("./sniperrifle.projectile.gfx.blue.cs");
+exec("./sniperrifle.projectile.gfx.cyan.cs");
 
 
 //-----------------------------------------------------------------------------
@@ -25,6 +27,7 @@ datablock ShotgunProjectileData(RedSniperProjectile)
 	splashDamage       = 0;
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
+	bypassDamageBuffer = true;	
 
 	energyDrain = 30; // how much energy does firing this projectile drain?
 
@@ -42,23 +45,23 @@ datablock ShotgunProjectileData(RedSniperProjectile)
 
     //projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.red.dts";
 
-	explosion               = RedSniperProjectileExplosion;
-	hitEnemyExplosion       = RedSniperProjectileHit;
-    hitTeammateExplosion    = RedSniperProjectileHit;
+	explosion               = OrangeSniperProjectileExplosion;
+	hitEnemyExplosion       = OrangeSniperProjectileHit;
+    hitTeammateExplosion    = OrangeSniperProjectileHit;
     //nearEnemyExplosion	= DefaultProjectileNearEnemyExplosion;
     //hitDeflectorExplosion = SeekerDiscBounceEffect;
 
     //fxLight					= RedSniperProjectileFxLight;
 
-	missEnemyEffect		 = RedSniperProjectileMissedEnemyEffect;
+	missEnemyEffect		 = OrangeSniperProjectileMissedEnemyEffect;
 
-	fireExplosion = RedSniperProjectileFireExplosion; // script field
+	fireExplosion = OrangeSniperProjectileFireExplosion; // script field
 
     //laserTail	 = RedSniperProjectileLaserTail;
     //laserTailLen = 10.0;
 
-	laserTrail[0] = RedSniperProjectileLaserTrailMissed;
-	laserTrail[1] = RedSniperProjectileLaserTrailHit;
+	laserTrail[0] = OrangeSniperProjectileLaserTrailMissed;
+	laserTrail[1] = OrangeSniperProjectileLaserTrailHit;
     //laserTrail[1] = RedSniperProjectileVerticalLaserTrail;
 
     //particleEmitter	  = RedSniperProjectileParticleEmitter;
@@ -110,18 +113,18 @@ datablock ShotgunProjectileData(BlueSniperProjectile : RedSniperProjectile)
 {
     //projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.blue.dts";
 
-	explosion            = BlueSniperProjectileExplosion;
-	hitEnemyExplosion    = BlueSniperProjectileHit;
-    hitTeammateExplosion = BlueSniperProjectileHit;
+	explosion            = CyanSniperProjectileExplosion;
+	hitEnemyExplosion    = CyanSniperProjectileHit;
+    hitTeammateExplosion = CyanSniperProjectileHit;
 
-	missEnemyEffect    = BlueSniperProjectileMissedEnemyEffect;
+	missEnemyEffect    = CyanSniperProjectileMissedEnemyEffect;
 
-	//laserTail          = BlueSniperProjectileLaserTail;
+	//laserTail          = CyanSniperProjectileLaserTail;
 
-	fireExplosion = BlueSniperProjectileFireExplosion; // script field
+	fireExplosion = CyanSniperProjectileFireExplosion; // script field
 
-	laserTrail[0] = BlueSniperProjectileLaserTrailMissed;
-	laserTrail[1] = BlueSniperProjectileLaserTrailHit;
+	laserTrail[0] = CyanSniperProjectileLaserTrailMissed;
+	laserTrail[1] = CyanSniperProjectileLaserTrailHit;
 
 	lightColor  = "0.0 0.0 1.0";
 };
