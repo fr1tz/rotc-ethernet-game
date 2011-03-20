@@ -451,8 +451,8 @@ function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %healthDmg, %bufDmg)
     %healthTakeback = %healthDmg * 0.5;
     %newSrcDamage = %obj.getDamageLevel() - %healthTakeback;
     %obj.setDamageLevel(%newSrcDamage);
-    //if(%newSrcDamage < 0)
-    //    %obj.setDamageBufferLevel(%obj.getDamageBufferLevel() - %newSrcDamage);
+    if(%newSrcDamage < 0)
+        %obj.setDamageBufferLevel(%obj.getDamageBufferLevel() - %newSrcDamage);
 
     // tagging...
     %enemy.setTagged();

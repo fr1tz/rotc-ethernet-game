@@ -1,18 +1,17 @@
 What's new?
 ===========
 
-Prototype 2+dev4
+Prototype 2+dev5
 ----------------
 
 - Damaging enemies again increases a player's health,
-  but unlike before, players can't get more than 100%
-  health. Also unlike before, damaging enemies' damage
-  buffers does not count.
+  but unlike before, damaging enemies' damage buffers 
+  does not count. In addition, overflowing damage buffers
+  leak very fast in CAT form.
 - Battle Rifle and Sniper ROFL bypass damage buffers.
   Because of this, their visuals have been changed from
   red/blue to orange/cyan.
 - Increase Battle Rifle's impact impulse dramatically.
-- Increase Minigun accuracy.
 - Changed appearance of disc trails.
 
 

@@ -75,7 +75,7 @@ datablock PlayerData(RedStandardCat)
 
 	repairRate = 0.8;
 	damageBufferRechargeRate = 0.15;
-	damageBufferDischargeRate = 0.05;
+	damageBufferDischargeRate = 0.25;
 	energyRechargeRate = 0.4;
 
 	flyForce = 10 * 90;
