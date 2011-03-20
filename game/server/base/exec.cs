@@ -9,6 +9,8 @@
 // within it. -mag
 exec("common/server/lightingsystem.cs");
 
+exec("./compat.cs");
+
 exec("./commands.cs");
 exec("./centerPrint.cs");
 exec("./game.cs");
