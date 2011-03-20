@@ -82,7 +82,7 @@ function GameConnection::processPlayerStats(%this)
 	%a = %s.dmgDealtApplied;
 	%p.discDmgApplied = arrayGetValue(%a, "seeker");
 	%p.grenadeDmgApplied = arrayGetValue(%a, "grenade");
-	%p.blasterDmgApplied = arrayGetValue(%a, "blaster") * 9;
+	%p.blasterDmgApplied = arrayGetValue(%a, "blaster");
 	%p.brDmgApplied = arrayGetValue(%a, "br");
 	%p.minigunDmgApplied = arrayGetValue(%a, "minigun");
 	%p.sniperDmgApplied = arrayGetValue(%a, "sniper");

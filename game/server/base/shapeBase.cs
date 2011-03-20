@@ -372,11 +372,11 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %dmgstor);
 		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %dmgstor);
 		%a =%obj.client.stats.dmgReceivedCaused;
-		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %damageDealt+%bufDamageDealt);
-		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %damageDealt+%bufDamageDealt);
+		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %healthDamageDealt+%bufDamageDealt);
+		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %healthDamageDealt+%bufDamageDealt);
 		%a =%obj.client.stats.healthLost;
-		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %damageDealt);
-		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %damageDealt);
+		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %healthDamageDealt);
+		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %healthDamageDealt);
     }
     if(%realSourceObject.client)
     {
@@ -384,8 +384,8 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %dmgstor);
 		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %dmgstor);
 		%a = %realSourceObject.client.stats.dmgDealtCaused;
-		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %damageDealt+%bufDamageDealt);
-		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %damageDealt+%bufDamageDealt);
+		arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %healthDamageDealt+%bufDamageDealt);
+		arrayChangeElement(%a, %n, arrayGetValue(%a, %n) + %healthDamageDealt+%bufDamageDealt);
     }
 
 	return %healthDamageDealt;
