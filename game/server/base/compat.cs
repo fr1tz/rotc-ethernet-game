@@ -64,3 +64,23 @@ datablock ParticleData(TextureFileDummy_share_shapes_rotc_weapons_disc_lasertrai
 {
 	textureName = "share/shapes/rotc/weapons/disc/lasertrail2.blue";
 };
+
+datablock ParticleData(TextureFileDummy_share_shapes_rotc_weapons_sniperrifle_lasertrail2_orange)
+{
+	textureName = "share/shapes/rotc/weapons/sniperrifle/lasertrail2.orange";
+};
+
+datablock ParticleData(TextureFileDummy_share_shapes_rotc_weapons_sniperrifle_lasertrail2_cyan)
+{
+	textureName = "share/shapes/rotc/weapons/sniperrifle/lasertrail2.cyan";
+};
+
+datablock ParticleData(TextureFileDummy_share_shapes_rotc_weapons_sniperrifle_lasertrail3_orange)
+{
+	textureName = "share/shapes/rotc/weapons/sniperrifle/lasertrail3.orange";
+};
+
+datablock ParticleData(TextureFileDummy_share_shapes_rotc_weapons_sniperrifle_lasertrail3_cyan)
+{
+	textureName = "share/shapes/rotc/weapons/sniperrifle/lasertrail3.cyan";
+};

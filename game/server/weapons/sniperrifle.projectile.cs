@@ -60,11 +60,11 @@ datablock ShotgunProjectileData(RedSniperProjectile)
     //laserTail	 = RedSniperProjectileLaserTail;
     //laserTailLen = 10.0;
 
-	laserTrail[0] = OrangeSniperProjectileLaserTrailMissed;
+	//laserTrail[0] = OrangeSniperProjectileLaserTrailMissed;
 	laserTrail[1] = OrangeSniperProjectileLaserTrailHit;
-    //laserTrail[1] = RedSniperProjectileVerticalLaserTrail;
+	laserTrail[2] = OrangeSniperProjectileLaserTrail; 
 
-    //particleEmitter	  = RedSniperProjectileParticleEmitter;
+	//particleEmitter = OrangeSniperProjectileEmitter;
 
 	muzzleVelocity   = 9999;
 	velInheritFactor = 0.0;
@@ -123,8 +123,9 @@ datablock ShotgunProjectileData(BlueSniperProjectile : RedSniperProjectile)
 
 	fireExplosion = CyanSniperProjectileFireExplosion; // script field
 
-	laserTrail[0] = CyanSniperProjectileLaserTrailMissed;
+	//laserTrail[0] = CyanSniperProjectileLaserTrailMissed;
 	laserTrail[1] = CyanSniperProjectileLaserTrailHit;
+	laserTrail[2] = CyanSniperProjectileLaserTrail;
 
 	lightColor  = "0.0 0.0 1.0";
 };
