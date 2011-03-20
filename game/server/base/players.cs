@@ -275,9 +275,9 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
     %fadeValue = %energyScale;
     %fadeDelta = -1.5;
 	if(%damageDealt == 0)
-		%obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 0);
-	else
 		%obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 3);
+	else
+		%obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 4);
     %obj.shapeFxSetBalloon($PlayerShapeFxSlot::Energy, 1.05, 0);
     %obj.shapeFxSetFade($PlayerShapeFxSlot::Energy, %fadeValue, %fadeDelta);
     %obj.shapeFxSetActive($PlayerShapeFxSlot::Energy, true, false);

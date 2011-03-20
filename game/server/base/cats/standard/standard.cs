@@ -41,7 +41,8 @@ datablock PlayerData(RedStandardCat)
     shapeFxTexture[0] = "share/textures/rotc/heating.png";
     shapeFxTexture[1] = "share/textures/rotc/heat.red.png";
     shapeFxTexture[2] = "share/textures/rotc/locked.png";
-    shapeFxTexture[3] = "share/textures/rotc/energy.png";
+    shapeFxTexture[3] = "share/textures/rotc/armor.white.png";
+    shapeFxTexture[4] = "share/textures/rotc/armor.orange.png";
 
 	computeCRC = true;
 
@@ -75,7 +76,7 @@ datablock PlayerData(RedStandardCat)
 
 	repairRate = 0.8;
 	damageBufferRechargeRate = 0.15;
-	damageBufferDischargeRate = 0.25;
+	damageBufferDischargeRate = 0.15;
 	energyRechargeRate = 0.4;
 
 	flyForce = 10 * 90;
@@ -244,6 +245,7 @@ datablock PlayerData(BlueStandardCat : RedStandardCat)
 {
 	shapeFile = "share/shapes/rotc/players/standardcat/player.blue.dts";
     shapeFxTexture[1] = "share/textures/rotc/heat.blue.png";
+    shapeFxTexture[4] = "share/textures/rotc/armor.cyan.png";
 	debrisShapeName = "share/shapes/rotc/players/standardcat/debris.blue.dts";
 	decalData = BlueStandardCatFootprint;
 	slideParticleFootEmitter = BlueCatSlideFootEmitter;

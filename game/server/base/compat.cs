@@ -34,7 +34,6 @@ datablock ShapeBaseImageData(ImageDummy_AssaultRifleImage_Cyan)
 	stateName[0] = "DoNothing";
 };
 
-
 datablock ParticleData(TextureFileDummy_share_shapes_rotc_weapons_assaultrifle_lasertail_orange)
 {
 	textureName = "share/shapes/rotc/weapons/assaultrifle/lasertail.orange";
@@ -83,4 +82,19 @@ datablock ParticleData(TextureFileDummy_share_shapes_rotc_weapons_sniperrifle_la
 datablock ParticleData(TextureFileDummy_share_shapes_rotc_weapons_sniperrifle_lasertrail3_cyan)
 {
 	textureName = "share/shapes/rotc/weapons/sniperrifle/lasertrail3.cyan";
+};
+
+datablock ParticleData(TextureFileDummy_share_textures_rotc_armor_white)
+{
+	textureName = "share/textures/rotc/armor.white";
+};
+
+datablock ParticleData(TextureFileDummy_share_textures_rotc_armor_orange)
+{
+	textureName = "share/textures/rotc/armor.orange";
+};
+
+datablock ParticleData(TextureFileDummy_share_textures_rotc_armor_cyan)
+{
+	textureName = "share/textures/rotc/armor.cyan";
 };
