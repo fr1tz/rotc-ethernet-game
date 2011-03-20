@@ -183,7 +183,7 @@ function RedMinigunImage::onFire(%this, %obj, %slot)
 
 	//
 	%p = VectorAdd(%muzzlePoint, %muzzleVector);
-	%r = 0.01;
+	%r = 0.005;
 	for(%i = 0; %i < 3; %i++)
 	{
 		%rand = getRandom(10)-5;
