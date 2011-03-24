@@ -457,6 +457,7 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
 	{
 		//echo(" not in zone");
         %this.onLeaveMissionArea(%obj);  
+   }
 }
 
 // called by script code...
