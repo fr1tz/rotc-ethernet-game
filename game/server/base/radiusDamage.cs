@@ -55,7 +55,7 @@ function shockWaveRadiusDamage(%sourceObject, %position, %radius,
 			%impulseVec = VectorSub(%targetObject.getWorldBoxCenter(), %position);
 			%impulseVec = VectorNormalize(%impulseVec);
 			%impulseVec = VectorScale(%impulseVec, %impulse * %distScale);
-			%targetObject.schedule(%delay, "applyImpulse", %position, %impulseVec);
+			%targetObject.schedule(%delay, "impulse", %position, %impulseVec);
 		}
 	}
 }
@@ -102,7 +102,7 @@ function radiusDamage(%sourceObject, %position, %radius, %damage, %damageType, %
 			%impulseVec = VectorSub(%targetObject.getWorldBoxCenter(), %position);
 			%impulseVec = VectorNormalize(%impulseVec);
 			%impulseVec = VectorScale(%impulseVec, %impulse * %distScale);
-			%targetObject.applyImpulse(%position, %impulseVec);
+			%targetObject.impulse(%position, %impulseVec);
 		}
 	}
 }

@@ -94,7 +94,7 @@ function ProjectileData::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 	{
 		%impulseVec = VectorNormalize(%obj.getVelocity());
 		%impulseVec = VectorScale(%impulseVec, %this.impactImpulse);
-		%col.applyImpulse(%pos, %impulseVec);
+		%col.impulse(%pos, %impulseVec);
 	}
 	
 	// bail out here if projectile doesn't do impact damage...
@@ -161,7 +161,7 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 		{
 			%impulseVec = VectorNormalize(VectorSub(%center, %pos));
 			%impulseVec = VectorScale(%impulseVec, %this.splashImpulse);
-			%targetObject.applyImpulse(%pos, %impulseVec);
+			%targetObject.impulse(%pos, %impulseVec);
 		}
 
 		// bail out here if projectile doesn't do splash damage...

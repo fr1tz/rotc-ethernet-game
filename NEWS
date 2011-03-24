@@ -1,6 +1,21 @@
 What's new?
 ===========
 
+Prototype 3-dev
+---------------
+
+- Breaks backwards compatibility!
+- Currently windows version only. (Use WINE under Linux).
+- CATs are now "connected" to the zone grid. Leaving the
+  ground or etherboarding reduces this connection. If 
+  connected, the grid helps holding the CAT in place, reducing
+  any impulses to the CAT by up to 75%.
+- Replaced B.O.U.N.C.E. with simpler repel. The repel can not be
+  fired when not connected to the grid and its power depends
+  on the strength of the connection. Using a repel resets
+  a CAT's connection to the grid.
+  
+
 Prototype 2+dev5
 ----------------
 

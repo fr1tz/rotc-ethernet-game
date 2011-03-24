@@ -58,7 +58,7 @@ $PlayerDeathAnim::ExplosionBlowBack = 11;
 // player shape fx slots...
 //
 
-$PlayerShapeFxSlot::Repel  = 0;
+$PlayerShapeFxSlot::GridConnection  = 0;
 $PlayerShapeFxSlot::Energy = 1;
 $PlayerShapeFxSlot::NoDisc = 2;
 
@@ -137,6 +137,8 @@ function PlayerData::onAdd(%this,%obj)
 		%obj.mountImage(RedCatLightImage, 3);
 	else
 		%obj.mountImage(BlueCatLightImage, 3);
+		
+	%obj.updateGridConnection();
   
    // No more limited sliding for now.
    // %obj.sliding = 0.5;
@@ -549,6 +551,114 @@ function Player::updateSliding(%this)
        	messageClient(%this.client, 'MsgHeat', "", %this.sliding, %this.slidingDt);
 
     %this.slidingThread = %this.schedule(%dtTime, "updateSliding");
+}
+
+//-----------------------------------------------------------------------------
+
+function Player::updateGridConnection(%this)
+{
+	%dtTime = 50;
+    
+	if(%this.updateGridConnectionThread !$= "")
+		cancel(%this.updateGridConnectionThread);
+        
+	%this.updateGridConnectionThread = %this.schedule(%dtTime, "updateGridConnection");
+	
+	%updateFx = false;
+    
+	if(!isObject(%this.zCurrentZone))
+	{
+		%this.gridConnection = 0;
+		%this.shapeFxSetActive($PlayerShapeFxSlot::GridConnection, false, false);
+		return;
+	}      
+	
+	if(%this.getBodyPose() == $PlayerBodyPose::Sliding)
+	{
+		%contact = false;
+	}
+	else
+	{
+		%start = %this.getWorldBoxCenter();
+		%end	= VectorAdd(%start, "0 0 -3");	
+		%contact = containerRayCast(%start, %end, $TypeMasks::TerrainObjectType |
+			$TypeMasks::InteriorObjectType , %this);
+	}
+	
+	%speed = VectorLen(%this.getVelocity());
+	
+	%gridStor = %this.gridConnection;
+	%gridDtStor = %this.gridConnectionDt;
+
+	if(%contact)
+	{
+		%this.gridConnectionDt = 0.02;
+	}
+	else
+	{
+		%this.gridConnectionDt = -0.02;
+	}
+	
+	%this.gridConnection += %this.gridConnectionDt;
+	if(%this.gridConnection > 1)
+	{
+		%this.gridConnection = 1;
+	}
+	else if(%this.gridConnection < 0)
+	{
+		%this.gridConnection = 0;
+	}
+		
+	// Grid delta changed?
+	if(%this.gridConnectionDt != %gridDtStor)
+	{
+		%updateFx = true;		
+	}
+	
+	// Zone changed?
+	if(%this.lastZoneBlocked != %this.zCurrentZone.zBlocked ||
+	   %this.zCurrentZone.teamId != %this.zCurrentZone.teamId)
+	{
+		%updateFx = true;
+	}
+	%this.lastZoneBlocked = %this.zCurrentZone.zBlocked;	
+	%this.lastZoneTeamId = %this.zCurrentZone.teamId;	
+	
+	// Update shape FX?
+	if(%updateFx || %this.forceGridConnectionShapeFxUpdate)
+	{
+		error("Player::updateGridConnection(): Updating Shape FX");	
+		%this.forceGridConnectionShapeFxUpdate = false;
+		if(%this.gridConnection < 0)
+		{
+			%this.shapeFxSetTexture($PlayerShapeFxSlot::GridConnection, 7);							
+			%this.shapeFxSetFade($PlayerShapeFxSlot::GridConnection, 1, -3);					
+		}
+		else
+		{
+			if(%this.zCurrentZone.getTeamId() == 0)
+			{
+				%color = 0;
+			}
+			else if(%this.zCurrentZone.getTeamId() == %this.getTeamId())
+			{
+				if(%this.zCurrentZone.zBlocked)
+					%color = 2;
+				else
+					%color = 1;
+			}
+			else
+			{
+				%color = 3;
+			}				
+			%this.shapeFxSetTexture($PlayerShapeFxSlot::GridConnection, 0);							
+			%this.shapeFxSetColor($PlayerShapeFxSlot::GridConnection, %color);			
+			%this.shapeFxSetFade($PlayerShapeFxSlot::GridConnection, %this.gridConnection, %this.gridConnectionDt * 20);					
+		}
+				
+		%this.shapeFxSetBalloon($PlayerShapeFxSlot::GridConnection, 1.00, 0);	
+		%this.shapeFxSetActive($PlayerShapeFxSlot::GridConnection, true, true);   	
+	}	
 }
 
 //-----------------------------------------------------------------------------

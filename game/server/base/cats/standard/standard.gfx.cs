@@ -596,3 +596,40 @@ datablock ParticleEmitterData(StandardCatLiftoffDustEmitter)
 	useEmitterColors = true;
 	particles = StandardCatLiftoffDust;
 };
+
+//----------------------------------------------------------------------------
+// Ground connection beam
+//----------------------------------------------------------------------------
+
+datablock LaserBeamData(StandardCatGroundConnectionBeam)
+{
+	hasLine = true;
+	lineStartColor	= "1.00 1.00 1.00 0.5";
+	lineBetweenColor = "1.00 1.00 1.00 0.5";
+	lineEndColor	  = "1.00 1.00 1.00 0.5";
+ 	lineWidth		  = 1.0;
+
+	hasInner = false;
+	innerStartColor	= "1.00 1.00 0.00 0.5";
+	innerBetweenColor = "1.00 1.00 0.00 0.5";
+	innerEndColor	  = "1.00 1.00 0.00 0.5";
+	innerStartWidth	= "0.0";
+	innerBetweenWidth = "0.05";
+	innerEndWidth	  = "0.1";
+
+	hasOuter = false;
+	outerStartColor	= "1.00 1.00 0.00 0.0";
+	outerBetweenColor = "1.00 1.00 0.00 0.2";
+	outerEndColor	  = "1.00 1.00 0.00 0.2";
+	outerStartWidth	= "0.0";
+	outerBetweenWidth = "0.3";
+	outerEndWidth	  = "0.0";
+
+	bitmap = "share/textures/rotc/groundconnection";
+	bitmapWidth = 0.35;
+//	crossBitmap = "share/shapes/rotc/weapons/OrangeAssaultRifle/lasertail.cross";
+//	crossBitmapWidth = 0.25;
+
+	betweenFactor = 0.5;
+	blendMode = 1;
+};

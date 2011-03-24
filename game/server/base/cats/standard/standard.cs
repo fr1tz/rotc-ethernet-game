@@ -37,12 +37,17 @@ datablock PlayerData(RedStandardCat)
 
 	shapeFile = "share/shapes/rotc/players/standardcat/player.red.dts";
  
-    //cloakTexture = "share/shapes/rotc/effects/explosion_white.png";
-    shapeFxTexture[0] = "share/textures/rotc/heating.png";
-    shapeFxTexture[1] = "share/textures/rotc/heat.red.png";
-    shapeFxTexture[2] = "share/textures/rotc/locked.png";
-    shapeFxTexture[3] = "share/textures/rotc/armor.white.png";
-    shapeFxTexture[4] = "share/textures/rotc/armor.orange.png";
+	//cloakTexture = "share/shapes/rotc/effects/explosion_white.png";
+	shapeFxTexture[0] = "share/textures/rotc/connection.png";
+	shapeFxTexture[1] = "share/textures/rotc/connection.png";
+	shapeFxTexture[2] = "share/textures/rotc/locked.png";
+	shapeFxTexture[3] = "share/textures/rotc/armor.white.png";
+	shapeFxTexture[4] = "share/textures/rotc/armor.orange.png";
+
+	shapeFxColor[0] = "1.0 1.0 1.0 1.0";  
+	shapeFxColor[1] = "1.0 0.0 0.0 1.0";  
+	shapeFxColor[2] = "1.0 0.5 0.0 1.0";  
+	shapeFxColor[3] = "0.0 0.5 1.0 1.0";  
 
 	computeCRC = true;
 
@@ -167,6 +172,9 @@ datablock PlayerData(RedStandardCat)
 	footPuffEmitter = StandardCatLightPuffEmitter;
 	footPuffNumParts = 10;
 	footPuffRadius = 0.25;
+	
+	// ground connection beam
+	groundConnectionBeam = StandardCatGroundConnectionBeam;
 
 	// slide emitters
 	//slideContactParticleFootEmitter = RedSlideEmitter;
@@ -244,8 +252,11 @@ datablock PlayerData(RedStandardCat)
 datablock PlayerData(BlueStandardCat : RedStandardCat)
 {
 	shapeFile = "share/shapes/rotc/players/standardcat/player.blue.dts";
-    shapeFxTexture[1] = "share/textures/rotc/heat.blue.png";
-    shapeFxTexture[4] = "share/textures/rotc/armor.cyan.png";
+	shapeFxTexture[4] = "share/textures/rotc/armor.cyan.png";
+	shapeFxColor[0] = "1.0 1.0 1.0 1.0";  
+	shapeFxColor[1] = "0.0 0.0 1.0 1.0";  
+	shapeFxColor[2] = "0.0 0.5 1.0 1.0";  
+	shapeFxColor[3] = "1.0 0.5 0.0 1.0";  
 	debrisShapeName = "share/shapes/rotc/players/standardcat/debris.blue.dts";
 	decalData = BlueStandardCatFootprint;
 	slideParticleFootEmitter = BlueCatSlideFootEmitter;

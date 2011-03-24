@@ -23,6 +23,12 @@ function ShapeBase::damage(%this, %sourceObject, %position, %damage, %damageType
 	return %this.getDataBlock().damage(%this, %sourceObject, %position, %damage, %damageType);
 }
 
+function ShapeBase::impulse(%this, %position, %impulseVec)
+{
+	// All impulses applied by one object to another should go through this method. 
+	return %this.getDataBlock().impulse(%this, %position, %impulseVec);
+}
+
 //-----------------------------------------------------------------------------
 
 function ShapeBase::setDamageDt(%this, %damageAmount, %damageType)
@@ -391,6 +397,13 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	return %healthDamageDealt;
 }
 
+// called by ShapeBase::impulse()
+function ShapeBaseData::impulse(%this, %obj, %position, %impulseVec)
+{
+	%impulseVec = VectorScale(%impulseVec, 1-0.75*%obj.gridConnection);
+	%obj.applyImpulse(%position, %impulseVec);
+}
+
 // script function called by territory zone code
 function ShapeBaseData::updateZone(%this, %obj, %newZone)
 {
@@ -401,13 +414,16 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
 	%inEnemyZone = false;
     %zoneTeamId = -1;
     
+	%obj.zCurrentZone = -1;    
+    
 	%pos = %obj.getPosition();
 	InitContainerRadiusSearch(%pos, 0.0001, $TypeMasks::TacticalZoneObjectType);
 	while( (%srchObj = %newZone) != 0 || (%srchObj = containerSearchNext()) != 0)
 	{
 		%newZone = 0;
 
-		%inZone = true;
+		%inZone = true;		
+		%obj.zCurrentZone = %srchObj;		
 
 		%zoneTeamId = %srchObj.getTeamId();
 
@@ -441,7 +457,6 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
 	{
 		//echo(" not in zone");
         %this.onLeaveMissionArea(%obj);  
-	}
 }
 
 // called by script code...
