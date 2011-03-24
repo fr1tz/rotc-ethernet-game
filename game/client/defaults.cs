@@ -11,7 +11,7 @@
 // List of master servers to query, each one 
 // is tried in order until one responds...
 $Pref::Master[0] = "2:master.garagegames.com:28002";
-$Pref::Master[1] = "2:spica.thruhere.net:28002";
+$Pref::Master[1] = "2:spica.dyndns.info:28002";
 
 $pref::backgroundSleepTime = "0";
 $pref::Shadows = "0.3";
