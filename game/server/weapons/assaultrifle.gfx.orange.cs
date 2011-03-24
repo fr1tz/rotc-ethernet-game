@@ -128,7 +128,7 @@ datablock MultiNodeLaserBeamData(OrangeAssaultRifleProjectileLaserTrail)
 datablock LaserBeamData(OrangeAssaultRifleProjectileLaserTail)
 {
 	hasLine = true;
-	lineStartColor	= "1.00 1.00 1.00 0.0";
+	lineStartColor	= "1.00 1.00 0.00 0.0";
 	lineBetweenColor = "1.00 1.00 1.00 0.5";
 	lineEndColor	  = "1.00 1.00 1.00 1.0";
  	lineWidth		  = 2.0;
@@ -149,7 +149,7 @@ datablock LaserBeamData(OrangeAssaultRifleProjectileLaserTail)
 	outerBetweenWidth = "0.3";
 	outerEndWidth	  = "0.0";
 
-	bitmap = "share/shapes/rotc/weapons/OrangeAssaultRifle/lasertail.orange";
+	bitmap = "share/shapes/rotc/weapons/assaultrifle/lasertail.orange";
 	bitmapWidth = 0.1;
 //	crossBitmap = "share/shapes/rotc/weapons/OrangeAssaultRifle/lasertail.cross";
 //	crossBitmapWidth = 0.25;
