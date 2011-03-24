@@ -48,8 +48,8 @@ datablock ParticleData(RedCatDamageBufferEmitter_Particle)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 500;
 	lifetimeVarianceMS	= 0;
-	colors[0]	  = "1.0 1.0 0.0 1.0";
-	colors[1]	  = "1.0 0.0 0.0 0.2";
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 1.0 1.0 0.2";
 	colors[2]	  = "1.0 1.0 1.0 0.0";
 	sizes[0]		= 1.0;
 	sizes[1]		= 1.0;
@@ -90,8 +90,8 @@ datablock ParticleData(BlueCatDamageBufferEmitter_Particle)
 	constantAcceleration = 0.0;
 	lifetimeMS			  = 500;
 	lifetimeVarianceMS	= 0;
-	colors[0]	  = "0.0 1.0 1.0 1.0";
-	colors[1]	  = "0.0 0.0 1.0 0.2";
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 1.0 1.0 0.2";
 	colors[2]	  = "1.0 1.0 1.0 0.0";
 	sizes[0]		= 1.0;
 	sizes[1]		= 1.0;
