@@ -100,7 +100,7 @@ datablock ShapeBaseImageData(RedMinigunImage)
 		stateName[2]                     = "Ready";
 		stateTransitionOnNoAmmo[2]       = "NoAmmo";
 		stateTransitionOnNotLoaded[2]    = "Disabled";
-		stateTransitionOnTriggerDown[2]  = "Charge";
+		stateTransitionOnTriggerDown[2]  = "Fire";
 		stateArmThread[2]                = "holdblaster";
 		stateSpinThread[2]               = "Stop";
 
