@@ -21,7 +21,7 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 
 	// script damage properties...
 	impactDamage       = 10;
-	impactImpulse      = 150;
+	impactImpulse      = 400;
 	splashDamage       = 0;
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
