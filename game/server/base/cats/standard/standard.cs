@@ -48,6 +48,8 @@ datablock PlayerData(RedStandardCat)
 	shapeFxColor[1] = "1.0 0.0 0.0 1.0";  
 	shapeFxColor[2] = "1.0 0.5 0.0 1.0";  
 	shapeFxColor[3] = "0.0 0.5 1.0 1.0";  
+	shapeFxColor[4] = "1.0 0.0 0.0 1.0"; // repel hit
+	shapeFxColor[5] = "1.0 0.5 0.5 1.0"; // repel missed
 
 	computeCRC = true;
 
@@ -257,6 +259,8 @@ datablock PlayerData(BlueStandardCat : RedStandardCat)
 	shapeFxColor[1] = "0.0 0.0 1.0 1.0";  
 	shapeFxColor[2] = "0.0 0.5 1.0 1.0";  
 	shapeFxColor[3] = "1.0 0.5 0.0 1.0";  
+	shapeFxColor[4] = "0.0 0.0 1.0 1.0"; 
+	shapeFxColor[5] = "0.5 0.5 1.0 1.0"; 
 	debrisShapeName = "share/shapes/rotc/players/standardcat/debris.blue.dts";
 	decalData = BlueStandardCatFootprint;
 	slideParticleFootEmitter = BlueCatSlideFootEmitter;

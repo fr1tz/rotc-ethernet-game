@@ -6,7 +6,89 @@
 exec("./repel.sfx.cs");
 exec("./repel.gfx.cs");
 
-function deployRepel(%obj)
+function deployRepel3(%obj)
+{
+	if(!%obj.isCAT)
+		return;
+
+	if(%obj.getEnergyLevel() < 50)
+		return;
+
+	if($Sim::Time < %obj.lastRepelTime + 1)
+		return;
+		
+	%pos = %obj.getWorldBoxCenter();
+	%radius = 10;
+
+	%hitEnemy = false;
+
+	InitContainerRadiusSearch(%pos, %radius, $TypeMasks::PlayerObjectType);
+	%halfRadius = %radius / 2;
+	while ((%targetObject = containerSearchNext()) != 0)
+	{
+		if(%targetObject.getTeamId() == %obj.getTeamId())
+			continue;
+
+		// Calculate how much exposure the current object has to
+		// the effect.  The object types listed are objects
+		// that will block an explosion. 
+		%coverage = calcExplosionCoverage(%pos, %targetObject,
+			$TypeMasks::InteriorObjectType |  $TypeMasks::TerrainObjectType |
+			$TypeMasks::ForceFieldObjectType | $TypeMasks::VehicleObjectType |
+			$TypeMasks::TurretObjectType);
+			
+		if (%coverage == 0)
+			continue;
+
+		%hitEnemy = true;
+
+		// bouncy bounce...
+		%vec = %targetObject.getVelocity();
+		%vec = VectorScale(%vec, -1);
+		%targetObject.setVelocity(%vec);
+
+		// damage based on speed...
+		%speed = VectorLen(%vec);
+		%damage = %speed * 2;
+		%dmgpos = %targetObject.getWorldBoxCenter();
+		%targetObject.damage(0, %dmgpos, %damage, $DamageType::Force);		
+
+		%exp = RepelExplosion5;
+		if(%speed < 10)
+			%exp = RepelExplosion1;	
+		else if(%speed < 25)
+			%exp = RepelExplosion2;			
+		else if(%speed < 50)
+			%exp = RepelExplosion3;			
+		else if(%speed < 70)
+			%exp = RepelExplosion4;		
+		createExplosionOnClients(%exp, %targetObject.getWorldBoxCenter(), "0 0 1");
+	}
+
+	// source explosion effects...
+
+	%obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 1);
+	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Energy, 1.025, 100);
+	%obj.shapeFxSetFade($PlayerShapeFxSlot::Energy, 1, -1/0.15);
+	createExplosionOnClients(RepelSourceExplosion, %pos, "0 0 1");
+
+	if(%hitEnemy)
+	{
+		%obj.shapeFxSetColor($PlayerShapeFxSlot::Energy, 4);
+	}
+	else
+	{
+		%obj.shapeFxSetColor($PlayerShapeFxSlot::Energy, 5);		
+		%obj.setEnergyLevel(%obj.getEnergyLevel() - 50);	
+
+	}
+	
+	%obj.shapeFxSetActive($PlayerShapeFxSlot::Energy, true, true);	
+
+	%obj.lastRepelTime = $Sim::Time;
+}
+
+function deployRepel2(%obj)
 {
 	if(!%obj.isCAT)
 		return;
@@ -82,7 +164,7 @@ function deployRepel(%obj)
 	%obj.lastRepelTime = $Sim::Time;
 }
 
-function deployOldRepel(%obj)
+function deployRepel1(%obj)
 {
 	if(!%obj.isCAT)
 		return;

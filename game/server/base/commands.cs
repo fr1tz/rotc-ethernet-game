@@ -46,7 +46,7 @@ function serverCmdPlayerAction(%client, %nr, %val)
 	}
 	else if(%nr == 17 && %val)
 	{		
-		deployRepel(%player);
+		deployRepel3(%player);
 	}
 	else if(%nr == 39 && %val)
 	{		
