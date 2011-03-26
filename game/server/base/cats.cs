@@ -30,19 +30,19 @@ executeCatScripts();
 function StandardCat::useWeapon(%this, %obj, %nr)
 {
 	%client = %obj.client;
+	
+	if(%client.numWeapons == 0)
+		return;
 
- 
 	if(%nr == 0)
-	{
-		if(%obj.currWeapon == 1)
-			%nr = 2;
-		else
-			%nr = 1;
-	}
+		%obj.currWeapon++;
+	else
+		%obj.currWeapon = %nr;
+	
+	if(%obj.currWeapon > %client.numWeapons)
+		%obj.currWeapon = 1;	
 
-	%obj.currWeapon = %nr;
-
-	%nr = %client.weapon[%nr];
+	%nr = %client.weapons[%obj.currWeapon-1];
 
 	if(%nr == 1)
 	{

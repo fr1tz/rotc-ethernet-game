@@ -59,6 +59,9 @@ function TerritoryZone_find(%name)
 
 function TerritoryZones_enableRepair(%shape)
 {
+	if(%shape.isCAT)
+		return;
+
 	if(%shape.getTeamId() == $Team1.teamId)
 	{
 		if(!$Team1.repairObjects.isMember(%shape))
@@ -73,6 +76,9 @@ function TerritoryZones_enableRepair(%shape)
 
 function TerritoryZones_disableRepair(%shape)
 {
+	if(%shape.isCAT)
+		return;
+
 	if(%shape.getTeamId() == $Team1.teamId)
 	{
 		if($Team1.repairObjects.isMember(%shape))

@@ -91,6 +91,8 @@ function PlayerData::onAdd(%this,%obj)
 {
 	Parent::onAdd(%this,%obj);
 	
+	%client = %obj.client;
+	
 	%obj.isCAT = true;
 	%obj.getTeamObject().numCATs++;
 
@@ -137,6 +139,11 @@ function PlayerData::onAdd(%this,%obj)
 		%obj.mountImage(RedCatLightImage, 3);
 	else
 		%obj.mountImage(BlueCatLightImage, 3);
+		
+	// Health regenerators...
+	if(isObject(%client))
+		if(%client.numRegenerators > 0)
+			%obj.setRepairRate(0.1 * mPow(2,%client.numRegenerators-1));		
 		
 	%obj.updateGridConnection();
   
@@ -479,7 +486,7 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
         {
             if(%triggerNum == 4)
     			%obj.nonSnipingBodyPose = $PlayerBodyPose::Marching;
-            else if(%triggerNum == 5)
+            else if(%triggerNum == 5 && %obj.client.hasEtherboard)
     			%obj.nonSnipingBodyPose = $PlayerBodyPose::Sliding;
         }
 		else

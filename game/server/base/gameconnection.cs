@@ -93,8 +93,9 @@ function GameConnection::onClientEnterGame(%this)
 	//
 	// inventory...
 	//
-	%this.weapon[1] = 1;
-	%this.weapon[2] = 2;
+	%this.loadout[1] = 1;
+	%this.loadout[2] = 3;
+	%this.loadout[3] = 6;
 	
 	//
 	// join observer team...
