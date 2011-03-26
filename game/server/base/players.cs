@@ -594,19 +594,25 @@ function Player::updateGridConnection(%this)
 	}
 	
 	%speed = VectorLen(%this.getVelocity());
+	//%this.client.setHudMenuR(0, %speed, 1, 1);
 	
-	%gridStor = %this.gridConnection;
-	%gridDtStor = %this.gridConnectionDt;
 
 	if(%contact)
 	{
-		%this.gridConnectionDt = 0.02;
+		%newDt = 0.02;
+		
 	}
 	else
 	{
-		%this.gridConnectionDt = -0.02;
+		%newDt = -0.008;
 	}
-	
+
+	if(%newDt != %this.gridConnectionDt)
+	{
+		%this.gridConnectionDt = %newDt;
+		%updateFx = true;		
+	}
+
 	%this.gridConnection += %this.gridConnectionDt;
 	if(%this.gridConnection > 1)
 	{
@@ -617,6 +623,8 @@ function Player::updateGridConnection(%this)
 		%this.gridConnection = 0;
 	}
 	
+	//%this.client.setHudMenuR(1, %this.gridConnection, 1, 1);
+
 	// Zone changed?
 	if(%this.lastZoneBlocked != %this.zCurrentZone.zBlocked ||
 	   %this.lastZoneTeamId != %this.zCurrentZone.teamId)
