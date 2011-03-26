@@ -287,6 +287,7 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
 		%obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 3);
 	else
 		%obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 4);
+	 %obj.shapeFxSetColor($PlayerShapeFxSlot::Energy, 0);
     %obj.shapeFxSetBalloon($PlayerShapeFxSlot::Energy, 1.05, 0);
     %obj.shapeFxSetFade($PlayerShapeFxSlot::Energy, %fadeValue, %fadeDelta);
     %obj.shapeFxSetActive($PlayerShapeFxSlot::Energy, true, false);
@@ -615,16 +616,10 @@ function Player::updateGridConnection(%this)
 	{
 		%this.gridConnection = 0;
 	}
-		
-	// Grid delta changed?
-	if(%this.gridConnectionDt != %gridDtStor)
-	{
-		%updateFx = true;		
-	}
 	
 	// Zone changed?
 	if(%this.lastZoneBlocked != %this.zCurrentZone.zBlocked ||
-	   %this.zCurrentZone.teamId != %this.zCurrentZone.teamId)
+	   %this.lastZoneTeamId != %this.zCurrentZone.teamId)
 	{
 		%updateFx = true;
 	}
