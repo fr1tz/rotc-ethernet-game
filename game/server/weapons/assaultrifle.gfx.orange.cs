@@ -163,15 +163,15 @@ datablock LaserBeamData(OrangeAssaultRifleProjectileLaserTail)
 
 datablock ExplosionData(OrangeAssaultRifleProjectileBounceExplosion)
 {
-	soundProfile	= OrangeAssaultRifleProjectileBounceSound;
+	soundProfile = AssaultRifleProjectileBounceSound;
 	
 	lifetimeMS = 200;
 	
 	// Dynamic light
 	lightStartRadius = 6;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.8 0.2 1.0";
-	lightEndColor = "1.0 0.8 0.2 0.3";
+	lightStartColor = "1.0 0.5 0.2 1.0";
+	lightEndColor = "1.0 0.5 0.2 0.3";
 };
 
 
@@ -388,7 +388,7 @@ datablock DebrisData(OrangeAssaultRifleProjectileExplosion_Debris)
 
 datablock ExplosionData(OrangeAssaultRifleProjectileExplosion)
 {
-	soundProfile = OrangeAssaultRifleProjectileExplosionSound;
+	soundProfile = AssaultRifleProjectileExplosionSound;
 
 	lifetimeMS = 200;
  
@@ -643,7 +643,7 @@ datablock DebrisData(OrangeAssaultRifleProjectileHit_Debris)
 
 datablock ExplosionData(OrangeAssaultRifleProjectileHit)
 {
-	soundProfile = OrangeAssaultRifleProjectileHitSound;
+	soundProfile = AssaultRifleProjectileHitSound;
 
 	lifetimeMS = 200;
  
@@ -754,7 +754,7 @@ datablock DebrisData(OrangeAssaultRifleProjectileImpact_Debris)
 
 datablock ExplosionData(OrangeAssaultRifleProjectileImpact)
 {
-	soundProfile	= OrangeAssaultRifleProjectileImpactSound;
+	soundProfile	= AssaultRifleProjectileImpactSound;
 
 	faceViewer	  = true;
 	explosionScale = "0.8 0.8 0.8";

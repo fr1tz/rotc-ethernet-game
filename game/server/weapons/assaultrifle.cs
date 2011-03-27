@@ -84,6 +84,8 @@ datablock TracerProjectileData(RedAssaultRifleProjectile1)
 	lifetime				= 1000*10;
 	fadeDelay			  = 5000;
 	
+	numBounces = 2;
+	
 	decals[0]	= ExplosionDecalTwo;
 	
 	hasLight	 = true;
