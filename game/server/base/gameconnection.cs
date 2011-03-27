@@ -96,6 +96,7 @@ function GameConnection::onClientEnterGame(%this)
 	%this.loadout[1] = 1;
 	%this.loadout[2] = 3;
 	%this.loadout[3] = 6;
+	%this.updateWeapons();
 	
 	//
 	// join observer team...
@@ -147,6 +148,31 @@ function GameConnection::onClientLeaveGame(%this)
 		
 	if(isObject(%this.player))
 		%this.player.delete();
+}
+
+//------------------------------------------------------------------------------
+
+function GameConnection::updateWeapons(%this)
+{
+	%this.numWeapons = 0;
+	%this.hasEtherboard = false;		
+	%this.numRegenerators = 0;
+	for(%i = 1; %i <= 3; %i++)
+	{
+		if(%this.loadout[%i] == 6)
+		{
+			%this.hasEtherboard = true;
+		}
+		else if(%this.loadout[%i] == 7)
+		{
+			%this.numRegenerators++;
+		}
+		else
+		{
+			%this.weapons[%this.numWeapons] = %this.loadout[%i];
+			%this.numWeapons++;
+		}
+	}
 }
 
 //------------------------------------------------------------------------------

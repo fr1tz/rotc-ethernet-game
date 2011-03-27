@@ -27,26 +27,7 @@ function EtherformData::useWeapon(%this, %obj, %nr)
 			return;
 
 		%client.loadout[%obj.inventoryMode[1]] = %nr;
-		
-		%client.numWeapons = 0;
-		%client.hasEtherboard = false;		
-		%client.numRegenerators = 0;
-		for(%i = 1; %i <= 3; %i++)
-		{
-			if(%client.loadout[%i] == 6)
-			{
-				%client.hasEtherboard = true;
-			}
-			else if(%client.loadout[%i] == 7)
-			{
-				%client.numRegenerators++;
-			}
-			else
-			{
-				%client.weapons[%client.numWeapons] = %client.loadout[%i];
-				%client.numWeapons++;
-			}
-		}
+		%client.updateWeapons();
 
 		%obj.inventoryMode = "show";
 		%this.displayInventory(%obj);
@@ -108,7 +89,7 @@ function EtherformData::displayInventory(%this, %obj)
 	
 	%itemname[1] = "B00nstick";
 	%itemname[2] = "Battle Rifle";
-	%itemname[3] = "sniper ROFL";
+	%itemname[3] = "Sniper ROFL";
 	%itemname[4] = "Minigun";
 	%itemname[5] = "Grenade Launcher";
 	%itemname[6] = "Etherboard";
@@ -139,7 +120,7 @@ function EtherformData::displayInventory(%this, %obj)
 		%client.setHudMenuL("*", " ", 1, 0);
 		%client.setHudMenuL(0, "<font:NovaSquare:12>Select slot #" @ %obj.inventoryMode[1] @ ":\n\n", 1, 1);
 		for(%i = 1; %i <= 7; %i++)
-			%client.setHudMenuL(%i, "@bind" @ 34 + %i @ ": " @ %itemname[%i]  @  "\n" @
+			%client.setHudMenuL(%i, "@bind" @ (%i < 6 ? 34 : 41) + %i @ ": " @ %itemname[%i]  @  "\n" @
 				"   <bitmap:share/hud/rotc/icon." @ %item[%i] @ ".50x15>" @ "<sbreak>", 1, 1);		
 	}
 }

@@ -39,10 +39,11 @@ function serverCmdPlayerAction(%client, %nr, %val)
 	}
 	else if(%nr == 13)
 	{
-		if(%val)
-			%client.getControlObject().useWeapon(-1);
-		else
-			%client.getControlObject().useWeapon(-2);
+		%client.getControlObject().useWeapon(6);
+	}
+	else if(%nr == 14)
+	{
+		%client.getControlObject().useWeapon(7);
 	}
 	else if(%nr == 17 && %val)
 	{		
