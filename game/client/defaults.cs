@@ -35,7 +35,7 @@ $pref::Player::MouseZoomSteps = 3;
 $pref::Player::RenderMyPlayer = 0;
 $pref::Player::RenderMyItems = 1;
 $Pref::Player::Trails::Amount = 5;
-$Pref::Player::Trails::Detail = 0.5;
+$Pref::Player::Trails::Detail = 0.0;
 $Pref::Player::Trails::Scale = 0.125;
 $Pref::Player::Trails::Visibility = 0.9;
 
