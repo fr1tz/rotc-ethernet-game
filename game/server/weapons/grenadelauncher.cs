@@ -120,7 +120,7 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/grenadelauncher/image.red.dts";
+	shapeFile = "share/shapes/rotc/weapons/grenadelauncher/image2.dts";
 	emap = true;
 
 	// mount point & mount offset...
