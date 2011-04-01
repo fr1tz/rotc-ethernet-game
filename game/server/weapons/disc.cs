@@ -142,12 +142,12 @@ datablock ShapeBaseImageData(RedDiscImage)
 	className = WeaponImage;
 
 	// basic item properties
-    	shapeFile = "share/shapes/rotc/weapons/disc/image.red.dts";
+    	shapeFile = "share/shapes/rotc/weapons/disc/image2.dts";
 	emap = true;
 
 	// mount point & mount offset...
 	mountPoint = 3;
-	offset = "-0.15 -0.22 -0.05";
+	offset = "-0.15 -0.10 -0.05";
 	rotation = "1 0 0 -12";
 
 	// Adjust firing vector to eye's LOS point?
