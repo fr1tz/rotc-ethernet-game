@@ -250,8 +250,7 @@ function RedDiscImage::onUnmount(%this, %obj, %slot)
 datablock ShapeBaseImageData(BlueDiscImage : RedDiscImage)
 {
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/disc/image.blue.dts";
-	emap = true;
+	//shapeFile = "share/shapes/rotc/weapons/disc/image.blue.dts";
 
 	// script fields...
 	interceptor = BlueInterceptorDisc;
