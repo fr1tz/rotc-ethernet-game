@@ -104,14 +104,14 @@ datablock ShapeBaseImageData(RedBlasterImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/blaster/image.old.red.dts";
+	shapeFile = "share/shapes/rotc/weapons/blaster/image2.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
 	mountPoint  = 0;
 	offset      = "0 0 0";
 	rotation    = "0 0 0";
-	eyeOffset	= "0.3 -0.34 -0.5";
+	eyeOffset	= "0.3 -0.025 -0.15";
 	eyeRotation = "0 0 0";
 
 	// Adjust firing vector to eye's LOS point?
@@ -142,7 +142,7 @@ datablock ShapeBaseImageData(RedBlasterImage)
 		stateName[1]                     = "Activate";
 		stateTransitionOnTimeout[1]      = "Ready";
 		stateTimeoutValue[1]             = 0.5;
-		stateSequence[1]                 = "idle";
+		stateSequence[1]                 = "activate";
 		stateSpinThread[1]               = "SpinDown";
 
 		// ready to fire, just waiting for the trigger...
@@ -152,6 +152,7 @@ datablock ShapeBaseImageData(RedBlasterImage)
 		stateTransitionOnTriggerDown[2]  = "Fire";
 		stateArmThread[2]                = "holdblaster";
 		stateSpinThread[2]               = "Stop";
+		//stateSequence[2]                 = "idle";
 
 		// fire!...
 		stateName[3]                     = "Fire";
@@ -183,22 +184,25 @@ datablock ShapeBaseImageData(RedBlasterImage)
 		stateTransitionOnNotLoaded[5]    = "Disabled";
 		stateWaitForTimeout[5]           = false;
 		stateTimeoutValue[5]             = 2.00;
-
+			
 		// no ammo...
 		stateName[6]                     = "NoAmmo";
         stateTransitionOnTriggerDown[6]  = "DryFire";
 		stateTransitionOnAmmo[6]         = "Ready";
 		stateTimeoutValue[6]             = 0.50;
+		//stateSequence[6]                 = "idle";
   
         // dry fire...
 		stateName[7]                     = "DryFire";
 		stateTransitionOnTriggerUp[7]    = "NoAmmo";
 		stateSound[7]                    = WeaponEmptySound;
+		//stateSequence[7]                 = "idle";
 
 		// disabled...
 		stateName[8]                     = "Disabled";
 		stateTransitionOnLoaded[8]       = "Ready";
 		stateAllowImageChange[8]         = false;
+		//stateSequence[8]                 = "idle";
 	//
 	// ...end of image states
 	//-------------------------------------------------
@@ -208,7 +212,7 @@ datablock ShapeBaseImageData(RedBlasterImage)
 
 datablock ShapeBaseImageData(BlueBlasterImage : RedBlasterImage)
 {
-	shapeFile = "share/shapes/rotc/weapons/blaster/image.old.blue.dts";
+	shapeFile = "share/shapes/rotc/weapons/blaster/image2.blue.dts";
 	projectile = BlueBlasterProjectile;
 	stateFireProjectile[3] = BlueBlasterProjectile;
     stateEmitter[3] = BlueBlasterFireEmitter;
