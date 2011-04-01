@@ -5,7 +5,7 @@
 
 datablock TSShapeConstructor(RedStandardCatDts)
 {
-	baseShape = "./player.red.dts";
+	baseShape = "./player2.red.dts";
 	sequenceBaseDir = "./../a/";
 	
 	// movement when standing...
@@ -79,9 +79,11 @@ datablock TSShapeConstructor(RedStandardCatDts)
 	sequence54 = "ub/throwinterceptor.dsq throwInterceptor";
 	
 	sequence45 = "fb/flyer.dsq flyer";
+	
+	sequence55  = "b/slide.dsq slide";	
 };
 
 datablock TSShapeConstructor(BlueStandardCatDts : RedStandardCatDts)
 {
-	baseShape = "./player.blue.dts";
+	baseShape = "./player2.blue.dts";
 };

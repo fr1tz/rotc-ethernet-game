@@ -35,7 +35,7 @@ datablock PlayerData(RedStandardCat)
 	cameraMinDist = 1;
 	cameraMaxDist = 5;
 
-	shapeFile = "share/shapes/rotc/players/standardcat/player.red.dts";
+	shapeFile = "share/shapes/rotc/players/standardcat/player2.red.dts";
  
 	//cloakTexture = "share/shapes/rotc/effects/explosion_white.png";
 	shapeFxTexture[0] = "share/textures/rotc/connection2.png";
@@ -253,7 +253,7 @@ datablock PlayerData(RedStandardCat)
 
 datablock PlayerData(BlueStandardCat : RedStandardCat)
 {
-	shapeFile = "share/shapes/rotc/players/standardcat/player.blue.dts";
+	shapeFile = "share/shapes/rotc/players/standardcat/player2.blue.dts";
 	shapeFxTexture[4] = "share/textures/rotc/armor.cyan.png";
 	shapeFxColor[0] = "1.0 1.0 1.0 1.0";  
 	shapeFxColor[1] = "0.0 0.0 1.0 1.0";  
