@@ -37,7 +37,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/missilelauncher/image.red.dts";
+	shapeFile = "share/shapes/rotc/weapons/missilelauncher/image2.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -83,20 +83,20 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 		stateName[1]                     = "Activate";
 		stateTransitionOnTimeout[1]      = "Ready";
 		stateTimeoutValue[1]             = 0.5;
-		stateSequence[1]                 = "idle";
+		stateSequence[1]                 = "lowered";
 
 		// ready, just waiting for the trigger...
 		stateName[2]                     = "Ready";
 		stateTransitionOnNoAmmo[2]       = "NoAmmo";
 		stateTransitionOnNotLoaded[2]    = "Disabled";
-		stateTransitionOnTriggerDown[2]  = "Charge";
+		stateTransitionOnTriggerDown[2]  = "RaiseCharge";
 		stateArmThread[2]                = "holdrifle";
-		stateSequence[2]                 = "idle";
+		stateSequence[2]                 = "lowered";
 		stateScript[2]                   = "onReady";
 		stateSpin[2]                     = "FullSpin";
   
-		// charge...
-		stateName[3]                     = "Charge";
+		// raise & charge...
+		stateName[3]                     = "RaiseCharge";
 		stateTransitionOnTriggerUp[3]    = "CheckFire";
 		//stateTransitionOnNoAmmo[3]       = "NoAmmo";
 		stateTarget[3]                   = true;
@@ -104,7 +104,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 		stateAllowImageChange[3]         = true;
 		stateArmThread[3]                = "aimrifle";
 		stateSound[3]                    = SniperPowerUpSound;
-		stateSequence[3]                 = "charge";
+		stateSequence[3]                 = "raisecharge";
 		stateScript[3]                   = "onCharge";
   
 		// check fire...
@@ -140,6 +140,18 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 		stateTransitionOnNotLoaded[9]    = "Disabled";
 		stateWaitForTimeout[9]           = false;
 		stateTimeoutValue[9]             = 2.00;
+		
+		// charge...
+		stateName[13]                     = "Charge";
+		stateTransitionOnTriggerUp[13]    = "CheckFire";
+		//stateTransitionOnNoAmmo[13]       = "NoAmmo";
+		stateTarget[13]                   = true;
+		stateCharge[13]                   = true;
+		stateAllowImageChange[13]         = true;
+		stateArmThread[13]                = "aimrifle";
+		stateSound[13]                    = SniperPowerUpSound;
+		stateSequence[13]                 = "charge";
+		stateScript[13]                   = "onCharge";		
 
 		// no ammo...
 		stateName[10]                    = "NoAmmo";
@@ -206,7 +218,7 @@ function RedSniperRifleImage::onNoAmmo(%this, %obj, %slot)
 
 datablock ShapeBaseImageData(BlueSniperRifleImage : RedSniperRifleImage)
 {
-	shapeFile = "share/shapes/rotc/weapons/missilelauncher/image.blue.dts";
+	shapeFile = "share/shapes/rotc/weapons/missilelauncher/image2.blue.dts";
 
 	projectile = BlueSniperProjectile;
     missile = BlueSniperMissile;
