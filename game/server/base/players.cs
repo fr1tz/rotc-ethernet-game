@@ -686,7 +686,7 @@ function Player::addAttackingDisc(%this, %disc)
     %this.attackingDiscs += 1;
     
     %this.shapeFxSetTexture($PlayerShapeFxSlot::NoDisc, 2);
-    %this.shapeFxSetBalloon($PlayerShapeFxSlot::NoDisc, 1.10, 0);
+    %this.shapeFxSetBalloon($PlayerShapeFxSlot::NoDisc, 1, 0);
     %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true, true);
 }
 
