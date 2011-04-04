@@ -60,7 +60,7 @@ datablock ShapeBaseImageData(RedMinigunImage)
 	className = WeaponImage;
 
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/minigun/image.red.dts";
+	shapeFile = "share/shapes/rotc/weapons/minigun/image2.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -103,6 +103,7 @@ datablock ShapeBaseImageData(RedMinigunImage)
 		stateTransitionOnTriggerDown[2]  = "Fire";
 		stateArmThread[2]                = "holdblaster";
 		stateSpinThread[2]               = "Stop";
+		stateSequence[2]                 = "idle";
 
 		// charge...
 		stateName[3]                     = "Charge";
@@ -128,12 +129,13 @@ datablock ShapeBaseImageData(RedMinigunImage)
 		stateTransitionOnTimeout[4]      = "Fire";
 		stateTransitionOnTriggerUp[4]    = "Cooldown";
 		stateTransitionOnNoAmmo[4]       = "Cooldown";
-		stateTimeoutValue[4]             = 0.075;
+		stateTimeoutValue[4]             = 0.075; 
 		stateFire[4]                     = true;
 		stateAllowImageChange[4]         = false;
 		stateEjectShell[4]               = true;
 		stateArmThread[4]                = "aimblaster";
 		stateSequence[4]                 = "fire";
+		stateSequenceRandomFlash[4]      = true;
 		stateSound[4]                    = MinigunFireSound;
 		stateEmitter[4]                  = MinigunFireEmitter;
 		stateEmitterNode[4]              = "fireparticles";
@@ -156,6 +158,7 @@ datablock ShapeBaseImageData(RedMinigunImage)
         	stateTransitionOnTriggerDown[6]  = "DryFire";
 		stateTransitionOnAmmo[6]         = "Ready";
 		stateTimeoutValue[6]             = 0.50;
+		stateSequence[6]                 = "idle";
   
         	// dry fire...
 		stateName[7]                     = "DryFire";
@@ -166,6 +169,7 @@ datablock ShapeBaseImageData(RedMinigunImage)
 		stateName[8]                     = "Disabled";
 		stateTransitionOnLoaded[8]       = "Ready";
 		stateAllowImageChange[8]         = false;
+		stateSequence[8]                 = "idle";		
 	//
 	// ...end of image states
 	//-------------------------------------------------
@@ -226,7 +230,7 @@ function RedMinigunImage::onFire(%this, %obj, %slot)
 
 datablock ShapeBaseImageData(BlueMinigunImage : RedMinigunImage)
 {
-	shapeFile = "share/shapes/rotc/weapons/minigun/image.blue.dts";
+	shapeFile = "share/shapes/rotc/weapons/minigun/image2.blue.dts";
 	projectile = BlueMinigunProjectile;
 	//stateEmitter[3] = BlueMinigunFireEmitter;
 };
