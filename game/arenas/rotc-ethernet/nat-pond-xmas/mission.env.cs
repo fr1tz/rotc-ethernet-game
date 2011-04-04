@@ -1,7 +1,7 @@
 // Mission environment script
 // This script is executed on the server
 
-$ENV_ROOT = "game/arenas/rotc-eth-1xmas/";
+$ENV_ROOT = "game/arenas/rotc-ethernet/nat-pond-xmas/";
 
 //------------------------------------------------------------------------------
 // Lights
@@ -20,7 +20,7 @@ sgLoadDataBlocks($sgLightEditor::filterDBPath);
 %mapping.sound = $MaterialMapping::Sound::Hard;
 %mapping.color = "0.3 0.3 0.3 0.4 0.0";
 %mapping.envmap = "share/skies/dragonmoon/dragonmoon_up 0.5";
-%mapping.detail = "share/textures/eth1/detail1";
+%mapping.detail = "share/textures/nat/detail1";
 
 %mapping = createMaterialMapping("Snow");
 %mapping.sound = $MaterialMapping::Sound::Snow;
@@ -40,7 +40,7 @@ function GameConnection::updateSkyColor(%this)
 
 datablock PrecipitationData(MissionSnow)
 {
-   dropTexture = "share/textures/eth1/snowflakes";
+   dropTexture = "share/textures/nat/snowflakes";
    //splashTexture = "~/data/precipitation/water_splash";
    dropSize = 0.40;
    //splashSize = 0.2;
@@ -51,7 +51,7 @@ datablock PrecipitationData(MissionSnow)
 datablock ShapeBaseImageData(RedCatLightImage)
 {
 	// basic item properties
-	shapeFile = "share/shapes/eth1/santahat.red.dts";
+	shapeFile = "share/shapes/old1/santahat.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -74,7 +74,7 @@ datablock ShapeBaseImageData(RedCatLightImage)
 datablock ShapeBaseImageData(BlueCatLightImage)
 {
 	// basic item properties
-	shapeFile = "share/shapes/eth1/santahat.blue.dts";
+	shapeFile = "share/shapes/old1/santahat.blue.dts";
 	emap = true;
 
 	// mount point & mount offset...
