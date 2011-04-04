@@ -607,7 +607,10 @@ function Player::updateGridConnection(%this)
 		%newDt = -0.008;
 	}
 
-	if(%newDt != %this.gridConnectionDt)
+	// FIXME: in the linux version %newDt - %this.gridConnectionDt is not exactly
+    //        0 even if %newDt and %this.gridConnectionDt are the same number
+	//echo(%newDt SPC %this.gridConnectionDt SPC %newDt - %this.gridConnectionDt);
+	if(mAbs(%newDt-%this.gridConnectionDt) > 0.001)
 	{
 		%this.gridConnectionDt = %newDt;
 		%updateFx = true;		
@@ -637,7 +640,7 @@ function Player::updateGridConnection(%this)
 	// Update shape FX?
 	if(%updateFx || %this.forceGridConnectionShapeFxUpdate)
 	{
-		error("Player::updateGridConnection(): Updating Shape FX");	
+		//error("Player::updateGridConnection(): Updating Shape FX");	
 		%this.forceGridConnectionShapeFxUpdate = false;
 		if(%this.gridConnection < 0)
 		{
