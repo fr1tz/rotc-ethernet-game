@@ -163,7 +163,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image2.orange.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image3.orange.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -215,8 +215,9 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateTransitionOnNoAmmo[2]       = "NoAmmo";
   		stateTransitionOnNotLoaded[2]    = "Disabled";
 		stateTransitionOnTriggerDown[2]  = "Fire";
-        stateArmThread[2]                = "holdrifle";
+      stateArmThread[2]                = "holdrifle";
 		stateSpinThread[2]               = "FullSpeed";
+		stateSequence[2]                 = "idle";
 		
 		stateName[3]                     = "Fire";
 		stateTransitionOnTimeout[3]      = "Fire2";
@@ -250,7 +251,6 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateTransitionOnAmmo[5]         = "Ready";
         stateTransitionOnTriggerDown[5]  = "DryFire";
 		stateTimeoutValue[5]             = 0.50;
-		stateSequence[5]                 = "NoAmmo";
   
         // dry fire...
 		stateName[6]                     = "DryFire";
@@ -270,7 +270,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 
 datablock ShapeBaseImageData(BlueAssaultRifleImage : RedAssaultRifleImage)
 {
-	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image2.cyan.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image3.cyan.dts";
 	projectile = BlueAssaultRifleProjectile1;
 	stateFireProjectile[3] = BlueAssaultRifleProjectile1;
 	stateFireProjectile[8] = BlueAssaultRifleProjectile2;
