@@ -4,16 +4,22 @@ What's new?
 Prototype 3-dev
 ---------------
 
-- Breaks backwards compatibility!
-- Currently windows version only. (Use WINE under Linux).
-- CATs are now "connected" to the zone grid. Leaving the
-  ground or etherboarding reduces this connection. If 
-  connected, the grid helps holding the CAT in place, reducing
-  any impulses to the CAT by up to 75%.
-- Replaced B.O.U.N.C.E. with simpler repel. The repel can not be
-  fired when not connected to the grid and its power depends
-  on the strength of the connection. Using a repel resets
-  a CAT's connection to the grid.
+- Breaks backwards compatibility to older versions!
+- Somewhat improved performance (still requires way too 
+  much horsepower for the way it looks)
+- Players now have three equipment slots instead of two.
+- The etherboard now takes up an equipment slot.
+- New "Regenerate" ability: Takes up one (or more for increased
+  effect) equipment slots but constantly heals the player while
+  in CAT form.
+- The weapons' now impart a lot more force when they hit.
+  To compensate for this, CATs can become "connected" to the
+  ground by being close to it and not etherboarding. When
+  fully connected,  the impact force from a hit is reduced by 75%.
+- B.O.U.N.C.E. now also deals damage based on the speed of the bounced enemy.
+- Weapon changes:
+	- Battle Rifle: Projectiles now bounce off surfaces.
+	- Minigun: Increase accuracy and remove spin-up delay.
   
 
 Prototype 2+dev5
