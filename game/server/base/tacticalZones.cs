@@ -301,9 +301,9 @@ function TerritoryZone::updateOwner(%this, %zone)
 		%z = %zone.zNeighbour[%i];
 		if(isObject(%z))
 		{
-			if(%z.getTeamId() == 1)
+			if(%z.getTeamId() == 1 && !%z.zBlocked)
 				%connectedToRed = true;
-			if(%z.getTeamId() == 2)
+			if(%z.getTeamId() == 2 && !%z.zBlocked)
 				%connectedToBlue = true;
 		}
 	}
