@@ -36,6 +36,7 @@ function GameConnection::control(%this, %shapebase)
 function GameConnection::onClientLoadMission(%this)
 {
 	%this.loadingMission = true;
+	%this.updateQuickbar();
 	serverCmdMainMenu(%this);
 }
 
@@ -107,11 +108,12 @@ function GameConnection::onClientEnterGame(%this)
 	// Start sky color thread.
 	%this.updateSkyColor();
 
+	%this.updateQuickbar();
 	if(%this.menu $= "mainmenu")
 		serverCmdMainMenu(%this);
 
 	// Start thread to process player stats...
-	%this.processPlayerStats();
+	%this.processPlayerStats();	
 }
 
 // *** callback function: called by script code in "common"
@@ -230,6 +232,8 @@ function GameConnection::joinTeam(%this, %teamId)
 		%this.isSuperAdmin);
 
 	%this.spawnPlayer();
+	
+	%this.updateQuickbar();
 
 	return true;
 }
@@ -500,6 +504,27 @@ function GameConnection::updateSkyColor(%this)
 
 //-----------------------------------------------------------------------------
 
+function GameConnection::beginQuickbarText(%this, %update)
+{
+	commandToClient(%this, 'BeginQuickbarTxt', %update);
+}
+
+function GameConnection::addQuickbarText(%this, %text)
+{
+	%l = strlen(%text); %n = 0;
+	while(%n < %l)
+	{
+		%chunk = getSubStr(%text, %n, 255);
+		commandToClient(%this, 'AddQuickbarTxt', %chunk);
+		%n += 255;
+	}	
+}
+
+function GameConnection::endQuickbarText(%this)
+{
+	commandToClient(%this, 'EndQuickbarTxt');
+}
+
 function GameConnection::beginMenuText(%this, %update)
 {
 	commandToClient(%this, 'BeginMenuTxt', %update);
@@ -672,6 +697,45 @@ function GameConnection::setHudMenuT(%this, %slot, %text, %repetitions, %visible
 
 	//error("Sending 'MsgHudMenuT' to" SPC %this SPC ": [" SPC %slot SPC "][" SPC %text SPC "][" SPC %repetitions SPC "][" SPC %visible SPC "]");
 	messageClient(%this, 'MsgHudMenuT', "", %slot, %text, %repetitions, %visible);
+}
+
+//-----------------------------------------------------------------------------
+
+function GameConnection::updateQuickbar(%this)
+{
+	%r = "<just:center><font:NovaSquare:16>";
+
+	if(%this.loadingMission)
+	{
+		%r = %r @	
+			"Arena is loading" @
+			"";
+	}
+	else
+	{
+		if(%this.team != $Team0)
+			%r = %r @ "<a:cmd JoinTeam 0>";
+		%r = %r @ "Join Observers";
+		if(%this.team != $Team0)
+			%r = %r @ "</a>";		
+		%r = %r @ "    ";	
+		if(%this.team != $Team1)
+			%r = %r @ "<a:cmd JoinTeam 1>";
+		%r = %r @ "Join Reds";
+		if(%this.team != $Team1)
+			%r = %r @ "</a>";		
+		%r = %r @ "    ";		
+		if(%this.team != $Team2)
+			%r = %r @ "<a:cmd JoinTeam 2>";
+		%r = %r @ "Join Blues";
+		if(%this.team != $Team2)
+			%r = %r @ "</a>";		
+		%r = %r @ "    ";	
+	}
+
+	%this.beginQuickbarText();
+	%this.addQuickbarText(%r);	
+	%this.endQuickbarText();
 }
 
 

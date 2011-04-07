@@ -15,24 +15,7 @@ function om_init()
 
 function om_head(%client, %title, %prev, %refresh)
 {
-	%r = "<just:center><spush><font:NovaSquare:12>";
-
-	if(%client.loadingMission)
-	{
-		%r = %r @	
-			"Arena is loading" @
-			"";
-	}
-	else
-	{
-		%r = %r @	
-			"<a:cmd JoinTeam 0>Join Observers</a>    " @
-			"<a:cmd JoinTeam 1>Join Reds</a>     " @
-			"<a:cmd JoinTeam 2>Join Blues</a>" @
-			"";
-	}
-
-	%r = %r @ " <spop>\n<bitmap:share/misc/ui/sep.png>\n\n<just:left>";
+	%r = "";
 
 	if(%prev !$= "")
 	{

@@ -37,30 +37,30 @@ new GuiControl(MissionWindowForEditing) {
       canMaximize = "0";
       minSize = "50 50";
 
-      new GuiScrollCtrl(IngameMenuScroll) {
+      new GuiScrollCtrl(IngameQuickBarScroll) {
          canSaveDynamicFields = "0";
          Profile = "GuiScrollProfile";
          HorizSizing = "width";
-         VertSizing = "height";
+         VertSizing = "bottom";
          position = "9 61";
-         Extent = "497 201";
+         Extent = "497 100";
          MinExtent = "8 2";
          canSave = "1";
          Visible = "1";
          hovertime = "1000";
          willFirstRespond = "1";
-         hScrollBar = "alwaysOn";
-         vScrollBar = "alwaysOn";
+         hScrollBar = "alwaysOff";
+         vScrollBar = "alwaysOff";
          constantThumbHeight = "0";
          childMargin = "0 0";
 
-         new GuiMLTextCtrl(IngameMenuText) {
+         new GuiMLTextCtrl(IngameQuickBarText) {
             canSaveDynamicFields = "0";
             Profile = "GuiMLTextProfile";
             HorizSizing = "width";
             VertSizing = "height";
             position = "2 2";
-            Extent = "475 14";
+            Extent = "495 14";
             MinExtent = "8 2";
             canSave = "1";
             Visible = "1";
@@ -79,7 +79,7 @@ new GuiControl(MissionWindowForEditing) {
          Extent = "497 172";
          MinExtent = "8 8";
          canSave = "1";
-         Visible = "1";
+         Visible = "0";
          hovertime = "1000";
          willFirstRespond = "1";
          hScrollBar = "dynamic";
@@ -93,7 +93,7 @@ new GuiControl(MissionWindowForEditing) {
             HorizSizing = "width";
             VertSizing = "bottom";
             position = "2 2";
-            Extent = "475 14";
+            Extent = "477 14";
             MinExtent = "355 14";
             canSave = "1";
             Visible = "1";
@@ -356,6 +356,39 @@ new GuiControl(MissionWindowForEditing) {
                   maxChars = "255";
                };
             };
+         };
+      };
+      new GuiScrollCtrl(IngameMenuScroll) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiScrollProfile";
+         HorizSizing = "width";
+         VertSizing = "height";
+         position = "9 170";
+         Extent = "497 272";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         willFirstRespond = "1";
+         hScrollBar = "dynamic";
+         vScrollBar = "alwaysOn";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiMLTextCtrl(IngameMenuText) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiMLTextProfile";
+            HorizSizing = "width";
+            VertSizing = "height";
+            position = "2 2";
+            Extent = "475 14";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            lineSpacing = "2";
+            allowColorChars = "0";
+            maxChars = "-1";
          };
       };
    };

@@ -3,6 +3,47 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
+function clientCmdBeginQuickbarTxt(%update)
+{
+	IngameQuickbarText.zText = "";
+	if(%update)
+	{
+		IngameQuickbarScroll.zPrevPosX = IngameQuickbarScroll.getScrollPositionX();
+		IngameQuickbarScroll.zPrevPosY = IngameQuickbarScroll.getScrollPositionY();
+	}
+	else
+	{
+		IngameQuickbarScroll.zPrevPosX = 0;
+		IngameQuickbarScroll.zPrevPosY = 0;
+	}
+}
+
+function clientCmdAddQuickbarTxt(%text)
+{
+	IngameQuickbarText.zText = IngameQuickbarText.zText @ %text;
+}
+
+function clientCmdEndQuickbarTxt()
+{
+	IngameQuickbarText.setText(replaceBindVars(IngameQuickbarText.zText));
+	IngameQuickbarText.forceReflow();
+	IngameQuickbarScroll.setScrollPosition(
+		IngameQuickbarScroll.zPrevPosX,
+		IngameQuickbarScroll.zPrevPosY
+	);
+	
+	// Minimize size of Quickbar and adjust size of the menu...
+	%w = getWord(IngameQuickbarScroll.extent, 0);
+	%h = getWord(IngameQuickbarText.extent, 1) + 5;
+	%y = getWord(IngameQuickbarScroll.position, 1);
+	IngameQuickbarScroll.setExtent(%w, %h);
+	%stor = getWord(IngameMenuScroll.position, 1);
+	IngameMenuScroll.setPosition(10, %y + %h + 10);
+	%y = getWord(IngameMenuScroll.position, 1);
+	%h = getWord(IngameMenuScroll.extent, 1);
+	IngameMenuScroll.setExtent(%w, %h + (%stor - %y));
+}
+
 function clientCmdBeginMenuTxt(%update)
 {
 	IngameMenuText.zText = "";
@@ -93,7 +134,7 @@ function MissionWindow::cancelInput(%this)
 	MissionServerInput.setVisible(false);
 }
 
-function IngameMenuText::onURL(%this, %url)
+function IngameQuickbarText::onURL(%this, %url)
 {
 	if(getWord(%url, 0) $= "cmd")
 	{
@@ -111,4 +152,9 @@ function IngameMenuText::onURL(%this, %url)
 	{
 		gotoWebPage(%url);
 	}
+}
+
+function IngameMenuText::onURL(%this, %url)
+{
+	IngameQuickbarText.onURL(%url);
 }
