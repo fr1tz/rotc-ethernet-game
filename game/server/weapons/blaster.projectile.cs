@@ -96,7 +96,7 @@ function RedBlasterProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%d
     if(%currTime == %obj.hitTime)
     {
         %col.numBlasterBulletHits += 1;
-        if(%col.numBlasterBulletHits == 3)
+        if(%col.numBlasterBulletHits == 4)
             %src.setDiscTarget(%col);
     }
     else
