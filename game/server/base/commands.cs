@@ -378,15 +378,15 @@ function serverCmdShowPlayerList(%client, %show)
 		"<a:cmd ShowPlayerList healthlost>Effective health loss</a> |" SPC
 		"<a:cmd ShowPlayerList PvE>PvE</a> |" SPC
 		"<a:cmd ShowPlayerList chuck>Invincibility</a> |" SPC
-		"\nWeapon effectiveness:" SPC
+		"\nWeapon effectiveness:\n   " SPC
 		"<a:cmd ShowPlayerList totalF>Total</a>," SPC
 		"<a:cmd ShowPlayerList discF>Disc</a>," SPC
 		"<a:cmd ShowPlayerList grenadeF>Grenade</a>," SPC
 		"<a:cmd ShowPlayerList blasterF>Blaster</a>," SPC
 		"<a:cmd ShowPlayerList brF>BR</a>," SPC
+		"<a:cmd ShowPlayerList sniperF>Sniper</a>," SPC		
 		"<a:cmd ShowPlayerList minigunF>Minigun</a>," SPC
-		"<a:cmd ShowPlayerList sniperF>Sniper</a>," SPC
-		"<a:cmd ShowPlayerList glF>GL</a> |\n" SPC
+		"<a:cmd ShowPlayerList glF>GL</a>\n" SPC
 		"<a:cmd ShowPlayerList time>Time played</a>" @
 		"<lmargin:0>\n\n" @
 		"<tab:25, 125, 200, 300, 400>" @
@@ -451,9 +451,9 @@ function serverCmdShowPlayerInfo(%client, %player)
 		"Disc" TAB trimStat(%p.discDmgCaused) TAB trimStat(%p.discDmgTaken) TAB trimStat(%p.discHealthLost) @ "\n\n" @
 		"Grenade" TAB trimStat(%p.grenadeDmgCaused) TAB trimStat(%p.grenadeDmgTaken) TAB trimStat(%p.grenadeHealthLost) @ "\n\n" @
 		"Blaster" TAB trimStat(%p.blasterDmgCaused) TAB trimStat(%p.blasterDmgTaken) TAB trimStat(%p.blasterHealthLost) @ "\n\n" @
-		"Battle Rifle" TAB trimStat(%p.brDmgCaused) TAB trimStat(%p.brDmgTaken) TAB trimStat(%p.brHealthLost) @ "\n\n" @
-		"Minigun" TAB trimStat(%p.minigunDmgCaused) TAB trimStat(%p.minigunDmgTaken) TAB trimStat(%p.minigunHealthLost) @ "\n\n" @
+		"Battle Rifle" TAB trimStat(%p.brDmgCaused) TAB trimStat(%p.brDmgTaken) TAB trimStat(%p.brHealthLost) @ "\n\n" @		
 		"Sniper" TAB trimStat(%p.sniperDmgCaused) TAB trimStat(%p.sniperDmgTaken) TAB trimStat(%p.sniperHealthLost) @ "\n\n" @
+		"Minigun" TAB trimStat(%p.minigunDmgCaused) TAB trimStat(%p.minigunDmgTaken) TAB trimStat(%p.minigunHealthLost) @ "\n\n" @		
 		"GL" TAB trimStat(%p.glDmgCaused) TAB trimStat(%p.glDmgTaken) TAB trimStat(%p.glHealthLost) @ "\n\n" @
 		"Environment" TAB "" TAB trimStat(%p.forceDmgTaken) TAB trimStat(%p.forceHealthLost) @ "\n\n" @
 		"\n\n" @
@@ -464,8 +464,8 @@ function serverCmdShowPlayerInfo(%client, %player)
 		"Grenade" TAB %p.grenadeFired TAB trimStat(%p.grenadeEffectiveness) @ "%" @ "\n\n" @
 		"Blaster" TAB %p.blasterFired TAB trimStat(%p.blasterEffectiveness) @ "%" @ "\n\n" @
 		"BR" TAB %p.brFired TAB trimStat(%p.brEffectiveness) @ "%" @ "\n\n" @
-		"Minigun" TAB %p.minigunFired TAB trimStat(%p.minigunEffectiveness) @ "%" @ "\n\n" @
 		"Sniper" TAB %p.sniperFired TAB trimStat(%p.sniperEffectiveness) @ "%" @ "\n\n" @
+		"Minigun" TAB %p.minigunFired TAB trimStat(%p.minigunEffectiveness) @ "%" @ "\n\n" @		
 		"GL" TAB %p.glFired TAB trimStat(%p.glEffectiveness) @ "%" @ "\n\n" @
 		"Total" TAB %p.totalFired TAB trimStat(%p.totalEffectiveness) @ "%" @ "\n\n" @
 		""
