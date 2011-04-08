@@ -22,7 +22,7 @@ datablock ShotgunProjectileData(RedSniperProjectile)
 	stat = "sniper";
 
 	// script damage properties...
-	impactDamage       = 60;
+	impactDamage       = 40;
 	impactImpulse      = 6000;
 	splashDamage       = 0;
 	splashDamageRadius = 0;
