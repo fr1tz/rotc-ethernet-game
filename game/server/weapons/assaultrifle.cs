@@ -224,7 +224,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		//stateTimeoutValue[3]             = 0.0;
 		stateFire[3]                     = true;
 		//stateFireProjectile[3]           = RedAssaultRifleProjectile1;
-		//stateRecoil[3]                   = MediumRecoil;
+		stateRecoil[3]                   = MediumRecoil;
 		stateAllowImageChange[3]         = false;
 		stateEjectShell[3]               = true;
 		stateArmThread[3]                = "aimrifle";
