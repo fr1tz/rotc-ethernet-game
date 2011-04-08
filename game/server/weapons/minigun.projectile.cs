@@ -24,7 +24,7 @@ datablock ProjectileData(RedMinigunProjectile)
 	energyDrain = 2; // how much energy does firing this projectile drain?
 
 	explodesNearEnemies	      = false;
-	explodesNearEnemiesRadius = 4;
+	explodesNearEnemiesRadius = 10;
 	explodesNearEnemiesMask   = $TypeMasks::PlayerObjectType;
 
 	//sound = MinigunProjectileFlybySound;

@@ -96,8 +96,8 @@ datablock ParticleData(BlueMinigunProjectileImpact_Smoke)
 
 	textureName = "share/textures/rotc/smoke_particle";
 
-	colors[0]	  = "1.0 1.0 1.0 0.5";
-	colors[1]	  = "1.0 1.0 1.0 0.0";
+	colors[0]	  = "0.0 1.0 0.0 1.0";
+	colors[1]	  = "0.0 1.0 0.0 0.0";
 	sizes[0]		= 1.0;
 	sizes[1]		= 1.0;
 	times[0]		= 0.0;
@@ -119,7 +119,7 @@ datablock ParticleEmitterData(BlueMinigunProjectileImpact_SmokeEmitter)
 	thetaMin			= 0.0;
 	thetaMax			= 60.0;
 
-	lifetimeMS		 = 100;
+	lifetimeMS		 = 50;
 
 	particles = "BlueMinigunProjectileImpact_Smoke";
 };
@@ -265,10 +265,12 @@ datablock ExplosionData(BlueMinigunProjectileMissedEnemyEffect)
 	sizes[1] = "0.01 0.01 0.01";
 	times[0] = 0.0;
 	times[1] = 1.0;
+	
+	emitter[0] = BlueMinigunProjectileImpact_SmokeEmitter;
 
 	// dynamic light...
 	lightStartRadius = 0;
-	lightEndRadius = 2;
+	lightEndRadius = 0;
 	lightStartColor = "0.5 0.5 0.5";
 	lightEndColor = "0.0 0.0 0.0";
     lightCastShadows = false;

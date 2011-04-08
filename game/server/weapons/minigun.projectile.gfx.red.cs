@@ -138,8 +138,8 @@ datablock ParticleData(RedMinigunProjectileImpact_Smoke)
 
 	textureName = "share/textures/rotc/smoke_particle";
 
-	colors[0]	  = "1.0 1.0 1.0 0.5";
-	colors[1]	  = "1.0 1.0 1.0 0.0";
+	colors[0]	  = "0.0 1.0 0.0 1.0";
+	colors[1]	  = "0.0 1.0 0.0 0.0";
 	sizes[0]		= 1.0;
 	sizes[1]		= 1.0;
 	times[0]		= 0.0;
@@ -161,7 +161,7 @@ datablock ParticleEmitterData(RedMinigunProjectileImpact_SmokeEmitter)
 	thetaMin			= 0.0;
 	thetaMax			= 60.0;
 
-	lifetimeMS		 = 100;
+	lifetimeMS		 = 50;
 
 	particles = "RedMinigunProjectileImpact_Smoke";
 };
@@ -237,12 +237,12 @@ datablock ExplosionData(RedMinigunProjectileImpact)
 
 	lifetimeMS = 3000;
  
- 	// shape...
-	explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.red.dts";
+	// shape...
+	//explosionShape = "share/shapes/rotc/effects/explosion5.green.dts";
 	faceViewer = false;
-	playSpeed = 0.4;
-	sizes[0] = "1 1 1";
-	sizes[1] = "1 1 1";
+	playSpeed = 4.0;
+	sizes[0] = "0.01 0.01 0.01";
+	sizes[1] = "0.20 0.20 0.20";
 	times[0] = 0.0;
 	times[1] = 1.0;
 
@@ -342,18 +342,20 @@ datablock ExplosionData(RedMinigunProjectileMissedEnemyEffect)
 	soundProfile = MinigunProjectileMissedEnemySound;
 
 	// shape...
-	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
+	//explosionShape = "share/shapes/rotc/effects/explosion5.green.dts";
 	faceViewer	  = true;
-	playSpeed = 8.0;
-	sizes[0] = "0.07 0.07 0.07";
-	sizes[1] = "0.01 0.01 0.01";
+	playSpeed = 4.0;
+	sizes[0] = "0.01 0.01 0.01";
+	sizes[1] = "0.07 0.07 0.07";
 	times[0] = 0.0;
 	times[1] = 1.0;
+	
+	emitter[0] = RedMinigunProjectileImpact_SmokeEmitter;
 
 	// dynamic light...
 	lightStartRadius = 0;
-	lightEndRadius = 2;
-	lightStartColor = "0.5 0.5 0.5";
+	lightEndRadius = 0;
+	lightStartColor = "0.0 1.0 0.0";
 	lightEndColor = "0.0 0.0 0.0";
     lightCastShadows = false;
 };
