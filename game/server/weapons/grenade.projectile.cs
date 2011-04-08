@@ -45,7 +45,7 @@ datablock ProjectileData(RedGrenade)
  
     particleEmitter = RedGrenade_ParticleEmitter;
 
-	laserTrail[0]		= RedGrenade_Lasertrail;
+//	laserTrail[0]		= RedGrenade_Lasertrail;
 
 	decals[0] = ExplosionDecalOne;
 
@@ -99,7 +99,7 @@ datablock ProjectileData(BlueGrenade : RedGrenade)
 	explosion = BlueGrenadeExplosion;
 	bounceExplosion = BlueGrenadeBounceEffect;
     particleEmitter = BlueGrenade_ParticleEmitter;
-	laserTrail[0] = BlueGrenade_Lasertrail;
+//	laserTrail[0] = BlueGrenade_Lasertrail;
 	lightColor = "0.0 0.0 1.0";
 };
 

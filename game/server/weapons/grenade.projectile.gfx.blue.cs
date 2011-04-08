@@ -15,7 +15,7 @@ datablock ParticleData(BlueGrenade_ParticleEmitter_Particles)
    constantAcceleration = 0.0;
    lifetimeMS           = 400;
    lifetimeVarianceMS   = 100;
-   textureName          = "share/textures/rotc/star2.blue";
+   textureName          = "share/textures/rotc/star3.blue";
    colors[0]     = "1.0 1.0 1.0 1.0";
    colors[1]     = "1.0 1.0 1.0 0.5";
    colors[2]     = "1.0 1.0 1.0 0.0";
