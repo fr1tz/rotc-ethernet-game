@@ -207,6 +207,9 @@ function tempZoom( %val )
 
 function mouseZoom(%val)
 {
+	if(Canvas.isCursorOn())
+		return;
+
 	if($MouseZoomValue == 0)
 		$MouseZoomValue = $Pref::Player::DefaultFov;
 		
