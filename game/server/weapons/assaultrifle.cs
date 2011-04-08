@@ -40,7 +40,7 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	// script damage properties...
 	impactDamage       = 0;
 	impactImpulse      = 2500;
-	splashDamage       = 30;
+	splashDamage       = 25;
 	splashDamageRadius = 2;
 	splashImpulse      = 0;
 	bypassDamageBuffer = true;
