@@ -51,6 +51,8 @@ MoveMap.bind( keyboard, "lcontrol", trigger5 );
 // Zoom and FOV
 //------------------------------------------------------------------------------
 
+MoveMap.bind( keyboard, "shift f", toggleTempZoomLevel );
+MoveMap.bind( keyboard, "f", tempZoom );
 MoveMap.bind(mouse, "zaxis", mouseZoom);
 
 //------------------------------------------------------------------------------
@@ -91,7 +93,7 @@ MoveMap.bind( keyboard, "q", action11);
 moveMap.bind( mouse0, "shift button2", action12);
 MoveMap.bind( keyboard, "e", action13 );
 MoveMap.bind( keyboard, "r", action14 );
-MoveMap.bind( keyboard, "f", action15 );
+MoveMap.bind( keyboard, "o", action15 );
 MoveMap.bind( keyboard, "g", action16 );
 MoveMap.bind( keyboard, "x", action17 );
 MoveMap.bind( keyboard, "v", action18 );

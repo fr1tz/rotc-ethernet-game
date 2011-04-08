@@ -166,70 +166,64 @@ function trigger5(%val)
 // Zoom and FOV
 //------------------------------------------------------------------------------
 
-function toggleZoomLevel(%val)
+function toggleTempZoomLevel(%val)
 {
+	//echo("toggleTempZoomLevel(): %val =" SPC %val);
+
 	if(%val)
 	{
-		if( $CurrentZoomValue == 0 )
-			$CurrentZoomValue = 5;
-		else if ( $CurrentZoomValue == 5 )
-			$CurrentZoomValue = 20;
-		else if ( $CurrentZoomValue == 20 )
-			$CurrentZoomValue = 30;
-		else if ( $CurrentZoomValue == 30 )
-			$CurrentZoomValue = 40;
-		else if ( $CurrentZoomValue == 40 )
-			$CurrentZoomValue = 50;
-		else if ( $CurrentZoomValue == 50 )
-			$CurrentZoomValue = 60;
-		else if ( $CurrentZoomValue == 60 )
-			$CurrentZoomValue = 70;
-		else if ( $CurrentZoomValue == 70 )
-			$CurrentZoomValue = 80;
-		else if ( $CurrentZoomValue == 80 )
-			$CurrentZoomValue = 90;
-		else if ( $CurrentZoomValue == 90 )
-			$CurrentZoomValue = 5;
+		%minFov = ServerConnection.getControlObject().getDataBlock().cameraMinFov;
+		%step = ($Pref::Player::DefaultFov - %minFov)/$Pref::Player::MouseZoomSteps;
+
+		$TempZoomValue += %step;
+
+		if($TempZoomValue > $Pref::Player::DefaultFov)
+			$TempZoomValue = %minFov;
+						
+		if($TempZoomOn)
+			setFov($TempZoomValue);	
 	}
 }
 
 // zoom to user defined value...
-function zoom( %val )
+function tempZoom( %val )
 {
-	if( $CurrentZoomValue == 0 )
-		$CurrentZoomValue = 5;
+	//echo("tempZoom(): %val =" SPC %val);
 
-	if ( %val )
+	if($TempZoomValue == 0)
+		$TempZoomValue = 1;
+
+	if(%val)
 	{
-		$ZoomOn = true;
-		setFov($CurrentZoomValue);
+		$TempZoomOn = true;
+		setFov($TempZoomValue);
 	}
 	else
 	{
-		$ZoomOn = false;
-		setFov($Pref::player::DefaultFov);
+		$TempZoomOn = false;
+		setFov($MouseZoomValue == 0 ? $Pref::Player::DefaultFov : $MouseZoomValue);
 	}
 }
 
 function mouseZoom(%val)
 {
-	if($CurrentZoomValue == 0)
-		$CurrentZoomValue = $Pref::Player::DefaultFov;
+	if($MouseZoomValue == 0)
+		$MouseZoomValue = $Pref::Player::DefaultFov;
 		
 	%minFov = ServerConnection.getControlObject().getDataBlock().cameraMinFov;
 	%step = ($Pref::Player::DefaultFov - %minFov)/$Pref::Player::MouseZoomSteps;
 
 	if(%val > 0)
-		$CurrentZoomValue -= %step;
+		$MouseZoomValue -= %step;
 	else
-		$CurrentZoomValue += %step;
+		$MouseZoomValue += %step;
 		
-	if($CurrentZoomValue < %minFov)
-		$CurrentZoomValue = %minFov;
-	else if($CurrentZoomValue > $Pref::Player::DefaultFov)
-		$CurrentZoomValue = $Pref::Player::DefaultFov;
+	if($MouseZoomValue < %minFov)
+		$MouseZoomValue = %minFov;
+	else if($MouseZoomValue > $Pref::Player::DefaultFov)
+		$MouseZoomValue = $Pref::Player::DefaultFov;
 
-	zoom(1);
+	setFov($MouseZoomValue);
 }
 
 //------------------------------------------------------------------------------
