@@ -154,7 +154,7 @@ datablock ExplosionData(BlueMinigunProjectileImpact)
 	lifetimeMS = 3000;
 
  	// shape...
-	explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.blue.dts";
+	//explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.blue.dts";
 	faceViewer = false;
 	playSpeed = 0.4;
 	sizes[0] = "1 1 1";
@@ -258,7 +258,7 @@ datablock ExplosionData(BlueMinigunProjectileMissedEnemyEffect)
 	soundProfile = MinigunProjectileMissedEnemySound;
 
 	// shape...
-	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
+	//explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
 	faceViewer	  = true;
 	playSpeed = 8.0;
 	sizes[0] = "0.07 0.07 0.07";
