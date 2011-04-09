@@ -708,7 +708,7 @@ function GameConnection::updateQuickbar(%this)
 	if(%this.loadingMission)
 	{
 		%r = %r @	
-			"Arena is loading" @
+			"Can't join a team while arena is loading" @
 			"";
 	}
 	else
