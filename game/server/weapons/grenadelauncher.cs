@@ -30,7 +30,7 @@ datablock ShapeBaseImageData(HolsteredGrenadeLauncherImage)
 //-----------------------------------------------------------------------------
 // projectile datablock...
 
-datablock TracerProjectileData(RedGrenadeLauncherProjectile)
+datablock ProjectileData(RedGrenadeLauncherProjectile)
 {
 	stat = "gl";
 
@@ -94,7 +94,7 @@ function RedGrenadeLauncherProjectile::onCollision(%this,%obj,%col,%fade,%pos,%n
 
 //--------------------------------------------------------------------------
 
-datablock TracerProjectileData(BlueGrenadeLauncherProjectile : RedGrenadeLauncherProjectile)
+datablock ProjectileData(BlueGrenadeLauncherProjectile : RedGrenadeLauncherProjectile)
 {
 	projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.blue.dts";
 	explosion = BlueGrenadeLauncherProjectileExplosion;
@@ -191,6 +191,7 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 		stateAllowImageChange[4]         = false;
 		stateSequence[4]                 = "Fire";
 		stateSound[4]                    = GrenadeLauncherFireSound;
+		stateScript[4]                   = "onFire";
 
 		stateName[5]                     = "Fire3";
 		stateTransitionOnTimeout[5]      = "Fire4";
@@ -202,6 +203,7 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 		stateAllowImageChange[5]         = false;
 		stateSequence[5]                 = "Fire";
 		stateSound[5]                    = GrenadeLauncherFireSound;
+		stateScript[5]                   = "onFire";
 
 		stateName[6]                     = "Fire4";
 		stateTransitionOnTimeout[6]      = "Cooldown";
@@ -212,6 +214,7 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 		stateAllowImageChange[6]         = false;
 		stateSequence[6]                 = "Fire";
 		stateSound[6]                    = GrenadeLauncherFireSound;
+		stateScript[6]                   = "onFire";
 		
 		stateName[7]                     = "Cooldown";
 		stateTransitionOnTimeout[7]      = "KeepAiming";
@@ -251,64 +254,10 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 
 function RedGrenadeLauncherImage::onFire(%this, %obj, %slot)
 {
-	%obj.throwGrenade = false;
-}
-
-function RedGrenadeLauncherImage::fireBigGrenade(%this, %obj, %slot)
-{
-	%projectile = %this.bigGrenade;
+	%projectile = %this.projectile;
 
 	// drain some energy...
 	%obj.setEnergyLevel( %obj.getEnergyLevel() - %projectile.energyDrain );
-
-    // %throwForce is based on how long the trigger has been hold down...
-    %throwCoefficient = 0;
-    if(false)
-    {
-        %throwCoefficient = 1;
-    }
-    else
-    {
-        %throwCoefficient = (getSimTime() - %obj.grenadeStart) / 1000;
-		error(%throwCoefficient);
-        if( %throwCoefficient > 1 )
-            %throwCoefficient = 1;
-    }
-    //%throwCoefficient = %throwCoefficient/2;
-    %throwForce = %projectile.muzzleVelocity * %throwCoefficient;
-
-    %vec = %obj.getMuzzleVector(%slot);
-    %vec = vectorScale(%vec, %throwForce);
-
-    // add a vertical component to give the grenade a better arc
-    %verticalForce = %throwForce / 8;
-    %dot = vectorDot("0 0 1",%eye);
-    if (%dot < 0) %dot = -%dot;
-    %vec = vectorAdd(%vec,VectorScale("0 0 " @ %verticalForce,1 - %dot));
-
-    // add velocity inherited from player...
-    %vec = vectorAdd( %vec, VectorScale(%obj.getVelocity(), %projectile.velInheritFactor));
-
-    // get initial position...
-    %pos = %obj.getMuzzlePoint(%slot);
-
-	// create the grenade...
-	%grenade = new (Projectile)() {
-		dataBlock        = %projectile;
-        teamId           = %obj.teamId;
-		initialVelocity  = %vec;
-		initialPosition  = %pos;
-		sourceObject     = %obj;
-		sourceSlot       = %slot;
-		client           = %obj.client;
-	};
-	MissionCleanup.add(%grenade);
-
-    //%disc.schedule(2000,"explode");
-
-	%obj.decGrenadeAmmo(1.0);
-
-	return %grenade;
 }
 
 //------------------------------------------------------------------------------
@@ -321,4 +270,9 @@ datablock ShapeBaseImageData(BlueGrenadeLauncherImage : RedGrenadeLauncherImage)
     stateFireProjectile[5] = BlueGrenadeLauncherProjectile;
 	stateFireProjectile[6] = BlueGrenadeLauncherProjectile;
 };
+
+function BlueGrenadeLauncherImage::onFire(%this, %obj, %slot)
+{
+	RedGrenadeLauncherImage::onFire(%this, %obj, %slot);
+}
 
