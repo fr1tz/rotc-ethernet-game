@@ -18,7 +18,11 @@ Prototype 3-dev
   fully connected,  the impact force from a hit is reduced by 75%.
 - B.O.U.N.C.E. now also deals damage based on the speed of the bounced enemy.
 - Weapon changes:
-	- Battle Rifle: Projectiles now bounce off surfaces.
+	- Battle Rifle: 
+		- Reduce damage but bypass damage buffer.
+		- Projectiles now bounce off surfaces.
+	- Sniper Rifle:
+		- Reduce damage but bypass damage buffer.
 	- Minigun: Increase accuracy and remove spin-up delay.
   
 
