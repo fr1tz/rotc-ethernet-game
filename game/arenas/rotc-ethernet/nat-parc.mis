@@ -1,0 +1,5 @@
+$MissionInfo::Name       = "/env/nat/parc (0.1)";
+$MissionInfo::Type       = "ROTC: Ethernet" SPC "(" @ $GameVersionString @ ")";
+$MissionInfo::EnvFile    = "game/arenas/rotc-ethernet/nat-parc/mission.env";
+$MissionInfo::ScriptFile = "game/arenas/rotc-ethernet/nat-parc/mission.cs";
+$MissionInfo::Desc       = "Capture all the opposing team's zones to win.\n";
