@@ -7,7 +7,9 @@ The Reds and Blues have the following basic properties:
 
 <spush><font:NovaSquare:18>Health<spop>
 
-Players start with 75 health points. At least 25% health is needed to manifest as a CAT. Health is lost if a player takes more damage than the health buffer can absorb. To regain health, players must change back into Etherform and rest in a zone owned by their team. 
+Players start with 75 health points. At least 25% health is needed to manifest as a CAT. Health is lost if a player takes more damage than the health buffer can absorb.
+In CAT form, players can regain health by dealing damage to enemy CATs' health or by equipping themselves with one or more regeneration modules.
+Players can always change back into Etherform and rest in a zone owned by their team to regain health. 
 
 <spush><font:NovaSquare:18>Health buffer<spop>
 
@@ -21,7 +23,7 @@ Guns draw away power from a CAT's armor when fired. The removed armor is restore
 
 <spush><font:NovaSquare:18>Etherboard<spop>
 
-By holding down @bind21, CATs can trade agility for speed by using the Etherboard to ride the ether.
+If eqipped with an etherboard, CATs can trade agility for speed by holding down @bind21.
 
 <spush><font:NovaSquare:18>B.O.U.N.C.E.<spop>
 
@@ -48,7 +50,7 @@ By pressing @bind34, players manifested as CAT can dissolve their physical bodie
 	Disc	<spush><font:Arial Bold:16>@bind17<spop>
 	Grenade	<spush><font:Arial Bold:16>@bind19<spop>
 	Grenade (max. force)	<spush><font:Arial Bold:16>@bind46<spop> or chord <spush><font:Arial Bold:16>@bind19<spop>-<spush><font:Arial Bold:16>@bind16<spop>
-	Switch weapons	<spush><font:Arial Bold:16>@bind45<spop>
+	Cycle weapons	<spush><font:Arial Bold:16>@bind45<spop>
 	Fire B.O.U.N.C.E.	<spush><font:Arial Bold:16>@bind51<spop>
 
 <spush><font:NovaSquare:18>Pictures<spop>

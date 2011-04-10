@@ -37,5 +37,5 @@
 	Disc	<spush><font:Arial Bold:16>@bind17<spop>
 	Grenade	<spush><font:Arial Bold:16>@bind19<spop>
 	Grenade (max. force)	<spush><font:Arial Bold:16>@bind46<spop> or chord <spush><font:Arial Bold:16>@bind19<spop>-<spush><font:Arial Bold:16>@bind16<spop>
-	Switch weapons	<spush><font:Arial Bold:16>@bind45<spop>
+	Cycle weapons	<spush><font:Arial Bold:16>@bind45<spop>
 	Fire B.O.U.N.C.E.	<spush><font:Arial Bold:16>@bind51<spop>
