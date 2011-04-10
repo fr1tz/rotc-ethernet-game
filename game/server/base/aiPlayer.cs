@@ -32,6 +32,13 @@ function aiAdd(%teamid, %weaponNum)
 		$aiPlayers = new Array();
 		MissionCleanup.add($aiPlayers);
 	}
+	
+	if( !isObject($aiPlayersPseudoClient) )
+	{
+		$aiPlayersPseudoClient = new ScriptObject();
+		MissionCleanup.add($aiPlayers);
+	}
+	
 
 	%nameadd = "_" @ $aiPlayers.count();
 	if(isObject($aiPlayers)) {
@@ -57,6 +64,7 @@ function aiAdd(%teamid, %weaponNum)
 
 	%player = new AiPlayer() {
 		dataBlock = %playerData;
+		client = $aiPlayersPseudoClient;
 		path = "";
 		teamId = %teamid;
 	};
@@ -70,6 +78,8 @@ function aiAdd(%teamid, %weaponNum)
 	%player.charge = 100;
 
 	$aiPlayers.push_back("",%player);
+	$aiPlayersPseudoClient.weapons[0] = %weaponNum;
+	$aiPlayersPseudoClient.numWeapons = 1;
 
 	return %player;
 }
@@ -242,7 +252,7 @@ function xxx_aiChooseWeapon(%player)
 	%dist = VectorDist(%mypos, %enemypos);
 	%player.charge = 1;
 
-	%player.useWeapon(getRandom(2));
+	%player.useWeapon(1);
 
 	schedule(5000,%player,xxx_aiChooseWeapon,%player);
 }
