@@ -35,11 +35,11 @@ function EditorGui::getPrefs()
 	EWorldEditor.dropType = getPrefSetting($pref::WorldEditor::dropType, "screenCenter");
 	EWorldEditor.faceSelectColor = getPrefSetting($pref::WorldEditor::faceSelectColor, "0 0 100 100");
 	EWorldEditor.gridColor = getPrefSetting($pref::WorldEditor::gridColor, "255 255 255 20");
-	EWorldEditor.gridSize = getPrefSetting($pref::WorldEditor::gridSize, "10 10 10");
+	EWorldEditor.gridSize = getPrefSetting($pref::WorldEditor::gridSize, "4 4 4");
 	EWorldEditor.lockedHandle = getPrefSetting($pref::WorldEditor::lockedHandle, "gui/Editor_LockedHandle.png");
 	EWorldEditor.maxScaleFactor = getPrefSetting($pref::WorldEditor::maxScaleFactor, 4000);
 	EWorldEditor.minScaleFactor = getPrefSetting($pref::WorldEditor::minScaleFactor, 0.1);
-	EWorldEditor.mouseMoveScale = getPrefSetting($pref::WorldEditor::mouseMoveScale, 0.5);
+	EWorldEditor.mouseMoveScale = getPrefSetting($pref::WorldEditor::mouseMoveScale, 0.1);
 	EWorldEditor.mouseRotateScale = getPrefSetting($pref::WorldEditor::mouseRotateScale, 0.01);
 	EWorldEditor.mouseScaleScale = getPrefSetting($pref::WorldEditor::mouseScaleScale, 0.01);
 	EWorldEditor.objectsUseBoxCenter = getPrefSetting($pref::WorldEditor::objectsUseBoxCenter, true);
@@ -54,7 +54,7 @@ function EditorGui::getPrefs()
 	EWorldEditor.projectDistance = getPrefSetting($pref::WorldEditor::projectDistance, 2000);
 	EWorldEditor.renderObjHandle = getPrefSetting($pref::WorldEditor::renderObjHandle, true);
 	EWorldEditor.renderObjText = getPrefSetting($pref::WorldEditor::renderObjText, true);
-	EWorldEditor.renderPlane = getPrefSetting($pref::WorldEditor::renderPlane, true);
+	EWorldEditor.renderPlane = getPrefSetting($pref::WorldEditor::renderPlane, false);
 	EWorldEditor.renderPlaneHashes = getPrefSetting($pref::WorldEditor::renderPlaneHashes, true);
 	EWorldEditor.renderPopupBackground = getPrefSetting($pref::WorldEditor::renderPopupBackground, true);
 	EWorldEditor.renderSelectionBox = getPrefSetting($pref::WorldEditor::renderSelectionBox, true);
@@ -62,8 +62,8 @@ function EditorGui::getPrefs()
 	EWorldEditor.selectHandle = getPrefSetting($pref::WorldEditor::selectHandle, "gui/Editor_SelectHandle.png");
 	EWorldEditor.selectionBoxColor = getPrefSetting($pref::WorldEditor::selectionBoxColor, "255 255 0");
 	EWorldEditor.showMousePopupInfo = getPrefSetting($pref::WorldEditor::showMousePopupInfo, true);
-	EWorldEditor.snapRotations = getPrefSetting($pref::WorldEditor::snapRotations, false);
-	EWorldEditor.snapToGrid = getPrefSetting($pref::WorldEditor::snapToGrid, false);
+	EWorldEditor.snapRotations = getPrefSetting($pref::WorldEditor::snapRotations, true);
+	EWorldEditor.snapToGrid = getPrefSetting($pref::WorldEditor::snapToGrid, true);
 	EWorldEditor.undoLimit = getPrefSetting($pref::WorldEditor::undoLimit, 40);
 
 	ETerrainEditor.softSelecting = 1;
@@ -270,9 +270,10 @@ function EditorGui::init(%this)
     
 	EditorMenuBar.addMenu("Windows", 10);
 	EditorMenuBar.addMenuItem("Windows", "Light Editor", 0, "", 1);
-	EditorMenuBar.addMenuItem("Windows", "World Editor Settings", 1, "", 2);
-	EditorMenuBar.addMenuItem("Windows", "Terrain Editor Settings", 2, "", 3);
-	EditorMenuBar.addMenuItem("Windows", "Terrain Editor Soft Selection", 3, "", 4);
+	EditorMenuBar.addMenuItem("Windows", "World Editor Toolbox", 1, "", 5);
+	EditorMenuBar.addMenuItem("Windows", "World Editor Settings", 2, "", 2);
+	EditorMenuBar.addMenuItem("Windows", "Terrain Editor Settings", 3, "", 3);
+	EditorMenuBar.addMenuItem("Windows", "Terrain Editor Soft Selection", 4, "", 4);
 
 	EditorMenuBar.onActionMenuItemSelect(0, "Adjust Height");
 	EditorMenuBar.onBrushMenuItemSelect(0, "Circle Brush");
@@ -792,6 +793,8 @@ function EditorMenuBar::onWindowsMenuItemSelect(%this, %itemId, %item)
 	{
 		case "Light Editor":
             EditorGui::addWindow(sgLightEditor);
+		case "World Editor Toolbox":
+            EditorGui::addWindow(WorldEditorToolbox);            
 		case "World Editor Settings":
             EditorGui::addWindow(WorldEditorSettings);
 		case "Terrain Editor Settings":

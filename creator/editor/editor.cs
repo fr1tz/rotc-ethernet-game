@@ -63,6 +63,7 @@ function Editor::onAdd(%this)
 	exec("./EditorGui.cs");
 
 	// World Editor
+	exec("./WorldEditorToolbox.gui");	
 	exec("./WorldEditorSettings.gui");
 
 	// Terrain Editor

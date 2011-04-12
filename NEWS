@@ -24,6 +24,10 @@ Prototype 3-dev
 	- Sniper Rifle:
 		- Reduce damage but bypass damage buffer.
 	- Minigun: Increase accuracy and remove spin-up delay.
+- Mission Editor improvements:
+	- "Snap To Grid" and "Rotation Snap"
+	- Moved most useful options from the "World Editor Setting" into
+      separate "World Editor Toolbox".
   
 
 Prototype 2+dev5
