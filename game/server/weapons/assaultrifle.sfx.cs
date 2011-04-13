@@ -15,6 +15,13 @@ datablock AudioProfile(AssaultRifleFireSound)
 	preload = true;
 };
 
+datablock AudioProfile(AssaultRifleProjectileSound)
+{
+	filename = "share/sounds/rotc/charge5.wav";
+	description = AudioCloseLooping3D;
+	preload = true;	
+};
+
 datablock AudioProfile(AssaultRifleProjectileExplosionSound)
 {
 	filename = "share/sounds/rotc/explosion2.wav";

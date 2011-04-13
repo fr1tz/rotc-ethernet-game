@@ -54,7 +54,7 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	explodesNearEnemiesRadius	= 2;
 	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
 
-	//sound = AssaultRifleProjectileFlybySound;
+	sound = AssaultRifleProjectileSound;
  
     projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.orange.dts";
 
