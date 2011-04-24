@@ -161,19 +161,61 @@ datablock LaserBeamData(CyanAssaultRifleProjectileLaserTail)
 //-----------------------------------------------------------------------------
 // bounce
 
+datablock ParticleData(CyanAssaultRifleProjectileBounceExplosion_Smoke)
+{
+	dragCoeffiecient	  = 0.4;
+	gravityCoefficient	= -0.4;
+	inheritedVelFactor	= 0.025;
+
+	lifetimeMS			  = 500;
+	lifetimeVarianceMS	= 200;
+
+	useInvAlpha =  true;
+
+	textureName = "share/textures/rotc/smoke_particle";
+
+	colors[0]	  = "1.0 1.0 1.0 0.5";
+	colors[1]	  = "1.0 1.0 1.0 0.0";
+	sizes[0]		= 1.0;
+	sizes[1]		= 1.0;
+	times[0]		= 0.0;
+	times[1]		= 1.0;
+
+	allowLighting = false;
+};
+
+datablock ParticleEmitterData(CyanAssaultRifleProjectileBounceExplosion_SmokeEmitter)
+{
+	ejectionOffset	= 0;
+
+	ejectionPeriodMS = 40;
+	periodVarianceMS = 0;
+
+	ejectionVelocity = 2.0;
+	velocityVariance = 0.1;
+
+	thetaMin			= 0.0;
+	thetaMax			= 60.0;
+
+	lifetimeMS		 = 100;
+
+	particles = "CyanAssaultRifleProjectileBounceExplosion_Smoke";
+};
+
 datablock ExplosionData(CyanAssaultRifleProjectileBounceExplosion)
 {
-	soundProfile	= AssaultRifleProjectileBounceSound;
+	soundProfile = AssaultRifleProjectileBounceSound;
 	
 	lifetimeMS = 200;
 	
+	emitter[0] = CyanAssaultRifleProjectileBounceExplosion_SmokeEmitter;	
+	
 	// Dynamic light
-	lightStartRadius = 6;
+	lightStartRadius = 0;
 	lightEndRadius = 0;
-	lightStartColor = "0.0 0.5 1.0 1.0";
-	lightEndColor = "0.0 0.5 1.0 0.3";
+	lightStartColor = "1.0 0.5 0.2 1.0";
+	lightEndColor = "1.0 0.5 0.2 0.3";
 };
-
 
 //-----------------------------------------------------------------------------
 // explosion

@@ -86,6 +86,21 @@ share/music/eth1/work1_ethernet_victory3.wav
 
 --------------------------------------------
 
+share/textures/rotc/smashdecal2-1.png
+share/textures/rotc/smashdecal2-2.png
+share/textures/rotc/smashdecal2-3.png
+share/textures/rotc/smashdecal2-4.png
+share/textures/rotc/smashdecal2-5.png
+share/textures/rotc/smashdecal2-6.png
+share/textures/rotc/smashdecal2-7.png
+share/textures/rotc/smashdecal2-8.png
+
+	Done using brushes made by eebvoom:
+	http://eebvoom.deviantart.com/art/Broken-Glass-Brushes-Eight-142202161
+
+--------------------------------------------
+
+
 Used for share/shapes/rotc/players/shared/sound.spawn.wav
 
 	http://www.soundsnap.com/node/101781
@@ -249,6 +264,19 @@ Used for share/sounds/rotc/impact2.wav:
 	http://www.soundsnap.com/node/7577
 	Gunshot Ricochet Cartoon
 	User: Fred Weinberg (http://www.soundsnap.com/user/19)
+	
+--------------------------------------------
+
+Used for share/sounds/rotc/impact3-1.wav:
+Used for share/sounds/rotc/impact3-2.wav:
+Used for share/sounds/rotc/impact3-3.wav:
+
+	http://www.soundsnap.com/node/12294
+	GATE LATCH
+	User: Justine Angus (http://www.soundsnap.com/user/25)	
+	
+        By datasoundsample (http://www.freesound.org/usersViewSingle.php?id=433684)
+            glass shatter.wav (http://www.freesound.org/samplesViewSingle.php?id=41348)	
 
 --------------------------------------------
 

@@ -40,6 +40,70 @@ datablock DecalData(ExplosionDecalTwo)
 	SelfIlluminated = false;
 };
 
+datablock DecalData(SmashDecalOne)
+{
+	sizeX = "1.0";
+	sizeY = "1.0";
+	textureName = "share/textures/rotc/smashdecal2-1";
+	SelfIlluminated = false;
+};
+
+datablock DecalData(SmashDecalTwo)
+{
+	sizeX = "1.0";
+	sizeY = "1.0";
+	textureName = "share/textures/rotc/smashdecal2-2";
+	SelfIlluminated = false;
+};
+
+datablock DecalData(SmashDecalThree)
+{
+	sizeX = "1.0";
+	sizeY = "1.0";
+	textureName = "share/textures/rotc/smashdecal2-3";
+	SelfIlluminated = false;
+};
+
+datablock DecalData(SmashDecalFour)
+{
+	sizeX = "1.0";
+	sizeY = "1.0";
+	textureName = "share/textures/rotc/smashdecal2-4";
+	SelfIlluminated = false;
+};
+
+datablock DecalData(SmashDecalFive)
+{
+	sizeX = "1.0";
+	sizeY = "1.0";
+	textureName = "share/textures/rotc/smashdecal2-5";
+	SelfIlluminated = false;
+};
+
+datablock DecalData(SmashDecalSix)
+{
+	sizeX = "1.0";
+	sizeY = "1.0";
+	textureName = "share/textures/rotc/smashdecal2-6";
+	SelfIlluminated = false;
+};
+
+datablock DecalData(SmashDecalSeven)
+{
+	sizeX = "1.0";
+	sizeY = "1.0";
+	textureName = "share/textures/rotc/smashdecal2-7";
+	SelfIlluminated = false;
+};
+
+datablock DecalData(SmashDecalEight)
+{
+	sizeX = "1.0";
+	sizeY = "1.0";
+	textureName = "share/textures/rotc/smashdecal2-8";
+	SelfIlluminated = false;
+};
+
 //------------------------------------------------------------------------------
 // Default Medium Debris (Particles)
 

@@ -54,7 +54,7 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	explodesNearEnemiesRadius	= 2;
 	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
 
-	sound = AssaultRifleProjectileSound;
+	//sound = AssaultRifleProjectileSound;
  
     projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.orange.dts";
 
@@ -64,6 +64,9 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	nearEnemyExplosion    = OrangeAssaultRifleProjectileExplosion;
 	hitTeammateExplosion  = OrangeAssaultRifleProjectileHit;
 //	hitDeflectorExplosion = DiscDeflectedEffect;
+
+	missEnemyEffectRadius = 10;
+	missEnemyEffect = AssaultRifleProjectileMissedEnemyEffect;
 
 //   particleEmitter	= AssaultRifleProjectileParticleEmitter;
 //	laserTrail[0]   = AssaultRifleProjectileLaserTrail;
@@ -86,17 +89,26 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	
 	numBounces = 2;
 	
-	decals[0]	= ExplosionDecalTwo;
+	decals[0] = ExplosionDecalTwo;
+	
+	bounceDecals[0] = SmashDecalOne;
+	bounceDecals[1] = SmashDecalTwo;
+	bounceDecals[2] = SmashDecalThree;
+	bounceDecals[3] = SmashDecalFour;
 	
 	hasLight	 = true;
-	lightRadius = 4.0;
-	lightColor  = "1.0 0.8 0.2";
+	lightRadius = 6.0;
+	lightColor  = "1.0 0.5 0.0";
 };
 
 datablock ProjectileData(RedAssaultRifleProjectile2 : RedAssaultRifleProjectile1)
 {
 	posOffset = "0 0 0.1";
 	velOffset = "0 0.025";
+	bounceDecals[0] = SmashDecalFive;
+	bounceDecals[1] = SmashDecalSix;
+	bounceDecals[2] = SmashDecalSeven;
+	bounceDecals[3] = SmashDecalEight;	
 };
 
 function RedAssaultRifleProjectile1::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
@@ -179,7 +191,8 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	usesEnergy = true;
 	minEnergy = 15;
 
-	projectile = RedAssaultRifleProjectile1;
+	fireprojectile[0] = RedAssaultRifleProjectile1;
+	fireprojectile[1] = RedAssaultRifleProjectile2;
 
 	// light properties...
 	lightType = "WeaponFireLight";
@@ -268,8 +281,6 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 
 function RedAssaultRifleImage::onFire(%this, %obj, %slot)
 {
-	%projectile = %this.projectile;
-
 	%objectVelocity = %obj.getVelocity();
 	%muzzlePoint = %obj.getMuzzlePoint(%slot);
 	%muzzleVector = %obj.getMuzzleVector(%slot);	
@@ -282,6 +293,8 @@ function RedAssaultRifleImage::onFire(%this, %obj, %slot)
 	
 	for(%i = 0; %i < 2; %i++)
 	{
+		%projectile = %this.fireprojectile[%i];
+	
       %position =	VectorAdd(
 			%muzzlePoint, 
 			MatrixMulVector(%muzzleTransform, %pos[%i])
@@ -318,7 +331,8 @@ function RedAssaultRifleImage::onFire(%this, %obj, %slot)
 datablock ShapeBaseImageData(BlueAssaultRifleImage : RedAssaultRifleImage)
 {
 	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image3.cyan.dts";
-	projectile = BlueAssaultRifleProjectile1;
+	fireprojectile[0] = BlueAssaultRifleProjectile1;
+	fireprojectile[1] = BlueAssaultRifleProjectile2;
 	lightColor = "0 0.5 1";
 	//stateFireProjectile[3] = BlueAssaultRifleProjectile1;
 	//stateFireProjectile[8] = BlueAssaultRifleProjectile2;
