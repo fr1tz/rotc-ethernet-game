@@ -97,7 +97,7 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	bounceDecals[3] = SmashDecalFour;
 	
 	hasLight	 = true;
-	lightRadius = 6.0;
+	lightRadius = 8.0;
 	lightColor  = "1.0 0.5 0.0";
 };
 
@@ -198,7 +198,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	lightType = "WeaponFireLight";
 	lightColor = "1 0.5 0";
 	lightTime = 100;
-	lightRadius = 8;
+	lightRadius = 15;
 	lightCastsShadows = false;
 	lightAffectsShapes = true;
 
