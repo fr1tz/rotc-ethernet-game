@@ -138,8 +138,8 @@ datablock ParticleData(RedMinigunProjectileImpact_Smoke)
 
 	textureName = "share/textures/rotc/smoke_particle";
 
-	colors[0]	  = "0.0 1.0 0.0 1.0";
-	colors[1]	  = "0.0 1.0 0.0 0.0";
+	colors[0]	  = "1.0 0.0 0.5 1.0";
+	colors[1]	  = "1.0 0.0 0.5 0.0";
 	sizes[0]		= 1.0;
 	sizes[1]		= 1.0;
 	times[0]		= 0.0;
