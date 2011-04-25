@@ -206,15 +206,15 @@ datablock ExplosionData(CyanAssaultRifleProjectileBounceExplosion)
 {
 	soundProfile = AssaultRifleProjectileBounceSound;
 	
-	lifetimeMS = 200;
+	lifetimeMS = 50;
 	
 	emitter[0] = CyanAssaultRifleProjectileBounceExplosion_SmokeEmitter;	
 	
 	// Dynamic light
-	lightStartRadius = 0;
+	lightStartRadius = 15;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.5 0.2 1.0";
-	lightEndColor = "1.0 0.5 0.2 0.3";
+	lightStartColor = "0.0 0.5 1.0 1.0";
+	lightEndColor = "0.0 0.5 1.0 0.0";
 };
 
 //-----------------------------------------------------------------------------
