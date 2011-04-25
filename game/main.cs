@@ -95,14 +95,14 @@ function onStart()
 	{
 		enableWinConsole(true);
 		echo("\n--------- Starting Dedicated Server ---------");
-		// The server isn't started unless a mission has been specified.
-		if($misArg !$= "")
+		if($misArg $= "")
 		{
-			initBaseServer(); // The common module provides basic server functionality
-			createServer("MultiPlayer", $misArg);
+			error("No mission file (.mis) specified (use -mis <filename>)");
+			$misArg = "game/arenas/rotc-ethernet/eth-pond.mis";
+			error("Using default mission file" SPC $misArg);
 		}
-		else
-			echo("No mission file (.mis) specified (use -mis <filename>)");
+		initBaseServer(); // The common module provides basic server functionality
+		createServer("MultiPlayer", $misArg);
 	}
 	else
 	{
