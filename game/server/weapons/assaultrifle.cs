@@ -84,7 +84,7 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	gravityMod			 = 5.0;
 
 	armingDelay			= 0;
-	lifetime				= 1000*10;
+	lifetime				= 1000*5;
 	fadeDelay			  = 5000;
 	
 	numBounces = 2;
