@@ -462,6 +462,10 @@ function GameConnection::updateSkyColor(%this)
 	{
 		%this.setSkyColor("0 1 0");
 	}
+	else if(%zone.getTeamId() == 0 && !%zone.zHasNeighbour)
+	{
+		%this.setSkyColor("0 0.5 0");
+	}	
 	else if(%zone.getTeamId() == 0 && %zone.zNumReds == 0 && %zone.zNumBlues == 0)
 	{
 		%this.setSkyColor("1 1 1");

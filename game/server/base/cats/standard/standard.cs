@@ -50,6 +50,7 @@ datablock PlayerData(RedStandardCat)
 	shapeFxColor[3] = "0.0 0.5 1.0 1.0";  
 	shapeFxColor[4] = "1.0 0.0 0.0 1.0"; // repel hit
 	shapeFxColor[5] = "1.0 0.5 0.5 1.0"; // repel missed
+	shapeFxColor[6] = "0.0 0.5 0.0 1.0"; // permanently neutral zone
 
 	computeCRC = true;
 

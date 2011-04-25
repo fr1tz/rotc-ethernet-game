@@ -649,7 +649,11 @@ function Player::updateGridConnection(%this)
 		}
 		else
 		{
-			if(%this.zCurrentZone.getTeamId() == 0)
+			if(!%this.zCurrentZone.zHasNeighbour)
+			{
+				%color = 6;
+			}		
+			else if(%this.zCurrentZone.getTeamId() == 0)
 			{
 				%color = 0;
 			}
