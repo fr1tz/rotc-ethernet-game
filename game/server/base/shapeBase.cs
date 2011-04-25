@@ -319,7 +319,7 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
 	%damage -= %damage * %energyScale * 0.50;
 	
-	if(%sourceObject.getDataBlock().bypassDamageBuffer)
+	if(isObject(%sourceObject) && %sourceObject.getDataBlock().bypassDamageBuffer)
 	{
 		%maxDamage = %obj.getDataBlock().maxDamage;
 		%dmgLevel = %obj.getDamageLevel();
@@ -337,10 +337,13 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	}
 
 	%realSourceObject = 0;
-	if(%sourceObject.getType() & $TypeMasks::ProjectileObjectType)
-		%realSourceObject = %sourceObject.getSourceObject();
-	else if(%sourceObject.getType() & $TypeMasks::ShapeBaseObjectType)
-		%realSourceObject = %sourceObject.client.player;
+	if(isObject(%sourceObject))
+	{
+		if(%sourceObject.getType() & $TypeMasks::ProjectileObjectType)
+			%realSourceObject = %sourceObject.getSourceObject();
+		else if(%sourceObject.getType() & $TypeMasks::ShapeBaseObjectType)
+			%realSourceObject = %sourceObject.client.player;
+	}
 	if(%realSourceObject != 0
 	&& %realSourceObject.teamId != %obj.teamId
 	&& %realSourceObject.getDamageState() $= "Enabled")
