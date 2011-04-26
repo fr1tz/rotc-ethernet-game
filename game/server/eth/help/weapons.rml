@@ -7,7 +7,7 @@ Every CAT carries a head-mounted disc launcher and two discs.
 <bitmap:share/misc/help/wpn_disc.png>A seeker Disc will track its target until it has hit it, missed it, was deflected by another Disc, has bounced a few times or has expired. While a disc does not deal a lot of damage compared to its rate of fire, it uses absolutely no energy and will give 20 points of armor to the CAT that launched it when it hits its target. To throw a disc, you first need to get a target-lock on an enemy CAT. The seeker is then thrown by a pressing @bind17. These are the rules to get a target lock:
 - Hit the target with a seeker Disc
 - Damage the target with a Grenade
-- Hit the target with at least 3 of the 9 shots fired by the Blaster
+- Hit the target with at least 4 of the 9 shots fired by the Blaster
 - Land a direct hit on the target with the Battle Rifle (proximity explosions do not count)
 A target-lock lasts for two seconds. Also note that a CAT can only be attacked by one disc at a time.
 <sbreak><tab:15,200>
@@ -41,7 +41,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 <sbreak><tab:15,200>
 	Armor cost	<spush><font:Arial Bold:16>2<spop>
 	Impact damage	<spush><font:Arial Bold:16>10<spop>
-	Impact impulse	<spush><font:Arial Bold:16>150<spop>
+	Impact impulse	<spush><font:Arial Bold:16>400<spop>
 	Splash damage	<spush><font:Arial Bold:16>-<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
@@ -53,8 +53,8 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 <sbreak><tab:15,200>
 	Armor cost	<spush><font:Arial Bold:16>8<spop>
 	Impact damage	<spush><font:Arial Bold:16>-<spop>
-	Impact impulse	<spush><font:Arial Bold:16>1000<spop>
-	Splash damage	<spush><font:Arial Bold:16>30<spop>
+	Impact impulse	<spush><font:Arial Bold:16>2500<spop>
+	Splash damage	<spush><font:Arial Bold:16>25<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>2<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
 <sbreak>
@@ -64,8 +64,8 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 <bitmap:share/misc/help/wpn_sniperrifle.png>The Sniper rofl is a long range weapon. It needs to be charged before it can fire. While charging doesn't take long and doesn't consume energy, you can't run fast or use the Etherboard while doing it. Hold down @bind16 to charge, release it to fire.
 <sbreak><tab:15,200>
 	Armor cost	<spush><font:Arial Bold:16>30<spop>
-	Impact damage	<spush><font:Arial Bold:16>60<spop>
-	Impact impulse	<spush><font:Arial Bold:16>1000<spop>
+	Impact damage	<spush><font:Arial Bold:16>40<spop>
+	Impact impulse	<spush><font:Arial Bold:16>6000<spop>
 	Splash damage	<spush><font:Arial Bold:16>-<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
@@ -77,7 +77,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 <sbreak><tab:15,200>
 	Armor cost	<spush><font:Arial Bold:16>2<spop>
 	Impact damage	<spush><font:Arial Bold:16>20<spop>
-	Impact impulse	<spush><font:Arial Bold:16>150<spop>
+	Impact impulse	<spush><font:Arial Bold:16>500<spop>
 	Splash damage	<spush><font:Arial Bold:16>-<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>

@@ -16,7 +16,7 @@
 
 <lmargin:0>In CAT form...
 
-<lmargin:0>*<lmargin:10>Press @bind45 to switch between the two weapons you selected in Etherform.
+<lmargin:0>*<lmargin:10>Press @bind45 to cycle between the weapons you selected in Etherform.
 
 <lmargin:0>*<lmargin:10>Use @bind16 to fire your mounted weapon, but keep in mind that this draws power away from your armor.
 
@@ -30,6 +30,6 @@
 
 <lmargin:0>*<lmargin:10>Pressing @bind18 in mid-air will fire your jump boosters. Beware that this draws power away from your armor.
 
-<lmargin:0>*<lmargin:10>Pressing @bind51 will fire a B.O.U.N.C.E. that will revert the velocities of nearby enemy CATs. If no enemy CAT is nearby this will drain 50% of your armor.
+<lmargin:0>*<lmargin:10>Pressing @bind51 will fire a B.O.U.N.C.E. that will revert the velocities of nearby enemy CATs and deal some damage to them based on their speed. If no enemy CAT is nearby this will drain 50% of your armor.
 
 <lmargin:0>*<lmargin:10>To compensate for the strong push from being hit by a projectile, CATs can become "connected" to the ground by being close to it and not etherboarding. When fully connected,  the impact force from a hit is reduced by 75%.
