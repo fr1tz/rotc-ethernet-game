@@ -25,8 +25,8 @@ Released: Apr. 26, 2011
 - B.O.U.N.C.E. now also deals damage based on the speed of the bounced enemy.
 - Weapon changes:
    - Blaster:
-   - Now requires at least 4 of the 9 shots to hit in order 
-     to get a disc lock.
+      - Now requires at least 4 of the 9 shots to hit in order 
+        to get a disc lock.
    - Battle Rifle: 
       - Reduce damage but bypass damage buffer.
       - Projectiles now bounce off surfaces.
