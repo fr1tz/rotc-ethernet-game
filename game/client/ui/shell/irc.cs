@@ -157,7 +157,7 @@ function irc_process_line(%line)
 		else
 		{
 			IrcText.addLine("*" SPC irc_shorten_name(%usr) SPC 
-				"has joined", $IRC::MsgType::Users);
+				"has joined player chat", $IRC::MsgType::Users);
 
 			$IRC::Names.push_back("", %usr);
 			IrcNames.update();
@@ -168,7 +168,7 @@ function irc_process_line(%line)
 		%usr = irc_extract_user(%prefix);
 
 		IrcText.addLine("*" SPC irc_shorten_name(%usr) SPC 
-			"has left", $IRC::MsgType::Users);
+			"has left player chat", $IRC::MsgType::Users);
 
 		$IRC::Names.moveFirst();
 		%idx = $IRC::Names.getIndexFromValue(%usr);
