@@ -24,20 +24,20 @@ Released: Apr. 26, 2011
   fully connected,  the impact force from a hit is reduced by 75%.
 - B.O.U.N.C.E. now also deals damage based on the speed of the bounced enemy.
 - Weapon changes:
-	- Blaster:
-		- Now requires at least 4 of the 9 shots to hit in order 
-		  to get a disc lock.
-	- Battle Rifle: 
-		- Reduce damage but bypass damage buffer.
-		- Projectiles now bounce off surfaces.
-	- Sniper Rifle:
-		- Reduce damage but bypass damage buffer.
-	- Minigun: 
-		- Increase accuracy and remove spin-up delay.
+   - Blaster:
+   - Now requires at least 4 of the 9 shots to hit in order 
+     to get a disc lock.
+   - Battle Rifle: 
+      - Reduce damage but bypass damage buffer.
+      - Projectiles now bounce off surfaces.
+   - Sniper Rifle:
+      - Reduce damage but bypass damage buffer.
+   - Minigun: 
+      - Increase accuracy and remove spin-up delay.
 - Mission Editor improvements:
-	- "Snap To Grid" and "Rotation Snap"
-	- Moved most useful options from the "World Editor Setting" into
-      separate "World Editor Toolbox".
+   - "Snap To Grid" and "Rotation Snap"
+   - Moved most useful options from the "World Editor Setting" into
+     separate "World Editor Toolbox".
 - Bugfixes & all kinds of minor improvements.
   
   
