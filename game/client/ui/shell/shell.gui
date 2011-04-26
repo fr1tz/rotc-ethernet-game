@@ -147,7 +147,7 @@ new GuiBitmapCtrl(Shell) {
          Visible = "1";
          Command = "addWindow(AboutWindow);;";
          hovertime = "1000";
-         text = "About";
+         text = "README, etc.";
          groupNum = "-1";
          buttonType = "PushButton";
       };

@@ -32,7 +32,7 @@ new GuiControl(AboutWindowForEditing) {
       canSave = "1";
       Visible = "1";
       hovertime = "1000";
-      text = "About";
+      text = "README, etc.";
       maxLength = "255";
       resizeWidth = "1";
       resizeHeight = "1";
