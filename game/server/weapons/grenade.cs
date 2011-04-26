@@ -158,7 +158,7 @@ function RedGrenadeImage::throw(%this, %obj, %slot)
 	//%throwCoefficient = %throwCoefficient/2;
 	%throwForce = %projectile.muzzleVelocity * %throwCoefficient;
 
-	%vec = %obj.getMuzzleVector(%slot);
+	%vec = %obj.getEyeVector();
 	%vec = vectorScale(%vec, %throwForce);
 
 	// add a vertical component to give the grenade a better arc
@@ -171,7 +171,8 @@ function RedGrenadeImage::throw(%this, %obj, %slot)
 	%vec = vectorAdd( %vec, VectorScale(%obj.getVelocity(), %projectile.velInheritFactor));
 
 	// get initial position...
-	%pos = %obj.getMuzzlePoint(%slot);
+	%pos = %obj.getWorldBoxCenter();
+	%pos = VectorAdd(%pos, "0 0 0.5");
 
 	// create the grenade...
 	%grenade = new (Projectile)() {
