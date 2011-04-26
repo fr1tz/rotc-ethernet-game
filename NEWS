@@ -1,12 +1,18 @@
 What's new?
 ===========
 
-Prototype 3-dev
----------------
+Prototype 3-testing
+-------------------
+
+Released: Apr. 26, 2011
 
 - Breaks backwards compatibility to older versions!
 - Somewhat improved performance (still requires way too 
-  much horsepower for the way it looks)
+  much horsepower for the way it looks).
+- Damaging enemies again increases/restores a player's health,
+  but unlike before, damaging enemies' damage buffers 
+  does not count. In addition, overflowing damage buffers
+  leak very fast in CAT form.  
 - Players now have three equipment slots instead of two.
 - The etherboard now takes up an equipment slot.
 - New "Regenerate" ability: Takes up one (or more for increased
@@ -18,33 +24,23 @@ Prototype 3-dev
   fully connected,  the impact force from a hit is reduced by 75%.
 - B.O.U.N.C.E. now also deals damage based on the speed of the bounced enemy.
 - Weapon changes:
+	- Blaster:
+		- Now requires at least 4 of the 9 shots to hit in order 
+		  to get a disc lock.
 	- Battle Rifle: 
 		- Reduce damage but bypass damage buffer.
 		- Projectiles now bounce off surfaces.
 	- Sniper Rifle:
 		- Reduce damage but bypass damage buffer.
-	- Minigun: Increase accuracy and remove spin-up delay.
+	- Minigun: 
+		- Increase accuracy and remove spin-up delay.
 - Mission Editor improvements:
 	- "Snap To Grid" and "Rotation Snap"
 	- Moved most useful options from the "World Editor Setting" into
       separate "World Editor Toolbox".
+- Bugfixes & all kinds of minor improvements.
   
-
-Prototype 2+dev5
-----------------
-
-- Damaging enemies again increases a player's health,
-  but unlike before, damaging enemies' damage buffers 
-  does not count. In addition, overflowing damage buffers
-  leak very fast in CAT form.
-- Battle Rifle and Sniper ROFL bypass damage buffers.
-  Because of this, their visuals have been changed from
-  red/blue to orange/cyan.
-- Increase Battle Rifle's impact impulse dramatically.
-- Increase Minigun accuracy.
-- Changed appearance of disc trails.
-
-
+  
 Prototype 2-testing
 -------------------
 
