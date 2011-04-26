@@ -320,6 +320,14 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
 			%obj.teleportGrenade.detonate();
 			%obj.teleportGrenade = 0;
 		}
+		
+		// deactivate potential regen modules...
+		%obj.setRepairRate(0);
+		
+		// disable shape FXs
+		%obj.shapeFxSetActive(0, false, false);
+		%obj.shapeFxSetActive(1, false, false);
+		%obj.shapeFxSetActive(2, false, false);
   
         // play clown sound if the player was humiliated...
         // DON'T DO THIS, CL'OWNING HAPPENS WAY TO OFTEN SO THIS
@@ -571,6 +579,9 @@ function Player::updateGridConnection(%this)
 		cancel(%this.updateGridConnectionThread);
         
 	%this.updateGridConnectionThread = %this.schedule(%dtTime, "updateGridConnection");
+	
+	if(%this.getDamageState() !$= "enabled")
+		return;
 	
 	%updateFx = false;
     
