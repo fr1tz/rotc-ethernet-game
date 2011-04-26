@@ -17,6 +17,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage	<spush><font:Arial Bold:16>-<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Bypass damage buffer	<spush><font:Arial Bold:16>No<spop>
 <sbreak>
 <spush><font:NovaSquare:18>Deflecting Discs<spop>
 
@@ -33,6 +34,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage	<spush><font:Arial Bold:16>150<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>15<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Bypass damage buffer	<spush><font:Arial Bold:16>No<spop>
 <sbreak>
 
 <spush><font:NovaSquare:20>The Blaster<spop>
@@ -45,6 +47,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage	<spush><font:Arial Bold:16>-<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Bypass damage buffer	<spush><font:Arial Bold:16>No<spop>
 <sbreak>
 
 <spush><font:NovaSquare:20>The Battle Rifle<spop>
@@ -57,6 +60,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage	<spush><font:Arial Bold:16>25<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>2<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Bypass damage buffer	<spush><font:Arial Bold:16>Yes<spop>
 <sbreak>
 
 <spush><font:NovaSquare:20>The Sniper ROFL<spop>
@@ -69,6 +73,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage	<spush><font:Arial Bold:16>-<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Bypass damage buffer	<spush><font:Arial Bold:16>Yes<spop>
 <sbreak>
 
 <spush><font:NovaSquare:20>The Minigun<spop>
@@ -81,6 +86,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage	<spush><font:Arial Bold:16>-<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Bypass damage buffer	<spush><font:Arial Bold:16>No<spop>
 <sbreak>
 
 <spush><font:NovaSquare:20>The Grenade Launcher<spop>
@@ -93,4 +99,5 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage	<spush><font:Arial Bold:16>40<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>18<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>0<spop>
+	Bypass damage buffer	<spush><font:Arial Bold:16>No<spop>
 <sbreak>
