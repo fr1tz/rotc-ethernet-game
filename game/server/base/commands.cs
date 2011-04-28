@@ -404,8 +404,10 @@ function serverCmdShowPlayerList(%client, %show)
 			%team = "Observers";
 		else if(%k.team == $Team1)
 			%team = "Reds";
-		else
+		else if(%k.team == $Team2)
 			%team = "Blues";
+		else
+			%team = "Unassigned";
 
 		if(%k == %client)
 			%newtxt = %newtxt @ "<spush><shadowcolor:00FF00><shadow:1:1>";
