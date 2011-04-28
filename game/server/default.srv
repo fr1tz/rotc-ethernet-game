@@ -11,7 +11,11 @@
 // Information about the server
 $Pref::Server::RegionMask = 2;
 $Pref::Server::Name = "Newbie"; // Appears as "hosted by:" on the client
-$Pref::Server::Info = ""; // Appears as "arena description" on the client
+$Pref::Server::Info = // Appears as "arena description" on the client
+	"Server Info goes here!"; 
+
+// Default mission for the server
+$Pref::Server::MissionFile = "game/arenas/rotc-ethernet/eth-pond.mis";
 
 // The connection error message is transmitted to the client immediatly
 // on connection, if any further error occures during the connection
@@ -35,7 +39,7 @@ $Pref::Server::Password = "";
 $Pref::Server::AdminPassword = "";
 
 // Misc server settings.
-$Pref::Server::MaxPlayers = 64;
+$Pref::Server::MaxPlayers = 8;
 $Pref::Server::TimeLimit = 20;					// In minutes
 $Pref::Server::KickBanTime = 300;				// specified in seconds
 $Pref::Server::BanTime = 1800;					// specified in seconds

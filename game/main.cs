@@ -13,11 +13,9 @@ loadDir("common");
 
 // Defaults console values
 exec("./client/defaults.cs");
-exec("./server/defaults.cs");
 
 // Preferences (overide defaults)
 exec("./client/prefs.cs");
-exec("./server/prefs.cs");
 
 //-----------------------------------------------------------------------------
 // Package overrides to initialize the mod.
@@ -31,7 +29,10 @@ function displayHelp()
 		"Ethernet options:\n"@
 		"  -dedicated          Start as dedicated server\n"@
 		"  -connect <address>  For non-dedicated: Connect to a game at <address>\n" @
-		"  -mis <filename>     For dedicated: Load specified mission\n"
+		"  -srv <filename>     For dedicated: Use specified server settings file\n" @
+		"                      (Default: game/server/default.srv)\n" @
+		"  -mis <filename>     For dedicated: Load specified mission file instead\n" @
+		"                      of the one specified in the server settings file\n"
 	);
 }
 
@@ -53,6 +54,17 @@ function parseArgs()
 				$Server::Dedicated = true;
 				enableWinConsole(true);
 				$argUsed[%i]++;
+				
+			//--------------------
+			case "-srv":
+				$argUsed[%i]++;
+				if (%hasNextArg) {
+					$srvArg = %nextArg;
+					$argUsed[%i+1]++;
+					%i++;
+				}
+				else
+					error("Error: Missing Command Line argument. Usage: -srv <filename>");				
 
 			//--------------------
 			case "-mis":
@@ -95,12 +107,15 @@ function onStart()
 	{
 		enableWinConsole(true);
 		echo("\n--------- Starting Dedicated Server ---------");
+		if($srvArg !$= "")
+			$Server::SettingsFile = $srvArg;
+		else
+			$Server::SettingsFile = "./server/default.srv";
+		exec($Server::SettingsFile);			
+
 		if($misArg $= "")
-		{
-			error("No mission file (.mis) specified (use -mis <filename>)");
-			$misArg = "game/arenas/rotc-ethernet/eth-pond.mis";
-			error("Using default mission file" SPC $misArg);
-		}
+			$misArg = $Pref::Server::MissionFile;
+
 		initBaseServer(); // The common module provides basic server functionality
 		createServer("MultiPlayer", $misArg);
 	}
@@ -119,8 +134,6 @@ function onExit()
 	if (isObject(moveMap))
 		moveMap.save("./client/config.cs", false);
 
-	echo("Exporting server prefs");
-	export("$Pref::Server::*", "./server/prefs.cs", False);
 	BanList::Export("./server/banlist.cs");
 
 	Parent::onExit();
