@@ -114,8 +114,13 @@ function onStart()
 		exec($Server::SettingsFile);			
 
 		if($misArg $= "")
-			$misArg = $Pref::Server::MissionFile;
-
+		{
+			if($Server::MissionFile !$= "")
+				$misArg = $Server::MissionFile;
+			else
+				$misArg = "game/arenas/rotc-ethernet/eth-pond.mis";			
+		}
+			
 		initBaseServer(); // The common module provides basic server functionality
 		createServer("MultiPlayer", $misArg);
 	}
