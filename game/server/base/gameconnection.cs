@@ -77,6 +77,10 @@ function GameConnection::onClientEnterGame(%this)
 	%this.setHudMenuL("*", " ", 1, 0);
 	%this.setHudMenuR("*", " ", 1, 0);
 	%this.setHudMenuT("*", " ", 1, 0);
+	
+	// Top HUD Menu starts in "newbiehelp" mode...
+	%this.topHudMenu = "newbiehelp";
+	%this.updateTopHudMenuThread();
  	
 	//
 	// setup observer camera object...
@@ -201,6 +205,9 @@ function GameConnection::joinTeam(%this, %teamId)
 		%this.team = $Team0;
 		$Team0.numPlayers++;
 		commandToClient(%this,'SetHudColor', "150 150 150", "255 255 255");
+		
+		%this.setNewbieHelp("You are in observer mode. Click on the links near the top" SPC
+			"of the arena window to join a team. Press @bind01 if the arena window is not visible.");		
 	}
 	if(%teamId == 1)
 	{
@@ -292,6 +299,14 @@ function GameConnection::togglePlayerForm(%this)
 	if(%this.player.getClassName() $= "Player")
 	{
 		// CAT -> etherform
+		
+		if($Server::NewbieHelp)
+		{
+			%this.newbieHelpData_NeedsRepair = 
+				(%this.player.getDamageLevel() > %this.player.getDataBlock().maxDamage*0.75);
+			%this.newbieHelpData_LowEnergy = 
+				(%this.player.getEnergyLevel() < 50);
+		}		
 	
 		if( %this.team == $Team1 )
 			%data = RedEtherform;
@@ -302,7 +317,7 @@ function GameConnection::togglePlayerForm(%this)
 			dataBlock = %data;
 			client = %this;
 			teamId = %this.team.teamId;
-		};
+		};	
 	}
 	else
 	{
@@ -403,7 +418,7 @@ function GameConnection::togglePlayerForm(%this)
 		%obj.setVelocity(VectorScale(%vel, 0.25));
 		
 		%obj.startFade(1000,0,false);
-		%obj.playAudio(0, CatSpawnSound);
+		%obj.playAudio(0, CatSpawnSound);		
 	}
 	else
 	{
@@ -421,10 +436,10 @@ function GameConnection::togglePlayerForm(%this)
 				%this.player.setDamageState("Destroyed");
 			//}
 		}
-
+		
 		%obj.setEnergyLevel(%nrg - 50);
 		%obj.applyImpulse(%pos, VectorScale(%vel,100));
-		%obj.playAudio(0, EtherformSpawnSound);
+		%obj.playAudio(0, EtherformSpawnSound);	
 	}
 
 	%this.player = %obj;
@@ -591,6 +606,170 @@ function GameConnection::updateHudWarningsThread(%this)
 
 	%this.setHudWarning(1, "[HEALTH]", %health < 0.25);
 	%this.setHudWarning(3, "[ARMOR]", %player.getEnergyPercent() < 0.5);
+}
+
+//-----------------------------------------------------------------------------
+
+function GameConnection::switchTopHudMenuMode(%this)
+{
+	if(%this.topHudMenu $= "newbiehelp")
+	{
+		%this.topHudMenu = "healthbalance";
+	}
+	else if(%this.topHudMenu $= "healthbalance")
+	{
+		%this.topHudMenu = "nothing";
+	}
+	else 
+	{
+		%this.topHudMenu = "newbiehelp";
+	}
+	
+	%this.setHudMenuT("*", " ", 1, 0);
+}
+
+function byteToHex(%byte)
+{
+	%chars = "0123456789ABCDEF";
+	
+	%digit[0] = "0";
+	%digit[1] = "0";
+	
+	if(%byte > 15)
+		%digit[0] = getSubStr(%chars, %byte / 16, 1);
+
+	%digit[1] = getSubStr(%chars, %byte % 16, 1);
+
+	return %digit[0] @ %digit[1];
+}
+
+datablock AudioProfile(NewbieHelperSound)
+{
+	filename = "share/sounds/rotc/charge1.wav";
+	description = AudioCritical2D;
+	preload = true;
+};
+
+function GameConnection::updateTopHudMenuThread(%this)
+{
+	cancel(%this.updateTopHudMenuThread);
+	%this.updateTopHudMenuThread = %this.schedule(200,"updateTopHudMenuThread");
+	
+	if(%this.topHudMenu $= "invisible")
+		return;
+	
+	%this.setHudMenuT(0, "\n<just:center><color:888888>Showing: ", 1, 1);			
+	%this.setHudMenuT(2, "(@bind65 to change)\n<just:left>", 1, 1);			
+	%i = 2;
+	
+	if(%this.topHudMenu $= "newbiehelp")
+	{
+		if(%this.newbieHelpAge == 0)
+			%this.play2D(NewbieHelperSound);
+	
+		%this.newbieHelpAge++;	
+		%this.setHudMenuT(1, "Newbie Helper", 1, 1);
+
+		%color = "FFFFFF";
+		%alpha = 255;		
+		
+		%text = %this.newbieHelpText;
+		if(%this.newbieHelpAge < 6)
+		{
+			%text = "[ Downloading... ]";
+			if(%this.newbieHelpAge % 2 == 0)
+				%color = "88FF88";			
+		}
+		
+		if(%this.newbieHelpTime > 0 && %this.newbieHelpAge > %this.newbieHelpTime)
+			%alpha = 255 - (%this.newbieHelpAge-%this.newbieHelpTime)*15;
+		
+		if(%alpha <= 0)
+		{
+			%alpha = 0;
+			%this.setHudMenuT(5, "", 1, 0);
+			%this.setHudMenuT(8, "", 1, 0);		
+		}
+
+		%this.setHudMenuT(%i++, "<just:center>(Press @bind66 for a random hint)\n<font:NovaSquare:18><color:FFFFFF", 1, 1);
+		%this.setHudMenuT(%i++, byteToHex(%alpha), 1, 1);				
+		%this.setHudMenuT(%i++, ">Hint:\n<color:", 1, 1);		
+		%this.setHudMenuT(%i++, %color, 1, 1);					
+		%this.setHudMenuT(%i++, byteToHex(%alpha), 1, 1);				
+		%this.setHudMenuT(%i++, ">" @ %text, 1, 1);
+	}	
+	else if(%this.topHudMenu $= "healthbalance")
+	{	
+		%this.setHudMenuT(1, "Health balance", 1, 1);
+		%this.setHudMenuT(3, "<bitmap:share/hud/rotc/spec><sbreak>", 1, 1);
+		%this.setHudMenuT(4, "<bitmap:share/hud/rotc/spacer.1x14>", $Server::GameStatus::HealthBalance::Spacers, 1);
+		%this.setHudMenuT(5, "<bitmap:share/hud/rotc/marker.up>", 1, 1);			
+	}
+	else if(%this.topHudMenu $= "nothing")
+	{		
+		%this.setHudMenuT(1, "Nothing", 1, 1);
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+function GameConnection::setNewbieHelp(%this, %msg, %time)
+{
+	if(%msg $= "random")
+	{
+		%isCAT = %time; // hackety hack hack
+
+		%i = -1;
+		if(%this.hasEtherboard)
+		{
+			%tip[%i++] = "When in CAT form, hold down @bind21 to use your etherboard.";
+		}
+		if(%this.numRegenerators > 0)
+		{
+			%tip[%i++] = "Every additional regeneration module doubles the rate of regeneration.";
+		}
+		if(%this.numWeapons > 1)
+		{
+			%tip[%i++] = "When in CAT form, press @bind45 to cycle through your weapons.";
+		}
+		if(%isCAT)
+		{
+
+		}
+		%tip[%i++] = "Beware that firing your weapons draws power away from your armor.";
+		%tip[%i++] = "When in CAT form, close to the ground and not etherboarding," SPC
+			"you become anchored to the ground which reduces the push you get from being hit.";
+		%tip[%i++] = "When in CAT form, press @bind51 to fire a B.O.U.N.C.E. that reverses the momentum" SPC
+			"of nearby enemy CATs and deals some damage based on their speed.";
+		%tip[%i++] = "When in CAT form, hold down and release @bind19 to throw a grenade. Press @bind46 to" SPC
+			"throw a grenade with max. force.";
+		%tip[%i++] = "If you've aquired a disc lock (you'll hear three short beeps) you can" SPC
+			"launch a target-seeking disc by pressing @bind17.";
+		%tip[%i++] = "In CAT form, you can deflect incoming seeker discs by keeping your crosshair" SPC
+			"over the disc until it's locked and then pressing @bind17.";
+		%tip[%i++] = "When in CAT form, press @bind18 to jump. Pressing @bind18 while in the air will fire" SPC
+			"your CAT's jump boosters, which drains power away from your armor.";
+		%tip[%i++] = "When full, your armor absorbs 50% of the damage you take. The" SPC
+			"percentage decreases in a linear fashion with less armor.";
+		%tip[%i++] = "In etherform you can select the equipment you'll have" SPC
+				"in CAT form." SPC (%isCAT ? "" : "See the icons" SPC
+				"next to the health bar to the left.") SPC "";
+		%tip[%i++] = "Dark green zones can't be captured.";
+		%tip[%i++] = "CATs can only capture zones that border on one of their team's zones.";
+		%tip[%i++] = "Orange/cyan zones are zones that still belong to red/blue but are being blocked" SPC
+			"by the presence of an enemy CAT, which prevents red/blue etherforms from manifesting there.";
+
+		%rand = getRandom(%i);
+		%msg = %tip[%rand];
+		%time = (%isCAT ? 40 : 0);
+	}
+
+	%this.newbieHelpText = %msg;
+	%this.newbieHelpTime = %time;
+	%this.newbieHelpAge = 0;
+
+	if(this.topHudMenu $= "newbiehelp")
+		%this.updateTopHudMenuThread();
 }
 
 //-----------------------------------------------------------------------------

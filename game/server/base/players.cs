@@ -150,6 +150,26 @@ function PlayerData::onAdd(%this,%obj)
    // No more limited sliding for now.
    // %obj.sliding = 0.5;
    // %obj.updateSliding();
+
+	if($Server::NewbieHelp && isObject(%obj.client))
+	{
+		%client = %obj.client;
+
+		if(!%client.newbieHelpData_HasManifested)
+		{
+			%client.setNewbieHelp("You are now in CAT form. You can switch back to" SPC
+				"etherform at any time by pressing @bind34 again.", 40);
+		}		
+		else
+		{
+			%client.setNewbieHelp("random", true);
+		}
+			
+		%client.newbieHelpData_HasManifested = true;			
+			
+		if(%client.newbieHelpData_NeedsRepair)
+			%client.newbieHelpData_HasRepaired = true;			
+	}
 }
 
 // callback function: called by engine

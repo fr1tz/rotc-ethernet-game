@@ -64,6 +64,25 @@ function EtherformData::onAdd(%this, %obj)
 
 	%obj.inventoryMode = "show";
 	%this.displayInventory(%obj);
+	
+	if($Server::NewbieHelp && isObject(%obj.client))
+	{
+		%client = %obj.client;
+		if(!%client.newbieHelpData_HasManifested)
+		{
+			%client.setNewbieHelp("You are in etherform! Press @bind34 inside a" SPC 
+				(%client.team == $Team1 ? "red" : "blue") SPC "zone to change into CAT form.");
+		}
+		else if(%client.newbieHelpData_NeedsRepair && !%client.newbieHelpData_HasRepaired)
+		{
+			%client.setNewbieHelp("If you don't have enough health to change into CAT form," SPC
+				"fly into one of your team's zones to regain your health.");
+		}		
+		else
+		{
+			%client.setNewbieHelp("random", false);
+		}
+	}			
 }
 
 function EtherformData::onDamage(%this, %obj, %delta)

@@ -46,8 +46,8 @@ $Server::MissionFileSpec = "*/arenas/*.mis";
 
 function onServerCreated()
 {
-	// Server::GameType is sent to the master server.
-	$Server::GameType = $GameNameString;
+	$Server::GameType = $GameNameString; // Server::GameType is sent to the master server.
+	$Server::NewbieHelp = true;	
 }
 
 function onServerDestroyed()

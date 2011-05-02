@@ -15,6 +15,17 @@
 
 function serverCmdPlayerAction(%client, %nr, %val)
 {	
+	if(%nr == 31 && %val)
+	{		
+		%client.switchTopHudMenuMode();
+		return;
+	}
+	else if(%nr == 32 && %val)
+	{		
+		%client.setNewbieHelp("random", true);
+		return;
+	}	
+
 	%player = %client.player;
 	if(%player == 0)
 		return false;
