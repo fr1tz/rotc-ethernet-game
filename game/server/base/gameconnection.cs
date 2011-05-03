@@ -212,6 +212,8 @@ function GameConnection::updateHudColors(%this)
 	}	
 	else
 	{
+		%teamId = %this.team.teamId;
+	
 		if(%teamId == 0)
 			commandToClient(%this,'SetHudColor', "150 150 150", "255 255 255");
 		else if(%teamId == 1)
