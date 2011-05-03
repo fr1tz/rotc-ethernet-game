@@ -1,11 +1,12 @@
 What's new?
 ===========
 
-Prototype 3+dev2
+Prototype 3+dev3
 ----------------
 
 - Newbie helper
 - Improved arena window
+- Regeneration modules now only heal when standing still.
 - Bugfixes
 
 

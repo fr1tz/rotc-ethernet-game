@@ -139,12 +139,8 @@ function PlayerData::onAdd(%this,%obj)
 		%obj.mountImage(RedCatLightImage, 3);
 	else
 		%obj.mountImage(BlueCatLightImage, 3);
-		
-	// Health regenerators...
-	if(isObject(%client))
-		if(%client.numRegenerators > 0)
-			%obj.setRepairRate(0.1 * mPow(2,%client.numRegenerators-1));		
-		
+	
+	%obj.updateRegeneration();		
 	%obj.updateGridConnection();
   
    // No more limited sliding for now.
@@ -587,6 +583,30 @@ function Player::updateSliding(%this)
        	messageClient(%this.client, 'MsgHeat', "", %this.sliding, %this.slidingDt);
 
     %this.slidingThread = %this.schedule(%dtTime, "updateSliding");
+}
+
+//-----------------------------------------------------------------------------
+
+function Player::updateRegeneration(%this)
+{
+	%dtTime = 50;
+
+	if(%this.updateRegenerationThread !$= "")
+		cancel(%this.updateRegenerationThread);
+        
+	%this.updateRegenerationThread = %this.schedule(%dtTime, "updateRegeneration");
+	
+	%regenerate = false;
+	
+	%client = %this.client;
+	if(isObject(%client))
+		if(%client.numRegenerators > 0 && VectorLen(%this.getVelocity()) == 0)
+			%regenerate = true;
+			
+	if(%regenerate)
+		%this.setRepairRate(0.1 * mPow(2,%client.numRegenerators-1));		
+	else
+		%this.setRepairRate(0);		
 }
 
 //-----------------------------------------------------------------------------
