@@ -39,6 +39,7 @@ function initBaseClient()
 	exec("./client/materialMappings.cs");
     exec("./client/mumble.cs");
     exec("./client/tacticalZones.cs");
+	exec("./client/commands.cs");
 
 	// There are also a number of support scripts loaded by the canvas
 	// when it's first initialized.  Check out client/canvas.cs

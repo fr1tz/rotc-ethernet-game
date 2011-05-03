@@ -12,7 +12,7 @@ function serverCmdHowToPlay(%client, %page)
 		%page = 1;
 
 	%newtxt = %newtxt @ 
-		om_head(%client, "", "MainMenu") @
+		om_head(%client, "Online Help") @
 		"<just:center><spush><font:NovaSquare:20>How to play ROTC: Ethernet?<spop>\n\n";
 
 	switch(%page)

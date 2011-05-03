@@ -46,7 +46,7 @@ function GameConnection::onConnect( %client,
 	// responsible for displaying this message if a connection
 	// error occures.
 	messageClient(%client,'MsgConnectionError',"",$Pref::Server::ConnectionError);
-
+	
 	// Simulated client lag for testing...
 	// %client.setSimulatedNetParams(0.1, 30);
 
@@ -119,6 +119,9 @@ function GameConnection::onConnect( %client,
 		%client.isAiControlled(), 
 		%client.isAdmin, 
 		%client.isSuperAdmin);
+		
+	// Give the game code a chance to ask for cookies...
+	%client.onReadyToAskForCookies();
 
 	// If the mission is running, go ahead download it to the client
 	if ($missionRunning)
@@ -216,5 +219,24 @@ function GameConnection::syncClock(%client, %time)
 {
 	commandToClient(%client, 'syncClock', %time);
 }
+
+//--------------------------------------------------------------------------
+// Cookies...
+
+function GameConnection::sendCookie(%this, %name, %value)
+{
+	commandToClient(%this, 'Cookie', %name, %value);
+}
+
+function GameConnection::requestCookie(%this, %name)
+{
+	commandToClient(%this, 'CookieRequest', %name);
+}
+
+function GameConnection::getCookie(%this, %name)
+{
+	return %this.cookie[%name];
+}
+
 
 

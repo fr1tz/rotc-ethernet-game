@@ -234,11 +234,11 @@ function serverCmdMainMenu(%client)
 	%client.beginMenuText(%client.menu $= "mainmenu");
 
 	%newtxt = %newtxt @
-		om_head(%client, "Main Menu") @
+		om_head(%client, "Arena Info") @
 		"<spush><font:NovaSquare:20>" @
 		"Welcome to" SPC $Server::MissionType SPC 
 		$Server::MissionName @ 
-		"<spop>\n\n" @
+		"<spop>\n\n<a:cmd News>What's new in" SPC $Server::MissionType @ "?</a>\n\n" @
 		"Hosted by" SPC $Pref::Server::Name @ "\n\n" @
 		"<spush>" @ $Pref::Server::Info @ "<spop>\n\n" @
 		"";
@@ -250,23 +250,8 @@ function serverCmdMainMenu(%client)
 			"might take\nsome time while the game downloads needed" SPC
 			"art from the server.\nConsider using the time to read" SPC
 			"<a:cmd HowToPlay 1>ROTC: Ethernet in a nutshell</a>.\n" @
-			"This main menu can be used to join a team once loading" SPC
-			"has finished.\n\n" @
 			"";
 	}
-
-	%newtxt = %newtxt @	
-		"\n<spush><font:NovaSquare:16>Information<spop>\n" @
-		"   \>\> <a:cmd ShowPlayerList>Player statistics</a>\n" @
-		"   \>\> <a:cmd News>What's new in" SPC $Server::MissionType @ "?</a>\n" @
-		"   \>\> <a:cmd HowToPlay 0>How to play ROTC: Ethernet</a>\n" @		
-		"      \>\> <a:cmd HowToPlay 1>1. ROTC: Ethernet in a nutshell</a>\n" @
-		"      \>\> <a:cmd HowToPlay 2>2. Basics</a>\n" @
-		"      \>\> <a:cmd HowToPlay 3>3. Playing as Etherform</a>\n" @
-		"      \>\> <a:cmd HowToPlay 4>4. Playing in CAT form</a>\n" @
-		"      \>\> <a:cmd HowToPlay 5>5. Weapons</a>\n" @
-		"      \>\> <a:cmd HowToPlay 6>6. Controls reference</a>\n" @
-		"";
 
 	%client.addMenuText(%newtxt);
 	%client.endMenuText();
@@ -305,7 +290,7 @@ function serverCmdShowPlayerList(%client, %show)
 	%client.beginMenuText(%client.menu $= "playerlist");
 
 	%newtxt = %newtxt @ 
-		om_head(%client, "Player statistics", "MainMenu");
+		om_head(%client, "Player List");
 
 	if(%show $= "")
 		%show = "latency";
@@ -487,4 +472,101 @@ function serverCmdShowPlayerInfo(%client, %player)
 
 	%client.menu = "playerinfo";
 	%client.menuArgs = %player;
+}
+
+function serverCmdShowSettings(%client, %section)
+{
+	%newtxt = om_init();
+	%client.beginMenuText();
+	
+	%note = "Note: In order for your changes to be saved you need to run at least" SPC
+		"version p.3+dev2. You are running" SPC %client.gameVersionString @ ".";
+
+	if(%section == 1)
+	{
+		%newtxt = %newtxt @ om_head(%client, "Settings", "ShowSettings");	
+		
+		%newtxt = %newtxt @ %note;
+	}
+	else
+	{
+		%newtxt = %newtxt @ om_head(%client, "Settings");
+		
+		%newtxt = %newtxt @ %note @ "\n\n";
+
+		%newtxt = %newtxt @ "Initially display: ";	
+		if(%client.initialTopHudMenu !$= "newbiehelp")
+			%newtxt = %newtxt @ "<a:cmd SetSetting initialTopHudMenu/0>";		
+		%newtxt = %newtxt @ "Newbie helper";	
+		if(%client.initialTopHudMenu !$= "newbiehelp")
+			%newtxt = %newtxt @ "</a>";			
+		%newtxt = %newtxt @ " | ";		
+		if(%client.initialTopHudMenu !$= "healthbalance")
+			%newtxt = %newtxt @ "<a:cmd SetSetting initialTopHudMenu/1>";		
+		%newtxt = %newtxt @ "Health balance";	
+		if(%client.initialTopHudMenu !$= "healthbalance")
+			%newtxt = %newtxt @ "</a>";			
+		%newtxt = %newtxt @ " | ";				
+		if(%client.initialTopHudMenu !$= "nothing")
+			%newtxt = %newtxt @ "<a:cmd SetSetting initialTopHudMenu/2>";		
+		%newtxt = %newtxt @ "Nothing";	
+		if(%client.initialTopHudMenu !$= "nothing")
+			%newtxt = %newtxt @ "</a>";			
+		%newtxt = %newtxt @ "\n\n";				
+		
+		%newtxt = %newtxt @ "HUD Colors: ";			
+		%newtxt = %newtxt @ "<a:cmd SetSetting hudColor/0>Based on team</a> | ";			
+		%newtxt = %newtxt @ "<a:cmd SetSetting hudColor/1>CGA #1 Dark</a> | ";			
+		%newtxt = %newtxt @ "<a:cmd SetSetting hudColor/2>CGA #1 Light</a>";			
+		%newtxt = %newtxt @ "\n\n";				
+	}	
+
+	%client.addMenuText(%newtxt);
+	%client.endMenuText();
+
+	%client.menu = "settings";
+}
+
+function serverCmdSetSetting(%client, %str)
+{
+	%str = strreplace(%str, "/", " ");
+	%name = getWord(%str, 0);
+	%value = getWord(%str, 1);
+
+	if(%name $= "initialTopHudMenu")
+	{
+		%mode = "";
+		if(%value == 0)
+			%mode = "newbiehelp";
+		else if(%value == 1)
+			%mode = "healthbalance";
+		else if(%value == 2)
+			%mode = "nothing";			
+			
+		if(%mode !$= "")
+		{
+			%client.initialTopHudMenu = %mode;
+			%client.sendCookie("ROTC_HudMenuTMode", %mode);
+		
+			if(%client.menu $= "settings")
+				serverCmdShowSettings(%client);
+		}
+	}
+	else if(%name $= "hudColor")
+	{
+		%hudColor = "";
+		if(%value == 0)
+			%hudColor = "team";
+		else if(%value == 1)
+			%hudColor = "cga1dark";
+		else if(%value == 2)
+			%hudColor = "cga1light";	
+			
+		if(%hudColor !$= "")
+		{
+			%client.hudColor = %hudColor;
+			%client.sendCookie("ROTC_HudColor", %hudColor);		
+			%client.updateHudColors();
+		}
+	}	
 }

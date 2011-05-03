@@ -56,3 +56,11 @@ function serverCmdSimpleCommand(%client, %cmd, %arg)
 	call("serverCmd" @ %cmd, %client, %arg);
 }
 
+//-----------------------------------------------------------------------------
+// Cookies
+
+function serverCmdCookie(%client, %name, %value)
+{
+	%client.cookie[%name] = %value;
+}
+

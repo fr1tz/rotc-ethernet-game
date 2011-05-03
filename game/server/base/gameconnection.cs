@@ -33,6 +33,13 @@ function GameConnection::control(%this, %shapebase)
 //------------------------------------------------------------------------------
 
 // *** callback function: called by script code in "common"
+function GameConnection::onReadyToAskForCookies(%this)
+{
+	%this.requestCookie("ROTC_HudColor");
+	%this.requestCookie("ROTC_HudMenuTMode");
+}
+
+// *** callback function: called by script code in "common"
 function GameConnection::onClientLoadMission(%this)
 {
 	%this.loadingMission = true;
@@ -47,7 +54,7 @@ function GameConnection::onClientEnterGame(%this)
 	%this.loadingMission = false;
 
 	commandToClient(%this, 'SyncClock', $Sim::Time - $Game::StartTime);
- 
+	
     // ScriptObject used to store raw statistics...
 	%this.stats                    = new ScriptObject();
 	%this.stats.joinTime           = $Sim::Time;
@@ -64,6 +71,9 @@ function GameConnection::onClientEnterGame(%this)
 	// "simple control (tm)" info...
 	%this.simpleControl = new Array();
 	MissionCleanup.add(%this.simpleControl);
+	
+	// HUD color...
+	%this.hudColor = %this.getCookie("ROTC_HudColor");
 
 	// HUD Warnings...
 	for(%i = 1; %i <= 6; %i++)
@@ -78,8 +88,11 @@ function GameConnection::onClientEnterGame(%this)
 	%this.setHudMenuR("*", " ", 1, 0);
 	%this.setHudMenuT("*", " ", 1, 0);
 	
-	// Top HUD Menu starts in "newbiehelp" mode...
-	%this.topHudMenu = "newbiehelp";
+	// Initial mode for Top HUD Menu...
+	%this.topHudMenu = %this.getCookie("ROTC_HudMenuTMode");
+	if(%this.topHudMenu $= "")
+		%this.topHudMenu = "newbiehelp";
+	%this.initialTopHudMenu = %this.topHudMenu;
 	%this.updateTopHudMenuThread();
  	
 	//
@@ -183,6 +196,33 @@ function GameConnection::updateWeapons(%this)
 
 //------------------------------------------------------------------------------
 
+function GameConnection::updateHudColors(%this)
+{
+	if(getFieldCount(%this.hudColor) == 2)
+	{
+		commandToClient(%this,'SetHudColor', getField(%this.hudColor,0), getField(%this.hudColor,1));			
+	}
+	else if(%this.hudColor $= "cga1dark")
+	{
+		commandToClient(%this,'SetHudColor', "170 0 170", "0 170 170");	
+	}
+	else if(%this.hudColor $= "cga1light")
+	{
+		commandToClient(%this,'SetHudColor', "255 80 255", "85 255 255");	
+	}	
+	else
+	{
+		if(%teamId == 0)
+			commandToClient(%this,'SetHudColor', "150 150 150", "255 255 255");
+		else if(%teamId == 1)
+			commandToClient(%this,'SetHudColor', "255 0 0", "255 200 200");
+		else if(%teamId == 2)
+			commandToClient(%this,'SetHudColor', "0 100 255", "200 200 255");	
+	}	
+}
+
+//------------------------------------------------------------------------------
+
 function GameConnection::joinTeam(%this, %teamId)
 {
 	if (%teamid > 2 || %teamid < 0)
@@ -194,9 +234,9 @@ function GameConnection::joinTeam(%this, %teamId)
 	// remove from old team...
 	if(%this.team == $Team0)
 		$Team0.numPlayers--;
-	if(%this.team == $Team1)
+	else if(%this.team == $Team1)
 		$Team1.numPlayers--;
-	if(%this.team == $Team2)
+	else if(%this.team == $Team2)
 		$Team2.numPlayers--;
 
 	// add client to new team...
@@ -204,23 +244,22 @@ function GameConnection::joinTeam(%this, %teamId)
 	{
 		%this.team = $Team0;
 		$Team0.numPlayers++;
-		commandToClient(%this,'SetHudColor', "150 150 150", "255 255 255");
 		
 		%this.setNewbieHelp("You are in observer mode. Click on the links near the top" SPC
 			"of the arena window to join a team. Press @bind01 if the arena window is not visible.");		
 	}
-	if(%teamId == 1)
+	else if(%teamId == 1)
 	{
 		%this.team = $Team1;
 		$Team1.numPlayers++;
-		commandToClient(%this,'SetHudColor', "255 0 0", "255 200 200");
 	}
-	if(%teamId == 2)
+	else if(%teamId == 2)
 	{
 		%this.team = $Team2;
 		$Team2.numPlayers++;
-		commandToClient(%this,'SetHudColor', "0 100 255", "200 200 255");
 	}
+	
+	%this.updateHudColors();
 
 	// full and simple control cleanup...
 	%this.clearFullControl();
@@ -240,7 +279,9 @@ function GameConnection::joinTeam(%this, %teamId)
 
 	%this.spawnPlayer();
 	
-	%this.updateQuickbar();
+	%count = ClientGroup.getCount();
+	for(%cl= 0; %cl < %count; %cl++)
+		ClientGroup.getObject(%cl).updateQuickbar();
 
 	return true;
 }
@@ -890,35 +931,47 @@ function GameConnection::updateQuickbar(%this)
 
 	if(%this.loadingMission)
 	{
-		%r = %r @	
-			"Can't join a team while arena is loading" @
-			"";
+		%joinText = "Can't join a team while arena is loading";
 	}
 	else
 	{
+		%joinText = "";
 		if(%this.team != $Team0)
-			%r = %r @ "<a:cmd JoinTeam 0>";
-		%r = %r @ "Join Observers";
+			%joinText = %joinText @ "<a:cmd JoinTeam 0>";
+		%joinText = %joinText @ "Join Observers (" @ $Team0.numPlayers @ ")";
 		if(%this.team != $Team0)
-			%r = %r @ "</a>";		
-		%r = %r @ "    ";	
+			%joinText = %joinText @ "</a>";		
+		%joinText = %joinText @ "    ";	
 		if(%this.team != $Team1)
-			%r = %r @ "<a:cmd JoinTeam 1>";
-		%r = %r @ "Join Reds";
+			%joinText = %joinText @ "<a:cmd JoinTeam 1>";
+		%joinText = %joinText @ "Join Reds (" @ $Team1.numPlayers @ ")";
 		if(%this.team != $Team1)
-			%r = %r @ "</a>";		
-		%r = %r @ "    ";		
+			%joinText = %joinText @ "</a>";		
+		%joinText = %joinText @ "    ";		
 		if(%this.team != $Team2)
-			%r = %r @ "<a:cmd JoinTeam 2>";
-		%r = %r @ "Join Blues";
+			%joinText = %joinText @ "<a:cmd JoinTeam 2>";
+		%joinText = %joinText @ "Join Blues (" @ $Team2.numPlayers @ ")";
 		if(%this.team != $Team2)
-			%r = %r @ "</a>";		
-		%r = %r @ "    ";	
+			%joinText = %joinText @ "</a>";		
 	}
+	
+	%r = %r @ %joinText;	
+	%r = %r @ "\n<bitmap:share/misc/ui/sep><sbreak>";	
+	%r = %r @ "Show: ";
+	%r = %r @ "<a:cmd MainMenu>Arena Info</a> | ";
+	%r = %r @ "<a:cmd ShowPlayerList>Player List</a> | ";
+	%r = %r @ "<a:cmd HowToPlay 0>Online Help</a> | ";
+	%r = %r @ "<a:cmd ShowSettings>Settings</a>";	
 
 	%this.beginQuickbarText();
 	%this.addQuickbarText(%r);	
 	%this.endQuickbarText();
 }
+
+//-----------------------------------------------------------------------------
+
+
+
+
 
 
