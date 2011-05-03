@@ -494,7 +494,7 @@ function serverCmdShowSettings(%client, %section)
 		
 		%newtxt = %newtxt @ %note @ "\n\n";
 
-		%newtxt = %newtxt @ "Initially display: ";	
+		%newtxt = %newtxt @ "<lmargin:0>Initially display:\n<lmargin:25>";	
 		if(%client.initialTopHudMenu !$= "newbiehelp")
 			%newtxt = %newtxt @ "<a:cmd SetSetting initialTopHudMenu/0>";		
 		%newtxt = %newtxt @ "Newbie helper";	
@@ -514,11 +514,32 @@ function serverCmdShowSettings(%client, %section)
 			%newtxt = %newtxt @ "</a>";			
 		%newtxt = %newtxt @ "\n\n";				
 		
-		%newtxt = %newtxt @ "HUD Colors: ";			
-		%newtxt = %newtxt @ "<a:cmd SetSetting hudColor/0>Based on team</a> | ";			
-		%newtxt = %newtxt @ "<a:cmd SetSetting hudColor/1>CGA #1 Dark</a> | ";			
-		%newtxt = %newtxt @ "<a:cmd SetSetting hudColor/2>CGA #1 Light</a>";			
-		%newtxt = %newtxt @ "\n\n";				
+		%n = 0;
+		%schemeName[%n] = "";
+		%schemeDesc[%n] = "Based on team"; %n++;
+		%schemeName[%n] = "fr1tz";
+		%schemeDesc[%n] = "fr1tz"; %n++;		
+		%schemeName[%n] = "kurrata";
+		%schemeDesc[%n] = "kurrata"; %n++;		
+		%schemeName[%n] = "cga1dark";
+		%schemeDesc[%n] = "CGA #1 Dark"; %n++;		
+		%schemeName[%n] = "cga1light";
+		%schemeDesc[%n] = "CGA #1 Light"; %n++;	
+		
+		%newtxt = %newtxt @ "<lmargin:0>HUD Colors:\n<lmargin:25>";			
+		for(%i = 0; %i < %n; %i++)
+		{
+			if(%client.hudColor !$= %schemeName[%i])
+				%newtxt = %newtxt @ "<a:cmd SetSetting hudColor/" @ %schemeName[%i] @ ">";
+			
+			%newtxt = %newtxt @ %schemeDesc[%i];					
+				
+			if(%client.hudColor !$= %schemeName[%i])
+				%newtxt = %newtxt @ "</a>";				
+
+			%newtxt = %newtxt @ "   ";								
+		}
+		%newtxt = %newtxt @ "\n\n";					
 	}	
 
 	%client.addMenuText(%newtxt);
@@ -554,19 +575,12 @@ function serverCmdSetSetting(%client, %str)
 	}
 	else if(%name $= "hudColor")
 	{
-		%hudColor = "";
-		if(%value == 0)
-			%hudColor = "team";
-		else if(%value == 1)
-			%hudColor = "cga1dark";
-		else if(%value == 2)
-			%hudColor = "cga1light";	
-			
-		if(%hudColor !$= "")
-		{
-			%client.hudColor = %hudColor;
-			%client.sendCookie("ROTC_HudColor", %hudColor);		
-			%client.updateHudColors();
-		}
+		%hudColor = %value;
+		%client.hudColor = %hudColor;
+		%client.sendCookie("ROTC_HudColor", %hudColor);		
+		%client.updateHudColors();
+		
+		if(%client.menu $= "settings")
+			serverCmdShowSettings(%client);		
 	}	
 }

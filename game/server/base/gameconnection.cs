@@ -202,6 +202,14 @@ function GameConnection::updateHudColors(%this)
 	{
 		commandToClient(%this,'SetHudColor', getField(%this.hudColor,0), getField(%this.hudColor,1));			
 	}
+	else if(%this.hudColor $= "fr1tz")
+	{
+		commandToClient(%this,'SetHudColor', "200 200 200", "255 0 255");	
+	}
+	else if(%this.hudColor $= "kurrata")
+	{
+		commandToClient(%this,'SetHudColor', "0 150 0", "255 50 255");	
+	}
 	else if(%this.hudColor $= "cga1dark")
 	{
 		commandToClient(%this,'SetHudColor', "170 0 170", "0 170 170");	
