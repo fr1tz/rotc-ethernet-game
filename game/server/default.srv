@@ -15,7 +15,11 @@ $Server::MissionFile = "game/arenas/rotc-ethernet/eth-pond.mis";
 $Pref::Server::RegionMask = 2;
 $Pref::Server::Name = "Newbie"; // Appears as "hosted by:" on the client
 $Pref::Server::Info = // Appears as "arena description" on the client
-	"Server Info goes here!"; 
+	"<just:center>" @
+	"\n[ Default server description ]\n" @
+	"<spush><font:NovaSquare:16><color:AA0000>" @
+	"Daily meetup time: 8pm CET<spop>\n" @
+	"Scheduled matches: None"; 
 
 // The connection error message is transmitted to the client immediatly
 // on connection, if any further error occures during the connection
