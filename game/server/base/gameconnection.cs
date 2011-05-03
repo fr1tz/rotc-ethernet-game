@@ -761,7 +761,7 @@ function GameConnection::setNewbieHelp(%this, %msg, %time)
 
 		%rand = getRandom(%i);
 		%msg = %tip[%rand];
-		%time = (%isCAT ? 40 : 0);
+		%time = (%isCAT ? 60 : 0);
 	}
 
 	%this.newbieHelpText = %msg;
