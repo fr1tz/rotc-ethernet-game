@@ -14,14 +14,10 @@ function toggleShellDlg(%val)
 {
 	if(%val)
 		return;
+		
+	$ShellDlgActive = !$ShellDlgActive;
 
-	if(ShellDlg.isAwake())
-		Canvas.popDialog(ShellDlg);
-	else
-	{
-		Canvas.pushDialog(ShellDlg);
-		addWindow(MissionWindow);
-	}
+	updateShellDlg();
 }
 
 //------------------------------------------------------------------------------

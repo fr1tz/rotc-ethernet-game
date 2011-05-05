@@ -8,6 +8,34 @@
 // client-side functions which are too small to jusitfy an own file for them
 //------------------------------------------------------------------------------
 
+// Callback function: called by "common" script code.
+function onCanvasContentChanged(%oldContent, %newContent)
+{
+	if(Canvas.getContent() != Shell.getId())
+		updateShellDlg();
+}
+
+function updateShellDlg()
+{
+	if($ShellDlgActive)
+	{
+		if(!ShellDlg.isAwake())
+			Canvas.pushDialog(ShellDlg);
+			
+		if(ServerConnection.isDemoPlaying())
+			addWindow(RecordingControlsWindow);
+		else
+			addWindow(MissionWindow);			
+	}
+	else
+	{
+		if(ShellDlg.isAwake())
+			Canvas.popDialog(ShellDlg);	
+	}
+}
+
+//------------------------------------------------------------------------------
+
 function getMouseAdjustAmount(%val)
 {
 	// based on a default camera fov of 90'

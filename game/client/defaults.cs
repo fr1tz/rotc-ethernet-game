@@ -28,6 +28,14 @@ $Pref::IRC::ToChat::Talk = true;
 $Pref::IRC::ToChat::Topic = true;
 $Pref::IRC::ToChat::Users = true;
 
+$Pref::Recording::SpeedPreset1 = 0.1;
+$Pref::Recording::SpeedPreset2 = 0.25;
+$Pref::Recording::SpeedPreset3 = 0.5;
+$Pref::Recording::SpeedPreset4 = 2;
+$Pref::Recording::SpeedPreset5 = 4;
+$Pref::Recording::SpeedPreset6 = 10;
+$Pref::Recording::FreelookMoveSpeed = 40;
+
 $pref::Player::Name = "/bin/cat";
 $pref::Player::DefaultFov = 110;
 $pref::Player::ZoomSpeed = 200;

@@ -9,22 +9,226 @@
 //-----------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
+// RecordingsWindow GUI stuff...
+
+function RecordingsWindow::onWake(%this)
+{
+	RecordingsDlgList.clear();
+	%i = 0;
+	%filespec = $lastMod @ "/recordings/*.rec";
+	echo(%filespec);
+	for(%file = findFirstFile(%filespec); %file !$= ""; %file = findNextFile(%filespec)) 
+	{ 
+		%fileName = fileBase(%file);
+		if (strStr(%file, "/CVS/") == -1) 
+		{
+			RecordingsDlgList.addRow(%i++, %fileName);
+		}
+	}
+	RecordingsDlgList.sort(0);
+	RecordingsDlgList.setSelectedRow(0);
+	RecordingsDlgList.scrollVisible(0);
+}
+
+//------------------------------------------------------------------------------
+// RecordingControlsWindow GUI stuff...
+
+function RecordingControlsWindow::onWake(%this)
+{
+	%this.updateDemoCurrentPosition();
+}
+
+function RecordingControlsWindow::onSleep(%this)
+{
+	cancel(%this.demoPositionThread);
+}
+
+function RecordingControlsWindow::updateDemoCurrentPosition(%this)
+{
+	updateDemoCurrentPosition();
+	%this.demoPositionThread = %this.schedule(50, "updateDemoCurrentPosition");		
+}
+
+//------------------------------------------------------------------------------
+// RecordingSettingsWindow GUI stuff...
+
+function RecordingControlsWindow::onWake(%this)
+{
+
+}
+
+function RecordingSettingsWindow::onSleep(%this)
+{
+    RecordingFreelookGui.camMovementSpeed =
+		$Pref::Recording::FreelookMoveSpeed;
+}
+
+//------------------------------------------------------------------------------
 // Demo playback...
 
-function fastForward(%seconds)
+function demoSetViewHud(%val)
 {
-    $timeScale = %seconds;
-    schedule(%seconds * 1000, 0, "pauseDemoPlayback", 1);
+    if(!%val || Canvas.getContent() == HUD.getId())
+		return;
+
+	Canvas.setContent(HUD);
+	ServerConnection.setFirstPerson($firstPerson); 
 }
 
-function pauseDemoPlayback()
+function demoSetViewFree(%val)
 {
-    $timeScale = 0;
+    if(!%val || Canvas.getContent() == RecordingFreelookGui.getId())
+		return;
+
+	Canvas.setContent(RecordingFreelookGui);
+        
+	if(RecordingFreelookGui.getCameraMode() == 0)
+	{
+		RecordingFreelookGui.camZoomToPlayer();
+ 		ServerConnection.setFirstPerson(true);
+	}
+	else
+	{
+		ServerConnection.setFirstPerson(false);
+	}   
 }
 
-function startDemoPlayback(%file, %skipToSecond)
+function demoSetViewCmdr(%val)
+{
+    if(!%val || Canvas.getContent() == CmdrScreen.getId())
+		return;
+
+	Canvas.setContent(CmdrScreen);
+}
+
+function demoTogglePerspective(%val)
+{
+    if(!%val) return;
+    
+    if(Canvas.getContent() == RecordingFreelookGui.getId())
+    {
+        RecordingFreelookGui.camZoomToPlayer();
+    
+        if(RecordingFreelookGui.getCameraMode() == 0)
+        {
+            RecordingFreelookGui.setCameraFlyMode();
+            ServerConnection.setFirstPerson(false);
+        }
+        else
+        {
+            RecordingFreelookGui.setCameraPlayerMode();
+            ServerConnection.setFirstPerson(true);
+        }
+    }
+    else
+    {
+        toggleFirstPerson(1);
+    }
+}
+
+function demoTogglePause(%val)
+{
+    if(!%val) return;
+    if($timeScale != 0)
+    {
+        $timeScale = 0;
+        $DemoPaused = true;
+		$DemoStatus = "PAUSED";
+    }
+    else
+    {
+        $DemoPaused = false;
+		$DemoStatus = "PLAYING";
+		demoSetPlaySpeed($DemoSpeed);
+    }
+
+	updateDemoCurrentPosition();
+}
+
+function demoSetPlaySpeed(%scale)
+{
+	$DemoSpeed = %scale;
+	RecordingFreelookGui.camMovementSpeed = 
+		$Pref::Recording::FreelookMoveSpeed * %scale;
+	$timeScale = %scale;
+}
+
+function demoChangePlaySpeed(%preset, %honorPause)
+{
+	%scale = $Pref::Recording::SpeedPreset[%preset];
+	$DemoSpeed = %scale;
+	RecordingFreelookGui.camMovementSpeed = 
+		$Pref::Recording::FreelookMoveSpeed * %scale;
+	$timeScale = %scale;
+	if(!$DemoPaused || !%honorPause)
+		$timeScale = %scale;
+}
+
+function demoResetPlaySpeed()
+{
+    $DemoSpeed = 1.0;
+    if($DemoPaused)
+        $timeScale = 0;
+    else
+        $timeScale = $DemoSpeed;
+    RecordingFreelookGui.camMovementSpeed =
+		$Pref::Recording::FreelookMoveSpeed;
+}
+
+function demoJumpTo(%val)
+{
+    if(!%val || $DemoFileName $= "") 
+		return;
+
+	%position = recordingJumpTo.getText();
+	startDemoPlayback($DemoFileName, %position);
+}
+
+
+function updateDemoCurrentPosition()
+{
+	$DemoCurrentPosition = getSimTime() - $DemoStartTime;
+}
+
+function onDemoLoaded()
+{
+	$timeScale = 0;
+	$DemoPaused = true;
+	$DemoStatus = "PAUSED";
+
+	$ShellDlgActive = true;
+	ServerConnection.prepDemoPlayback();
+    pushActionMap(RecordingActionMap);
+}
+
+function demoSkipToTargetPosition()
+{
+	cancel($DemoSkipThread);
+
+	updateDemoCurrentPosition();
+	%delta = $DemoTargetPosition - $DemoCurrentPosition;
+
+	%n = 25;	
+	while(%n > 1)
+	{
+		if(%delta > 2 * %n * 1000)
+		{
+			$timeScale = %n;
+			$DemoSkipThread = schedule(%delta / $timeScale, 0, "demoSkipToTargetPosition");
+			return;
+		}
+		%n--;
+	}
+
+	$timeScale = 1;
+	$DemoSkipThread = schedule(%delta / $timeScale, 0, "onDemoLoaded");
+}
+
+function startDemoPlayback(%file, %position)
 {
     $DemoFileName = %file;
+
+	disconnect();
 
     if(isObject(ServerConnection))
         ServerConnection.delete();
@@ -32,22 +236,33 @@ function startDemoPlayback(%file, %skipToSecond)
 	new GameConnection(ServerConnection);
 	RootGroup.add(ServerConnection);
 
+	$timeScale = 0;
+	$DemoStartTime = 0;
+	$DemoCurrentPosition = 0;
+	$DemoTargetPosition = %position;
+	$DemoSpeed = 1;
+	$DemoPaused = true;
+	$DemoStatus = "LOADING...";
+
+	RecordingJumpTo.setText($DemoTargetPosition);
+	addWindow(RecordingControlsWindow);
+
 	if(ServerConnection.playDemo($DemoFileName))
-	{
+	{	
+		$DemoStartTime = getSimTime();
+
         StartClientReplication();
         StartFoliageReplication();
         computeZoneGrids();
         
-		ServerConnection.prepDemoPlayback();
-  
-        pushActionMap(RecordingActionMap);
-        
-        if(%skipToSecond > 0)
+        if($DemoTargetPosition > 0)
         {
-            $timeScale = %skipToSecond;
-            if($timeScale > 25) $timeScale = 25;
-            schedule(%skipToSecond * 1000, 0, "pauseDemoPlayback", 1);
+			demoSkipToTargetPosition();
         }
+		else
+		{
+			onDemoLoaded();
+		}
 	}
 	else
 	{
@@ -67,7 +282,7 @@ function StartSelectedDemo()
 
 	%file = $lastMod @ "/recordings/" @ getField(%rowText, 0) @ ".rec";
 
-    startDemoPlayback(%file, 0);
+    startDemoPlayback(%file, DR_JumpToPosition.getText());
 }
 
 function demoPlaybackComplete()
@@ -141,27 +356,7 @@ function toggleDemoRecord()
 		startDemoRecord();
 }
 
-//------------------------------------------------------------------------------
-// GUI stuff...
 
-function RecordingsWindow::onWake()
-{
-	RecordingsDlgList.clear();
-	%i = 0;
-	%filespec = $lastMod @ "/recordings/*.rec";
-	echo(%filespec);
-	for(%file = findFirstFile(%filespec); %file !$= ""; %file = findNextFile(%filespec)) 
-	{ 
-		%fileName = fileBase(%file);
-		if (strStr(%file, "/CVS/") == -1) 
-		{
-			RecordingsDlgList.addRow(%i++, %fileName);
-		}
-	}
-	RecordingsDlgList.sort(0);
-	RecordingsDlgList.setSelectedRow(0);
-	RecordingsDlgList.scrollVisible(0);
-}
 
 
 

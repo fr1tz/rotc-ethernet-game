@@ -50,7 +50,10 @@ function initCanvas(%windowName, %effectCanvas)
 	exec("~/ui/NetGraphGui.gui");
 	exec("~/ui/TorqueSplash.gui");
 	exec("~/ui/RecordingFreelook.gui");
-	
+	exec("~/ui/RecordingControls.gui");
+	exec("~/ui/RecordingJumpTo.gui");
+	exec("~/ui/RecordingSettings.gui");
+
 	// Commonly used helper scripts
 	exec("./metrics.cs");
 	exec("./messageBox.cs");

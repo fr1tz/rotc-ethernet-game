@@ -76,6 +76,14 @@ function GuiCanvas::checkCursor(%this)
 function GuiCanvas::setContent(%this, %ctrl)
 {
 	Parent::setContent(%this, %ctrl);
+
+	%oldContent = Canvas.getContent();
+	if(%ctrl != %oldContent)
+		onCanvasContentChanged(%oldContent, %ctrl);
+
+	if(ServerConnection.isDemoPlaying())
+		pushActionMap(RecordingActionMap);
+
 	%this.checkCursor();
 }
 

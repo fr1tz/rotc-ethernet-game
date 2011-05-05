@@ -176,8 +176,9 @@ function disconnectedCleanup()
 	clientCmdclearBottomPrint();
 	clientCmdClearCenterPrint();
 	
-	// Make sure the mission window will not be visible
+	// Make sure the certain windows will not be visible
 	removeWindow(MissionWindow);
+	removeWindow(RecordingControlsWindow);
 
 	// Make sure we're displaying the shell
 	Canvas.setContent(Shell);
