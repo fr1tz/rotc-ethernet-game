@@ -52,7 +52,7 @@ function RecordingControlsWindow::updateDemoCurrentPosition(%this)
 //------------------------------------------------------------------------------
 // RecordingSettingsWindow GUI stuff...
 
-function RecordingControlsWindow::onWake(%this)
+function RecordingSettingsWindow::onWake(%this)
 {
 
 }
