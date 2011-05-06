@@ -809,6 +809,10 @@ function GameConnection::setNewbieHelp(%this, %msg, %time)
 		%tip[%i++] = "CATs can only capture zones that border on one of their team's zones.";
 		%tip[%i++] = "Orange/cyan zones are zones that still belong to red/blue but are being blocked" SPC
 			"by the presence of an enemy CAT, which prevents red/blue etherforms from manifesting there.";
+		%tip[%i++] = "Damaging enemies restores your health and your armor.";
+		%tip[%i++] = "Keep an eye on your armor (the bar on the right), CATs with low armor are easily destroyed.";
+		%tip[%i++] = "The sky changing color is not just eyecandy. In a contested zone, the red/blue" SPC
+			"values of the sky color reflect the amount of health of red/blue CATs in the zone.";
 
 		%rand = getRandom(%i);
 		%msg = %tip[%rand];
