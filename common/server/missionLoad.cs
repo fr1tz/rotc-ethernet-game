@@ -37,14 +37,10 @@ function loadMission(%missionFile, %isFirstMission)
 	
 	// set server vars...
 	$Server::MissionFile = %missionFile;
-	if(getSubStr($MissionInfo::EnvFile, 0, 2) $= "./")
-		$Server::MissionEnvironmentFile = filePath($MissionInfo::File) @ "/" @ $MissionInfo::EnvFile;
-	else
-		$Server::MissionEnvironmentFile = $MissionInfo::EnvFile;
 	$Server::MissionName = $MissionInfo::Name;
 	$Server::MissionType = $MissionInfo::Type;
 
-	exec($MissionInfo::ScriptFile);
+	exec($MissionInfo::InitScript);
 
 	initMission();
 	

@@ -1,14 +1,12 @@
 // Mission environment script
-// This script is executed on the server
-
-$ENV_ROOT = "game/arenas/rotc-ethernet/eth-pond/";
+// This script is executed from the mission init script in game/server/missions
 
 //------------------------------------------------------------------------------
 // Lights
 //------------------------------------------------------------------------------
 
-$sgLightEditor::lightDBPath = $ENV_ROOT @ "lights/";
-$sgLightEditor::filterDBPath = $ENV_ROOT @ "filters/";
+$sgLightEditor::lightDBPath = $Server::MissionDirectory @ "lights/";
+$sgLightEditor::filterDBPath = $Server::MissionDirectory @ "filters/";
 sgLoadDataBlocks($sgLightEditor::lightDBPath);
 sgLoadDataBlocks($sgLightEditor::filterDBPath);
 
