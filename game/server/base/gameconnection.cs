@@ -167,6 +167,10 @@ function GameConnection::onClientLeaveGame(%this)
 		
 	if(isObject(%this.player))
 		%this.player.delete();
+		
+	%count = ClientGroup.getCount();
+	for(%cl= 0; %cl < %count; %cl++)
+		ClientGroup.getObject(%cl).updateQuickbar();		
 }
 
 //------------------------------------------------------------------------------
