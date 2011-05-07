@@ -521,6 +521,8 @@ function serverCmdShowSettings(%client, %section)
 		%schemeDesc[%n] = "fr1tz"; %n++;		
 		%schemeName[%n] = "kurrata";
 		%schemeDesc[%n] = "kurrata"; %n++;		
+		%schemeName[%n] = "c&c";
+		%schemeDesc[%n] = "c&c"; %n++;			
 		%schemeName[%n] = "cga1dark";
 		%schemeDesc[%n] = "CGA #1 Dark"; %n++;		
 		%schemeName[%n] = "cga1light";
