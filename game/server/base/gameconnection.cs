@@ -817,6 +817,9 @@ function GameConnection::setNewbieHelp(%this, %msg, %time)
 		%tip[%i++] = "Keep an eye on your armor (the bar on the right), CATs with low armor are easily destroyed.";
 		%tip[%i++] = "The sky changing color is not just eyecandy. In a contested zone, the red/blue" SPC
 			"values of the sky color reflect the amount of health of red/blue CATs in the zone.";
+		%tip[%i++] = "Press @bind25 for arena-wide chat, @bind26 for team-chat.";			
+		%tip[%i++] = "Looking for more players? - Try the worldwide player chat located" SPC
+			"at the very top of the \"Arena\" window.";			
 
 		%rand = getRandom(%i);
 		%msg = %tip[%rand];
