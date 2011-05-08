@@ -1,24 +1,5 @@
-// This script is executed on the server
-
-$MAP_ROOT = "ethernet/maps/mesh/";
-
-$sgLightEditor::lightDBPath = $MAP_ROOT @ "lights/";
-$sgLightEditor::filterDBPath = $MAP_ROOT @ "filters/";
-sgLoadDataBlocks($sgLightEditor::lightDBPath);
-sgLoadDataBlocks($sgLightEditor::filterDBPath);
-
-//------------------------------------------------------------------------------
-// Material mappings
-//------------------------------------------------------------------------------
-
-%mapping = createMaterialMapping("dark_grey_blue_grid");
-%mapping.sound = $MaterialMapping::Sound::Metal;
-%mapping.color = "0.3 0.3 0.3 0.4 0.0";
-
-%mapping = createMaterialMapping("tutorial/dark_blue_grid");
-%mapping.sound = $MaterialMapping::Sound::Metal;
-%mapping.color = "0.3 0.3 0.3 0.4 0.0";
-//%mapping.envmap = "share/textures/tutorial/dark_blue_grid 0.5";
+// Mission script
+// This script is executed from the mission init script in game/server/missions
 
 // #############################################################################
 // Scripting stuff now...
