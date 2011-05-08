@@ -355,9 +355,9 @@ function GameConnection::togglePlayerForm(%this)
 	%tagged = %this.player.isTagged();
 	%pos = %this.player.getWorldBoxCenter();
 
-	if(%this.player.getClassName() $= "Player")
+	if(%this.player.getClassName() !$= "Etherform")
 	{
-		// CAT -> etherform
+		// Manifestation -> Etherform
 		
 		if($Server::NewbieHelp)
 		{
@@ -380,7 +380,7 @@ function GameConnection::togglePlayerForm(%this)
 	}
 	else
 	{
-		// etherform -> CAT
+		// Etherform -> Manifestation
 		
 		if(%this.player.getDamageLevel() > %this.player.getDataBlock().maxDamage*0.75)
 		{
@@ -431,17 +431,46 @@ function GameConnection::togglePlayerForm(%this)
 			bottomPrint(%this, "You can not manifest in a blocked zone!", 3, 1 );
 			return;
 		}
-
-		if( %this.team == $Team1 )
-			%data = RedStandardCat;
+		
+		// Manifestation form from nearby blueprint?
+		%blueprint = 0; 
+		InitContainerRadiusSearch(%pos, 10, $TypeMasks::StaticShapeObjectType);
+		while((%srchObj = containerSearchNext()) != 0)
+		{
+			if(%srchObj.isBlueprint)
+			{
+				//echo("Found blueprint!");
+				%blueprint = %srchObj;
+				break;
+			}
+		}			
+		
+		if(%blueprint != 0)
+		{
+			%obj = %blueprint.getDataBlock().build(%blueprint, %this);
+			
+			if(!isObject(%obj))
+			{
+				bottomPrint(%this, "Failed to manifest!", 3, 1 );
+				return;			
+			}
+			
+			%pos = %blueprint.getTransform();
+		}
 		else
-			%data = BlueStandardCat;
+		{
+			// Manifest into standard CAT form
+			if( %this.team == $Team1 )
+				%data = RedStandardCat;
+			else
+				%data = BlueStandardCat;
 
-		%obj = new Player() {
-			dataBlock = %data;
-			client = %this;
-			teamId = %this.team.teamId;
-		};
+			%obj = new Player() {
+				dataBlock = %data;
+				client = %this;
+				teamId = %this.team.teamId;
+			};			
+		}
 
 		$aiTarget = %obj;
 	}
@@ -464,9 +493,9 @@ function GameConnection::togglePlayerForm(%this)
 
 	%this.control(%obj);
 	
-	if(%obj.getType() & $TypeMasks::PlayerObjectType)
+	if(%this.player.getClassName() $= "Etherform")
 	{
-		// etherform -> CAT
+		// Etherform -> Manifestation
 		
 		// remove any z-velocity...
 		%vel = getWord(%vel, 0) SPC getWord(%vel, 1) SPC "0";
@@ -481,7 +510,7 @@ function GameConnection::togglePlayerForm(%this)
 	}
 	else
 	{
-		// CAT -> etherform
+		// Manifestation -> Etherform
 	
 		if(%this.player.getDamageState() $= "Enabled")
 		{
