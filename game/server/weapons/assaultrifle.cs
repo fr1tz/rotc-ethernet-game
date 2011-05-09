@@ -10,25 +10,10 @@
 
 exec("./assaultrifle.sfx.cs");
 exec("./assaultrifle.gfx.cs");
-exec("./assaultrifle.gfx.orange.cs");
-exec("./assaultrifle.gfx.cyan.cs");
-
-//-----------------------------------------------------------------------------
-
-// This is not used in-game but makes sure that clients have the image shape
-// file downloaded and ready when they try to load the actual image.
-datablock ShapeBaseImageData(HolsteredAssaultRifleImage)
-{
-	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image2.dts";
-	emap = true;
-
-	// mount point & mount offset...
-	mountPoint  = 2;
-	offset = "0 0 0";
-	
-	stateName[0] = "DoNothing";
-};
+//exec("./assaultrifle.gfx.Red.cs");
+//exec("./assaultrifle.gfx.Blue.cs");
+exec("./assaultrifle.gfx.red.cs");
+exec("./assaultrifle.gfx.blue.cs");
 
 //-----------------------------------------------------------------------------
 // projectile datablock...
@@ -40,10 +25,10 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	// script damage properties...
 	impactDamage       = 0;
 	impactImpulse      = 2500;
-	splashDamage       = 25;
+	splashDamage       = 30;
 	splashDamageRadius = 2;
 	splashImpulse      = 0;
-	bypassDamageBuffer = true;
+	bypassDamageBuffer = false;
 	
 	// how much energy does firing this projectile drain?...
 	energyDrain = 8;
@@ -56,13 +41,13 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 
 	//sound = AssaultRifleProjectileSound;
  
-    projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.orange.dts";
+    projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.red.dts";
 
-	explosion             = OrangeAssaultRifleProjectileImpact;
-	bounceExplosion       = OrangeAssaultRifleProjectileBounceExplosion;
-	hitEnemyExplosion     = OrangeAssaultRifleProjectileHit;
-	nearEnemyExplosion    = OrangeAssaultRifleProjectileExplosion;
-	hitTeammateExplosion  = OrangeAssaultRifleProjectileHit;
+	explosion             = RedAssaultRifleProjectileImpact;
+	bounceExplosion       = RedAssaultRifleProjectileBounceExplosion;
+	hitEnemyExplosion     = RedAssaultRifleProjectileHit;
+	nearEnemyExplosion    = RedAssaultRifleProjectileExplosion;
+	hitTeammateExplosion  = RedAssaultRifleProjectileHit;
 //	hitDeflectorExplosion = DiscDeflectedEffect;
 
 	missEnemyEffectRadius = 10;
@@ -71,7 +56,7 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 //   particleEmitter	= AssaultRifleProjectileParticleEmitter;
 //	laserTrail[0]   = AssaultRifleProjectileLaserTrail;
 //	laserTrail[1]   = AssaultRifleProjectileRedLaserTrail;
-	laserTail	    = OrangeAssaultRifleProjectileLaserTail;
+	laserTail	    = RedAssaultRifleProjectileLaserTail;
 	laserTailLen    = 10;
 
 	posOffset = "0 0 0";
@@ -98,7 +83,7 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	
 	hasLight	 = true;
 	lightRadius = 8.0;
-	lightColor  = "1.0 0.5 0.0";
+	lightColor  = "1.0 0.0 0.0";
 };
 
 datablock ProjectileData(RedAssaultRifleProjectile2 : RedAssaultRifleProjectile1)
@@ -132,26 +117,26 @@ function RedAssaultRifleProjectile2::onCollision(%this,%obj,%col,%fade,%pos,%nor
 
 datablock ProjectileData(BlueAssaultRifleProjectile1 : RedAssaultRifleProjectile1)
 {
-	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.cyan.dts";    
-	explosion = CyanAssaultRifleProjectileImpact;
-	bounceExplosion = CyanAssaultRifleProjectileBounceExplosion;
-	hitEnemyExplosion = CyanAssaultRifleProjectileHit;
-	nearEnemyExplosion = CyanAssaultRifleProjectileExplosion;
-	hitTeammateExplosion = CyanAssaultRifleProjectileHit;	
-	laserTail = CyanAssaultRifleProjectileLaserTail;
-	lightColor  = "0.0 0.8 1.0";
+	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.blue.dts";    
+	explosion = BlueAssaultRifleProjectileImpact;
+	bounceExplosion = BlueAssaultRifleProjectileBounceExplosion;
+	hitEnemyExplosion = BlueAssaultRifleProjectileHit;
+	nearEnemyExplosion = BlueAssaultRifleProjectileExplosion;
+	hitTeammateExplosion = BlueAssaultRifleProjectileHit;	
+	laserTail = BlueAssaultRifleProjectileLaserTail;
+	lightColor  = "0.0 0.0 1.0";
 };
 
 datablock ProjectileData(BlueAssaultRifleProjectile2 : RedAssaultRifleProjectile2)
 {
-	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.cyan.dts";    
-	explosion = CyanAssaultRifleProjectileImpact;
-	bounceExplosion = CyanAssaultRifleProjectileBounceExplosion;
-	hitEnemyExplosion = CyanAssaultRifleProjectileHit;
-	nearEnemyExplosion = CyanAssaultRifleProjectileExplosion;
-	hitTeammateExplosion = CyanAssaultRifleProjectileHit;	
-	laserTail = CyanAssaultRifleProjectileLaserTail;	
-	lightColor  = "0.0 0.8 1.0";	
+	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.blue.dts";    
+	explosion = BlueAssaultRifleProjectileImpact;
+	bounceExplosion = BlueAssaultRifleProjectileBounceExplosion;
+	hitEnemyExplosion = BlueAssaultRifleProjectileHit;
+	nearEnemyExplosion = BlueAssaultRifleProjectileExplosion;
+	hitTeammateExplosion = BlueAssaultRifleProjectileHit;	
+	laserTail = BlueAssaultRifleProjectileLaserTail;	
+	lightColor  = "0.0 0.0 1.0";	
 };
 
 function BlueAssaultRifleProjectile1::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
@@ -175,7 +160,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	className = WeaponImage;
 	
 	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image3.orange.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image3.red.dts";
 	emap = true;
 
 	// mount point & mount offset...
@@ -330,7 +315,7 @@ function RedAssaultRifleImage::onFire(%this, %obj, %slot)
 
 datablock ShapeBaseImageData(BlueAssaultRifleImage : RedAssaultRifleImage)
 {
-	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image3.cyan.dts";
+	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image3.blue.dts";
 	fireprojectile[0] = BlueAssaultRifleProjectile1;
 	fireprojectile[1] = BlueAssaultRifleProjectile2;
 	lightColor = "0 0.5 1";

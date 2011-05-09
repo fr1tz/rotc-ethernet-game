@@ -60,7 +60,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Splash damage	<spush><font:Arial Bold:16>25<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>2<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
-	Bypass damage buffer	<spush><font:Arial Bold:16>Yes<spop>
+	Bypass damage buffer	<spush><font:Arial Bold:16>No<spop>
 <sbreak>
 
 <spush><font:NovaSquare:20>The Sniper ROFL<spop>
