@@ -1,12 +1,17 @@
 What's new?
 ===========
 
-Prototype 3+dev4
+Prototype 3+dev5
 ----------------
 
 - Newbie helper
 - Improved arena window
 - Regeneration modules now only heal when standing still.
+- Weapon tweaks:
+	- Battle Rifle projectiles no longer bypass damage buffers but
+	  again do 30 instead of 25 damage per projectile.
+	- Grenade launcher grenades don't bounce anymore and their armor
+	  cost has been decreased from 15 to 8.
 - Bugfixes
 Client changes:
 	- Improved demo playback
