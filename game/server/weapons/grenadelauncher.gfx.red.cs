@@ -162,7 +162,8 @@ datablock LaserBeamData(RedGrenadeLauncherProjectileLaserTail)
 
 datablock ExplosionData(RedGrenadeLauncherProjectileBounceExplosion)
 {
-	soundProfile	= GrenadeLauncherProjectileBounceSound;
+	NeedThisExplosionDataToAvoidConsoleSpamOnClient = true;
+	//soundProfile	= GrenadeLauncherProjectileBounceSound;
 };
 
 

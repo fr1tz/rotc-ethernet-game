@@ -7,107 +7,18 @@
 // Revenge Of The Cats - grenadelauncher.cs
 // Code for the grenadelauncher
 //------------------------------------------------------------------------------
-
+                                         
 exec("./grenadelauncher.sfx.cs");
 exec("./grenadelauncher.gfx.red.cs");
 exec("./grenadelauncher.gfx.blue.cs");
 
-//-----------------------------------------------------------------------------
-
-datablock ShapeBaseImageData(HolsteredGrenadeLauncherImage)
-{
-	// basic item properties
-	shapeFile = "share/shapes/rotc/weapons/assaultrifle/image_holstered.dts";
-	emap = true;
-
-	// mount point & mount offset...
-	mountPoint  = 2;
-	offset = "0 0 0";
-	
-	stateName[0] = "DoNothing";
-};
-
-//-----------------------------------------------------------------------------
-// projectile datablock...
-
-datablock ProjectileData(RedGrenadeLauncherProjectile)
-{
-	stat = "gl";
-
-	// script damage properties...
-	impactDamage        = 0;
-	impactImpulse       = 1000;
-	splashDamage        = 40;
-	splashDamageRadius  = 18;
-	splashDamageFalloff = $SplashDamageFalloff::Linear;
-	splashImpulse       = 0;
-	
-	// how much energy does firing this projectile drain?...
-	energyDrain = 15;
-
-	trackingAgility = 0;
-	
-	explodesNearEnemies        = false;
-	explodesNearEnemiesRadius  = 10;
-	explodesNearEnemiesMask    = $TypeMasks::PlayerObjectType;
-
-	sound = GrenadeLauncherProjectileSound;
- 
-	projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.red.dts";
-
-	explosion             = RedGrenadeLauncherProjectileExplosion;
-	bounceExplosion		  = RedGrenadeLauncherProjectileBounceExplosion;
-//	hitEnemyExplosion     = GrenadeLauncherProjectileImpact;
-//	nearEnemyExplosion    = GrenadeLauncherProjectileExplosion;
-//	hitTeammateExplosion  = GrenadeLauncherProjectileImpact;
-//	hitDeflectorExplosion = DiscDeflectedEffect;
-
-//  particleEmitter	= RedGrenadeLauncherProjectileParticleEmitter;
-	laserTrail[0]   = RedGrenadeLauncherProjectileLaserTrail;
-//	laserTrail[1]   = RedGrenadeLauncherProjectileLaserTrail2;
-//	laserTail	    = RedGrenadeLauncherProjectileLaserTail;
-//	laserTailLen    = 2;
-
-	muzzleVelocity		= 100;
-	velInheritFactor	 = 1.0;
-	
-	isBallistic = true;
-	gravityMod  = 10.0;
-	bounceElasticity = 0.5;
-	bounceFriction   = 0.5;
-
-	armingDelay	= 1000;
-	lifetime    = 1000*10;
-	fadeDelay   = 5000;
-	
-	decals[0]	= ExplosionDecalTwo;
-	
-	hasLight	 = true;
-	lightRadius = 6.0;
-	lightColor  = "1.0 0.0 0.0";
-};
-
-function RedGrenadeLauncherProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
-{
-    Parent::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
-}
-
-//--------------------------------------------------------------------------
-
-datablock ProjectileData(BlueGrenadeLauncherProjectile : RedGrenadeLauncherProjectile)
-{
-	projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.blue.dts";
-	explosion = BlueGrenadeLauncherProjectileExplosion;
-	bounceExplosion = BlueGrenadeLauncherProjectileBounceExplosion;
-	laserTrail[0]   = BlueGrenadeLauncherProjectileLaserTrail;
-//	laserTrail[0]   = BlueGrenadeLauncherProjectileLaserTrail2;
-	lightColor  = "0.0 0.0 1.0";
-};
-
-function BlueGrenadeLauncherProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
-{
-    RedGrenadeLauncherProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
-}
+// Projectile implementation (uncomment only one exec!)
+// Using Projectile class:
+// Work on for now, despite the projectiles not *really* being sticky
+exec("./grenadelauncher.projectile1.cs"); 
+// Using Grenade class:
+// (does not work b/c Grenade class is currently fubar'd)
+//exec("./grenadelauncher.projectile2.cs"); 
 
 //--------------------------------------------------------------------------
 // weapon image which does all the work...
@@ -136,14 +47,15 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 	usesEnergy = true;
 	minEnergy = 15;
 
-	projectile = RedGrenadeLauncherProjectile;
+	// Can't set this if RedGrenadeLauncherProjectile is GrenadeData
+	//projectile = RedGrenadeLauncherProjectile;
 
 	// script fields...
 	iconId = 7;
 	specialWeapon = true;
 	armThread  = "holdrifle";  // armThread to use when holding this weapon
 	crosshair  = "assaultrifle"; // crosshair to display when holding this weapon
-    bigGrenade = RedGrenade;
+	grenade = RedGrenadeLauncherProjectile;
 
 	//-------------------------------------------------
 	// image states...
@@ -175,7 +87,7 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 		stateTimeoutValue[3]             = 0.17;
 		stateSpinThread[3]               = "FullSpeed";
 		stateFire[3]                     = true;
-		stateFireProjectile[3]           = RedGrenadeLauncherProjectile;
+		//stateFireProjectile[3]           = RedGrenadeLauncherProjectile;
 		stateAllowImageChange[3]         = false;
 		stateArmThread[3]                = "aimrifle";
 		stateSequence[3]                 = "Fire";
@@ -187,7 +99,7 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 		stateTransitionOnTriggerUp[4]    = "Cooldown";
 		stateTransitionOnNoAmmo[4]       = "Cooldown";
 		stateTimeoutValue[4]             = 0.17;
-		stateFireProjectile[4]           = RedGrenadeLauncherProjectile;
+		//stateFireProjectile[4]           = RedGrenadeLauncherProjectile;
 		stateAllowImageChange[4]         = false;
 		stateSequence[4]                 = "Fire";
 		stateSound[4]                    = GrenadeLauncherFireSound;
@@ -199,7 +111,7 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 		stateTransitionOnNoAmmo[5]       = "Cooldown";
 		stateTimeoutValue[5]             = 0.17;
 		stateSpinThread[5]               = "FullSpeed";
-		stateFireProjectile[5]           = RedGrenadeLauncherProjectile;
+		//stateFireProjectile[5]           = RedGrenadeLauncherProjectile;
 		stateAllowImageChange[5]         = false;
 		stateSequence[5]                 = "Fire";
 		stateSound[5]                    = GrenadeLauncherFireSound;
@@ -210,7 +122,7 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 		stateTransitionOnNoAmmo[6]       = "Cooldown";
 		stateTimeoutValue[6]             = 0.17;
 		stateSpinThread[6]               = "FullSpeed";
-		stateFireProjectile[6]           = RedGrenadeLauncherProjectile;
+		//stateFireProjectile[6]           = RedGrenadeLauncherProjectile;
 		stateAllowImageChange[6]         = false;
 		stateSequence[6]                 = "Fire";
 		stateSound[6]                    = GrenadeLauncherFireSound;
@@ -254,21 +166,40 @@ datablock ShapeBaseImageData(RedGrenadeLauncherImage)
 
 function RedGrenadeLauncherImage::onFire(%this, %obj, %slot)
 {
-	%projectile = %this.projectile;
+	%projectile = %this.grenade;
 
-	// drain some energy...
-	%obj.setEnergyLevel( %obj.getEnergyLevel() - %projectile.energyDrain );
+	// determine muzzle-point...
+	%muzzlePoint = %obj.getMuzzlePoint(%slot);
+
+	// determine initial projectile velocity...
+	%muzzleVector = %obj.getMuzzleVector(%slot);
+
+	%objectVelocity = %obj.getVelocity();
+	%muzzleVelocity = VectorAdd(
+		VectorScale(%muzzleVector, %projectile.muzzleVelocity),
+		VectorScale(%objectVelocity, %projectile.velInheritFactor));
+		
+	%p = spawnGrenadeLauncherProjectile(%projectile, %obj, %slot, %muzzlePoint, %muzzleVelocity);
+	MissionCleanup.add(%p);
+
+	%obj.setEnergyLevel(%obj.getEnergyLevel() - %projectile.energyDrain);
+ 
+	%target = %obj.getImageTarget(%slot);
+	if(isObject(%target))
+		%p.setTarget(%target);
+        
+	return %p;
 }
 
 //------------------------------------------------------------------------------
 
 datablock ShapeBaseImageData(BlueGrenadeLauncherImage : RedGrenadeLauncherImage)
 {
-	projectile = BlueGrenadeLauncherProjectile;
-    stateFireProjectile[3] = BlueGrenadeLauncherProjectile;
-	stateFireProjectile[4] = BlueGrenadeLauncherProjectile;
-    stateFireProjectile[5] = BlueGrenadeLauncherProjectile;
-	stateFireProjectile[6] = BlueGrenadeLauncherProjectile;
+	grenade = BlueGrenadeLauncherProjectile;
+	//stateFireProjectile[3] = BlueGrenadeLauncherProjectile;
+	//stateFireProjectile[4] = BlueGrenadeLauncherProjectile;
+	//stateFireProjectile[5] = BlueGrenadeLauncherProjectile;
+	//stateFireProjectile[6] = BlueGrenadeLauncherProjectile;
 };
 
 function BlueGrenadeLauncherImage::onFire(%this, %obj, %slot)

@@ -84,6 +84,11 @@ function ProjectileData::onRemove(%this, %obj)
     // avoid console spam
 }
 
+function ProjectileData::onBounce(%this,%obj,%col,%fade,%pos,%normal,%dist)
+{
+
+}
+
 function ProjectileData::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 {
 	if( !(%col.getType() & $TypeMasks::ShapeBaseObjectType) )
