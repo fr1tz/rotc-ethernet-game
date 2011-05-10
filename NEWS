@@ -1,7 +1,7 @@
 What's new?
 ===========
 
-Prototype 3+dev5
+Prototype 3+dev6
 ----------------
 
 - Newbie helper
@@ -9,7 +9,9 @@ Prototype 3+dev5
 - Regeneration modules now only heal when standing still.
 - Weapon tweaks:
 	- Battle Rifle projectiles no longer bypass damage buffers but
-	  again do 30 instead of 25 damage per projectile.
+	  again do 30 instead of 25 damage per projectile. The influence
+	  of the shooter's momentum on the projectile's trajectory has
+	  also been increased.
 	- Grenade launcher grenades don't bounce anymore and their armor
 	  cost has been decreased from 15 to 8.
 - Bugfixes

@@ -63,7 +63,7 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	velOffset = "0 0.005";
 
 	muzzleVelocity		= 300;
-	velInheritFactor	 = 0.75;
+	velInheritFactor	 = 0.95;
 	
 	isBallistic			= true;
 	gravityMod			 = 5.0;
