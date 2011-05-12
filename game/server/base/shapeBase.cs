@@ -38,7 +38,7 @@ function ShapeBase::setDamageDt(%this, %damageAmount, %damageType)
 	// over time using the built in ShapBase C++ repair functions
 	// (using a neg. repair), but this has the advantage of going
 	// through the normal script channels.
-	if (%this.getState() !$= "Dead") {
+	if(%this.getDamageState() $= "Enabled") {
 		%this.damage(0, "0 0 0", %damageAmount, %damageType);
 		%this.damageSchedule = %this.schedule(50, "setDamageDt", %damageAmount, %damageType);
 	}
