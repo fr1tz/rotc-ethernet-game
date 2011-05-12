@@ -11,4 +11,6 @@ exec("./assaultrifle.cs");
 exec("./grenadelauncher.cs");
 exec("./blaster.cs");
 exec("./minigun.cs");
+exec("./repelgun.cs");
 exec("./repel.cs");
+

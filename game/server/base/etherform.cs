@@ -110,7 +110,7 @@ function EtherformData::displayInventory(%this, %obj)
 	%itemname[2] = "Battle Rifle";
 	%itemname[3] = "Sniper ROFL";
 	%itemname[4] = "Minigun";
-	%itemname[5] = "Grenade Launcher";
+	%itemname[5] = "Bubblegun";
 	%itemname[6] = "Etherboard";
 	%itemname[7] = "Regeneration";	
 

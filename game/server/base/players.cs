@@ -933,7 +933,7 @@ function Player::setGrenadeAmmo(%this, %amount)
         if(isObject(%this.client))
             messageClient(%this.client, 'MsgGrenadeAmmo', "", %this.grenadeAmmo);
     }
-
+    
 	%this.setImageAmmo(2, %this.hasGrenade());
 }
 
@@ -961,6 +961,9 @@ function Player::updateGrenadeAmmo(%this)
         %this.grenadeAmmo = 0;
     else if(%this.grenadeAmmo > 1)
         %this.grenadeAmmo = 1;
+                
+	if(%this.getMountedImage(0).usesGrenadeAmmo)
+		%this.setImageAmmo(0, %this.grenadeAmmo >= %this.getMountedImage(0).minGrenadeAmmo);        
 
 	%this.setImageAmmo(2, %this.hasGrenade());
  

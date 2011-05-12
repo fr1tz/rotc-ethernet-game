@@ -37,7 +37,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Bypass damage buffer	<spush><font:Arial Bold:16>No<spop>
 <sbreak>
 
-<spush><font:NovaSquare:20>The Blaster<spop>
+<spush><font:NovaSquare:20>The Blaster a.k.a. B00nstick<spop>
 
 <bitmap:share/misc/help/wpn_oldblaster.png>The Blaster is a powerful but tricky weapon. It always fires 9 shots at once. Because of this, it uses a lot of energy and has a huge recoil, but is able to deal up to 90 points of damage at once. The properties of an individual Blaster shot:
 <sbreak><tab:15,200>
@@ -89,15 +89,7 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Bypass damage buffer	<spush><font:Arial Bold:16>No<spop>
 <sbreak>
 
-<spush><font:NovaSquare:20>The Grenade Launcher<spop>
+<spush><font:NovaSquare:20>The Mine Launcher a.k.a. Bubblegun<spop>
 
-<bitmap:share/misc/help/wpn_gl.png>The Grenade Launcher can fire up to four heavily-arching grenades in quick succession. The grenade launcher's strength lies in the ability to fire at enemies that the shooter can't see and not in its fire power (the grenades are actually pretty weak).
-<sbreak><tab:15,200>
-	Armor cost	<spush><font:Arial Bold:16>15<spop>
-	Impact damage	<spush><font:Arial Bold:16>-<spop>
-	Impact impulse	<spush><font:Arial Bold:16>1000<spop>
-	Splash damage	<spush><font:Arial Bold:16>40<spop>
-	Splash damage radius	<spush><font:Arial Bold:16>18<spop>
-	Splash damage impulse	<spush><font:Arial Bold:16>0<spop>
-	Bypass damage buffer	<spush><font:Arial Bold:16>No<spop>
+<bitmap:share/misc/help/wpn_gl.png>The Mine Launcher can fire up to four mines in quick succession. Firing it doesn't drain power away from a CAT's armor but instead draws from the same ammo source as the grenades. Once in position, the mines work like a B.O.U.N.C.E. that's triggered by nearby enemies.
 <sbreak>
