@@ -127,7 +127,7 @@ function RedRepelGunMine::checkDetonate(%this, %obj)
 		%targetObject.setVelocity(%vec);
 
 		// damage based on speed...
-		%speed = VectorLen(%vec);
+		%speed = VectorLen(%vel);
 		%damage = %speed * 2;
 		%dmgpos = %targetObject.getWorldBoxCenter();
 		%targetObject.damage(0, %dmgpos, %damage, $DamageType::Force);		
