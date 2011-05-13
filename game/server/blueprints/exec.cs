@@ -5,3 +5,4 @@
 
 exec("./blueprints.cs");
 exec("./exampleturret.cs");
+exec("./scoutdrone.cs");
