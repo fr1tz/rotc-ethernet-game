@@ -37,7 +37,7 @@ datablock ShapeBaseImageData(BlueRepelGunMineLightImage : RedRepelGunMineLightIm
 
 datablock StaticShapeData(RedRepelGunMine)
 {
-   shapeFile = "share/shapes/rotc/mine.dts";
+   shapeFile = "share/shapes/rotc/misc/mine.dts";
    
 	shapeFxTexture[0] = "share/textures/rotc/heating.png";
 
