@@ -59,6 +59,7 @@ datablock ShapeBaseImageData(RedGrenadeImage)
 		stateTransitionOnNotLoaded[2]   = "Disabled";
 		stateTransitionOnTriggerDown[2] = "Charge";
 		stateSequence[2]                = "Invisible";
+		stateTransitionOnNoAmmo[2]      = "NoAmmo";
 		stateScript[2]                  = "onReady";
 
 		// charge...
