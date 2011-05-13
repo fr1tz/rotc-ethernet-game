@@ -25,6 +25,7 @@ function executeGameScripts()
 	exec("game/server/base/exec.cs");
 	exec("game/server/eth/exec.cs");
 	exec("game/server/weapons/exec.cs");	
+	exec("game/server/blueprints/exec.cs");	
 }
 
 function initMission()
