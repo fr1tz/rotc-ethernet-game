@@ -13,6 +13,23 @@
 $Pref::Master[0] = "2:master.garagegames.com:28002";
 $Pref::Master[1] = "2:spica.dyndns.info:28002";
 
+// Default server prefs when starting a server via the GUI
+$Pref::Server::RegionMask = 2;
+$Pref::Server::Name = "Newbie";
+$Pref::Server::Info = "";
+$Pref::Server::ConnectionError =
+	"You do not have the correct version of Revenge Of The Cats or "@
+	"the related art needed to connect to this server.";
+$Pref::Server::Port = 28000;
+$Pref::Server::Password = "";
+$Pref::Server::AdminPassword = "";
+$Pref::Server::MaxPlayers = 64;
+$Pref::Server::TimeLimit = 20;	
+$Pref::Server::KickBanTime = 300;
+$Pref::Server::BanTime = 1800;	
+$Pref::Server::FloodProtectionEnabled = 1;
+$Pref::Server::MaxChatLen = 120;
+
 $pref::backgroundSleepTime = "0";
 $pref::Shadows = "0.3";
 $pref::EnvironmentMaps = "1";
