@@ -37,6 +37,7 @@ function GameConnection::onReadyToAskForCookies(%this)
 {
 	%this.requestCookie("ROTC_HudColor");
 	%this.requestCookie("ROTC_HudMenuTMode");
+    %this.requestCookie("ROTC_Handicap");
 }
 
 // *** callback function: called by script code in "common"
@@ -54,6 +55,9 @@ function GameConnection::onClientEnterGame(%this)
 	%this.loadingMission = false;
 
 	commandToClient(%this, 'SyncClock', $Sim::Time - $Game::StartTime);
+
+    // Handicap
+    %this.setHandicap(%this.getCookie("ROTC_Handicap"));
 	
     // ScriptObject used to store raw statistics...
 	%this.stats                    = new ScriptObject();
@@ -1024,7 +1028,14 @@ function GameConnection::updateQuickbar(%this)
 
 //-----------------------------------------------------------------------------
 
-
+function GameConnection::setHandicap(%this, %handicap) {
+    if (%handicap $= "")
+        %this.handicap = 1;
+    else if (0 <= %handicap && %handicap <= 1)
+        %this.handicap = %handicap;
+    else
+        %this.handicap = 1;
+}
 
 
 
