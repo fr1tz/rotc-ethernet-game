@@ -305,6 +305,8 @@ function serverCmdShowPlayerList(%client, %show)
 
 		if(%show $= "latency")
 			%v = %k.getPing();
+        else if(%show $= "handicap")
+            %v = mfloor(%k.handicap*100) @ "%";
 		else if(%show $= "dmgratio")
 			%v = trimStat(%p.totalDmgCaused / %p.totalDmgTaken);
 		else if(%show $= "healthlost")
@@ -339,6 +341,8 @@ function serverCmdShowPlayerList(%client, %show)
 
 	if(%show $= "latency")
 		%showtext = "Latency (MS)";
+    else if(%show $= "handicap")
+        %showtext = "Handicap (lower is stronger player)";
 	else if(%show $= "dmgratio")
 		%showtext = "Damage ratio (total dmg caused / taken)";
 	else if(%show $= "healthlost")
@@ -370,6 +374,7 @@ function serverCmdShowPlayerList(%client, %show)
 		"Show:\n" @
 		"<lmargin:25>" @
 		"<a:cmd ShowPlayerList latency>Latency</a> |" SPC
+		"<a:cmd ShowPlayerList handicap>Handicap</a> |" SPC
 		"<a:cmd ShowPlayerList dmgratio>Damage ratio</a> |" SPC
 		"<a:cmd ShowPlayerList healthlost>Effective health loss</a> |" SPC
 		"<a:cmd ShowPlayerList PvE>PvE</a> |" SPC
@@ -439,6 +444,7 @@ function serverCmdShowPlayerInfo(%client, %player)
 			"ShowPlayerList") @
 		"(last updated @" SPC removeDecimals(%p.lastUpdate) SPC "secs)\n\n" @
 		"<tab:200>" @
+        "Handicap:" TAB trimStat(%p.client.handicap) @ "\n" @
 		"Time played:" TAB trimStat(%p.timePlayed) SPC "mins" @ "\n" @
 		"Total damage caused:" TAB trimStat(%p.totalDmgCaused)  @ "\n" @
 		"Total damage taken:" TAB trimStat(%p.totalDmgTaken) @ "\n" @
@@ -490,9 +496,38 @@ function serverCmdShowSettings(%client, %section)
 	}
 	else
 	{
-		%newtxt = %newtxt @ om_head(%client, "Settings");
+        %newtxt = %newtxt @ om_head(%client, "Settings");
 		
 		%newtxt = %newtxt @ %note @ "\n\n";
+        
+        // Handicap
+        %hand = (%client.handicap >= 0)?%client.handicap:1;
+        %newtxt = %newtxt @ "<lmargin:0>Handicap:\n<lmargin:25>Your handicap is set to " @ mfloor(%hand*100) @ "%. A lower setting";
+        %newtxt = %newtxt @ "will make it harder for you to damage other players that have a higher handicap setting.\n";
+        %newtxt = %newtxt @ "The damages for two players with the same handicap is normal.\n";
+        if (%hand == 0) {
+            %newtxt = %newtxt @ "<spush><color:ff4444>Your handicap is 0%, this means you'll do NO damage to normal players<spop>\n";
+        }
+        %newtxt = %newtxt @ "Choose your level of experience with rotc:\n";
+        
+        %newtxt = %newtxt @ ((%hand!=1)?"<a:cmd SetSetting handicap/1>Newbie</a> | ":"Newbie | ");
+        %newtxt = %newtxt @ ((%hand!=0.8)?"<a:cmd SetSetting handicap/0.8>Regular</a> | ":"Regular | ");
+        %newtxt = %newtxt @ ((%hand!=0.6)?"<a:cmd SetSetting handicap/0.6>Experienced</a> | ":"Experienced | ");
+        %newtxt = %newtxt @ ((%hand!=0.3)?"<a:cmd SetSetting handicap/0.3>Bad MOFO</a>\n\n":"Bad MOFO\n\n");
+
+        %newtxt = %newtxt @ "Or choose your handicap directly:\n";
+        %newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ ((%hand - 0.05 >= 0)?%hand - 0.05:0) @ ">\<</a>";
+        for (%i = 0; %i <= 20; %i += 1) {
+            if (mfloor(100*mabs(%i/20 - %hand)) == 0) {
+                %newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ %i/20 @ ">#</a>";
+            } else {
+                %newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ %i/20 @ ">-</a>";
+            }
+        }
+        %newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ ((%hand + 0.05 <= 1)?%hand + 0.05:1) @ ">\></a>";
+		%newtxt = %newtxt @ "\n\n";			
+		
+        // Initial display
 
 		%newtxt = %newtxt @ "<lmargin:0>Initially display:\n<lmargin:25>";	
 		if(%client.initialTopHudMenu !$= "newbiehelp")
@@ -542,6 +577,7 @@ function serverCmdShowSettings(%client, %section)
 			%newtxt = %newtxt @ "   ";								
 		}
 		%newtxt = %newtxt @ "\n\n";					
+	
 	}	
 
 	%client.addMenuText(%newtxt);
@@ -584,5 +620,17 @@ function serverCmdSetSetting(%client, %str)
 		
 		if(%client.menu $= "settings")
 			serverCmdShowSettings(%client);		
-	}	
+    }
+    else if (%name $= "handicap")
+    {
+        %client.setHandicap(%value);
+        %client.sendCookie("ROTC_Handicap", %value);
+
+        if(%client.menu $= "settings")
+			serverCmdShowSettings(%client);
+    }
 }
+
+
+// ---------------------------------------------------------
+

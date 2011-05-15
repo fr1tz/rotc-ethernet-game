@@ -308,6 +308,34 @@ function ShapeBaseData::getBleed(%this, %obj, %dmg)
 // called by ShapeBase::damage()
 function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType)
 {
+    %dmgprehandi = %damage;
+    // Handicap, we do damage dampening depending on the handicap value of the object
+
+    // get the real source object
+    %realSourceObject = 0;
+	if(isObject(%sourceObject))
+	{
+		if(%sourceObject.getType() & $TypeMasks::ProjectileObjectType)
+			%realSourceObject = %sourceObject.getSourceObject();
+		else if(%sourceObject.getType() & $TypeMasks::ShapeBaseObjectType)
+			%realSourceObject = %sourceObject.client.player;
+	}
+
+    if (%obj.client)
+        %dstHand = %obj.client.handicap;
+    if (%realSourceObject != 0 && %realSourceObject.client)
+        %srcHand = %realSourceObject.client.handicap;
+    // The default handicap is 1, and it can only be in [0,1]
+    if (! (0 <= %dstHand && %dstHand <= 1)) %dstHand = 1;
+    if (! (0 <= %srcHand && %srcHand <= 1)) %srcHand = 1;
+
+    // If the source handicap is lower than the target handicap, we lower the damage
+    // If the difference is 0.5, we lower the damage by 50%. If it's 0.1, we lower it by 10%.
+    if (%dstHand > %srcHand)
+        %damage = %damage * (1 - (%dstHand - %srcHand));
+    // If the the source handicap is higher, we leave the damage as it is, so dealing damage
+    // feels like normal when playing against a better player.
+    
     %dmgstor = %damage;
 
 	if(%damageType == $DamageType::Force)
@@ -336,14 +364,6 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		%bufDamageDealt = %damageBufStore - %obj.getDamageBufferLevel();		
 	}
 
-	%realSourceObject = 0;
-	if(isObject(%sourceObject))
-	{
-		if(%sourceObject.getType() & $TypeMasks::ProjectileObjectType)
-			%realSourceObject = %sourceObject.getSourceObject();
-		else if(%sourceObject.getType() & $TypeMasks::ShapeBaseObjectType)
-			%realSourceObject = %sourceObject.client.player;
-	}
 	if(%realSourceObject != 0
 	&& %realSourceObject.teamId != %obj.teamId
 	&& %realSourceObject.getDamageState() $= "Enabled")
