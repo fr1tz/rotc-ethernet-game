@@ -19,6 +19,7 @@ datablock FlyingVehicleData(RedScoutDrone)
    // @{
    isAircraft = true;
    class = "ScoutDrone";
+   weapon = RedHeavyMinigunImage;
    // @}
 
 //   category = "Vehicles"; don't appear in mission editor
@@ -148,6 +149,9 @@ datablock FlyingVehicleData(RedScoutDrone)
 function RedScoutDrone::onAdd(%this, %obj)
 {
    Parent::onAdd(%this, %obj);
+   
+   %obj.mountImage(%this.weapon, 0, 0);
+   %obj.mountImage(%this.weapon, 1, 1);
 
    // create engine light...
 //   %obj.light = new sgLightObject() {
