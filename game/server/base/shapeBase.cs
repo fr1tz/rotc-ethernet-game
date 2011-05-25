@@ -322,10 +322,16 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	%damage -= %damage * %energyScale * 0.50;	
 
 	// Handicap, we do damage dampening depending on the handicap value of the object
-	if (%obj.client)
+	if (isObject(%obj.client))
 		%dstHand = %obj.client.handicap;
-	if (%realSourceObject != 0 && %realSourceObject.client)
+    else
+        %dstHand = 1;
+
+	if (isObject(%realSourceObject) && isObject(%realSourceObject.client))
 		%srcHand = %realSourceObject.client.handicap;
+    else
+        %srcHand = 1;
+
 	// The default handicap is 1, and it can only be in [0,1]
 	if (! (0 <= %dstHand && %dstHand <= 1)) %dstHand = 1;
 	if (! (0 <= %srcHand && %srcHand <= 1)) %srcHand = 1;
