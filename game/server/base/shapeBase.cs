@@ -308,8 +308,12 @@ function ShapeBaseData::getBleed(%this, %obj, %dmg)
 // called by ShapeBase::damage()
 function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType)
 {
-	%dmgprehandi = %damage;
-	// Handicap, we do damage dampening depending on the handicap value of the object
+	%dmgstor = %damage;
+	
+	if(%damageType == $DamageType::Force)
+		%n = "Force";
+	else
+		%n = %sourceObject.getDataBlock().stat;  		
 
 	// get the real source object
 	%realSourceObject = 0;
@@ -320,7 +324,12 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		else if(%sourceObject.getType() & $TypeMasks::ShapeBaseObjectType)
 			%realSourceObject = %sourceObject.client.player;
 	}
+	
+	// reduce damage based on energy level...
+	%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
+	%damage -= %damage * %energyScale * 0.50;	
 
+	// Handicap, we do damage dampening depending on the handicap value of the object
 	if (%obj.client)
 		%dstHand = %obj.client.handicap;
 	if (%realSourceObject != 0 && %realSourceObject.client)
@@ -335,17 +344,6 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		%damage = %damage * (1 - (%dstHand - %srcHand));
 	// If the the source handicap is higher, we leave the damage as it is, so dealing damage
 	// feels like normal when playing against a better player.
-
-	%dmgstor = %damage;
-
-	if(%damageType == $DamageType::Force)
-		%n = "Force";
-	else
-		%n = %sourceObject.getDataBlock().stat;
-
-	// reduce damage based on energy level...
-	%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
-	%damage -= %damage * %energyScale * 0.50;
 	
 	if(isObject(%sourceObject) && %sourceObject.getDataBlock().bypassDamageBuffer)
 	{
@@ -363,7 +361,7 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		%healthDamageDealt = %obj.applyDamage(%damage);
 		%bufDamageDealt = %damageBufStore - %obj.getDamageBufferLevel();		
 	}
-
+	
 	if(%realSourceObject != 0
 	&& %realSourceObject.teamId != %obj.teamId
 	&& %realSourceObject.getDamageState() $= "Enabled")
@@ -378,7 +376,7 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
         );
 
     	if(%realSourceObject.client)
-  		{
+  		{	
 			%healthRestored = %stor - %realSourceObject.getDamageLevel();
 			%a = %realSourceObject.client.stats.healthRegained;
 			arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + %healthRestored);
