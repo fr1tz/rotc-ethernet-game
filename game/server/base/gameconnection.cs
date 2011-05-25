@@ -1036,6 +1036,9 @@ function GameConnection::setHandicap(%this, %handicap)
 		%this.handicap = %handicap;
 	else
 		%this.handicap = 1;
+		
+	if(isObject(%this.player))
+		%this.player.getDataBlock().updateShapeName(%this.player);
 }
 
 

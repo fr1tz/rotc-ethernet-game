@@ -221,15 +221,7 @@ function ShapeBase::playInflictedDamageSound(%this)
 // *** callback function: called by engine
 function ShapeBaseData::onAdd(%this,%obj)
 {
-	if(%this.name)
-	{
-		%obj.setShapeName(%this.name);
-	}
-	else if(%obj.client)
-	{
-		%obj.setShapeName(%obj.client.name);
-		%obj.getHudInfo().markAsControlled(%obj.client, 0);
-	}
+	%this.updateShapeName(%obj);
 	
 	// Default dynamic armor stats...
 	%obj.setDamageBufferRechargeRate(%this.damageBufferRechargeRate);
@@ -503,3 +495,22 @@ function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %healthDmg, %bufDmg)
 	serverUpdateMusic(); // might have to change music immediately
 }
 
+// called by script code...
+function ShapeBaseData::updateShapeName(%this, %obj)
+{
+	%client = %obj.client;
+
+	if(%this.name)
+	{
+		%obj.setShapeName(%this.name);
+	}
+	else if(%client)
+	{
+		%handicap = %client.handicap;
+		if(%handicap == 1)
+			%handicap = "1.0";
+		%name = getTaggedString(%client.name) @ "-" @ %handicap;
+		%obj.setShapeName(%name);
+		%obj.getHudInfo().markAsControlled(%obj.client, 0);
+	}
+}
