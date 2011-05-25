@@ -526,31 +526,25 @@ function serverCmdShowSettings(%client, %section)
 
 		// Handicap
 		%hand = (%client.handicap >= 0)?%client.handicap:1;
-		%newtxt = %newtxt @ "<lmargin:0>Handicap:\n<lmargin:25>Your handicap is set to " @ mfloor(%hand*100) @ "%. A lower setting";
-		%newtxt = %newtxt @ "will make it harder for you to damage other players that have a higher handicap setting.\n";
-		%newtxt = %newtxt @ "The damages for two players with the same handicap is normal.\n";
-		if (%hand == 0)
-		{
-			%newtxt = %newtxt @ "<spush><color:ff4444>Your handicap is 0%, this means you'll do NO damage to normal players<spop>\n";
-		}
-		%newtxt = %newtxt @ "Choose your level of experience with rotc:\n";
-
-		%newtxt = %newtxt @ ((%hand!=1)?"<a:cmd SetSetting handicap/1>Newbie</a> | ":"Newbie | ");
-		%newtxt = %newtxt @ ((%hand!=0.8)?"<a:cmd SetSetting handicap/0.8>Regular</a> | ":"Regular | ");
-		%newtxt = %newtxt @ ((%hand!=0.6)?"<a:cmd SetSetting handicap/0.6>Experienced</a> | ":"Experienced | ");
-		%newtxt = %newtxt @ ((%hand!=0.3)?"<a:cmd SetSetting handicap/0.3>Bad MOFO</a>\n\n":"Bad MOFO\n\n");
-
-		%newtxt = %newtxt @ "Or choose your handicap directly:\n";
-		%newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ ((%hand - 0.05 >= 0)?%hand - 0.05:0) @ ">\<</a>";
-		for (%i = 0; %i <= 20; %i += 1) {
-			if (mfloor(100*mabs(%i/20 - %hand)) == 0) {
-				 %newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ %i/20 @ ">#</a>";
+		%newtxt = %newtxt @ "<lmargin:0>Handicap:\n<lmargin:25>";
+		%newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ ((%hand - 0.1 >= 0)?%hand - 0.1:0) @ ">\<</a>";
+		for (%i = 0; %i <= 10; %i += 1) {
+			if (mfloor(100*mabs(%i/10 - %hand)) == 0) {
+				 %newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ %i/10 @ ">#</a>";
 			} else {
-				 %newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ %i/20 @ ">-</a>";
+				 %newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ %i/10 @ ">-</a>";
 			}
 		}
-		%newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ ((%hand + 0.05 <= 1)?%hand + 0.05:1) @ ">\></a>";
-		%newtxt = %newtxt @ "\n\n";			
+		%newtxt = %newtxt @ "<a:cmd SetSetting handicap/" @ ((%hand + 0.1 <= 1)?%hand + 0.1:1) @ ">\></a>";
+		%s = %hand;
+		if(%s == 0) %s = "0.0";
+		else if(%s == 1) %s = "1.0";				
+		%newtxt = %newtxt SPC %s SPC "[<a:cmd HowToPlay 7>what's this?</a>]\n";
+		if (%hand == 0)
+		{
+			%newtxt = %newtxt @ "<spush><color:ff4444>Your handicap is 0.0, this means you'll only do damage to other players with a 0.0 handicap.<spop>\n";
+		}		
+		%newtxt = %newtxt @ "\n";			
 		
 		//Initial display
 

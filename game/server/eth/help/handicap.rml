@@ -1,0 +1,4 @@
+The handicap setting allows players to give less experienced opponents a fair chance.
+The default handicap is 1. Players with a lower handicap do less damage to players with a higher handicap,
+for example a player with a handicap of 0.9 will do 10% less damage to a player with a handicap of 1 while
+a player with a handicap of 0.7 will do 20% less damage to a player with a handicap of 0.9.
