@@ -37,7 +37,7 @@ function GameConnection::onReadyToAskForCookies(%this)
 {
 	%this.requestCookie("ROTC_HudColor");
 	%this.requestCookie("ROTC_HudMenuTMode");
-    %this.requestCookie("ROTC_Handicap");
+	%this.requestCookie("ROTC_Handicap");
 }
 
 // *** callback function: called by script code in "common"
@@ -56,10 +56,10 @@ function GameConnection::onClientEnterGame(%this)
 
 	commandToClient(%this, 'SyncClock', $Sim::Time - $Game::StartTime);
 
-    // Handicap
-    %this.setHandicap(%this.getCookie("ROTC_Handicap"));
+	// Handicap
+	%this.setHandicap(%this.getCookie("ROTC_Handicap"));
 	
-    // ScriptObject used to store raw statistics...
+	// ScriptObject used to store raw statistics...
 	%this.stats                    = new ScriptObject();
 	%this.stats.joinTime           = $Sim::Time;
 	%this.stats.dmgDealtApplied    = new Array();
@@ -69,7 +69,7 @@ function GameConnection::onClientEnterGame(%this)
 	%this.stats.healthLost         = new Array();
 	%this.stats.healthRegained     = new Array();
 	%this.stats.fired              = new Array();
-    // ScriptObject used to store processed statistics...
+	// ScriptObject used to store processed statistics...
 	%this.pstats = new ScriptObject();
 	
 	// "simple control (tm)" info...
@@ -1028,13 +1028,14 @@ function GameConnection::updateQuickbar(%this)
 
 //-----------------------------------------------------------------------------
 
-function GameConnection::setHandicap(%this, %handicap) {
-    if (%handicap $= "")
-        %this.handicap = 1;
-    else if (0 <= %handicap && %handicap <= 1)
-        %this.handicap = %handicap;
-    else
-        %this.handicap = 1;
+function GameConnection::setHandicap(%this, %handicap)
+{
+	if(%handicap $= "")
+		%this.handicap = 1;
+	else if(0 <= %handicap && %handicap <= 1)
+		%this.handicap = %handicap;
+	else
+		%this.handicap = 1;
 }
 
 
