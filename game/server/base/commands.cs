@@ -293,7 +293,7 @@ function serverCmdShowPlayerList(%client, %show)
 		om_head(%client, "Player List");
 
 	if(%show $= "")
-		%show = "latency";
+		%show = "dmgrating";
 
 	%array = new Array();
 
@@ -305,8 +305,10 @@ function serverCmdShowPlayerList(%client, %show)
 
 		if(%show $= "latency")
 			%v = %k.getPing();
-        else if(%show $= "handicap")
-            %v = mfloor(%k.handicap*100) @ "%";
+		else if(%show $= "handicap")
+			%v = mfloor(%k.handicap*100) @ "%";
+		else if(%show $= "dmgrating")
+			%v = trimStat(%p.totalDmgApplied / %p.timePlayed);            
 		else if(%show $= "dmgratio")
 			%v = trimStat(%p.totalDmgCaused / %p.totalDmgTaken);
 		else if(%show $= "healthlost")
@@ -340,41 +342,59 @@ function serverCmdShowPlayerList(%client, %show)
 	%array.sortnd();
 
 	if(%show $= "latency")
-		%showtext = "Latency (MS)";
+		%showtext[0] = "Latency (MS)";
 	else if(%show $= "handicap")
-		%showtext = "Handicap (lower is stronger player)";
+	{
+		%showtext[0] = "Handicap";
+	}
+	else if(%show $= "dmgrating")
+	{
+		%showtext[0] = "Damage rating";
+		%showtext[1] = "(total dmg applied / time played)";		
+	}
 	else if(%show $= "dmgratio")
-		%showtext = "Damage ratio (total dmg caused / taken)";
+	{
+		%showtext[0] = "Damage ratio";
+		%showtext[1] = "(total dmg caused / taken)";
+	}
 	else if(%show $= "healthlost")
-		%showtext = "Effective health loss ( (lost - regained) / time played )";
+	{
+		%showtext[0] = "Effective health loss";
+		%showtext[1] = "( (lost - regained) / time played )";
+	}
 	else if(%show $= "totalF")
-		%showtext = "Weapon effectiveness total (%)";
+		%showtext[0] = "Weapon effectiveness total (%)";
 	else if(%show $= "discF")
-		%showtext = "Disc effectiveness (%)";
+		%showtext[0] = "Disc effectiveness (%)";
 	else if(%show $= "grenadeF")
-		%showtext = "Grenade effectiveness (%)";
+		%showtext[0] = "Grenade effectiveness (%)";
 	else if(%show $= "blasterF")
-		%showtext = "Blaster effectiveness (%)";
+		%showtext[0] = "Blaster effectiveness (%)";
 	else if(%show $= "brF")
-		%showtext = "Battle Rifle effectiveness (%)";
+		%showtext[0] = "Battle Rifle effectiveness (%)";
 	else if(%show $= "minigunF")
-		%showtext = "Minigun effectiveness (%)";
+		%showtext[0] = "Minigun effectiveness (%)";
 	else if(%show $= "sniperF")
-		%showtext = "Sniper effectiveness (%)";
+		%showtext[0] = "Sniper effectiveness (%)";
 	else if(%show $= "glF")
-		%showtext = "GL effectivenes (%)";
+		%showtext[0] = "GL effectivenes (%)";
 	else if(%show $= "PvE")
-		%showtext = "PvE (Damage taken from environment / time played)";
+	{
+		%showtext[0] = "PvE (Damage taken from";
+		%showtext[1] = "environment / time played)";
+	}
 	else if(%show $= "chuck")
-		%showtext = "Invincibility (total damage taken / total health lost)";
+	{
+		%showtext[0] = "Invincibility (total damage";
+		%showtext[1] = "taken / total health lost)";
+	}
 	else if(%show $= "time")
-		%showtext = "Time played (mins)";
+		%showtext[0] = "Time played (mins)";
 
 	%newtxt = %newtxt @
 		"Show:\n" @
 		"<lmargin:25>" @
-		"<a:cmd ShowPlayerList latency>Latency</a> |" SPC
-		"<a:cmd ShowPlayerList handicap>Handicap</a> |" SPC
+		"<a:cmd ShowPlayerList dmgrating>Damage rating</a> |" SPC
 		"<a:cmd ShowPlayerList dmgratio>Damage ratio</a> |" SPC
 		"<a:cmd ShowPlayerList healthlost>Effective health loss</a> |" SPC
 		"<a:cmd ShowPlayerList PvE>PvE</a> |" SPC
@@ -390,9 +410,13 @@ function serverCmdShowPlayerList(%client, %show)
 		"<a:cmd ShowPlayerList glF>GL</a>\n" SPC
 		"<a:cmd ShowPlayerList time>Time played</a>" @
 		"<lmargin:0>\n\n" @
-		"<tab:25, 125, 200, 300, 400>" @
-		"\tName\tTeam" TAB %showtext @ "\n\n" @
+		"<tab:25, 150, 200, 250, 350>" @
+		"\tName/Handicap\tTeam\tPing" TAB %showtext[0] @ "\n\t\t\t\t" @ %showtext[1] @ "\n\n" @
 		"";
+
+	%handicap = %k.handicap;
+	if(%handicap == 1)
+		%handicap = "1.0";
 
 	%idx = %array.moveFirst();
 	while(%idx != -1)
@@ -402,19 +426,19 @@ function serverCmdShowPlayerList(%client, %show)
 		
 		%name = %k.nameBase;
 		if(%k.team == $Team0)
-			%team = "Observers";
+			%team = "O";
 		else if(%k.team == $Team1)
-			%team = "Reds";
+			%team = "R";
 		else if(%k.team == $Team2)
-			%team = "Blues";
+			%team = "B";
 		else
-			%team = "Unassigned";
+			%team = "-";
 
 		if(%k == %client)
 			%newtxt = %newtxt @ "<spush><shadowcolor:00FF00><shadow:1:1>";
 
 		%newtxt = %newtxt @ 
-			"\>\>\t<a:cmd ShowPlayerInfo" SPC %k @ ">" @ %name @ "</a>" TAB %team TAB %v @ "\n";
+			"\>\>\t<a:cmd ShowPlayerInfo" SPC %k @ ">" @ %name @ "</a>" @ "-" @ %handicap TAB %team TAB %k.getPing() TAB %v @ "\n";
 
 		if(%k == %client)
 			%newtxt = %newtxt @ "<spop>";
