@@ -422,11 +422,11 @@ function serverCmdShowPlayerList(%client, %show)
 		
 		%name = %k.nameBase;
 		if(%k.team == $Team0)
-			%team = "O";
+			%team = "Obs.";
 		else if(%k.team == $Team1)
-			%team = "R";
+			%team = "Red";
 		else if(%k.team == $Team2)
-			%team = "B";
+			%team = "Blue";
 		else
 			%team = "-";
 			
