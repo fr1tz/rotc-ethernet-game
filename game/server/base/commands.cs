@@ -414,10 +414,6 @@ function serverCmdShowPlayerList(%client, %show)
 		"\tName/Handicap\tTeam\tPing" TAB %showtext[0] @ "\n\t\t\t\t" @ %showtext[1] @ "\n\n" @
 		"";
 
-	%handicap = %k.handicap;
-	if(%handicap == 1)
-		%handicap = "1.0";
-
 	%idx = %array.moveFirst();
 	while(%idx != -1)
 	{
@@ -433,6 +429,10 @@ function serverCmdShowPlayerList(%client, %show)
 			%team = "B";
 		else
 			%team = "-";
+			
+		%handicap = %k.handicap;
+		if(%handicap == 1)
+			%handicap = "1.0";			
 
 		if(%k == %client)
 			%newtxt = %newtxt @ "<spush><shadowcolor:00FF00><shadow:1:1>";
