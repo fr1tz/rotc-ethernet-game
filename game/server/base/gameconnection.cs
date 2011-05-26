@@ -993,32 +993,32 @@ function GameConnection::updateQuickbar(%this)
 	}
 	else
 	{
-		%joinText = "";
+		%joinText = "Join Team:\n<spush><font:NovaSquare:25>";
 		if(%this.team != $Team0)
 			%joinText = %joinText @ "<a:cmd JoinTeam 0>";
-		%joinText = %joinText @ "Join Observers (" @ $Team0.numPlayers @ ")";
+		%joinText = %joinText @ "Observers (" @ $Team0.numPlayers @ ")";
 		if(%this.team != $Team0)
 			%joinText = %joinText @ "</a>";		
 		%joinText = %joinText @ "    ";	
 		if(%this.team != $Team1)
 			%joinText = %joinText @ "<a:cmd JoinTeam 1>";
-		%joinText = %joinText @ "Join Reds (" @ $Team1.numPlayers @ ")";
+		%joinText = %joinText @ "Reds (" @ $Team1.numPlayers @ ")";
 		if(%this.team != $Team1)
 			%joinText = %joinText @ "</a>";		
 		%joinText = %joinText @ "    ";		
 		if(%this.team != $Team2)
 			%joinText = %joinText @ "<a:cmd JoinTeam 2>";
-		%joinText = %joinText @ "Join Blues (" @ $Team2.numPlayers @ ")";
+		%joinText = %joinText @ "Blues (" @ $Team2.numPlayers @ ")";
 		if(%this.team != $Team2)
 			%joinText = %joinText @ "</a>";		
 	}
 	
 	%r = %r @ %joinText;	
-	%r = %r @ "\n<bitmap:share/misc/ui/sep><sbreak>";	
+	%r = %r @ "<spop>\n<bitmap:share/misc/ui/sep><sbreak>";	
 	%r = %r @ "Show: ";
 	%r = %r @ "<a:cmd MainMenu>Arena Info</a> | ";
 	%r = %r @ "<a:cmd ShowPlayerList>Player List</a> | ";
-	%r = %r @ "<a:cmd HowToPlay 0>Online Help</a> | ";
+	%r = %r @ "<a:cmd HowToPlay 0>Manual</a> | ";
 	%r = %r @ "<a:cmd ShowSettings>Settings</a>";	
 
 	%this.beginQuickbarText();
