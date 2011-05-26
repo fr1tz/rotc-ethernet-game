@@ -600,7 +600,7 @@ function Player::updateRegeneration(%this)
 	
 	%client = %this.client;
 	if(isObject(%client))
-		if(%client.numRegenerators > 0 && VectorLen(%this.getVelocity()) == 0)
+		if(%client.numRegenerators > 0 && VectorLen(%this.getVelocity()) < 0.1)
 			%regenerate = true;
 			
 	if(%regenerate)
