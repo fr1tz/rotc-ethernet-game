@@ -223,7 +223,7 @@ new GuiControlProfile(LoadTextProfile : GuiDefaultProfile)
 
 new GuiControlProfile(GuiMLTextProfile : GuiDefaultProfile)
 {
-	fontColorLink = "200 0 200";
+	fontColorLink = "0 150 0";
 	fontColorLinkHL = "255 0 255";
 };
 
