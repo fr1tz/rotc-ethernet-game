@@ -26,7 +26,7 @@ datablock ShotgunProjectileData(RedBlasterProjectile)
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
 
-	energyDrain = 2; // how much energy does firing this projectile drain?
+	energyDrain = 4; // how much energy does firing this projectile drain?
 
 	numBullets = 9; // number of shotgun bullets
 
