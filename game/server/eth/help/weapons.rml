@@ -37,11 +37,11 @@ A target-lock lasts for two seconds. Also note that a CAT can only be attacked b
 	Bypass damage buffer	<spush><font:Arial Bold:16>No<spop>
 <sbreak>
 
-<spush><font:NovaSquare:20>The Blaster a.k.a. B00nstick<spop>
+<spush><font:NovaSquare:20>The Blaster<spop>
 
-<bitmap:share/misc/help/wpn_oldblaster.png>The Blaster is a powerful but tricky weapon. It always fires 9 shots at once. Because of this, it uses a lot of energy and has a huge recoil, but is able to deal up to 90 points of damage at once. The properties of an individual Blaster shot:
+<bitmap:share/misc/help/wpn_oldblaster.png>The Blaster is a powerful but tricky weapon. It always fires 9 shots at once. Because of this, it uses a lot of energy and has a huge recoil, but is able to deal up to 90 points of damage at once. Note that the seemingly random distribution of the shots is just eyecandy, there's no randomness involved in determining the amount of shots that hit. The properties of an individual Blaster shot:
 <sbreak><tab:15,200>
-	Armor cost	<spush><font:Arial Bold:16>2<spop>
+	Armor cost	<spush><font:Arial Bold:16>4<spop>
 	Impact damage	<spush><font:Arial Bold:16>10<spop>
 	Impact impulse	<spush><font:Arial Bold:16>400<spop>
 	Splash damage	<spush><font:Arial Bold:16>-<spop>
