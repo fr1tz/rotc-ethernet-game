@@ -40,7 +40,7 @@ datablock PlayerData(RedStandardCat)
 	//cloakTexture = "share/shapes/rotc/effects/explosion_white.png";
 	shapeFxTexture[0] = "share/textures/rotc/connection2.png";
 	shapeFxTexture[1] = "share/textures/rotc/connection.png";
-	shapeFxTexture[2] = "share/textures/rotc/locked.png";
+	shapeFxTexture[2] = "share/textures/rotc/barrier.green.png";
 	shapeFxTexture[3] = "share/textures/rotc/armor.white.png";
 	shapeFxTexture[4] = "share/textures/rotc/armor.orange.png";
 
@@ -255,6 +255,7 @@ datablock PlayerData(RedStandardCat)
 datablock PlayerData(BlueStandardCat : RedStandardCat)
 {
 	shapeFile = "share/shapes/rotc/players/standardcat/player2.blue.dts";
+	shapeFxTexture[2] = "share/textures/rotc/barrier.orange.png";
 	shapeFxTexture[4] = "share/textures/rotc/armor.cyan.png";
 	shapeFxColor[0] = "1.0 1.0 1.0 1.0";  
 	shapeFxColor[1] = "0.0 0.0 1.0 1.0";  

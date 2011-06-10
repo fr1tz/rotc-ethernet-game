@@ -12,6 +12,7 @@ exec("./sniperrifle.projectile.gfx.red.cs");
 exec("./sniperrifle.projectile.gfx.orange.cs");
 exec("./sniperrifle.projectile.gfx.blue.cs");
 exec("./sniperrifle.projectile.gfx.cyan.cs");
+exec("./sniperrifle.projectile.gfx.green.cs");
 
 
 //-----------------------------------------------------------------------------
@@ -80,7 +81,7 @@ datablock ShotgunProjectileData(RedSniperProjectile)
 
 	hasLight    = false;
 	lightRadius = 10.0;
-	lightColor  = "1.0 0.0 0.0";
+	lightColor  = "0.0 1.0 0.0";
 };
 
 function RedSniperProjectile::onAdd(%this, %obj)
@@ -113,21 +114,21 @@ datablock ShotgunProjectileData(BlueSniperProjectile : RedSniperProjectile)
 {
     //projectileShapeName = "share/shapes/rotc/weapons/blaster/projectile.blue.dts";
 
-	explosion            = CyanSniperProjectileExplosion;
-	hitEnemyExplosion    = CyanSniperProjectileHit;
-    hitTeammateExplosion = CyanSniperProjectileHit;
+	explosion               = GreenSniperProjectileExplosion;
+	hitEnemyExplosion       = GreenSniperProjectileHit;
+    hitTeammateExplosion    = GreenSniperProjectileHit;
 
-	missEnemyEffect    = CyanSniperProjectileMissedEnemyEffect;
+	missEnemyEffect    = GreenSniperProjectileMissedEnemyEffect;
 
-	//laserTail          = CyanSniperProjectileLaserTail;
+	//laserTail          = GreenSniperProjectileLaserTail;
 
-	fireExplosion = CyanSniperProjectileFireExplosion; // script field
+	fireExplosion = GreenSniperProjectileFireExplosion; // script field
 
-	//laserTrail[0] = CyanSniperProjectileLaserTrailMissed;
-	laserTrail[1] = CyanSniperProjectileLaserTrailHit;
-	laserTrail[2] = CyanSniperProjectileLaserTrail;
+	//laserTrail[0] = GreenSniperProjectileLaserTrailMissed;
+	laserTrail[1] = GreenSniperProjectileLaserTrailHit;
+	laserTrail[2] = GreenSniperProjectileLaserTrail;
 
-	lightColor  = "0.0 0.0 1.0";
+	lightColor  = "1.0 0.5 0.0";
 };
 
 function BlueSniperProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)

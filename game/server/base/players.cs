@@ -31,6 +31,8 @@ $PlayerBleedSting[1]  = RedPlayerBleedEffect_Sting;
 $PlayerBleedSting[2]  = BluePlayerBleedEffect_Sting;
 $PlayerBleedBuffer[1] = RedPlayerBleedEffect_Buffer;
 $PlayerBleedBuffer[2] = BluePlayerBleedEffect_Buffer;
+$PlayerBleedBarrier[1] = RedPlayerBleedEffect_Barrier;
+$PlayerBleedBarrier[2] = BluePlayerBleedEffect_Barrier;
 
 // damage applied every 50ms for entering liquid...
 $DamageLava		 = 10.0;
@@ -60,7 +62,7 @@ $PlayerDeathAnim::ExplosionBlowBack = 11;
 
 $PlayerShapeFxSlot::GridConnection  = 0;
 $PlayerShapeFxSlot::Energy = 1;
-$PlayerShapeFxSlot::NoDisc = 2;
+$PlayerShapeFxSlot::Barrier = 2;
 
 //-----------------------------------------------------------------------------
 
@@ -264,7 +266,7 @@ function PlayerData::onImpact(%this, %obj, %col, %vec, %vecLen)
 //----------------------------------------------------------------------------
 
 // called by ShapeBase script code...
-function PlayerData::getBleed(%this, %obj, %dmg)
+function PlayerData::getBleed(%this, %obj, %dmg, %src)
 {
 	if(%dmg > 60)
 		return $PlayerBleedHeavy[%obj.getTeamId()];
@@ -275,7 +277,12 @@ function PlayerData::getBleed(%this, %obj, %dmg)
 	else if(%dmg > 0)
 		return $PlayerBleedSting[%obj.getTeamId()];
 	else
-		return $PlayerBleedBuffer[%obj.getTeamId()];
+	{
+		if(isObject(%src) && %src.getDataBlock().bypassDamageBuffer)
+			return  $PlayerBleedBarrier[%obj.getTeamId()];
+		else
+			return $PlayerBleedBuffer[%obj.getTeamId()];
+	}
 }
 
 function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType)
@@ -739,10 +746,7 @@ function Player::numAttackingDiscs(%this)
 function Player::addAttackingDisc(%this, %disc)
 {
     %this.attackingDiscs += 1;
-    
-    %this.shapeFxSetTexture($PlayerShapeFxSlot::NoDisc, 2);
-    %this.shapeFxSetBalloon($PlayerShapeFxSlot::NoDisc, 1, 0);
-    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true, true);
+	%this.activateBarrier(0);
 }
 
 function Player::removeAttackingDisc(%this, %disc)
@@ -750,37 +754,52 @@ function Player::removeAttackingDisc(%this, %disc)
     %this.attackingDiscs -= 1;
     
     if(%this.attackingDiscs == 0)
-        %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, false, false);
+	{
+		// Only deactivate barriers that have been 
+        // activated because of an attacking disc...
+		if(%this.deactivateBarrierThread $= "")
+			%this.deactivateBarrier();
+	}
 }
 
 //-----------------------------------------------------------------------------
 
-function Player::inNoDiscGracePeriod(%this)
+function Player::hasBarrier(%this)
 {
-    return %this.noDiscGracePeriod;
+    return %this.barrier != 0;
 }
 
-function Player::startNoDiscGracePeriod(%this)
+function Player::activateBarrier(%this, %time)
 {
-    if(%this.endDiscGracePeriodThread !$= "")
-        cancel(%this.endDiscGracePeriodThread);
+    if(%this.deactivateBarrierThread !$= "")
+        cancel(%this.deactivateBarrierThread);
 
-    %gracePeriodTime = 3.0;
-
-    %this.noDiscGracePeriod = true;
-
-    %this.shapeFxSetTexture($PlayerShapeFxSlot::NoDisc, 2);
-    %this.shapeFxSetFade($PlayerShapeFxSlot::NoDisc, 1.0, -1/%gracePeriodTime);
-    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, true, true);
-
-    %this.endDiscGracePeriodThread =
-        %this.schedule(%gracePeriodTime*1000, "endNoDiscGracePeriod");
+    %this.barrier = 1;
+    %this.shapeFxSetActive($PlayerShapeFxSlot::Barrier, true, true);
+    %this.shapeFxSetTexture($PlayerShapeFxSlot::Barrier, 2);
+	if(%time == 0)
+	{
+    	%this.shapeFxSetFade($PlayerShapeFxSlot::Barrier, 1.0, 0);
+		%this.deactivateBarrierThread = "";
+	}
+	else
+	{
+    	%this.shapeFxSetFade($PlayerShapeFxSlot::Barrier, 1.0, (-1/%time) + 0.05);
+		%this.deactivateBarrierThread =
+		   %this.schedule(%time*1000, "deactivateBarrier");
+	}
 }
 
-function Player::endNoDiscGracePeriod(%this)
+function Player::deactivateBarrier(%this)
 {
-    %this.noDiscGracePeriod = false;
-    %this.shapeFxSetActive($PlayerShapeFxSlot::NoDisc, false, false);
+    if(%this.deactivateBarrierThread !$= "")
+	{
+        cancel(%this.deactivateBarrierThread);
+		%this.deactivateBarrierThread = "";
+	}
+
+    %this.barrier = 0;
+    %this.shapeFxSetActive($PlayerShapeFxSlot::Barrier, false, false);
 }
 
 //-----------------------------------------------------------------------------

@@ -30,7 +30,7 @@ function SeekerDiscPseudoProjectile::onAdd(%this, %obj)
 
 	if(%target != 0
 	&& %target.numAttackingDiscs() == 0
-	&& !%target.inNoDiscGracePeriod())
+	&& !%target.hasBarrier())
 	{
 		// determine muzzle-point...
 		%muzzlePoint = %player.getMuzzlePoint(%slot);

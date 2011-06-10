@@ -23,10 +23,10 @@ function ShapeBase::damage(%this, %sourceObject, %position, %damage, %damageType
 	return %this.getDataBlock().damage(%this, %sourceObject, %position, %damage, %damageType);
 }
 
-function ShapeBase::impulse(%this, %position, %impulseVec)
+function ShapeBase::impulse(%this, %position, %impulseVec, %src)
 {
 	// All impulses applied by one object to another should go through this method. 
-	return %this.getDataBlock().impulse(%this, %position, %impulseVec);
+	return %this.getDataBlock().impulse(%this, %position, %impulseVec, %src);
 }
 
 //-----------------------------------------------------------------------------
@@ -229,6 +229,9 @@ function ShapeBaseData::onAdd(%this,%obj)
 	%obj.setEnergyRechargeRate(%this.energyRechargeRate);
 	%obj.setRepairRate(0);
 
+	// Barrier...
+	%obj.barrier = 0;
+
 	// Start threads...
 	%obj.checkTaggedThread();
 }
@@ -345,13 +348,22 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	
 	if(isObject(%sourceObject) && %sourceObject.getDataBlock().bypassDamageBuffer)
 	{
-		%maxDamage = %obj.getDataBlock().maxDamage;
-		%dmgLevel = %obj.getDamageLevel();
-		if(%dmgLevel + %damage > %maxDamage)
-			%damage = %maxDamage - %dmgLevel;
-		%obj.setDamageLevel(%dmgLevel + %damage);
-		%healthDamageDealt = %damage;
-		%bufDamageDealt = 0;
+		if(%obj.hasBarrier())
+		{
+			%healthDamageDealt = 0;
+			%bufDamageDealt = 0;
+		}
+		else
+		{
+			%maxDamage = %obj.getDataBlock().maxDamage;
+			%dmgLevel = %obj.getDamageLevel();
+			if(%dmgLevel + %damage > %maxDamage)
+				%damage = %maxDamage - %dmgLevel;
+			%obj.setDamageLevel(%dmgLevel + %damage);
+			%obj.activateBarrier(%sourceObject.getDataBlock().impactDamage/10);
+			%healthDamageDealt = %damage;
+			%bufDamageDealt = 0;
+		}
 	}
 	else
 	{
@@ -383,7 +395,7 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	}
 	
 	// eyecandy: ain't got time to bleed?...
-	%bleed = %this.getBleed(%obj, %healthDamageDealt);
+	%bleed = %this.getBleed(%obj, %healthDamageDealt, %sourceObject);
 	if(isObject(%bleed))
 	{
 		%norm = VectorNormalize(VectorSub(%pos, %obj.getWorldBoxCenter()));
@@ -417,8 +429,11 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 }
 
 // called by ShapeBase::impulse()
-function ShapeBaseData::impulse(%this, %obj, %position, %impulseVec)
+function ShapeBaseData::impulse(%this, %obj, %position, %impulseVec, %src)
 {
+	if(%obj.hasBarrier() && isObject(%src) && %src.getDataBlock().bypassDamageBuffer)
+		return;
+
 	%impulseVec = VectorScale(%impulseVec, 1-0.75*%obj.gridConnection);
 	%obj.applyImpulse(%position, %impulseVec);
 }

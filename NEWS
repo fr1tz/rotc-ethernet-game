@@ -1,6 +1,23 @@
 What's new?
 ===========
 
+Prototype 3+dev9
+----------------
+
+- Change color rule for weapons that bypass damage buffers from
+  orange/cyan to orange/green and update sniper rifle visuals accordingly.
+- Incorporate no-disc grace period into new "barrier" mechanic:
+    - CAT's have a damage buffer and a "complementary barrier".
+    - Orange/green projectiles bypass the damage buffer.
+    - Red/blue projectiles bypass the barrier.
+    - The barrier is only activated when a CAT was hit by
+      a orange/green projectile or is being attacked by a disc.
+    - When a CAT's barrier has been activated, the CAT is not
+      affected by orange/green projectiles until the barrier
+      has completely faded away.
+
+
+
 Prototype 3+dev8
 ----------------
 

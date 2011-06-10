@@ -170,3 +170,22 @@ datablock ExplosionData(RedPlayerBleedEffect_Buffer)
 	lightEndColor = "0.0 0.0 0.0";
     lightCastShadows = false;
 };
+
+datablock ExplosionData(RedPlayerBleedEffect_Barrier)
+{
+	// shape...
+	explosionShape = "share/shapes/rotc/effects/explosion5.green.dts";
+	faceViewer	  = true;
+	playSpeed = 4.0;
+	sizes[0] = "0.1 0.1 0.1";
+	sizes[1] = "0.0 0.0 0.0";
+	times[0] = 0.0;
+	times[1] = 1.0;
+ 
+	// dynamic light...
+	lightStartRadius = 5;
+	lightEndRadius = 0;
+	lightStartColor = "0.0 1.0 0.0";
+	lightEndColor = "0.0 0.0 0.0";
+    lightCastShadows = false;
+};

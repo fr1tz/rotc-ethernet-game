@@ -99,7 +99,7 @@ function ProjectileData::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 	{
 		%impulseVec = VectorNormalize(%obj.getVelocity());
 		%impulseVec = VectorScale(%impulseVec, %this.impactImpulse);
-		%col.impulse(%pos, %impulseVec);
+		%col.impulse(%pos, %impulseVec, %obj);
 	}
 	
 	// bail out here if projectile doesn't do impact damage...

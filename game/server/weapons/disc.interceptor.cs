@@ -95,7 +95,7 @@ function RedInterceptorDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dis
 function RedInterceptorDisc::onHitTarget(%this,%obj)
 {
     %obj.getTarget().setDeflected(%obj.getVelocity());
-    %obj.sourceObject.startNoDiscGracePeriod();
+    %obj.sourceObject.activateBarrier(3);
     %obj.explode();
 }
 
