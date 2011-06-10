@@ -52,8 +52,30 @@ function meshToggleProtected(%seq) {
 
     for (%i = 0; %i < %numZones; %i++) {
         %zone = NameToID(%zonenames[%i]);
-        %zone.getDataBlock().setZoneOwner(%zone, 0);
-        %zone.setProtected(%zoneprot[%i]);
+
+		if (%zoneprot[%i] == true) {
+			// break up all connections of the zone
+			for (%j = 0; %j <= 1; %j++) {
+				%zone.connection[%j] = "";
+			}
+
+			// set the "inital" states and execute a reset on the zone
+			%zone.initiallyProtected = 1;
+			%zone.initalOwner = 0;
+			%zone.getDataBlock().reset(%zone);
+		} else {
+			// Restore the zones to their original (connected) state
+			for (%j = 0; %j <= 1; %j ++) {
+				%zone.connection[%j] = %zone.connection_wobbly[%j];
+			}
+
+			%zone.initiallyProtected = 0;
+			%zone.initalOwner = 0;
+			%zone.getDataBlock().reset(%zone);
+		}
+
+		//%zone.zProtected = %zoneprot[%i];
+		//%zone.getDataBlock().setZoneOwner(%zone, 0);
     }
 
     $meshToggleProtectedMsgThread =
