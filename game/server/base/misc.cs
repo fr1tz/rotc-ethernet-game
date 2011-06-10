@@ -104,14 +104,32 @@ function serverCmdTaggedToTarget(%client)
 	}
 }
 
-function createExplosion(%data,%pos)
+function createExplosion(%data, %pos, %norm)
 {
+	%visibleDistance = getVisibleDistance();
 	%count = ClientGroup.getCount();
-	for (%i = 0; %i < %count; %i++)
+	for(%i = 0; %i < %count; %i++)
 	{
-		%cl = ClientGroup.getObject(%i);
-		if( !%cl.isAIControlled() )
-			commandToClient(%cl, 'CreateExplosion', %data, %pos);
+		%client = ClientGroup.getObject(%i);
+		if(%client.ingame $= "")
+			continue;
+
+		%control = %client.getControlObject();
+		%dist = VectorLen(VectorSub(%pos, %control.getPosition()));
+
+		// can the player potentially see it?
+		if(%dist <= %visibleDistance)
+		{
+			createExplosionOnClient(%client, %data, %pos, %norm);
+		}	
+		else
+		{
+			// Perhaps the player can hear it?
+			// (The 'play3D' engine method does the distance check.)
+			%soundProfile = %data.soundProfile;
+			if(isObject(%soundProfile))
+				%client.play3D(%soundProfile, %pos);
+		}		
 	}
 }
 
@@ -137,7 +155,7 @@ function getVisibleDistance()
 	else
 	{
 		error("getVisibleDistance(): 'Sky' not found to get visible distance from");
-		return 0;
+		return 1000;
 	}
 }
 

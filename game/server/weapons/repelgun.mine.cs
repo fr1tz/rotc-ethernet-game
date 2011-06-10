@@ -135,7 +135,7 @@ function RedRepelGunMine::checkDetonate(%this, %obj)
 		if(VectorLen(%vel) != 0)
 		{
 			%exp = RepelExplosion5;
-			createExplosionOnClients(%exp, %targetObject.getWorldBoxCenter(), "0 0 1");
+			createExplosion(%exp, %targetObject.getWorldBoxCenter(), "0 0 1");
 		}
 	}	
 	

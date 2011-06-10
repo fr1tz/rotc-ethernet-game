@@ -53,6 +53,7 @@ function GameConnection::onClientLoadMission(%this)
 function GameConnection::onClientEnterGame(%this)
 {
 	%this.loadingMission = false;
+	%this.ingame = true;
 
 	commandToClient(%this, 'SyncClock', $Sim::Time - $Game::StartTime);
 

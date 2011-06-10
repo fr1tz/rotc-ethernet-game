@@ -102,7 +102,7 @@ function map_activateInfoPoint(%num)
 	%spawnSphere = map_getInfoPoint(%num);
 	%transform = %spawnSphere.getTransform();
 
-	createExplosionOnClients(CatJumpExplosion, %transform, "0 0 1");
+	createExplosion(CatJumpExplosion, %transform, "0 0 1");
 
     %player = new AiPlayer() {
 		dataBlock = RedStandardCat;

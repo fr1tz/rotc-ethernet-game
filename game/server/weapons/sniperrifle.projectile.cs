@@ -91,7 +91,7 @@ function RedSniperProjectile::onAdd(%this, %obj)
 	%pos = %obj.initialPosition;
 	%pos = VectorAdd(VectorScale(VectorNormalize(%vel),4), %pos);
 	%norm = "0 0 1";
-	createExplosionOnClients(%this.fireExplosion, %pos, %norm);
+	createExplosion(%this.fireExplosion, %pos, %norm);
 }
 
 function RedSniperProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)

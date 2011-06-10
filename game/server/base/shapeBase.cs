@@ -400,7 +400,7 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	{
 		%norm = VectorNormalize(VectorSub(%pos, %obj.getWorldBoxCenter()));
 		%bpos = %damageType == $DamageType::Impact ? %pos : %obj.getWorldBoxCenter();
-		createExplosionOnClients(%bleed, %bpos, %norm);
+		createExplosion(%bleed, %bpos, %norm);
 	}
  
     if(%obj.client)

@@ -208,7 +208,7 @@ function ExampleTurretWeaponImage::fire(%this, %obj, %slot)
    %tank.applyImpulse(%muzzlePoint, %impulseVec);
    
    // create a fire explosion...
-   createExplosionOnClients(TankFireExplosion,%muzzlePoint,
+   createExplosion(TankFireExplosion,%muzzlePoint,
       VectorNormalize(%muzzleVector));
    
    return %p;

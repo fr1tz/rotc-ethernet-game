@@ -813,7 +813,7 @@ function PlayerData::checkReJump(%this, %obj)
 {
     if(%obj.lastJumpTime != getSimTime() && %obj.getEnergyLevel() > %this.reJumpEnergyDrain)
     {
-       	createExplosionOnClients(CatJumpExplosion, %obj.getPosition(), "0 0 1");
+       	createExplosion(CatJumpExplosion, %obj.getPosition(), "0 0 1");
   		%impulseVec = VectorScale("0 0 1", %this.reJumpForce);
   		%obj.applyImpulse(%pos, %impulseVec);
         %obj.setEnergyLevel( %obj.getEnergyLevel() -  %this.reJumpEnergyDrain);

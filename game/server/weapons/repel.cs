@@ -62,7 +62,7 @@ function deployRepel3(%obj)
 			%exp = RepelExplosion3;			
 		else if(%speed < 70)
 			%exp = RepelExplosion4;		
-		createExplosionOnClients(%exp, %targetObject.getWorldBoxCenter(), "0 0 1");
+		createExplosion(%exp, %targetObject.getWorldBoxCenter(), "0 0 1");
 	}
 
 	// source explosion effects...
@@ -70,7 +70,7 @@ function deployRepel3(%obj)
 	%obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 1);
 	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Energy, 1.025, 100);
 	%obj.shapeFxSetFade($PlayerShapeFxSlot::Energy, 1, -1/0.15);
-	createExplosionOnClients(RepelSourceExplosion, %pos, "0 0 1");
+	createExplosion(RepelSourceExplosion, %pos, "0 0 1");
 
 	if(%hitEnemy)
 	{
@@ -142,7 +142,7 @@ function deployRepel2(%obj)
 	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::GridConnection, 1.025, 100);
 	%obj.shapeFxSetFade($PlayerShapeFxSlot::GridConnection, %obj.gridConnection, -1/0.15);
 	%obj.shapeFxSetActive($PlayerShapeFxSlot::GridConnection, true, true);
-	createExplosionOnClients(RepelSourceExplosion, %pos, "0 0 1");
+	createExplosion(RepelSourceExplosion, %pos, "0 0 1");
 	
 	if(%hitEnemy)
 	{
@@ -216,7 +216,7 @@ function deployRepel1(%obj)
 			%exp = RepelExplosion3;			
 		else if(%speed < 70)
 			%exp = RepelExplosion4;		
-		createExplosionOnClients(%exp, %targetObject.getWorldBoxCenter(), "0 0 1");
+		createExplosion(%exp, %targetObject.getWorldBoxCenter(), "0 0 1");
 	}
 
 	// source explosion effects...
@@ -224,7 +224,7 @@ function deployRepel1(%obj)
 	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Repel, 1.025, 100);
 	%obj.shapeFxSetFade($PlayerShapeFxSlot::Repel, 1, -1/0.15);
 	%obj.shapeFxSetActive($PlayerShapeFxSlot::Repel, true, true);
-	createExplosionOnClients(RepelSourceExplosion, %pos, "0 0 1");
+	createExplosion(RepelSourceExplosion, %pos, "0 0 1");
 
 	if(%hitEnemy)
 	{
