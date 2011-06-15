@@ -707,26 +707,27 @@ function Player::updateGridConnection(%this)
 		}
 		else
 		{
-			if(!%this.zCurrentZone.zHasNeighbour)
-			{
-				%color = 6;
-			}		
-			else if(%this.zCurrentZone.getTeamId() == 0)
-			{
-				%color = 0;
-			}
-			else if(%this.zCurrentZone.getTeamId() == %this.getTeamId())
-			{
-				if(%this.zCurrentZone.zBlocked)
-					%color = 2;
-				else
-					%color = 1;
-			}
-			else
-			{
-				%color = 3;
-			}				
-			%this.shapeFxSetTexture($PlayerShapeFxSlot::GridConnection, 0);							
+//			if(!%this.zCurrentZone.zHasNeighbour)
+//			{
+//				%color = 6;
+//			}		
+//			else if(%this.zCurrentZone.getTeamId() == 0)
+//			{
+//				%color = 0;
+//			}
+//			else if(%this.zCurrentZone.getTeamId() == %this.getTeamId())
+//			{
+//				if(%this.zCurrentZone.zBlocked)
+//					%color = 2;
+//				else
+//					%color = 1;
+//			}
+//			else
+//			{
+//				%color = 3;
+//			}
+			%color = 1;						
+			%this.shapeFxSetTexture($PlayerShapeFxSlot::GridConnection, 0);					
 			%this.shapeFxSetColor($PlayerShapeFxSlot::GridConnection, %color);			
 			%this.shapeFxSetFade($PlayerShapeFxSlot::GridConnection, %this.gridConnection, %this.gridConnectionDt * 20);					
 		}
