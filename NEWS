@@ -1,6 +1,14 @@
 What's new?
 ===========
 
+Prototype 4-dev1
+----------------
+
+- Breaks backwards compatibility to older versions!
+- CATs now skid when touching the ground at high speeds
+  and not etherboarding.
+
+
 Prototype 3+dev9
 ----------------
 

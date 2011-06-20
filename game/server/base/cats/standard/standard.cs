@@ -87,6 +87,9 @@ datablock PlayerData(RedStandardCat)
 	damageBufferDischargeRate = 0.15;
 	energyRechargeRate = 0.4;
 
+	skidSpeed = 20;
+	skidFactor = 0.5;
+
 	flyForce = 10 * 90;
 
 	runForce = 100 * 90; // formerly 48 * 90
@@ -184,6 +187,8 @@ datablock PlayerData(RedStandardCat)
 	slideContactParticleTrailEmitter = CatSlideContactTrailEmitter;
 	slideParticleFootEmitter = RedCatSlideFootEmitter;
 	//slideParticleTrailEmitter = BlueSlideEmitter;
+	skidParticleFootEmitter = CatSkidFootEmitter;
+	skidParticleTrailEmitter = CatSkidTrailEmitter;
 	
 	// damage info eyecandy...
 	damageBufferParticleEmitter = RedCatDamageBufferEmitter;
@@ -248,6 +253,7 @@ datablock PlayerData(RedStandardCat)
 	//exitingWater			= ExitingWaterLightSound;
 	slideSound = PlayerSlideSound;
 	slideContactSound = PlayerSlideContactSound;
+	skidSound = PlayerSkidSound;
 
 	observeParameters = "0.5 4.5 4.5";
 };

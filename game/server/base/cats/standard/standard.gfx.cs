@@ -255,6 +255,87 @@ datablock ParticleEmitterData(BlueSlideEmitter)
 
 //------------------------------------------------------------------------------
 
+datablock ParticleData(CatSkidFootEmitter_Particle)
+{
+	dragCoefficient		= 1.0;
+	gravityCoefficient	= 2.0;
+	inheritedVelFactor	= 0.0;
+	constantAcceleration = 0.0;
+	lifetimeMS			  = 300;
+	lifetimeVarianceMS	= 100;
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 1.0 0.0 0.5";
+	colors[2]	  = "1.0 1.0 0.0 0.0";
+	sizes[0]		= 1.0;
+	sizes[1]		= 1.0;
+	sizes[2]		= 1.0;
+	times[0]		= 0.0;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+	textureName	= "share/textures/rotc/dustParticle";
+	allowLighting = false;
+};
+
+datablock ParticleEmitterData(CatSkidFootEmitter)
+{
+	ejectionPeriodMS = 5;
+	periodVarianceMS = 0;
+	ejectionVelocity = 1;
+	velocityVariance = 0;
+	ejectionOffset	= 0.75;
+	thetaMin			= 20;
+	thetaMax			= 50;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	overrideAdvances = false;
+	orientParticles  = false;
+	lifetimeMS		 = 0; // forever
+	particles = CatSkidFootEmitter_Particle;
+};
+
+//------------------------------------------------------------------------------
+
+datablock ParticleData(CatSkidTrailEmitter_Particle)
+{
+	dragCoefficient		= 0.0;
+	gravityCoefficient	= 3.0;
+	inheritedVelFactor	= 0.0;
+	constantAcceleration = 0.0;
+	lifetimeMS			  = 1000;
+	lifetimeVarianceMS	= 350;
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 1.0 1.0 0.5";
+	colors[2]	  = "1.0 1.0 1.0 0.0";
+	sizes[0]		= 0.5;
+	sizes[1]		= 0.5;
+	sizes[2]		= 0.5;
+	times[0]		= 0.0;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+	textureName	= "share/textures/rotc/spark00";
+	useInvAlpha = false;
+	allowLighting = false;
+};
+
+datablock ParticleEmitterData(CatSkidTrailEmitter)
+{
+	ejectionPeriodMS = 5;
+	periodVarianceMS = 0;
+	ejectionVelocity = 10;
+	velocityVariance = 5;
+	ejectionOffset	= 0.0;
+	thetaMin			= 20;
+	thetaMax			= 50;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	overrideAdvances = false;
+	orientParticles  = true;
+	lifetimeMS		 = 0; // forever
+	particles = CatSkidTrailEmitter_Particle;
+};
+
+//------------------------------------------------------------------------------
+
 datablock DebrisData(StandardCatDebris)
 {
 	explodeOnMaxBounce = false;

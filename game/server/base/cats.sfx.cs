@@ -29,6 +29,13 @@ datablock AudioProfile(PlayerSlideContactSound)
 	preload = true;
 };
 
+datablock AudioProfile(PlayerSkidSound)
+{
+	filename	 = "share/sounds/rotc/slide3.wav";
+	description = AudioCloseLooping3D;
+	preload = true;
+};
+
 datablock AudioProfile(CatJumpExplosionSound)
 {
 	filename = "share/sounds/rotc/explosion3.wav";
