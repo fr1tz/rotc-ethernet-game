@@ -15,6 +15,56 @@ exec("./assaultrifle.gfx.cs");
 exec("./assaultrifle.gfx.red.cs");
 exec("./assaultrifle.gfx.blue.cs");
 
+datablock TracerProjectileData(AssaultRiflePseudoProjectile)
+{
+	energyDrain = 16;
+	lifetime = 1000;
+	muzzleVelocity = 300;
+	velInheritFactor = 0.95;
+};
+
+function AssaultRiflePseudoProjectile::onAdd(%this, %obj)
+{
+	%player = %obj.sourceObject;
+	%slot = %obj.sourceSlot;
+	%image = %player.getMountedImage(%slot);
+
+	%muzzlePoint = %obj.initialPosition;
+	%muzzleVector = %obj.initialVelocity;
+	%muzzleTransform = createOrientFromDir(VectorNormalize(%muzzleVector));
+	
+	%pos[0] = "0 0 0";
+	%vec[0] = "0 1 0.005";
+	%pos[1] = "0 0 0.1";
+	%vec[1] = "0 1 0.025";
+	
+	for(%i = 0; %i < 2; %i++)
+	{
+		%projectile = %image.fireprojectile[%i];
+	
+		%position =	VectorAdd(
+			%muzzlePoint, 
+			MatrixMulVector(%muzzleTransform, %pos[%i])
+		);		
+		%velocity = VectorScale(MatrixMulVector(%muzzleTransform, %vec[%i]), %this.muzzleVelocity);
+
+		// create the projectile object...
+		%p = new Projectile() {
+			dataBlock       = %projectile;
+			teamId          = %obj.teamId;
+			initialVelocity = %velocity;
+			initialPosition = %position;
+			sourceObject    = %player;
+			sourceSlot      = %slot;
+			client	        = %obj.client;
+		};
+		MissionCleanup.add(%p);
+	}	
+        
+	// no need to ghost pseudo projectile to clients...
+	%obj.delete();
+}
+
 //-----------------------------------------------------------------------------
 // projectile datablock...
 
@@ -30,9 +80,6 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	splashImpulse      = 0;
 	bypassDamageBuffer = false;
 	
-	// how much energy does firing this projectile drain?...
-	energyDrain = 8;
-
 	trackingAgility = 0;
 	
 	explodesNearEnemies			= true;
@@ -174,10 +221,9 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	correctMuzzleVector = true;
 
 	usesEnergy = true;
-	minEnergy = 15;
+	minEnergy = 16;
 
-	fireprojectile[0] = RedAssaultRifleProjectile1;
-	fireprojectile[1] = RedAssaultRifleProjectile2;
+	projectile = AssaultRiflePseudoProjectile;
 
 	// light properties...
 	lightType = "WeaponFireLight";
@@ -192,6 +238,8 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	mainWeapon = true;
 	armThread  = "holdrifle";  // armThread to use when holding this weapon
 	crosshair  = "assaultrifle"; // crosshair to display when holding this weapon
+	fireprojectile[0] = RedAssaultRifleProjectile1;
+	fireprojectile[1] = RedAssaultRifleProjectile2;
 
 	//-------------------------------------------------
 	// image states...
@@ -221,21 +269,14 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateTransitionOnTriggerUp[3]    = "KeepAiming";
 		//stateTimeoutValue[3]             = 0.0;
 		stateFire[3]                     = true;
-		//stateFireProjectile[3]           = RedAssaultRifleProjectile1;
+		stateFireProjectile[3]           = AssaultRiflePseudoProjectile;
 		stateRecoil[3]                   = MediumRecoil;
 		stateAllowImageChange[3]         = false;
 		stateEjectShell[3]               = true;
 		stateArmThread[3]                = "aimrifle";
 		stateSequence[3]                 = "Fire";
 		stateSound[3]                    = AssaultRifleFireSound;
-		stateScript[3]                   = "onFire";
 
-		stateName[8]                     = "Fire2";
-		stateTransitionOnTriggerUp[8]    = "KeepAiming";
-		stateTimeoutValue[8]             = 0.10;
-		stateFireProjectile[8]           = RedAssaultRifleProjectile2;
-		stateAllowImageChange[8]         = false;
-		
 		stateName[4]                     = "KeepAiming";
 		stateTransitionOnNoAmmo[4]       = "NoAmmo";
 		stateTransitionOnNotLoaded[4]    = "Disabled";
@@ -264,53 +305,6 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	//-------------------------------------------------
 };
 
-function RedAssaultRifleImage::onFire(%this, %obj, %slot)
-{
-	%objectVelocity = %obj.getVelocity();
-	%muzzlePoint = %obj.getMuzzlePoint(%slot);
-	%muzzleVector = %obj.getMuzzleVector(%slot);	
-	%muzzleTransform = createOrientFromDir(%muzzleVector);
-	
-	%pos[0] = "0 0 0";
-	%vec[0] = "0 1 0.005";
-	%pos[1] = "0 0 0.1";
-	%vec[1] = "0 1 0.025";
-	
-	for(%i = 0; %i < 2; %i++)
-	{
-		%projectile = %this.fireprojectile[%i];
-	
-      %position =	VectorAdd(
-			%muzzlePoint, 
-			MatrixMulVector(%muzzleTransform, %pos[%i])
-		);		
-		%velocity = VectorAdd(
-			VectorScale(MatrixMulVector(%muzzleTransform, %vec[%i]), %projectile.muzzleVelocity),
-			VectorScale(%objectVelocity, %projectile.velInheritFactor)
-		);	      
-
-		// create the projectile object...
-		%p = new Projectile() {
-			dataBlock       = %projectile;
-			teamId          = %obj.teamId;
-			initialVelocity = %velocity;
-			initialPosition = %position;
-			sourceObject    = %obj;
-			sourceSlot      = %slot;
-			client	    = %obj.client;
-		};
-		MissionCleanup.add(%p);
-
-		%obj.setEnergyLevel(%obj.getEnergyLevel() - %projectile.energyDrain);
-	 
-		%target = %obj.getImageTarget(%slot);
-		if(isObject(%target))
-			%p.setTarget(%target);	
-	}	
-        
-	return %p;
-}
-
 //------------------------------------------------------------------------------
 
 datablock ShapeBaseImageData(BlueAssaultRifleImage : RedAssaultRifleImage)
@@ -322,9 +316,4 @@ datablock ShapeBaseImageData(BlueAssaultRifleImage : RedAssaultRifleImage)
 	//stateFireProjectile[3] = BlueAssaultRifleProjectile1;
 	//stateFireProjectile[8] = BlueAssaultRifleProjectile2;
 };
-
-function BlueAssaultRifleImage::onFire(%this, %obj, %slot)
-{
-	RedAssaultRifleImage::onFire(%this, %obj, %slot);
-}
 
