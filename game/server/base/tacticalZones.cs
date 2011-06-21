@@ -293,6 +293,7 @@ function TerritoryZone::onTick(%this, %zone)
 
 function TerritoryZone::updateOwner(%this, %zone)
 {
+	%numConnections = 0;
 	%connectedToRed = false;
 	%connectedToBlue = false;
 
@@ -301,6 +302,7 @@ function TerritoryZone::updateOwner(%this, %zone)
 		%z = %zone.zNeighbour[%i];
 		if(isObject(%z))
 		{
+			%numConnections++;
 			if(%z.getTeamId() == 1)
 				%connectedToRed = true;
 			if(%z.getTeamId() == 2)
@@ -308,15 +310,17 @@ function TerritoryZone::updateOwner(%this, %zone)
 		}
 	}
 
-	if(%zone.zNumReds != 0 && %zone.zNumBlues == 0 && %connectedToRed)
+	if(%zone.zNumReds != 0 && %zone.zNumBlues == 0 
+	&& (%connectedToRed || (%zone.getTeamId() == 0 && %numConnections == 1)))
 	{
 		%this.setZoneOwner(%zone, 1);
 	}
-	else if(%zone.zNumBlues != 0 && %zone.zNumReds == 0 && %connectedToBlue)
+	else if(%zone.zNumBlues != 0 && %zone.zNumReds == 0 
+	&& (%connectedToBlue || (%zone.getTeamId() == 0 && %numConnections == 1)))
 	{
 		%this.setZoneOwner(%zone, 2);
 	}
-	else if(%zone.zNumReds != 0 && %zone.zNumBlues != 0 && %connectedToRed && %connectedToBlue)
+	else if(%zone.zNumReds != 0 && %zone.zNumBlues != 0 && %numConnections > 0)
 	{
 		%this.setZoneOwner(%zone, 0);
 	}
