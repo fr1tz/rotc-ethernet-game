@@ -65,6 +65,7 @@ function SS_StartMission()
 		
 	$Pref::Server::Info = SS_ServerInfo.getText();
 
+	disconnect();
 	createServer(%serverType, %mapInfoFile);
 	%conn = new GameConnection(ServerConnection);
 	RootGroup.add(ServerConnection);
