@@ -509,8 +509,7 @@ function serverCmdShowSettings(%client, %section)
 	%newtxt = om_init();
 	%client.beginMenuText();
 	
-	%note = "Note: In order for your changes to be saved you need to run at least" SPC
-		"version p.3+dev2. You are running" SPC %client.gameVersionString @ ".";
+	%note = "";
 
 	if(%section == 1)
 	{
