@@ -23,11 +23,11 @@ function onConnectionInitiated()
 {
 	// Reset all the loading stuff...
 	LoadingProgressTxt.setText("WAITING FOR SERVER");
-	LoadingWidgets.setVisible(true);
-	MissionWidgets.setVisible(false);
+	IngameMenuReturn.setActive(false);
 	IngameMenuText.setText("");
 
 	addWindow(MissionWindow);
+	//addWindow(ServerMessagesWindow);
 	MissionWindow.resizeIdeal();
 }
 
@@ -52,10 +52,10 @@ function onMissionDownloadPhase1(%missionEnvFile, %musicTrack)
 	// Reset the loading progress controls:
 	LoadingProgress.setValue(0);
 	LoadingProgressTxt.setValue("LOADING DATABLOCKS");
-	LoadingWidgets.setVisible(true);
-	MissionWidgets.setVisible(false);
+	IngameMenuReturn.setActive(false);
 
 	addWindow(MissionWindow);
+	//addWindow(ServerMessagesWindow);	
 }
 
 function onPhase1Progress(%progress)
@@ -130,9 +130,11 @@ function onMissionDownloadComplete()
 	MiniMap.setMapBitmap(%mapBitmap);
 	BigMap.setMapBitmap(%mapBitmap);
 
-	// Replace mission window loading controls with in-game controls
-	LoadingWidgets.setVisible(false);
-	MissionWidgets.setVisible(true);
+	LoadingProgressTxt.setValue(replaceBindVars("Loading done, press @bind01 to play."));
+	LoadingProgress.setValue(0);
+
+	// Enable player to play...
+	IngameMenuReturn.setActive(true);
 }
 
 

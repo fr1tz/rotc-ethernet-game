@@ -45,7 +45,7 @@ function GameConnection::initialControlSet(%this)
 		if (Canvas.getContent() == Shell.getId())
 		{
 			Canvas.setContent(Hud);
-			toggleShellDlg();
+			showShellDlg();
 			
 			// Make sure we're displaying the IRC window if we're not offline...
 			if(!$IRC::Offline)
@@ -178,10 +178,14 @@ function disconnectedCleanup()
 	
 	// Make sure the certain windows will not be visible
 	removeWindow(MissionWindow);
+	removeWindow(ServerMessagesWindow);
 	removeWindow(RecordingControlsWindow);
 
 	// Make sure we're displaying the shell
 	Canvas.setContent(Shell);
+
+	// Make sure we're displaying the toolbox
+	addWindow(RootMenuWindow);
 	
 	// Make sure we're displaying the IRC window if we're not offline...
 	if(!$IRC::Offline)

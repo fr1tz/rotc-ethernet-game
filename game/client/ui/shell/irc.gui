@@ -27,7 +27,7 @@ new GuiControl(IrcWindowForEditing) {
       canSave = "1";
       Visible = "1";
       hovertime = "1000";
-      text = "Player Chat";
+      text = "Global Player Chat";
       maxLength = "255";
       resizeWidth = "1";
       resizeHeight = "1";

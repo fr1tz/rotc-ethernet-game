@@ -15,17 +15,30 @@ function onCanvasContentChanged(%oldContent, %newContent)
 		updateShellDlg();
 }
 
+function showShellDlg()
+{
+	$ShellDlgActive = true;
+	updateShellDlg();
+}
+
 function updateShellDlg()
 {
 	if($ShellDlgActive)
 	{
 		if(!ShellDlg.isAwake())
 			Canvas.pushDialog(ShellDlg);
+
+		addWindow(RootMenuWindow);
 			
 		if(ServerConnection.isDemoPlaying())
+		{
 			addWindow(RecordingControlsWindow);
+		}
 		else
-			addWindow(MissionWindow);			
+		{
+			addWindow(MissionWindow);
+			//addWindow(ServerMessagesWindow);
+		}		
 	}
 	else
 	{
