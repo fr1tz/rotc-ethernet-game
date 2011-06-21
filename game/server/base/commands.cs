@@ -30,7 +30,7 @@ function serverCmdPlayerAction(%client, %nr, %val)
 	if(%player == 0)
 		return false;
 
-	if(%nr == 0 && %val)
+	if(%nr == 0 && %val && %client.menuVisible == false)
 	{
 		%client.togglePlayerForm();
 	}
