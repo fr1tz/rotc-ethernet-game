@@ -319,7 +319,7 @@ datablock ParticleData(CatSkidTrailEmitter_Particle)
 
 datablock ParticleEmitterData(CatSkidTrailEmitter)
 {
-	ejectionPeriodMS = 5;
+	ejectionPeriodMS = 2;
 	periodVarianceMS = 0;
 	ejectionVelocity = 10;
 	velocityVariance = 5;

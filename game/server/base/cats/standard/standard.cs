@@ -88,7 +88,7 @@ datablock PlayerData(RedStandardCat)
 	energyRechargeRate = 0.4;
 
 	skidSpeed = 20;
-	skidFactor = 0.5;
+	skidFactor = 0.4;
 
 	flyForce = 10 * 90;
 
