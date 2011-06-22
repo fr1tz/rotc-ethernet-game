@@ -790,7 +790,7 @@ function GameConnection::updateTopHudMenuThread(%this)
 		return;
 	
 	%this.setHudMenuT(0, "\n<just:center><color:888888>Showing: ", 1, 1);			
-	%this.setHudMenuT(2, "(@bind65 to change)\n<just:left>", 1, 1);			
+	%this.setHudMenuT(2, "(@bind66 to change)\n<just:left>", 1, 1);			
 	%i = 2;
 	
 	if(%this.topHudMenu $= "newbiehelp")
@@ -822,7 +822,7 @@ function GameConnection::updateTopHudMenuThread(%this)
 			%this.setHudMenuT(8, "", 1, 0);		
 		}
 
-		%this.setHudMenuT(%i++, "<just:center>(Press @bind66 for a random hint)\n<font:NovaSquare:18><color:FFFFFF", 1, 1);
+		%this.setHudMenuT(%i++, "<just:center>(Press @bind65 for a random hint)\n<font:NovaSquare:18><color:FFFFFF", 1, 1);
 		%this.setHudMenuT(%i++, byteToHex(%alpha), 1, 1);				
 		%this.setHudMenuT(%i++, ">Hint:\n<color:", 1, 1);		
 		%this.setHudMenuT(%i++, %color, 1, 1);					
@@ -894,8 +894,10 @@ function GameConnection::setNewbieHelp(%this, %msg, %time)
 		%tip[%i++] = "The sky changing color is not just eyecandy. In a contested zone, the red/blue" SPC
 			"values of the sky color reflect the amount of health of red/blue CATs in the zone.";
 		%tip[%i++] = "Press @bind25 for arena-wide chat, @bind26 for team-chat.";			
-		%tip[%i++] = "Looking for more players? - Try the worldwide player chat located" SPC
-			"at the very top of the \"Arena\" window.";			
+		%tip[%i++] = "Looking for more players? - Try the global player chat (accessible" SPC
+			"through the \"Client Toolbox\" window).";		
+		%tip[%i++] = "To get a complete overview of the zones, press @bind30 for a bigger" SPC
+			"minimap. If you want to look at the precise landscape, press @bind31.";		
 
 		%rand = getRandom(%i);
 		%msg = %tip[%rand];
