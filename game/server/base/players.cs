@@ -396,13 +396,24 @@ function PlayerData::onDamage(%this, %obj, %delta)
 	
 	if(%obj.getState() !$= "Dead")
 	{
-		// Set whiteout flash
-		%flash = %obj.getWhiteOut() + ((%delta / %this.maxDamage));
-		if(%flash > 0.75)
-			%flash = 0.75;
-		else if(%flash < 0)
-			%flash = 0;
-		%obj.setWhiteOut(%flash);
+		// Damage flash
+		if(isObject(%obj.client))
+		{
+			%client = %obj.client;
+			%client.damageFlash += (%delta / %this.maxDamage);
+			if(%client.damageFlash > 0.75)
+				%client.damageFlash = 0.75;
+			else if(%client.damageFlash < 0)
+				%client.damageFlash = 0;
+			%client.setHudBackground(
+				1,
+				"share/textures/rotc/heating",
+				"255 255 255",
+				false,
+				%client.damageFlash * 255,
+				-10
+			);
+		}
 
 		// If the pain is excessive, let's hear about it.
 		if (%delta > 10)
