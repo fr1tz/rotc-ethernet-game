@@ -285,7 +285,7 @@ function serverCmdNews(%client)
 }
 
 
-function serverCmdShowPlayerList(%client, %show)
+function serverCmdShowPlayerList(%client, %arg)
 {
 	%newtxt = om_init();
 	%client.beginMenuText(%client.menu $= "playerlist");
@@ -293,8 +293,29 @@ function serverCmdShowPlayerList(%client, %show)
 	%newtxt = %newtxt @ 
 		om_head(%client, "Player List");
 
+	if(%arg $= "nogroup")
+	{
+		%client.playerListNoGroup = true;
+		%show = %client.playerListShow;
+	}
+	else if(%arg $= "group")
+	{
+		%client.playerListNoGroup = false;	
+		%show = %client.playerListShow;
+	}
+	else if(%arg !$= "")
+	{
+		%show = %arg;
+	}
+	else
+	{
+		%show = %client.playerListShow;
+	}
+
 	if(%show $= "")
 		%show = "dmgrating";
+
+	%client.playerListShow = %show;
 
 	%array = new Array();
 
@@ -392,9 +413,27 @@ function serverCmdShowPlayerList(%client, %show)
 	else if(%show $= "time")
 		%showtext[0] = "Time played (mins)";
 
+	if(%client.playerListNoGroup == true)
+		%groupByTeam = false;
+	else
+		%groupByTeam = true;
+
+	%groupingLinks = "";
+	if(!%groupByTeam)
+		%groupingLinks = %groupingLinks @ "<a:cmd ShowPlayerList group>";
+	%groupingLinks = %groupingLinks @ "Group by team";
+	if(!%groupByTeam)
+		%groupingLinks = %groupingLinks @ "</a>";
+	%groupingLinks = %groupingLinks @ " | ";
+	if(%groupByTeam)
+		%groupingLinks = %groupingLinks @ "<a:cmd ShowPlayerList nogroup>";
+	%groupingLinks = %groupingLinks @ "Don't group players";
+	if(%groupByTeam)
+		%groupingLinks = %groupingLinks @ "</a>";
+
 	%newtxt = %newtxt @
 		"Show:\n" @
-		"<lmargin:25>" @
+		"<lmargin:10>" @
 		"<a:cmd ShowPlayerList dmgrating>Damage rating</a> |" SPC
 		"<a:cmd ShowPlayerList dmgratio>Damage ratio</a> |" SPC
 		"<a:cmd ShowPlayerList healthlost>Effective health loss</a> |" SPC
@@ -409,25 +448,39 @@ function serverCmdShowPlayerList(%client, %show)
 		"<a:cmd ShowPlayerList sniperF>Sniper</a>," SPC		
 		"<a:cmd ShowPlayerList minigunF>Minigun</a>," SPC
 		"<a:cmd ShowPlayerList glF>GL</a>\n" SPC
-		"<a:cmd ShowPlayerList time>Time played</a>" @
+		"<a:cmd ShowPlayerList time>Time played</a>\n" @
+		"\n" @ %groupingLinks @
 		"<lmargin:0>\n\n" @
-		"<tab:25, 150, 200, 250, 350>" @
+		"<tab:10, 150, 200, 250, 350>" @
 		"\tName/Handicap\tTeam\tPing" TAB %showtext[0] @ "\n\t\t\t\t" @ %showtext[1] @ "\n\n" @
 		"";
+
+	%players = "";
+	%reds = "";
+	%blues = "";
+	%others = "";
 
 	%idx = %array.moveFirst();
 	while(%idx != -1)
 	{
 		%k = %array.getKey(%idx);
 		%v = %array.getValue(%idx);
+
+		%line = "<spush>";
 		
 		%name = %k.nameBase;
 		if(%k.team == $Team0)
 			%team = "Obs.";
 		else if(%k.team == $Team1)
+		{
 			%team = "Red";
+			%line = %line @ "<color:AA0000>";
+		}
 		else if(%k.team == $Team2)
+		{
 			%team = "Blue";
+			%line = %line @ "<color:0000AA>";
+		}
 		else
 			%team = "-";
 			
@@ -436,18 +489,45 @@ function serverCmdShowPlayerList(%client, %show)
 			%handicap = "1.0";			
 
 		if(%k == %client)
-			%newtxt = %newtxt @ "<spush><shadowcolor:00FF00><shadow:1:1>";
+			%line = %line @ "<spush><shadowcolor:00FF00><shadow:1:1>";
 
-		%newtxt = %newtxt @ 
-			"\>\>\t<a:cmd ShowPlayerInfo" SPC %k @ ">" @ %name @ "</a>" @ "-" @ %handicap TAB %team TAB %k.getPing() TAB %v @ "\n";
+		%line = %line @ 
+			"\>\t<a:cmd ShowPlayerInfo" SPC %k @ ">" @ %name @ "</a>" @ "-" @ %handicap TAB %team TAB %k.getPing() TAB %v @ "\n";
 
 		if(%k == %client)
-			%newtxt = %newtxt @ "<spop>";
+			%line = %line @ "<spop>";
+
+		%line = %line @ "<spop>";
+
+
+		if(%groupByTeam)
+		{
+			if(%k.team == $Team1)
+				%reds = %reds @ %line;
+			else if(%k.team == $Team2)
+				%blues = %blues @ %line;
+			else
+				%others = %others @ %line;
+		}
+		else
+		{
+			%players = %players @ %line;			
+		}
 
 		%idx = %array.moveNext();
 	}
 	
-	%array.delete();	
+	%array.delete();
+
+	if(%groupByTeam)
+	{
+		if(%reds $= "") %reds = "<spush><color:AA0000>\t(No red players)<spop>\n";
+		if(%blues $= "") %blues = "<spush><color:0000AA>\t(No blue players)<spop>\n";
+		if(%others $= "") %others = "\t(No unassigned players)";
+		%players = %reds @ "\n" @ %blues @ "\n" @ %others;
+	}
+
+	%newtxt = %newtxt @ %players;	
 
 	%client.addMenuText(%newtxt);
 	%client.endMenuText();

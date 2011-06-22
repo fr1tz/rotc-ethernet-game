@@ -1035,12 +1035,6 @@ function GameConnection::updateQuickbar(%this)
 	else
 	{
 		%joinText = "Join Team:\n<spush><font:NovaSquare:25>";
-		if(%this.team != $Team0)
-			%joinText = %joinText @ "<a:cmd JoinTeam 0>";
-		%joinText = %joinText @ "Observers (" @ $Team0.numPlayers @ ")";
-		if(%this.team != $Team0)
-			%joinText = %joinText @ "</a>";		
-		%joinText = %joinText @ "    ";	
 		if(%this.team != $Team1)
 			%joinText = %joinText @ "<a:cmd JoinTeam 1>";
 		%joinText = %joinText @ "Reds (" @ $Team1.numPlayers @ ")";
@@ -1051,7 +1045,13 @@ function GameConnection::updateQuickbar(%this)
 			%joinText = %joinText @ "<a:cmd JoinTeam 2>";
 		%joinText = %joinText @ "Blues (" @ $Team2.numPlayers @ ")";
 		if(%this.team != $Team2)
-			%joinText = %joinText @ "</a>";		
+			%joinText = %joinText @ "</a>";	
+		%joinText = %joinText @ "    ";	
+		if(%this.team != $Team0)
+			%joinText = %joinText @ "<a:cmd JoinTeam 0>";
+		%joinText = %joinText @ "Observers (" @ $Team0.numPlayers @ ")";
+		if(%this.team != $Team0)
+			%joinText = %joinText @ "</a>";			
 	}
 	
 	%r = %r @ %joinText;	
