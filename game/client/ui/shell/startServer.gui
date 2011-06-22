@@ -27,7 +27,7 @@ new GuiControl(StartServerWindowForEditing) {
       canSave = "1";
       Visible = "1";
       hovertime = "1000";
-      text = "Create Arena";
+      text = "Host Arena";
       maxLength = "255";
       resizeWidth = "1";
       resizeHeight = "1";
