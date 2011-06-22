@@ -13,6 +13,41 @@ function clientCmdSetHudColor(%darkcolor, %lightcolor)
 	Hud.setColor(%darkcolor, %lightcolor);
 }
 
+function clientCmdSetHudBackground(%slot, %bitmap, %color, %repeat, %alpha, %alphaDt)
+{
+	//error("slot:" SPC %slot);
+	//error("bitmap:" SPC %bitmap);
+	//error("color:" SPC %color);
+	//error("repeat:" SPC %repeat);
+	//error("alpha:" SPC %alpha);
+	//error("alphaDt:" SPC %alphaDt);
+
+	switch(%slot) {
+		case 1:
+			%ctrl = HudBackground1;
+			%profile = HudBackgroundProfile1;
+		case 2:
+			%ctrl = HudBackground2;
+			%profile = HudBackgroundProfile2;
+		case 3:
+			%ctrl = HudBackground3;
+			%profile = HudBackgroundProfile3;
+		default:
+			return;
+	}
+
+	if(%bitmap !$= "")
+		%ctrl.bitmap = %bitmap;
+	if(%color !$= "") 
+		HUD.zBackgroundColor[%slot] = %color;
+	if(%repeat !$= "")
+		%ctrl.wrap = %repeat;
+	HUD.zBackgroundAlpha[%slot] = %alpha;
+	if(%alphaDt !$= "")
+		HUD.zBackgroundAlphaDt[%slot] = %alphaDt;
+	%profile.fillColor = %color SPC %alpha;
+}
+
 function refreshBottomTextCtrl()
 {
 	BottomPrintText.position = "0 0";
@@ -50,7 +85,7 @@ function Hud::onWake(%this)
 	schedule(0, 0, "refreshBottomTextCtrl");
 
 	%this.flashWarnings();
-	%this.updateMetrics();
+	%this.animThread();
 }
 
 function Hud::onSleep(%this)
@@ -61,6 +96,7 @@ function Hud::onSleep(%this)
 	popActionMap(MoveMap);
 
 	cancel(%this.flashWarningsThread);
+	cancel(%this.zAnimThread);
 }
 
 function Hud::flashWarnings(%this)
@@ -79,10 +115,8 @@ function Hud::flashWarnings(%this)
 	%this.flashWarningsThread = %this.schedule(500, "flashWarnings");
 }
 
-function Hud::updateMetrics(%this)
+function Hud::animThread(%this)
 {
-	cancel(%this.zUpdateMetricsThread);
-
 	HudFpsGraph.setVisible($Pref::Hud::ShowFPSGraph);
 	
 	%txt = "";
@@ -94,8 +128,30 @@ function Hud::updateMetrics(%this)
 		%txt = %txt @ "FPS:" SPC ($FPS::Real);
 		
 	HudMetrics.setText(%txt);
+
+	for(%slot = 1; %slot <= 3; %slot++)
+	{
+		switch(%slot) {
+			case 1:
+				%ctrl = HudBackground1;
+				%profile = HudBackgroundProfile1;
+			case 2:
+				%ctrl = HudBackground2;
+				%profile = HudBackgroundProfile2;
+			case 3:
+				%ctrl = HudBackground3;
+				%profile = HudBackgroundProfile3;
+		}
+
+		HUD.zBackgroundAlpha[%slot] += HUD.zBackgroundAlphaDt[%slot];
+		if(HUD.zBackgroundAlpha[%slot] < 0)
+			HUD.zBackgroundAlpha[%slot] = 0;
+
+		%profile.fillColor = 
+			HUD.zBackgroundColor[%slot] SPC HUD.zBackgroundAlpha[%slot];
+	}
 	
-	%this.zUpdateMetricsThread = %this.schedule(50, "updateMetrics");
+	%this.zAnimThread = %this.schedule(50, "animThread");
 }
 
 

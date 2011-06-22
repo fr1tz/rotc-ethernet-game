@@ -80,6 +80,15 @@ function GameConnection::onClientEnterGame(%this)
 	// HUD color...
 	%this.hudColor = %this.getCookie("ROTC_HudColor");
 
+	// HUD Backgrounds...
+	for(%i = 1; %i <= 3; %i++)
+	{
+		%this.hudBackgroundBitmap[%i] = "";
+		%this.hudBackgroundColor[%i] = "";
+		%this.hudBackgroundRepeat[%i] = "";
+		%this.hudBackgroundAlphaDt[%i] = "";
+	}
+
 	// HUD Warnings...
 	for(%i = 1; %i <= 6; %i++)
 	{
@@ -656,6 +665,35 @@ function GameConnection::addMenuText(%this, %text)
 function GameConnection::endMenuText(%this)
 {
 	commandToClient(%this, 'EndMenuTxt');
+}
+
+//-----------------------------------------------------------------------------
+
+function GameConnection::setHudBackground(%this, %slot, %bitmap, %color,
+	%repeat, %alpha, %alphaDt)
+{
+	if(%this.hudBackgroundBitmap[%slot] $= %bitmap)
+		%bitmap = "";
+	else
+		%this.hudBackgroundBitmap[%slot] = %bitmap;	
+
+	if(%this.hudBackgroundColor[%slot] $= %color)
+		%color = "";
+	else
+		%this.hudBackgroundColor[%slot] = %color;
+
+	if(%this.hudBackgroundRepeat[%slot] $= %repeat)
+		%repeat = "";
+	else
+		%this.hudBackgroundRepeat[%slot] = %repeat;		
+
+	if(%this.hudBackgroundAlphaDt[%slot] $= %alphaDt)
+		%alphaDt = "";
+	else
+		%this.hudBackgroundAlphaDt[%slot] = %alphaDt;	
+
+	commandToClient(%this, 'SetHudBackground', %slot, %bitmap, %color, 
+		%repeat, %alpha, %alphaDt);
 }
 
 //-----------------------------------------------------------------------------
