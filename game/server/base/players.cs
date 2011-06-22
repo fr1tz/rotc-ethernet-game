@@ -618,6 +618,18 @@ function Player::updateRegeneration(%this)
 
 //-----------------------------------------------------------------------------
 
+function Player::setGridConnection(%this, %val)
+{
+	if(%val == %this.gridConnection)
+		return;
+
+	%this.gridConnection = %val;
+					
+	%this.shapeFxSetTexture($PlayerShapeFxSlot::GridConnection, 0);					
+	%this.shapeFxSetColor($PlayerShapeFxSlot::GridConnection, 1);			
+	%this.shapeFxSetFade($PlayerShapeFxSlot::GridConnection, %val, %this.gridConnectionDt * 20);
+}
+
 function Player::updateGridConnection(%this)
 {
 	%dtTime = 50;
@@ -747,7 +759,7 @@ function Player::numAttackingDiscs(%this)
 function Player::addAttackingDisc(%this, %disc)
 {
     %this.attackingDiscs += 1;
-	%this.activateBarrier(0);
+//	%this.activateBarrier(0);
 }
 
 function Player::removeAttackingDisc(%this, %disc)
@@ -778,6 +790,7 @@ function Player::activateBarrier(%this, %time)
     %this.barrier = 1;
     %this.shapeFxSetActive($PlayerShapeFxSlot::Barrier, true, true);
     %this.shapeFxSetTexture($PlayerShapeFxSlot::Barrier, 2);
+	%this.shapeFxSetBalloon($PlayerShapeFxSlot::Barrier, 1, 0);
 	if(%time == 0)
 	{
     	%this.shapeFxSetFade($PlayerShapeFxSlot::Barrier, 1.0, 0);
@@ -800,7 +813,13 @@ function Player::deactivateBarrier(%this)
 	}
 
     %this.barrier = 0;
-    %this.shapeFxSetActive($PlayerShapeFxSlot::Barrier, false, false);
+
+	//%this.shapeFxSetActive($PlayerShapeFxSlot::Barrier, false, false);
+
+	%this.shapeFxSetTexture($PlayerShapeFxSlot::Barrier, 0);
+	%this.shapeFxSetBalloon($PlayerShapeFxSlot::Barrier, 1, 0);
+	%this.shapeFxSetFade($PlayerShapeFxSlot::Barrier, 1.0, -1/1);
+    %this.shapeFxSetActive($PlayerShapeFxSlot::Barrier, true, true);
 }
 
 //-----------------------------------------------------------------------------

@@ -95,7 +95,11 @@ function RedInterceptorDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dis
 function RedInterceptorDisc::onHitTarget(%this,%obj)
 {
     %obj.getTarget().setDeflected(%obj.getVelocity());
-    %obj.sourceObject.activateBarrier(3);
+//    %obj.sourceObject.activateBarrier(3);
+//	%enemy = %obj.getTarget().sourceObject;
+//	%player = %obj.sourceObject;
+//	if(isObject(%enemy) && isObject(%player))
+//		%player.setDiscTarget(%enemy);
     %obj.explode();
 }
 

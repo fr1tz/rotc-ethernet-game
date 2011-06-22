@@ -19,11 +19,11 @@ datablock NortDiscData(RedSeekerDisc)
 	stat = "seeker";
 
 	// script damage properties...
-	impactDamage		 = 60;
-	impactImpulse		= 1000;
-	splashDamage		 = 0;
+	impactDamage       = 0;
+	impactImpulse      = 0;
+	splashDamage       = 0;
 	splashDamageRadius = 0;
-	splashImpulse		= 0;
+	splashImpulse      = 0;
 	
 	energyDrain = 0; // how much energy does firing this projectile drain?
 
@@ -55,7 +55,7 @@ datablock NortDiscData(RedSeekerDisc)
 	projectileShapeName = "share/shapes/rotc/weapons/disc/projectile_red.dts";
 
 	explosion             = RedSeekerDiscExplosion;
-	hitEnemyExplosion     = RedSeekerDiscHitEnemy;
+	hitEnemyExplosion     = RedSeekerDiscExplosion;
 // nearEnemyExplosion	 = ThisDoesNotExist;
 	hitTeammateExplosion  = RedSeekerDiscHitEnemy;
 	hitDeflectorExplosion = RedSeekerDiscDeflectedEffect;
@@ -103,11 +103,25 @@ function RedSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 		%source = %obj.sourceObject;
 		if(%source.getDamageState() $= "Enabled")
 			%source.setEnergyLevel(%source.getEnergyLevel() + 20);
+
+		// remove possible barrier from enemy...
+		%col.deactivateBarrier();
+
+		// remove enemy's anchoring...
+		%col.setGridConnection(0);
+
+		// push enemy away from player...
+		%vec = VectorSub(%col.getPosition(), %source.getPosition());
+		%vec = VectorNormalize(%vec);
+		%vec = getWord(%vec,0) SPC getWord(%vec,1) SPC "0.5";
+		//%vec = "0 0 1";
+		%vec = VectorScale(%vec, 3000);
+		%col.impulse(%col.getPosition(), %vec);
    
         // give another disc-lock to the attacker
-        %src =  %obj.getSourceObject();
-        if(%src)
-            %src.setDiscTarget(%col);
+//        %src =  %obj.getSourceObject();
+//        if(%src)
+//            %src.setDiscTarget(%col);
 	}
 }
 
@@ -143,7 +157,7 @@ datablock NortDiscData(BlueSeekerDisc : RedSeekerDisc)
 	projectileShapeName = "share/shapes/rotc/weapons/disc/projectile_blue.dts";
 
 	explosion             = BlueSeekerDiscExplosion;
-	hitEnemyExplosion     = BlueSeekerDiscHitEnemy;
+	hitEnemyExplosion     = BlueSeekerDiscExplosion;
 	hitTeammateExplosion  = BlueSeekerDiscHitEnemy;
 	hitDeflectorExplosion = BlueSeekerDiscDeflectedEffect;
 	bounceExplosion       = BlueSeekerDiscHit;

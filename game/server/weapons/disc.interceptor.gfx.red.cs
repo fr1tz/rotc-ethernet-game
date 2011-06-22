@@ -134,7 +134,7 @@ datablock ParticleEmitterData(RedInterceptorDiscExplosion_Emitter)
 
 datablock ExplosionData(RedInterceptorDiscExplosion)
 {
-	soundProfile = DiscExplosionSound;
+	//soundProfile = DiscExplosionSound;
 
 	lifetimeMS = 200;
 

@@ -1,12 +1,19 @@
 What's new?
 ===========
 
-Prototype 4-dev1
+Prototype 4-dev2
 ----------------
 
 - Breaks backwards compatibility to older versions!
 - CATs now skid when touching the ground at high speeds
   and not etherboarding.
+- Disc changes:
+   - CATs can be attacked by multiple discs at once.
+   - A disc hit no longer leads to another disc lock.
+   - Discs no longer deal damage but do the following:
+      - Remove the target's anchoring.
+      - Remove the target's barrier.
+      - Push the target away from the CAT that launched the disc.
 
 
 Prototype 3+dev9

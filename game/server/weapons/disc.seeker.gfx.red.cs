@@ -105,9 +105,9 @@ datablock ExplosionData(RedSeekerDiscExplosion)
  	// shape...
 	explosionShape = "share/shapes/rotc/effects/explosion4_red.dts";
 	faceViewer	  = false;
-	playSpeed = 3.0;
+	playSpeed = 4.0;
 	sizes[0] = "0.2 0.2 0.2";
-	sizes[1] = "0.0 0.0 0.0";
+	sizes[1] = "0.5 0.5 0.5";
 	times[0] = 0.0;
 	times[1] = 1.0;
  
@@ -121,8 +121,8 @@ datablock ExplosionData(RedSeekerDiscExplosion)
 	camShakeRadius = 20.0;
 
 	// Dynamic light
-	lightStartRadius = 4;
-	lightEndRadius = 0;
+	lightStartRadius = 0;
+	lightEndRadius = 4;
 	lightStartColor = "1.0 0.0 0.0";
 	lightEndColor = "0.0 0.0 0.0";
 };

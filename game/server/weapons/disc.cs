@@ -29,8 +29,9 @@ function SeekerDiscPseudoProjectile::onAdd(%this, %obj)
 	%target = %player.getCurrTarget();
 
 	if(%target != 0
-	&& %target.numAttackingDiscs() == 0
-	&& !%target.hasBarrier())
+//	&& %target.numAttackingDiscs() == 0
+//	&& !%target.hasBarrier()
+	)
 	{
 		// determine muzzle-point...
 		%muzzlePoint = %player.getMuzzlePoint(%slot);
@@ -56,20 +57,14 @@ function SeekerDiscPseudoProjectile::onAdd(%this, %obj)
 		};
 		MissionCleanup.add(%disc);
 
-		// set disc target...
 		%disc.setTarget(%target);
 
-		// clear out disc target...
 		%player.clearDiscTarget();
-
 		%player.decDiscs();
-        
-            %target.addAttackingDisc(%player);
-
+		%target.addAttackingDisc(%player);
 		%player.playAudio(0, DiscThrowSound);
-
-            if(%target.client)
-                %target.client.play2D(DiscIncomingSound);
+		if(%target.client)
+			%target.client.play2D(DiscIncomingSound);
 	}
 	else
 	{
