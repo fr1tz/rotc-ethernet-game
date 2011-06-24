@@ -184,11 +184,12 @@ datablock PlayerData(RedStandardCat)
 
 	// slide emitters
 	//slideContactParticleFootEmitter = RedSlideEmitter;
-	slideContactParticleTrailEmitter = CatSlideContactTrailEmitter;
+	slideContactParticleTrailEmitter[0] = CatSlideContactTrailEmitter;
 	slideParticleFootEmitter = RedCatSlideFootEmitter;
-	//slideParticleTrailEmitter = BlueSlideEmitter;
+	//slideParticleTrailEmitter[0] = BlueSlideEmitter;
 	skidParticleFootEmitter = CatSkidFootEmitter;
-	skidParticleTrailEmitter = CatSkidTrailEmitter;
+	skidParticleTrailEmitter[0] = CatSkidTrailEmitter0;
+	skidParticleTrailEmitter[1] = CatSkidTrailEmitter1;
 	
 	// damage info eyecandy...
 	damageBufferParticleEmitter = RedCatDamageBufferEmitter;
