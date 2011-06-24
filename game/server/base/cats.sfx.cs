@@ -31,7 +31,7 @@ datablock AudioProfile(PlayerSlideContactSound)
 
 datablock AudioProfile(PlayerSkidSound)
 {
-	filename	 = "share/sounds/rotc/slide3.wav";
+	filename	 = "share/shapes/rotc/players/standardcat/slidecontact.wav";
 	description = AudioCloseLooping3D;
 	preload = true;
 };
