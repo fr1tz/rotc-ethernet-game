@@ -77,6 +77,7 @@ datablock PlayerData(RedStandardCat)
 	mass = 90;
 	drag = 0.0;
 	density = 10;
+	gravityMod = 1.0;
 
 	maxDamage = 75;
 	damageBuffer = 25;
