@@ -400,19 +400,28 @@ function PlayerData::onDamage(%this, %obj, %delta)
 		if(isObject(%obj.client))
 		{
 			%client = %obj.client;
-			%client.damageFlash += (%delta / %this.maxDamage);
-			if(%client.damageFlash > 0.75)
-				%client.damageFlash = 0.75;
-			else if(%client.damageFlash < 0)
-				%client.damageFlash = 0;
+			%time = getSimTime();
+			if(%client.dmgFlashTime !$= "")
+			{
+				%elapsed = %time - %client.dmgFlashTime;
+				%client.dmgFlash -= %elapsed / 10000;
+				if(%client.dmgFlash < 0)
+					%client.dmgFlash = 0;
+			}
+			%client.dmgFlash += (%delta / %this.maxDamage);
+			if(%client.dmgFlash > 1)
+				%client.dmgFlash = 1;
+			else if(%client.dmgFlash < 0)
+				%client.dmgFlash = 0;
 			%client.setHudBackground(
 				1,
 				"share/textures/rotc/heating",
 				"255 255 255",
 				false,
-				%client.damageFlash * 255,
+				%client.dmgFlash * 255,
 				-10
 			);
+			%client.dmgFlashTime = %time;
 		}
 
 		// If the pain is excessive, let's hear about it.
@@ -776,14 +785,6 @@ function Player::addAttackingDisc(%this, %disc)
 function Player::removeAttackingDisc(%this, %disc)
 {
     %this.attackingDiscs -= 1;
-    
-    if(%this.attackingDiscs == 0)
-	{
-		// Only deactivate barriers that have been 
-        // activated because of an attacking disc...
-		if(%this.deactivateBarrierThread $= "")
-			%this.deactivateBarrier();
-	}
 }
 
 //-----------------------------------------------------------------------------
