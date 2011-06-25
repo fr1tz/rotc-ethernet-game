@@ -90,6 +90,7 @@ new GuiControlProfile (ChatHudEditProfile)
 	border = false;
 	borderThickness = 0;
 	borderColor = "40 231 240";
+	cursorColor = "40 231 240";
 	fontColor = "40 231 240";
 	fontColorHL = "40 231 240";
 	fontColorNA = "128 128 128";
