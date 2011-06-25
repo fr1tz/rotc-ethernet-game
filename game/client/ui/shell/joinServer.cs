@@ -194,7 +194,7 @@ function JoinServerWindow::update(%this)
     JS_MapHomepage.setText("-");
     JS_ServerInfo.setText("");
 	
-	JS_ServerList.sort(0);
+	JS_ServerList.sort(1, true);
 	JS_ServerList.setSelectedRow(0);
 	JS_ServerList.scrollVisible(0);
 }
