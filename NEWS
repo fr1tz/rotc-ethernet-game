@@ -1,64 +1,44 @@
 What's new?
 ===========
 
-Prototype 4-dev2
-----------------
+Prototype 4-testing
+-------------------
+
+Released: Jun. 26, 2011
 
 - Breaks backwards compatibility to older versions!
+- Newbie helper
+- Handicap feature allows more experienced players to 
+  give a fair chance to less experienced players.
 - CATs now skid when touching the ground at high speeds
   and not etherboarding.
-- Disc changes:
-   - CATs can be attacked by multiple discs at once.
-   - A disc hit no longer leads to another disc lock.
-   - Discs no longer deal damage but do the following:
-      - Remove the target's anchoring.
-      - Remove the target's barrier.
-      - Push the target away from the CAT that launched the disc.
-
-
-Prototype 3+dev9
-----------------
-
-- Change color rule for weapons that bypass damage buffers from
-  orange/cyan to orange/green and update sniper rifle visuals accordingly.
-- Incorporate no-disc grace period into new "barrier" mechanic:
-    - CAT's have a damage buffer and a "complementary barrier".
-    - Orange/green projectiles bypass the damage buffer.
+- Changed color rule for weapons that bypass health buffers from
+  orange/cyan to orange/green and updated sniper rifle visuals accordingly.
+- New "barrier" mechanic:
+    - CAT's have a health buffer and a "barrier".
+    - Orange/green projectiles bypass the health buffer.
     - Red/blue projectiles bypass the barrier.
     - The barrier is only activated when a CAT was hit by
-      a orange/green projectile or is being attacked by a disc.
+      an orange/green projectile.
     - When a CAT's barrier has been activated, the CAT is not
       affected by orange/green projectiles until the barrier
       has completely faded away.
-
-
-
-Prototype 3+dev8
-----------------
-
-- Replaced grenade launcher with mine launcher.
-- Handicap feature allows players to give a fair
-  chance to less experienced players.
-- Increase Blaster armor cost from 2 to 4 and 
-  drop the "b00nstick" name.
-
-
-Prototype 3+dev6
-----------------
-
-- Newbie helper
-- Improved arena window
+- Weapon changes:
+   - Increased Blaster armor cost from 2 to 4 thus dropping the "b00nstick" alias.
+   - Battle Rifle projectiles no longer bypass health buffers but
+     again do 30 instead of 25 damage per projectile. The influence
+     of the shooter's momentum on the projectile's trajectory has
+     also been increased.
+   - Replaced grenade launcher with mine launcher.
+- Disc changes:
+   - CATs can now be attacked by multiple discs at once.
+   - A disc hit no longer leads to another disc lock.
+   - Discs no longer deal damage. Instead they do the following:
+      - Remove the target's anchoring.
+      - Remove the target's barrier.
+      - Push the target away from the CAT that launched the disc.
 - Regeneration modules now only heal when standing still.
-- Weapon tweaks:
-	- Battle Rifle projectiles no longer bypass damage buffers but
-	  again do 30 instead of 25 damage per projectile. The influence
-	  of the shooter's momentum on the projectile's trajectory has
-	  also been increased.
-	- Grenade launcher grenades don't bounce anymore and their armor
-	  cost has been decreased from 15 to 8.
-- Bugfixes
-Client changes:
-	- Improved demo playback
+- Bugfixes & all kinds of minor improvements.
 
 
 Prototype 3-testing
