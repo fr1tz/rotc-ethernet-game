@@ -58,16 +58,19 @@ new GuiControlProfile(HudDefaultProfile)
 new GuiControlProfile(HudBackgroundProfile1 : HudDefaultProfile)
 {
 	fillColor = "255 255 255 255";
+	borderColor = "0 0 0 0";
 };
 
 new GuiControlProfile(HudBackgroundProfile2 : HudDefaultProfile)
 {
 	fillColor = "255 255 255 255";
+	borderColor = "0 0 0 0";
 };
 
 new GuiControlProfile(HudBackgroundProfile3 : HudDefaultProfile)
 {
 	fillColor = "255 255 255 255";
+	borderColor = "0 0 0 0";
 };
 
 new GuiControlProfile(HudWarningProfile : HudDefaultProfile)
