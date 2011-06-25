@@ -7,9 +7,10 @@ The Reds and Blues have the following basic properties:
 
 <spush><font:NovaSquare:18>Health<spop>
 
-Players start with 75 health points. At least 25% health is needed to manifest as a CAT. Health is lost if a player takes more damage than the health buffer can absorb.
-In CAT form, players can regain health by dealing damage to enemy CATs' health or by equipping themselves with one or more regeneration modules.
-Players can always change back into Etherform and rest in a zone owned by their team to regain health. 
+Players start with 75 health points. At least 25% health is needed to manifest as a CAT. Health is lost if a player takes more damage than the health buffer can absorb or the player is hit by a weapon that bypasses the health buffer.
+
+In CAT form, players can regain health by dealing damage to enemy CATs' health or by equipping themselves with one or more <a:cmd HowToPlay 8.2>regeneration modules</a>.
+Players can always change back into Etherform and rest in a zone owned by their team to regain health.
 
 <spush><font:NovaSquare:18>Health buffer<spop>
 
@@ -20,23 +21,15 @@ A CAT's damage buffer can temporarily overflow (ie. hold more than 25 points) if
 
 Every CAT has armor that can absorb up to 50% damage. The damage absorbed by the armor decreases in a linear fashion with decreased armor levels.
 
-Guns draw away power from a CAT's armor when fired. The removed armor is restored if the shot hits an enemy.
+Most weapons draw away power from a CAT's armor when fired. The removed armor is restored if the shot hits an enemy.
 
-<spush><font:NovaSquare:18>Etherboard<spop>
+<spush><font:NovaSquare:18>Barrier<spop>
 
-If eqipped with an etherboard, CATs can trade agility for speed by holding down @bind21.
+Being hit by a weapon that bypasses the health buffer (weapons with orange/green visual effects) will cause a CAT to activate a temporary barrier that will make the CAT invulnerable to damage buffer-bypassing weapons for a short time. Aside from time, only a hit with a <a:cmd HowToPlay 5.1>disc</a> will make the barrier go away.
 
-<spush><font:NovaSquare:18>Regeneration modules<spop>
+<spush><font:NovaSquare:18>Anchoring<spop>
 
-If eqipped with one or more regeneration modules, CATs constantly regenerate health. Every additional module doubles the amount repaired.
-
-<spush><font:NovaSquare:18>B.O.U.N.C.E.<spop>
-
-CATs are equipped with a Chrestmann-Goldberg device that can be used to reverse the momentum of nearby enemy CATs. This is commonly called firing a B.O.U.N.C.E. (Burst Of Ultraons eNgaging Close Enemies). Pressing @bind51 activates the burst. If no enemy CATs are close this process drains 50% of the CAT's armor. Because it uses an enemy CAT's momentum against it, a B.O.U.N.C.E. is most effective against fast-moving CATs that don't have any footing on the ground.
-
-<spush><font:NovaSquare:18>Ground connection<spop>
-
-To compensate for the strong push from being hit by a projectile, CATs can become "connected" to the ground by being close to it and not etherboarding. When fully connected,  the impact force from a hit is reduced by 75%.
+To compensate for the strong push from being hit by a projectile, CATs can become "anchored" to the ground by being close to it and not etherboarding. When fully anchored,  the impact force from a hit is reduced by 75%.
 
 <spush><font:NovaSquare:18>Tagging<spop>
 

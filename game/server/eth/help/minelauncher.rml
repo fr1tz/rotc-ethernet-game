@@ -1,0 +1,5 @@
+<bitmap:share/misc/help/wpn_gl.png><sbreak>
+
+The Mine Launcher can fire up to four mines in quick succession.
+Firing it doesn't drain power away from a CAT's armor but instead draws from the same ammo source as the <a:cmd HowToPlay 5.2>grenades</a>. Once in position, the mines work like a <a:cmd HowToPlay 5.3>B.O.U.N.C.E.</a> that's triggered by nearby moving enemies. If not triggered by an enemy, the mine will trigger after a few seconds.
+<sbreak>

@@ -1,0 +1,13 @@
+<bitmap:share/misc/help/wpn_br.png><sbreak>
+
+The Battle Rifle fires tiny grenades that explode near enemies or on impact. It always fires two mini-grenades at once. 
+The properties of a single mini-grenade:
+<sbreak><tab:15,200>
+	Armor cost	<spush><font:Arial Bold:16>8<spop>
+	Impact damage	<spush><font:Arial Bold:16>-<spop>
+	Impact impulse	<spush><font:Arial Bold:16>2500<spop>
+	Splash damage	<spush><font:Arial Bold:16>30<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>2<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Bypasses	<spush><font:Arial Bold:16>barrier<spop>
+<sbreak>

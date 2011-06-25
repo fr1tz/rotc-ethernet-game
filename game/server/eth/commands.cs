@@ -15,55 +15,134 @@ function serverCmdHowToPlay(%client, %page)
 		om_head(%client, "Manual") @
 		"<just:center><spush><font:NovaSquare:20>How to play ROTC: Ethernet?<spop>\n\n";
 
-	switch(%page)
+	%n = 0;
+	%pageNumber[%n] = "0"; 
+	%pageTitle[%n] = "Index";
+	%pageFile[%n] = "index";
+	%n++;
+	%pageNumber[%n] = "1"; 
+	%pageTitle[%n] = "ROTC: Ethernet in a nutshell";
+	%pageFile[%n] = "summary";
+	%n++;
+	%pageNumber[%n] = "2"; 
+	%pageTitle[%n] = "Basics";
+	%pageFile[%n] = "basics";
+	%n++;
+	%pageNumber[%n] = "3"; 
+	%pageTitle[%n] = "Playing as Etherform";
+	%pageFile[%n] = "etherform";
+	%n++;
+	%pageNumber[%n] = "4"; 
+	%pageTitle[%n] = "Playing in CAT form";
+	%pageFile[%n] = "cat";
+	%n++;
+	%pageNumber[%n] = "5"; 
+	%pageTitle[%n] = "Basic CAT Weapons";
+	%pageFile[%n] = "basicweapons";
+	%n++;
+	%pageNumber[%n] = "5.1"; 
+	%pageTitle[%n] = "Discs";
+	%pageFile[%n] = "discs";
+	%n++;
+	%pageNumber[%n] = "5.2"; 
+	%pageTitle[%n] = "Grenades";
+	%pageFile[%n] = "grenades";
+	%n++;
+	%pageNumber[%n] = "5.3"; 
+	%pageTitle[%n] = "B.O.U.N.C.E.";
+	%pageFile[%n] = "bounce";
+	%n++;
+	%pageNumber[%n] = "6"; 
+	%pageTitle[%n] = "Red/Blue (buffer) CAT Weapons";
+	%pageFile[%n] = "bufferweapons";
+	%n++;
+	%pageNumber[%n] = "6.1"; 
+	%pageTitle[%n] = "Blaster";
+	%pageFile[%n] = "blaster";
+	%n++;
+	%pageNumber[%n] = "6.2"; 
+	%pageTitle[%n] = "Battle Rifle";
+	%pageFile[%n] = "battlerifle";
+	%n++;
+	%pageNumber[%n] = "6.3"; 
+	%pageTitle[%n] = "Minigun";
+	%pageFile[%n] = "minigun";
+	%n++;
+	%pageNumber[%n] = "7"; 
+	%pageTitle[%n] = "Green/Orange (barrier) CAT Weapons";
+	%pageFile[%n] = "barrierweapons";
+	%n++;
+	%pageNumber[%n] = "7.1"; 
+	%pageTitle[%n] = "Sniper ROFL";
+	%pageFile[%n] = "sniperrofl";
+	%n++;	
+	%pageNumber[%n] = "8"; 
+	%pageTitle[%n] = "Other CAT equipment";
+	%pageFile[%n] = "catequipment";
+	%n++;	
+	%pageNumber[%n] = "8.1"; 
+	%pageTitle[%n] = "The Etherboard";
+	%pageFile[%n] = "etherboard";
+	%n++;
+	%pageNumber[%n] = "8.2"; 
+	%pageTitle[%n] = "Regeneration modules";
+	%pageFile[%n] = "regeneration";
+	%n++;
+	%pageNumber[%n] = "8.3"; 
+	%pageTitle[%n] = "Mine Launcher";
+	%pageFile[%n] = "minelauncher";
+	%n++;
+	%pageNumber[%n] = "9"; 
+	%pageTitle[%n] = "Controls reference";
+	%pageFile[%n] = "controls";
+	%n++;
+	%pageNumber[%n] = "10"; 
+	%pageTitle[%n] = "Handicap";
+	%pageFile[%n] = "handicap";
+	%n++;
+	%pageNumber[%n] = "X"; 
+	%pageTitle[%n] = "Bots, Mapping & other neat stuff";
+	%pageFile[%n] = "other";
+	%n++;
+
+	for(%i = 0; %i < %n; %i++)
 	{
-		case 1:
-			%title = "1. ROTC: Ethernet in a nutshell";
+		if(%page $= %pageNumber[%i])
+		{
+			%prev =	%i-1;
+			%next = %i+1;
+			%file = %pageFile[%i];
+			%title = %pageNumber[%i] @ ". " @ %pageTitle[%i];
+			break;
+		}
+	}
+
+	if(%file $= "")
+	{
+		%title = "0. Index";
+		%prev = "";
+		%next = "<a:cmd HowToPlay 1>ROTC: Ethernet in a nutshell</a>";
+		%fileName = "game/server/eth/help/index.rml";
+	}
+	else
+	{
+		if(%prev >= 0)
+		{
+			%prev = "<a:cmd HowToPlay" SPC %pageNumber[%prev] @ ">" @ 
+				%pageNumber[%prev] SPC %pageTitle[%prev] @ "</a>";
+		}
+		else
 			%prev = "";
-			%next = "<a:cmd HowToPlay 2>Basics</a>";
-			%fileName = "game/server/eth/help/summary.rml";
 
-		case 2:
-			%title = "2. Basics";
-			%prev = "<a:cmd HowToPlay 1>ROTC: Ethernet in a nutshell</a>";
-			%next = "<a:cmd HowToPlay 3>Playing as Etherform</a>";
-			%fileName = "game/server/eth/help/basics.rml";
-
-		case 3:
-			%title = "3. Playing as Etherform";
-			%prev = "<a:cmd HowToPlay 2>Basics</a>";
-			%next = "<a:cmd HowToPlay 4>Playing in CAT form</a>";
-			%fileName = "game/server/eth/help/etherform.rml";
-
-		case 4:
-			%title = "4. Playing in CAT form";
-			%prev = "<a:cmd HowToPlay 3>Playing as Etherform</a>";
-			%next = "<a:cmd HowToPlay 5>Weapons</a>";
-			%fileName = "game/server/eth/help/cat.rml";
-
-		case 5:
-			%title = "5. Weapons";
-			%prev = "<a:cmd HowToPlay 4>Playing in CAT form</a>";
-			%next = "<a:cmd HowToPlay 6>Controls reference</a>";
-			%fileName = "game/server/eth/help/weapons.rml";
-
-		case 6:
-			%title = "6. Controls reference";
-			%prev = "<a:cmd HowToPlay 5>Weapons</a>";
-			%next = "<a:cmd HowToPlay 7>Handicap</a>";
-			%fileName = "game/server/eth/help/controls.rml";
-			
-		case 7:
-			%title = "7. Handicap";
-			%prev = "<a:cmd HowToPlay 6>Controls reference</a>";
+		if(%next < %n)
+		{
+			%next = "<a:cmd HowToPlay" SPC %pageNumber[%next] @ ">" @ 
+				%pageNumber[%next] SPC %pageTitle[%next] @ "</a>";
+		}
+		else
 			%next = "";
-			%fileName = "game/server/eth/help/handicap.rml";			
 
-		default:
-			%title = "0. Index";
-			%prev = "";
-			%next = "<a:cmd HowToPlay 1>ROTC: Ethernet in a nutshell</a>";
-			%fileName = "game/server/eth/help/index.rml";
+		%fileName = "game/server/eth/help/" @ %file @ ".rml";
 	}
 
 	%nav = "<spush><font:NovaSquare:13>";

@@ -2,6 +2,20 @@
    <a:cmd HowToPlay 2>2. Basics</a>
    <a:cmd HowToPlay 3>3. Playing as Etherform</a>
    <a:cmd HowToPlay 4>4. Playing in CAT form</a>
-   <a:cmd HowToPlay 5>5. Weapons</a>
-   <a:cmd HowToPlay 6>6. Controls reference</a>
-   <a:cmd HowToPlay 7>7. Handicap</a>
+   <a:cmd HowToPlay 5>5. Basic CAT Weapons</a>
+     <a:cmd HowToPlay 5.1>5.1. Discs</a>
+     <a:cmd HowToPlay 5.2>5.2. Grenades</a>
+     <a:cmd HowToPlay 5.3>5.3. B.O.U.N.C.E.</a>
+   <a:cmd HowToPlay 6>6. Red/Blue (buffer) CAT Weapons</a>
+     <a:cmd HowToPlay 6.1>6.1. Blaster</a>
+     <a:cmd HowToPlay 6.2>6.2. Battle Rifle</a>
+     <a:cmd HowToPlay 6.3>6.3. Minigun</a>
+   <a:cmd HowToPlay 7>7. Green/Orange (barrier) CAT Weapons</a>
+     <a:cmd HowToPlay 7.1>7.1. Sniper ROFL</a>
+   <a:cmd HowToPlay 8>8. Other CAT equipment</a>
+     <a:cmd HowToPlay 8.1>8.1. The Etherboard</a>
+     <a:cmd HowToPlay 8.2>8.2. Regeneration modules</a>
+     <a:cmd HowToPlay 8.3>8.3. Mine Launcher</a>
+   <a:cmd HowToPlay 9>9. Controls reference</a>
+   <a:cmd HowToPlay 10>10. Handicap</a>
+   <a:cmd HowToPlay X>X. Bots, Mapping & and other neat stuff</a>

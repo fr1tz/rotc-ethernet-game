@@ -2,7 +2,7 @@ Every ROTC: Ethernet arena is divided into different zones and two teams (Reds a
 
 Players start out in Etherform and need to find a zone owned by their team in order to manifest as a CAT. As CAT, players can capture zones adjacent to their existing zones by being inside the zone while no enemy CAT is also present in the zone. The zone then turns red or blue, depending on which team captured it. If CATs of both teams are present, the zone remains white. CATs can enter enemy zones that are not connected to their territory to prevent  the enemy from manifesting in that zone. Such blocked zones appear orange for the red team and cyan for the blue team.
 
-The game is won if the opposing team has lost all their zones.
+The game is won if the opposing team has lost all their zones and has no more players manifested as CATs.
 
 <tab:15,215><spush><font:NovaSquare:18>Basic Controls<spop>
 	Toggle console	<spush><font:Arial Bold:16>F12<spop>

@@ -1,0 +1,12 @@
+<bitmap:share/misc/help/wpn_sniperrifle.png><sbreak>
+
+The Sniper rofl is a long range weapon. It needs to be charged before it can fire. While charging doesn't take long and doesn't consume energy, you can't run fast or use the Etherboard while doing it. Hold down @bind16 to charge, release it to fire.
+<sbreak><tab:15,200>
+	Armor cost	<spush><font:Arial Bold:16>30<spop>
+	Impact damage	<spush><font:Arial Bold:16>40<spop>
+	Impact impulse	<spush><font:Arial Bold:16>6000<spop>
+	Splash damage	<spush><font:Arial Bold:16>-<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Bypasses	<spush><font:Arial Bold:16>health buffer<spop>
+<sbreak>

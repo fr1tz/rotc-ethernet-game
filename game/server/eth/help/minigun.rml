@@ -1,0 +1,12 @@
+<bitmap:share/misc/help/wpn_blaster.png><sbreak>
+
+The Minigun (a.k.a. The Trident because of its shape) sprays a lot of bullets but has a short cooldown delay after firing.
+<sbreak><tab:15,200>
+	Armor cost	<spush><font:Arial Bold:16>2<spop>
+	Impact damage	<spush><font:Arial Bold:16>20<spop>
+	Impact impulse	<spush><font:Arial Bold:16>500<spop>
+	Splash damage	<spush><font:Arial Bold:16>-<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Bypasses	<spush><font:Arial Bold:16>barrier<spop>
+<sbreak>
