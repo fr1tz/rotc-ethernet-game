@@ -1034,7 +1034,7 @@ function GameConnection::updateQuickbar(%this)
 	}
 	else
 	{
-		%joinText = "Join Team:\n<spush><font:NovaSquare:25>";
+		%joinText = "Join Team:\n<spush><font:NovaSquare:24>";
 		if(%this.team != $Team1)
 			%joinText = %joinText @ "<a:cmd JoinTeam 1>";
 		%joinText = %joinText @ "Reds (" @ $Team1.numPlayers @ ")";
