@@ -114,7 +114,8 @@ function onPhase3Progress(%subphase_name, %progress)
 
 function onPhase3Complete()
 {
-	LoadingProgress.setValue( 1 );
+	LoadingProgressTxt.setValue(replaceBindVars("Loading done, press @bind01 to play."));
+	LoadingProgress.setValue(0);
 	$lightingMission = false;
 }
 
@@ -129,9 +130,6 @@ function onMissionDownloadComplete()
 	%mapBitmap = filePath($Client::MissionEnvironmentFile) @ "/map.png";
 	MiniMap.setMapBitmap(%mapBitmap);
 	BigMap.setMapBitmap(%mapBitmap);
-
-	LoadingProgressTxt.setValue(replaceBindVars("Loading done, press @bind01 to play."));
-	LoadingProgress.setValue(0);
 
 	// Enable player to play...
 	IngameMenuReturn.setActive(true);
