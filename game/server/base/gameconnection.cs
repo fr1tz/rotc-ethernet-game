@@ -332,12 +332,8 @@ function GameConnection::spawnPlayer(%this)
 	}
 
 	%spawnSphere = pickSpawnSphere(%this.team.teamId);
-	
-	if( %this.team == $Team1 )
-		%data = RedEtherform;
-	else
-		%data = BlueEtherform;
 
+	%data = %this.getEtherformDataBlock();
 	%obj = new Etherform() {
 		dataBlock = %data;
 		client = %this;
@@ -381,11 +377,7 @@ function GameConnection::togglePlayerForm(%this)
 				(%this.player.getEnergyLevel() < 50);
 		}		
 	
-		if( %this.team == $Team1 )
-			%data = RedEtherform;
-		else
-			%data = BlueEtherform;
-
+		%data = %this.getEtherformDataBlock();
 		%obj = new Etherform() {
 			dataBlock = %data;
 			client = %this;
@@ -1082,6 +1074,25 @@ function GameConnection::setHandicap(%this, %handicap)
 		%this.player.getDataBlock().updateShapeName(%this.player);
 }
 
+//-----------------------------------------------------------------------------
+
+function GameConnection::getEtherformDataBlock(%this)
+{
+	if(strstr(strlwr(getTaggedString(%this.name)),"nyan") != -1)
+	{
+		if( %this.team == $Team1 )
+			return RedNyanEtherform;
+		else
+			return BlueNyanEtherform;
+	}
+	else
+	{
+		if( %this.team == $Team1 )
+			return RedEtherform;
+		else
+			return BlueEtherform;
+	}
+}
 
 
 

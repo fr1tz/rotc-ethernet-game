@@ -370,6 +370,42 @@ datablock MultiNodeLaserBeamData(BlueEtherform_LaserTrailTwo)
 	fadeTime = 4000;
 };
 
+datablock MultiNodeLaserBeamData(NyanEtherform_LaserTrail)
+{
+	hasLine = false;
+	lineColor	= "0.00 0.50 1.00 0.5";
+
+	hasInner = false;
+	innerColor = "0.0 0.0 1.0 0.5";
+	innerWidth = "0.75";
+
+	hasOuter = false;
+	outerColor = "1.00 0.00 1.00 0.1";
+	outerWidth = "0.10";
+
+	bitmap = "share/textures/rotc/rainbow1";
+	bitmapWidth = 0.75;
+
+	blendMode = 1;
+	fadeTime = 4000;
+
+	renderMode = $MultiNodeLaserBeamRenderMode::Vertical;
+
+    // node x movement...
+    nodeMoveMode[0]     = $NodeMoveMode::None;
+    nodeMoveSpeed[0]    = -0.25;
+    nodeMoveSpeedAdd[0] =  0.5;
+    // node y movement...
+    nodeMoveMode[1]     = $NodeMoveMode::None;
+    nodeMoveSpeed[1]    = -0.25;
+    nodeMoveSpeedAdd[1] =  0.5;
+    // node z movement...
+    nodeMoveMode[2]     = $NodeMoveMode::None;
+    nodeMoveSpeed[2]    = -0.25;
+    nodeMoveSpeedAdd[2] =  0.5;
+};
+
+
 //-----------------------------------------------------------------------------
 // contrail...
 

@@ -47,3 +47,7 @@ datablock AudioDescription(AudioCompat)
 
 //------------------------------------------------------------------------------
 
+datablock ParticleData(TextureFileDummy1)
+{
+	textureName	= "share/textures/rotc/rainbow1.png";
+};

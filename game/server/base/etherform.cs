@@ -229,4 +229,18 @@ datablock EtherformData(BlueEtherform : RedEtherform)
 	//particleTrail = BlueEtherform_ContrailEmitter;
 };
 
+datablock EtherformData(RedNyanEtherform : RedEtherform)
+{
+	shapeFile = "share/shapes/rotc/vehicles/etherform/vehicle.nyanred.dts";
+	laserTrail[0] = NyanEtherform_LaserTrail;
+	laserTrail[1] = "";
+};
+
+datablock EtherformData(BlueNyanEtherform : RedEtherform)
+{
+	shapeFile = "share/shapes/rotc/vehicles/etherform/vehicle.nyanblue.dts";
+	laserTrail[0] = NyanEtherform_LaserTrail;
+	laserTrail[1] = "";
+};
+
 
