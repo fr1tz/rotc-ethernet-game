@@ -619,7 +619,7 @@ function serverCmdShowSettings(%client, %section)
 		%s = %hand;
 		if(%s == 0) %s = "0.0";
 		else if(%s == 1) %s = "1.0";				
-		%newtxt = %newtxt SPC %s SPC "[<a:cmd HowToPlay 7>what's this?</a>]\n";
+		%newtxt = %newtxt SPC %s SPC "[<a:cmd HowToPlay 10>what's this?</a>]\n";
 		if (%hand == 0)
 		{
 			%newtxt = %newtxt @ "<spush><color:ff4444>Your handicap is 0.0, this means you'll do no damage to players with a handicap of 1.0.<spop>\n";
