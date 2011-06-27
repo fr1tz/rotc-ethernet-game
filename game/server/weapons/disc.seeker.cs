@@ -31,7 +31,7 @@ datablock NortDiscData(RedSeekerDisc)
 	
 	targetLockTimeMS = 0;
 
-	maxTrackingAbility = 1000;
+	maxTrackingAbility = 80;
 	trackingAgility = 2;
 
 	explodesNearEnemies = false;
