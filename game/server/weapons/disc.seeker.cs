@@ -55,9 +55,9 @@ datablock NortDiscData(RedSeekerDisc)
 	projectileShapeName = "share/shapes/rotc/weapons/disc/projectile_red.dts";
 
 	explosion             = RedSeekerDiscExplosion;
-	hitEnemyExplosion     = RedSeekerDiscExplosion;
+	hitEnemyExplosion     = RedSeekerDiscHit;
 // nearEnemyExplosion	 = ThisDoesNotExist;
-	hitTeammateExplosion  = RedSeekerDiscHitEnemy;
+	hitTeammateExplosion  = RedSeekerDiscHit;
 	hitDeflectorExplosion = RedSeekerDiscDeflectedEffect;
 	bounceExplosion       = RedSeekerDiscHit;
 
@@ -117,6 +117,8 @@ function RedSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 		//%vec = "0 0 1";
 		%vec = VectorScale(%vec, 3000);
 		%col.impulse(%col.getPosition(), %vec);
+
+		createExplosion(%this.explosion, %pos, %normal);
    
         // give another disc-lock to the attacker
 //        %src =  %obj.getSourceObject();
@@ -157,8 +159,8 @@ datablock NortDiscData(BlueSeekerDisc : RedSeekerDisc)
 	projectileShapeName = "share/shapes/rotc/weapons/disc/projectile_blue.dts";
 
 	explosion             = BlueSeekerDiscExplosion;
-	hitEnemyExplosion     = BlueSeekerDiscExplosion;
-	hitTeammateExplosion  = BlueSeekerDiscHitEnemy;
+	hitEnemyExplosion     = BlueSeekerDiscHit;
+	hitTeammateExplosion  = BlueSeekerDiscHit;
 	hitDeflectorExplosion = BlueSeekerDiscDeflectedEffect;
 	bounceExplosion       = BlueSeekerDiscHit;
 
