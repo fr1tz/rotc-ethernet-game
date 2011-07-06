@@ -15,11 +15,18 @@ function shockWaveRadiusDamage(%sourceObject, %position, %radius,
 	// Use the container system to iterate through all the objects
 	// within our explosion radius.  We'll apply damage to all ShapeBase
 	// objects.
-	InitContainerRadiusSearch(%position, %radius, $TypeMasks::ShapeBaseObjectType);
+
+	%targets = new SimSet();
+
+	InitContainerRadiusSearch(%pos, %radius, $TypeMasks::ShapeBaseObjectType);
+	while( (%targetObject = containerSearchNext()) != 0 )
+		%targets.add(%targetObject);
 
 	%halfRadius = %radius / 2;
-	while ((%targetObject = containerSearchNext()) != 0)
+	for(%idx = %targets.getCount()-1; %idx >= 0; %idx-- )
 	{
+		%targetObject = %targets.getObject(%idx);
+
 		// Calculate how much exposure the current object has to
 		// the explosive force.  The object types listed are objects
 		// that will block an explosion.  If the object is totally blocked,
@@ -58,6 +65,8 @@ function shockWaveRadiusDamage(%sourceObject, %position, %radius,
 			%targetObject.schedule(%delay, "impulse", %position, %impulseVec);
 		}
 	}
+
+	%targets.delete();
 }
 
 function radiusDamage(%sourceObject, %position, %radius, %damage, %damageType, %impulse)
@@ -65,11 +74,18 @@ function radiusDamage(%sourceObject, %position, %radius, %damage, %damageType, %
 	// Use the container system to iterate through all the objects
 	// within our explosion radius.  We'll apply damage to all ShapeBase
 	// objects.
-	InitContainerRadiusSearch(%position, %radius, $TypeMasks::ShapeBaseObjectType);
+
+	%targets = new SimSet();
+
+	InitContainerRadiusSearch(%pos, %radius, $TypeMasks::ShapeBaseObjectType);
+	while( (%targetObject = containerSearchNext()) != 0 )
+		%targets.add(%targetObject);
 
 	%halfRadius = %radius / 2;
-	while ((%targetObject = containerSearchNext()) != 0)
+	for(%idx = %targets.getCount()-1; %idx >= 0; %idx-- )
 	{
+		%targetObject = %targets.getObject(%idx);
+
 		// Calculate how much exposure the current object has to
 		// the explosive force.  The object types listed are objects
 		// that will block an explosion.  If the object is totally blocked,
@@ -105,4 +121,6 @@ function radiusDamage(%sourceObject, %position, %radius, %damage, %damageType, %
 			%targetObject.impulse(%position, %impulseVec);
 		}
 	}
+
+	%targets.delete();
 }

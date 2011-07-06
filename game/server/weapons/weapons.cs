@@ -130,10 +130,17 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 	
 	%sourceObject = %obj.getSourceObject();
 	%regainEnergy = %sourceObject.getClassName() $= "Player";
-		
+
+	%targets = new SimSet();
+
 	InitContainerRadiusSearch(%pos, %radius, $TypeMasks::ShapeBaseObjectType);
 	while( (%targetObject = containerSearchNext()) != 0 )
+		%targets.add(%targetObject);
+
+	for(%idx = %targets.getCount()-1; %idx >= 0; %idx-- )
 	{
+		%targetObject = %targets.getObject(%idx);
+
         // the observer cameras are ShapeBases; ignore them...
         if(%targetObject.getType() & $TypeMasks::CameraObjectType)
     	   continue;
@@ -185,6 +192,8 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 			%sourceObject.setEnergyLevel(%newSrcEnergy);
 		}
 	}
+
+	%targets.delete();
 }
 
 
