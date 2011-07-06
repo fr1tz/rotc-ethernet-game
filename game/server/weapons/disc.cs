@@ -12,6 +12,7 @@ exec("./disc.sfx.cs");
 exec("./disc.interceptor.cs");
 exec("./disc.seeker.cs");
 exec("./disc.repel.cs");
+exec("./disc.explosive.cs");
 
 //------------------------------------------------------------------------------
 
@@ -160,6 +161,7 @@ datablock ShapeBaseImageData(RedDiscImage)
 	interceptorDisc = RedInterceptorDisc;
 	seekerDisc = RedSeekerDisc;
 	repelDisc = RedRepelDisc;
+	explosiveDisc = RedExplosiveDisc;
 
 	//-------------------------------------------------
 	// image states...
@@ -253,6 +255,7 @@ datablock ShapeBaseImageData(BlueDiscImage : RedDiscImage)
 	interceptorDisc = BlueInterceptorDisc;
 	seekerDisc = BlueSeekerDisc;
 	repelDisc = BlueRepelDisc;
+	explosiveDisc = BlueExplosiveDisc;
 };
 
 function BlueDiscImage::onMount(%this, %obj, %slot)

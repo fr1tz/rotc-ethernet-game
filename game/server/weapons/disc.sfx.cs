@@ -5,7 +5,7 @@
 
 //------------------------------------------------------------------------------
 // Revenge Of The Cats - disc.sfx.cs
-// Sound effects for the disc
+// Sound effects for the discs
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
@@ -16,6 +16,13 @@ datablock AudioProfile(DiscProjectileSound)
 {
 	filename = "share/sounds/rotc/spin1.wav";
 	description = AudioCloseLooping3d;
+	preload = true;
+};
+
+datablock AudioProfile(ExplosiveDiscProjectileSound)
+{
+	filename = "share/sounds/rotc/missile1.wav";
+	description = AudioCloseLooping3D;
 	preload = true;
 };
 
@@ -54,9 +61,23 @@ datablock AudioProfile(DiscHitSound)
 	preload = true;
 };
 
+datablock AudioProfile(ExplosiveDiscHitSound)
+{
+	filename = "share/sounds/rotc/bounce1.wav";
+	description = AudioDefault3d;
+	preload = true;
+};
+
 datablock AudioProfile(DiscExplosionSound)
 {
 	filename = "share/sounds/rotc/explosion6.wav";
+	description = AudioDefault3d;
+	preload = true;
+};
+
+datablock AudioProfile(ExplosiveDiscExplosionSound)
+{
+	filename = "share/sounds/rotc/explosion1.wav";
 	description = AudioDefault3d;
 	preload = true;
 };

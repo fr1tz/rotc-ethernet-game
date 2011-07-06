@@ -34,6 +34,7 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 	// discs...
 	if(%nr == 6)
 	{
+		launchExplosiveDisc(%obj);
 		return;
 	}
 	else if(%nr == 7)
