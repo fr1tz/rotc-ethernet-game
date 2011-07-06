@@ -19,8 +19,8 @@ datablock NortDiscData(RedSeekerDisc)
 	stat = "seeker";
 
 	// script damage properties...
-	impactDamage       = 0;
-	impactImpulse      = 0;
+	impactDamage       = 60;
+	impactImpulse      = 1000;
 	splashDamage       = 0;
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
@@ -103,27 +103,11 @@ function RedSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 		%source = %obj.sourceObject;
 		if(%source.getDamageState() $= "Enabled")
 			%source.setEnergyLevel(%source.getEnergyLevel() + 20);
-
-		// remove possible barrier from enemy...
-		%col.deactivateBarrier();
-
-		// remove enemy's anchoring...
-		%col.setGridConnection(0);
-
-		// push enemy away from player...
-		%vec = VectorSub(%col.getPosition(), %source.getPosition());
-		%vec = VectorNormalize(%vec);
-		%vec = getWord(%vec,0) SPC getWord(%vec,1) SPC "0.5";
-		//%vec = "0 0 1";
-		%vec = VectorScale(%vec, 3000);
-		%col.impulse(%col.getPosition(), %vec);
-
-		createExplosion(%this.explosion, %pos, %normal);
    
         // give another disc-lock to the attacker
-//        %src =  %obj.getSourceObject();
-//        if(%src)
-//            %src.setDiscTarget(%col);
+        %src =  %obj.getSourceObject();
+        if(%src)
+           %src.setDiscTarget(%col);
 	}
 }
 
