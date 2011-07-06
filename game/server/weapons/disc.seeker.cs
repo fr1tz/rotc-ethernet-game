@@ -40,7 +40,7 @@ datablock NortDiscData(RedSeekerDisc)
 	muzzleVelocity		= 30;
     maxVelocity         = 75;
     acceleration        = 4;
-	velInheritFactor	 = 0.0;
+	velInheritFactor	= 1.0;
 
 	armingDelay			= 0*1000;
 	lifetime				= 10*1000;
