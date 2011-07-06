@@ -22,7 +22,7 @@ function launchRepelDisc(%obj)
 
 	%target = %player.getCurrTarget();
 
-	if(%target != 0
+	if(%obj.hasDisc() && %target != 0
 //	&& %target.numAttackingDiscs() == 0
 //	&& !%target.hasBarrier()
 	)
