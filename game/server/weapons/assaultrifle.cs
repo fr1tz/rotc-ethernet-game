@@ -20,7 +20,7 @@ datablock TracerProjectileData(AssaultRiflePseudoProjectile)
 	energyDrain = 16;
 	lifetime = 1000;
 	muzzleVelocity = 300;
-	velInheritFactor = 0.95;
+	velInheritFactor = 0.75;
 };
 
 function AssaultRiflePseudoProjectile::onAdd(%this, %obj)
@@ -110,7 +110,7 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	velOffset = "0 0.005";
 
 	muzzleVelocity		= 300;
-	velInheritFactor	 = 0.95;
+	velInheritFactor = 0; // Handled by AssaultRiflePseudoProjectile
 	
 	isBallistic			= true;
 	gravityMod			 = 5.0;
