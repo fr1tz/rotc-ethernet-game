@@ -30,6 +30,17 @@ executeCatScripts();
 function StandardCat::useWeapon(%this, %obj, %nr)
 {
 	%client = %obj.client;
+
+	// discs...
+	if(%nr == 6)
+	{
+		return;
+	}
+	else if(%nr == 7)
+	{
+		launchRepelDisc(%obj);
+		return;
+	}
 	
 	if(%client.numWeapons == 0)
 		return;

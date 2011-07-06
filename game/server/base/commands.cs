@@ -49,11 +49,11 @@ function serverCmdPlayerAction(%client, %nr, %val)
 		%client.player.setImageTrigger(2, true);
 		%client.player.setImageTrigger(2, false);
 	}
-	else if(%nr == 13)
+	else if(%nr == 13 && %val)
 	{
 		%client.getControlObject().useWeapon(6);
 	}
-	else if(%nr == 14)
+	else if(%nr == 14 && %val)
 	{
 		%client.getControlObject().useWeapon(7);
 	}

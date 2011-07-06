@@ -9,26 +9,27 @@
 //------------------------------------------------------------------------------
 
 exec("./disc.sfx.cs");
-exec("./disc.seeker.cs");
 exec("./disc.interceptor.cs");
+exec("./disc.seeker.cs");
+exec("./disc.repel.cs");
 
 //------------------------------------------------------------------------------
 
-datablock TracerProjectileData(SeekerDiscPseudoProjectile)
+datablock TracerProjectileData(NoTargetDiscPseudoProjectile)
 {
 	lifetime = 1000;
 };
 
-function SeekerDiscPseudoProjectile::onAdd(%this, %obj)
+function NoTargetDiscPseudoProjectile::onAdd(%this, %obj)
 {
 	%player = %obj.sourceObject;
 	%slot = %obj.sourceSlot;
 
-	%projectile = %player.getMountedImage(%slot).seeker;
+	%projectile = %player.getMountedImage(%slot).seekerDisc;
 
 	%target = %player.getCurrTarget();
 
-	if(%target != 0
+	if(false && %target != 0
 //	&& %target.numAttackingDiscs() == 0
 //	&& !%target.hasBarrier()
 	)
@@ -78,17 +79,17 @@ function SeekerDiscPseudoProjectile::onAdd(%this, %obj)
 
 //------------------------------------------------------------------------------
 
-datablock TracerProjectileData(InterceptorDiscPseudoProjectile)
+datablock TracerProjectileData(TargetDiscPseudoProjectile)
 {
 	lifetime = 1000;
 };
 
-function InterceptorDiscPseudoProjectile::onAdd(%this, %obj)
+function TargetDiscPseudoProjectile::onAdd(%this, %obj)
 {
 	%player = %obj.sourceObject;
 	%slot = %obj.sourceSlot;
 
-	%projectile = %player.getMountedImage(%slot).interceptor;
+	%projectile = %player.getMountedImage(%slot).interceptorDisc;
 
 	// determine muzzle-point...
 	%muzzlePoint = %player.getMuzzlePoint(%slot);
@@ -148,7 +149,7 @@ datablock ShapeBaseImageData(RedDiscImage)
 	// Adjust firing vector to eye's LOS point?
 	correctMuzzleVector = true;
 
-	projectile = InterceptorDiscPseudoProjectile;
+	projectile = TargetDiscPseudoProjectile;
 
 	// targeting...
 	targetingMask = $TargetingMask::Disc;
@@ -156,8 +157,9 @@ datablock ShapeBaseImageData(RedDiscImage)
 
 	// script fields...
 	iconId  = 2;
-	interceptor = RedInterceptorDisc;
-	seeker = RedSeekerDisc;
+	interceptorDisc = RedInterceptorDisc;
+	seekerDisc = RedSeekerDisc;
+	repelDisc = RedRepelDisc;
 
 	//-------------------------------------------------
 	// image states...
@@ -193,25 +195,25 @@ datablock ShapeBaseImageData(RedDiscImage)
 
 		// select action...
 		stateName[4]                    = "SelectAction";
-		stateTransitionOnTarget[4]      = "Intercept";
-		stateTransitionOnNoTarget[4]    = "Attack";
+		stateTransitionOnTarget[4]      = "TargetAction";
+		stateTransitionOnNoTarget[4]    = "NoTargetAction";
 		stateFire[4]                    = true;
 
 		// intercept...
-    		stateName[5]                    = "Intercept";
-    		stateTransitionOnTimeout[5]     = "Release";
-    		stateTimeoutValue[5]            = 0.0;
-		stateFireProjectile[5]          = InterceptorDiscPseudoProjectile;
-    		stateSound[5]                   = DiscThrowSound;
+    	stateName[5]                    = "TargetAction";
+    	stateTransitionOnTimeout[5]     = "Release";
+    	stateTimeoutValue[5]            = 0.0;
+		stateFireProjectile[5]          = TargetDiscPseudoProjectile;
+    	stateSound[5]                   = DiscThrowSound;
 
 		// attack...
-    		stateName[6]                    = "Attack";
-    		stateTransitionOnTimeout[6]     = "Release";
-		stateFireProjectile[6]          = SeekerDiscPseudoProjectile;
-    		stateTimeoutValue[6]            = 0.25;
+    	stateName[6]                    = "NoTargetAction";
+    	stateTransitionOnTimeout[6]     = "Release";
+		stateFireProjectile[6]          = NoTargetDiscPseudoProjectile;
+    	stateTimeoutValue[6]            = 0.25;
 
 		// release...
-    		stateName[7]                    = "Release";
+    	stateName[7]                    = "Release";
 		stateTransitionOnTriggerUp[7]   = "Ready";
 		stateTarget[7]                  = false;
 
@@ -248,8 +250,9 @@ datablock ShapeBaseImageData(BlueDiscImage : RedDiscImage)
 	//shapeFile = "share/shapes/rotc/weapons/disc/image.blue.dts";
 
 	// script fields...
-	interceptor = BlueInterceptorDisc;
-	seeker = BlueSeekerDisc;
+	interceptorDisc = BlueInterceptorDisc;
+	seekerDisc = BlueSeekerDisc;
+	repelDisc = BlueRepelDisc;
 };
 
 function BlueDiscImage::onMount(%this, %obj, %slot)
