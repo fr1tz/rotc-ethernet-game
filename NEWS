@@ -1,10 +1,15 @@
 What's new?
 ===========
 
-Prototype 4+dev1
+Prototype 4+dev2
 ----------------
 
 - Improved disc target tracking
+- New discs:
+   - Repel Disc (formerly Seeker Disc)
+   - Explosive Disc
+- Revert influence of the shooter's momentum on the battle rifle's 
+  projectiles' trajectory back to the way it was in prototype 3.
 - Bugfixes
 
 
