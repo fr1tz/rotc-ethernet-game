@@ -93,7 +93,15 @@ function RedBlasterProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%d
 
     %currTime = getSimTime();
 
-    if(%currTime == %obj.hitTime)
+	// FIXME: strange linux version bug:
+	//        after the game has been running a long time
+	//        (%currTime == %obj.hitTime)
+	//        often evaluates to false even if the
+	//        values appear to be equal.
+	//        (%currTime - %obj.hitTime) evaluates to 1
+	//        in those cases.
+    //if(%currTime == %obj.hitTime)
+	if(%currTime - %obj.hitTime <= 1)
     {
         %col.numBlasterBulletHits += 1;
         if(%col.numBlasterBulletHits == 4)
