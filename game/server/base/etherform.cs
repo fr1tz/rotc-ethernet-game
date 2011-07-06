@@ -236,7 +236,7 @@ datablock EtherformData(RedNyanEtherform : RedEtherform)
 	laserTrail[1] = "";
 };
 
-datablock EtherformData(BlueNyanEtherform : RedEtherform)
+datablock EtherformData(BlueNyanEtherform : BlueEtherform)
 {
 	shapeFile = "share/shapes/rotc/vehicles/etherform/vehicle.nyanblue.dts";
 	laserTrail[0] = NyanEtherform_LaserTrail;
