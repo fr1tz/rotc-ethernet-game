@@ -51,3 +51,8 @@ datablock ParticleData(TextureFileDummy1)
 {
 	textureName	= "share/textures/rotc/rainbow1.png";
 };
+
+datablock ParticleData(TextureFileDummy2)
+{
+	textureName	= "share/shapes/rotc/effects/explosion4_white.png";
+};
