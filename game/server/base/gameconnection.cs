@@ -867,8 +867,8 @@ function GameConnection::setNewbieHelp(%this, %msg, %time)
 		%tip[%i++] = "When in CAT form, hold down and release @bind19 to throw a grenade. Press @bind46 to" SPC
 			"throw a grenade with max. force.";
 		%tip[%i++] = "If you've aquired a disc lock (you'll hear three short beeps) you can" SPC
-			"launch a target-seeking disc by pressing @bind17.";
-		%tip[%i++] = "In CAT form, you can deflect incoming seeker discs by keeping your crosshair" SPC
+			"launch a target-seeking disc: Press @bind47 for explosive disc, @bind48 for repel disc.";
+		%tip[%i++] = "In CAT form, you can deflect incoming discs by keeping your crosshair" SPC
 			"over the disc until it's locked and then pressing @bind17.";
 		%tip[%i++] = "When in CAT form, press @bind18 to jump. Pressing @bind18 while in the air will fire" SPC
 			"your CAT's jump boosters, which drains power away from your armor.";
