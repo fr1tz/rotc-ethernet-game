@@ -1,5 +1,7 @@
 (See also: <a:cmd HowToPlay C>C. Controls reference</a>)
 
+ROTC: Ethernet Light is a simplified version of ROTC: Ethernet. While the zones work the same way in both game types, a number of mechanics and weapons have been removed for ROTC: Ethernet Light in order to allow a less deliberate, more frenzied style of play. An example of this is the removal of all abilities and weapons that would allow you to repel an enemy that is charging you.
+
 <lmargin:0>*<lmargin:10>Once you joined a team you can change into CAT form by pressing @bind34 inside one of your team's zones.
 
 <lmargin:0>*<lmargin:10>You can return to Etherform at anytime by pressing @bind34 again.
@@ -16,7 +18,7 @@
 
 <lmargin:0>In CAT form...
 
-<lmargin:0>*<lmargin:10>Press @bind45 to cycle between the weapons you selected in Etherform.
+<lmargin:0>*<lmargin:10>Press @bind45 to cycle between the <a:cmd HowToPlay 6.1>Blaster</a> and the <a:cmd HowToPlay 6.2>Battle Rifle</a>.
 
 <lmargin:0>*<lmargin:10>Use @bind16 to fire your mounted weapon, but keep in mind that this draws power away from your armor.
 
@@ -26,12 +28,8 @@
 
 <lmargin:0>*<lmargin:10>Aim at incoming discs and press @bind17 to deflect them.
 
-<lmargin:0>*<lmargin:10>You can launch different kinds of target-seeking discs. See the <a:cmd HowToPlay 5.1>Discs section of this manual</a> for more information.
+<lmargin:0>*<lmargin:10>You can launch a target-seeking discs at enemies. See the <a:cmd HowToPlay 5.1>Discs section of this manual</a> for more information.
 
 <lmargin:0>*<lmargin:10>Hold @bind21 to ride your etherboard. This allows higher movement speeds at the cost of lower agility.
 
 <lmargin:0>*<lmargin:10>Pressing @bind18 in mid-air will fire your jump boosters. Beware that this draws power away from your armor.
-
-<lmargin:0>*<lmargin:10>Pressing @bind51 will fire a B.O.U.N.C.E. that will revert the velocities of nearby enemy CATs and deal some damage to them based on their speed. If no enemy CAT is nearby this will drain 50% of your armor.
-
-<lmargin:0>*<lmargin:10>To compensate for the strong push from being hit by a projectile, CATs can become "anchored" to the ground by being close to it and not etherboarding. When fully anchored,  the impact force from a hit is reduced by 75%.

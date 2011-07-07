@@ -11,6 +11,62 @@
 exec("./disc.seeker.gfx.red.cs");
 exec("./disc.seeker.gfx.blue.cs");
 
+//------------------------------------------------------------------------------
+
+function launchSeekerDisc(%obj)
+{
+	%player = %obj;
+	%slot = 1;
+
+	%projectile = %player.getMountedImage(%slot).seekerDisc;
+
+	%target = %player.getCurrTarget();
+
+	if(%obj.hasDisc() && %target != 0
+//	&& %target.numAttackingDiscs() == 0
+//	&& !%target.hasBarrier()
+	)
+	{
+		// determine muzzle-point...
+		%muzzlePoint = %player.getMuzzlePoint(%slot);
+
+		// determine initial projectile velocity...
+		%muzzleSpeed = %projectile.muzzleVelocity;
+
+		%muzzleVector = %player.getMuzzleVector(%slot);
+		%objectVelocity = %player.getVelocity();
+		%muzzleVelocity = VectorAdd(
+			VectorScale(%muzzleVector,  %muzzleSpeed),
+			VectorScale(%objectVelocity, %projectile.velInheritFactor));
+
+		// create the disc...
+		%disc = new (NortDisc)() {
+			dataBlock       = %projectile;
+			teamId          = %player.teamId;
+			initialVelocity = %muzzleVelocity;
+			initialPosition = %muzzlePoint;
+			sourceObject    = %player;
+			sourceSlot      = %slot;
+			client          = %player.client;
+		};
+		MissionCleanup.add(%disc);
+
+		%disc.setTarget(%target);
+
+		%player.clearDiscTarget();
+		%player.decDiscs();
+		%target.addAttackingDisc(%player);
+		%player.playAudio(0, DiscThrowSound);
+		if(%target.client)
+			%target.client.play2D(DiscIncomingSound);
+	}
+	else
+	{
+		if(%player.client)
+			%player.client.play2D(DiscSeekerDeniedSound);
+	}
+}
+
 //-----------------------------------------------------------------------------
 // projectile datablock...
 

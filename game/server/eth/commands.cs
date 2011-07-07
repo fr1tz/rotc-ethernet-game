@@ -11,99 +11,181 @@ function serverCmdHowToPlay(%client, %page)
 	if(%page $= "")
 		%page = 1;
 
+	if($ROTC::GameType == $ROTC::EthernetLight)
+	{
+		%gametype = "ROTC: Ethernet Light";
+		%help = "help-light";
+	}
+	else
+	{
+		%gametype = "ROTC: Ethernet";
+		%help = "help";	
+	}	
+
 	%newtxt = %newtxt @ 
 		om_head(%client, "Manual") @
-		"<just:center><spush><font:NovaSquare:20>How to play ROTC: Ethernet?<spop>\n\n";
+		"<just:center><spush><font:NovaSquare:20>How to play " @ %gametype @ "?<spop>\n\n";
 
-	%n = 0;
-	%pageNumber[%n] = "0"; 
-	%pageTitle[%n] = "Index";
-	%pageFile[%n] = "index";
-	%n++;
-	%pageNumber[%n] = "1"; 
-	%pageTitle[%n] = "ROTC: Ethernet in a nutshell";
-	%pageFile[%n] = "summary";
-	%n++;
-	%pageNumber[%n] = "2"; 
-	%pageTitle[%n] = "Basics";
-	%pageFile[%n] = "basics";
-	%n++;
-	%pageNumber[%n] = "3"; 
-	%pageTitle[%n] = "Playing as Etherform";
-	%pageFile[%n] = "etherform";
-	%n++;
-	%pageNumber[%n] = "4"; 
-	%pageTitle[%n] = "Playing in CAT form";
-	%pageFile[%n] = "cat";
-	%n++;
-	%pageNumber[%n] = "5"; 
-	%pageTitle[%n] = "Basic CAT Weapons";
-	%pageFile[%n] = "basicweapons";
-	%n++;
-	%pageNumber[%n] = "5.1"; 
-	%pageTitle[%n] = "Discs";
-	%pageFile[%n] = "discs";
-	%n++;
-	%pageNumber[%n] = "5.2"; 
-	%pageTitle[%n] = "Grenades";
-	%pageFile[%n] = "grenades";
-	%n++;
-	%pageNumber[%n] = "5.3"; 
-	%pageTitle[%n] = "B.O.U.N.C.E.";
-	%pageFile[%n] = "bounce";
-	%n++;
-	%pageNumber[%n] = "6"; 
-	%pageTitle[%n] = "Red/Blue (buffer) CAT Weapons";
-	%pageFile[%n] = "bufferweapons";
-	%n++;
-	%pageNumber[%n] = "6.1"; 
-	%pageTitle[%n] = "Blaster";
-	%pageFile[%n] = "blaster";
-	%n++;
-	%pageNumber[%n] = "6.2"; 
-	%pageTitle[%n] = "Battle Rifle";
-	%pageFile[%n] = "battlerifle";
-	%n++;
-	%pageNumber[%n] = "6.3"; 
-	%pageTitle[%n] = "Minigun";
-	%pageFile[%n] = "minigun";
-	%n++;
-	%pageNumber[%n] = "7"; 
-	%pageTitle[%n] = "Green/Orange (barrier) CAT Weapons";
-	%pageFile[%n] = "barrierweapons";
-	%n++;
-	%pageNumber[%n] = "7.1"; 
-	%pageTitle[%n] = "Sniper ROFL";
-	%pageFile[%n] = "sniperrofl";
-	%n++;	
-	%pageNumber[%n] = "8"; 
-	%pageTitle[%n] = "Other CAT equipment";
-	%pageFile[%n] = "catequipment";
-	%n++;	
-	%pageNumber[%n] = "8.1"; 
-	%pageTitle[%n] = "The Etherboard";
-	%pageFile[%n] = "etherboard";
-	%n++;
-	%pageNumber[%n] = "8.2"; 
-	%pageTitle[%n] = "Regeneration modules";
-	%pageFile[%n] = "regeneration";
-	%n++;
-	%pageNumber[%n] = "8.3"; 
-	%pageTitle[%n] = "Mine Launcher";
-	%pageFile[%n] = "minelauncher";
-	%n++;
-	%pageNumber[%n] = "9"; 
-	%pageTitle[%n] = "Controls reference";
-	%pageFile[%n] = "controls";
-	%n++;
-	%pageNumber[%n] = "10"; 
-	%pageTitle[%n] = "Handicap";
-	%pageFile[%n] = "handicap";
-	%n++;
-	%pageNumber[%n] = "X"; 
-	%pageTitle[%n] = "Bots, Mapping & other neat stuff";
-	%pageFile[%n] = "other";
-	%n++;
+	if($ROTC::GameType == $ROTC::EthernetLight)
+	{
+		%n = 0;
+		%pageNumber[%n] = "0"; 
+		%pageTitle[%n] = "Index";
+		%pageFile[%n] = "index";
+		%n++;
+		%pageNumber[%n] = "1"; 
+		%pageTitle[%n] = "ROTC: Ethernet Light in a nutshell";
+		%pageFile[%n] = "summary";
+		%n++;
+		%pageNumber[%n] = "2"; 
+		%pageTitle[%n] = "Ethernet basics";
+		%pageFile[%n] = "basics";
+		%n++;
+		%pageNumber[%n] = "3"; 
+		%pageTitle[%n] = "Playing as Etherform";
+		%pageFile[%n] = "etherform";
+		%n++;
+		%pageNumber[%n] = "4"; 
+		%pageTitle[%n] = "Playing in CAT form";
+		%pageFile[%n] = "cat";
+		%n++;
+		%pageNumber[%n] = "5"; 
+		%pageTitle[%n] = "Basic CAT Weapons";
+		%pageFile[%n] = "basicweapons";
+		%n++;
+		%pageNumber[%n] = "5.1"; 
+		%pageTitle[%n] = "Discs";
+		%pageFile[%n] = "discs";
+		%n++;
+		%pageNumber[%n] = "5.2"; 
+		%pageTitle[%n] = "Grenades";
+		%pageFile[%n] = "grenades";
+		%n++;
+		%pageNumber[%n] = "6"; 
+		%pageTitle[%n] = "Red/Blue (buffer) CAT Weapons";
+		%pageFile[%n] = "bufferweapons";
+		%n++;
+		%pageNumber[%n] = "6.1"; 
+		%pageTitle[%n] = "Blaster";
+		%pageFile[%n] = "blaster";
+		%n++;
+		%pageNumber[%n] = "6.2"; 
+		%pageTitle[%n] = "Battle Rifle";
+		%pageFile[%n] = "battlerifle";
+		%n++;
+		%pageNumber[%n] = "7"; 
+		%pageTitle[%n] = "Other CAT equipment";
+		%pageFile[%n] = "catequipment";
+		%n++;	
+		%pageNumber[%n] = "7.1"; 
+		%pageTitle[%n] = "The Etherboard";
+		%pageFile[%n] = "etherboard";
+		%n++;
+		%pageNumber[%n] = "C"; 
+		%pageTitle[%n] = "Controls reference";
+		%pageFile[%n] = "controls";
+		%n++;
+		%pageNumber[%n] = "H"; 
+		%pageTitle[%n] = "Handicap";
+		%pageFile[%n] = "handicap";
+		%n++;
+		%pageNumber[%n] = "X"; 
+		%pageTitle[%n] = "Bots, Mapping & other neat stuff";
+		%pageFile[%n] = "other";
+		%n++;
+	}
+	else
+	{
+		%n = 0;
+		%pageNumber[%n] = "0"; 
+		%pageTitle[%n] = "Index";
+		%pageFile[%n] = "index";
+		%n++;
+		%pageNumber[%n] = "1"; 
+		%pageTitle[%n] = "ROTC: Ethernet in a nutshell";
+		%pageFile[%n] = "summary";
+		%n++;
+		%pageNumber[%n] = "2"; 
+		%pageTitle[%n] = "Ethernet basics";
+		%pageFile[%n] = "basics";
+		%n++;
+		%pageNumber[%n] = "3"; 
+		%pageTitle[%n] = "Playing as Etherform";
+		%pageFile[%n] = "etherform";
+		%n++;
+		%pageNumber[%n] = "4"; 
+		%pageTitle[%n] = "Playing in CAT form";
+		%pageFile[%n] = "cat";
+		%n++;
+		%pageNumber[%n] = "5"; 
+		%pageTitle[%n] = "Basic CAT Weapons";
+		%pageFile[%n] = "basicweapons";
+		%n++;
+		%pageNumber[%n] = "5.1"; 
+		%pageTitle[%n] = "Discs";
+		%pageFile[%n] = "discs";
+		%n++;
+		%pageNumber[%n] = "5.2"; 
+		%pageTitle[%n] = "Grenades";
+		%pageFile[%n] = "grenades";
+		%n++;
+		%pageNumber[%n] = "5.3"; 
+		%pageTitle[%n] = "B.O.U.N.C.E.";
+		%pageFile[%n] = "bounce";
+		%n++;
+		%pageNumber[%n] = "6"; 
+		%pageTitle[%n] = "Red/Blue (buffer) CAT Weapons";
+		%pageFile[%n] = "bufferweapons";
+		%n++;
+		%pageNumber[%n] = "6.1"; 
+		%pageTitle[%n] = "Blaster";
+		%pageFile[%n] = "blaster";
+		%n++;
+		%pageNumber[%n] = "6.2"; 
+		%pageTitle[%n] = "Battle Rifle";
+		%pageFile[%n] = "battlerifle";
+		%n++;
+		%pageNumber[%n] = "6.3"; 
+		%pageTitle[%n] = "Minigun";
+		%pageFile[%n] = "minigun";
+		%n++;
+		%pageNumber[%n] = "7"; 
+		%pageTitle[%n] = "Green/Orange (barrier) CAT Weapons";
+		%pageFile[%n] = "barrierweapons";
+		%n++;
+		%pageNumber[%n] = "7.1"; 
+		%pageTitle[%n] = "Sniper ROFL";
+		%pageFile[%n] = "sniperrofl";
+		%n++;	
+		%pageNumber[%n] = "8"; 
+		%pageTitle[%n] = "Other CAT equipment";
+		%pageFile[%n] = "catequipment";
+		%n++;	
+		%pageNumber[%n] = "8.1"; 
+		%pageTitle[%n] = "The Etherboard";
+		%pageFile[%n] = "etherboard";
+		%n++;
+		%pageNumber[%n] = "8.2"; 
+		%pageTitle[%n] = "Regeneration modules";
+		%pageFile[%n] = "regeneration";
+		%n++;
+		%pageNumber[%n] = "8.3"; 
+		%pageTitle[%n] = "Mine Launcher";
+		%pageFile[%n] = "minelauncher";
+		%n++;
+		%pageNumber[%n] = "C"; 
+		%pageTitle[%n] = "Controls reference";
+		%pageFile[%n] = "controls";
+		%n++;
+		%pageNumber[%n] = "H"; 
+		%pageTitle[%n] = "Handicap";
+		%pageFile[%n] = "handicap";
+		%n++;
+		%pageNumber[%n] = "X"; 
+		%pageTitle[%n] = "Bots, Mapping & other neat stuff";
+		%pageFile[%n] = "other";
+		%n++;
+	}
 
 	for(%i = 0; %i < %n; %i++)
 	{
@@ -121,8 +203,8 @@ function serverCmdHowToPlay(%client, %page)
 	{
 		%title = "0. Index";
 		%prev = "";
-		%next = "<a:cmd HowToPlay 1>ROTC: Ethernet in a nutshell</a>";
-		%fileName = "game/server/eth/help/index.rml";
+		%next = "<a:cmd HowToPlay 1>" @ %gametype @ " in a nutshell</a>";
+		%fileName = "game/server/eth/" @ %help @ "/index.rml";
 	}
 	else
 	{
@@ -142,7 +224,7 @@ function serverCmdHowToPlay(%client, %page)
 		else
 			%next = "";
 
-		%fileName = "game/server/eth/help/" @ %file @ ".rml";
+		%fileName = "game/server/eth/" @ %help @ "/" @ %file @ ".rml";
 	}
 
 	%nav = "<spush><font:NovaSquare:13>";

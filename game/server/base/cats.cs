@@ -32,10 +32,13 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 	%client = %obj.client;
 
 	// discs...
-	if(%nr == 6)
+	if($ROTC::GameType == $ROTC::Ethernet)
 	{
-		launchExplosiveDisc(%obj);
-		return;
+		if(%nr == 6)
+		{
+			launchExplosiveDisc(%obj);
+			return;
+		}
 	}
 	
 	if(%client.numWeapons == 0)

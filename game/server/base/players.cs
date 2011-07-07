@@ -640,6 +640,9 @@ function Player::updateRegeneration(%this)
 
 function Player::setGridConnection(%this, %val)
 {
+	if($ROTC::GameType != $ROTC::Ethernet)
+		return;
+
 	if(%val == %this.gridConnection)
 		return;
 
@@ -652,6 +655,16 @@ function Player::setGridConnection(%this, %val)
 
 function Player::updateGridConnection(%this)
 {
+	if($ROTC::GameType == $ROTC::EthernetLight)
+	{
+		%this.gridConnection = 1;
+		%this.shapeFxSetTexture($PlayerShapeFxSlot::GridConnection, 0);					
+		%this.shapeFxSetColor($PlayerShapeFxSlot::GridConnection, 1);			
+		%this.shapeFxSetFade($PlayerShapeFxSlot::GridConnection, 1, 0);
+		%this.shapeFxSetActive($PlayerShapeFxSlot::GridConnection, true, true);
+		return;
+	}
+
 	%dtTime = 50;
     
 	if(%this.updateGridConnectionThread !$= "")

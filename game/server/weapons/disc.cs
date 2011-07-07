@@ -23,7 +23,10 @@ datablock TracerProjectileData(NoTargetDiscPseudoProjectile)
 
 function NoTargetDiscPseudoProjectile::onAdd(%this, %obj)
 {
-	launchRepelDisc(%obj.sourceObject);
+	if($ROTC::GameType == $ROTC::EthernetLight)
+		launchSeekerDisc(%obj.sourceObject);
+	else
+		launchRepelDisc(%obj.sourceObject);
 
 	// no need to ghost pseudo projectile to clients...
 	%obj.delete();

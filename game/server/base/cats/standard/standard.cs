@@ -260,6 +260,11 @@ datablock PlayerData(RedStandardCat)
 	observeParameters = "0.5 4.5 4.5";
 };
 
+if($ROTC::GameType == $ROTC::EthernetLight)
+{
+	RedStandardCat.groundConnectionBeam = "";
+}
+
 datablock PlayerData(BlueStandardCat : RedStandardCat)
 {
 	shapeFile = "share/shapes/rotc/players/standardcat/player2.blue.dts";

@@ -1,0 +1,38 @@
+<spush><font:NovaSquare:20>The Disc<spop>
+
+Every CAT carries a head-mounted disc launcher and two discs. 
+
+<bitmap:share/misc/help/wpn_disc.png><sbreak>
+
+In Ethernet Light there's only one kind of offensive disc: The slasher disc.
+To throw a slasher disc, you first need to get a disc-lock on an enemy CAT. After you've aquired a disc-lock, you can launch a slasher disc by pressing @bind17.
+
+<lmargin:0>These are the rules to get a disc-lock:
+<lmargin:0>-<lmargin:10> Damage the target with a <a:cmd HowToPlay 5.2>Grenade</a>
+<lmargin:0>-<lmargin:10> Hit the target with at least 4 of the 9 shots fired by the <a:cmd HowToPlay 6.1>Blaster</a>
+<lmargin:0>-<lmargin:10> Land a direct hit on the target with the <a:cmd HowToPlay 6.1>Battle Rifle</a> (proximity explosions do not count)
+<lmargin:0>A disc-lock only lasts for two seconds.
+
+
+<spush><font:NovaSquare:18>Slasher Disc<spop>
+
+A slasher disc will track its target until it has hit it, missed it, was deflected by another disc, has bounced a few times or has expired. 
+
+In addition to dealing some damage, a slasher disc will give 20 points of armor to the CAT that launched it when it hits its target.
+
+<sbreak><tab:15,200>
+	Armor cost	<spush><font:Arial Bold:16>-<spop>
+	Impact damage	<spush><font:Arial Bold:16>60<spop>
+	Impact impulse	<spush><font:Arial Bold:16>1000<spop>
+	Splash damage	<spush><font:Arial Bold:16>-<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Bypasses	<spush><font:Arial Bold:16>barrier<spop>
+<sbreak>
+
+
+<spush><font:NovaSquare:18>Deflecting Discs<spop>
+
+To deflect an incoming disc, keep the crosshair over it until it's locked, then press @bind17. 
+
+<bitmap:share/misc/help/wpn_discdeflect.png><sbreak>

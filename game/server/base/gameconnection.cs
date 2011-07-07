@@ -125,9 +125,18 @@ function GameConnection::onClientEnterGame(%this)
 	//
 	// inventory...
 	//
-	%this.loadout[1] = 1;
-	%this.loadout[2] = 3;
-	%this.loadout[3] = 6;
+	if($ROTC::GameType == $ROTC::Ethernet)
+	{
+		%this.loadout[1] = 1;
+		%this.loadout[2] = 3;
+		%this.loadout[3] = 6;
+	}
+	else if($ROTC::GameType == $ROTC::EthernetLight)
+	{
+		%this.loadout[1] = 1;
+		%this.loadout[2] = 2;
+		%this.loadout[3] = 6;
+	}
 	%this.updateWeapons();
 	
 	//

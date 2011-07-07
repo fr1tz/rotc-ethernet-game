@@ -10,6 +10,9 @@ exec("./etherform.gfx.cs");
 
 function EtherformData::useWeapon(%this, %obj, %nr)
 {
+	if($ROTC::GameType == $ROTC::EthernetLight)
+		return;
+
 	%client = %obj.client;
 
 	if(%obj.inventoryMode $= "show")
@@ -114,13 +117,35 @@ function EtherformData::displayInventory(%this, %obj)
 	%itemname[6] = "Etherboard";
 	%itemname[7] = "Regeneration";	
 
+	if($ROTC::GameType == $ROTC::EthernetLight)
+	{	
+		%client.setHudMenuL("*", " ", 1, 0);
+		%client.setHudMenuL(0, "<font:NovaSquare:16>", 1, 1);
+		%s = "ETHERNET";
+		%t = ""; %n = strlen(%s);
+		for(%i = 0; %i < %n; %i++)
+			%t = %t @ "      " @ getSubStr(%s, %i, 1) @ "\n";		
+		%client.setHudMenuL(1, %t, 1, 1);
+		for(%i = 1; %i <= 3; %i++)
+			%icon[%i] = %item[%client.loadout[%i]];
+		%client.setHudMenuL(2, "<bitmap:share/hud/rotc/icon." @ %icon[1] @ ".50x15><sbreak>", 1, 1);
+		%client.setHudMenuL(3, "<bitmap:share/hud/rotc/icon." @ %icon[2] @ ".50x15><sbreak>", 1, 1);
+		%client.setHudMenuL(4, "<bitmap:share/hud/rotc/icon." @ %icon[3] @ ".50x15><sbreak>", 1, 1);
+		%s = "LIGHT";
+		%t = ""; %n = strlen(%s);
+		for(%i = 0; %i < %n; %i++)
+			%t = %t @ "      " @ getSubStr(%s, %i, 1) @ "\n";		
+		%client.setHudMenuL(5, %t, 1, 1);
+		return;
+	}
+
 	if(%obj.inventoryMode $= "show")
 	{
 		for(%i = 1; %i <= 3; %i++)
 			%icon[%i] = %item[%client.loadout[%i]];
 	
 		%client.setHudMenuL("*", " ", 1, 0);
-		%client.setHudMenuL(0, "<font:NovaSquare:12>", 1, 1);
+		%client.setHudMenuL(0, "<font:NovaSquare:12>", 1, 1);			
 		
 		%client.setHudMenuL(1, "Slot #1:\n", 1, 1);
 		%client.setHudMenuL(2, "<bitmap:share/hud/rotc/icon." @ %icon[1] @ ".50x15>", 1, 1);
