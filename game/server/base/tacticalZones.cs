@@ -327,14 +327,14 @@ function TerritoryZone::updateOwner(%this, %zone)
 	}
 	else if(%numConnections == 1)
 	{
-		if(%connectedToRed) // blue end zone
+		if(%zone.getTeamId() != 1 && %connectedToRed) // blue end zone
 		{
 			if(%zone.zNumReds > 0)
 				%this.setZoneOwner(%zone, 0);
 			else if(%zone.zNumBlues > 0)
 				%this.setZoneOwner(%zone, 2);
 		}
-		else if(%connectedToBlue) // red end zone
+		else if(%zone.getTeamId() != 2 && %connectedToBlue) // red end zone
 		{
 			if(%zone.zNumBlues > 0)
 				%this.setZoneOwner(%zone, 0);
