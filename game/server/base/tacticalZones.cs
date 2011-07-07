@@ -310,19 +310,37 @@ function TerritoryZone::updateOwner(%this, %zone)
 		}
 	}
 
-	if(%zone.zNumReds != 0 && %zone.zNumBlues == 0 
-	&& (%connectedToRed || (%zone.getTeamId() == 0 && %numConnections == 1)))
+	if(%zone.zNumReds > 0 && %zone.zNumBlues == 0
+	&& %connectedToRed)
 	{
 		%this.setZoneOwner(%zone, 1);
 	}
-	else if(%zone.zNumBlues != 0 && %zone.zNumReds == 0 
-	&& (%connectedToBlue || (%zone.getTeamId() == 0 && %numConnections == 1)))
+	else if(%zone.zNumBlues > 0 && %zone.zNumReds == 0
+	&& %connectedToBlue)
 	{
 		%this.setZoneOwner(%zone, 2);
 	}
-	else if(%zone.zNumReds != 0 && %zone.zNumBlues != 0 && %numConnections > 0)
+	else if(%zone.zNumReds > 0 && %zone.zNumBlues > 0
+	&& %connectedToRed && %connectedToBlue)
 	{
-		%this.setZoneOwner(%zone, 0);
+		%this.setZoneOwner(%zone, 0);		
+	}
+	else if(%numConnections == 1)
+	{
+		if(%connectedToRed) // blue end zone
+		{
+			if(%zone.zNumReds > 0)
+				%this.setZoneOwner(%zone, 0);
+			else if(%zone.zNumBlues > 0)
+				%this.setZoneOwner(%zone, 2);
+		}
+		else if(%connectedToBlue) // red end zone
+		{
+			if(%zone.zNumBlues > 0)
+				%this.setZoneOwner(%zone, 0);
+			else if(%zone.zNumReds > 0)
+				%this.setZoneOwner(%zone, 1);
+		}			
 	}
 
 	%zone.zBlocked = false;
