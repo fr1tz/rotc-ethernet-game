@@ -37,11 +37,6 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 		launchExplosiveDisc(%obj);
 		return;
 	}
-	else if(%nr == 7)
-	{
-		launchRepelDisc(%obj);
-		return;
-	}
 	
 	if(%client.numWeapons == 0)
 		return;

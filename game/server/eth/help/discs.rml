@@ -5,7 +5,7 @@ Every CAT carries a head-mounted disc launcher and two discs.
 <bitmap:share/misc/help/wpn_disc.png><sbreak>
 
 To throw a disc, you first need to get a disc-lock on an enemy CAT. After you've aquired a disc-lock, you can:
-<lmargin:0>-<lmargin:10> Launch a repel disc by pressing @bind48.
+<lmargin:0>-<lmargin:10> Launch a repel disc by pressing @bind17.
 <lmargin:0>-<lmargin:10> Launch an explosive disc by pressing @bind47.
 
 <lmargin:0>These are the rules to get a disc-lock:
