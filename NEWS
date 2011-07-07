@@ -1,10 +1,11 @@
 What's new?
 ===========
 
-Prototype 4+dev3
+Prototype 4+dev4
 ----------------
 
 - Fixed zone mechanics
+- Added "ROTC: Ethernet Light" game type.
 - Improved disc target tracking somewhat
 - Multiple discs:
    - Repel Disc
