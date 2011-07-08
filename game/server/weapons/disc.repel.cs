@@ -34,10 +34,9 @@ function launchRepelDisc(%obj)
 		%muzzleSpeed = %projectile.muzzleVelocity;
 
 		%muzzleVector = %player.getMuzzleVector(%slot);
-		%objectVelocity = %player.getVelocity();
 		%muzzleVelocity = VectorAdd(
 			VectorScale(%muzzleVector,  %muzzleSpeed),
-			VectorScale(%objectVelocity, %projectile.velInheritFactor));
+			VectorScale(%player.getVelocity(), %projectile.velInheritFactor));
 
 		// create the disc...
 		%disc = new (NortDisc)() {
@@ -96,7 +95,7 @@ datablock NortDiscData(RedRepelDisc)
 	muzzleVelocity		= 30;
     maxVelocity         = 75;
     acceleration        = 4;
-	velInheritFactor	= 1.0;
+	velInheritFactor	= 0.5;
 
 	armingDelay			= 0*1000;
 	lifetime				= 10*1000;
