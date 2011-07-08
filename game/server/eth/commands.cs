@@ -11,22 +11,16 @@ function serverCmdHowToPlay(%client, %page)
 	if(%page $= "")
 		%page = 1;
 
-	if($ROTC::GameType == $ROTC::EthernetLight)
-	{
-		%gametype = "ROTC: Ethernet Light";
-		%help = "help-light";
-	}
+	if($ROTC::GameType == $ROTC::TeamDM)
+		%help = "help-tdm";
 	else
-	{
-		%gametype = "ROTC: Ethernet";
 		%help = "help";	
-	}	
 
 	%newtxt = %newtxt @ 
 		om_head(%client, "Manual") @
-		"<just:center><spush><font:NovaSquare:20>How to play " @ %gametype @ "?<spop>\n\n";
+		"<just:center><spush><font:NovaSquare:20>How to play " @ $ROTC::GameTypeString @ "?<spop>\n\n";
 
-	if($ROTC::GameType == $ROTC::EthernetLight)
+	if($ROTC::GameType == $ROTC::TeamDM)
 	{
 		%n = 0;
 		%pageNumber[%n] = "0"; 
@@ -34,11 +28,11 @@ function serverCmdHowToPlay(%client, %page)
 		%pageFile[%n] = "index";
 		%n++;
 		%pageNumber[%n] = "1"; 
-		%pageTitle[%n] = "ROTC: Ethernet Light in a nutshell";
+		%pageTitle[%n] = "ROTC: Team Deathmatch in a nutshell";
 		%pageFile[%n] = "summary";
 		%n++;
 		%pageNumber[%n] = "2"; 
-		%pageTitle[%n] = "Ethernet basics";
+		%pageTitle[%n] = "Basics";
 		%pageFile[%n] = "basics";
 		%n++;
 		%pageNumber[%n] = "3"; 
@@ -106,7 +100,7 @@ function serverCmdHowToPlay(%client, %page)
 		%pageFile[%n] = "summary";
 		%n++;
 		%pageNumber[%n] = "2"; 
-		%pageTitle[%n] = "Ethernet basics";
+		%pageTitle[%n] = "Basics";
 		%pageFile[%n] = "basics";
 		%n++;
 		%pageNumber[%n] = "3"; 

@@ -655,7 +655,7 @@ function Player::setGridConnection(%this, %val)
 
 function Player::updateGridConnection(%this)
 {
-	if($ROTC::GameType == $ROTC::EthernetLight)
+	if($ROTC::GameType != $ROTC::Ethernet)
 	{
 		%this.gridConnection = 1;
 		%this.shapeFxSetTexture($PlayerShapeFxSlot::GridConnection, 0);					

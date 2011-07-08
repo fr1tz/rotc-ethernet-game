@@ -59,7 +59,7 @@ function serverCmdPlayerAction(%client, %nr, %val)
 	}
 	else if(%nr == 17 && %val)
 	{		
-		if($ROTC::GameType != $ROTC::EthernetLight)
+		if($ROTC::GameType == $ROTC::TeamDM)
 			deployRepel3(%player);
 	}
 	else if(%nr == 39 && %val)
@@ -247,11 +247,7 @@ function serverCmdMainMenu(%client)
 
 	if(%client.loadingMission || %client.menu $= "mainmenu")
 	{
-		if($ROTC::GameType == $ROTC::EthernetLight)
-			%summary = "ROTC: Ethernet Light in a nutshell";
-		else
-			%summary = "ROTC: Ethernet in a nutshell";	
-
+		%summary = $ROTC::GameTypeString SPC "in a nutshell";	
 		%newtxt = %newtxt @
 			"If you're playing this arena for the first time, loading" SPC
 			"might take\nsome time while the game downloads needed" SPC

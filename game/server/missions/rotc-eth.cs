@@ -10,6 +10,7 @@
 exec("./rotc-types.cs");
 
 $ROTC::GameType = $ROTC::Ethernet;
+$ROTC::GameTypeString = "ROTC: Ethernet";
 
 $Server::MissionDirectory = strreplace($Server::MissionFile, ".mis", "") @ "/";
 $Server::MissionEnvironmentFile = $Server::MissionDirectory @ "mission.env";

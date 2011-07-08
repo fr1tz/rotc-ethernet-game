@@ -260,7 +260,7 @@ datablock PlayerData(RedStandardCat)
 	observeParameters = "0.5 4.5 4.5";
 };
 
-if($ROTC::GameType == $ROTC::EthernetLight)
+if($ROTC::GameType != $ROTC::Ethernet)
 {
 	RedStandardCat.groundConnectionBeam = "";
 }

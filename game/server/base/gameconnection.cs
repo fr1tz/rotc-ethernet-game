@@ -131,7 +131,7 @@ function GameConnection::onClientEnterGame(%this)
 		%this.loadout[2] = 3;
 		%this.loadout[3] = 6;
 	}
-	else if($ROTC::GameType == $ROTC::EthernetLight)
+	else if($ROTC::GameType == $ROTC::TeamDM)
 	{
 		%this.loadout[1] = 1;
 		%this.loadout[2] = 2;

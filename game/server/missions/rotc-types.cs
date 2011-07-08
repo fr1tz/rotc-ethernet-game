@@ -5,4 +5,4 @@
 
 // ROTC game types
 $ROTC::Ethernet = 0;
-$ROTC::EthernetLight = 1;
+$ROTC::TeamDM   = 1;

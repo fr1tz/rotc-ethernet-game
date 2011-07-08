@@ -10,7 +10,7 @@ exec("./etherform.gfx.cs");
 
 function EtherformData::useWeapon(%this, %obj, %nr)
 {
-	if($ROTC::GameType == $ROTC::EthernetLight)
+	if($ROTC::GameType == $ROTC::TeamDM)
 		return;
 
 	%client = %obj.client;
@@ -117,27 +117,9 @@ function EtherformData::displayInventory(%this, %obj)
 	%itemname[6] = "Etherboard";
 	%itemname[7] = "Regeneration";	
 
-	if($ROTC::GameType == $ROTC::EthernetLight)
-	{	
-		%client.setHudMenuL("*", " ", 1, 0);
-		%client.setHudMenuL(0, "<font:NovaSquare:16>", 1, 1);
-		%s = "ETHERNET";
-		%t = ""; %n = strlen(%s);
-		for(%i = 0; %i < %n; %i++)
-			%t = %t @ "      " @ getSubStr(%s, %i, 1) @ "\n";		
-		%client.setHudMenuL(1, %t, 1, 1);
-		for(%i = 1; %i <= 3; %i++)
-			%icon[%i] = %item[%client.loadout[%i]];
-		%client.setHudMenuL(2, "<bitmap:share/hud/rotc/icon." @ %icon[1] @ ".50x15><sbreak>", 1, 1);
-		%client.setHudMenuL(3, "<bitmap:share/hud/rotc/icon." @ %icon[2] @ ".50x15><sbreak>", 1, 1);
-		%client.setHudMenuL(4, "<bitmap:share/hud/rotc/icon." @ %icon[3] @ ".50x15><sbreak>", 1, 1);
-		%s = "LIGHT";
-		%t = ""; %n = strlen(%s);
-		for(%i = 0; %i < %n; %i++)
-			%t = %t @ "      " @ getSubStr(%s, %i, 1) @ "\n";		
-		%client.setHudMenuL(5, %t, 1, 1);
-		return;
-	}
+	%fixed = false;
+	if($ROTC::GameType == $ROTC::TeamDM)
+		%fixed = true;
 
 	if(%obj.inventoryMode $= "show")
 	{
@@ -149,15 +131,24 @@ function EtherformData::displayInventory(%this, %obj)
 		
 		%client.setHudMenuL(1, "Slot #1:\n", 1, 1);
 		%client.setHudMenuL(2, "<bitmap:share/hud/rotc/icon." @ %icon[1] @ ".50x15>", 1, 1);
-		%client.setHudMenuL(3, "<sbreak>(Press @bind35 to change)", 1, 1);
+		if(%fixed)
+			%client.setHudMenuL(3, "<sbreak>(FIXED)", 1, 1);
+		else
+			%client.setHudMenuL(3, "<sbreak>(Press @bind35 to change)", 1, 1);
 		
 		%client.setHudMenuL(4, "\n\n\n\n\n\Slot #2:\n", 1, 1);
 		%client.setHudMenuL(5, "<bitmap:share/hud/rotc/icon." @ %icon[2] @ ".50x15>", 1, 1);
-		%client.setHudMenuL(6, "<sbreak>(Press @bind36 to change)", 1, 1);
+		if(%fixed)
+			%client.setHudMenuL(6, "<sbreak>(FIXED)", 1, 1);
+		else
+			%client.setHudMenuL(6, "<sbreak>(Press @bind36 to change)", 1, 1);
 		
 		%client.setHudMenuL(7, "\n\n\n\n\n\Slot #3:\n", 1, 1);
 		%client.setHudMenuL(8, "<bitmap:share/hud/rotc/icon." @ %icon[3] @ ".50x15>", 1, 1);
-		%client.setHudMenuL(9, "<sbreak>(Press @bind37 to change)", 1, 1);		
+		if(%fixed)
+			%client.setHudMenuL(9, "<sbreak>(FIXED)", 1, 1);
+		else
+			%client.setHudMenuL(9, "<sbreak>(Press @bind37 to change)", 1, 1);
 	}
 	else if(%obj.inventoryMode $= "select")
 	{

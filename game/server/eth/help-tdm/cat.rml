@@ -9,7 +9,7 @@ The Reds and Blues have the following basic properties:
 
 Players start with 75 health points. At least 25% health is needed to manifest as a CAT. Health is lost if a player takes more damage than the health buffer can absorb or the player is hit by a weapon that bypasses the health buffer.
 
-In CAT form, players can regain health only by dealing damage to enemy CATs' health. There are no regeneration modules in Etherner Light.
+In Team Deathmatch, CATs can regain health only by dealing damage to enemy CATs' health. There are no regeneration modules in Team Deathmatch.
 Players can always change back into Etherform and rest in a zone owned by their team to regain health.
 
 <spush><font:NovaSquare:18>Health buffer<spop>

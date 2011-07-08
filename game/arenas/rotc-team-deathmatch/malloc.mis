@@ -1,7 +1,7 @@
 $MissionInfo::Name       = "/env/malloc";
-$MissionInfo::Type       = "ROTC: Ethernet Light" SPC "(" @ $GameVersionString @ ")";
+$MissionInfo::Type       = "ROTC: Team Deathmatch" SPC "(" @ $GameVersionString @ ")";
 $MissionInfo::Desc       = "Minimalist arena for testing / template for new arenas." SPC
                            "See https://github.com/fr1tz/rotc-ethernet-game/wiki/Mapping";
-$MissionInfo::InitScript = "game/server/missions/rotc-eth-light.cs";
+$MissionInfo::InitScript = "game/server/missions/rotc-tdm.cs";
 
 
