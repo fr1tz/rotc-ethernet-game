@@ -86,7 +86,7 @@ datablock NortDiscData(RedRepelDisc)
 	
 	targetLockTimeMS = 0;
 
-	maxTrackingAbility = 80;
+	maxTrackingAbility = 100;
 	trackingAgility = 2;
 
 	explodesNearEnemies = false;
