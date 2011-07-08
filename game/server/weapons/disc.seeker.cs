@@ -161,9 +161,9 @@ function RedSeekerDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 			%source.setEnergyLevel(%source.getEnergyLevel() + 20);
    
         // give another disc-lock to the attacker
-        %src =  %obj.getSourceObject();
-        if(%src)
-           %src.setDiscTarget(%col);
+        //%src =  %obj.getSourceObject();
+        //if(%src)
+        //   %src.setDiscTarget(%col);
 	}
 }
 
