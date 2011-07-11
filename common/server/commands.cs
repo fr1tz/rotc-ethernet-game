@@ -38,7 +38,7 @@ function serverCmdTeamMessageSent(%client, %text)
 {
 	if(strlen(%text) >= $Pref::Server::MaxChatLen)
 		%text = getSubStr(%text, 0, $Pref::Server::MaxChatLen);
-	chatMessageTeam(%client, %client.team, '\c3%1: %2', %client.name, %text);
+	chatMessageTeam(%client, %client.team, '\c4[team] \c3%1: %2', %client.name, %text);
 }
 
 function serverCmdMessageSent(%client, %text)
