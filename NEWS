@@ -1,15 +1,16 @@
 What's new?
 ===========
 
-Prototype 4+dev4
+Prototype 4+dev5
 ----------------
 
 - Fixed zone mechanics
+- Tried to fix demo recording (currently linux only)
 - Added "ROTC: Team Deathmatch" game type.
-- Improved disc target tracking somewhat
 - Multiple discs:
    - Repel Disc
    - Explosive Disc
+- Improved disc target tracking somewhat
 - Revert influence of the shooter's momentum on the battle rifle's 
   projectiles' trajectory back to the way it was in prototype 3.
 - Bugfixes
