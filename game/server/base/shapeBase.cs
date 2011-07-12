@@ -307,8 +307,10 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	
 	if(%damageType == $DamageType::Force)
 		%n = "Force";
+	else if(isObject(%sourceObject) && isObject(%sourceObject.getDataBlock()))
+		%n = %sourceObject.getDataBlock().stat;  
 	else
-		%n = %sourceObject.getDataBlock().stat;  		
+		%n = "Other";
 
 	// get the real source object
 	%realSourceObject = 0;
