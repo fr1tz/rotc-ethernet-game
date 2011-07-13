@@ -1,16 +1,18 @@
 What's new?
 ===========
 
-Prototype 4+dev5
+Prototype 4+dev6
 ----------------
 
 - Fixed zone mechanics
-- Tried to fix demo recording (currently linux only)
+- Changed default key-bindings: "t" for chat, "shift t" for team chat.
 - Added "ROTC: Team Deathmatch" game type.
 - Multiple discs:
    - Repel Disc
    - Explosive Disc
-- Improved disc target tracking somewhat
+   - Slasher Disc (only in team deathmatch game type)
+- Tried to fix demo recording (currently linux only)
+- Improved disc target tracking a little
 - Revert influence of the shooter's momentum on the battle rifle's 
   projectiles' trajectory back to the way it was in prototype 3.
 - Bugfixes

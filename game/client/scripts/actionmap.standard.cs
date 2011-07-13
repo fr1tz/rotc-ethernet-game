@@ -59,8 +59,8 @@ MoveMap.bind(mouse, "zaxis", mouseZoom);
 // Message HUD
 //------------------------------------------------------------------------------
 
-MoveMap.bind(keyboard, "z", toggleMessageHud );
-MoveMap.bind(keyboard, "t", teamMessageHud );
+MoveMap.bind(keyboard, "t", toggleMessageHud );
+MoveMap.bind(keyboard, "shift t", teamMessageHud );
 MoveMap.bind(keyboard, "shift pageUp", pageMessageHudUp );
 MoveMap.bind(keyboard, "shift pageDown", pageMessageHudDown );
 MoveMap.bind(keyboard, "i", resizeMessageHud );
