@@ -42,6 +42,7 @@ function MessageHud::open(%this)
 	MessageHud_Edit.extent = setWord(MessageHud_Edit.extent, 0, %ctrlExtent - %textExtent - (2 * %offset));
 
 	%this.setVisible(true);
+	deactivateActionMaps();
 	deactivateKeyboard();
 	MessageHud_Edit.makeFirstResponder(true);
 }
@@ -55,6 +56,7 @@ function MessageHud::close(%this)
 
 	Canvas.popDialog(%this);
 	%this.setVisible(false);
+	reactivateActionMaps();
 	if ( $enableDirectInput )
 		activateKeyboard();
 	MessageHud_Edit.setValue("");

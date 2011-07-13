@@ -9,6 +9,40 @@
 //-----------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
+// Functions to deactivate and reactivate all action maps
+//------------------------------------------------------------------------------
+
+function deactivateActionMaps()
+{
+	if(!isObject($ActionMapStash))
+	{
+		$ActionMapStash = new SimSet();
+		while(ActiveActionMapSet.getCount() > 1) // don't remove GlobalActionMap
+		{
+			%actionMap = ActiveActionMapSet.getObject(1);
+			//echo("Stashing action map" SPC %actionMap.getName());
+			$ActionMapStash.add(%actionMap);
+			ActiveActionMapSet.remove(%actionMap);
+		}
+	}
+}
+
+function reactivateActionMaps()
+{
+	if(isObject($ActionMapStash))
+	{
+		for(%idx = 0; %idx < $ActionMapStash.getCount(); %idx++ )
+		{
+			%actionMap = $ActionMapStash.getObject(%idx);
+			//echo("Reactivating stashed action map" SPC %actionMap.getName());
+			ActiveActionMapSet.add(%actionMap);
+		}
+		$ActionMapStash.delete();
+		$ActionMapStash = "";
+	}
+}
+
+//------------------------------------------------------------------------------
 // All Pushing and popping of action maps should go through these functions:
 //------------------------------------------------------------------------------
 

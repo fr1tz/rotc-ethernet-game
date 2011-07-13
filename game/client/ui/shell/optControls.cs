@@ -118,18 +118,7 @@ function OptRemapList::doRemap( %this )
 	OptRemapText.setValue( "REMAP \"" @ %name @ "\"" );
 	OptRemapInputCtrl.index = %selId;
 
-	// Temporarily remove all action maps...
-	if(!isObject($ActionMapStash))
-	{
-		$ActionMapStash = new SimSet();
-		while(ActiveActionMapSet.getCount() > 1) // don't remove GlobalActionMap
-		{
-			%actionMap = ActiveActionMapSet.getObject(1);
-			//echo("Stashing action map" SPC %actionMap.getName());
-			$ActionMapStash.add(%actionMap);
-			ActiveActionMapSet.remove(%actionMap);
-		}
-	}
+	deactivateActionMaps();
 
 	Canvas.pushDialog( RemapDlg );
 }
@@ -169,18 +158,7 @@ function OptRemapInputCtrl::onInputEvent( %this, %device, %action )
 	//error( "** onInputEvent called - device = " @ %device @ ", action = " @ %action @ " **" );
 	Canvas.popDialog( RemapDlg );
 
-	// Reactivate the stashed action maps...
-	if(isObject($ActionMapStash))
-	{
-		for(%idx = 0; %idx < $ActionMapStash.getCount(); %idx++ )
-		{
-			%actionMap = $ActionMapStash.getObject(%idx);
-			//echo("Reactivating stashed action map" SPC %actionMap.getName());
-			ActiveActionMapSet.add(%actionMap);
-		}
-		$ActionMapStash.delete();
-		$ActionMapStash = "";
-	}
+	reactivateActionMaps();
 
 	// Test for the reserved keystrokes:
 	if ( %device $= "keyboard" )
