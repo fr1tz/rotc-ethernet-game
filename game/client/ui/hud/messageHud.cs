@@ -22,9 +22,19 @@ function MessageHud::open(%this)
 		return;
 
 	if(%this.isTeamMsg)
+	{
 		%text = "TEAM CHAT:";
+		%color = HudChatMessageProfile.fontColors[3];
+
+	}
 	else
+	{
 		%text = "ARENA CHAT:";
+		%color = HudChatMessageProfile.fontColors[4];
+	}
+
+	ChatHudTextProfile.fontColor = %color;
+	ChatHudEditProfile.fontColor = %color;
 
 	MessageHud_Text.setValue(%text);
 
