@@ -8,7 +8,6 @@
 function JoinServerWindow::query(%this)
 {
 	JS_RefreshServer.setActive(false);
-	JS_GotoMapHomepage.setActive(false);
 	JS_JoinServer.setActive(false);
 
 	queryMasterServer(
@@ -30,7 +29,6 @@ function JoinServerWindow::query(%this)
 function JoinServerWindow::queryLan(%this)
 {
 	JS_RefreshServer.setActive(false);
-	JS_GotoMapHomepage.setActive(false);
 	JS_JoinServer.setActive(false);
 
 	queryLANServers(
@@ -62,6 +60,7 @@ function onServerQueryStatus(%status, %msg, %value)
 	switch$ (%status) {
 		case "start":
 			JS_joinServer.setActive(false);
+			JS_queryLan.setActive(false);
 			JS_queryMaster.setActive(false);
 			JS_statusText.setText(%msg);
 			JS_statusBar.setValue(0);
@@ -76,6 +75,7 @@ function onServerQueryStatus(%status, %msg, %value)
 			JS_statusBar.setValue(%value);
 
 		case "done":
+			JS_queryLan.setActive(true);
 			JS_queryMaster.setActive(true);
 			JS_queryStatus.setVisible(false);
 			JS_status.setText(%msg);
@@ -108,9 +108,9 @@ function JoinServerWindow::onWake()
 	);
 	JS_HeaderList.setActive(false);
 	
-	JS_RefreshServer.setActive(false);
-	JS_GotoMapHomepage.setActive(false);
-	JS_JoinServer.setActive(false);
+	%haveServer = (getServerCount() > 0);
+	JS_RefreshServer.setActive(%haveServer);
+	JS_JoinServer.setActive(%haveServer);
 }
 
 //----------------------------------------
@@ -119,6 +119,8 @@ function JoinServerWindow::cancel(%this)
 {
 	cancelServerQuery();
 	JS_queryStatus.setVisible(false);
+	JS_queryLan.setActive(true);
+	JS_queryMaster.setActive(true);
 }
 
 
