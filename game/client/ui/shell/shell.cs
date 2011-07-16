@@ -28,6 +28,7 @@ function addWindow(%control)
 	%parent.add(%control);
 	%parent.pushToBack(%control);
 	%control.onAddedAsWindow();
+	windowSelected(%control);
 	Canvas.repaint();
 }
 
@@ -57,5 +58,45 @@ function ShellRoot::onMouseDown(%this,%modifier,%coord,%clickCount)
 function ShellRoot::onMouseEnter(%this,%modifier,%coord,%clickCount)
 {
  //
+}
+
+
+function windowChangeProfile(%ctrl, %profile)
+{
+	%ctrl.profile = %profile;
+	%parent = %ctrl.getParent();
+	%parent.remove(%ctrl);
+	%parent.add(%ctrl);
+}
+
+function windowSelected(%ctrl)
+{
+	if(%ctrl == $SelectedWindow)
+		return;
+
+	if($SelectedWindow !$= "")
+		windowChangeProfile($SelectedWindow, GuiInactiveWindowProfile);
+		
+	windowChangeProfile(%ctrl, GuiWindowProfile);
+	%ctrl.makeFirstResponder(true);
+
+	$SelectedWindow = %ctrl;
+}
+
+function GuiCanvas::onCanvasMouseDown(%this, %ctrl)
+{
+	%win = "";
+	while(isObject(%ctrl))
+	{
+		if(%ctrl.getClassName() $= "GuiWindowCtrl")
+		{
+			%win = %ctrl;
+			break;
+		}
+		%ctrl = %ctrl.getParent();
+	}
+
+	if(isObject(%win))
+		windowSelected(%win);
 }
 

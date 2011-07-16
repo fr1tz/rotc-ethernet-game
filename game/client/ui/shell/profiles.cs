@@ -17,27 +17,27 @@ new GuiControlProfile(GuiDefaultProfile)
 
 	// fill color
 	opaque = false;
-	fillColor = "130 130 130";
-	fillColorHL = "50 50 50";
-	fillColorNA = "221 202 173";
+	fillColor = "0 0 0 220";
+	fillColorHL = "50 50 50 220";
+	fillColorNA = "221 202 173 220";
 
 	// border color
 	border = false;
-	borderColor	= "100 100 100";
-	borderColorHL = "100 100 100";
-	borderColorNA = "100 100 100";
+	borderColor	= "100 100 100 220";
+	borderColorHL = "100 100 100 220";
+	borderColorNA = "100 100 100 220";
 
 	// font
 	fontType = "NovaSquare";
 	fontSize = 14;
 
-	fontColor = "0 0 0";
-	fontColorHL = "100 100 100";
+	fontColor = "200 200 200";
+	fontColorHL = "0 255 0";
 	fontColorNA = "100 100 100";
 	fontColorSEL= "200 200 200";
 
 	// bitmap information
-	bitmap = "./pixmaps/mg_window4";
+	bitmap = "./pixmaps/mg_window5";
 	bitmapBase = "";
 	textOffset = "0 0";
 
@@ -48,7 +48,7 @@ new GuiControlProfile(GuiDefaultProfile)
 	autoSizeHeight = false;
 	returnTab = false;
 	numbersOnly = false;
-	cursorColor = "0 0 0 255";
+	cursorColor = "200 200 200";
 
 	// sounds
 	soundButtonDown = "";
@@ -74,11 +74,8 @@ new GuiControlProfile(GuiConsoleProfile : GuiDefaultProfile)
 
 new GuiControlProfile(GuiButtonProfile : GuiDefaultProfile)
 {
-	opaque = true;
+	opaque = false;
 	border = true;
-	fontColor = "0 0 0";
-	fontColorHL = "255 255 255";
-	borderColor = "100 100 100";
 	fixedExtent = true;
 	justify = "center";
 	canKeyFocus = false;
@@ -86,11 +83,8 @@ new GuiControlProfile(GuiButtonProfile : GuiDefaultProfile)
 
 new GuiControlProfile(GuiRootMenuButtonProfile : GuiDefaultProfile)
 {
-	opaque = true;
+	opaque = false;
 	border = true;
-	fontColor = "0 0 0";
-	fontColorHL = "255 255 255";
-	borderColor = "255 255 255";
 	fixedExtent = true;
 	justify = "center";
 	canKeyFocus = false;
@@ -104,11 +98,7 @@ new GuiControlProfile(GuiBorderButtonProfile : GuiDefaultProfile)
 new GuiControlProfile(GuiMenuBarProfile : GuiDefaultProfile)
 {
 	opaque = true;
-	fillColorHL = "255 150 0";
 	border = 4;
-	fontColor = "0 0 0";
-	fontColorHL = "255 255 255";
-	fontColorNA = "64 64 64";
 	fixedExtent = true;
 	justify = "center";
 	canKeyFocus = false;
@@ -119,7 +109,6 @@ new GuiControlProfile(GuiMenuBarProfile : GuiDefaultProfile)
 
 new GuiControlProfile(GuiTextProfile : GuiDefaultProfile)
 {
-	fontColor = "0 0 0";
 	fontColorLink = "255 96 96";
 	fontColorLinkHL = "0 0 255";
 	autoSizeWidth = true;
@@ -145,14 +134,9 @@ new GuiControlProfile(GuiCenterTextProfile : GuiTextProfile)
 new GuiControlProfile(GuiTextEditProfile : GuiDefaultProfile)
 {
 	opaque = true;
-	fillColor = "255 255 255";
-	fillColorHL = "128 128 128";
 	border = 3;
 	borderThickness = 2;
 	borderColor = "0 0 0";
-	fontColor = "0 0 0";
-	fontColorHL = "255 255 255";
-	fontColorNA = "128 128 128";
 	textOffset = "0 2";
 	autoSizeWidth = false;
 	autoSizeHeight = true;
@@ -163,13 +147,8 @@ new GuiControlProfile(GuiTextEditProfile : GuiDefaultProfile)
 new GuiControlProfile(GuiControlListPopupProfile : GuiDefaultProfile)
 {
 	opaque = true;
-	fillColor = "255 255 255";
-	fillColorHL = "128 128 128";
 	border = true;
 	borderColor = "0 0 0";
-	fontColor = "0 0 0";
-	fontColorHL = "255 255 255";
-	fontColorNA = "128 128 128";
 	textOffset = "0 2";
 	autoSizeWidth = false;
 	autoSizeHeight = true;
@@ -181,8 +160,7 @@ new GuiControlProfile(GuiControlListPopupProfile : GuiDefaultProfile)
 
 new GuiControlProfile(GuiTextArrayProfile : GuiTextProfile)
 {
-	fontColorHL = "32 100 100";
-	fillColorHL = "200 200 200";
+	dummyField = true;
 };
 
 new GuiControlProfile(GuiTextListProfile : GuiTextProfile) ;
@@ -190,8 +168,6 @@ new GuiControlProfile(GuiTextListProfile : GuiTextProfile) ;
 new GuiControlProfile(GuiTreeViewProfile : GuiDefaultProfile)
 {
 	fontSize = 13;  // dhc - trying a better fit...
-	fontColor = "0 0 0";
-	fontColorHL = "64 150 150";
 	bitmap = "common/ui/shll_treeView";
 };
 
@@ -203,9 +179,6 @@ new GuiControlProfile(GuiPopUpMenuProfile : GuiDefaultProfile)
 	border = 4;
 	borderThickness = 2;
 	borderColor = "0 0 0";
-	fontColor = "0 0 0";
-	fontColorHL = "32 100 100";
-	fontColorSEL = "32 100 100";
 	fixedExtent = true;
 	justify = "center";
 	bitmap = ($platform $= "macos") ? "./pixmaps/osxScroll" : "./pixmaps/darkScroll";
@@ -215,7 +188,6 @@ new GuiControlProfile(GuiPopUpMenuProfile : GuiDefaultProfile)
 
 new GuiControlProfile(LoadTextProfile : GuiDefaultProfile)
 {
-	fontColor = "66 219 234";
 	autoSizeWidth = true;
 	autoSizeHeight = true;
 };
@@ -223,29 +195,22 @@ new GuiControlProfile(LoadTextProfile : GuiDefaultProfile)
 
 new GuiControlProfile(GuiMLTextProfile : GuiDefaultProfile)
 {
+	fillColor = "0 0 0 0";
 	fontColorLink = "0 150 0";
-	fontColorLinkHL = "255 0 255";
+	fontColorLinkHL = "100 255 100";
 };
 
 new GuiControlProfile(GuiMLTextNoSelectProfile : GuiDefaultProfile)
 {
-	fontColorLink = "220 220 220";
-	fontColorLinkHL = "255 255 255";
+	fillColor = "0 0 0 0";
 	modal = false;
 };
 
 new GuiControlProfile(GuiMLTextEditProfile : GuiDefaultProfile)
 {
-	fontColorLink = "255 96 96";
-	fontColorLinkHL = "0 0 255";
-
-	fillColor = "255 255 255";
-	fillColorHL = "128 128 128";
-
-	fontColor = "0 0 0";
-	fontColorHL = "255 255 255";
-	fontColorNA = "128 128 128";
-
+	fillColor = "0 0 0 0";
+	fontColorLink = "0 150 0";
+	fontColorLinkHL = "100 255 100";
 	autoSizeWidth = true;
 	autoSizeHeight = true;
 	tab = true;
@@ -257,12 +222,10 @@ new GuiControlProfile(GuiProgressProfile : GuiDefaultProfile)
 	opaque = false;
 	fillColor = "44 152 162 100";
 	border = true;
-	borderColor	= "78 88 120";
 };
 
 new GuiControlProfile(GuiProgressTextProfile : GuiDefaultProfile)
 {
-	fontColor = "0 0 0";
 	justify = "center";
 };
 
@@ -276,15 +239,33 @@ new GuiControlProfile(GuiBitmapBorderProfile : GuiDefaultProfile)
 
 new GuiControlProfile(GuiWindowProfile : GuiDefaultProfile)
 {
-	opaque = true;
-	border = 2;
-	fillColor = "130 130 130";
-	fillColorHL = "221 202 173";
-	fillColorNA = "221 202 173";
+	canKeyFocus = true;
+	opaque = false;
+	border = 8;
+	fillColor = "0 0 0 220";
+	fillColorHL = "0 0 0 220";
+	fillColorNA = "0 0 0 220";
 	fontColor = "255 255 255";
 	fontColorHL = "255 255 255";
 	text = "GuiWindowCtrl test";
-	bitmap = "./pixmaps/mg_window4";
+	bitmap = "./pixmaps/mg_window5";
+	textOffset = "6 6";
+	hasBitmapArray = true;
+	justify = "center";
+};
+
+new GuiControlProfile(GuiInactiveWindowProfile : GuiDefaultProfile)
+{
+	canKeyFocus = true;
+	opaque = false;
+	border = 8;
+	fillColor = "0 0 0 220";
+	fillColorHL = "0 0 0 220";
+	fillColorNA = "0 0 0 220";
+	fontColor = "255 255 255";
+	fontColorHL = "255 255 255";
+	text = "GuiWindowCtrl test";
+	bitmap = "./pixmaps/mg_window5inactive";
 	textOffset = "6 6";
 	hasBitmapArray = true;
 	justify = "center";
@@ -294,9 +275,9 @@ new GuiControlProfile(GuiTransparentWindowProfile : GuiDefaultProfile)
 {
 	opaque = true;
 	border = 0;
-	fillColor = "130 130 130 230";
-	fillColorHL = "221 202 173 230";
-	fillColorNA = "221 202 173 230";
+	fillColor = "0 0 0 220";
+	fillColorHL = "0 0 0 220";
+	fillColorNA = "0 0 0 220";
 	fontColor = "255 255 255";
 	fontColorHL = "255 255 255";
 	text = "GuiWindowCtrl test";
@@ -308,35 +289,28 @@ new GuiControlProfile(GuiTransparentWindowProfile : GuiDefaultProfile)
 
 new GuiControlProfile(GuiScrollProfile : GuiDefaultProfile)
 {
-	opaque = true;
-	fillColor = "255 255 255";
+	opaque = false;
 	border = 3;
 	borderThickness = 2;
-	borderColor = "0 0 0";
-	bitmap = "./pixmaps/simpleScroll";
+	bitmap = "./pixmaps/simpleScrollTransparent";
 	hasBitmapArray = true;
+	fillColor = "0 0 0 0";
 };
 
 new GuiControlProfile(GuiCheckBoxProfile : GuiDefaultProfile)
 {
 	opaque = false;
-	fillColor = "232 232 232";
 	border = false;
-	borderColor = "0 0 0";
-	fontColor = "0 0 0";
-	fontColorHL = "32 100 100";
 	fixedExtent = true;
 	justify = "left";
-	bitmap = "./pixmaps/simpleCheck";
+	bitmap = "./pixmaps/simpleCheckTransparent";
 	hasBitmapArray = true;
 };
 
 new GuiControlProfile(GuiRadioProfile : GuiDefaultProfile)
 {
-	fillColor = "232 232 232";
-	fontColorHL = "32 100 100";
 	fixedExtent = true;
-	bitmap = "./pixmaps/simpleRadio";
+	bitmap = "./pixmaps/simpleRadioTransparent";
 	hasBitmapArray = true;
 };
 

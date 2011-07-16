@@ -15,8 +15,8 @@ new GuiBitmapCtrl(Shell) {
    canSave = "1";
    Visible = "1";
    hovertime = "1000";
-   bitmap = "./pixmaps/root";
-   wrap = "1";
+   bitmap = "./pixmaps/rotcbg";
+   wrap = "0";
 
    new GuiWindowCtrl(RootMenuWindow) {
       canSaveDynamicFields = "0";

@@ -38,7 +38,7 @@ if(!isObject(MissionEditorProfile)) new GuiControlProfile (MissionEditorProfile)
 if(!isObject(EditorScrollProfile)) new GuiControlProfile (EditorScrollProfile)
 {
 	opaque = true;
-	fillColor = "192 192 192 192";
+	fillColor = "25 25 25";
 	border = 3;
 	borderThickness = 2;
 	borderColor = "0 0 0";

@@ -33,7 +33,7 @@ new GuiControl(GuiEditorGui) {
 	{
 		position = "0 22";
 		extent = "800 578";
-		profile = "GuiButtonProfile";
+		profile = "EditorScrollProfile";
 		horizSizing = "width";
 		vertSizing = "height";
 		columns = "0 640";
@@ -49,7 +49,7 @@ new GuiControl(GuiEditorGui) {
 			//----------------------------------------
 			// toolbar
 			new GuiControl() {
-				profile = "GuiWindowProfile";
+				profile = "EditorScrollProfile";
 				horizSizing = "width";
 				vertSizing = "bottom";
 				position = "0 0";
@@ -92,7 +92,7 @@ new GuiControl(GuiEditorGui) {
 			};
 			new GuiScrollCtrl(GuiEditorScroll) 
 			{
-				profile = "GuiScrollProfile";
+				profile = "EditorScrollProfile";
 				position = "10 38";
 				extent = "630 540";
 				horizSizing = "width";
@@ -140,7 +140,7 @@ new GuiControl(GuiEditorGui) {
 			position = "640 0";
 			minExtent = "128 64";
 			extent = "160 600";
-			profile = "GuiButtonProfile";
+			profile = "EditorScrollProfile";
 			horizSizing = "width";
 			vertSizing = "height";
 			columns = "0";
@@ -149,7 +149,7 @@ new GuiControl(GuiEditorGui) {
 			// Tree View
 			new GuiScrollCtrl() 
 			{
-				profile = "GuiScrollProfile";
+				profile = "EditorScrollProfile";
 				minExtent = "72 64";
 				position = "0 0";
 				extent = "160 300";
@@ -206,7 +206,7 @@ new GuiControl(GuiEditorGui) {
 				};
 
 				new GuiScrollCtrl() {
-					profile = "GuiScrollProfile";
+					profile = "EditorScrollProfile";
 					position = "0 26";
 					extent = "160 274";
 					horizSizing = "width";
