@@ -21,13 +21,14 @@ if(isObject(DefaultCursor))
 
 function addWindow(%control)
 {
+	%oldparent = %control.getParent();
 	%parent = Shell;
 	if(Canvas.getContent() != Shell.getId())
 		%parent = ShellDlg;
-		
 	%parent.add(%control);
 	%parent.pushToBack(%control);
-	%control.onAddedAsWindow();
+	if(%control.getParent() != %oldParent)
+		%control.onAddedAsWindow();
 	windowSelected(%control);
 	Canvas.repaint();
 }

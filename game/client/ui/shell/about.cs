@@ -3,7 +3,7 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
-function AboutWindow::onWake(%this)
+function AboutWindow::onAddedAsWindow(%this)
 {
 	AboutFileList.entryCount = 0;
 	AboutFileList.clear();

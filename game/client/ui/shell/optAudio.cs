@@ -5,11 +5,15 @@
 
 function OptAudioWindow::onWake(%this)
 {
-	OptAudioUpdate();
 	OptAudioVolumeMaster.setValue( $pref::Audio::masterVolume);
 	OptAudioVolumeShell.setValue(  $pref::Audio::channelVolume[$GuiAudioType]);
 	OptAudioVolumeSim.setValue(	 $pref::Audio::channelVolume[$SimAudioType]);
 	OptAudioVolumeMusic.setValue($pref::Audio::channelVolume[$MusicAudioType]);
+}
+
+function OptAudioWindow::onAddedAsWindow(%this)
+{
+	OptAudioUpdate();
 }
 
 // Audio

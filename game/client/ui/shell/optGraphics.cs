@@ -5,6 +5,26 @@
 
 function OptGraphicsWindow::onWake(%this)
 {
+    if($pref::OpenGL::textureTrilinear == false)
+        OptGraphicsTextureFilteringMenu.setSelected(0);
+    else if($pref::OpenGL::textureAnisotropy != 0)
+        OptGraphicsTextureFilteringMenu.setSelected(2);
+    else
+        OptGraphicsTextureFilteringMenu.setSelected(1);
+        
+	// Player trails...
+	OptGraphicsTrailsAmount.setValue($Pref::Player::Trails::Amount);
+	OptGraphicsTrailsAmountNum.setValue($Pref::Player::Trails::Amount);        
+	OptGraphicsTrailsScale.setValue($Pref::Player::Trails::Scale);
+	OptGraphicsTrailsScaleNum.setValue($Pref::Player::Trails::Scale);   	
+	OptGraphicsTrailsVisibility.setValue($Pref::Player::Trails::Visibility);
+	OptGraphicsTrailsVisibilityNum.setValue($Pref::Player::Trails::Visibility);   	
+	OptGraphicsTrailsDetail.setValue($Pref::Player::Trails::Detail);
+	OptGraphicsTrailsDetailNum.setValue($Pref::Player::Trails::Detail);   	
+}
+
+function OptGraphicsWindow::onAddedAsWindow(%this)
+{
     // Graphics driver menu...
 	%buffer = getDisplayDeviceList();
 	%count = getFieldCount( %buffer );
@@ -29,23 +49,6 @@ function OptGraphicsWindow::onWake(%this)
 	OptGraphicsTextureFilteringMenu.add("Bilinear", 0);
 	OptGraphicsTextureFilteringMenu.add("Trilinear", 1);
 	OptGraphicsTextureFilteringMenu.add("Anisotropic", 2);
- 
-    if($pref::OpenGL::textureTrilinear == false)
-        OptGraphicsTextureFilteringMenu.setSelected(0);
-    else if($pref::OpenGL::textureAnisotropy != 0)
-        OptGraphicsTextureFilteringMenu.setSelected(2);
-    else
-        OptGraphicsTextureFilteringMenu.setSelected(1);
-        
-	// Player trails...
-	OptGraphicsTrailsAmount.setValue($Pref::Player::Trails::Amount);
-	OptGraphicsTrailsAmountNum.setValue($Pref::Player::Trails::Amount);        
-	OptGraphicsTrailsScale.setValue($Pref::Player::Trails::Scale);
-	OptGraphicsTrailsScaleNum.setValue($Pref::Player::Trails::Scale);   	
-	OptGraphicsTrailsVisibility.setValue($Pref::Player::Trails::Visibility);
-	OptGraphicsTrailsVisibilityNum.setValue($Pref::Player::Trails::Visibility);   	
-	OptGraphicsTrailsDetail.setValue($Pref::Player::Trails::Detail);
-	OptGraphicsTrailsDetailNum.setValue($Pref::Player::Trails::Detail);   	
 }
 
 function OptGraphicsDriverMenu::onSelect( %this, %id, %text )

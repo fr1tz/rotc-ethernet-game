@@ -5,7 +5,6 @@
 
 function OptControlsWindow::onWake(%this)
 {
-	OptRemapList.fillList();
     OptControlsMouseSensitivity.setValue($Pref::Input::MouseSensitivity);
     OptControlsMouseSensitivityNum.setValue($Pref::Input::MouseSensitivity);
     OptControlsMouseInvertYAxis.setValue($Pref::Input::InvertMouse);
@@ -15,6 +14,11 @@ function OptControlsWindow::onSleep(%this)
 {
 	// write out the control config into the config.cs file
 	moveMap.save( "~/client/config.cs" );
+}
+
+function OptControlsWindow::onAddedAsWindow(%this)
+{
+	OptRemapList.fillList();
 }
 
 function restoreDefaultMappings()
