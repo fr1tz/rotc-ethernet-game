@@ -131,6 +131,46 @@ function onCyclePauseEnd()
 
 //------------------------------------------------------------------------------
 
+function serverUpdateTeamJoustClock()
+{
+	cancel($Game::UpdateTeamJoustClockThread);
+
+	$Game::TeamJoustClock -= 1;
+
+	for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ )
+	{
+		%client = ClientGroup.getObject(%clientIndex);
+		%client.topHudMenu = "teamjoustclock";
+		%client.updateTopHudMenuThread();
+		if($Game::TeamJoustClock > 0)
+		{
+			%pitch = ($Game::TeamJoustClock < 4 ? 1.5 : 0.5);
+			%client.play2D(ClockTickSound, %pitch);
+		}
+	}
+
+	if($Game::TeamJoustClock == 0)
+	{
+		checkRoundEnd();
+		return;
+	}
+
+}
+
+function serverStartTeamJoust()
+{
+	$Game::TeamJoustState = "go";
+	TerritoryZones_reset();
+	schedule(10000, MissionEnvironment, "serverEndTeamJoust");
+}
+
+function serverEndTeamJoust()
+{
+	$Game::TeamJoustState = "done";
+	checkRoundEnd();
+}
+
+
 // this function starts a new round...
 function startNewRound()
 {
@@ -142,6 +182,18 @@ function startNewRound()
 		|| %obj.getType() & $TypeMasks::PlayerObjectType
 		|| %obj.getType() & $TypeMasks::CorpseObjectType)
 			%obj.delete();
+	}
+
+	$Team1.numPlayersOnRoundStart = 0;
+	$Team2.numPlayersOnRoundStart = 0;
+
+	if($ROTC::GameType == $ROTC::TeamJoust)
+	{
+		$Team1.score = 0;
+		$Team2.score = 0;
+		$Game::TeamJoustState = "ready";
+		centerPrintAll("Get ready for jousting!", 4);
+		schedule(4000, MissionEnvironment, "serverStartTeamJoust");
 	}
 	
 //	if( $Server::MissionType $= "har" )
@@ -156,7 +208,10 @@ function startNewRound()
 
 		// do not respawn observers...
 		if( %client.team == $Team1 || %client.team == $Team2 )
+		{
+			%client.team.numPlayersOnRoundStart++;
 			%client.spawnPlayer();
+		}
 	}
 
 	serverUpdateMusic();
@@ -171,18 +226,51 @@ function checkRoundEnd()
 	if($Game::RoundRestarting)
 		return;
 
-	if($Team1.numTerritoryZones == 0 && $Team1.numCATs == 0)
+	if($ROTC::GameType == $ROTC::TeamJoust)
 	{
-		centerPrintAll($Team2.name @ " have won!",3);
-		serverPlay2D(BlueVictorySound);
+		if($Game::TeamJoustState !$= "done")
+			return;
+
+		if($Team1.score == $Team2.score)
+		{
+			%text = "Draw!";
+			serverPlay2D(RedVictorySound);
+		}
+		else if($Team1.score > $Team2.score)
+		{
+			%text = "Reds have won!";
+			serverPlay2D(RedVictorySound);
+		}
+		else
+		{
+			%text = "Blues have won!";
+			serverPlay2D(RedVictorySound);
+		}
+
+		%text = %text @ "\n\n";
+		%text = %text @ "Reds:" SPC ($Team1.score*100) @ "%\n";
+		%text = %text @ "Blues:" SPC ($Team2.score*100) @ "%\n";
+
+		centerPrintAll(%text, 3);
+
 		schedule(5000,0,"startNewRound");
 		$Game::RoundRestarting = true;
 	}
-	else if($Team2.numTerritoryZones == 0 && $Team2.numCATs == 0)
+	else
 	{
-		centerPrintAll($Team1.name @ " have won!",3);
-		serverPlay2D(RedVictorySound);
-		schedule(5000,0,"startNewRound");
-		$Game::RoundRestarting = true;
+		if($Team1.numTerritoryZones == 0 && $Team1.numCATs == 0)
+		{
+			centerPrintAll($Team2.name @ " have won!",3);
+			serverPlay2D(BlueVictorySound);
+			schedule(5000,0,"startNewRound");
+			$Game::RoundRestarting = true;
+		}
+		else if($Team2.numTerritoryZones == 0 && $Team2.numCATs == 0)
+		{
+			centerPrintAll($Team1.name @ " have won!",3);
+			serverPlay2D(RedVictorySound);
+			schedule(5000,0,"startNewRound");
+			$Game::RoundRestarting = true;
+		}
 	}
 }

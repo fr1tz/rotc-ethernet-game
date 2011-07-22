@@ -246,8 +246,23 @@ function TerritoryZone::onEnter(%this,%zone,%obj)
 	
 	if(!%obj.getType() & $TypeMasks::ShapeBaseObjectType)
 		return;
-	
-	%this.onTick(%zone);
+
+	if($ROTC::GameType == $ROTC::TeamJoust)
+	{
+		if(%obj.isCAT && %zone.initialOwner != 0 && %obj.getTeamId() != %zone.getTeamId())
+        {
+			%team = %obj.getTeamId() == 1 ? $Team1 : $Team2;
+			%val = 1 - %obj.getDamagePercent();
+			%val = %val / %team.numPlayersOnRoundStart;
+			%team.score += %val;
+			%zone.zValue -= %val;
+			%zone.setColor(1, 8 + %zone.getTeamId(), %zone.zValue);
+			%zone.zBlocked = true;
+			%obj.kill();
+		}
+	}
+	else
+		%this.onTick(%zone);
 	
 	%obj.getDataBlock().updateZone(%obj, %zone);
 }
@@ -270,6 +285,9 @@ function TerritoryZone::onLeave(%this,%zone,%obj)
 
 function TerritoryZone::onTick(%this, %zone)
 {
+	if($ROTC::GameType == $ROTC::TeamJoust)
+		return;
+
 	%zone.zNumReds = 0;
 	%zone.zNumBlues = 0;
 	
@@ -433,27 +451,61 @@ function TerritoryZone::setZoneOwner(%this, %zone, %teamId)
 
 function TerritoryZone::reset(%this, %zone)
 {
-	%zone.zHasNeighbour = false;
-	for(%i = 0; %i < 4; %i++)
-	{	
-		%z = TerritoryZone_find(%zone.connection[%i]);
-		if(isObject(%z))
+	if($ROTC::GameType == $ROTC::TeamJoust)
+	{
+		if($Game::TeamJoustState $= "ready")
 		{
-			%zone.zNeighbour[%i] = %z;
-			%zone.zHasNeighbour = true;
+			%zone.setTeamId(%zone.initialOwner);
+			%zone.zBlocked = false; // (%zone.initialOwner != 0);	
+			%zone.zValue = 1;
+			if(%zone.getTeamId() == 0)
+			{
+				%zone.setColor(14, 14, 1);
+				%zone.isProtected = true;
+			}
+			else if(%zone.getTeamId() == 1)
+				%zone.setColor(7, 7, 1);
+			else if(%zone.getTeamId() == 2)
+				%zone.setColor(8, 8, 1);
 		}
-		else
-			%zone.zNeighbour[%i] = -1;
+		else if($Game::TeamJoustState $= "go")
+		{
+			%zone.zBlocked = false;
+			if(%zone.getTeamId() == 0)
+			{
+				%zone.setColor(13, 13, 1);
+				%zone.isProtected = true;
+			}
+			else if(%zone.getTeamId() == 1)
+				%zone.setColor(7, 7, 1);
+			else if(%zone.getTeamId() == 2)
+				%zone.setColor(8, 8, 1);
+		}
 	}
-
-	if( %zone.initialOwner != 0 )
-		%this.setZoneOwner(%zone, %zone.initialOwner);
 	else
-		%this.setZoneOwner(%zone, 0);
-
-	%zone.zProtected = %zone.initiallyProtected;
-
-	%this.updateOwner(%zone);
+	{
+		%zone.zHasNeighbour = false;
+		for(%i = 0; %i < 4; %i++)
+		{	
+			%z = TerritoryZone_find(%zone.connection[%i]);
+			if(isObject(%z))
+			{
+				%zone.zNeighbour[%i] = %z;
+				%zone.zHasNeighbour = true;
+			}
+			else
+				%zone.zNeighbour[%i] = -1;
+		}
+	
+		if( %zone.initialOwner != 0 )
+			%this.setZoneOwner(%zone, %zone.initialOwner);
+		else
+			%this.setZoneOwner(%zone, 0);
+	
+		%zone.zProtected = %zone.initiallyProtected;
+	
+		%this.updateOwner(%zone);
+	}
 }
 
 

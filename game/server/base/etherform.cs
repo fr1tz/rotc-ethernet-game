@@ -29,6 +29,16 @@ function EtherformData::useWeapon(%this, %obj, %nr)
 		if(%nr < 1 || %nr > 7)
 			return;
 
+		if($ROTC::GameType == $ROTC::TeamJoust)
+		{
+			if(%nr == 5)
+				%nr = 8;
+		}
+		else
+		{
+
+		}
+
 		%client.loadout[%obj.inventoryMode[1]] = %nr;
 		%client.updateWeapons();
 
@@ -108,12 +118,13 @@ function EtherformData::displayInventory(%this, %obj)
 	%item[5] = "grenadelauncher";
 	%item[6] = "etherboard";
 	%item[7] = "regen";
+	%item[8] = "grenadelauncher";
 	
 	%itemname[1] = "Blaster";
 	%itemname[2] = "Battle Rifle";
 	%itemname[3] = "Sniper ROFL";
 	%itemname[4] = "Minigun";
-	%itemname[5] = "Bubblegun";
+	%itemname[5] = $ROTC::GameType == $ROTC::TeamJoust ? "GL" : "Bubblegun";
 	%itemname[6] = "Etherboard";
 	%itemname[7] = "Regeneration";	
 

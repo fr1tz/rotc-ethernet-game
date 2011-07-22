@@ -4,5 +4,6 @@
 //------------------------------------------------------------------------------
 
 // ROTC game types
-$ROTC::Ethernet = 0;
-$ROTC::TeamDM   = 1;
+$ROTC::Ethernet  = 0;
+$ROTC::TeamDM    = 1;
+$ROTC::TeamJoust = 2;

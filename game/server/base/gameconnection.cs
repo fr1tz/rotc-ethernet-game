@@ -131,7 +131,7 @@ function GameConnection::onClientEnterGame(%this)
 		%this.loadout[2] = 3;
 		%this.loadout[3] = 6;
 	}
-	else if($ROTC::GameType == $ROTC::TeamDM)
+	else
 	{
 		%this.loadout[1] = 1;
 		%this.loadout[2] = 2;
@@ -782,6 +782,13 @@ datablock AudioProfile(NewbieHelperSound)
 	preload = true;
 };
 
+datablock AudioProfile(ClockTickSound)
+{
+	filename = "share/sounds/rotc/charge3.wav";
+	description = AudioCritical2D;
+	preload = true;
+};
+
 function GameConnection::updateTopHudMenuThread(%this)
 {
 	cancel(%this.updateTopHudMenuThread);
@@ -836,6 +843,11 @@ function GameConnection::updateTopHudMenuThread(%this)
 		%this.setHudMenuT(3, "<bitmap:share/hud/rotc/spec><sbreak>", 1, 1);
 		%this.setHudMenuT(4, "<bitmap:share/hud/rotc/spacer.1x14>", $Server::GameStatus::HealthBalance::Spacers, 1);
 		%this.setHudMenuT(5, "<bitmap:share/hud/rotc/marker.up>", 1, 1);			
+	}
+	else if(%this.topHudMenu $= "teamjoustclock")
+	{		
+		%this.setHudMenuT(1, "Clock", 1, 1);
+
 	}
 	else if(%this.topHudMenu $= "nothing")
 	{		

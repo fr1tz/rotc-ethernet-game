@@ -89,5 +89,12 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 		else
 			%obj.mountImage(BlueRepelGunImage, 0, -1, true);
 	}
+	else if(%nr == 8)
+	{
+		if(%obj.getTeamId() == 1)
+			%obj.mountImage(RedGrenadeLauncherImage, 0, -1, true);
+		else
+			%obj.mountImage(BlueGrenadeLauncherImage, 0, -1, true);
+	}
 }
 
