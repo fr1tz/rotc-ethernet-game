@@ -1,8 +1,8 @@
 Fundamentally there are two categories of weapons in ROTC: Those that bypass a CAT's barrier (colored red/blue) and those that bypass a CAT's health buffer (colored orange/green).
 
-In Team Deathmatch there are no weapons in the latter category, thus all available weapons will often require multiple hits in quick succession to do a respectable amount of permanent damage to an enemy CAT.
+In mEthMatch there are no weapons in the latter category, thus all available weapons will often require multiple hits in quick succession to do a respectable amount of permanent damage to an enemy CAT.
 
-There is also no way to customize your CATs loadout in Team Deathmatch: All CATs carry a Blaster and a Battle Rifle.
+There is also no way to customize your CATs loadout in mEthMatch: All CATs carry a Blaster and a Battle Rifle.
 
 <a:cmd HowToPlay 6.1>Blaster</a>
 <a:cmd HowToPlay 6.2>Battle Rifle</a>

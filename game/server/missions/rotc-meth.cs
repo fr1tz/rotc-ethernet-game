@@ -4,21 +4,21 @@
 //------------------------------------------------------------------------------
 
 //*******************************************************
-// Mission init script for ROTC: Team Deathmatch missions
+// Mission init script for ROTC: mEthMatch missions
 //*******************************************************
 
 exec("./rotc-types.cs");
 
 $Server::MissionFile = strreplace($Server::MissionFile, 
-	"/rotc-team-deathmatch/", "/rotc-ethernet/");
+	"/rotc-methmatch/", "/rotc-ethernet/");
 
 exec("./rotc-eth.cs");
 
 $Server::MissionFile = strreplace($Server::MissionFile, 
-	"/rotc-ethernet/", "/rotc-team-deathmatch/");
+	"/rotc-ethernet/", "/rotc-methmatch/");
 
-$ROTC::GameType = $ROTC::TeamDM;
-$ROTC::GameTypeString = "ROTC: Team Deathmatch";
+$ROTC::GameType = $ROTC::mEthMatch;
+$ROTC::GameTypeString = "ROTC: mEthMatch";
 
 
 

@@ -1,6 +1,0 @@
-$MissionInfo::Name       = "/env/eth/pond (0.1)";
-$MissionInfo::Type       = "ROTC: Team Deathmatch" SPC "(" @ $GameVersionString @ ")";
-$MissionInfo::Desc       = "Capture all the opposing team's zones to win.\n";
-$MissionInfo::InitScript = "game/server/missions/rotc-tdm.cs";
-
-

@@ -1,0 +1,5 @@
+$MissionInfo::Name       = "/env/nat/parc (0.1)";
+$MissionInfo::Type       = "ROTC: mEthMatch" SPC "(" @ $GameVersionString @ ")";
+$MissionInfo::Desc       = "Capture all the opposing team's zones to win.\n";
+$MissionInfo::InitScript = "game/server/missions/rotc-meth.cs";
+

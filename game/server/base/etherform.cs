@@ -10,7 +10,7 @@ exec("./etherform.gfx.cs");
 
 function EtherformData::useWeapon(%this, %obj, %nr)
 {
-	if($ROTC::GameType == $ROTC::TeamDM)
+	if($ROTC::GameType == $ROTC::mEthMatch)
 		return;
 
 	%client = %obj.client;
@@ -129,7 +129,7 @@ function EtherformData::displayInventory(%this, %obj)
 	%itemname[7] = "Regeneration";	
 
 	%fixed = false;
-	if($ROTC::GameType == $ROTC::TeamDM)
+	if($ROTC::GameType == $ROTC::mEthMatch)
 		%fixed = true;
 
 	if(%obj.inventoryMode $= "show")

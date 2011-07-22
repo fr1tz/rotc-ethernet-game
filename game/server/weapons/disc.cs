@@ -23,7 +23,7 @@ datablock TracerProjectileData(NoTargetDiscPseudoProjectile)
 
 function NoTargetDiscPseudoProjectile::onAdd(%this, %obj)
 {
-	if($ROTC::GameType == $ROTC::TeamDM)
+	if($ROTC::GameType == $ROTC::mEthMatch)
 		launchSeekerDisc(%obj.sourceObject);
 	else
 		launchRepelDisc(%obj.sourceObject);

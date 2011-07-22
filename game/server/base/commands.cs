@@ -59,7 +59,7 @@ function serverCmdPlayerAction(%client, %nr, %val)
 	}
 	else if(%nr == 17 && %val)
 	{		
-		if($ROTC::GameType != $ROTC::TeamDM)
+		if($ROTC::GameType != $ROTC::mEthMatch)
 			deployRepel3(%player);
 	}
 	else if(%nr == 39 && %val)
