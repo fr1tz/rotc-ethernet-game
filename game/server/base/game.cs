@@ -159,15 +159,54 @@ function serverUpdateTeamJoustClock()
 
 function serverStartTeamJoust()
 {
-	$Game::TeamJoustState = "go";
+	if($Game::TeamJoustThread !$= "")
+		cancel($Game::TeamJoustThread);
+	$Game::TeamJoustState = 0;
+	$Team1.score = 0;
+	$Team2.score = 0;
 	TerritoryZones_reset();
-	schedule(10000, MissionEnvironment, "serverEndTeamJoust");
+	centerPrintAll("Get into formation!", 4);
+	$Game::TeamJoustThread = 
+		schedule(2000, MissionEnvironment, "serverAdvanceTeamJoust");
 }
 
-function serverEndTeamJoust()
+function serverAdvanceTeamJoust()
 {
-	$Game::TeamJoustState = "done";
-	checkRoundEnd();
+	if($Game::TeamJoustThread !$= "")
+		cancel($Game::TeamJoustThread);
+	$Game::TeamJoustState++;
+
+	TerritoryZones_reset();
+
+	if($Game::TeamJoustState == 4)
+	{
+		$Game::TeamJoustState = "done";
+		checkRoundEnd();		
+	}
+	else if($Game::TeamJoustState == 3)
+	{
+		// go go go!
+	  	for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ )
+	  	{
+	  		%client = ClientGroup.getObject( %clientIndex );
+	  		if( %client.team == $Team1 || %client.team == $Team2 )
+	  		{
+	  			%client.togglePlayerForm();
+				%player = %client.player;
+				if(%player.isCAT)
+				{
+	  				%client.team.numPlayersOnRoundStart++;
+					%player.setBodyPose($PlayerBodyPose::Sliding);
+				}
+	  		}
+	  	}
+
+		schedule(10000, MissionEnvironment, "serverAdvanceTeamJoust");
+	}
+	else
+	{
+		schedule(2000, MissionEnvironment, "serverAdvanceTeamJoust");
+	}
 }
 
 
@@ -189,11 +228,7 @@ function startNewRound()
 
 	if($ROTC::GameType == $ROTC::TeamJoust)
 	{
-		$Team1.score = 0;
-		$Team2.score = 0;
-		$Game::TeamJoustState = "ready";
-		centerPrintAll("Get ready for jousting!", 4);
-		schedule(4000, MissionEnvironment, "serverStartTeamJoust");
+		serverStartTeamJoust();
 	}
 	
 //	if( $Server::MissionType $= "har" )
@@ -208,10 +243,7 @@ function startNewRound()
 
 		// do not respawn observers...
 		if( %client.team == $Team1 || %client.team == $Team2 )
-		{
-			%client.team.numPlayersOnRoundStart++;
 			%client.spawnPlayer();
-		}
 	}
 
 	serverUpdateMusic();

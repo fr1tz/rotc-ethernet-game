@@ -22,3 +22,4 @@ sgLoadDataBlocks($sgLightEditor::filterDBPath);
 %mapping.sound = $MaterialMapping::Sound::Metal;
 %mapping.color = "0.3 0.3 0.3 0.4 0.0";
 //%mapping.envmap = "share/textures/malloc/dark_blue_grid 0.5";
+

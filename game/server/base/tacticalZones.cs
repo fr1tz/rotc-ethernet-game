@@ -225,6 +225,8 @@ datablock TacticalZoneData(TerritoryZone)
 	colors[9]  = "1 0.5 0 0.75";   // red zBlocked flash
 	colors[10] = "0 0.5 1 0.75";   // blue zBlocked flash
 
+	colors[11] = "0 1 0 0.75";   // bright green
+	colors[12] = "1 1 0 0.75";   // bright yellow
 	colors[13] = "0 1 0 0.1";   // constantly neutral
 	colors[14] = "0 1 0 0.4";   // protected
 	colors[15] = "1 1 1 1"; 
@@ -453,33 +455,44 @@ function TerritoryZone::reset(%this, %zone)
 {
 	if($ROTC::GameType == $ROTC::TeamJoust)
 	{
-		if($Game::TeamJoustState $= "ready")
+		if($Game::TeamJoustState == 0)
 		{
 			%zone.setTeamId(%zone.initialOwner);
-			%zone.zBlocked = false; // (%zone.initialOwner != 0);	
-			%zone.zValue = 1;
-			if(%zone.getTeamId() == 0)
-			{
-				%zone.setColor(14, 14, 1);
+			if(%zone.initiallyProtected)
 				%zone.isProtected = true;
-			}
-			else if(%zone.getTeamId() == 1)
-				%zone.setColor(7, 7, 1);
-			else if(%zone.getTeamId() == 2)
-				%zone.setColor(8, 8, 1);
+
+			if(%zone.getTeamId() == 0 || %zone.initiallyProtected)
+				%color = 7;
+			else
+				%color = 1 + %zone.getTeamId();
+			%zone.setColor(%color, %color, 1);
 		}
-		else if($Game::TeamJoustState $= "go")
+		else if($Game::TeamJoustState == 1)
 		{
-			%zone.zBlocked = false;
-			if(%zone.getTeamId() == 0)
+			if(%zone.getTeamId() == 0 || %zone.initiallyProtected)
+				%zone.setColor(12, 12, 1);
+		}
+		else if($Game::TeamJoustState == 2)
+		{
+			if(%zone.getTeamId() == 0 || %zone.initiallyProtected)
+				%zone.setColor(11, 11, 1);
+		}
+		else if($Game::TeamJoustState == 3)
+		{
+			if(%zone.getTeamId() == 0 || %zone.initiallyProtected)
 			{
-				%zone.setColor(13, 13, 1);
-				%zone.isProtected = true;
+				if(%zone.getTeamId() == 0)
+					%color = 13;
+				else if(%zone.initiallyProtected)
+					%color = 3 + %zone.getTeamId();
+				%zone.setColor(%color, %color, 1);
 			}
-			else if(%zone.getTeamId() == 1)
-				%zone.setColor(7, 7, 1);
-			else if(%zone.getTeamId() == 2)
-				%zone.setColor(8, 8, 1);
+		}
+
+		if($Game::TeamJoustState < 4)
+		{
+	  		if(%zone.getTeamId() == 0 || %zone.initiallyProtected)
+	  			%zone.flash(15, 15, 1);
 		}
 	}
 	else

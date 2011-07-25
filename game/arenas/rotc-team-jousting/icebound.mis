@@ -1,5 +1,5 @@
 $MissionInfo::Name       = "/env/nat/icebound";
-$MissionInfo::Type       = "ROTC: Team Jousting" SPC "(" @ $GameVersionString @ ")";
+$MissionInfo::Type       = "ROTC: TeamJousting" SPC "(" @ $GameVersionString @ ")";
 $MissionInfo::Desc       = "Simple team jousting arena";
 $MissionInfo::InitScript = "game/server/missions/rotc-tj.cs";
 
