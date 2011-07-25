@@ -94,16 +94,13 @@ function PlayerData::onAdd(%this,%obj)
 	Parent::onAdd(%this,%obj);
 	
 	%client = %obj.client;
+	if(!isObject(%client))
+		return;
+
+	%client.inventoryMode = "showicon";
 	
 	%obj.isCAT = true;
 	%obj.getTeamObject().numCATs++;
-
-	// Clear HUD menus...
-	if(isObject(%obj.client))
-	{
-		%obj.client.setHudMenuL("*", " ", 1, 0);
-		%obj.client.setHudMenuR("*", " ", 1, 0);
-	}
 
 	// Vehicle timeout
 	%obj.mountVehicle = true;
@@ -115,12 +112,14 @@ function PlayerData::onAdd(%this,%obj)
 	if(%obj.getTeamId() == 1)
 	{
 		%obj.mountImage(RedDiscImage, 1, -1, true);
-		%obj.mountImage(RedGrenadeImage, 2, -1, true);
+		if(%client.hasGrenade)
+			%obj.mountImage(RedGrenadeImage, 2, -1, true);
 	}
 	else
 	{
 		%obj.mountImage(BlueDiscImage, 1, -1, true);
-		%obj.mountImage(BlueGrenadeImage, 2, -1, true);
+		if(%client.hasGrenade)
+			%obj.mountImage(BlueGrenadeImage, 2, -1, true);
 	}
 	%obj.useWeapon(1);
 
@@ -501,6 +500,9 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 	// move event.  The player automatically triggers slot 0 and
 	// slot 1 off of triggers # 0 & 1.  Trigger # 2 is also used
 	// as the jump key.
+
+	if(!%obj.client)
+		return;
 	
 	//--------------------------------------------------------------------------
 	// Primary fire
@@ -534,6 +536,9 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 	//--------------------------------------------------------------------------
 	if( %triggerNum == 4 || %triggerNum == 5 )
 	{
+		if(%obj.client.hasPermaboard)
+			return;
+
 		if(%val)
         {
             if(%triggerNum == 4)
@@ -553,6 +558,12 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 
 function Player::setSniping(%this, %sniping)
 {
+	if(!isObject(%this.client))
+		return;
+
+	if(%this.client.hasPermaboard)
+		return;
+
     %this.isSniping = %sniping;
     if(%this.isSniping)
         %this.setBodyPose($PlayerBodyPose::Marching);
@@ -640,7 +651,7 @@ function Player::updateRegeneration(%this)
 
 function Player::setGridConnection(%this, %val)
 {
-	if($ROTC::GameType != $ROTC::Ethernet)
+	if(%this.client.hasStabilizer || !%this.client.hasAnchor)
 		return;
 
 	if(%val == %this.gridConnection)
@@ -655,7 +666,10 @@ function Player::setGridConnection(%this, %val)
 
 function Player::updateGridConnection(%this)
 {
-	if($ROTC::GameType != $ROTC::Ethernet)
+	if(!isObject(%this.client))
+		return;
+
+	if(%this.client.hasStabilizer)
 	{
 		%this.gridConnection = 1;
 		%this.shapeFxSetTexture($PlayerShapeFxSlot::GridConnection, 0);					
@@ -664,6 +678,9 @@ function Player::updateGridConnection(%this)
 		%this.shapeFxSetActive($PlayerShapeFxSlot::GridConnection, true, true);
 		return;
 	}
+
+	if(!%this.client.hasAnchor)
+		return;
 
 	%dtTime = 50;
     
@@ -951,7 +968,7 @@ function Player::setDiscs(%this, %numDiscs)
 	%this.setImageAmmo(1, %hasDisc);
 
 	if(isObject(%this.client))
-		%this.client.setHudMenuL(0, "<bitmap:share/hud/rotc/icon.disc.png><sbreak>", %numDiscs, 1);
+		%this.client.displayInventory(%this);
 }
 
 function Player::incDiscs(%this)

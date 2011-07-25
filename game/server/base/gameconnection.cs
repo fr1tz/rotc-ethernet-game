@@ -125,19 +125,8 @@ function GameConnection::onClientEnterGame(%this)
 	//
 	// inventory...
 	//
-	if($ROTC::GameType == $ROTC::Ethernet)
-	{
-		%this.loadout[1] = 1;
-		%this.loadout[2] = 3;
-		%this.loadout[3] = 6;
-	}
-	else
-	{
-		%this.loadout[1] = 1;
-		%this.loadout[2] = 2;
-		%this.loadout[3] = 6;
-	}
-	%this.updateWeapons();
+	%this.defaultLoadout();
+	%this.updateLoadout();
 	
 	//
 	// join observer team...
@@ -198,25 +187,217 @@ function GameConnection::onClientLeaveGame(%this)
 
 //------------------------------------------------------------------------------
 
-function GameConnection::updateWeapons(%this)
+function GameConnection::defaultLoadout(%this)
+{
+	for(%i = 1; %i <= 9; %i++)
+		this.loadout[%i] = "";
+
+	if($ROTC::GameType == $ROTC::Ethernet)
+	{
+		%this.loadout[1] = $CatEquipment::Blaster;
+		%this.loadout[2] = $CatEquipment::SniperRifle;
+		%this.loadout[3] = $CatEquipment::Etherboard;
+		%this.loadout[4] = $CatEquipment::Anchor;
+		%this.loadout[5] = $CatEquipment::Grenade;
+		%this.loadout[6] = $CatEquipment::Bounce;
+		%this.loadout[7] = $CatEquipment::RepelDisc;
+		%this.loadout[8] = $CatEquipment::ExplosiveDisc;
+	}
+	else if($ROTC::GameType == $ROTC::TeamJoust)
+	{
+		%this.loadout[1] = $CatEquipment::Blaster;
+		%this.loadout[2] = $CatEquipment::BattleRifle;
+		%this.loadout[3] = $CatEquipment::GrenadeLauncher;
+		%this.loadout[4] = $CatEquipment::Stabilizer;
+		%this.loadout[5] = $CatEquipment::Grenade;
+		%this.loadout[6] = $CatEquipment::Permaboard;
+		%this.loadout[7] = $CatEquipment::SlasherDisc;
+	}
+	else if($ROTC::GameType == $ROTC::TeamDragRace)
+	{
+		%this.loadout[1] = $CatEquipment::Blaster;
+		%this.loadout[2] = $CatEquipment::BattleRifle;
+		%this.loadout[3] = $CatEquipment::GrenadeLauncher;
+		%this.loadout[4] = $CatEquipment::Stabilizer;
+		%this.loadout[5] = $CatEquipment::Grenade;
+		%this.loadout[6] = $CatEquipment::Permaboard;
+		%this.loadout[7] = $CatEquipment::SlasherDisc;
+	}
+	else
+	{
+		%this.loadout[1] = $CatEquipment::Blaster;
+		%this.loadout[2] = $CatEquipment::BattleRifle;
+		%this.loadout[3] = $CatEquipment::Etherboard;
+		%this.loadout[4] = $CatEquipment::Stabilizer;
+		%this.loadout[5] = $CatEquipment::Grenade;
+		%this.loadout[6] = $CatEquipment::SlasherDisc;
+	}
+}
+
+function GameConnection::updateLoadout(%this)
 {
 	%this.numWeapons = 0;
-	%this.hasEtherboard = false;		
+	%this.hasAnchor = false;
+	%this.hasStabilizer = false;
+	%this.hasSlasherDisc = false;
+	%this.hasRepelDisc = false;
+	%this.hasExplosiveDisc = false;
+	%this.hasGrenade = false;
+	%this.hasBounce = false;
+	%this.hasEtherboard = false;	
+	%this.hasPermaboard = false;	
 	%this.numRegenerators = 0;
-	for(%i = 1; %i <= 3; %i++)
+	for(%i = 1; %i <= 9; %i++)
 	{
-		if(%this.loadout[%i] == 6)
+		if(%this.loadout[%i] $= "")
+			continue;
+
+		if(%this.loadout[%i] == $CatEquipment::Anchor)
+		{
+			%this.hasAnchor = true;
+		}
+		else if(%this.loadout[%i] == $CatEquipment::Stabilizer)
+		{
+			%this.hasStabilizer = true;
+		}
+		else if(%this.loadout[%i] == $CatEquipment::SlasherDisc)
+		{
+			%this.hasSlasherDisc = true;
+		}
+		else if(%this.loadout[%i] == $CatEquipment::RepelDisc)
+		{
+			%this.hasRepelDisc = true;
+		}
+		else if(%this.loadout[%i] == $CatEquipment::ExplosiveDisc)
+		{
+			%this.hasExplosiveDisc = true;
+		}
+		else if(%this.loadout[%i] == $CatEquipment::Grenade)
+		{
+			%this.hasGrenade = true;
+		}
+		else if(%this.loadout[%i] == $CatEquipment::Bounce)
+		{
+			%this.hasBounce = true;
+		}
+		else if(%this.loadout[%i] == $CatEquipment::Etherboard)
 		{
 			%this.hasEtherboard = true;
 		}
-		else if(%this.loadout[%i] == 7)
+		else if(%this.loadout[%i] == $CatEquipment::Permaboard)
+		{
+			%this.hasPermaboard = true;
+		}
+		else if(%this.loadout[%i] == $CatEquipment::Regeneration)
 		{
 			%this.numRegenerators++;
 		}
-		else
+		else if(%this.loadout[%i] < $CatEquipment::SlasherDisc)
 		{
 			%this.weapons[%this.numWeapons] = %this.loadout[%i];
 			%this.numWeapons++;
+		}
+	}
+}
+
+function GameConnection::displayInventory(%this, %obj)
+{
+	%iconname[$CatEquipment::Blaster] = "blaster";
+	%iconname[$CatEquipment::BattleRifle] = "rifle";
+	%iconname[$CatEquipment::SniperRifle] = "sniper";
+	%iconname[$CatEquipment::MiniGun] = "minigun";
+	%iconname[$CatEquipment::RepelGun] = "grenadelauncher";
+	%iconname[$CatEquipment::GrenadeLauncher] = "grenadelauncher";
+	%iconname[$CatEquipment::SlasherDisc] = "slasherdisc";
+	%iconname[$CatEquipment::RepelDisc] = "repeldisc";
+	%iconname[$CatEquipment::ExplosiveDisc] = "explosivedisc";
+	%iconname[$CatEquipment::Anchor] = "anchor";
+	%iconname[$CatEquipment::Stabilizer] = "stabilizer";
+	%iconname[$CatEquipment::Grenade] = "grenade";
+	%iconname[$CatEquipment::Bounce] = "bounce";
+	%iconname[$CatEquipment::Etherboard] = "etherboard";
+	%iconname[$CatEquipment::Regeneration] = "regen";	
+
+	%fixed = false;
+	if($ROTC::GameType == $ROTC::mEthMatch)
+		%fixed = true;
+
+	if(%this.inventoryMode $= "showicon")
+	{
+		%numDiscs = %obj.numDiscs;
+		%this.setHudMenuL(0, "<bitmap:share/hud/rotc/icon.disc.png><sbreak>", %numDiscs, 1);
+		for(%i = 1; %i < 10; %i++)
+			%this.setHudMenuL(%i, "", 1, 0);
+	}
+	else if(%this.inventoryMode $= "show")
+	{
+		for(%i = 1; %i <= 3; %i++)
+			%icon[%i] = %iconname[%this.loadout[%i]];
+	
+		%this.setHudMenuL(0, "<font:NovaSquare:12>", 1, 1);			
+		
+		%this.setHudMenuL(1, "Slot #1:\n", 1, 1);
+		%this.setHudMenuL(2, "<bitmap:share/hud/rotc/icon." @ %icon[1] @ ".50x15>", 1, 1);
+		if(%fixed)
+			%this.setHudMenuL(3, "<sbreak>(FIXED)", 1, 1);
+		else
+			%this.setHudMenuL(3, "<sbreak>(Press @bind35 to change)", 1, 1);
+		
+		%this.setHudMenuL(4, "\n\n\n\n\n\Slot #2:\n", 1, 1);
+		%this.setHudMenuL(5, "<bitmap:share/hud/rotc/icon." @ %icon[2] @ ".50x15>", 1, 1);
+		if(%fixed)
+			%this.setHudMenuL(6, "<sbreak>(FIXED)", 1, 1);
+		else
+			%this.setHudMenuL(6, "<sbreak>(Press @bind36 to change)", 1, 1);
+		
+		%this.setHudMenuL(7, "\n\n\n\n\n\Slot #3:\n", 1, 1);
+		%this.setHudMenuL(8, "<bitmap:share/hud/rotc/icon." @ %icon[3] @ ".50x15>", 1, 1);
+		if(%fixed)
+			%this.setHudMenuL(9, "<sbreak>(FIXED)", 1, 1);
+		else
+			%this.setHudMenuL(9, "<sbreak>(Press @bind37 to change)", 1, 1);
+	}
+	else if(%this.inventoryMode $= "select")
+	{
+		%item[1] = $CatEquipment::Blaster;
+		%item[2] = $CatEquipment::BattleRifle;
+		%item[3] = $CatEquipment::SniperRifle;
+		%item[4] = $CatEquipment::Minigun;
+		if($ROTC::GameType == $ROTC::Ethernet)
+			%item[5] = $CatEquipment::RepelGun;
+		else
+			%item[5] = $CatEquipment::GrenadeLauncher;
+		%item[6] = $CatEquipment::Etherboard;
+		%item[7] = $CatEquipment::Regeneration;
+
+		%itemname[1] = "Blaster";
+		%itemname[2] = "Battle Rifle";
+		%itemname[3] = "Sniper ROFL";
+		%itemname[4] = "Minigun";
+		%itemname[5] = $ROTC::GameType == $ROTC::Ethernet ? "Bubblegun" : "Gren. Launcher";
+		%itemname[6] = "Etherboard";
+		%itemname[7] = "Regeneration";
+
+		%this.setHudMenuL(0, "<font:NovaSquare:12>Select slot #" @ %obj.inventoryMode[1] @ ":\n\n", 1, 1);
+		for(%i = 1; %i <= 7; %i++)
+			%this.setHudMenuL(%i, "@bind" @ (%i < 6 ? 34 : 41) + %i @ ": " @ %itemname[%i]  @  "\n" @
+				"   <bitmap:share/hud/rotc/icon." @ %iconname[%item[%i]] @ ".50x15>" @ "<sbreak>", 1, 1);
+		for(%i = 7; %i < 10; %i++)
+			%this.setHudMenuL(%i, "", 1, 0);	
+	}
+
+	for(%i = 4; %i < 10; %i++)
+	{
+		%this.setHudMenuR(0, "<just:right>", 1, 1);
+		%icon = %iconname[%this.loadout[%i]];
+		if(%icon $= "")
+		{
+			%this.setHudMenuR(%i, "", 1, 0);
+		}
+		else
+		{
+			%icon = "<bitmap:share/hud/rotc/icon." @ %icon @ ".20x20>";
+			%this.setHudMenuR(%i, %icon @ "<sbreak>", 1, 1);
 		}
 	}
 }

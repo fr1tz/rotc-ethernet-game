@@ -23,9 +23,13 @@ datablock TracerProjectileData(NoTargetDiscPseudoProjectile)
 
 function NoTargetDiscPseudoProjectile::onAdd(%this, %obj)
 {
-	if($ROTC::GameType == $ROTC::mEthMatch)
+	%client = %obj.sourceObject.client;
+	if(!isObject(%client))
+		return;
+
+	if(%client.hasSlasherDisc)
 		launchSeekerDisc(%obj.sourceObject);
-	else
+	else if(%client.hasRepelDisc)
 		launchRepelDisc(%obj.sourceObject);
 
 	// no need to ghost pseudo projectile to clients...
