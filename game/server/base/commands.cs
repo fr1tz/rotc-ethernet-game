@@ -33,8 +33,7 @@ function serverCmdPlayerAction(%client, %nr, %val)
 
 	if(%nr == 0 && %val && %client.menuVisible == false)
 	{
-		if($ROTC::GameType != $ROTC::TeamJoust)
-			%client.togglePlayerForm();
+		%client.togglePlayerForm();
 	}
 	else if(%nr <= 10 && %val)
 	{

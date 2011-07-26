@@ -219,8 +219,8 @@ function GameConnection::defaultLoadout(%this)
 		%this.loadout[2] = $CatEquipment::BattleRifle;
 		%this.loadout[3] = $CatEquipment::GrenadeLauncher;
 		%this.loadout[4] = $CatEquipment::Stabilizer;
-		%this.loadout[5] = $CatEquipment::Grenade;
-		%this.loadout[6] = $CatEquipment::Permaboard;
+		%this.loadout[5] = $CatEquipment::Permaboard;
+		%this.loadout[6] = $CatEquipment::Grenade;
 		%this.loadout[7] = $CatEquipment::SlasherDisc;
 	}
 	else
@@ -313,6 +313,7 @@ function GameConnection::displayInventory(%this, %obj)
 	%iconname[$CatEquipment::ExplosiveDisc] = "explosivedisc";
 	%iconname[$CatEquipment::Anchor] = "anchor";
 	%iconname[$CatEquipment::Stabilizer] = "stabilizer";
+	%iconname[$CatEquipment::Permaboard] = "permaboard";
 	%iconname[$CatEquipment::Grenade] = "grenade";
 	%iconname[$CatEquipment::Bounce] = "bounce";
 	%iconname[$CatEquipment::Etherboard] = "etherboard";
@@ -378,11 +379,13 @@ function GameConnection::displayInventory(%this, %obj)
 		%itemname[6] = "Etherboard";
 		%itemname[7] = "Regeneration";
 
+		%numItems = $ROTC::GameType == $ROTC::Ethernet ? 7 : 5;
+
 		%this.setHudMenuL(0, "<font:NovaSquare:12>Select slot #" @ %obj.inventoryMode[1] @ ":\n\n", 1, 1);
-		for(%i = 1; %i <= 7; %i++)
+		for(%i = 1; %i <= %numItems; %i++)
 			%this.setHudMenuL(%i, "@bind" @ (%i < 6 ? 34 : 41) + %i @ ": " @ %itemname[%i]  @  "\n" @
 				"   <bitmap:share/hud/rotc/icon." @ %iconname[%item[%i]] @ ".50x15>" @ "<sbreak>", 1, 1);
-		for(%i = 7; %i < 10; %i++)
+		for(%i = %numItems + 1; %i <= 9; %i++)
 			%this.setHudMenuL(%i, "", 1, 0);	
 	}
 
@@ -399,6 +402,62 @@ function GameConnection::displayInventory(%this, %obj)
 			%icon = "<bitmap:share/hud/rotc/icon." @ %icon @ ".20x20>";
 			%this.setHudMenuR(%i, %icon @ "<sbreak>", 1, 1);
 		}
+	}
+}
+
+function GameConnection::changeInventory(%this, %nr)
+{
+	if($ROTC::GameType == $ROTC::mEthMatch)
+		return;
+
+	if(%this.inventoryMode $= "show")
+	{
+		if(%nr < 1 || %nr > 3)
+			return;
+
+		%this.inventoryMode = "select";
+		%this.inventoryMode[1] = %nr;
+		%this.displayInventory();
+	}
+	else if(%this.inventoryMode $= "select")
+	{
+		if($ROTC::GameType == $ROTC::TeamJoust
+		|| $ROTC::GameType == $ROTC::TeamDragRace)
+		{
+			if(%nr < 1 || %nr > 5)
+				return;
+
+			switch(%nr)
+			{
+				case 1: %equipment = $CatEquipment::Blaster;
+				case 2: %equipment = $CatEquipment::BattleRifle;
+				case 3: %equipment = $CatEquipment::SniperRifle;
+				case 4: %equipment = $CatEquipment::MiniGun;
+				case 5: %equipment = $CatEquipment::GrenadeLauncher;
+			}
+		}
+		else
+		{
+			if(%nr < 1 || %nr > 7)
+				return;
+
+			switch(%nr)
+			{
+				case 1: %equipment = $CatEquipment::Blaster;
+				case 2: %equipment = $CatEquipment::BattleRifle;
+				case 3: %equipment = $CatEquipment::SniperRifle;
+				case 4: %equipment = $CatEquipment::MiniGun;
+				case 5: %equipment = $CatEquipment::RepelGun;
+				case 6: %equipment = $CatEquipment::Etherboard;
+				case 7: %equipment = $CatEquipment::Regeneration;
+			}
+		}
+
+		%this.loadout[%this.inventoryMode[1]] = %equipment;
+		%this.updateLoadout();
+
+		%this.inventoryMode = "show";
+		%this.displayInventory(0);
 	}
 }
 
@@ -763,6 +822,8 @@ function GameConnection::togglePlayerForm(%this, %forced)
 
 function GameConnection::setSkyColor(%this, %color)
 {
+	//error("GameConnection::setSkyColor():" SPC %this.getId() SPC %color);
+
 	if(%this.skyColor $= %color)
 		return;
 
@@ -773,7 +834,13 @@ function GameConnection::setSkyColor(%this, %color)
 
 function GameConnection::updateSkyColor(%this)
 {
-	cancel(%this.skyColorThread);
+	if(%this.skyColorThread !$= "")
+		cancel(%this.skyColorThread);
+	%this.skyColorThread = %this.schedule(500, "updateSkyColor");
+
+	// In certain gametypes the sky is the same for every client
+	if($ROTC::GameType == $ROTC::TeamDragRace)
+		return;
 
 	%player = %this.player;
 	if(!isObject(%player))
@@ -831,8 +898,6 @@ function GameConnection::updateSkyColor(%this)
 			%this.setSkyColor(%ratio SPC "0.75 1");
 		}
 	}
-
-	%this.skyColorThread = %this.schedule(500, "updateSkyColor");
 }
 
 //-----------------------------------------------------------------------------

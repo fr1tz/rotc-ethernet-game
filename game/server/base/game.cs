@@ -209,7 +209,6 @@ function serverAdvanceTeamJoust()
 	}
 }
 
-
 // this function starts a new round...
 function startNewRound()
 {
@@ -230,13 +229,15 @@ function startNewRound()
 	{
 		serverStartTeamJoust();
 	}
-	
-//	if( $Server::MissionType $= "har" )
-//	{
-//		resetCheckpoints();
+	else if($ROTC::GameType == $ROTC::TeamDragRace)
+	{
+		startTeamDragRace();
+	}
+	else
+	{
 		TerritoryZones_reset();
-//	}
-
+	}
+	
 	for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ )
 	{
 		%client = ClientGroup.getObject( %clientIndex );
@@ -288,20 +289,24 @@ function checkRoundEnd()
 		schedule(5000,0,"startNewRound");
 		$Game::RoundRestarting = true;
 	}
+	else if($ROTC::GameType == $ROTC::TeamDragRace)
+	{
+		checkRoundEnd_TeamDragRace();
+	}
 	else
 	{
 		if($Team1.numTerritoryZones == 0 && $Team1.numCATs == 0)
 		{
 			centerPrintAll($Team2.name @ " have won!",3);
 			serverPlay2D(BlueVictorySound);
-			schedule(5000,0,"startNewRound");
+			schedule(5000, MissionEnvironment, "startNewRound");
 			$Game::RoundRestarting = true;
 		}
 		else if($Team2.numTerritoryZones == 0 && $Team2.numCATs == 0)
 		{
 			centerPrintAll($Team1.name @ " have won!",3);
 			serverPlay2D(RedVictorySound);
-			schedule(5000,0,"startNewRound");
+			schedule(5000, MissionEnvironment, "startNewRound");
 			$Game::RoundRestarting = true;
 		}
 	}

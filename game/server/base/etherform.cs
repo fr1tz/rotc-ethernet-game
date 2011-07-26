@@ -10,61 +10,7 @@ exec("./etherform.gfx.cs");
 
 function EtherformData::useWeapon(%this, %obj, %nr)
 {
-	if($ROTC::GameType == $ROTC::mEthMatch)
-		return;
-
-	%client = %obj.client;
-
-	if(%client.inventoryMode $= "show")
-	{
-		if(%nr < 1 || %nr > 3)
-			return;
-
-		%client.inventoryMode = "select";
-		%client.inventoryMode[1] = %nr;
-		%client.displayInventory();
-	}
-	else if(%client.inventoryMode $= "select")
-	{
-		if($ROTC::GameType == $ROTC::TeamJoust)
-		{
-			if(%nr < 1 || %nr > 7)
-				return;
-
-			switch(%nr)
-			{
-				case 1: %equipment = $CatEquipment::Blaster;
-				case 2: %equipment = $CatEquipment::BattleRifle;
-				case 3: %equipment = $CatEquipment::SniperRifle;
-				case 4: %equipment = $CatEquipment::MiniGun;
-				case 5: %equipment = $CatEquipment::GrenadeLauncher;
-				case 6: %equipment = $CatEquipment::Etherboard;
-				case 7: %equipment = $CatEquipment::Regeneration;
-			}
-		}
-		else
-		{
-			if(%nr < 1 || %nr > 7)
-				return;
-
-			switch(%nr)
-			{
-				case 1: %equipment = $CatEquipment::Blaster;
-				case 2: %equipment = $CatEquipment::BattleRifle;
-				case 3: %equipment = $CatEquipment::SniperRifle;
-				case 4: %equipment = $CatEquipment::MiniGun;
-				case 5: %equipment = $CatEquipment::RepelGun;
-				case 6: %equipment = $CatEquipment::Etherboard;
-				case 7: %equipment = $CatEquipment::Regeneration;
-			}
-		}
-
-		%client.loadout[%client.inventoryMode[1]] = %equipment;
-		%client.updateLoadout();
-
-		%client.inventoryMode = "show";
-		%client.displayInventory(%obj);
-	}
+	%client = %obj.client.changeInventory(%nr);
 }
 
 function EtherformData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType)

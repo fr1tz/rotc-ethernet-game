@@ -143,6 +143,9 @@ function PlayerData::onAdd(%this,%obj)
 	
 	%obj.updateRegeneration();		
 	%obj.updateGridConnection();
+
+	if(%client.hasPermaboard)
+		%obj.setBodyPose($PlayerBodyPose::Sliding);
   
    // No more limited sliding for now.
    // %obj.sliding = 0.5;

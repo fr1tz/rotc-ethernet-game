@@ -1,0 +1,6 @@
+$MissionInfo::Name       = "/env/nat/icebound";
+$MissionInfo::Type       = "ROTC: TeamDragRace" SPC "(" @ $GameVersionString @ ")";
+$MissionInfo::Desc       = "Team drag racing arena.";
+$MissionInfo::InitScript = "game/server/missions/rotc-tdr.cs";
+
+
