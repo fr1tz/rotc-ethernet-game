@@ -38,12 +38,18 @@ function ShapeBase::setDamageDt(%this, %damageAmount, %damageType)
 	// over time using the built in ShapBase C++ repair functions
 	// (using a neg. repair), but this has the advantage of going
 	// through the normal script channels.
-	if(%this.getDamageState() $= "Enabled") {
+	if( %this.damageSchedule !$= "" )
+		cancel(%this.damageSchedule);
+	%this.damageSchedule = %this.schedule(0, "applyDamageDt", %damageAmount, %damageType);
+}
+
+function ShapeBase::applyDamageDt(%this, %damageAmount, %damageType)
+{
+	if( %this.damageSchedule !$= "" )
+		cancel(%this.damageSchedule);
+	if(%this.getDamageState() $= "Enabled")
 		%this.damage(0, "0 0 0", %damageAmount, %damageType);
-		%this.damageSchedule = %this.schedule(50, "setDamageDt", %damageAmount, %damageType);
-	}
-	else
-		%this.damageSchedule = "";
+	%this.damageSchedule = %this.schedule(50, "applyDamageDt", %damageAmount, %damageType);
 }
 
 function ShapeBase::clearDamageDt(%this)
@@ -241,7 +247,8 @@ function ShapeBaseData::onRemove(%this, %obj)
 {
 	%obj.beingRemoved = true;
 
-	cancel(%obj.damageSchedule);
+	if(%obj.damageSchedule !$= "")
+		cancel(%obj.damageSchedule);
 	
 	// relieve obj from simple control if needed...
 	if(%obj.isUnderSimpleControl())
