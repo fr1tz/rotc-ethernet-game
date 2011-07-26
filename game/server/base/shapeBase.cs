@@ -531,12 +531,19 @@ function ShapeBaseData::updateZone(%this, %obj, %enterZone, %leftZone)
 // called by script code...
 function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %healthDmg, %bufDmg)
 {
+	%client = %obj.client;
+	if(!isObject(%client))
+		return;
+
     // health takeback...
-    %healthTakeback = %healthDmg * 0.5;
-    %newSrcDamage = %obj.getDamageLevel() - %healthTakeback;
-    %obj.setDamageLevel(%newSrcDamage);
-    if(%newSrcDamage < 0)
-        %obj.setDamageBufferLevel(%obj.getDamageBufferLevel() - %newSrcDamage);
+	if(%client.numVAMPs > 0)
+	{
+ 	   %healthTakeback = %healthDmg * 0.5 * %client.numVAMPs;
+ 	   %newSrcDamage = %obj.getDamageLevel() - %healthTakeback;
+ 	   %obj.setDamageLevel(%newSrcDamage);
+ 	   if(%newSrcDamage < 0)
+ 	       %obj.setDamageBufferLevel(%obj.getDamageBufferLevel() - %newSrcDamage);
+	}
 
     // tagging...
     %enemy.setTagged();

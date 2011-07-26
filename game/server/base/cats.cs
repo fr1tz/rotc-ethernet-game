@@ -25,6 +25,7 @@ function executeCatScripts()
 	$CatEquipment::RepelDisc       = %i; %i++;
 	$CatEquipment::ExplosiveDisc   = %i; %i++;
 	// Other...
+	$CatEquipment::VAMP            = %i; %i++;
 	$CatEquipment::Anchor          = %i; %i++;
 	$CatEquipment::Stabilizer      = %i; %i++;
 	$CatEquipment::Grenade         = %i; %i++;

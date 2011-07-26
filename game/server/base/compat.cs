@@ -97,4 +97,10 @@ datablock ParticleData(TextureFileDummy10)
 	textureName	= "share/hud/rotc/icon.permaboard.20x20.png";
 };
 
+datablock ParticleData(TextureFileDummy11)
+{
+	textureName	= "share/hud/rotc/icon.vamp.20x20.png";
+};
+
+
 
