@@ -34,6 +34,14 @@ function fxLightData::create(%data)
 	return %obj;
 }
 
+datablock AudioProfile(BeepMessageSound)
+{
+	filename = "share/shapes/rotc/vehicles/etherform/sound.impact.wav";
+	description = Audio2D;
+	preload = true;
+};
+
+
 datablock AudioProfile(ClownSound)
 {
 	filename = "share/sounds/rotc/events/clown.wav";

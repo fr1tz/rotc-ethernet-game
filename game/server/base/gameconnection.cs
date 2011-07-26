@@ -546,7 +546,14 @@ function GameConnection::spawnPlayer(%this)
 
 //-----------------------------------------------------------------------------
 
-function GameConnection::togglePlayerForm(%this)
+function GameConnection::beepMsg(%this, %reason)
+{
+	MessageClient(%this, 'MsgBeep', '\c0Fail: %1', %reason);
+	//bottomPrint(%this, %reason, 3, 1 );
+	%this.play2D(BeepMessageSound);
+}
+
+function GameConnection::togglePlayerForm(%this, %forced)
 {
 	if(!isObject(%this.player))
 		return;
@@ -576,55 +583,79 @@ function GameConnection::togglePlayerForm(%this)
 	else
 	{
 		// Etherform -> Manifestation
-		
-		if(%this.player.getDamageLevel() > %this.player.getDataBlock().maxDamage*0.75)
-		{
-			bottomPrint(%this, "You need at least 25% health to manifest!", 3, 1 );
-			return;
-		}
-		
-		if(%this.player.getEnergyLevel() < 50)
-		{
-			bottomPrint(%this, "You need at least 50% armor to manifest!", 3, 1 );
-			return;
-		}
-		
-		%ownTeamId = %this.player.getTeamId();
 
-		%inOwnZone = false;
-		%inEnemyZone = false;
-
-		InitContainerRadiusSearch(%pos, 0.0001, $TypeMasks::TacticalZoneObjectType);
-		while((%srchObj = containerSearchNext()) != 0)
+		if(!%forced)
 		{
-			%zoneTeamId = %srchObj.getTeamId();
-			%zoneBlocked = %srchObj.zBlocked;
-
-			if(%zoneTeamId != %ownTeamId && %zoneTeamId != 0)
+			if(%this.player.getDamageLevel() > %this.player.getDataBlock().maxDamage*0.75)
 			{
-				%inEnemyZone = true;
-				break;
+				%this.beepMsg("You need at least 25% health to manifest!");
+				return;
 			}
-			else if(%zoneTeamId == %ownTeamId)
+			
+			if(%this.player.getEnergyLevel() < 50)
 			{
-				%inOwnZone = true;
+				%this.beepMsg("You need at least 50% armor to manifest!");
+				return;
 			}
-		}
 
-		if(%inEnemyZone)
-		{
-			bottomPrint(%this, "You can not manifest in an enemy zone!", 3, 1 );
-			return;
-		}
-		else if(!%inOwnZone)
-		{
-			bottomPrint(%this, "You can only manifest in your team's zones!", 3, 1 );
-			return;
-		}
-		else if(%zoneBlocked)
-		{
-			bottomPrint(%this, "You can not manifest in a blocked zone!", 3, 1 );
-			return;
+			%ownTeamId = %this.player.getTeamId();
+	
+			%inOwnZone = false;
+			%inOwnTerritory = false;
+			%inEnemyZone = false;
+	
+			InitContainerRadiusSearch(%pos, 0.0001, $TypeMasks::TacticalZoneObjectType);
+			while((%srchObj = containerSearchNext()) != 0)
+			{
+				// object actually in this zone?
+				%inSrchZone = false;
+				for(%i = 0; %i < %srchObj.getNumObjects(); %i++)
+				{
+					if(%srchObj.getObject(%i) == %this.player)
+					{
+						%inSrchZone = true;
+						break;
+					}
+				}
+				if(!%inSrchZone)
+					continue;
+	
+				%zoneTeamId = %srchObj.getTeamId();
+				%zoneBlocked = %srchObj.zBlocked;
+	
+				if(%zoneTeamId != %ownTeamId && %zoneTeamId != 0)
+				{
+					%inEnemyZone = true;
+					break;
+				}
+				else if(%zoneTeamId == %ownTeamId)
+				{
+					%inOwnZone = true;
+					if(%srchObj.getDataBlock().getName() $= "TerritoryZone")
+						%inOwnTerritory = true;
+				}
+			}
+	
+			if(%inEnemyZone)
+			{
+				%this.beepMsg("You can not manifest in an enemy zone!");
+				return;
+			}
+			else if(%inOwnZone && !%inOwnTerritory)
+			{
+				%this.beepMsg("This is not a territory zone!");
+				return;
+			}
+			else if(!%inOwnZone)
+			{
+				%this.beepMsg("You can only manifest in your team's territory zones!");
+				return;
+			}
+			else if(%zoneBlocked)
+			{
+				%this.beepMsg("This zone is currently blocked!");
+				return;
+			}
 		}
 		
 		// Manifestation form from nearby blueprint?
