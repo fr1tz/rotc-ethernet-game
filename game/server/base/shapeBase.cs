@@ -448,7 +448,7 @@ function ShapeBaseData::impulse(%this, %obj, %position, %impulseVec, %src)
 }
 
 // script function called by territory zone code
-function ShapeBaseData::updateZone(%this, %obj, %newZone)
+function ShapeBaseData::updateZone(%this, %obj, %enterZone, %leftZone)
 {
 	%ownTeamId = %obj.getTeamId();
 
@@ -461,11 +461,32 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
     
 	%pos = %obj.getPosition();
 	InitContainerRadiusSearch(%pos, 0.0001, $TypeMasks::TacticalZoneObjectType);
-	while( (%srchObj = %newZone) != 0 || (%srchObj = containerSearchNext()) != 0)
+	while( (%srchObj = %enterZone) != 0 || (%srchObj = containerSearchNext()) != 0)
 	{
-		%newZone = 0;
+		%inSrchZone = false;
+		if(%srchObj == %enterZone)
+		{
+			%inSrchZone = true;
+		}
+		else if(%srchObj != %leftZone)
+		{
+			// object actually in this zone?
+			for(%i = 0; %i < %srchObj.getNumObjects(); %i++)
+			{
+				if(%srchObj.getObject(%i) == %obj)
+				{
+					%inSrchZone = true;
+					break;
+				}
+			}
+		}
 
-		%inZone = true;		
+		%enterZone = 0;	
+
+		if(!%inSrchZone)
+			continue;
+	
+		%inZone = true;
 		%obj.zCurrentZone = %srchObj;		
 
 		%zoneTeamId = %srchObj.getTeamId();
@@ -473,7 +494,6 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
 		if(%zoneTeamId != %ownTeamId && %zoneTeamId != 0)
 		{
 			%inEnemyZone = true;
-			break;
 		}
 		else if(%zoneTeamId == %ownTeamId)
 		{
@@ -501,6 +521,11 @@ function ShapeBaseData::updateZone(%this, %obj, %newZone)
 		//echo(" not in zone");
         %this.onLeaveMissionArea(%obj);  
    }
+
+	// save these...
+	%obj.zInZone = %inZone;
+	%obj.zInOwnZone = %inOwnZone;
+	%obj.zInEnemyZone = %inEnemyZone;
 }
 
 // called by script code...
