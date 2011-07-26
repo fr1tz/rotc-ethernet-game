@@ -485,6 +485,7 @@ function GuiEditorOpen(%content)
 	
 	GuiEditorClassPopup.sort();
 	GuiEditorResList.clear();
+	GuiEditorResList.add("320 x 200", 320);
 	GuiEditorResList.add("640 x 480", 640);
 	GuiEditorResList.add("800 x 600", 800);
 	GuiEditorResList.add("1024 x 768", 1024);
@@ -495,6 +496,8 @@ function GuiEditorOpen(%content)
 	echo("extent is " @ %ext );
 	switch(getWord(%ext, 0))
 	{
+		case 320:
+			GuiEditorResList.setText("320 x 200");
 		case 640:
 			GuiEditorResList.setText("640 x 480");
 		case 800:
@@ -551,6 +554,10 @@ function GuiEditorResList::onSelect(%this, %id)
 {
 	switch(%id)
 	{
+		case 320:
+			GuiEditorRegion.resize(0,0,320,200);
+			GuiEditorContent.getObject(0).resize(0,0,320,200);
+			$Pref::GuiEditor::PreviewResolution = "320 200";
 		case 640:
 			GuiEditorRegion.resize(0,0,640,480);
 			GuiEditorContent.getObject(0).resize(0,0,640,480);
