@@ -31,6 +31,9 @@ function teamDragRaceSkyColorThread()
 		}
 	}
 
+	%teamHealth[1] += $Team1.score*100;
+	%teamHealth[2] += $Team2.score*100;
+
 	if(%teamHealth[1] > %teamHealth[2])
 	{
 		%ratio = %teamHealth[2] / %teamHealth[1];

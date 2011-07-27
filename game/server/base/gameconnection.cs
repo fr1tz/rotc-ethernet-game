@@ -222,8 +222,8 @@ function GameConnection::defaultLoadout(%this)
 		%this.loadout[3] = $CatEquipment::GrenadeLauncher;
 		%this.loadout[4] = $CatEquipment::VAMP;
 		%this.loadout[5] = $CatEquipment::Stabilizer;
-		%this.loadout[6] = $CatEquipment::Grenade;
-		%this.loadout[7] = $CatEquipment::Permaboard;
+		%this.loadout[6] = $CatEquipment::Permaboard;
+		%this.loadout[7] = $CatEquipment::Grenade;
 		%this.loadout[8] = $CatEquipment::SlasherDisc;
 	}
 	else

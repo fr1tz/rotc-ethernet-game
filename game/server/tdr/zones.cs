@@ -107,33 +107,39 @@ function RacingLaneZones_repairTick()
 // to reset all the zones...
 function RacingLaneZones_reset()
 {
-	RacingLaneZones_resetNamed("RedLane");
-	RacingLaneZones_resetNamed("BlueLane");
+	RacingLaneZones_resetNamed("RedLane", 1);
+	RacingLaneZones_resetNamed("BlueLane", 2);
+	RacingLaneZones_repairTick();
 }
 
-function RacingLaneZones_resetNamed(%name)
+function RacingLaneZones_resetNamed(%name, %teamId)
 {
 	%group = nameToID(%name);
-
 	if (%group != -1)
+		RacingLaneZones_resetZones(%group, %teamId);
+	else
+		error("RacingLaneZones_resetNamed(): group" SPC %name SPC "not found!");
+}
+
+function RacingLaneZones_resetZones(%group, %teamId)
+{
+	%count = %group.getCount();
+	if (%count != 0)
 	{
-		%count = %group.getCount();
-		if (%count != 0)
+		for (%i = 0; %i < %count; %i++)
 		{
-				for (%i = 0; %i < %count; %i++)
-				{
-					%zone = %group.getObject(%i);
-					%zone.getDataBlock().reset(%zone, %name);
-				}
-				
-				RacingLaneZones_repairTick();
+			%obj = %group.getObject(%i);
+			if(%obj.getClassName() $= "SimGroup")
+				RacingLaneZones_resetZones(%obj, %teamId);
+			else if(%obj.getClassName() $= "TacticalZone")
+				%obj.getDataBlock().reset(%obj, %teamId);
 		}
-		else
-			error("RacingLaneZones_resetNamed():" SPC
-				"no TacticalZones found in" SPC %name SPC "group!");
 	}
 	else
-		error("RacingLaneZones_reset(): group" SPC %name SPC "not found!");
+	{
+		error("RacingLaneZones_resetZones():" SPC
+			"no TacticalZones found in" SPC %name SPC "group!");
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -174,20 +180,21 @@ datablock TacticalZoneData(RacingLaneZone)
 
 	colorChangeTimeMS = 200;
 
-	colors[1]  = "1 1 1 0.05";  // neutral
+	colors[1]  = "1 1 1 0.2";  // end zone
 	colors[2]  = "1 0 0 0.1";   // red start zone
 	colors[3]  = "0 0 1 0.1";   // blue start zone
 
 	colors[6]  = "1 1 1 0.75";  // white flash
-	colors[7]  = "0 0.25 0 0.75";   // red lane
-	colors[8]  = "0.5 0.25 0 0.75"; // blue lane
+	colors[7]  = "1 0 0 0.75";   // red lane
+	colors[8]  = "0 0 1 0.75"; // blue lane
 
 	colors[11] = "0 1 0 0.75";   // bright green
 	colors[12] = "1 1 0 0.75";   // bright yellow
 	colors[13] = "1 0 0 0.75";   // bright red
 
+	colors[15] = "1 1 1 0.1";   // invisible 
 
-    texture = "share/textures/rotc/zone.lane";
+    texture = "share/textures/rotc/zone";
 };
 
 function RacingLaneZone::onAdd(%this, %zone)
@@ -205,15 +212,13 @@ function RacingLaneZone::onEnter(%this,%zone,%obj)
 	if(!%obj.getType() & $TypeMasks::ShapeBaseObjectType)
 		return;
 
-	if(false)
+	if(%zone.endZone)
     {
 		%team = %obj.getTeamId() == 1 ? $Team1 : $Team2;
 		%val = 1 - %obj.getDamagePercent();
 		%val = %val / %team.numPlayersOnRoundStart;
 		%team.score += %val;
-		%zone.zValue -= %val;
-		%zone.setColor(1, 8 + %zone.getTeamId(), %zone.zValue);
-		%zone.zBlocked = true;
+		%zone.setColor(1, 6 + %zone.getTeamId(), %team.score);
 		%obj.kill();
 	}
 
@@ -230,38 +235,34 @@ function RacingLaneZone::onTick(%this, %zone)
 
 }
 
-function RacingLaneZone::reset(%this, %zone, %parentName)
+function RacingLaneZone::reset(%this, %zone, %teamId)
 {
 	if($Game::TeamDragRaceState == 0)
 	{
-		%team = 0;
-		if(%parentName $= "RedLane")
-			%team = 1;
-		else if(%parentName $= "BlueLane")
-			%team = 2;
-
-		%zone.setTeamId(%team);
+		%zone.setTeamId(%teamId);
 		%zone.isProtected = !(%zone.startZone || %zone.freeZone);
 
-		if(!%zone.startZone)
-			%color = 13;
-		else
+		if(%zone.startZone)
 			%color = 1 + %zone.getTeamId();
+		else if(%zone.endZone)
+			%color = 1;
+		else
+			%color = 13;
 		%zone.setColor(%color, %color, 1);
 	}
 	else if($Game::TeamDragRaceState == 1)
 	{
-		if(!%zone.startZone)
+		if(!%zone.startZone && !%zone.endZone)
 			%zone.setColor(12, 12, 1);
 	}
 	else if($Game::TeamDragRaceState == 2)
 	{
-		if(!%zone.startZone)
+		if(!%zone.startZone && !%zone.endZone)
 			%zone.setColor(11, 11, 1);
 	}
 	else if($Game::TeamDragRaceState == 3)
 	{
-		if(!%zone.startZone)
+		if(!%zone.startZone && !%zone.endZone)
 		{
 			if(%zone.getTeamId() == 0)
 				%color = 13;
@@ -270,6 +271,9 @@ function RacingLaneZone::reset(%this, %zone, %parentName)
 			%zone.setColor(%color, %color, 1);
 		}
 	}
+
+	if(%zone.borderTop == 0)
+		%zone.setColor(15, 15, 0);
 
 	if($Game::TeamDragRaceState < 4)
 	{
