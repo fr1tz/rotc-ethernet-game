@@ -1,20 +1,30 @@
 What's new?
 ===========
 
-Prototype 4+dev6
+Prototype 4+dev7
 ----------------
 
+- MacOS X version!
 - Fixed zone mechanics
 - Changed default key-bindings: "t" for chat, "shift t" for team chat.
-- Added "ROTC: Team Deathmatch" game type.
-- Multiple discs:
-   - Repel Disc
+- New game types:
+	- Team Drag Race
+	- mEthMatch
+- New discs:
    - Explosive Disc
-   - Slasher Disc (only in team deathmatch game type)
-- Tried to fix demo recording (currently linux only)
+   - Slasher Disc
+- Display icons for every CAT equipment item you carry on the HUD.
+- Certain mechanics have been tied to CAT 
+  equipment items to make them more noticeable:
+  - V-AMP: Converts the damage a CAT does into health.
+  - Anchor: Stabilizes a CAT's position when close to the ground.
+  - Stabilizer: Like anchor, but always 100% active.
+  - Permaboard: Permanently active etherboard.
+- Fixed demo recording
 - Improved disc target tracking a little
 - Revert influence of the shooter's momentum on the battle rifle's 
   projectiles' trajectory back to the way it was in prototype 3.
+- Slightly less ugly UI
 - Bugfixes
 
 
