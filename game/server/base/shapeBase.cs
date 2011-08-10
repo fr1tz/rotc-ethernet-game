@@ -257,6 +257,9 @@ function ShapeBaseData::onRemove(%this, %obj)
 	// if obj was created by a spawn, inform it so it can spawn a new one
 	if(isObject(%obj.spawn))
 		%obj.spawn.getDataBlock().respawn(%obj.spawn);
+		
+	if(isObject(%obj.ssc))
+		%obj.ssc.delete();
 }
 
 // callback function: called by engine

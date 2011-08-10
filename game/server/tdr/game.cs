@@ -46,16 +46,66 @@ function teamDragRaceSkyColorThread()
 	}
 }
 
+function pushDown(%obj)
+{
+	return;
+
+	%start = %obj.getWorldBoxCenter();
+	%end	= VectorAdd(%start, "0 0 -3");	
+	%c = containerRayCast(%start, %end, $TypeMasks::TerrainObjectType |
+		$TypeMasks::InteriorObjectType , %obj);
+	if(%c)
+	{
+		%normal = getWord(%c,4) SPC getWord(%c,5) SPC getWord(%c,6);
+		%vec = VectorScale(%normal, -10000);
+		%obj.impulse(%start, %vec, 0);
+	}
+
+	echo(%contact);
+
+}
+
+function teamDragRaceUglyThread()
+{
+	if($Game::TeamDragRaceUglyThread !$= "")
+		cancel($Game::TeamDragRaceUglyThread);	
+	$Game::TeamDragRaceUglyThread = schedule(100, MissionEnvironment,
+		"teamDragRaceUglyThread");
+
+	for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ )
+	{
+		%client = ClientGroup.getObject(%clientIndex);
+		%player = %client.palyer;
+		if(!isObject(%player))
+			continue;
+		if(isObject(%client.player) && %client.player.isCAT)
+			pushDown(%client.player);
+	}
+}
+
 function startTeamDragRace()
 {
 	if($Game::TeamDragRaceThread !$= "")
 		cancel($Game::TeamDragRaceThread);
 	if($Game::TeamDragRaceSkyColorThread !$= "")
 		cancel($Game::TeamDragRaceSkyColorThread);	
+	if($Game::TeamDragRaceUglyThread !$= "")
+		cancel($Game::TeamDragRaceUglyThread);
+	if(!isObject($Game::RedCats))
+	{
+		$Game::RedCats = new SimSet();
+		MissionCleanup.add($Game::RedCats);
+	}
+	if(!isObject($Game::BlueCats))
+	{
+		$Game::BlueCats = new SimSet();
+		MissionCleanup.add($Game::BlueCats);
+	}
 	$Game::TeamDragRaceState = 0;
 	$Team1.score = 0;
 	$Team2.score = 0;
 	RacingLaneZones_reset();
+	WindZones_reset();
 	changeSkyColor("1 0 0");
 	centerPrintAll("Get into formation!", 4);
 	$Game::TeamDragRaceThread = 
@@ -96,7 +146,38 @@ function advanceTeamDragRace()
 		  		%client.togglePlayerForm(true);
 				%player = %client.player;
 				if(%player.isCAT)
+				{
 		  			%client.team.numPlayersOnRoundStart++;
+					if(%player.getTeamId() == 1)
+						$Game::RedCats.add(%player);
+					else if(%player.getTeamId() == 2)
+						$Game::BlueCats.add(%player);
+					//%pod = new HoverVehicle() {
+					//	dataBlock = HoverPod;
+					//	client = %client;
+					//};
+					//%pod = new Etherform() {
+					//	dataBlock = Etherpod;
+					//	client = %client;
+					//};
+					//%pod = new FlyingVehicle() {
+					//	dataBlock = Flyerpod;
+					//	client = %client;
+					//};
+					%pod = new Player() {
+						dataBlock = PlayerPod;
+						client = %client;
+						teamId = %client.team.teamId;
+					};
+					MissionCleanup.add(%pod);
+					%pod.ssc = new HoverPodController() {
+						client = %client;
+					};
+					MissionCleanup.add(%pod.ssc);
+					%pod.useServerSideController(%pod.ssc);
+					%pod.setTransform(%player.getTransform());
+					%pod.mountObject(%player, 0);
+				}
 		  	}
 			teamDragRaceSkyColorThread();
 			checkRoundEnd_TeamDragRace();
@@ -109,6 +190,7 @@ function advanceTeamDragRace()
 
 function checkRoundEnd_TeamDragRace()
 {
+	error($Team1.numCATs SPC $Team2.numCATs);
 	if($Team1.numCATs > 0 || $Team2.numCATs > 0)
 		return;
 

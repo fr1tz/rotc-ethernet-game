@@ -219,7 +219,7 @@ function RacingLaneZone::onEnter(%this,%zone,%obj)
 		%val = %val / %team.numPlayersOnRoundStart;
 		%team.score += %val;
 		%zone.setColor(1, 6 + %zone.getTeamId(), %team.score);
-		%obj.kill();
+		%obj.kill("LeftMissionArea");
 	}
 
 	%obj.getDataBlock().updateRacingLaneZone(%obj, %zone, 0);
