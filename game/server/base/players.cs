@@ -177,7 +177,8 @@ function PlayerData::onRemove(%this, %obj)
 {
 	Parent::onRemove(%this,%obj);
 	
-	%obj.getTeamObject().numCATs--;
+	if(%obj.isCAT)
+		%obj.getTeamObject().numCATs--;
 
 	if(%obj.client.player == %obj)
 		%obj.client.player = 0;
@@ -518,7 +519,7 @@ function PlayerData::onTrigger(%this, %obj, %triggerNum, %val)
 	//--------------------------------------------------------------------------
 	// Jump
 	//--------------------------------------------------------------------------
-	if( %triggerNum == 2 )
+	if( %triggerNum == 2 && %obj.isCAT )
 	{
         if(%val)
         {

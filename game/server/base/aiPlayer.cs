@@ -38,7 +38,7 @@ function aiAdd(%teamid, %weaponNum)
 		$aiPlayersPseudoClient = new ScriptObject();
 		GameConnection::defaultLoadout($aiPlayersPseudoClient);
 		GameConnection::updateLoadout($aiPlayersPseudoClient);
-		MissionCleanup.add($aiPlayers);
+		MissionCleanup.add($aiPlayersPseudoClient);
 	}
 	
 
