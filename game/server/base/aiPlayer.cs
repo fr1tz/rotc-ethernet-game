@@ -36,6 +36,7 @@ function aiAdd(%teamid, %weaponNum)
 	if( !isObject($aiPlayersPseudoClient) )
 	{
 		$aiPlayersPseudoClient = new ScriptObject();
+		$aiPlayersPseudoClient.handicap = 1.0;
 		GameConnection::defaultLoadout($aiPlayersPseudoClient);
 		GameConnection::updateLoadout($aiPlayersPseudoClient);
 		MissionCleanup.add($aiPlayersPseudoClient);
