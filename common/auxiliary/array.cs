@@ -9,6 +9,8 @@
 
 function arrayGetValue(%array, %key)
 {
+	if(!isObject(%array)) return;
+
 	%array.moveFirst();
 	%idx = %array.getIndexFromKey(%key);
 	if(%idx == -1)
@@ -19,6 +21,8 @@ function arrayGetValue(%array, %key)
 
 function arrayChangeElement(%array, %key, %value)
 {
+	if(!isObject(%array)) return;
+
 	%array.moveFirst();
 	%idx = %array.getIndexFromKey(%key);
 	if(%idx != -1)
@@ -29,6 +33,8 @@ function arrayChangeElement(%array, %key, %value)
 
 function readLinesIntoArray(%fileName, %array)
 {
+	if(!isObject(%array)) return;
+
 	%file = new FileObject();
 	%file.openForRead(%fileName);
 	%line = 0;
