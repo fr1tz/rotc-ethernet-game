@@ -11,16 +11,16 @@ function serverCmdHowToPlay(%client, %page)
 	if(%page $= "")
 		%page = 1;
 
-	if($ROTC::GameType == $ROTC::mEthMatch)
+	if($Game::GameType == $Game::mEthMatch)
 		%help = "help-tdm";
 	else
 		%help = "help";	
 
 	%newtxt = %newtxt @ 
 		om_head(%client, "Manual") @
-		"<just:center><spush><font:NovaSquare:20>How to play " @ $ROTC::GameTypeString @ "?<spop>\n\n";
+		"<just:center><spush><font:NovaSquare:20>How to play " @ $Game::GameTypeString @ "?<spop>\n\n";
 
-	if($ROTC::GameType == $ROTC::mEthMatch)
+	if($Game::GameType == $Game::mEthMatch)
 	{
 		%n = 0;
 		%pageNumber[%n] = "0"; 

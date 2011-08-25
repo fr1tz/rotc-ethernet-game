@@ -44,7 +44,7 @@ datablock PlayerData(RedStandardCat)
 	shapeFxTexture[3] = "share/textures/rotc/armor.white.png";
 	shapeFxTexture[4] = "share/textures/rotc/armor.orange.png";
 
-	shapeFxColor[0] = "0.5 0.5 0.5 1.0";  
+	shapeFxColor[0] = "1.0 1.0 1.0 1.0";  
 	shapeFxColor[1] = "1.0 0.0 0.0 1.0";  
 	shapeFxColor[2] = "1.0 0.5 0.0 1.0";  
 	shapeFxColor[3] = "0.0 0.5 1.0 1.0";  
@@ -260,7 +260,7 @@ datablock PlayerData(RedStandardCat)
 	observeParameters = "0.5 4.5 4.5";
 };
 
-if($ROTC::GameType != $ROTC::Ethernet)
+if($Game::GameType != $Game::Ethernet)
 {
 	RedStandardCat.groundConnectionBeam = "";
 }

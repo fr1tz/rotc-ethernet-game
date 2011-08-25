@@ -53,8 +53,14 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 {
 	%client = %obj.client;
 
+	if(%nr == 4)
+	{
+		dropGreen(%obj);
+		return;
+	}
+
 	// discs...
-	if($ROTC::GameType == $ROTC::Ethernet)
+	if($Game::GameType == $Game::Ethernet)
 	{
 		if(%nr == 6)
 		{

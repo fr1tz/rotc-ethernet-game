@@ -17,8 +17,8 @@ exec("./rotc-eth.cs");
 $Server::MissionFile = strreplace($Server::MissionFile, 
 	"/rotc-ethernet/", "/rotc-methmatch/");
 
-$ROTC::GameType = $ROTC::mEthMatch;
-$ROTC::GameTypeString = "ROTC: mEthMatch";
+$Game::GameType = $Game::mEthMatch;
+$Game::GameTypeString = "ROTC: mEthMatch";
 
 
 

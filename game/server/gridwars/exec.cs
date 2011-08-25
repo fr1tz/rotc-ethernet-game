@@ -3,12 +3,11 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
-// ROTC game types
-$Game::Ethernet     = 0;
-$Game::mEthMatch    = 1;
-$Game::TeamJoust    = 2;
-$Game::TeamDragRace = 3;
-$Game::GridWars     = 4;
+exec("./game.cs");
+exec("./green.cs");
+exec("./gridbeacon.cs");
+exec("./gridmarker.cs");
+exec("./grid.cs");
+exec("./rifle1.cs");
 
-// Other game types
-$Game::Infantry     = 5;
+

@@ -247,7 +247,7 @@ function serverCmdMainMenu(%client)
 
 	if(%client.loadingMission || %client.menu $= "mainmenu")
 	{
-		%summary = $ROTC::GameTypeString SPC "in a nutshell";	
+		%summary = $Game::GameTypeString SPC "in a nutshell";	
 		%newtxt = %newtxt @
 			"If you're playing this arena for the first time, loading" SPC
 			"might take\nsome time while the game downloads needed" SPC

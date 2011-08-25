@@ -192,7 +192,7 @@ function GameConnection::defaultLoadout(%this)
 	for(%i = 1; %i <= 9; %i++)
 		this.loadout[%i] = "";
 
-	if($ROTC::GameType == $ROTC::Ethernet)
+	if($Game::GameType == $Game::Ethernet)
 	{
 		%this.loadout[1] = $CatEquipment::Blaster;
 		%this.loadout[2] = $CatEquipment::SniperRifle;
@@ -204,7 +204,7 @@ function GameConnection::defaultLoadout(%this)
 		%this.loadout[8] = $CatEquipment::RepelDisc;
 		%this.loadout[9] = $CatEquipment::ExplosiveDisc;
 	}
-	else if($ROTC::GameType == $ROTC::TeamJoust)
+	else if($Game::GameType == $Game::TeamJoust)
 	{
 		%this.loadout[1] = $CatEquipment::Blaster;
 		%this.loadout[2] = $CatEquipment::BattleRifle;
@@ -215,7 +215,7 @@ function GameConnection::defaultLoadout(%this)
 		%this.loadout[7] = $CatEquipment::Permaboard;
 		%this.loadout[8] = $CatEquipment::SlasherDisc;
 	}
-	else if($ROTC::GameType == $ROTC::TeamDragRace)
+	else if($Game::GameType == $Game::TeamDragRace)
 	{
 		%this.loadout[1] = $CatEquipment::Blaster;
 		%this.loadout[2] = $CatEquipment::BattleRifle;
@@ -329,7 +329,7 @@ function GameConnection::displayInventory(%this, %obj)
 	%iconname[$CatEquipment::Regeneration] = "regen";	
 
 	%fixed = false;
-	if($ROTC::GameType == $ROTC::mEthMatch)
+	if($Game::GameType == $Game::mEthMatch)
 		%fixed = true;
 
 	if(%this.inventoryMode $= "showicon")
@@ -373,7 +373,7 @@ function GameConnection::displayInventory(%this, %obj)
 		%item[2] = $CatEquipment::BattleRifle;
 		%item[3] = $CatEquipment::SniperRifle;
 		%item[4] = $CatEquipment::Minigun;
-		if($ROTC::GameType == $ROTC::Ethernet)
+		if($Game::GameType == $Game::Ethernet)
 			%item[5] = $CatEquipment::RepelGun;
 		else
 			%item[5] = $CatEquipment::GrenadeLauncher;
@@ -384,11 +384,11 @@ function GameConnection::displayInventory(%this, %obj)
 		%itemname[2] = "Battle Rifle";
 		%itemname[3] = "Sniper ROFL";
 		%itemname[4] = "Minigun";
-		%itemname[5] = $ROTC::GameType == $ROTC::Ethernet ? "Bubblegun" : "Gren. Launcher";
+		%itemname[5] = $Game::GameType == $Game::Ethernet ? "Bubblegun" : "Gren. Launcher";
 		%itemname[6] = "Etherboard";
 		%itemname[7] = "Regeneration";
 
-		%numItems = $ROTC::GameType == $ROTC::Ethernet ? 7 : 5;
+		%numItems = $Game::GameType == $Game::Ethernet ? 7 : 5;
 
 		%this.setHudMenuL(0, "<font:NovaSquare:12>Select slot #" @ %obj.inventoryMode[1] @ ":\n\n", 1, 1);
 		for(%i = 1; %i <= %numItems; %i++)
@@ -416,7 +416,7 @@ function GameConnection::displayInventory(%this, %obj)
 
 function GameConnection::changeInventory(%this, %nr)
 {
-	if($ROTC::GameType == $ROTC::mEthMatch)
+	if($Game::GameType == $Game::mEthMatch)
 		return;
 
 	if(%this.inventoryMode $= "show")
@@ -430,8 +430,8 @@ function GameConnection::changeInventory(%this, %nr)
 	}
 	else if(%this.inventoryMode $= "select")
 	{
-		if($ROTC::GameType == $ROTC::TeamJoust
-		|| $ROTC::GameType == $ROTC::TeamDragRace)
+		if($Game::GameType == $Game::TeamJoust
+		|| $Game::GameType == $Game::TeamDragRace)
 		{
 			if(%nr < 1 || %nr > 5)
 				return;
@@ -699,7 +699,8 @@ function GameConnection::togglePlayerForm(%this, %forced)
 				else if(%zoneTeamId == %ownTeamId)
 				{
 					%inOwnZone = true;
-					if(%srchObj.getDataBlock().getName() $= "TerritoryZone")
+					if(%srchObj.getDataBlock().getName() $= "TerritoryZone"
+					|| %srchObj.getDataBlock().isTerritoryZone)
 						%inOwnTerritory = true;
 				}
 			}
@@ -753,11 +754,22 @@ function GameConnection::togglePlayerForm(%this, %forced)
 		}
 		else
 		{
-			// Manifest into standard CAT form
-			if( %this.team == $Team1 )
-				%data = RedStandardCat;
+			if($Game::GameType == $Game::Infantry)
+			{
+				// Manifest into trooper
+				if( %this.team == $Team1 )
+					%data = RedTrooper;
+				else
+					%data = BlueTrooper;
+			}
 			else
-				%data = BlueStandardCat;
+			{
+				// Manifest into standard CAT form
+				if( %this.team == $Team1 )
+					%data = RedStandardCat;
+				else
+					%data = BlueStandardCat;
+			}
 
 			%obj = new Player() {
 				dataBlock = %data;
@@ -847,8 +859,11 @@ function GameConnection::updateSkyColor(%this)
 		cancel(%this.skyColorThread);
 	%this.skyColorThread = %this.schedule(500, "updateSkyColor");
 
+	if(Sky.NoColorChange)
+		return;
+
 	// In certain gametypes the sky is the same for every client
-	if($ROTC::GameType == $ROTC::TeamDragRace)
+	if($Game::GameType == $Game::TeamDragRace)
 		return;
 
 	%player = %this.player;

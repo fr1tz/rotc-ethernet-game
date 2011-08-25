@@ -33,6 +33,7 @@ exec("./shapebase.cs");
 exec("./simplecontrol.cs");
 exec("./staticshape.cs");
 exec("./radiusdamage.cs");
+exec("./rigidShape.cs");
 exec("./aiplayer.cs");
 exec("./teams.cs");
 exec("./loadout.cs");

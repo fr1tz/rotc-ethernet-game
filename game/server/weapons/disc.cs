@@ -27,13 +27,34 @@ function NoTargetDiscPseudoProjectile::onAdd(%this, %obj)
 	if(!isObject(%client))
 		return;
 
-	if(%client.hasSlasherDisc)
-		launchSeekerDisc(%obj.sourceObject);
-	else if(%client.hasRepelDisc)
-		launchRepelDisc(%obj.sourceObject);
+	%player = %obj.sourceObject;
 
-	// no need to ghost pseudo projectile to clients...
+	// Don't ghost pseudo projectile to other clients.
 	%obj.delete();
+
+	// Look for an object to interact with.
+	%selectRange = 6;
+	%searchMasks = $TypeMasks::ShapeBaseObjectType;
+	%pos = %player.getEyePoint();
+	%eye = %player.getEyeVector();
+	%eye = vectorNormalize(%eye);
+	%vec = vectorScale(%eye, %selectRange);
+	%end = vectorAdd(%vec, %pos);
+	%res = ContainerRayCast(%pos, %end, %searchMasks, %player);
+	if(%res)
+	{
+		%target = firstWord(%res);
+		if(%target.getDataBlock().isMethod("use"))
+		{
+			%target.getDataBlock().use(%target, %player);
+			return;
+		}
+	}
+
+	if(%client.hasSlasherDisc)
+		launchSeekerDisc(%player);
+	else if(%client.hasRepelDisc)
+		launchRepelDisc(%player);
 }
 
 //------------------------------------------------------------------------------

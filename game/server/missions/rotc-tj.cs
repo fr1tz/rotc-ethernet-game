@@ -9,8 +9,8 @@
 
 exec("./rotc-types.cs");
 
-$ROTC::GameType = $ROTC::TeamJoust;
-$ROTC::GameTypeString = "ROTC: Team Jousting";
+$Game::GameType = $Game::TeamJoust;
+$Game::GameTypeString = "ROTC: Team Jousting";
 
 $Server::MissionDirectory = strreplace($Server::MissionFile, ".mis", "") @ "/";
 $Server::MissionEnvironmentFile = $Server::MissionDirectory @ "mission.env";

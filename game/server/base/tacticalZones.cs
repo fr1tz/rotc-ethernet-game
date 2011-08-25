@@ -249,7 +249,7 @@ function TerritoryZone::onEnter(%this,%zone,%obj)
 	if(!%obj.getType() & $TypeMasks::ShapeBaseObjectType)
 		return;
 
-	if($ROTC::GameType == $ROTC::TeamJoust)
+	if($Game::GameType == $Game::TeamJoust)
 	{
 		if(%obj.isCAT && %zone.initialOwner != 0 && %obj.getTeamId() != %zone.getTeamId())
         {
@@ -287,7 +287,7 @@ function TerritoryZone::onLeave(%this,%zone,%obj)
 
 function TerritoryZone::onTick(%this, %zone)
 {
-	if($ROTC::GameType == $ROTC::TeamJoust)
+	if($Game::GameType == $Game::TeamJoust)
 		return;
 
 	%zone.zNumReds = 0;
@@ -453,7 +453,7 @@ function TerritoryZone::setZoneOwner(%this, %zone, %teamId)
 
 function TerritoryZone::reset(%this, %zone)
 {
-	if($ROTC::GameType == $ROTC::TeamJoust)
+	if($Game::GameType == $Game::TeamJoust)
 	{
 		if($Game::TeamJoustState == 0)
 		{

@@ -225,13 +225,18 @@ function startNewRound()
 	$Team1.numPlayersOnRoundStart = 0;
 	$Team2.numPlayersOnRoundStart = 0;
 
-	if($ROTC::GameType == $ROTC::TeamJoust)
+	if($Game::GameType == $Game::TeamJoust)
 	{
 		serverStartTeamJoust();
 	}
-	else if($ROTC::GameType == $ROTC::TeamDragRace)
+	else if($Game::GameType == $Game::TeamDragRace)
 	{
 		startTeamDragRace();
+	}
+	else if($Game::GameType == $Game::GridWars)
+	{
+		TerritoryZones_reset();
+		GridWars_startNewRound();
 	}
 	else
 	{
@@ -259,7 +264,7 @@ function checkRoundEnd()
 	if($Game::RoundRestarting)
 		return;
 
-	if($ROTC::GameType == $ROTC::TeamJoust)
+	if($Game::GameType == $Game::TeamJoust)
 	{
 		if($Game::TeamJoustState !$= "done")
 			return;
@@ -289,9 +294,13 @@ function checkRoundEnd()
 		schedule(5000,0,"startNewRound");
 		$Game::RoundRestarting = true;
 	}
-	else if($ROTC::GameType == $ROTC::TeamDragRace)
+	else if($Game::GameType == $Game::TeamDragRace)
 	{
 		checkRoundEnd_TeamDragRace();
+	}
+	else if($Game::GameType == $Game::GridWars)
+	{
+		
 	}
 	else
 	{
