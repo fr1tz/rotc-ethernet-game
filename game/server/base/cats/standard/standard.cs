@@ -196,10 +196,10 @@ datablock PlayerData(RedStandardCat)
 	damageBufferParticleEmitter = RedCatDamageBufferEmitter;
 	repairParticleEmitter = RedCatRepairEmitter;
 	bufferRepairParticleEmitter = RedCatBufferRepairEmitter;
-	damageParticleEmitter = RedCatDamageEmitter;
-	bufferDamageParticleEmitter = RedCatBufferDamageEmitter;	
-//	damageDebris = RedCatDamageDebris;
-//	bufferDamageDebris = CatBufferDamageDebris;
+//	damageParticleEmitter = RedCatDamageEmitter;
+//	bufferDamageParticleEmitter = RedCatBufferDamageEmitter;	
+	damageDebris = RedCatDamageDebris;
+	bufferDamageDebris = CatBufferDamageDebris;
 
 	// not implemented in engine...
 	// dustEmitter = StandardCatLiftoffDustEmitter;
@@ -288,10 +288,10 @@ datablock PlayerData(BlueStandardCat : RedStandardCat)
 	damageBufferParticleEmitter = BlueCatDamageBufferEmitter;
 	repairParticleEmitter = BlueCatRepairEmitter;
 	bufferRepairParticleEmitter = BlueCatBufferRepairEmitter;
-	damageParticleEmitter = BlueCatDamageEmitter;
-	bufferDamageParticleEmitter = BlueCatBufferDamageEmitter;	
-//	damageDebris = BlueCatDamageDebris;
-//	bufferDamageDebris = CatBufferDamageDebris;
+//	damageParticleEmitter = BlueCatDamageEmitter;
+//	bufferDamageParticleEmitter = BlueCatBufferDamageEmitter;	
+	damageDebris = BlueCatDamageDebris;
+	bufferDamageDebris = CatBufferDamageDebris;
 };
 
 function BlueStandardCat::onAdd(%this, %obj)
