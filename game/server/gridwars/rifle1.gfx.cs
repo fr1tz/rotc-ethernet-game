@@ -6,7 +6,7 @@
 //-----------------------------------------------------------------------------
 // missed enemy...
 
-datablock ExplosionData(RedRifle1ProjectileMissedEnemyEffect)
+datablock ExplosionData(Rifle1ProjectileMissedEnemyEffect)
 {
 	soundProfile = Rifle1ProjectileMissedEnemySound;
 

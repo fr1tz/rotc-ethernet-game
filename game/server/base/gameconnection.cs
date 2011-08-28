@@ -225,6 +225,16 @@ function GameConnection::defaultLoadout(%this)
 		%this.loadout[6] = $CatEquipment::Grenade;
 		%this.loadout[7] = $CatEquipment::SlasherDisc;
 	}
+	if($Game::GameType == $Game::GridWars)
+	{
+		%this.loadout[1] = $CatEquipment::BattleRifle;
+		%this.loadout[2] = $CatEquipment::SniperRifle;
+		%this.loadout[3] = $CatEquipment::Etherboard;
+		%this.loadout[4] = $CatEquipment::Grenade;
+		%this.loadout[5] = $CatEquipment::Bounce;
+		%this.loadout[6] = $CatEquipment::RepelDisc;
+		%this.loadout[7] = $CatEquipment::ExplosiveDisc;
+	}
 	else
 	{
 		%this.loadout[1] = $CatEquipment::Blaster;
@@ -754,13 +764,13 @@ function GameConnection::togglePlayerForm(%this, %forced)
 		}
 		else
 		{
-			if($Game::GameType == $Game::Infantry)
+			if($Game::GameType == $Game::GridWars)
 			{
-				// Manifest into trooper
+				// Manifest into infantry CAT
 				if( %this.team == $Team1 )
-					%data = RedTrooper;
+					%data = RedInfantryCat;
 				else
-					%data = BlueTrooper;
+					%data = BlueInfantryCat;
 			}
 			else
 			{

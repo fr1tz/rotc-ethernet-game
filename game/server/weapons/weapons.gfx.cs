@@ -24,6 +24,14 @@ datablock DecalData(BulletHoleDecalOne)
 	SelfIlluminated = false;
 };
 
+datablock DecalData(BulletHoleDecalTwo)
+{
+	sizeX = "0.4";
+	sizeY = "0.4";
+	textureName = "share/textures/rotc/bullethole1";
+	SelfIlluminated = false;
+};
+
 datablock DecalData(ExplosionDecalOne)
 {
 	sizeX = "2.0";

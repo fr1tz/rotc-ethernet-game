@@ -135,12 +135,6 @@ function PlayerData::onAdd(%this,%obj)
 	%obj.setGrenadeAmmo(1);
     %obj.setGrenadeAmmoDt(0.125);
 
-	// lights...
-	if(%obj.getTeamId() == 1)
-		%obj.mountImage(RedCatLightImage, 3);
-	else
-		%obj.mountImage(BlueCatLightImage, 3);
-	
 	%obj.updateRegeneration();		
 	%obj.updateGridConnection();
 

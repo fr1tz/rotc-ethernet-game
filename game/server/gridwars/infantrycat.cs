@@ -3,17 +3,7 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------
-// Revenge Of The Cats - standard.cs
-// Code for the standard CAT
-//------------------------------------------------------------------------------
-
-exec("share/shapes/rotc/players/standardcat/player.cs");
-
-exec("./standard.sfx.cs");
-exec("./standard.gfx.cs");
-
-datablock PlayerData(RedStandardCat)
+datablock PlayerData(RedInfantryCat)
 {
 	className = StandardCat;
 	
@@ -79,8 +69,8 @@ datablock PlayerData(RedStandardCat)
 	density = 10;
 	gravityMod = 1.0;
 
-	maxDamage = 75;
-	damageBuffer = 25;
+	maxDamage = 100;
+	damageBuffer = 0;
 	maxEnergy = 100;
 
 	repairRate = 0.8;
@@ -198,8 +188,8 @@ datablock PlayerData(RedStandardCat)
 	bufferRepairParticleEmitter = RedCatBufferRepairEmitter;
 	damageParticleEmitter = RedCatDamageEmitter;
 	bufferDamageParticleEmitter = RedCatBufferDamageEmitter;	
-//	damageDebris = RedCatDamageDebris;
-//	bufferDamageDebris = CatBufferDamageDebris;
+	damageDebris = RedCatDamageDebris;
+	bufferDamageDebris = CatBufferDamageDebris;
 
 	// not implemented in engine...
 	// dustEmitter = StandardCatLiftoffDustEmitter;
@@ -260,18 +250,7 @@ datablock PlayerData(RedStandardCat)
 	observeParameters = "0.5 4.5 4.5";
 };
 
-if($Game::GameType != $Game::Ethernet)
-{
-	RedStandardCat.groundConnectionBeam = "";
-}
-
-function RedStandardCat::onAdd(%this, %obj)
-{
-	Parent::onAdd(%this, %obj);
-	%obj.mountImage(RedCatLightImage, 3);
-}
-
-datablock PlayerData(BlueStandardCat : RedStandardCat)
+datablock PlayerData(BlueInfantryCat : RedInfantryCat)
 {
 	shapeFile = "share/shapes/rotc/players/standardcat/player2.blue.dts";
 	shapeFxTexture[2] = "share/textures/rotc/barrier.orange.png";
@@ -290,13 +269,6 @@ datablock PlayerData(BlueStandardCat : RedStandardCat)
 	bufferRepairParticleEmitter = BlueCatBufferRepairEmitter;
 	damageParticleEmitter = BlueCatDamageEmitter;
 	bufferDamageParticleEmitter = BlueCatBufferDamageEmitter;	
-//	damageDebris = BlueCatDamageDebris;
+	damageDebris = BlueCatDamageDebris;
 //	bufferDamageDebris = CatBufferDamageDebris;
 };
-
-function BlueStandardCat::onAdd(%this, %obj)
-{
-	Parent::onAdd(%this, %obj);
-	%obj.mountImage(BlueCatLightImage, 3);
-}
-

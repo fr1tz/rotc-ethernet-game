@@ -6,7 +6,7 @@
 exec("./rifle1.sfx.cs");
 exec("./rifle1.gfx.cs");
 exec("./rifle1.gfx.red.cs");
-//exec("./rifle1.gfx.blue.cs");
+exec("./rifle1.gfx.blue.cs");
 
 datablock TracerProjectileData(Rifle1PseudoProjectile)
 {
@@ -82,8 +82,8 @@ datablock ProjectileData(RedRifle1Projectile)
 	stat = "r1";
 
 	// script damage properties...
-	impactDamage       = 150;
-	impactImpulse      = 2500;
+	impactDamage       = 25;
+	impactImpulse      = 500;
 	splashDamage       = 0;
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
@@ -97,12 +97,12 @@ datablock ProjectileData(RedRifle1Projectile)
 
 	//sound = Rifle1ProjectileSound;
  
-    //projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.red.dts";
+//	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.red.dts";
 
 	explosion             = RedRifle1ProjectileImpact;
 //	bounceExplosion       = RedRifle1ProjectileBounceExplosion;
 	hitEnemyExplosion     = RedRifle1ProjectileHit;
-	nearEnemyExplosion    = RedRifle1ProjectileExplosion;
+//	nearEnemyExplosion    = RedRifle1ProjectileExplosion;
 	hitTeammateExplosion  = RedRifle1ProjectileHit;
 //	hitDeflectorExplosion = DiscDeflectedEffect;
 
@@ -127,7 +127,7 @@ datablock ProjectileData(RedRifle1Projectile)
 	
 	numBounces = 0;
 
-	decals[0] = BulletHoleDecalOne;
+	decals[0] = BulletHoleDecalTwo;
 	
 	hasLight	 = true;
 	lightRadius = 8.0;
@@ -150,11 +150,9 @@ function RedRifle1Projectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%di
 
 datablock ProjectileData(BlueRifle1Projectile : RedRifle1Projectile)
 {
-	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.blue.dts";    
+//	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.blue.dts";    
 	explosion = BlueRifle1ProjectileImpact;
-	bounceExplosion = BlueRifle1ProjectileBounceExplosion;
 	hitEnemyExplosion = BlueRifle1ProjectileHit;
-	nearEnemyExplosion = BlueRifle1ProjectileExplosion;
 	hitTeammateExplosion = BlueRifle1ProjectileHit;	
 	laserTail = BlueRifle1ProjectileLaserTail;
 	lightColor  = "0.0 0.0 1.0";

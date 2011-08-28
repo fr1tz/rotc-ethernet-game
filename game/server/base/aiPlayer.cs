@@ -50,12 +50,12 @@ function aiAdd(%teamid, %weaponNum)
 
 	%spawnSphere = pickSpawnSphere(%teamid);
 	
-	if(%spawnSphere.spawnLight)
+	if($Game::GameType == $Game::GridWars)
 	{
 		if(%teamid == 1)
-			%playerData = RedLightCat;
+			%playerData = RedInfantryCat;
 		else
-			%playerData = BlueLightCat;
+			%playerData = BlueInfantryCat;
 	}
 	else
 	{
