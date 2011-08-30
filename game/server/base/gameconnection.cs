@@ -225,7 +225,7 @@ function GameConnection::defaultLoadout(%this)
 		%this.loadout[6] = $CatEquipment::Grenade;
 		%this.loadout[7] = $CatEquipment::SlasherDisc;
 	}
-	if($Game::GameType == $Game::GridWars)
+	else if($Game::GameType == $Game::GridWars)
 	{
 		%this.loadout[1] = $CatEquipment::BattleRifle;
 		%this.loadout[2] = $CatEquipment::SniperRifle;
