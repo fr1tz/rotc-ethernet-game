@@ -25,13 +25,13 @@ datablock AudioDescription(AudioCompat)
 };
 
 // *** for graphics files ***
-//datablock ParticleData(FileDummy_Path)
+//datablock ParticleData(TextureDummy_Nr)
 //{
 //	textureName	= "path";
 //};
 
 // *** for sound files ***
-//datablock AudioProfile(FileDummy_Path)
+//datablock AudioProfile(AudioDummy_Nr)
 //{
 //	filename = "path";
 //	description = AudioCompat;
@@ -39,68 +39,13 @@ datablock AudioDescription(AudioCompat)
 //};
 
 // *** for a missing ShapeBaseImageData ***
-//datablock ShapeBaseImageData(FileDummy_Path)
+//datablock ShapeBaseImageData(ImageDummy_Nr)
 //{
 //	shapeFile = "path";	
 //	stateName[0] = "DoNothing";
 //};
 
 //------------------------------------------------------------------------------
-
-datablock ParticleData(TextureFileDummy1)
-{
-	textureName	= "share/textures/rotc/rainbow1.png";
-};
-
-datablock ParticleData(TextureFileDummy2)
-{
-	textureName	= "share/shapes/rotc/effects/explosion4_white.png";
-};
-
-datablock ParticleData(TextureFileDummy3)
-{
-	textureName	= "share/textures/rotc/zone.lane.png";
-};
-
-datablock ParticleData(TextureFileDummy4)
-{
-	textureName	= "share/hud/rotc/icon.anchor.20x20.png";
-};
-
-datablock ParticleData(TextureFileDummy5)
-{
-	textureName	= "share/hud/rotc/icon.explosivedisc.20x20.png";
-};
-
-datablock ParticleData(TextureFileDummy6)
-{
-	textureName	= "share/hud/rotc/icon.grenade.20x20.png";
-};
-
-datablock ParticleData(TextureFileDummy7)
-{
-	textureName	= "share/hud/rotc/icon.repeldisc.20x20.png";
-};
-
-datablock ParticleData(TextureFileDummy8)
-{
-	textureName	= "share/hud/rotc/icon.slasherdisc.20x20.png";
-};
-
-datablock ParticleData(TextureFileDummy9)
-{
-	textureName	= "share/hud/rotc/icon.stabilizer.20x20.png";
-};
-
-datablock ParticleData(TextureFileDummy10)
-{
-	textureName	= "share/hud/rotc/icon.permaboard.20x20.png";
-};
-
-datablock ParticleData(TextureFileDummy11)
-{
-	textureName	= "share/hud/rotc/icon.vamp.20x20.png";
-};
 
 
 
