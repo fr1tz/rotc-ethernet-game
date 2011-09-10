@@ -15,9 +15,12 @@ function onCanvasContentChanged(%oldContent, %newContent)
 		updateShellDlg();
 }
 
-function showShellDlg()
+function showShellDlg(%show)
 {
-	$ShellDlgActive = true;
+	if(%show == false)
+		$ShellDlgActive = false;
+	else
+		$ShellDlgActive = true;
 	updateShellDlg();
 }
 

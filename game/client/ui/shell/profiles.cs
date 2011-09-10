@@ -235,6 +235,17 @@ new GuiControlProfile(GuiBitmapBorderProfile : GuiDefaultProfile)
 	hasBitmapArray = true;
 };
 
+new GuiControlProfile ( GuiDirectoryTreeProfile : GuiTreeViewProfile )
+{
+	bitmap = "common/ui/shll_treeView";
+};
+
+new GuiControlProfile ( GuiDirectoryFileListProfile : GuiTreeViewProfile )
+{
+	fillColor = "50 50 50 220";
+};
+
+
 //-----------------------------------------------------------------------
 
 new GuiControlProfile(GuiWindowProfile : GuiDefaultProfile)
