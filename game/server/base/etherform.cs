@@ -112,7 +112,7 @@ datablock EtherformData(RedEtherform)
 	// damage info eyecandy...
 	damageBufferParticleEmitter = RedEtherformDamageBufferEmitter;
 	repairParticleEmitter = RedEtherformRepairEmitter;
-	bufferRepairParticleEmitter = RedEtherformBufferRepairEmitter;
+//	bufferRepairParticleEmitter = RedEtherformBufferRepairEmitter;
 
 	// laser trail...
 	laserTrail[0] = RedEtherform_LaserTrailOne;
@@ -141,7 +141,7 @@ datablock EtherformData(BlueEtherform : RedEtherform)
 	shapeFile = "share/shapes/rotc/vehicles/etherform/vehicle.blue.dts";
 	damageBufferParticleEmitter = BlueEtherformDamageBufferEmitter;
 	repairParticleEmitter = BlueEtherformRepairEmitter;
-	bufferRepairParticleEmitter = BlueEtherformBufferRepairEmitter;
+//	bufferRepairParticleEmitter = BlueEtherformBufferRepairEmitter;
 	laserTrail[0] = BlueEtherform_LaserTrailOne;
 	laserTrail[1] = BlueEtherform_LaserTrailTwo;
 	//particleTrail = BlueEtherform_ContrailEmitter;
