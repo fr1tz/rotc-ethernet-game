@@ -221,6 +221,15 @@ function ShapeBase::playInflictedDamageSound(%this)
 }
 
 //-----------------------------------------------------------------------------
+
+function ShapeBase::setShieldLevel(%this, %val)
+{
+	%this.setDamageBufferLevel(%val);
+	%this.getDataBlock().updateShieldFx(%this);
+}
+
+
+//-----------------------------------------------------------------------------
 // ShapeBase datablock
 //-----------------------------------------------------------------------------
 
@@ -541,11 +550,11 @@ function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %healthDmg, %bufDmg)
     // health takeback...
 	if(%client.numVAMPs > 0)
 	{
- 	   %healthTakeback = %healthDmg * 0.5 * %client.numVAMPs;
- 	   %newSrcDamage = %obj.getDamageLevel() - %healthTakeback;
- 	   %obj.setDamageLevel(%newSrcDamage);
- 	   if(%newSrcDamage < 0)
- 	       %obj.setDamageBufferLevel(%obj.getDamageBufferLevel() - %newSrcDamage);
+		%healthTakeback = %healthDmg * 0.5 * %client.numVAMPs;
+		%newSrcDamage = %obj.getDamageLevel() - %healthTakeback;
+		%obj.setDamageLevel(%newSrcDamage);
+		if(%newSrcDamage < 0)
+			%obj.setShieldLevel(%obj.getDamageBufferLevel() - %newSrcDamage);
 	}
 
     // tagging...

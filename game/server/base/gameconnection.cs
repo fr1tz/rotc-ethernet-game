@@ -802,7 +802,7 @@ function GameConnection::togglePlayerForm(%this, %forced)
 	%obj.setTransform(%mat);
 	%obj.setTransform(%pos);
 	%obj.setDamageLevel(%dmg);
-	%obj.setDamageBufferLevel(%buf);
+	%obj.setShieldLevel(%buf);
 	
 	if(%tagged)
 		%obj.setTagged();
