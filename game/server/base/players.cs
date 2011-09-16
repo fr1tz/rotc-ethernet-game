@@ -299,8 +299,6 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
 
 	%damageDealt = Parent::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType);
 
-	%this.updateShieldFx(%obj);
-
 	//echo("damageDealt:" SPC %damageDealt);
 
 	// Has the player died?

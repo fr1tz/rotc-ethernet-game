@@ -393,7 +393,8 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	{
 		%damageBufStore = %obj.getDamageBufferLevel();
 		%healthDamageDealt = %obj.applyDamage(%damage);
-		%bufDamageDealt = %damageBufStore - %obj.getDamageBufferLevel();		
+		%bufDamageDealt = %damageBufStore - %obj.getDamageBufferLevel();
+		%this.updateShieldFx(%obj);		
 	}
 	
 	if(%realSourceObject != 0
