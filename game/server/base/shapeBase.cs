@@ -342,8 +342,11 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	}
 	
 	// reduce damage based on energy level...
-	%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
-	%damage -= %damage * %energyScale * 0.50;	
+	if(%obj.client.hasDamper)
+	{
+		%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
+		%damage -= %damage * %energyScale * 0.50;	
+	}
 
 	// Handicap, we do damage dampening depending on the handicap value of the object
 	if (isObject(%obj.client))
