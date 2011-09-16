@@ -100,16 +100,16 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	missEnemyEffectRadius = 10;
 	missEnemyEffect = AssaultRifleProjectileMissedEnemyEffect;
 
-//   particleEmitter	= AssaultRifleProjectileParticleEmitter;
-//	laserTrail[0]   = AssaultRifleProjectileLaserTrail;
+//  particleEmitter	= RedAssaultRifleProjectileParticleEmitter;
+	laserTrail[0]   = RedAssaultRifleProjectileLaserTrail;
 //	laserTrail[1]   = AssaultRifleProjectileRedLaserTrail;
-	laserTail	    = RedAssaultRifleProjectileLaserTail;
-	laserTailLen    = 10;
+//	laserTail	    = RedAssaultRifleProjectileLaserTail;
+	laserTailLen    = 5;
 
 	posOffset = "0 0 0";
 	velOffset = "0 0.005";
 
-	muzzleVelocity		= 300;
+	muzzleVelocity	= 0; // Handled by AssaultRiflePseudoProjectile
 	velInheritFactor = 0; // Handled by AssaultRiflePseudoProjectile
 	
 	isBallistic			= true;
@@ -169,8 +169,9 @@ datablock ProjectileData(BlueAssaultRifleProjectile1 : RedAssaultRifleProjectile
 	bounceExplosion = BlueAssaultRifleProjectileBounceExplosion;
 	hitEnemyExplosion = BlueAssaultRifleProjectileHit;
 	nearEnemyExplosion = BlueAssaultRifleProjectileExplosion;
-	hitTeammateExplosion = BlueAssaultRifleProjectileHit;	
-	laserTail = BlueAssaultRifleProjectileLaserTail;
+	hitTeammateExplosion = BlueAssaultRifleProjectileHit;
+	laserTrail[0] = BlueAssaultRifleProjectileLaserTrail;	
+	//laserTail = BlueAssaultRifleProjectileLaserTail;
 	lightColor  = "0.0 0.0 1.0";
 };
 
@@ -181,8 +182,9 @@ datablock ProjectileData(BlueAssaultRifleProjectile2 : RedAssaultRifleProjectile
 	bounceExplosion = BlueAssaultRifleProjectileBounceExplosion;
 	hitEnemyExplosion = BlueAssaultRifleProjectileHit;
 	nearEnemyExplosion = BlueAssaultRifleProjectileExplosion;
-	hitTeammateExplosion = BlueAssaultRifleProjectileHit;	
-	laserTail = BlueAssaultRifleProjectileLaserTail;	
+	hitTeammateExplosion = BlueAssaultRifleProjectileHit;
+	laserTrail[0] = BlueAssaultRifleProjectileLaserTrail;	
+	//laserTail = BlueAssaultRifleProjectileLaserTail;
 	lightColor  = "0.0 0.0 1.0";	
 };
 
