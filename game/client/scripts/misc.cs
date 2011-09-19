@@ -164,8 +164,21 @@ function selectMainWeapon(%weapon)
 // Sky colorization
 //-----------------------------------------------------------------------------
 
+function client_find_sky()
+{
+	%group = ServerConnection;
+	for(%idx = 0; %i < %group.getCount(); %idx++)
+	{
+		%obj = %group.getObject(%idx);
+		if(%obj.getClassName() $= "Sky")
+			return %obj;
+	}
+}
+
 function SkyColorMsgCallback(%msgType, %msgString, %color)
 {
+	if($sky $= "")
+		$sky = client_find_sky();
 	$sky.changeColor(%color);
 }
 
