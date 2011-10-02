@@ -9,7 +9,7 @@ new GuiControl(RecordingsWindowForEditing) {
    Profile = "GuiDefaultProfile";
    HorizSizing = "right";
    VertSizing = "bottom";
-   Position = "0 0";
+   position = "0 0";
    Extent = "640 480";
    MinExtent = "8 8";
    canSave = "1";
@@ -21,7 +21,7 @@ new GuiControl(RecordingsWindowForEditing) {
       Profile = "GuiWindowProfile";
       HorizSizing = "center";
       VertSizing = "center";
-      Position = "55 65";
+      position = "55 65";
       Extent = "530 338";
       MinExtent = "48 92";
       canSave = "1";
@@ -32,18 +32,33 @@ new GuiControl(RecordingsWindowForEditing) {
       resizeWidth = "0";
       resizeHeight = "0";
       canMove = "1";
-      canClose = "1";
+      canClose = "0";
       canMinimize = "0";
       canMaximize = "0";
       minSize = "50 50";
-      closeCommand = "removeWindow(RecordingsWindow);";
 
+      new GuiButtonCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "bottom";
+         position = "486 5";
+         Extent = "39 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "removeWindow(RecordingsWindow);";
+         hovertime = "1000";
+         text = "X";
+         groupNum = "-1";
+         buttonType = "PushButton";
+      };
       new GuiScrollCtrl() {
          canSaveDynamicFields = "0";
          Profile = "GuiScrollProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "23 37";
+         position = "23 37";
          Extent = "484 260";
          MinExtent = "32 32";
          canSave = "1";
@@ -60,8 +75,8 @@ new GuiControl(RecordingsWindowForEditing) {
             Profile = "GuiTextArrayProfile";
             HorizSizing = "right";
             VertSizing = "bottom";
-            Position = "2 2";
-            Extent = "462 1648";
+            position = "2 2";
+            Extent = "462 1184";
             MinExtent = "8 20";
             canSave = "1";
             Visible = "1";
@@ -78,8 +93,8 @@ new GuiControl(RecordingsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "top";
-         Position = "220 305";
-         Extent = "110 20";
+         position = "220 303";
+         Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -94,7 +109,7 @@ new GuiControl(RecordingsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "23 306";
+         position = "23 306";
          Extent = "89 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -108,7 +123,7 @@ new GuiControl(RecordingsWindowForEditing) {
          Profile = "GuiTextEditProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "115 306";
+         position = "115 306";
          Extent = "98 18";
          MinExtent = "8 2";
          canSave = "1";

@@ -8,6 +8,20 @@
 // GuiControlProfiles for Revenge Of The Cats' shell
 //------------------------------------------------------------------------------
 
+new AudioProfile(GuiSoundButtonDown)
+{
+	filename = "share/sounds/rotc/damage1.wav";
+	description = AudioGui;
+	preload = true;
+};
+
+new AudioProfile(GuiSoundButtonOver)
+{
+	filename = "share/sounds/rotc/weaponEmpty.wav";
+	description = AudioGui;
+	preload = true;
+};
+
 new GuiControlProfile(GuiDefaultProfile)
 {
 	tab = false;
@@ -37,7 +51,7 @@ new GuiControlProfile(GuiDefaultProfile)
 	fontColorSEL= "200 200 200";
 
 	// bitmap information
-	bitmap = "./pixmaps/mg_window5";
+	bitmap = "./pixmaps/mg_window6";
 	bitmapBase = "";
 	textOffset = "0 0";
 
@@ -51,8 +65,8 @@ new GuiControlProfile(GuiDefaultProfile)
 	cursorColor = "200 200 200";
 
 	// sounds
-	soundButtonDown = "";
-	soundButtonOver = "";
+	soundButtonDown = GuiSoundButtonDown;
+	soundButtonOver = GuiSoundButtonOver;
 };
 
 //--------------------------------------------------------------------------
@@ -60,7 +74,7 @@ new GuiControlProfile(GuiDefaultProfile)
 //
 new GuiControlProfile(GuiConsoleProfile : GuiDefaultProfile)
 {
-	//fontType = "Lucida Console";
+	fontType = "Lucida Console";
 	fontSize = 12;
 	fontColor = "0 0 255";
 	fontColorHL = "130 130 130";
@@ -79,6 +93,7 @@ new GuiControlProfile(GuiButtonProfile : GuiDefaultProfile)
 	fixedExtent = true;
 	justify = "center";
 	canKeyFocus = false;
+	bitmap = "./pixmaps/mg_button6";
 };
 
 new GuiControlProfile(GuiRootMenuButtonProfile : GuiDefaultProfile)
@@ -171,6 +186,12 @@ new GuiControlProfile(GuiTreeViewProfile : GuiDefaultProfile)
 	bitmap = "common/ui/shll_treeView";
 };
 
+new GuiControlProfile(GuiPaneProfile : GuiDefaultProfile)
+{
+	bitmap = "common/ui//torquePane";
+	hasBitmapArray = true;
+};
+
 new GuiControlProfile(GuiPopUpMenuProfile : GuiDefaultProfile)
 {
 	opaque = true;
@@ -256,13 +277,13 @@ new GuiControlProfile(GuiWindowProfile : GuiDefaultProfile)
 	fillColor = "0 0 0 220";
 	fillColorHL = "0 0 0 220";
 	fillColorNA = "0 0 0 220";
-	fontColor = "255 255 255";
-	fontColorHL = "255 255 255";
+	fontColor = "100 255 100";
+	fontColorHL = "100 255 100";
 	text = "GuiWindowCtrl test";
-	bitmap = "./pixmaps/mg_window5";
-	textOffset = "6 6";
+	bitmap = "./pixmaps/mg_window6";
+	textOffset = "12 6";
 	hasBitmapArray = true;
-	justify = "center";
+	justify = "left";
 };
 
 new GuiControlProfile(GuiInactiveWindowProfile : GuiDefaultProfile)
@@ -273,13 +294,13 @@ new GuiControlProfile(GuiInactiveWindowProfile : GuiDefaultProfile)
 	fillColor = "0 0 0 220";
 	fillColorHL = "0 0 0 220";
 	fillColorNA = "0 0 0 220";
-	fontColor = "255 255 255";
-	fontColorHL = "255 255 255";
+	fontColor = "170 170 170";
+	fontColorHL = "170 170 170";
 	text = "GuiWindowCtrl test";
-	bitmap = "./pixmaps/mg_window5inactive";
-	textOffset = "6 6";
+	bitmap = "./pixmaps/mg_window6inactive";
+	textOffset = "12 6";
 	hasBitmapArray = true;
-	justify = "center";
+	justify = "left";
 };
 
 new GuiControlProfile(GuiTransparentWindowProfile : GuiDefaultProfile)

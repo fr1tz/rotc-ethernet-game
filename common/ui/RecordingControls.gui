@@ -4,7 +4,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
    Profile = "GuiDefaultProfile";
    HorizSizing = "right";
    VertSizing = "bottom";
-   Position = "0 0";
+   position = "0 0";
    Extent = "640 480";
    MinExtent = "8 8";
    canSave = "1";
@@ -16,7 +16,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
       Profile = "GuiWindowProfile";
       HorizSizing = "right";
       VertSizing = "bottom";
-      Position = "10 10";
+      position = "10 10";
       Extent = "510 177";
       MinExtent = "100 100";
       canSave = "1";
@@ -37,7 +37,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "left";
          VertSizing = "bottom";
-         Position = "374 32";
+         position = "374 32";
          Extent = "120 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -53,7 +53,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "10 24";
+         position = "13 24";
          Extent = "38 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -67,7 +67,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "70 24";
+         position = "73 24";
          Extent = "46 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -82,7 +82,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "10 44";
+         position = "13 44";
          Extent = "45 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -96,14 +96,14 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "70 44";
-         Extent = "36 18";
+         position = "73 44";
+         Extent = "76 18";
          MinExtent = "8 2";
          canSave = "1";
          Visible = "1";
          Variable = "$DemoCurrentPosition";
          hovertime = "1000";
-         text = "166861";
+         text = "2.04637e+006";
          maxLength = "1024";
       };
       new GuiButtonCtrl() {
@@ -111,7 +111,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "9 141";
+         position = "12 141";
          Extent = "120 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -127,7 +127,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "left";
          VertSizing = "bottom";
-         Position = "147 44";
+         position = "150 44";
          Extent = "64 18";
          MinExtent = "8 8";
          canSave = "1";
@@ -143,7 +143,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "150 24";
+         position = "153 24";
          Extent = "34 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -157,7 +157,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "210 24";
+         position = "213 24";
          Extent = "8 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -172,7 +172,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "79 71";
+         position = "79 71";
          Extent = "80 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -188,7 +188,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "349 71";
+         position = "349 71";
          Extent = "150 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -204,7 +204,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "9 107";
+         position = "12 107";
          Extent = "120 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -220,7 +220,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "139 110";
+         position = "139 110";
          Extent = "71 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -234,7 +234,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "9 73";
+         position = "12 73";
          Extent = "62 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -248,7 +248,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "169 71";
+         position = "169 71";
          Extent = "80 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -264,7 +264,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "259 71";
+         position = "259 71";
          Extent = "80 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -280,7 +280,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "left";
          VertSizing = "bottom";
-         Position = "245 32";
+         position = "245 32";
          Extent = "120 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -296,7 +296,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "215 107";
+         position = "215 107";
          Extent = "45 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -312,7 +312,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "253 133";
+         position = "253 133";
          Extent = "61 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -326,7 +326,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "309 107";
+         position = "309 107";
          Extent = "30 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -342,7 +342,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "349 107";
+         position = "349 107";
          Extent = "30 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -358,7 +358,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "389 107";
+         position = "389 107";
          Extent = "30 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -374,7 +374,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "429 107";
+         position = "429 107";
          Extent = "30 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -390,7 +390,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "469 107";
+         position = "469 107";
          Extent = "30 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -406,7 +406,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "291 153";
+         position = "291 153";
          Extent = "67 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -420,7 +420,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "331 133";
+         position = "331 133";
          Extent = "67 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -434,7 +434,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "397 153";
+         position = "397 153";
          Extent = "14 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -448,7 +448,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "436 133";
+         position = "436 133";
          Extent = "15 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -462,7 +462,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "476 153";
+         position = "476 153";
          Extent = "15 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -476,7 +476,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "269 107";
+         position = "269 107";
          Extent = "30 23";
          MinExtent = "8 8";
          canSave = "1";
