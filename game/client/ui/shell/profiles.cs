@@ -188,7 +188,7 @@ new GuiControlProfile(GuiTreeViewProfile : GuiDefaultProfile)
 
 new GuiControlProfile(GuiPaneProfile : GuiDefaultProfile)
 {
-	bitmap = "common/ui//torquePane";
+	bitmap = "./pixmaps/simplePane";
 	hasBitmapArray = true;
 };
 

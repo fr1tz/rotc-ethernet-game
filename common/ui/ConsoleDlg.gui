@@ -5,140 +5,111 @@
 
 //--- OBJECT WRITE BEGIN ---
 new GuiControl(ConsoleDlg) {
-   canSaveDynamicFields = "0";
-   Profile = "GuiDefaultProfile";
-   HorizSizing = "right";
-   VertSizing = "bottom";
-   position = "0 0";
-   Extent = "640 480";
-   MinExtent = "8 2";
-   canSave = "1";
-   Visible = "1";
-   hovertime = "1000";
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = "1";
 
-   new GuiWindowCtrl(ConsoleDlgWindow) {
-      canSaveDynamicFields = "0";
-      Profile = "GuiWindowProfile";
-      HorizSizing = "right";
-      VertSizing = "bottom";
-      position = "0 0";
-      Extent = "546 363";
-      MinExtent = "8 2";
-      canSave = "1";
-      Visible = "1";
-      hovertime = "1000";
-      text = "Console";
-      maxLength = "255";
-      resizeWidth = "1";
-      resizeHeight = "1";
-      canMove = "1";
-      canClose = "0";
-      canMinimize = "0";
-      canMaximize = "1";
-      minSize = "500 300";
-      closeCommand = "ToggleConsole(1);";
+	new GuiWindowCtrl(ConsoleDlgWindow) {
+		profile = "GuiWindowProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "0 0";
+		extent = "500 300";
+		minExtent = "8 2";
+		visible = "1";
+		text = "Console";
+		maxLength = "255";
+		resizeWidth = "1";
+		resizeHeight = "1";
+		canMove = "1";
+		canClose = "0";
+		canMinimize = "0";
+		canMaximize = "1";
+		MinSize = "500 300";
+		closeCommand = "ToggleConsole(1);";
 
-      new GuiScrollCtrl() {
-         canSaveDynamicFields = "0";
-         Profile = "GuiScrollProfile";
-         HorizSizing = "width";
-         VertSizing = "height";
-         position = "12 36";
-         Extent = "525 299";
-         MinExtent = "8 2";
-         canSave = "1";
-         Visible = "1";
-         hovertime = "1000";
-         willFirstRespond = "1";
-         hScrollBar = "alwaysOn";
-         vScrollBar = "alwaysOn";
-         constantThumbHeight = "0";
-         childMargin = "0 0";
+		new GuiScrollCtrl() {
+			profile = "GuiScrollProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "13 36";
+			extent = "474 237";
+			minExtent = "8 2";
+			visible = "1";
+			willFirstRespond = "1";
+			hScrollBar = "alwaysOn";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = "0";
+			childMargin = "0 0";
+				resizeWidth = "1";
+				resizeHeight = "1";
 
-         new GuiConsole() {
-            canSaveDynamicFields = "0";
-            Profile = "GuiConsoleProfile";
-            HorizSizing = "right";
-            VertSizing = "bottom";
-            position = "2 -5618";
-            Extent = "787 6699";
-            MinExtent = "8 2";
-            canSave = "1";
-            Visible = "1";
-            hovertime = "1000";
-         };
-      };
-      new GuiConsoleEditCtrl(ConsoleEntry) {
-         canSaveDynamicFields = "0";
-         Profile = "GuiTextEditProfile";
-         HorizSizing = "width";
-         VertSizing = "top";
-         position = "12 337";
-         Extent = "525 18";
-         MinExtent = "8 2";
-         canSave = "1";
-         Visible = "1";
-         AltCommand = "ConsoleEntry::eval();";
-         hovertime = "1000";
-         maxLength = "255";
-         historySize = "20";
-         password = "0";
-         tabComplete = "0";
-         sinkAllKeyEvents = "1";
-         password = "0";
-         passwordMask = "*";
-         useSiblingScroller = "1";
-      };
-      new GuiPaneControl(ConsoleErrorPane) {
-         canSaveDynamicFields = "0";
-         Profile = "GuiPaneProfile";
-         HorizSizing = "width";
-         VertSizing = "bottom";
-         position = "15 22";
-         Extent = "520 85";
-         MinExtent = "474 10";
-         canSave = "1";
-         Visible = "1";
-         hovertime = "1000";
-         Caption = "No script compilation errors occured.";
-         collapsable = "1";
-         barBehindText = "1";
+			new GuiConsole() {
+				profile = "GuiConsoleProfile";
+				position = "0 0";
+			};
+		};
+		new GuiConsoleEditCtrl(ConsoleEntry) {
+			profile = "GuiTextEditProfile";
+			horizSizing = "width";
+			vertSizing = "top";
+			position = "13 274";
+			extent = "474 18";
+			minExtent = "8 2";
+			visible = "1";
+			altCommand = "ConsoleEntry::eval();";
+			maxLength = "255";
+			historySize = "20";
+			password = "0";
+			tabComplete = "0";
+			sinkAllKeyEvents = "1";
+			useSiblingScroller = "1";
+		};
+		new GuiPaneControl(ConsoleErrorPane) {
+			profile = "GuiPaneProfile";
+			horizSizing = "width";
+			vertSizing = "bottom";
+			position = "13 22";
+			extent = "464 85";
+			minExtent = "474 10";
+			visible = "1";
+			caption = "No script compilation errors occured.";
+			collapsable = "1";
+			barBehindText = "1";
 
-         new GuiScrollCtrl(ConsoleErrorScroller) {
-            canSaveDynamicFields = "0";
-            Profile = "GuiScrollProfile";
-            HorizSizing = "width";
-            VertSizing = "bottom";
-            position = "0 14";
-            Extent = "520 71";
-            MinExtent = "8 2";
-            canSave = "1";
-            Visible = "0";
-            hovertime = "1000";
-            willFirstRespond = "0";
-            hScrollBar = "alwaysOff";
-            vScrollBar = "alwaysOn";
-            constantThumbHeight = "1";
-            childMargin = "0 0";
+			new GuiScrollCtrl(ConsoleErrorScroller) {
+				profile = "GuiScrollProfile";
+				horizSizing = "width";
+				vertSizing = "bottom";
+				position = "0 14";
+				extent = "474 71";
+				minExtent = "8 2";
+				visible = "0";
+				willFirstRespond = "0";
+				hScrollBar = "alwaysOff";
+				vScrollBar = "alwaysOn";
+				constantThumbHeight = "1";
+				childMargin = "0 0";
 
-            new GuiMLTextCtrl(ConsoleErrorDisplay) {
-               canSaveDynamicFields = "0";
-               Profile = "GuiMLTextProfile";
-               HorizSizing = "width";
-               VertSizing = "bottom";
-               position = "2 2";
-               Extent = "520 14";
-               MinExtent = "8 2";
-               canSave = "1";
-               Visible = "1";
-               hovertime = "1000";
-               lineSpacing = "2";
-               allowColorChars = "0";
-               maxChars = "-1";
-            };
-         };
-      };
-   };
+				new GuiMLTextCtrl(ConsoleErrorDisplay) {
+					profile = "GuiMLTextProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "474 14";
+					minExtent = "8 2";
+					visible = "1";
+					lineSpacing = "2";
+					allowColorChars = "0";
+					maxChars = "-1";
+				};
+			};
+		};
+	};
 };
 //--- OBJECT WRITE END ---
 
