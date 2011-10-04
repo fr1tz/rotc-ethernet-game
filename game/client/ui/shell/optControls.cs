@@ -11,11 +11,6 @@ function OptControlsWindow::onWake(%this)
    OptControlsMouseSensitivity.setValue($Pref::Input::MouseSensitivity);
    OptControlsMouseSensitivityNum.setValue($Pref::Input::MouseSensitivity);
    OptControlsMouseInvertYAxis.setValue($Pref::Input::InvertMouse);
-
-   OptControlsMeaning.clear();
-	OptControlsMeaning.add("Universal", 0);
-	OptControlsMeaning.add("ROTC: Ethernet", 1);
-	OptControlsMeaning.setSelected(OptControlsWindow.zMeaning);
 }
 
 function OptControlsWindow::onSleep(%this)
@@ -26,7 +21,10 @@ function OptControlsWindow::onSleep(%this)
 
 function OptControlsWindow::onAddedAsWindow(%this)
 {
-
+   OptControlsMeaning.clear();
+	OptControlsMeaning.add("Universal", 0);
+	OptControlsMeaning.add("ROTC: Ethernet", 1);
+	OptControlsMeaning.setSelected(OptControlsWindow.zMeaning);
 }
 
 function OptControlsMeaning::onSelect( %this, %id, %text )
