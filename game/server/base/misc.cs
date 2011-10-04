@@ -36,8 +36,8 @@ function fxLightData::create(%data)
 
 datablock AudioProfile(BeepMessageSound)
 {
-	filename = "share/shapes/rotc/vehicles/etherform/sound.impact.wav";
-	description = Audio2D;
+	filename = "share/sounds/rotc/denied1.wav";
+	description = AudioCritical2D;
 	preload = true;
 };
 
