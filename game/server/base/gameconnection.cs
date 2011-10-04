@@ -642,8 +642,12 @@ function GameConnection::spawnPlayer(%this)
 
 function GameConnection::beepMsg(%this, %reason)
 {
-	MessageClient(%this, 'MsgBeep', '\c0Fail: %1', %reason);
+	//MessageClient(%this, 'MsgBeep', '\c0Fail: %1', %reason);
 	//bottomPrint(%this, %reason, 3, 1 );
+   %this.setHudWarning(2, %reason, true);
+   if(%this.clearBeepMsgThread !$= "")
+      cancel(%this.clearBeepMsgThread);
+   %this.clearBeepMsgThread = %this.schedule(4000, "setHudWarning", 2, "", false);
 	%this.play2D(BeepMessageSound);
 }
 
