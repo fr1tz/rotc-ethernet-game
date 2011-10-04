@@ -106,13 +106,28 @@ $AudioTestHandle = 0;
 
 function OptAudioUpdateMasterVolume(%volume)
 {
-	if (%volume == $pref::Audio::masterVolume)
+   if($Pref::Audio::masterMuted)
+   {
+      alxListenerf(AL_GAIN_LINEAR, 0);
+      return;
+   }
+
+	if(%volume == $pref::Audio::masterVolume)
 		return;
+
+   %playTest = true;
+
+   if(%volume == -1)
+   {
+      %volume = $pref::Audio::masterVolume;
+      %playTest = false;
+   }
+
 	alxListenerf(AL_GAIN_LINEAR, %volume);
 	$pref::Audio::masterVolume = %volume;
-	if (!alxIsPlaying($AudioTestHandle))
+	if(%playTest && !alxIsPlaying($AudioTestHandle))
 	{
-		$AudioTestHandle = alxCreateSource("AudioChannel0", expandFilename("share/sounds/rotc/testing.wav"));
+		$AudioTestHandle = alxCreateSource("AudioChannel0", expandFilename("share/sounds/rotc/spin2.wav"));
 		alxPlay($AudioTestHandle);
 	}
 }
@@ -122,14 +137,28 @@ function OptAudioUpdateChannelVolume(%channel, %volume)
 	if (%channel < 1 || %channel > 8)
 		return;
 
-	if (%volume == $pref::Audio::channelVolume[%channel])
+   if($Pref::Audio::channelMuted[%channel])
+   {
+      alxSetChannelVolume(%channel, 0);
+      return;
+   }
+
+	if (%volume == $Pref::Audio::channelVolume[%channel])
 		return;
+
+   %playTest = true;
+
+   if(%volume == -1)
+   {
+      %volume = $Pref::Audio::channelVolume[%channel];
+      %playTest = false;
+   }
 
 	alxSetChannelVolume(%channel, %volume);
 	$pref::Audio::channelVolume[%channel] = %volume;
-	if (!alxIsPlaying($AudioTestHandle))
+	if(%playTest && !alxIsPlaying($AudioTestHandle))
 	{
-		$AudioTestHandle = alxCreateSource("AudioChannel"@%channel, expandFilename("share/sounds/rotc/testing.wav"));
+		$AudioTestHandle = alxCreateSource("AudioChannel"@%channel, expandFilename("share/sounds/rotc/spin2.wav"));
 		alxPlay($AudioTestHandle);
 	}
 }
