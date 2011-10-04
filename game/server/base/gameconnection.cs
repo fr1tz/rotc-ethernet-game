@@ -556,18 +556,25 @@ function GameConnection::joinTeam(%this, %teamId)
 		
 		%this.setNewbieHelp("You are in observer mode. Click on the links near the top" SPC
 			"of the arena window to join a team. Press @bind01 if the arena window is not visible.");		
+   
+      %this.setLoadingBarText("Use the links below to join red or blue!");
 	}
-	else if(%teamId == 1)
-	{
-		%this.team = $Team1;
-		$Team1.numPlayers++;
-	}
-	else if(%teamId == 2)
-	{
-		%this.team = $Team2;
-		$Team2.numPlayers++;
-	}
-	
+	else
+   {
+      if(%teamId == 1)
+   	{
+   		%this.team = $Team1;
+   		$Team1.numPlayers++;
+   	}
+   	else if(%teamId == 2)
+   	{
+   		%this.team = $Team2;
+   		$Team2.numPlayers++;
+   	}
+    
+      %this.setLoadingBarText("Press @bind01 to play.");
+   }
+
 	%this.updateHudColors();
 
 	// full and simple control cleanup...
@@ -941,6 +948,16 @@ function GameConnection::updateSkyColor(%this)
 			%this.setSkyColor(%ratio SPC "0.75 1");
 		}
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+function GameConnection::setLoadingBarText(%this, %text)
+{
+   if(%this.loadingBarText $= %text)
+      return;
+	commandToClient(%this, 'LoadingBarTxt', %text);
+   %this.loadingBarText = %text;
 }
 
 //-----------------------------------------------------------------------------

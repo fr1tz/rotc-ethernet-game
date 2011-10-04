@@ -3,6 +3,11 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
+function clientCmdLoadingBarTxt(%text)
+{
+	LoadingProgressTxt.setValue(replaceBindVars(%text));
+}
+
 function clientCmdBeginQuickbarTxt(%update)
 {
 	IngameQuickbarText.zText = "";
