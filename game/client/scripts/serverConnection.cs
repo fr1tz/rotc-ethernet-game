@@ -184,6 +184,13 @@ function disconnectedCleanup()
 	// Make sure we're displaying the shell
 	Canvas.setContent(Shell);
 
+	// Make sure we're displaying the toolbox
+	addWindow(RootMenuWindow);
+
+	// Make sure we're displaying the IRC window if we're not offline...
+	if(!$IRC::Offline)
+		addWindow(IrcWindow, true);
+
 	// Dump anything we're not using
 	clearTextureHolds();
 	purgeResources();

@@ -46,12 +46,7 @@ function removeWindow(%control)
 
 function Shell::onWake(%this)
 {
-	// Make sure we're displaying the toolbox
-	addWindow(RootMenuWindow);
-
-	// Make sure we're displaying the IRC window if we're not offline...
-	if(!$IRC::Offline)
-		addWindow(IrcWindow, true);
+   windowSelected(RootMenuWindow);
 }
 
 function ShellRoot::onMouseDown(%this,%modifier,%coord,%clickCount)
