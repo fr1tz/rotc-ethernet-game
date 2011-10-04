@@ -316,7 +316,7 @@ new GuiControl(JoinServerWindowForEditing) {
          text = "Hint: If arenas are empty, try using the -REINDEERFLOTILLA- to find players.";
          maxLength = "1024";
       };
-      new GuiButtonCtrl(JS_queryLan) {
+      new GuiButtonCtrl() {
          canSaveDynamicFields = "0";
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
