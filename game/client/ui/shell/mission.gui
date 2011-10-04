@@ -136,7 +136,7 @@ new GuiControl(MissionWindowForEditing) {
          new GuiButtonCtrl(IngameMenuReturn) {
             canSaveDynamicFields = "0";
             Profile = "GuiButtonProfile";
-            HorizSizing = "width";
+            HorizSizing = "right";
             VertSizing = "bottom";
             position = "5 -1";
             Extent = "100 23";

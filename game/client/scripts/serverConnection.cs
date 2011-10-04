@@ -45,11 +45,11 @@ function GameConnection::initialControlSet(%this)
 		if (Canvas.getContent() == Shell.getId())
 		{
 			Canvas.setContent(Hud);
-			showShellDlg();
+			showShellDlg(true);
 			
 			// Make sure we're displaying the IRC window if we're not offline...
 			if(!$IRC::Offline)
-				addWindow(IrcWindow);
+				addWindow(IrcWindow, true);
 		}
 	}
 }
@@ -183,13 +183,6 @@ function disconnectedCleanup()
 
 	// Make sure we're displaying the shell
 	Canvas.setContent(Shell);
-
-	// Make sure we're displaying the toolbox
-	addWindow(RootMenuWindow);
-	
-	// Make sure we're displaying the IRC window if we're not offline...
-	if(!$IRC::Offline)
-		addWindow(IrcWindow);
 
 	// Dump anything we're not using
 	clearTextureHolds();

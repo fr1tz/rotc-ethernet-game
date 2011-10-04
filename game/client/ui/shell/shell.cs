@@ -19,17 +19,21 @@ if(isObject(DefaultCursor))
     };
 }
 
-function addWindow(%control)
+function addWindow(%control, %inactive)
 {
 	%oldparent = %control.getParent();
 	%parent = Shell;
 	if(Canvas.getContent() != Shell.getId())
 		%parent = ShellDlg;
-	%parent.add(%control);
-	%parent.pushToBack(%control);
-	if(%control.getParent() != %oldParent)
-		%control.onAddedAsWindow();
-	windowSelected(%control);
+	if(%control.getParent().getId() != %parent.getId())
+	{
+		%parent.add(%control);
+		%parent.pushToBack(%control);
+		if(%control.getParent() != %oldParent)
+			%control.onAddedAsWindow();
+	}
+	if(!%inactive)
+		windowSelected(%control);
 	Canvas.repaint();
 }
 
@@ -38,6 +42,16 @@ function removeWindow(%control)
 	%control.getParent().remove(%control);
 	%control.onRemovedAsWindow();
 	Canvas.repaint();
+}
+
+function Shell::onWake(%this)
+{
+	// Make sure we're displaying the toolbox
+	addWindow(RootMenuWindow);
+
+	// Make sure we're displaying the IRC window if we're not offline...
+	if(!$IRC::Offline)
+		addWindow(IrcWindow, true);
 }
 
 function ShellRoot::onMouseDown(%this,%modifier,%coord,%clickCount)
@@ -72,7 +86,7 @@ function windowChangeProfile(%ctrl, %profile)
 
 function windowSelected(%ctrl)
 {
-	if(%ctrl == $SelectedWindow)
+	if(%ctrl.getId() == $SelectedWindow.getId())
 		return;
 
 	if($SelectedWindow !$= "")
