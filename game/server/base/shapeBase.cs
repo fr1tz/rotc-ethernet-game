@@ -221,6 +221,15 @@ function ShapeBase::playInflictedDamageSound(%this)
 }
 
 //-----------------------------------------------------------------------------
+
+function ShapeBase::setShieldLevel(%this, %val)
+{
+	%this.setDamageBufferLevel(%val);
+	%this.getDataBlock().updateShieldFx(%this);
+}
+
+
+//-----------------------------------------------------------------------------
 // ShapeBase datablock
 //-----------------------------------------------------------------------------
 
@@ -333,8 +342,11 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	}
 	
 	// reduce damage based on energy level...
-	%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
-	%damage -= %damage * %energyScale * 0.50;	
+	if(%obj.client.hasDamper)
+	{
+		%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
+		%damage -= %damage * %energyScale * 0.50;	
+	}
 
 	// Handicap, we do damage dampening depending on the handicap value of the object
 	if (isObject(%obj.client))
@@ -381,7 +393,8 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	{
 		%damageBufStore = %obj.getDamageBufferLevel();
 		%healthDamageDealt = %obj.applyDamage(%damage);
-		%bufDamageDealt = %damageBufStore - %obj.getDamageBufferLevel();		
+		%bufDamageDealt = %damageBufStore - %obj.getDamageBufferLevel();
+		%this.updateShieldFx(%obj);		
 	}
 	
 	if(%realSourceObject != 0
@@ -541,11 +554,11 @@ function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %healthDmg, %bufDmg)
     // health takeback...
 	if(%client.numVAMPs > 0)
 	{
- 	   %healthTakeback = %healthDmg * 0.5 * %client.numVAMPs;
- 	   %newSrcDamage = %obj.getDamageLevel() - %healthTakeback;
- 	   %obj.setDamageLevel(%newSrcDamage);
- 	   if(%newSrcDamage < 0)
- 	       %obj.setDamageBufferLevel(%obj.getDamageBufferLevel() - %newSrcDamage);
+		%healthTakeback = %healthDmg * 0.5 * %client.numVAMPs;
+		%newSrcDamage = %obj.getDamageLevel() - %healthTakeback;
+		%obj.setDamageLevel(%newSrcDamage);
+		if(%newSrcDamage < 0)
+			%obj.setShieldLevel(%obj.getDamageBufferLevel() - %newSrcDamage);
 	}
 
     // tagging...

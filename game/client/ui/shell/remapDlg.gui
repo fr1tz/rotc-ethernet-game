@@ -14,21 +14,32 @@ new GuiControl(RemapDlg) {
 	visible = "1";
 	helpTag = "0";
 
-	new GuiControl(OptRemapDlg) {
-		profile = "GuiWindowProfile";
+	new GuiWindowCtrl(OptRemapDlg) {
+      canSaveDynamicFields = "0";
+      Profile = "GuiWindowProfile";
 		horizSizing = "center";
 		vertSizing = "center";
 		position = "213 213";
 		extent = "243 64";
 		minExtent = "8 8";
-		visible = "1";
-		helpTag = "0";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      text = "Re-bind control...";
+      maxLength = "255";
+      resizeWidth = "0";
+      resizeHeight = "0";
+      canMove = "0";
+      canClose = "0";
+      canMinimize = "0";
+      canMaximize = "0";
+      minSize = "50 50";	
 
 		new GuiTextCtrl(OptRemapText) {
 			profile = "GuiCenterTextProfile";
 			horizSizing = "right";
 			vertSizing = "bottom";
-			position = "2 21";
+			position = "24 30";
 			extent = "99 20";
 			minExtent = "8 8";
 			visible = "1";

@@ -9,10 +9,10 @@ $IRC::MsgType::Topic  = 2;
 $IRC::MsgType::Users  = 3;
 
 $IRC::Colors = "" @
-	"880000" SPC "FF0000" SPC "008800" SPC "00FF00" SPC 
-	"000088" SPC "0000FF" SPC "884400" SPC "FF8800" SPC 
-	"448800" SPC "88FF00" SPC "008844" SPC "00FF88" SPC
-	"880088" SPC "FF00FF" SPC "004488" SPC "0088FF";
+	"BB0000" SPC "FF0000" SPC "00BB00" SPC "00FF00" SPC
+	"0000BB" SPC "0000FF" SPC "BB4400" SPC "FFBB00" SPC
+	"44BB00" SPC "BBFF00" SPC "00BB44" SPC "00FFBB" SPC
+	"BB00BB" SPC "FF00FF" SPC "0044BB" SPC "00BBFF";
 $IRC::NumColors = getWordCount($IRC::Colors);
 
 if(!isObject(IRCconn))
@@ -250,6 +250,25 @@ function irc_grab_attention()
 	}
 	%txt = %txt SPC "]";
 	IrcSend.setText(IrcSend.getText() @ %txt);
+}
+
+function irc_ask_for_game()
+{
+	%txt = "[" SPC
+	$IRC::Names.sorta();
+	%idx = $IRC::Names.moveFirst();
+	while(%idx != -1)
+	{
+		%k = $IRC::Names.getKey(%idx);
+		%v = $IRC::Names.getValue(%idx);
+
+		%txt = %txt SPC %v;
+
+		%idx = $IRC::Names.moveNext();
+	}
+	%txt = %txt SPC "]";
+	IrcSend.setText("Anyone up for a game?" SPC %txt);
+   IrcSend.onReturn();
 }
 
 //------------------------------------------------------------------------------

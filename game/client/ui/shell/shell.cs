@@ -14,22 +14,26 @@ if(isObject(DefaultCursor))
 
     new GuiCursor(DefaultCursor)
     {
-	   hotSpot = "1 1";
-	   bitmapName = "./pixmaps/mg_arrow2";
+	   hotSpot = "6 6";
+	   bitmapName = "./pixmaps/mg_arrow6";
     };
 }
 
-function addWindow(%control)
+function addWindow(%control, %inactive)
 {
 	%oldparent = %control.getParent();
 	%parent = Shell;
 	if(Canvas.getContent() != Shell.getId())
 		%parent = ShellDlg;
-	%parent.add(%control);
-	%parent.pushToBack(%control);
-	if(%control.getParent() != %oldParent)
-		%control.onAddedAsWindow();
-	windowSelected(%control);
+	if(%control.getParent().getId() != %parent.getId())
+	{
+		%parent.add(%control);
+		%parent.pushToBack(%control);
+		if(%control.getParent() != %oldParent)
+			%control.onAddedAsWindow();
+	}
+	if(!%inactive)
+		windowSelected(%control);
 	Canvas.repaint();
 }
 
@@ -38,6 +42,11 @@ function removeWindow(%control)
 	%control.getParent().remove(%control);
 	%control.onRemovedAsWindow();
 	Canvas.repaint();
+}
+
+function Shell::onWake(%this)
+{
+   windowSelected(RootMenuWindow);
 }
 
 function ShellRoot::onMouseDown(%this,%modifier,%coord,%clickCount)
@@ -72,7 +81,7 @@ function windowChangeProfile(%ctrl, %profile)
 
 function windowSelected(%ctrl)
 {
-	if(%ctrl == $SelectedWindow)
+	if(%ctrl.getId() == $SelectedWindow.getId())
 		return;
 
 	if($SelectedWindow !$= "")

@@ -61,7 +61,7 @@ $PlayerDeathAnim::ExplosionBlowBack = 11;
 //
 
 $PlayerShapeFxSlot::GridConnection  = 0;
-$PlayerShapeFxSlot::Energy = 1;
+$PlayerShapeFxSlot::Shield = 1;
 $PlayerShapeFxSlot::Barrier = 2;
 
 //-----------------------------------------------------------------------------
@@ -298,19 +298,6 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
 	}
 
 	%damageDealt = Parent::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType);
- 
-    // eyecandy: energy level shape fx...
-    %energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
-    %fadeValue = %energyScale;
-    %fadeDelta = -1.5;
-	if(%damageDealt == 0)
-		%obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 3);
-	else
-		%obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 4);
-	 %obj.shapeFxSetColor($PlayerShapeFxSlot::Energy, 0);
-    %obj.shapeFxSetBalloon($PlayerShapeFxSlot::Energy, 1.05, 0);
-    %obj.shapeFxSetFade($PlayerShapeFxSlot::Energy, %fadeValue, %fadeDelta);
-    %obj.shapeFxSetActive($PlayerShapeFxSlot::Energy, true, false);
 
 	//echo("damageDealt:" SPC %damageDealt);
 
@@ -426,6 +413,34 @@ function PlayerData::onDamage(%this, %obj, %delta)
 			%obj.playPain();
 	}
 }
+
+function PlayerData::updateShieldFx(%this, %obj)
+{
+	%shieldVal = %obj.getDamageBufferLevel() / %this.damageBuffer;
+
+	if(%shieldVal > 1)
+	{
+		%time = (%shieldVal - 1) * 5000;
+		%texture = 3;
+		%fadeDt = 0;
+	}
+	else
+	{
+		%time = (1 - %shieldVal) * 5000;
+		%texture = 4;
+		%fadeDt = 1/%time + 0.05;
+	}
+
+	%slot = $PlayerShapeFxSlot::Shield;
+	%obj.shapeFxSetTexture(%slot, %texture);
+	%obj.shapeFxSetColor(%slot, 0);
+	%obj.shapeFxSetBalloon(%slot, 1.4, 0);
+	%obj.shapeFxSetFade(%slot, %shieldVal, %fadeDt);
+  	%obj.shapeFxSetActive(%slot, true, false);
+	cancel(%obj.shieldFxThread);
+	%obj.shieldFxThread = %obj.schedule(%time, "shapeFxSetActive", %slot, false, false);
+}
+
 
 // *** Callback function:
 // Invoked by ShapeBase code when object's damageState was set to 'Disabled'
@@ -1291,3 +1306,6 @@ function Player::playPain( %this )
 	%client = %this.client;
 	//playTargetAudio( %client.target, "replaceme", AudioClosest3d, false);
 }
+
+//----------------------------------------------------------------------------
+

@@ -14,8 +14,8 @@ new GuiControl(AboutWindowForEditing) {
    Profile = "GuiDefaultProfile";
    HorizSizing = "right";
    VertSizing = "bottom";
-   Position = "0 0";
-   Extent = "800 600";
+   position = "0 0";
+   Extent = "640 480";
    MinExtent = "8 8";
    canSave = "1";
    Visible = "1";
@@ -26,7 +26,7 @@ new GuiControl(AboutWindowForEditing) {
       Profile = "GuiWindowProfile";
       HorizSizing = "center";
       VertSizing = "center";
-      Position = "58 56";
+      position = "20 40";
       Extent = "600 400";
       MinExtent = "300 200";
       canSave = "1";
@@ -37,19 +37,34 @@ new GuiControl(AboutWindowForEditing) {
       resizeWidth = "1";
       resizeHeight = "1";
       canMove = "1";
-      canClose = "1";
+      canClose = "0";
       canMinimize = "0";
       canMaximize = "0";
       minSize = "50 50";
-      closeCommand = "removeWindow(AboutWindow);";
 
+      new GuiButtonCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "bottom";
+         position = "556 5";
+         Extent = "39 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "removeWindow(AboutWindow);";
+         hovertime = "1000";
+         text = "X";
+         groupNum = "-1";
+         buttonType = "PushButton";
+      };
       new GuiScrollCtrl() {
          canSaveDynamicFields = "0";
          Profile = "GuiScrollProfile";
          HorizSizing = "right";
          VertSizing = "height";
-         Position = "8 30";
-         Extent = "75 359";
+         position = "15 30";
+         Extent = "68 359";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -65,8 +80,8 @@ new GuiControl(AboutWindowForEditing) {
             Profile = "GuiTextListProfile";
             HorizSizing = "right";
             VertSizing = "bottom";
-            Position = "2 2";
-            Extent = "128 8";
+            position = "2 2";
+            Extent = "71 8";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -83,7 +98,7 @@ new GuiControl(AboutWindowForEditing) {
          Profile = "GuiScrollProfile";
          HorizSizing = "width";
          VertSizing = "height";
-         Position = "91 30";
+         position = "91 30";
          Extent = "500 359";
          MinExtent = "8 8";
          canSave = "1";
@@ -100,8 +115,8 @@ new GuiControl(AboutWindowForEditing) {
             Profile = "GuiMLTextProfile";
             HorizSizing = "width";
             VertSizing = "bottom";
-            Position = "2 2";
-            Extent = "482 13";
+            position = "2 2";
+            Extent = "482 14";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";

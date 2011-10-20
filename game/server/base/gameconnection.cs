@@ -197,33 +197,36 @@ function GameConnection::defaultLoadout(%this)
 		%this.loadout[1] = $CatEquipment::Blaster;
 		%this.loadout[2] = $CatEquipment::SniperRifle;
 		%this.loadout[3] = $CatEquipment::Etherboard;
-		%this.loadout[4] = $CatEquipment::VAMP;
-		%this.loadout[5] = $CatEquipment::Anchor;
-		%this.loadout[6] = $CatEquipment::Grenade;
-		%this.loadout[7] = $CatEquipment::Bounce;
-		%this.loadout[8] = $CatEquipment::RepelDisc;
-		%this.loadout[9] = $CatEquipment::ExplosiveDisc;
+		%this.loadout[4] = $CatEquipment::Damper;
+		%this.loadout[5] = $CatEquipment::VAMP;
+		%this.loadout[6] = $CatEquipment::Anchor;
+		%this.loadout[7] = $CatEquipment::Grenade;
+		%this.loadout[8] = $CatEquipment::Bounce;
+		%this.loadout[9] = $CatEquipment::RepelDisc;
+		%this.loadout[10] = $CatEquipment::ExplosiveDisc;
 	}
 	else if($Game::GameType == $Game::TeamJoust)
 	{
 		%this.loadout[1] = $CatEquipment::Blaster;
 		%this.loadout[2] = $CatEquipment::BattleRifle;
 		%this.loadout[3] = $CatEquipment::GrenadeLauncher;
-		%this.loadout[4] = $CatEquipment::VAMP;
-		%this.loadout[5] = $CatEquipment::Stabilizer;
-		%this.loadout[6] = $CatEquipment::Grenade;
-		%this.loadout[7] = $CatEquipment::Permaboard;
-		%this.loadout[8] = $CatEquipment::SlasherDisc;
+		%this.loadout[4] = $CatEquipment::Damper;
+		%this.loadout[5] = $CatEquipment::VAMP;
+		%this.loadout[6] = $CatEquipment::Stabilizer;
+		%this.loadout[7] = $CatEquipment::Grenade;
+		%this.loadout[8] = $CatEquipment::Permaboard;
+		%this.loadout[9] = $CatEquipment::SlasherDisc;
 	}
 	else if($Game::GameType == $Game::TeamDragRace)
 	{
 		%this.loadout[1] = $CatEquipment::Blaster;
 		%this.loadout[2] = $CatEquipment::BattleRifle;
 		%this.loadout[3] = $CatEquipment::GrenadeLauncher;
-		%this.loadout[4] = $CatEquipment::VAMP;
-		%this.loadout[5] = $CatEquipment::Stabilizer;
-		%this.loadout[6] = $CatEquipment::Grenade;
-		%this.loadout[7] = $CatEquipment::SlasherDisc;
+		%this.loadout[4] = $CatEquipment::Damper;
+		%this.loadout[5] = $CatEquipment::VAMP;
+		%this.loadout[6] = $CatEquipment::Stabilizer;
+		%this.loadout[7] = $CatEquipment::Grenade;
+		%this.loadout[8] = $CatEquipment::SlasherDisc;
 	}
 	else if($Game::GameType == $Game::GridWars)
 	{
@@ -240,16 +243,18 @@ function GameConnection::defaultLoadout(%this)
 		%this.loadout[1] = $CatEquipment::Blaster;
 		%this.loadout[2] = $CatEquipment::BattleRifle;
 		%this.loadout[3] = $CatEquipment::Etherboard;
-		%this.loadout[4] = $CatEquipment::VAMP;
-		%this.loadout[5] = $CatEquipment::Stabilizer;
-		%this.loadout[6] = $CatEquipment::Grenade;
-		%this.loadout[7] = $CatEquipment::SlasherDisc;
+		%this.loadout[4] = $CatEquipment::Damper;
+		%this.loadout[5] = $CatEquipment::VAMP;
+		%this.loadout[6] = $CatEquipment::Stabilizer;
+		%this.loadout[7] = $CatEquipment::Grenade;
+		%this.loadout[8] = $CatEquipment::SlasherDisc;
 	}
 }
 
 function GameConnection::updateLoadout(%this)
 {
 	%this.numWeapons = 0;
+	%this.hasDamper = false;
 	%this.hasAnchor = false;
 	%this.hasStabilizer = false;
 	%this.hasSlasherDisc = false;
@@ -266,7 +271,11 @@ function GameConnection::updateLoadout(%this)
 		if(%this.loadout[%i] $= "")
 			continue;
 
-		if(%this.loadout[%i] == $CatEquipment::Anchor)
+		if(%this.loadout[%i] == $CatEquipment::Damper)
+		{
+			%this.hasDamper = true;
+		}
+		else if(%this.loadout[%i] == $CatEquipment::Anchor)
 		{
 			%this.hasAnchor = true;
 		}
@@ -547,18 +556,25 @@ function GameConnection::joinTeam(%this, %teamId)
 		
 		%this.setNewbieHelp("You are in observer mode. Click on the links near the top" SPC
 			"of the arena window to join a team. Press @bind01 if the arena window is not visible.");		
+   
+      %this.setLoadingBarText("Use the links below to join red or blue!");
 	}
-	else if(%teamId == 1)
-	{
-		%this.team = $Team1;
-		$Team1.numPlayers++;
-	}
-	else if(%teamId == 2)
-	{
-		%this.team = $Team2;
-		$Team2.numPlayers++;
-	}
-	
+	else
+   {
+      if(%teamId == 1)
+   	{
+   		%this.team = $Team1;
+   		$Team1.numPlayers++;
+   	}
+   	else if(%teamId == 2)
+   	{
+   		%this.team = $Team2;
+   		$Team2.numPlayers++;
+   	}
+    
+      %this.setLoadingBarText("Press @bind01 to play.");
+   }
+
 	%this.updateHudColors();
 
 	// full and simple control cleanup...
@@ -626,8 +642,12 @@ function GameConnection::spawnPlayer(%this)
 
 function GameConnection::beepMsg(%this, %reason)
 {
-	MessageClient(%this, 'MsgBeep', '\c0Fail: %1', %reason);
+	//MessageClient(%this, 'MsgBeep', '\c0Fail: %1', %reason);
 	//bottomPrint(%this, %reason, 3, 1 );
+   %this.setHudWarning(2, %reason, true);
+   if(%this.clearBeepMsgThread !$= "")
+      cancel(%this.clearBeepMsgThread);
+   %this.clearBeepMsgThread = %this.schedule(4000, "setHudWarning", 2, "", false);
 	%this.play2D(BeepMessageSound);
 }
 
@@ -802,7 +822,7 @@ function GameConnection::togglePlayerForm(%this, %forced)
 	%obj.setTransform(%mat);
 	%obj.setTransform(%pos);
 	%obj.setDamageLevel(%dmg);
-	%obj.setDamageBufferLevel(%buf);
+	%obj.setShieldLevel(%buf);
 	
 	if(%tagged)
 		%obj.setTagged();
@@ -936,6 +956,16 @@ function GameConnection::updateSkyColor(%this)
 
 //-----------------------------------------------------------------------------
 
+function GameConnection::setLoadingBarText(%this, %text)
+{
+   if(%this.loadingBarText $= %text)
+      return;
+	commandToClient(%this, 'LoadingBarTxt', %text);
+   %this.loadingBarText = %text;
+}
+
+//-----------------------------------------------------------------------------
+
 function GameConnection::beginQuickbarText(%this, %update)
 {
 	commandToClient(%this, 'BeginQuickbarTxt', %update);
@@ -1047,7 +1077,10 @@ function GameConnection::updateHudWarningsThread(%this)
 	%health = %health / %player.getDataBlock().maxDamage;
 
 	%this.setHudWarning(1, "[HEALTH]", %health < 0.25);
-	%this.setHudWarning(3, "[ARMOR]", %player.getEnergyPercent() < 0.5);
+   if(%player.isCAT)
+	  %this.setHudWarning(3, "[DAMPER]", %player.getEnergyPercent() < 0.5);
+   else
+	  %this.setHudWarning(3, "[ENERGY]", %player.getEnergyPercent() < 0.5);
 }
 
 //-----------------------------------------------------------------------------

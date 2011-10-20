@@ -67,23 +67,23 @@ function deployRepel3(%obj)
 
 	// source explosion effects...
 
-	%obj.shapeFxSetTexture($PlayerShapeFxSlot::Energy, 1);
-	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Energy, 1.025, 100);
-	%obj.shapeFxSetFade($PlayerShapeFxSlot::Energy, 1, -1/0.15);
+	%obj.shapeFxSetTexture($PlayerShapeFxSlot::Shield, 1);
+	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Shield, 1.025, 100);
+	%obj.shapeFxSetFade($PlayerShapeFxSlot::Shield, 1, -1/0.15);
 	createExplosion(RepelSourceExplosion, %pos, "0 0 1");
 
 	if(%hitEnemy)
 	{
-		%obj.shapeFxSetColor($PlayerShapeFxSlot::Energy, 4);
+		%obj.shapeFxSetColor($PlayerShapeFxSlot::Shield, 4);
 	}
 	else
 	{
-		%obj.shapeFxSetColor($PlayerShapeFxSlot::Energy, 5);		
+		%obj.shapeFxSetColor($PlayerShapeFxSlot::Shield, 5);		
 		%obj.setEnergyLevel(%obj.getEnergyLevel() - 50);	
 
 	}
 	
-	%obj.shapeFxSetActive($PlayerShapeFxSlot::Energy, true, true);	
+	%obj.shapeFxSetActive($PlayerShapeFxSlot::Shield, true, true);	
 
 	%obj.lastRepelTime = $Sim::Time;
 }

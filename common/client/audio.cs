@@ -30,10 +30,18 @@ function OpenALInit()
 			echo("	Renderer: " @ alGetString("AL_RENDERER"));
 			echo("	Extensions: " @ alGetString("AL_EXTENSIONS"));
 
-			alxListenerf( AL_GAIN_LINEAR, $pref::Audio::masterVolume );
+         if($Pref::Audio::masterMuted)
+			   alxListenerf( AL_GAIN_LINEAR, 0 );
+         else
+			   alxListenerf( AL_GAIN_LINEAR, $pref::Audio::masterVolume );
 	
 			for (%channel=1; %channel <= 8; %channel++)
-				alxSetChannelVolume(%channel, $pref::Audio::channelVolume[%channel]);
+         {
+            if($Pref::Audio::channelMuted[%channel])
+				  alxSetChannelVolume(%channel, 0);
+            else
+				  alxSetChannelVolume(%channel, $pref::Audio::channelVolume[%channel]);
+         }
 
 			echo("");
 		}

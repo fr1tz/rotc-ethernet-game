@@ -47,20 +47,21 @@ function initClient()
 	// The common module provides basic client/server functionality
 	initBaseClient();
 	initBaseServer();
+	
+	// Client-side Audio Descriptions must be loaded before 
+	// the GUI profiles because of the GUI sound effects.
+	exec("./scripts/audioDescriptions.cs");	
  
-    // Our GUI profiles need to be created before initCanvas is called
-    // and creates default profiles for essential ones that don't exist.
-    exec("./ui/shell/profiles.cs");
-    exec("./ui/hud/profiles.cs");
+	// Our GUI profiles need to be created before initCanvas is called
+	// and creates default profiles for essential ones that don't exist.
+	exec("./ui/shell/profiles.cs");
+	exec("./ui/hud/profiles.cs");
 
 	// InitCanvas starts up the graphics system.
 	// The canvas needs to be constructed before the gui scripts are
 	// run because many of the controls assume the canvas exists at
 	// load time.
 	initCanvas("Revenge Of The Cats: Ethernet (" @ $GameVersionString @ ")");
-
-	/// load client-side Audio Descriptions
-	exec("./scripts/audioDescriptions.cs");
 
 	// execute the UI scripts
 	exec("./ui/init.cs");

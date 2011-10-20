@@ -15,9 +15,9 @@ function onCanvasContentChanged(%oldContent, %newContent)
 		updateShellDlg();
 }
 
-function showShellDlg()
+function showShellDlg(%show)
 {
-	$ShellDlgActive = true;
+	$ShellDlgActive = %show;
 	updateShellDlg();
 }
 
@@ -28,15 +28,15 @@ function updateShellDlg()
 		if(!ShellDlg.isAwake())
 			Canvas.pushDialog(ShellDlg);
 
-		addWindow(RootMenuWindow);
+		addWindow(RootMenuWindow, true);
 			
 		if(ServerConnection.isDemoPlaying())
 		{
-			addWindow(RecordingControlsWindow);
+			addWindow(RecordingControlsWindow, true);
 		}
 		else
 		{
-			addWindow(MissionWindow);
+			addWindow(MissionWindow, true);
 			//addWindow(ServerMessagesWindow);
 		}		
 	}
@@ -161,8 +161,21 @@ function selectMainWeapon(%weapon)
 // Sky colorization
 //-----------------------------------------------------------------------------
 
+function client_find_sky()
+{
+	%group = ServerConnection;
+	for(%idx = 0; %i < %group.getCount(); %idx++)
+	{
+		%obj = %group.getObject(%idx);
+		if(%obj.getClassName() $= "Sky")
+			return %obj;
+	}
+}
+
 function SkyColorMsgCallback(%msgType, %msgString, %color)
 {
+	if($sky $= "")
+		$sky = client_find_sky();
 	$sky.changeColor(%color);
 }
 

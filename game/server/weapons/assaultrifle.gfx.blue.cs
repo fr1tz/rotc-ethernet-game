@@ -8,28 +8,36 @@
 
 datablock ParticleData(BlueAssaultRifleProjectileParticleEmitter_Particles)
 {
-	dragCoefficient      = 1;
-	gravityCoefficient   = -0.2;
-	windCoefficient      = 0.0;
-	inheritedVelFactor	 = 0.0;
-	constantAcceleration = 0.0;
-	lifetimeMS			 = 1000;
-	lifetimeVarianceMS	 = 0;
-	textureName			 = "share/textures/rotc/smoke_particle";
-	colors[0]	    = "1.0 1.0 1.0 0.2";
-	colors[1]	    = "1.0 1.0 1.0 0.0";
-	sizes[0]		= 1.5;
-	sizes[1]		= 1.5;
+	dragCoeffiecient	  = 0.0;
+	gravityCoefficient	= 0.0;
+	inheritedVelFactor	= 0.0;
+
+	lifetimeMS			  = 200;
+	lifetimeVarianceMS	= 0;
+
+	useInvAlpha =  true;
+	spinRandomMin = -200.0;
+	spinRandomMax =  200.0;
+
+	textureName = "share/textures/rotc/smoke_particle.png";
+
+	colors[0]	  = "0.9 0.9 0.9 0.6";
+	colors[1]	  = "0.9 0.9 0.9 0.3";
+	colors[2]	  = "0.9 0.9 0.9 0.0";
+	sizes[0]		= 0.6;
+	sizes[1]		= 0.3;
+	sizes[2]		= 0.0;
 	times[0]		= 0.0;
-	times[1]		= 1.0;
-	useInvAlpha = true;
-	renderDot = false;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+
+	allowLighting = true;
 };
 
 datablock ParticleEmitterData(BlueAssaultRifleProjectileParticleEmitter)
 {
-	ejectionPeriodMS = 200;
-	periodVarianceMS = 100;
+	ejectionPeriodMS = 2;
+	periodVarianceMS = 0;
 	ejectionVelocity = 0.0;
 	velocityVariance = 0.0;
 	ejectionOffset	 = 0.0;
@@ -46,61 +54,22 @@ datablock ParticleEmitterData(BlueAssaultRifleProjectileParticleEmitter)
 //-----------------------------------------------------------------------------
 // laser trail
 
-datablock MultiNodeLaserBeamData(BlueAssaultRifleProjectileRedLaserTrail)
-{
-	hasLine = true;
-	lineColor	= "1.00 0.00 0.00 0.02";
-
-	hasInner = false;
-	innerColor = "0.00 0.00 1.00 0.1";
-	innerWidth = "0.05";
-
-	hasOuter = true;
-	outerColor = "1.00 0.00 0.00 0.25";
-	outerWidth = "0.05";
-
-//	bitmap = "share/shapes/rotc/weapons/BlueAssaultRifle/lasertrail";
-//	bitmapWidth = 0.25;
-
-	blendMode = 1;
-	fadeTime = 250;
-};
-
-datablock MultiNodeLaserBeamData(BlueAssaultRifleProjectileBlueLaserTrail)
-{
-	hasLine = true;
-	lineColor	= "0.00 0.00 1.00 0.02";
-
-	hasInner = false;
-	innerColor = "0.00 0.00 1.00 0.1";
-	innerWidth = "0.05";
-
-	hasOuter = true;
-	outerColor = "0.00 0.00 1.00 0.25";
-	outerWidth = "0.05";
-
-//	bitmap = "share/shapes/rotc/weapons/BlueAssaultRifle/lasertrail";
-//	bitmapWidth = 0.25;
-
-	blendMode = 1;
-	fadeTime = 250;
-};
-
 datablock MultiNodeLaserBeamData(BlueAssaultRifleProjectileLaserTrail)
 {
 	hasLine = true;
-	lineColor	= "1.00 1.00 1.00 0.02";
+	lineColor	= "0.00 0.00 1.00 1.00";
+	lineWidth = 1;
 
 	hasInner = false;
 	innerColor = "0.00 1.00 0.00 1.00";
 	innerWidth = "0.05";
 
-	hasOuter = true;
-	outerColor = "1.00 1.00 1.00 0.02";
-	outerWidth = "0.05";
+	hasOuter = false;
+	outerColor = "1.00 0.00 0.00 0.02";
+	outerWidth = "0.10";
 
-//	bitmap = "share/shapes/rotc/weapons/BlueAssaultRifle/lasertrail";
-//	bitmapWidth = 0.25;
+	bitmap = "share/shapes/rotc/weapons/disc/lasertrail2.blue";
+	bitmapWidth = 0.25;
 
 	blendMode = 1;
  
@@ -115,11 +84,11 @@ datablock MultiNodeLaserBeamData(BlueAssaultRifleProjectileLaserTrail)
     nodeMoveSpeed[1]    = -0.002;
     nodeMoveSpeedAdd[1] =  0.004;
     // node z movement...
-    nodeMoveMode[2]     = $NodeMoveMode::ConstantSpeed;
+    nodeMoveMode[2]     = $NodeMoveMode::None;
     nodeMoveSpeed[2]    = 0.5;
     nodeMoveSpeedAdd[2] = 0.5;
  
-	fadeTime = 1000;
+	fadeTime = 200;
 };
 
 //-----------------------------------------------------------------------------
@@ -211,10 +180,10 @@ datablock ExplosionData(BlueAssaultRifleProjectileBounceExplosion)
 	emitter[0] = BlueAssaultRifleProjectileBounceExplosion_SmokeEmitter;	
 	
 	// Dynamic light
-	lightStartRadius = 15;
+	lightStartRadius = 10;
 	lightEndRadius = 0;
-	lightStartColor = "0.0 0.0 1.0 1.0";
-	lightEndColor = "0.0 0.0 1.0 0.0";
+	lightStartColor = "1 1 1";
+	lightEndColor = "1 1 1";
 };
 
 //-----------------------------------------------------------------------------

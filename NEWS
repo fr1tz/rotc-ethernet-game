@@ -1,15 +1,13 @@
 What's new?
 ===========
 
-Prototype 4+dev7
+Prototype 4+dev8
 ----------------
 
-- MacOS X version!
-- Fixed zone mechanics
+- Fixed zone mechanics and demo recording
+- Nicer UI
 - Changed default key-bindings: "t" for chat, "shift t" for team chat.
-- New game types:
-	- Team Drag Race
-	- mEthMatch
+- New game type: ROTC: mEthMatch
 - New discs:
    - Explosive Disc
    - Slasher Disc
@@ -19,12 +17,13 @@ Prototype 4+dev7
   - V-AMP: Converts the damage a CAT does into health.
   - Anchor: Stabilizes a CAT's position when close to the ground.
   - Stabilizer: Like anchor, but always 100% active.
-  - Permaboard: Permanently active etherboard.
-- Fixed demo recording
-- Improved disc target tracking a little
 - Revert influence of the shooter's momentum on the battle rifle's 
   projectiles' trajectory back to the way it was in prototype 3.
-- Slightly less ugly UI
+- Improved disc target tracking a little
+- Although functionally unchanged, the "damage buffer" is now
+  presented more like a classic energy shield.
+- Tweaked battle rifle projectile bounce sound and visuals.
+- Mission Editor: Ignore locked or hidden objects when ray-casting.
 - Bugfixes
 
 

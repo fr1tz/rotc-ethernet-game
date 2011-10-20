@@ -5,9 +5,12 @@
 
 function OptControlsWindow::onWake(%this)
 {
-    OptControlsMouseSensitivity.setValue($Pref::Input::MouseSensitivity);
-    OptControlsMouseSensitivityNum.setValue($Pref::Input::MouseSensitivity);
-    OptControlsMouseInvertYAxis.setValue($Pref::Input::InvertMouse);
+   if(OptControlsWindow.zMeaning $= "")
+      OptControlsWindow.zMeaning = 1;
+
+   OptControlsMouseSensitivity.setValue($Pref::Input::MouseSensitivity);
+   OptControlsMouseSensitivityNum.setValue($Pref::Input::MouseSensitivity);
+   OptControlsMouseInvertYAxis.setValue($Pref::Input::InvertMouse);
 }
 
 function OptControlsWindow::onSleep(%this)
@@ -18,6 +21,15 @@ function OptControlsWindow::onSleep(%this)
 
 function OptControlsWindow::onAddedAsWindow(%this)
 {
+   OptControlsMeaning.clear();
+	OptControlsMeaning.add("Universal", 0);
+	OptControlsMeaning.add("ROTC: Ethernet", 1);
+	OptControlsMeaning.setSelected(OptControlsWindow.zMeaning);
+}
+
+function OptControlsMeaning::onSelect( %this, %id, %text )
+{
+   OptControlsWindow.zMeaning = %id;
 	OptRemapList.fillList();
 }
 
@@ -89,8 +101,11 @@ function getMapDisplayName( %device, %action )
 
 function buildFullMapString( %index )
 {
-	%name		 = $RemapName[%index];
-	%cmd		  = $RemapCmd[%index];
+	%name = getField($RemapName[%index], OptControlsWindow.zMeaning);
+   if(%name $= "") %name = getField($RemapName[%index], 0);
+   if(%name $= "-") return "";
+
+	%cmd	= $RemapCmd[%index];
 
 	%temp = moveMap.getBinding( %cmd );
 	%device = getField( %temp, 0 );
@@ -108,8 +123,11 @@ function OptRemapList::fillList( %this )
 	%this.clear();
 	for ( %i = 1; %i < $RemapCount; %i++ )
 	{
-		if($RemapName[%i] !$= "")
-			%this.addRow( %i, buildFullMapString( %i ) );
+		if($RemapName[%i] $= "")
+         continue;
+      %mapString =  buildFullMapString(%i);
+      if(%mapString !$= "")
+			%this.addRow(%i, %mapString);
 	}
 }
 

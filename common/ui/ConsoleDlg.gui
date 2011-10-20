@@ -26,7 +26,7 @@ new GuiControl(ConsoleDlg) {
 		resizeWidth = "1";
 		resizeHeight = "1";
 		canMove = "1";
-		canClose = "1";
+		canClose = "0";
 		canMinimize = "0";
 		canMaximize = "1";
 		MinSize = "500 300";
@@ -36,8 +36,8 @@ new GuiControl(ConsoleDlg) {
 			profile = "GuiScrollProfile";
 			horizSizing = "width";
 			vertSizing = "height";
-			position = "3 36";
-			extent = "494 246";
+			position = "13 36";
+			extent = "474 237";
 			minExtent = "8 2";
 			visible = "1";
 			willFirstRespond = "1";
@@ -57,8 +57,8 @@ new GuiControl(ConsoleDlg) {
 			profile = "GuiTextEditProfile";
 			horizSizing = "width";
 			vertSizing = "top";
-			position = "3 278";
-			extent = "494 18";
+			position = "13 274";
+			extent = "474 18";
 			minExtent = "8 2";
 			visible = "1";
 			altCommand = "ConsoleEntry::eval();";
@@ -73,8 +73,8 @@ new GuiControl(ConsoleDlg) {
 			profile = "GuiPaneProfile";
 			horizSizing = "width";
 			vertSizing = "bottom";
-			position = "3 22";
-			extent = "474 85";
+			position = "13 22";
+			extent = "464 85";
 			minExtent = "474 10";
 			visible = "1";
 			caption = "No script compilation errors occured.";

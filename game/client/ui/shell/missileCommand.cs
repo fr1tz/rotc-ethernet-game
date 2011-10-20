@@ -3,6 +3,14 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
+function MissileCommandWindow::onSleep(%this)
+{
+	if(!MissileCommand.isPaused())
+		MissileCommand.togglePause();
+}
+
+//------------------------------------------------------------------------------
+
 function MissileCommand::incScore(%this,%value)
 {
 	%this.score += %value;

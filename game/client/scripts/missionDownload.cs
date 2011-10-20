@@ -114,7 +114,6 @@ function onPhase3Progress(%subphase_name, %progress)
 
 function onPhase3Complete()
 {
-	LoadingProgressTxt.setValue(replaceBindVars("Loading done, press @bind01 to play."));
 	LoadingProgress.setValue(0);
 	$lightingMission = false;
 }

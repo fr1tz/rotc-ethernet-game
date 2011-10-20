@@ -142,8 +142,8 @@ function EditorGui::init(%this)
 	EditorMenuBar.addMenuItem("File", "-", 0);
 	EditorMenuBar.addMenuItem("File", "Export Terraform Bitmap...", 5);
 	EditorMenuBar.addMenuItem("File", "-", 0);
-	EditorMenuBar.addMenuItem("File", "Toggle Map Editor", 7, "F11");
-	EditorMenuBar.addMenuItem("File", "Quit", 8);
+	EditorMenuBar.addMenuItem("File", "Toggle Mission Editor", 7, "F11");
+	//EditorMenuBar.addMenuItem("File", "Quit", 8);
 
 	EditorMenuBar.addMenu("Edit", 1);
 	EditorMenuBar.addMenuItem("Edit", "Undo", 1, "Ctrl Z");
@@ -545,7 +545,7 @@ function EditorMenuBar::onFileMenuItemSelect(%this, %itemId, %item)
 			Heightfield::import();
 		case "Export Terraform Bitmap...":
 			Heightfield::saveBitmap("");
-		case "Toggle Map Editor":
+		case "Toggle Mission Editor":
 			Editor.close("Hud");
 		case "Quit":
 			EditorQuitMission();
@@ -3053,7 +3053,7 @@ function Editor::open(%this)
 	// prevent the mission editor from opening while the GuiEditor is open.
 	if(Canvas.getContent() == GuiEditorGui.getId())
 		return;
-
+	showShellDlg(false);
 	Canvas.setContent(EditorGui);
 }
 
