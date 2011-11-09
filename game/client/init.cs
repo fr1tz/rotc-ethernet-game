@@ -67,6 +67,7 @@ function initClient()
 	exec("./ui/init.cs");
 
 	// execute the game client scripts
+	exec("./scripts/cmds.cs");
 	exec("./scripts/client.cs");
 	exec("./scripts/missionDownload.cs");
 	exec("./scripts/serverConnection.cs");

@@ -357,6 +357,36 @@ new GameTSCtrl(HUD) {
       hovertime = "1000";
       maxLength = "1024";
    };
+   new GuiCrossHairHud(Crosshair) {
+      canSaveDynamicFields = "0";
+      Profile = "HudDefaultProfile";
+      HorizSizing = "width";
+      VertSizing = "height";
+      Position = "0 0";
+      Extent = "640 480";
+      MinExtent = "8 8";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      wrap = "0";
+      drawDamage = "0";
+      damageRect = "100 10";
+      damageOffset = "0 20";
+   };   
+   new GuiAdditiveBitmapCtrl(CrosshairStatic) {
+      canSaveDynamicFields = "0";
+      Profile = "HudDefaultProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      Position = "600 340";
+      Extent = "40 40";
+      MinExtent = "8 2";
+      canSave = "1";
+      Visible = "0";
+      hovertime = "1000";
+      bitmap = "./pixmaps/energy_icon.png";
+      wrap = "0";
+   };
    new GuiBackgroundCtrl() {
       canSaveDynamicFields = "0";
       Profile = "GuiDefaultProfile";
@@ -448,22 +478,6 @@ new GameTSCtrl(HUD) {
          Visible = "1";
          hovertime = "1000";
          maxLength = "1024";
-      };
-      new GuiCrossHairHud(Crosshair) {
-         canSaveDynamicFields = "0";
-         Profile = "HudDefaultProfile";
-         HorizSizing = "center";
-         VertSizing = "center";
-         Position = "96 96";
-         Extent = "128 128";
-         MinExtent = "8 8";
-         canSave = "1";
-         Visible = "1";
-         hovertime = "1000";
-         wrap = "0";
-         drawDamage = "0";
-         damageRect = "100 10";
-         damageOffset = "0 20";
       };
       new GuiDamageBufferHud(DamageBufferMeter) {
          canSaveDynamicFields = "0";
@@ -567,7 +581,7 @@ new GameTSCtrl(HUD) {
       HorizSizing = "relative";
       VertSizing = "center";
       Position = "0 100";
-      Extent = "640 280";
+      Extent = "640 480";
       MinExtent = "8 2";
       canSave = "1";
       Visible = "1";
@@ -577,10 +591,10 @@ new GameTSCtrl(HUD) {
          canSaveDynamicFields = "0";
          Profile = "HudDefaultProfile";
          HorizSizing = "right";
-         VertSizing = "bottom";
+         VertSizing = "height";
          Position = "50 0";
-         Extent = "110 14";
-         MinExtent = "8 2";
+         Extent = "590 0";
+         MinExtent = "0 0";
          canSave = "1";
          Visible = "1";
          hovertime = "1000";
@@ -592,10 +606,10 @@ new GameTSCtrl(HUD) {
          canSaveDynamicFields = "0";
          Profile = "HudDefaultProfile";
          HorizSizing = "left";
-         VertSizing = "bottom";
-         Position = "480 0";
-         Extent = "110 14";
-         MinExtent = "8 2";
+         VertSizing = "height";
+         Position = "0 0";
+         Extent = "590 0";
+         MinExtent = "0 0";
          canSave = "1";
          Visible = "1";
          hovertime = "1000";
@@ -609,8 +623,8 @@ new GameTSCtrl(HUD) {
       Profile = "GuiMLTextProfile";
       HorizSizing = "center";
       VertSizing = "bottom";
-      Position = "180 0";
-      Extent = "280 110";
+      Position = "0 0";
+      Extent = "640 480";
       MinExtent = "280 110";
       canSave = "1";
       Visible = "1";

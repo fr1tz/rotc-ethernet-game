@@ -257,7 +257,7 @@ new GuiControl(OptGraphicsWindowForEditing) {
          Visible = "1";
          Command = "OptGraphicsWindowUpdateTrails();";
          hovertime = "1000";
-         range = "0 25";
+         range = "0 5";
          ticks = "25";
          value = "0";
       };

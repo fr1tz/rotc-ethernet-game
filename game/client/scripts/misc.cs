@@ -93,12 +93,6 @@ function replaceBindVars(%text)
 // weapons stuff...
 //-----------------------------------------------------------------------------
 
-function clientCmdSetCrosshair(%crosshair)
-{
-// TODO: I think this is not needed anymore - mag
-	//Crosshair.setBitmap("base/client/ui/hud/pixmaps/crosshairs/" @ %crosshair);
-}
-
 //-----------------------------------------------------------------------------
 // transform stuff...
 //-----------------------------------------------------------------------------

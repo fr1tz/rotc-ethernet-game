@@ -222,4 +222,71 @@ function Hud::setColor(%this, %dark, %light)
 	HudMediumTextProfile.fontColor = %light SPC "200";
 }
 
+function Hud::setCrosshair(%this, %option, %arg1, %arg2, %arg3, %arg4, %arg5)
+{
+   error(%option SPC %arg1 SPC %arg2 SPC %arg3 SPC %arg4 SPC %arg5);
+   if(%option == 0)
+   {
+      CrosshairStatic.setVisible(false);
+      CrosshairStatic.setBitmap("");
+      Crosshair.setVisible(false);
+      Crosshair.drawCircle = false;
+      Crosshair.drawCross  = false;
+      Crosshair.drawSquare = false;
+      Crosshair.drawBitmap = false;
+      Crosshair.circleSegments = 36;
+      Crosshair.circleLineWidth = 2;
+      Crosshair.circleAngle = 0;
+      Crosshair.crossLineWidth = 2;
+      Crosshair.crossLineLength = 100;
+      Crosshair.crossParts = 15;
+      Crosshair.setBitmap("");
+   }
+   else if(%option == 1)
+   {
+      Crosshair.setVisible(true);
+      if(CrosshairStatic.bitmap !$= "")
+         CrosshairStatic.setVisible(true);
+   }
+   else if(%option == 2)
+   {
+      Crosshair.drawCircle = true;
+      if(%arg1 !$= "") Crosshair.circleLineWidth = %arg1;
+      if(%arg2 !$= "") Crosshair.circleSegments  = %arg2;
+      if(%arg3 !$= "") Crosshair.circleAngle  = %arg3;
+   }
+   else if(%option == 3)
+   {
+      Crosshair.drawCross = true;
+      if(%arg1 !$= "") Crosshair.crossLineWidth = %arg1;
+      if(%arg2 !$= "") Crosshair.crossLineLength = %arg2;
+      if(%arg3 !$= "") Crosshair.crossParts = %arg3;
+   }
+   else if(%option == 4)
+   {
+      // reserved for box stuff
+   }
+   else if(%option == 5)
+   {
+      Crosshair.drawBitmap = true;
+      if(getSubStr(%arg1, 0, 2) $= "./")
+         Crosshair.setBitmap("share/hud/" @ %arg1);
+      else
+         Crosshair.setBitmap(%arg1);
+   }
+   else if(%option == 6)
+   {
+      if(getSubStr(%arg1, 0, 2) $= "./")
+         %bmp = "share/hud/" @ %arg1;
+      else
+         %bmp = %arg1;
+      %width = %arg2;
+      %height = %arg2;
+      if(%arg3 !$= "")
+         %height = %arg3;
+      CrosshairStatic.setBitmap(%bmp);
+      CrosshairStatic.setExtent(%width, %height);
+   }
+}
+
 
