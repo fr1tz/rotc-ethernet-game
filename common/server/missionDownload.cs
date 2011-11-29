@@ -15,8 +15,10 @@
 
 //--------------------------------------------------------------------------
 // Loading Phases:
-// Phase 1: Transmit Datablocks
-//			 Transmit targets
+// Phase 0: Send Cookie requests
+// Phase 1: Transmit Material Mappings
+//          Transmit Datablocks
+//	         Transmit targets
 // Phase 2: Transmit Ghost Objects
 // Phase 3: Start Game
 //
@@ -36,14 +38,24 @@ function GameConnection::loadMission(%this)
 	}
 	else
 	{
-		commandToClient(%this, 'MissionStartPhase1', $missionSequence,
-			$Server::MissionEnvironmentFile);
-		
+		echo("*** Sending cookie requests to client.");
+
+      if(isObject(%this.cookies))
+         %this.cookies.delete();
+      %this.cookies = new Array();
+      %this.prepareCookies(%this.cookies);
+      for(%i = 0; %i < %this.cookies.count(); %i++)
+      {
+         //error("Request for" SPC %this.cookies.getKey(%i));
+         commandToClient(%this, 'CookieRequest', %this.cookies.getKey(%i));
+      }
+
 		echo("*** Sending mission load to client: " @ $Server::MissionFile);
 
-		%this.onClientLoadMission();
+		commandToClient(%this, 'MissionStartPhase1', $missionSequence,
+			$Server::MissionEnvironmentFile);
 
-		sendMaterialMappingsToClient(%this);
+		%this.onClientLoadMission();
 	}
 }
 
@@ -56,8 +68,15 @@ function serverCmdMissionStartPhase1Ack(%client, %seq)
 		return;
 	%client.currentPhase = 1;
 
+   // Let the game know the cookies are ready
+   %client.onCookiesReceived(%client.cookies);
+   %client.cookies.delete();
+
 	// Start with the CRC
 	%client.setMissionCRC( $missionCRC );
+
+   // Send the material mappings
+	sendMaterialMappingsToClient(%this);
 
 	// Send over the datablocks...
 	// OnDataBlocksDone will get called when have confirmation

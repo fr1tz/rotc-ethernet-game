@@ -14,7 +14,8 @@
 // calls so the game scripts can update the game's GUI.
 //
 // Loading Phases:
-// Phase 1: Download Datablocks
+// Phase 0: Answer cookie requests
+// Phase 1: Download Material Mappings, Datablocks & Targets
 // Phase 2: Download Ghost Objects
 // Phase 3: TacticalZones grid computation / Scene Lighting
 //----------------------------------------------------------------------------
@@ -29,7 +30,7 @@ function clientCmdMissionStartPhase1(%seq, %missionEnvFile, %musicTrack)
 
 	// These need to come after the cls.
 	echo ("*** New Mission: " @ %missionEnvFile);
-	echo ("*** Phase 1: Download Datablocks & Targets");
+	echo ("*** Phase 1: Download Material Mappings, Datablocks & Targets");
 	onMissionDownloadPhase1(%missionEnvFile, %musicTrack);
 	commandToServer('MissionStartPhase1Ack', %seq);
 }

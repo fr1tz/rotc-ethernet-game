@@ -18,5 +18,6 @@ function clientCmdCookie(%name, %value)
 function clientCmdCookieRequest(%name)
 {
 	%value = $Pref::Cookie_[%name];
-	commandToServer('Cookie', %name, %value);
+   if(%value !$= "")
+   	commandToServer('Cookie', %name, %value);
 }

@@ -33,12 +33,27 @@ function GameConnection::control(%this, %shapebase)
 //------------------------------------------------------------------------------
 
 // *** callback function: called by script code in "common"
-function GameConnection::onReadyToAskForCookies(%this)
+function GameConnection::prepareCookies(%this, %cookies)
 {
-	%this.requestCookie("ROTC_HudColor");
-	%this.requestCookie("ROTC_HudMenuTMode");
-	%this.requestCookie("ROTC_Handicap");
+   %cookies.push_back("ROTC_HudColor", "");
+   %cookies.push_back("ROTC_HudMenuTMode", "");
+   %cookies.push_back("ROTC_Handicap", "");
+	for(%i = 1; %i <= 10; %i++)
+		%cookies.push_back("ROTC_EthernetLoadout" SPC %i, "");
 }
+
+// *** callback function: called by script code in "common"
+function GameConnection::onCookiesReceived(%this, %cookies)
+{
+	%this.setHandicap(arrayGetValue(%cookies, "ROTC_Handicap"));
+	%this.hudColor = arrayGetValue(%cookies, "ROTC_HudColor");
+	%this.initialTopHudMenu = arrayGetValue(%cookies, "ROTC_HudMenuTMode");
+   error("yay ->" SPC %this.initialTopHudMenu);
+	if(%this.initialTopHudMenu $= "")
+		%this.initialTopHudMenu = "newbiehelp";
+}
+
+//------------------------------------------------------------------------------
 
 // *** callback function: called by script code in "common"
 function GameConnection::onClientLoadMission(%this)
@@ -56,9 +71,6 @@ function GameConnection::onClientEnterGame(%this)
 	%this.ingame = true;
 
 	commandToClient(%this, 'SyncClock', $Sim::Time - $Game::StartTime);
-
-	// Handicap
-	%this.setHandicap(%this.getCookie("ROTC_Handicap"));
 	
 	// ScriptObject used to store raw statistics...
 	%this.stats                    = new ScriptObject();
@@ -76,9 +88,6 @@ function GameConnection::onClientEnterGame(%this)
 	// "simple control (tm)" info...
 	%this.simpleControl = new Array();
 	MissionCleanup.add(%this.simpleControl);
-	
-	// HUD color...
-	%this.hudColor = %this.getCookie("ROTC_HudColor");
 
 	// HUD Backgrounds...
 	for(%i = 1; %i <= 3; %i++)
@@ -102,11 +111,8 @@ function GameConnection::onClientEnterGame(%this)
 	%this.setHudMenuR("*", " ", 1, 0);
 	%this.setHudMenuT("*", " ", 1, 0);
 	
-	// Initial mode for Top HUD Menu...
-	%this.topHudMenu = %this.getCookie("ROTC_HudMenuTMode");
-	if(%this.topHudMenu $= "")
-		%this.topHudMenu = "newbiehelp";
-	%this.initialTopHudMenu = %this.topHudMenu;
+	// Top HUD Menu...
+	%this.topHudMenu = %this.initialTopHudMenu;
 	%this.updateTopHudMenuThread();
  	
 	//
@@ -345,7 +351,7 @@ function GameConnection::displayInventory(%this, %obj)
 	%iconname[$CatEquipment::Grenade] = "grenade";
 	%iconname[$CatEquipment::Bounce] = "bounce";
 	%iconname[$CatEquipment::Etherboard] = "etherboard";
-	%iconname[$CatEquipment::Regeneration] = "regen";	
+	%iconname[$CatEquipment::Regeneration] = "regen";
 
 	%fixed = false;
 	if($Game::GameType == $Game::mEthMatch)
@@ -363,7 +369,7 @@ function GameConnection::displayInventory(%this, %obj)
 		for(%i = 1; %i <= 3; %i++)
 			%icon[%i] = %iconname[%this.loadout[%i]];
 	
-		%this.setHudMenuL(0, "<font:NovaSquare:12>", 1, 1);			
+		%this.setHudMenuL(0, "<font:NovaSquare:12>" @ %margin, 1, 1);			
 		
 		%this.setHudMenuL(1, "Slot #1:\n", 1, 1);
 		%this.setHudMenuL(2, "<bitmap:share/hud/rotc/icon." @ %icon[1] @ ".50x15>", 1, 1);

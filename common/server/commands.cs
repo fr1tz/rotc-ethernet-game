@@ -61,6 +61,8 @@ function serverCmdSimpleCommand(%client, %cmd, %arg)
 
 function serverCmdCookie(%client, %name, %value)
 {
-	%client.cookie[%name] = %value;
+   //error("serverCmdCookie:" SPC %name SPC %value);
+   if(!isObject(%client.cookies)) return;
+   arrayChangeElement(%client.cookies, %name, %value);
 }
 

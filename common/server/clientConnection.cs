@@ -120,9 +120,6 @@ function GameConnection::onConnect( %client,
 		%client.isAdmin, 
 		%client.isSuperAdmin);
 		
-	// Give the game code a chance to ask for cookies...
-	%client.onReadyToAskForCookies();
-
 	// If the mission is running, go ahead download it to the client
 	if ($missionRunning)
 		%client.loadMission();
@@ -186,6 +183,9 @@ function GameConnection::onDrop(%client, %reason)
 
 	removeTaggedString(%client.name);
 	echo("CDROP: " @ %client @ " " @ %client.getAddress());
+
+   if(isObject(%client.cookies))
+      %client.cookies.delete();
 	
 	if(%client.countedAsPlayer)
 		$Server::PlayerCount--;
@@ -232,11 +232,4 @@ function GameConnection::requestCookie(%this, %name)
 {
 	commandToClient(%this, 'CookieRequest', %name);
 }
-
-function GameConnection::getCookie(%this, %name)
-{
-	return %this.cookie[%name];
-}
-
-
 
