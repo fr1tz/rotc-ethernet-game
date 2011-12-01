@@ -76,7 +76,7 @@ function serverCmdMissionStartPhase1Ack(%client, %seq)
 	%client.setMissionCRC( $missionCRC );
 
    // Send the material mappings
-	sendMaterialMappingsToClient(%this);
+	sendMaterialMappingsToClient(%client);
 
 	// Send over the datablocks...
 	// OnDataBlocksDone will get called when have confirmation

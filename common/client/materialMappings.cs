@@ -7,10 +7,7 @@
 // Client side of the scripted material mapping system.
 //------------------------------------------------------------------------------
 
-addMessageCallback( 'MsgMaterialMapping', handleMaterialMappingMessage );
-
-function handleMaterialMappingMessage(%msgType, %msgString,
-	%material, %sound, %color, %detail, %envmap)
+function clientCmdMaterialMapping(%material, %sound, %color, %detail, %envmap)
 {
 	addMaterialMapping(
 		%material,

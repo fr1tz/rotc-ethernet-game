@@ -42,7 +42,7 @@ function sendMaterialMappingsToClient(%client)
 	for( %i = 0; %i < $MaterialMappings.count(); %i++ )
 	{
 		%obj = $MaterialMappings.getValue(%i);
-		messageClient( %client, 'MsgMaterialMapping', "",
+		commandToClient( %client, 'MaterialMapping',
 			%obj.material, %obj.sound, %obj.color, %obj.detail, %obj.envmap);
 	}
 }
