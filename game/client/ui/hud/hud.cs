@@ -220,11 +220,16 @@ function Hud::setColor(%this, %dark, %light)
 	HudWarningFlashProfile.fontColor = %dark SPC "255";
 	HudMediumTextProfile.fillColor = %dark SPC "200";
 	HudMediumTextProfile.fontColor = %light SPC "200";
+
+   HudMenuT.forceReflow();
+   HudMenuL.forceReflow();
+   HudMenuR.forceReflow();
+   HudMenuC.forceReflow();
 }
 
 function Hud::setCrosshair(%this, %option, %arg1, %arg2, %arg3, %arg4, %arg5)
 {
-   error(%option SPC %arg1 SPC %arg2 SPC %arg3 SPC %arg4 SPC %arg5);
+   //error(%option SPC %arg1 SPC %arg2 SPC %arg3 SPC %arg4 SPC %arg5);
    if(%option == 0)
    {
       CrosshairStatic.setVisible(false);
