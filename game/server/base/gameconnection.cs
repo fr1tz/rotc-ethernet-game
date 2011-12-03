@@ -110,6 +110,7 @@ function GameConnection::onClientEnterGame(%this)
 	%this.setHudMenuL("*", " ", 1, 0);
 	%this.setHudMenuR("*", " ", 1, 0);
 	%this.setHudMenuT("*", " ", 1, 0);
+	%this.setHudMenuC("*", " ", 1, 0);
 	
 	// Top HUD Menu...
 	%this.topHudMenu = %this.initialTopHudMenu;
@@ -1385,6 +1386,43 @@ function GameConnection::setHudMenuT(%this, %slot, %text, %repetitions, %visible
 	//error("Sending 'MsgHudMenuT' to" SPC %this SPC ": [" SPC %slot SPC "][" SPC %text SPC "][" SPC %repetitions SPC "][" SPC %visible SPC "]");
 	messageClient(%this, 'MsgHudMenuT', "", %slot, %text, %repetitions, %visible);
 }
+
+function GameConnection::setHudMenuC(%this, %slot, %text, %repetitions, %visible)
+{
+	if(%slot $= "*")
+	{
+		for(%i = 0; %i < 10; %i++)
+		{
+			if(%text !$= "") %this.hudMenuCText[%i] = %text;
+			if(%repetitions !$= "") %this.hudMenuCRepetitions[%i] = %repetitions;
+			if(%visible !$= "") %this.hudMenuCVisible[%i] = %visible;
+		}
+	}
+	else
+	{
+		if(%this.hudMenuCText[%slot] $= %text)
+			%text = "";
+		else
+			%this.hudMenuCText[%slot] = %text;
+
+		if(%this.hudMenuCRepetitions[%slot] $= %repetitions)
+			%repetitions= "";
+		else
+			%this.hudMenuCRepetitions[%slot] = %repetitions;
+
+		if(%this.hudMenuCVisible[%slot] $= %visible)
+			%visible = "";
+		else
+			%this.hudMenuCVisible[%slot] = %visible;
+
+		if(%text $= "" && %repetitions $= "" && %visible $= "")
+			return;
+	}
+
+	//error("Sending 'MsgHudMenuC' to" SPC %this SPC ": [" SPC %slot SPC "][" SPC %text SPC "][" SPC %repetitions SPC "][" SPC %visible SPC "]");
+	messageClient(%this, 'MsgHudMenuC', "", %slot, %text, %repetitions, %visible);
+}
+
 
 //-----------------------------------------------------------------------------
 
