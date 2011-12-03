@@ -96,6 +96,11 @@ new GuiControlProfile(GuiButtonProfile : GuiDefaultProfile)
 	bitmap = "./pixmaps/mg_button6";
 };
 
+new GuiControlProfile(GuiTitleButtonProfile : GuiButtonProfile)
+{
+	bitmap = "./pixmaps/mg_button6title";
+};
+
 new GuiControlProfile(GuiRootMenuButtonProfile : GuiDefaultProfile)
 {
 	opaque = false;
@@ -323,10 +328,22 @@ new GuiControlProfile(GuiScrollProfile : GuiDefaultProfile)
 {
 	opaque = false;
 	border = 3;
-	borderThickness = 2;
+	borderThickness = 3;
 	bitmap = "./pixmaps/simpleScrollTransparent";
 	hasBitmapArray = true;
 	fillColor = "0 0 0 0";
+};
+
+new GuiControlProfile(MissionWindowQuickbarScrollProfile : GuiScrollProfile)
+{
+	border = 0;
+	borderThickness = 0;
+};
+
+new GuiControlProfile(MissionWindowMenuScrollProfile : GuiScrollProfile)
+{
+	border = 1;
+	borderThickness = 5;
 };
 
 new GuiControlProfile(GuiCheckBoxProfile : GuiDefaultProfile)

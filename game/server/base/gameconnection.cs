@@ -970,20 +970,20 @@ function GameConnection::setLoadingBarText(%this, %text)
    %this.loadingBarText = %text;
 }
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 function GameConnection::beginQuickbarText(%this, %update)
 {
 	commandToClient(%this, 'BeginQuickbarTxt', %update);
 }
 
-function GameConnection::addQuickbarText(%this, %text)
+function GameConnection::addQuickbarText(%this, %text, %layerMask)
 {
 	%l = strlen(%text); %n = 0;
 	while(%n < %l)
 	{
 		%chunk = getSubStr(%text, %n, 255);
-		commandToClient(%this, 'AddQuickbarTxt', %chunk);
+		commandToClient(%this, 'AddQuickbarTxt', %chunk, %layerMask);
 		%n += 255;
 	}	
 }
@@ -993,18 +993,20 @@ function GameConnection::endQuickbarText(%this)
 	commandToClient(%this, 'EndQuickbarTxt');
 }
 
+//------------------------------------------------------------------------------
+
 function GameConnection::beginMenuText(%this, %update)
 {
 	commandToClient(%this, 'BeginMenuTxt', %update);
 }
 
-function GameConnection::addMenuText(%this, %text)
+function GameConnection::addMenuText(%this, %text, %layerMask)
 {
 	%l = strlen(%text); %n = 0;
 	while(%n < %l)
 	{
 		%chunk = getSubStr(%text, %n, 255);
-		commandToClient(%this, 'AddMenuTxt', %chunk);
+		commandToClient(%this, 'AddMenuTxt', %chunk, %layerMask);
 		%n += 255;
 	}	
 }
