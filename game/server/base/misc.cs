@@ -34,6 +34,13 @@ function fxLightData::create(%data)
 	return %obj;
 }
 
+datablock AudioProfile(BipMessageSound)
+{
+	filename = "share/sounds/rotc/damage1.wav";
+	description = AudioCritical2D;
+	preload = true;
+};
+
 datablock AudioProfile(BeepMessageSound)
 {
 	filename = "share/sounds/rotc/denied1.wav";

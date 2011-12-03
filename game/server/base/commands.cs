@@ -59,8 +59,11 @@ function serverCmdPlayerAction(%client, %nr, %val)
 	}
 	else if(%nr == 17 && %val)
 	{		
-		if(%client.hasBounce)
-			deployRepel3(%player);
+		%client.getControlObject().useWeapon(-17);
+	}
+	else if(%nr >= 21 && %nr <= 30 && %val)
+	{
+		%client.getControlObject().useWeapon(%nr-20);
 	}
 	else if(%nr == 39 && %val)
 	{		
@@ -734,4 +737,5 @@ function serverCmdSetSetting(%client, %str)
 
 
 // ---------------------------------------------------------
+
 

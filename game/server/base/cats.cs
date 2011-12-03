@@ -60,6 +60,13 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 		return;
 	}
 
+   if(%nr == -17)
+   {
+		if(%client.hasBounce)
+			deployRepel3(%obj);
+      return;
+   }
+
 	// discs...
 	if($Game::GameType == $Game::Ethernet)
 	{
