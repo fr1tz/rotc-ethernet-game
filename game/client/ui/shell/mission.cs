@@ -42,7 +42,7 @@ function clientCmdAddQuickbarTxt(%text, %layerMask)
    if(%layerMask & 4)
    	IngameQuickbarText4.zText = IngameQuickbarText4.zText @ %text;
    if(%layerMask & 8)
-   	IngameQuickbarText4.zText = IngameQuickbarText8.zText @ %text;
+   	IngameQuickbarText8.zText = IngameQuickbarText8.zText @ %text;
 }
 
 function clientCmdEndQuickbarTxt()
@@ -114,7 +114,7 @@ function clientCmdAddMenuTxt(%text, %layerMask)
    if(%layerMask & 4)
    	IngameMenuText4.zText = IngameMenuText4.zText @ %text;
    if(%layerMask & 8)
-   	IngameMenuText4.zText = IngameMenuText8.zText @ %text;
+   	IngameMenuText8.zText = IngameMenuText8.zText @ %text;
 }
 
 function clientCmdEndMenuTxt()
