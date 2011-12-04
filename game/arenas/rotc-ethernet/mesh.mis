@@ -1,4 +1,2 @@
-$MissionInfo::Name       = "mesh";
-$MissionInfo::Type       = "ROTC: Ethernet" SPC "(" @ $GameVersionString @ ")";
-$MissionInfo::Desc       = "Capture all the opposing team's zones to win.\n";
-$MissionInfo::InitScript = "game/server/missions/rotc-eth.cs";
+exec("./common.cs");
+$MissionInfo::Name = "/env/eth/mesh";
