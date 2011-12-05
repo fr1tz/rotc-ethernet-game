@@ -22,7 +22,7 @@ new GuiControl(JoinServerWindowForEditing) {
       HorizSizing = "center";
       VertSizing = "center";
       position = "60 18";
-      Extent = "520 443";
+      Extent = "560 443";
       MinExtent = "500 350";
       canSave = "1";
       Visible = "1";
@@ -42,7 +42,7 @@ new GuiControl(JoinServerWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "left";
          VertSizing = "top";
-         position = "287 409";
+         position = "327 409";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -58,7 +58,7 @@ new GuiControl(JoinServerWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "left";
          VertSizing = "bottom";
-         position = "476 5";
+         position = "516 5";
          Extent = "39 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -74,8 +74,8 @@ new GuiControl(JoinServerWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "10 30";
-         Extent = "110 23";
+         position = "20 30";
+         Extent = "110 40";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -90,8 +90,8 @@ new GuiControl(JoinServerWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "123 30";
-         Extent = "110 23";
+         position = "133 30";
+         Extent = "110 40";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -106,7 +106,7 @@ new GuiControl(JoinServerWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "left";
          VertSizing = "top";
-         position = "401 409";
+         position = "441 409";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -122,8 +122,8 @@ new GuiControl(JoinServerWindowForEditing) {
          Profile = "GuiScrollProfile";
          HorizSizing = "width";
          VertSizing = "bottom";
-         position = "13 77";
-         Extent = "498 18";
+         position = "13 97";
+         Extent = "538 18";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -147,7 +147,7 @@ new GuiControl(JoinServerWindowForEditing) {
             hovertime = "1000";
             enumerate = "0";
             resizeCell = "1";
-            columns = "0 300 350 400 9999";
+            columns = "0 165 200 240 420";
             fitParentWidth = "0";
             clipColumnText = "0";
          };
@@ -157,8 +157,8 @@ new GuiControl(JoinServerWindowForEditing) {
          Profile = "GuiScrollProfile";
          HorizSizing = "width";
          VertSizing = "height";
-         position = "13 103";
-         Extent = "498 197";
+         position = "13 123";
+         Extent = "538 184";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -174,7 +174,7 @@ new GuiControl(JoinServerWindowForEditing) {
             Profile = "GuiTextArrayProfile";
             HorizSizing = "right";
             VertSizing = "bottom";
-            position = "2 2";
+            position = "3 3";
             Extent = "16 16";
             MinExtent = "16 16";
             canSave = "1";
@@ -182,7 +182,7 @@ new GuiControl(JoinServerWindowForEditing) {
             hovertime = "1000";
             enumerate = "0";
             resizeCell = "0";
-            columns = "0 300 350 400";
+            columns = "0 165 200 240 420";
             fitParentWidth = "0";
             clipColumnText = "1";
          };
@@ -190,9 +190,9 @@ new GuiControl(JoinServerWindowForEditing) {
       new GuiTextCtrl(JS_status) {
          canSaveDynamicFields = "0";
          Profile = "GuiDefaultProfile";
-         HorizSizing = "left";
+         HorizSizing = "right";
          VertSizing = "bottom";
-         position = "374 30";
+         position = "244 39";
          Extent = "266 22";
          MinExtent = "266 14";
          canSave = "1";
@@ -261,7 +261,7 @@ new GuiControl(JoinServerWindowForEditing) {
          HorizSizing = "width";
          VertSizing = "top";
          position = "13 329";
-         Extent = "498 75";
+         Extent = "538 75";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -277,8 +277,8 @@ new GuiControl(JoinServerWindowForEditing) {
             Profile = "GuiMLTextEditProfile";
             HorizSizing = "width";
             VertSizing = "height";
-            position = "2 2";
-            Extent = "337 310";
+            position = "3 2";
+            Extent = "377 310";
             MinExtent = "245 310";
             canSave = "1";
             Visible = "1";
@@ -294,12 +294,12 @@ new GuiControl(JoinServerWindowForEditing) {
          HorizSizing = "right";
          VertSizing = "top";
          position = "13 309";
-         Extent = "93 18";
+         Extent = "55 18";
          MinExtent = "8 2";
          canSave = "1";
          Visible = "1";
          hovertime = "1000";
-         text = "Arena description:";
+         text = "Arena Info:";
          maxLength = "1024";
       };
       new GuiTextCtrl() {
@@ -307,7 +307,7 @@ new GuiControl(JoinServerWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "22 55";
+         position = "22 75";
          Extent = "386 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -321,7 +321,7 @@ new GuiControl(JoinServerWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "221 52";
+         position = "221 72";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -331,6 +331,40 @@ new GuiControl(JoinServerWindowForEditing) {
          text = "Global Player Chat";
          groupNum = "-1";
          buttonType = "PushButton";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "left";
+         VertSizing = "bottom";
+         position = "355 32";
+         Extent = "66 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Player name:";
+         maxLength = "255";
+      };
+      new GuiTextEditCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextEditProfile";
+         HorizSizing = "left";
+         VertSizing = "bottom";
+         position = "424 33";
+         Extent = "127 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Variable = "$pref::Player::Name";
+         hovertime = "1000";
+         maxLength = "30";
+         historySize = "0";
+         password = "0";
+         tabComplete = "0";
+         sinkAllKeyEvents = "0";
+         password = "0";
+         passwordMask = "*";
       };
    };
 };

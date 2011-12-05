@@ -103,7 +103,8 @@ function JoinServerWindow::onWake()
 		"Arena" TAB
 		"Ping" TAB
 		"Players" TAB
-		"Hoster" TAB
+		"   Game" TAB
+		"Environment" TAB
 		"Server Index" // <- This will never be visible
 	);
 	JS_HeaderList.setActive(false);
@@ -133,7 +134,7 @@ function JoinServerWindow::join(%this)
 
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%index = getField(JS_ServerList.getRowTextById(%id), 4);
+	%index = getField(JS_ServerList.getRowTextById(%id), 5);
 	if (setServerInfo(%index)) {
 		disconnect();
 		%conn = new GameConnection(ServerConnection);
@@ -153,7 +154,7 @@ function JoinServerWindow::refreshServer(%this)
 
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%serverindex = getField(JS_serverList.getRowTextById(%id), 4);
+	%serverindex = getField(JS_serverList.getRowTextById(%id), 5);
 	if(setServerInfo(%serverindex)) {
 		querySingleServer( $ServerInfo::Address, 0 );
 	}
@@ -186,10 +187,11 @@ function JoinServerWindow::update(%this)
 			%shortInfo = "(no summary)";
 
 		JS_ServerList.addRow(%i,
-			$ServerInfo::MissionType SPC $ServerInfo::MissionName TAB
+			$ServerInfo::Name TAB
 			$ServerInfo::Ping TAB
 			$ServerInfo::PlayerCount @ "/" @ $ServerInfo::MaxPlayers TAB
-			$ServerInfo::Name TAB
+			$ServerInfo::MissionType TAB
+         $ServerInfo::MissionName TAB
 			%i);  // ServerInfo index stored also
 	}
  
@@ -214,7 +216,7 @@ function JS_ServerList::onSelect(%this, %id, %text)
 {
 	// The server info index is stored in the row along with the
 	// rest of displayed info.
-	%serverindex = getField(JS_ServerList.getRowTextById(%id), 4);
+	%serverindex = getField(JS_ServerList.getRowTextById(%id), 5);
 	
 	if(setServerInfo(%serverindex))
 	{
