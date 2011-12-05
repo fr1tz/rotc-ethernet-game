@@ -57,6 +57,13 @@ function aiAdd(%teamid, %weaponNum)
 		else
 			%playerData = BlueInfantryCat;
 	}
+	else if($Game::GameType == $Game::Infantry)
+	{
+		if(%teamid == 1)
+			%playerData = RedInfantryCat;
+		else
+			%playerData = BlueInfantryCat;
+	}
 	else
 	{
 		if(%teamid == 1)
@@ -77,12 +84,17 @@ function aiAdd(%teamid, %weaponNum)
 	%player.setShapeName("wayne" @ %nameadd);
 	%player.setTransform(%pos);
 
-	%player.specialWeapon = %weaponNum;
-	%player.charge = 100;
+	%player.aiWeapon = %weaponNum;
+   if(%weaponNum == 3 || %weaponNum == 4)
+   	%player.aiCharge = 1100;
+   else
+   	%player.aiCharge = 100;
 
 	$aiPlayers.push_back("",%player);
 	$aiPlayersPseudoClient.weapons[0] = %weaponNum;
 	$aiPlayersPseudoClient.numWeapons = 1;
+
+	%player.useWeapon(1);
 
 	return %player;
 }
@@ -117,7 +129,6 @@ function aiStartFight() {
 	for( %i = 0; %i < $aiPlayers.count(); %i++ ) {
 		xxx_aiStartMove($aiPlayers.getValue(%i));
 		xxx_aiStartFire($aiPlayers.getValue(%i));
-		xxx_aiChooseWeapon($aiPlayers.getValue(%i));
 	}
 }
 function aiKill() {
@@ -154,20 +165,9 @@ function xxx_aiStartMove(%player)
 
 function xxx_aiStartFire(%player)
 {
-	%player.useWeapon(1);
 	%player.setImageLoaded(0,true);
 	%player.targetUpdateThread = schedule(100,%player,"xxx_aiUpdateTarget",%player);
 	%player.fireThread = schedule((getRandom(3)+1)*1000,%player,"xxx_aiFire",%player);
-}
-
-
-function xxx_aiWayneStopDeflecting()
-{
-	if( (%data = $wayne.player.getMountedImage($SLOT_WEAPON)) != 0 )
-		$wayne.player.setArmThread(%data.armThread);
-	else
-		$wayne.player.setArmThread("look");
-	$wayne.player.deflector.deactivate();
 }
 
 function xxx_aiFire(%player)
@@ -191,7 +191,7 @@ function xxx_aiFire(%player)
 		%player.setImageTrigger(0,true);
 	}
 	
-	%player.fireReleaseThread = schedule(%player.charge,%player,xxx_aiFireRelease,%player);
+	%player.fireReleaseThread = schedule(%player.aiCharge,%player,xxx_aiFireRelease,%player);
 }
 
 function xxx_aiFireRelease(%player)
@@ -246,17 +246,5 @@ function xxx_aiUpdateMove(%player)
 		%player.setMoveDestination(%dest);
 	}
 	%player.moveThread = schedule((getRandom(1)+1)*1000,%player,xxx_aiUpdateMove,%player);
-}
-
-function xxx_aiChooseWeapon(%player)
-{
-	%enemypos = %player.getAimLocation();
-	%mypos = %player.getPosition();
-	%dist = VectorDist(%mypos, %enemypos);
-	%player.charge = 1;
-
-	%player.useWeapon(1);
-
-	schedule(5000,%player,xxx_aiChooseWeapon,%player);
 }
 
