@@ -184,7 +184,7 @@ function MissionWindow::showTextInputBox(%this, %label, %text)
 
 function MissionWindow::sendInput(%this)
 {
-	commandToServer('TextInput', MissionWindowServerInputText.getText()); 
+	commandToServer('TextInput', MissionServerInputText.getText()); 
 	MissionServerInput.setVisible(false);
 }
 

@@ -65,13 +65,16 @@ function GameConnection::setLagIcon(%this, %state)
 {
 	if (%this.getAddress() $= "local")
 		return;
+
 	LagIcon.setVisible(%state $= "true");
+	MissionWindowLagIcon.setVisible(%state $= "true");
 }
 
 function GameConnection::onConnectionAccepted(%this)
 {
 	// Called on the new connection object after connect() succeeds.
 	LagIcon.setVisible(false);
+	MissionWindowLagIcon.setVisible(false);
 }
 
 function GameConnection::onConnectionTimedOut(%this)
@@ -170,6 +173,7 @@ function disconnectedCleanup()
 
 	//
 	LagIcon.setVisible(false);
+	MissionWindowLagIcon.setVisible(false);
 	PlayerListWindow.clear();
 
 	// Clear all print messages
