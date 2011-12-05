@@ -905,7 +905,7 @@ function GameConnection::updateTopHudMenuThread(%this)
 	else if(%this.topHudMenu $= "healthbalance")
 	{	
 		%this.setHudMenuT(1, "Health balance", 1, 1);
-		%this.setHudMenuT(3, "<bitmap:share/hud/rotc/spec><sbreak>", 1, 1);
+		%this.setHudMenuT(3, "<lmargin:180><bitmap:share/hud/rotc/spec><sbreak>", 1, 1);
 		%this.setHudMenuT(4, "<bitmap:share/hud/rotc/spacer.1x14>", $Server::GameStatus::HealthBalance::Spacers, 1);
 		%this.setHudMenuT(5, "<bitmap:share/hud/rotc/marker.up>", 1, 1);			
 	}
