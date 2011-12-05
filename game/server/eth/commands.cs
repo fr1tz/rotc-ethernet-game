@@ -91,6 +91,39 @@ function serverCmdTeams(%client)
 	%client.menu = "teams";
 }
 
+function serverCmdAdmin(%client, %str)
+{
+	%str = strreplace(%str, "/", " ");
+	%arg1 = getWord(%str, 0);
+	%arg2 = getWord(%str, 1);
+	%arg3 = getWord(%str, 2);
+	%arg4 = getWord(%str, 3);
+
+   if(%arg1 == 1)
+   {
+      aiAddRed(%arg2);
+   }
+   else if(%arg1 == 2)
+   {
+      aiAddBlue(%arg2);
+   }
+   else if(%arg1 == 3)
+   {
+      if(%arg2 == 1)
+         aiStartMove();
+      else if(%arg2 == 2)
+         aiStartFire();
+      else if(%arg2 == 3)
+         aiStartFight();
+      else if(%arg2 == 4)
+         aiKill();
+   }
+   else
+   {
+      %client.showAdminMenu();
+      %client.menu = "admin";
+   }
+}
 
 function serverCmdHowToPlay(%client, %page)
 {

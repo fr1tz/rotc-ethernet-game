@@ -7,4 +7,5 @@ exec("./commands.cs");
 exec("./loadout.cs");
 exec("./loadoutmenu.cs");
 exec("./teamsmenu.cs");
+exec("./adminmenu.cs");
 
