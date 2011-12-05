@@ -24,7 +24,7 @@ function GameConnection::loadDefaultLoadout(%this, %no)
          %this.loadoutCode[%no] = "477";
       default:
          %this.loadoutName[%no] = "";
-         %this.loadoutCode[%no] = "";
+         %this.loadoutCode[%no] = "216";
    }
 }
 
@@ -37,8 +37,8 @@ function GameConnection::defaultLoadout(%this)
 
 	if($Game::GameType == $Game::Ethernet)
 	{
-		%this.loadout[1] = $CatEquipment::Blaster;
-		%this.loadout[2] = $CatEquipment::BattleRifle;
+		%this.loadout[1] = $CatEquipment::BattleRifle;
+		%this.loadout[2] = $CatEquipment::Blaster;
 		%this.loadout[3] = $CatEquipment::Etherboard;
 		%this.loadout[4] = $CatEquipment::Damper;
 		%this.loadout[5] = $CatEquipment::VAMP;
@@ -242,17 +242,17 @@ function GameConnection::displayInventory(%this, %obj)
 		%slot = 2;
 		%prefix = "<bitmap:share/hud/rotc/icon.";
 		%suffix = ".50x15> ";
-		for(%i = 1; %i <= %numItems; %i++)
+		for(%i = 1; %i <= 3; %i++)
 		{
-			for(%j = 1; %j <= 3; %j++)
-			{
-				if(%this.loadout[%j] == %item[%i])
+		   for(%j = 1; %j <= %numItems; %j++)
+		   {
+				if(%this.loadout[%i] == %item[%j])
 				{
-					%icon = %iconname[%item[%i]];
+					%icon = %iconname[%item[%j]];
 					%this.setHudMenuL(%slot, %prefix @ %icon @ %suffix, 1, 1);
 					%slot++;
-				}
-			}
+		 	   }
+		   }
 		}
 		%this.setHudMenuL(%slot, "<sbreak><font:NovaSquare:14>" @
          "<bitmap:share/hud/rotc/icon.quickswitch.50x15>" @
@@ -605,209 +605,4 @@ function GameConnection::changeInventory(%this, %nr)
 }
 
 //------------------------------------------------------------------------------
-
-function GameConnection::editLoadout(%this, %str)
-{
-	error(%str);
-
-	%str = strreplace(%str, "/", " ");
-	%loadout = getWord(%str, 0);
-	%slot = getWord(%str, 1);
-	%value = getWord(%str, 2);
-
-	if(!(%loadout > 0 && %loadout <= 10)) %loadout = 1;
-
-	%y = om_init();
-	%y = %y @ om_head(%this, "Loadouts");
-
-	%y = %y @ "<just:center>Config: ";
-	for(%i = 1; %i <= 10; %i++)
-	{
-		if(%i != %loadout)
-			%y = %y @ "<a:cmd Loadout" SPC %i @ ">";
-		%y = %y @ %i;
-		if(%i != %loadout)
-			%y = %y @ "</a>";
-		%y = %y @ "   ";
-	}
-
-	%y = %y @ "<just:left>\n\n";
-	%y = %y @ "<lmargin:10><spush><font:NovaSquare:24>Config #1: Skirmisher [<a:cmd Loadout 1/n>Rename</a>]<spop>\n";
-	if(%slot $= "")
-	{
-		%code = %this.getLoadoutCode(%loadout);
-		if(%code $= "")
-		{
-			%y = %newtext @ "Please try again in a few seconds";
-		}
-		else
-		{
-			%y = %y @ "<bitmap:share/misc/help/cat.blueprint.200x500>\n";
-			%y = %y @ " Hull:\n";
-			%y = %y @ "    <bitmap:share/hud/rotc/icon.damper.20x20> Damper [<a:cmd Loadout 1/1>Info</a>] [<a:cmd Loadout 1/1>Change</a>]\n\n";
-			%y = %y @ " Head:\n";
-			%y = %y @ "    <bitmap:share/hud/rotc/icon.repeldisc.20x20> Repel Disc Launcher [Fixed]\n\n";
-			%y = %y @ "    <bitmap:share/hud/rotc/icon.explosivedisc.20x20> Explosive Disc Launcher [Fixed]\n\n";
-			%y = %y @ " Torso:\n";
-			%y = %y @ "    <bitmap:share/hud/rotc/icon.shield.20x20> Shield [Fixed]\n\n";
-			%y = %y @ "    <bitmap:share/hud/rotc/icon.barrier.20x20> Barrier [Fixed]\n\n";
-			%y = %y @ "    <bitmap:share/hud/rotc/icon.vamp.20x20> V-AMP [Fixed]\n\n";
-			%y = %y @ " Arms:\n";
-			%y = %y @ "    <bitmap:share/hud/rotc/icon.grenade.20x20> Grenade [Fixed]\n\n";
-			%y = %y @ "    <bitmap:share/hud/rotc/icon.bounce.20x20> B.O.U.N.C.E. [Fixed]\n\n";
-			%y = %y @ " Pelvis:\n";
-			%y = %y @ "    <bitmap:share/hud/rotc/icon.anchor.20x20> Anchor [Fixed]\n\n";
-			%y = %y @ " Feet:\n";
-			%y = %y @ "    <bitmap:share/hud/rotc/icon.permaboard.20x20> Jump Booster [Fixed]\n\n";
-		}
-	}
-
-	%this.menu = "loadout";
-
-	%this.beginMenuText();
-	%this.addMenuText(%y);
-	%this.endMenuText();
-
-	return;
-
-	if(%name $= "initialTopHudMenu")
-	{
-		%mode = "";
-		if(%value == 0)
-			%mode = "newbiehelp";
-		else if(%value == 1)
-			%mode = "healthbalance";
-		else if(%value == 2)
-			%mode = "nothing";
-
-		if(%mode !$= "")
-		{
-			%this.initialTopHudMenu = %mode;
-			%this.sendCookie("ROTC_HudMenuTMode", %mode);
-
-			if(%this.menu $= "settings")
-				serverCmdShowSettings(%this);
-		}
-	}
-	else if(%name $= "hudColor")
-	{
-		%hudColor = %value;
-		%this.hudColor = %hudColor;
-		%this.sendCookie("ROTC_HudColor", %hudColor);
-		%this.updateHudColors();
-
-		if(%this.menu $= "settings")
-			serverCmdShowSettings(%this);
-	}
-	else if (%name $= "handicap")
-	{
-		%this.setHandicap(%value);
-		%this.sendCookie("ROTC_Handicap", %value);
-
-		if(%this.menu $= "settings")
-			serverCmdShowSettings(%this);
-	}
-
-	return;
-
-
-	%y = om_init();
-	%this.beginMenuText();
-
-	%note = "";
-
-	if(%section == 1)
-	{
-		%y = %y @ om_head(%this, "Settings", "ShowSettings");
-
-		%y = %y @ %note;
-	}
-	else
-	{
-		%y = %y @ om_head(%this, "Settings");
-
-		%y = %y @ %note @ "\n\n";
-
-		// Handicap
-		%hand = (%this.handicap >= 0)?%this.handicap:1;
-		%y = %y @ "<lmargin:0>Handicap:\n<lmargin:25>";
-		%y = %y @ "<a:cmd SetSetting handicap/" @ ((%hand - 0.1 >= 0)?%hand - 0.1:0) @ ">\<</a>";
-		for (%i = 0; %i <= 10; %i += 1) {
-			if (mfloor(100*mabs(%i/10 - %hand)) == 0) {
-				 %y = %y @ "<a:cmd SetSetting handicap/" @ %i/10 @ ">#</a>";
-			} else {
-				 %y = %y @ "<a:cmd SetSetting handicap/" @ %i/10 @ ">-</a>";
-			}
-		}
-		%y = %y @ "<a:cmd SetSetting handicap/" @ ((%hand + 0.1 <= 1)?%hand + 0.1:1) @ ">\></a>";
-		%s = %hand;
-		if(%s == 0) %s = "0.0";
-		else if(%s == 1) %s = "1.0";
-		%y = %y SPC %s SPC "[<a:cmd HowToPlay H>what's this?</a>]\n";
-		if (%hand == 0)
-		{
-			%y = %y @ "<spush><color:ff4444>Your handicap is 0.0, this means you'll do no damage to players with a handicap of 1.0.<spop>\n";
-		}
-		%y = %y @ "\n";
-
-		//Initial display
-
-		%y = %y @ "<lmargin:0>Initially display:\n<lmargin:25>";
-		if(%this.initialTopHudMenu !$= "newbiehelp")
-			%y = %y @ "<a:cmd SetSetting initialTopHudMenu/0>";
-		%y = %y @ "Newbie helper";
-		if(%this.initialTopHudMenu !$= "newbiehelp")
-			%y = %y @ "</a>";
-		%y = %y @ " | ";
-		if(%this.initialTopHudMenu !$= "healthbalance")
-			%y = %y @ "<a:cmd SetSetting initialTopHudMenu/1>";
-		%y = %y @ "Health balance";
-		if(%this.initialTopHudMenu !$= "healthbalance")
-			%y = %y @ "</a>";
-		%y = %y @ " | ";
-		if(%this.initialTopHudMenu !$= "nothing")
-			%y = %y @ "<a:cmd SetSetting initialTopHudMenu/2>";
-		%y = %y @ "Nothing";
-		if(%this.initialTopHudMenu !$= "nothing")
-			%y = %y @ "</a>";
-		%y = %y @ "\n\n";
-
-		%n = 0;
-		%schemeName[%n] = "";
-		%schemeDesc[%n] = "Based on team"; %n++;
-		%schemeName[%n] = "fr1tz";
-		%schemeDesc[%n] = "fr1tz"; %n++;
-		%schemeName[%n] = "kurrata";
-		%schemeDesc[%n] = "kurrata"; %n++;
-		%schemeName[%n] = "c&c";
-		%schemeDesc[%n] = "c&c"; %n++;
-		%schemeName[%n] = "cga1dark";
-		%schemeDesc[%n] = "CGA #1 Dark"; %n++;
-		%schemeName[%n] = "cga1light";
-		%schemeDesc[%n] = "CGA #1 Light"; %n++;
-
-		%y = %y @ "<lmargin:0>HUD Colors:\n<lmargin:25>";
-		for(%i = 0; %i < %n; %i++)
-		{
-			if(%this.hudColor !$= %schemeName[%i])
-				%y = %y @ "<a:cmd SetSetting hudColor/" @ %schemeName[%i] @ ">";
-
-			%y = %y @ %schemeDesc[%i];
-
-			if(%this.hudColor !$= %schemeName[%i])
-				%y = %y @ "</a>";
-
-			%y = %y @ "   ";
-		}
-		%y = %y @ "\n\n";
-
-	}
-
-	%this.addMenuText(%y);
-	%this.endMenuText();
-
-	%this.menu = "settings";
-}
-
-
 

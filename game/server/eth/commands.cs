@@ -3,6 +3,71 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
+function serverCmdLoadout(%client, %str)
+{
+	error(%str);
+
+	%str = strreplace(%str, "/", " ");
+	%arg1 = getWord(%str, 0);
+	%arg2 = getWord(%str, 1);
+	%arg3 = getWord(%str, 2);
+	%arg4 = getWord(%str, 3);
+
+   %loadout = %arg1;
+   if(%loadout $= "")
+   {
+      %loadout = 1;
+      %client.loadoutMenuExpandedSlot = 0;
+   }
+   else if(!(%loadout > 0 && %loadout <= 10))
+      return;
+
+   %showInfo = 0;
+   %infoPos = 0;
+
+   if(%arg2 $= "e")
+   {
+      %slot = %arg3;
+      if(%slot >= 1 && %slot <= 3)
+         %client.loadoutMenuExpandedSlot = %slot;
+      else
+         %client.loadoutMenuExpandedSlot = 0;
+   }
+   else if(%arg2 $= "s")
+   {
+      %slot = %arg3;
+      %item = %arg4;
+      if(%slot >= 1 && %slot <= 3)
+      {
+         if(%item >= 1 && %item <= 7)
+         {
+            %newCode = "";
+            for(%i = 1; %i <= 3; %i++)
+            {
+               if(%i == %slot)
+                  %c = %item;
+               else
+                  %c = getSubStr(%client.loadoutCode[%loadout], %i-1, 1);
+               %newCode = %newCode @ %c;
+            }
+            %client.loadoutCode[%loadout] = %newCode;
+            %client.sendCookie("ETH_LCODE" SPC %loadout, %newCode);
+            %client.loadoutMenuExpandedSlot = 0;
+         }
+      }
+   }
+   else if(%arg2 $= "i")
+   {
+      %showInfo = %arg3;
+      %infoPos = %arg4;
+   }
+
+   %client.showLoadout(%loadout, %client.loadoutMenuExpandedSlot,
+      %showInfo, %infoPos);
+
+	%client.menu = "loadout";
+}
+
 function serverCmdHowToPlay(%client, %page)
 {
 	%newtxt = om_init();
@@ -123,8 +188,8 @@ function serverCmdHowToPlay(%client, %page)
 		%pageTitle[%n] = "Grenades";
 		%pageFile[%n] = "grenades";
 		%n++;
-		%pageNumber[%n] = "5.3"; 
-		%pageTitle[%n] = "B.O.U.N.C.E.";
+		%pageNumber[%n] = "5.3";
+		%pageTitle[%n] = "<bitmap:share/hud/rotc/icon.bounce.20x20>B.O.U.N.C.E.";
 		%pageFile[%n] = "bounce";
 		%n++;
 		%pageNumber[%n] = "6"; 
