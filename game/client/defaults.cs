@@ -15,8 +15,13 @@ $Pref::Master[1] = "2:spica.dyndns.info:28002";
 
 // Default server prefs when starting a server via the GUI
 $Pref::Server::RegionMask = 2;
-$Pref::Server::Name = "Newbie";
-$Pref::Server::Info = "";
+$Pref::Server::Name = "Lazy Hoster's Funhouse";
+$Pref::Server::Info =
+	"<just:center>" @
+	"\n[ Default Arena description ]\n" @
+	"<spush><font:NovaSquare:16><color:AA0000>" @
+	"Daily meetup time: 8pm CET<spop>\n" @
+	"Scheduled matches: None";
 $Pref::Server::ConnectionError =
 	"You do not have the correct version of Revenge Of The Cats or "@
 	"the related art needed to connect to this server.";

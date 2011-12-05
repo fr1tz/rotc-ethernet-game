@@ -13,10 +13,10 @@ $Server::MissionFile = "game/arenas/rotc-ethernet/eth-pond.mis";
 
 // Information about the server
 $Pref::Server::RegionMask = 2;
-$Pref::Server::Name = "Newbie"; // Appears as "hosted by:" on the client
-$Pref::Server::Info = // Appears as "arena description" on the client
+$Pref::Server::Name = "Lazy Hoster's Funhouse";
+$Pref::Server::Info = 
 	"<just:center>" @
-	"\n[ Default server description ]\n" @
+	"\n[ Default Arena description ]\n" @
 	"<spush><font:NovaSquare:16><color:AA0000>" @
 	"Daily meetup time: 8pm CET<spop>\n" @
 	"Scheduled matches: None"; 
