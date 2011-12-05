@@ -58,7 +58,40 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiScrollProfile";
          HorizSizing = "width";
          VertSizing = "top";
-         position = "13 299";
+         position = "13 323";
+         Extent = "478 58";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         willFirstRespond = "1";
+         hScrollBar = "dynamic";
+         vScrollBar = "alwaysOn";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiMLTextCtrl(SS_EnvironmentInfo) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiMLTextEditProfile";
+            HorizSizing = "width";
+            VertSizing = "height";
+            position = "3 2";
+            Extent = "453 310";
+            MinExtent = "245 310";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            lineSpacing = "2";
+            allowColorChars = "1";
+            maxChars = "255";
+         };
+      };
+      new GuiScrollCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiScrollProfile";
+         HorizSizing = "width";
+         VertSizing = "bottom";
+         position = "13 57";
          Extent = "478 81";
          MinExtent = "8 8";
          canSave = "1";
@@ -75,11 +108,12 @@ new GuiControl(StartServerWindowForEditing) {
             Profile = "GuiMLTextEditProfile";
             HorizSizing = "width";
             VertSizing = "height";
-            position = "2 2";
+            position = "3 2";
             Extent = "453 310";
             MinExtent = "245 310";
             canSave = "1";
             Visible = "1";
+            Variable = "";
             hovertime = "1000";
             lineSpacing = "2";
             allowColorChars = "1";
@@ -91,8 +125,8 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiScrollProfile";
          HorizSizing = "width";
          VertSizing = "height";
-         position = "13 75";
-         Extent = "478 200";
+         position = "13 161";
+         Extent = "478 139";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -108,8 +142,8 @@ new GuiControl(StartServerWindowForEditing) {
             Profile = "GuiTextArrayProfile";
             HorizSizing = "width";
             VertSizing = "bottom";
-            position = "2 2";
-            Extent = "458 8";
+            position = "5 3";
+            Extent = "456 8";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -125,7 +159,7 @@ new GuiControl(StartServerWindowForEditing) {
             Profile = "GuiMLTextProfile";
             HorizSizing = "right";
             VertSizing = "bottom";
-            position = "0 110";
+            position = "3 110";
             Extent = "170 14";
             MinExtent = "170 10";
             canSave = "1";
@@ -141,13 +175,13 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "13 55";
-         Extent = "68 18";
+         position = "13 142";
+         Extent = "66 18";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
          hovertime = "1000";
-         text = "Select Arena:";
+         text = "Select Game:";
          maxLength = "255";
       };
       new GuiButtonCtrl(SS_StartMissionButton) {
@@ -192,12 +226,12 @@ new GuiControl(StartServerWindowForEditing) {
          HorizSizing = "right";
          VertSizing = "bottom";
          position = "13 30";
-         Extent = "54 18";
+         Extent = "64 18";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
          hovertime = "1000";
-         text = "Hosted by:";
+         text = "Arena Name:";
          maxLength = "255";
       };
       new GuiCheckBoxCtrl(ML_isMultiplayer) {
@@ -222,13 +256,13 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "top";
-         position = "13 279";
-         Extent = "61 18";
+         position = "13 306";
+         Extent = "128 18";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
          hovertime = "1000";
-         text = "Description:";
+         text = "Environment Description:";
          maxLength = "255";
       };
       new GuiTextCtrl() {

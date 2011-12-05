@@ -47,7 +47,7 @@ function SS_missionList::onSelect(%this, %id, %text)
 	%id = SS_missionList.getSelectedId();
 	%missionFile = getField(SS_missionList.getRowTextById(%id), 1);
 	MissionInfo::load(%missionFile);
-	SS_ServerInfo.setText($MissionInfo::Desc);
+	SS_EnvironmentInfo.setText($MissionInfo::Desc);
 }
 
 //----------------------------------------
