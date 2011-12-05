@@ -86,6 +86,13 @@ function serverCmdLoadout(%client, %str)
 	%client.menu = "loadout";
 }
 
+function serverCmdTeams(%client)
+{
+   %client.showTeamsMenu();
+	%client.menu = "teams";
+}
+
+
 function serverCmdHowToPlay(%client, %page)
 {
 	%newtxt = om_init();

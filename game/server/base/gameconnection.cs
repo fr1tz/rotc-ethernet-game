@@ -206,7 +206,11 @@ function GameConnection::onClientLeaveGame(%this)
 		
 	%count = ClientGroup.getCount();
 	for(%cl= 0; %cl < %count; %cl++)
-		ClientGroup.getObject(%cl).updateQuickbar();		
+   {
+		%client = ClientGroup.getObject(%cl);
+      if(%client.menuVisible && %client.menu $= "teams")
+         %client.showTeamsMenu();
+   }
 }
 
 //------------------------------------------------------------------------------
@@ -274,10 +278,10 @@ function GameConnection::joinTeam(%this, %teamId)
 		%this.team = $Team0;
 		$Team0.numPlayers++;
 		
-		%this.setNewbieHelp("You are in observer mode. Click on the links near the top" SPC
+		%this.setNewbieHelp("You are in observer mode. Click on 'Switch Team' at the top" SPC
 			"of the arena window to join a team. Press @bind01 if the arena window is not visible.");		
    
-      %this.setLoadingBarText("Use the links below to join red or blue!");
+      %this.setLoadingBarText("Use the 'Switch Team' menu to join red or blue!");
 	}
 	else
    {
@@ -317,7 +321,11 @@ function GameConnection::joinTeam(%this, %teamId)
 	
 	%count = ClientGroup.getCount();
 	for(%cl= 0; %cl < %count; %cl++)
-		ClientGroup.getObject(%cl).updateQuickbar();
+   {
+		%client = ClientGroup.getObject(%cl);
+      if(%client.menuVisible && %client.menu $= "teams")
+         %client.showTeamsMenu();
+   }
 
 	return true;
 }
@@ -1149,25 +1157,7 @@ function GameConnection::updateQuickbar(%this)
 	}
 	else
 	{
-		%joinText = "Join Team:\n<spush><font:NovaSquare:24>";
-		if(%this.team != $Team1)
-			%joinText = %joinText @ "<a:cmd JoinTeam 1>";
-		%joinText = %joinText @ "Reds (" @ $Team1.numPlayers @ ")";
-		if(%this.team != $Team1)
-			%joinText = %joinText @ "</a>";		
-		%joinText = %joinText @ "    ";		
-		if(%this.team != $Team2)
-			%joinText = %joinText @ "<a:cmd JoinTeam 2>";
-		%joinText = %joinText @ "Blues (" @ $Team2.numPlayers @ ")";
-		if(%this.team != $Team2)
-			%joinText = %joinText @ "</a>";	
-		%joinText = %joinText @ "    ";	
-		if(%this.team != $Team0)
-			%joinText = %joinText @ "<a:cmd JoinTeam 0>";
-		%joinText = %joinText @ "Observers (" @ $Team0.numPlayers @ ")";
-		if(%this.team != $Team0)
-			%joinText = %joinText @ "</a>";
-      %joinText = %joinText @ "<spop>";
+
 	}
 
    %sep = "\n\n";
@@ -1178,7 +1168,7 @@ function GameConnection::updateQuickbar(%this)
       "<B:1:cmd MainMenu>" @ %msk @ "</b>" @ %spc @
       "<B:2:cmd ShowPlayerList>" @ %msk @ "</b>" @ %spc @
       "<B:3:cmd Loadout>" @ %msk @ "</b>" @ %spc @
-      "<B:4:cmd Loadout>" @ %msk @ "</b>" @ %spc @
+      "<B:4:cmd Teams>" @ %msk @ "</b>" @ %spc @
       "<B:5:cmd ShowSettings>" @ %msk @ "</b>" @ %spc @
       "<B:6:cmd Admin>" @ %msk @ "</b>" @ %spc @
       %msk @ %spc @
@@ -1189,7 +1179,7 @@ function GameConnection::updateQuickbar(%this)
       "  <B:1:cmd MainMenu>Arena</b>      " @
       "<B:2:cmd ShowPlayerList>Player</b>       " @
       "<B:3:cmd Loadout>Edit</b>        " @
-      "<B:4:cmd Loadout>Switch</b>  " @
+      "<B:4:cmd Teams>Switch</b>  " @
       " " @ // center of line
       "   <B:5:cmd ShowSettings>Game</b>       " @
       "<B:6:cmd ShowSettings>Arena</b>         " @
@@ -1199,7 +1189,7 @@ function GameConnection::updateQuickbar(%this)
       "<B:1:cmd MainMenu>Info</b>          " @
       "<B:2:cmd ShowPlayerList>List</b>     " @
       "<B:3:cmd Loadout>Loadouts</b>     " @
-      "<B:4:cmd Loadout>Team</b>   " @
+      "<B:4:cmd Teams>Team</b>   " @
       "" @ // center of line
       "  <B:5:cmd ShowSettings>Settings</b>    " @
       "<B:6:cmd ShowSettings>Admin</b>                           " @
