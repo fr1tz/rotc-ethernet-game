@@ -292,7 +292,7 @@ function GameConnection::joinTeam(%this, %teamId)
    		$Team2.numPlayers++;
    	}
     
-      %this.setLoadingBarText("Press @bind01 to play.");
+      %this.setLoadingBarText("Press @bind01 to play" SPC  $Server::MissionType);
    }
 
 	%this.updateHudColors();
