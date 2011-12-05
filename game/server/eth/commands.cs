@@ -9,6 +9,7 @@ function serverCmdTextInput(%client, %text)
    {
       %loadout = %client.textInputTargetArg[0];
       %client.loadoutName[%loadout] = %text;
+      %client.sendCookie("ETH_LNAME" @ %loadout, %text);
       %client.displayInventory();
       serverCmdLoadout(%client, %loadout);
    }
@@ -17,8 +18,6 @@ function serverCmdTextInput(%client, %text)
 
 function serverCmdLoadout(%client, %str)
 {
-	error(%str);
-
 	%str = strreplace(%str, "/", " ");
 	%arg1 = getWord(%str, 0);
 	%arg2 = getWord(%str, 1);
