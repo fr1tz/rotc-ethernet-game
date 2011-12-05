@@ -178,6 +178,13 @@ function GameConnection::updateLoadout(%this)
 
 function GameConnection::displayInventory(%this, %obj)
 {
+   if(%this.team == $Team0)
+   {
+      %this.setHudMenuL("*", " ", 1, 0);
+      %this.setHudMenuR("*", " ", 1, 0);
+      return;
+   }
+
 	%iconname[$CatEquipment::Blaster] = "blaster";
 	%iconname[$CatEquipment::BattleRifle] = "rifle";
 	%iconname[$CatEquipment::SniperRifle] = "sniper";

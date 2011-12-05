@@ -299,8 +299,6 @@ function GameConnection::joinTeam(%this, %teamId)
       %this.setLoadingBarText("Press @bind01 to play" SPC  $Server::MissionType);
    }
 
-	%this.updateHudColors();
-
 	// full and simple control cleanup...
 	%this.clearFullControl();
 	%this.clearSimpleControl();
@@ -318,6 +316,8 @@ function GameConnection::joinTeam(%this, %teamId)
 		%this.isSuperAdmin);
 
 	%this.spawnPlayer();
+	%this.updateHudColors();
+   %this.displayInventory();
 	
 	%count = ClientGroup.getCount();
 	for(%cl= 0; %cl < %count; %cl++)
