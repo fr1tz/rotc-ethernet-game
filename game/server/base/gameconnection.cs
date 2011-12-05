@@ -151,10 +151,12 @@ function GameConnection::onClientEnterGame(%this)
 	%this.updateLoadout();
 	
 	//
-	// join observer team...
+	// join team with less players...
 	//
-	
-	%this.joinTeam(0);
+	if($Team1.numPlayers > $Team2.numPlayers)
+   	%this.joinTeam(2);
+   else
+      %this.joinTeam(1);
 
 	// Start sky color thread.
 	%this.updateSkyColor();
