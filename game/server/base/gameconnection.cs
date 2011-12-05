@@ -1139,7 +1139,7 @@ function GameConnection::setHudMenuC(%this, %slot, %text, %repetitions, %visible
 
 function GameConnection::updateQuickbar(%this)
 {
-	%r = "<just:center><font:NovaSquare:16>";
+	%head = "<just:center><font:NovaSquare:16>";
 
 	if(%this.loadingMission)
 	{
@@ -1164,19 +1164,54 @@ function GameConnection::updateQuickbar(%this)
 			%joinText = %joinText @ "<a:cmd JoinTeam 0>";
 		%joinText = %joinText @ "Observers (" @ $Team0.numPlayers @ ")";
 		if(%this.team != $Team0)
-			%joinText = %joinText @ "</a>";			
+			%joinText = %joinText @ "</a>";
+      %joinText = %joinText @ "<spop>";
 	}
-	
-	%r = %r @ %joinText;	
-	%r = %r @ "<spop>\n<bitmap:share/misc/ui/sep><sbreak>";	
-	%r = %r @ "Show: ";
-	%r = %r @ "<a:cmd MainMenu>Arena Info</a> | ";
-	%r = %r @ "<a:cmd ShowPlayerList>Player List</a> | ";
-	%r = %r @ "<a:cmd HowToPlay 0>Manual</a> | ";
-	%r = %r @ "<a:cmd ShowSettings>Settings</a>";	
+
+   %sep = "\n\n";
+
+   %msk = "             ";
+   %spc = "  ";
+   %tmp = "" @
+      "<B:1:cmd MainMenu>" @ %msk @ "</b>" @ %spc @
+      "<B:2:cmd ShowPlayerList>" @ %msk @ "</b>" @ %spc @
+      "<B:3:cmd Loadout>" @ %msk @ "</b>" @ %spc @
+      "<B:4:cmd Loadout>" @ %msk @ "</b>" @ %spc @
+      "<B:5:cmd ShowSettings>" @ %msk @ "</b>" @ %spc @
+      "<B:6:cmd Admin>" @ %msk @ "</b>" @ %spc @
+      %msk @ %spc @
+      "<B:7:cmd HowToPlay 0>" @ %msk @ "</b>" @
+      "\n";
+
+   %tabsFG = %tmp @ %tmp @ %tmp @
+      "  <B:1:cmd MainMenu>Arena</b>      " @
+      "<B:2:cmd ShowPlayerList>Player</b>       " @
+      "<B:3:cmd Loadout>Edit</b>        " @
+      "<B:4:cmd Loadout>Switch</b>  " @
+      " " @ // center of line
+      "   <B:5:cmd ShowSettings>Game</b>       " @
+      "<B:6:cmd ShowSettings>Arena</b>         " @
+      "             " @
+      "<B:7:cmd HowToPlay 0>Help</b>   " @
+      "\n" @
+      "<B:1:cmd MainMenu>Info</b>          " @
+      "<B:2:cmd ShowPlayerList>List</b>     " @
+      "<B:3:cmd Loadout>Loadouts</b>     " @
+      "<B:4:cmd Loadout>Team</b>   " @
+      "" @ // center of line
+      "  <B:5:cmd ShowSettings>Settings</b>    " @
+      "<B:6:cmd ShowSettings>Admin</b>                           " @
+      "";
+
+   %tabsBG = "<bitmap:share/ui/rotc/qbbg>";
 
 	%this.beginQuickbarText();
-	%this.addQuickbarText(%r);	
+	%this.addQuickbarText(%head, 3);
+	//%this.addQuickbarText(%joinText, 3);
+	//%this.addQuickbarText(%sep, 3);
+	%this.addQuickbarText(%tabsFG, 1);
+	%this.addQuickbarText(%tabsBG, 2);
+
 	%this.endQuickbarText();
 }
 
