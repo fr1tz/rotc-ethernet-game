@@ -52,7 +52,7 @@ function LoadoutMenu_InfoLink(%loadout, %L3, %item)
    %arg3 = %item;
    %arg4 = getRecordCount(%L3);
    %arg = %arg1 @"/"@ %arg2 @"/"@ %arg3 @"/"@ %arg4;
-   return "[<a:cmd Loadout " @ %arg @ ">" @ "Info" @ "</a>]";
+   return "[<a:cmd Loadout " @ %arg @ ">" @ "?" @ "</a>]";
 }
 
 function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPos)
@@ -80,10 +80,10 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
   	%L3 = %L3 @ "<just:left><lmargin:10>";
 	%L3 = %L3 @ "Loadout #" @ %no @ ": " @ %name;
    if(%name $= "")
-   	%L3 = %L3 @ " [<a:cmd Loadout " @ %no @ "/n>Enable</a>]<spop>";
+   	%L3 = %L3 SPC LoadoutMenu_Link("Enable", %no, "n");
    else
-      %L3 = %L3 @ " [<a:cmd Loadout " @ %no @ "/n>Rename</a>]<spop>";
-	%L3 = %L3 @ "\n";
+   	%L3 = %L3 SPC LoadoutMenu_Link("Rename", %no, "n");
+	%L3 = %L3 @ "<spop>\n";
 
 	%code = %this.loadoutCode[%no];
 	if(%code $= "")
@@ -92,7 +92,7 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
 	}
 	else
 	{
-      %L3 = %L3 @ "<tab:75,125,185,275,325>\n";
+      %L3 = %L3 @ "<tab:75,125,185,300>\n";
       for(%i = 0; %i < 3; %i++)
       {
          %slot = %i + 1;
@@ -109,8 +109,8 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
                %c2 = LoadoutMenu_GetIcon(%item);
                %c2 = "<bitmap:share/hud/rotc/icon." @ %c2 @ ".50x15>";
                %c3 = LoadoutMenu_GetWeaponName(%item);
-               %c3 = LoadoutMenu_Link(%c3, %no, "s", %slot, %item);
-               %c4 = LoadoutMenu_InfoLink(%no, %L3, %c);
+               %c3 = %c3 SPC LoadoutMenu_InfoLink(%no, %L3, %c);
+               %c4 = LoadoutMenu_Link("Select", %no, "s", %slot, %item);
    		      %L3 = %L3 TAB "" TAB %c2 TAB %c3 TAB %c4 @ "\n";
             }
          }
@@ -120,9 +120,9 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
             %c2 = LoadoutMenu_GetIcon(%c);
             %c2 = "<bitmap:share/hud/rotc/icon." @ %c2 @ ".50x15>";
             %c3 = LoadoutMenu_GetWeaponName(%slot);
-            %c4 = LoadoutMenu_InfoLink(%no, %L3, %c);
-            %c5 = LoadoutMenu_Link("Change", %no, "e", %slot);
-   		   %L3 = %L3 TAB %c1 TAB %c2 TAB %c3  TAB %c4 TAB %c5 @ "\n";
+            %c3 = %c3 SPC LoadoutMenu_InfoLink(%no, %L3, %c);
+            %c4 = LoadoutMenu_Link("Change", %no, "e", %slot);
+   		   %L3 = %L3 TAB %c1 TAB %c2 TAB %c3  TAB %c4 @ "\n";
          }
          %L3 = %L3 @ "\n";
       }

@@ -3,6 +3,18 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
+function serverCmdTextInput(%client, %text)
+{
+   if(%client.textInputTargetName $= "LoadoutName")
+   {
+      %loadout = %client.textInputTargetArg[0];
+      %client.loadoutName[%loadout] = %text;
+      %client.displayInventory();
+      serverCmdLoadout(%client, %loadout);
+   }
+   %client.textInputTargetName = "";
+}
+
 function serverCmdLoadout(%client, %str)
 {
 	error(%str);
@@ -25,7 +37,13 @@ function serverCmdLoadout(%client, %str)
    %showInfo = 0;
    %infoPos = 0;
 
-   if(%arg2 $= "e")
+   if(%arg2 $= "n")
+   {
+      %client.textInputTargetName = "LoadoutName";
+      %client.textInputTargetArg[0] = %loadout;
+      commandToClient(%client, 'RequestTextInput', "New name", %client.loadoutName[%loadout]);
+   }
+   else if(%arg2 $= "e")
    {
       %slot = %arg3;
       if(%slot >= 1 && %slot <= 3)
@@ -51,7 +69,7 @@ function serverCmdLoadout(%client, %str)
                %newCode = %newCode @ %c;
             }
             %client.loadoutCode[%loadout] = %newCode;
-            %client.sendCookie("ETH_LCODE" SPC %loadout, %newCode);
+            %client.sendCookie("ETH_LCODE" @ %loadout, %newCode);
             %client.loadoutMenuExpandedSlot = 0;
          }
       }
