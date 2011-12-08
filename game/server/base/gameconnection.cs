@@ -599,16 +599,30 @@ function GameConnection::togglePlayerForm(%this, %forced)
 
 //-----------------------------------------------------------------------------
 
-function GameConnection::setSkyColor(%this, %color)
+function GameConnection::setSkyColor(%this, %color, %elementMask)
 {
-	//error("GameConnection::setSkyColor():" SPC %this.getId() SPC %color);
+	//error("GameConnection::setSkyColor():" SPC %this.getId() SPC %color SPC %elementMask);
 
-	if(%this.skyColor $= %color)
+   if(%elementMask $= "")
+      %elementMask = 1023;
+
+   %mask = 1;
+   for(%i = 0; %i <= 9; %i++)
+   {
+      if(%elementMask & %mask)
+      {
+         if(%this.skyColor[%i] $= %color)
+            %elementMask = (%elementMask & ~%mask);
+         else
+            %this.skyColor[%i] = %color;
+      }
+      %mask *= 2;
+   }
+
+	if(!(%elementMask > 0))
 		return;
 
-	messageClient(%this, 'MsgSkyColor', "", %color);
-
-	%this.skyColor = %color;
+   commandToClient(%this, 'SkyColor', %color, %elementMask);
 }
 
 function GameConnection::updateSkyColor(%this)

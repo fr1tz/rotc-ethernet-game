@@ -166,15 +166,6 @@ function client_find_sky()
 	}
 }
 
-function SkyColorMsgCallback(%msgType, %msgString, %color)
-{
-	if($sky $= "")
-		$sky = client_find_sky();
-	$sky.changeColor(%color);
-}
-
-addMessageCallback('MsgSkyColor', SkyColorMsgCallback);
-
 //-----------------------------------------------------------------------------
 // Music
 //-----------------------------------------------------------------------------
