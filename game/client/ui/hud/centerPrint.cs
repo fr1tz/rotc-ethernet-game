@@ -21,8 +21,6 @@ function clientCmdCenterPrint( %message, %time, %append )
 	}
 	else {
 		CenterPrint.visible = 1;
-		Crosshair.visible = 0;
-		CrosshairStatic.visible = 0;
 		$centerPrintActive = 1;
 	}
 	
@@ -74,8 +72,6 @@ function clientCmdClearCenterPrint()
 {
 	$centerPrintActive = 0;
 	CenterPrint.visible = 0;
-	Crosshair.visible = 1;
-	CrosshairStatic.visible = 1;
 	CenterPrint.removePrint = "";
 }
 

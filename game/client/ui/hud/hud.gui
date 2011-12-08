@@ -370,7 +370,7 @@ new GameTSCtrl(HUD) {
       Extent = "640 480";
       MinExtent = "8 8";
       canSave = "1";
-      Visible = "1";
+      Visible = "0";
       hovertime = "1000";
       wrap = "0";
       drawCircle = "1";
@@ -398,7 +398,7 @@ new GameTSCtrl(HUD) {
       canSave = "1";
       Visible = "0";
       hovertime = "1000";
-      bitmap = "./pixmaps/energy_icon.png";
+      bitmap = "";
       wrap = "0";
    };
    new GuiBackgroundCtrl() {
