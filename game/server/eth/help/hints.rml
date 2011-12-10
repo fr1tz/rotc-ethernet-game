@@ -11,7 +11,7 @@ Beware that firing your weapons leaves your damper with less energy, making
 you more susceptible to damage.
 
 When in CAT form, close to the ground and not etherboarding
-you become anchored to the ground which reduces the push you get from being hit
+you become anchored to the ground which reduces the push you get from being hit.
 
 When in CAT form, press @bind51 to fire a B.O.U.N.C.E. that reverses the momentum
 of nearby enemy CATs and deals some damage based on their speed.
@@ -52,10 +52,19 @@ values of the sky color reflect the amount of health of red/blue CATs in the zon
 
 Press @bind25 for arena-wide chat, @bind26 for team-chat.
 
-Looking for more players? - Try the global player chat (accessible
-through the "Client Toolbox" window.
+Looking for more players? - Try "Client Toolbox" window -> Global Player Chat.
 
 To get a complete overview of the zones, press @bind30 for a bigger
 minimap. If you want to look at the precise landscape, press @bind31.
 
+Projectiles fired or thrown by a CAT inherit some of the momentum of the CAT.
+How much differs from weapon to weapon, but can be looked up in the manual.
+
+The number after a player's name is that player's handicap. Players with lower
+handicap do less damage to players with higher handicaps. See the manual for
+more info.
+
+Remember that you can switch back to Etherform at any time. It is often
+better to give up some territory and regroup with your team, than to lose
+health in an unwinnable fight.
 
