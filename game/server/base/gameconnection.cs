@@ -132,6 +132,13 @@ function GameConnection::onClientEnterGame(%this)
 	// Top HUD Menu...
 	%this.topHudMenu = %this.initialTopHudMenu;
 	%this.updateTopHudMenuThread();
+
+   // Crosshair...
+   commandToClient(%this, 'Crosshair', 0);
+   commandToClient(%this, 'Crosshair', 2, 2);
+   //commandToClient(%this, 'Crosshair', 3, 2, 20);
+   commandToClient(%this, 'Crosshair', 5, "./rotc/ch1");
+   commandToClient(%this, 'Crosshair', 1);
  	
 	//
 	// setup observer camera object...
