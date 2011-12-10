@@ -551,6 +551,9 @@ function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %healthDmg, %bufDmg)
 	if(!isObject(%client))
 		return;
 
+   if(%healthDmg <= 0 && %bufDmg <= 0)
+      return;
+
     // health takeback...
 	if(%client.numVAMPs > 0)
 	{
