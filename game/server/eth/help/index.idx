@@ -1,0 +1,22 @@
+0	-	-	Index
+1	summary	40	ROTC: Ethernet in a nutshell
+2	basics	40	Basics
+3	etherform	40	Playing as Etherform
+4	cat	40	Playing in CAT form
+5	basicweapons	40	Basic CAT Weapons
+5.1	discs	40	Discs
+5.2	grenades	40	Grenades
+5.3	bounce	40	B.O.U.N.C.E. <bitmap:share/hud/rotc/icon.bounce.20x20>
+6	bufferweapons	40	Red/Blue (buffer) CAT Weapons
+6.1	blaster	40	Blaster
+6.2	battlerifle	40	Battle Rifle
+6.3	minigun	40	Minigun
+7	barrierweapons	40	Green/Orange (barrier) CAT Weapons
+7.1	sniperrofl	40	Sniper ROFL
+8	catequipment	40	Other CAT equipment
+8.1	etherboard	40	The Etherboard
+8.2	regeneration	40	Regeneration modules
+8.3	minelauncher	40	Mine Launcher
+C	controls	40	Controls reference
+H	handicap	40	Handicap
+X	other	40	Bots, Mapping & other neat stuff
