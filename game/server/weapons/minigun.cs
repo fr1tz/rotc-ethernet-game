@@ -175,6 +175,11 @@ datablock ShapeBaseImageData(RedMinigunImage)
 	//-------------------------------------------------
 };
 
+function RedMinigunImage::getBulletSpread(%this, %obj)
+{
+   return 0.015;
+}
+
 function RedMinigunImage::onFire(%this, %obj, %slot)
 {
 	%projectile = %this.projectile;
@@ -234,6 +239,11 @@ datablock ShapeBaseImageData(BlueMinigunImage : RedMinigunImage)
 	projectile = BlueMinigunProjectile;
 	//stateEmitter[3] = BlueMinigunFireEmitter;
 };
+
+function BlueMinigunImage::getBulletSpread(%this, %obj)
+{
+   return RedMinigunImage::getBulletSpread(%this, %obj);
+}
 
 function BlueMinigunImage::onFire(%this, %obj, %slot)
 {

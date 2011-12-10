@@ -208,6 +208,11 @@ datablock ShapeBaseImageData(RedBlasterImage)
 	//-------------------------------------------------
 };
 
+function RedBlasterImage::getBulletSpread(%this, %obj)
+{
+   return 0.07;
+}
+
 //------------------------------------------------------------------------------
 
 datablock ShapeBaseImageData(BlueBlasterImage : RedBlasterImage)
@@ -217,4 +222,10 @@ datablock ShapeBaseImageData(BlueBlasterImage : RedBlasterImage)
 	stateFireProjectile[3] = BlueBlasterProjectile;
     stateEmitter[3] = BlueBlasterFireEmitter;
 };
+
+function BlueBlasterImage::getBulletSpread(%this, %obj)
+{
+   return RedBlasterImage::getBulletSpread(%this, %obj);
+}
+
 
