@@ -41,8 +41,8 @@ datablock StaticShapeData(RedRepelGunMine)
    
 	shapeFxTexture[0] = "share/textures/rotc/heating.png";
 
-	shapeFxColor[0] = "1.0 0.0 0.0 1.0"; // repel hit
-	shapeFxColor[1] = "1.0 0.5 0.5 1.0"; // repel missed   
+	shapeFxColor[0] = "1.0 0.5 0.0 1.0"; // repel hit
+	shapeFxColor[1] = "1.0 0.5 0.5 1.0"; // repel missed
 	
 	// script fields...
 	light = RedRepelGunMineLightImage;
@@ -106,6 +106,9 @@ function RedRepelGunMine::checkDetonate(%this, %obj)
 		if(%targetObject.getTeamId() == %obj.zTeamId)
 			continue;
 
+      if(%targetObject.hasBarrier())
+         continue;
+
 		// Calculate how much exposure the current object has to
 		// the effect.  The object types listed are objects
 		// that will block an explosion. 
@@ -125,6 +128,7 @@ function RedRepelGunMine::checkDetonate(%this, %obj)
 		%vec = VectorNormalize(%vel);
 		%vec = VectorScale(%vec, -50);
 		%targetObject.setVelocity(%vec);
+		%targetObject.activateBarrier(1);
 
 		// damage based on speed...
 		%speed = VectorLen(%vel);
@@ -152,8 +156,8 @@ function RedRepelGunMine::checkDetonate(%this, %obj)
 
 datablock StaticShapeData(BlueRepelGunMine : RedRepelGunMine)
 {
-	shapeFxColor[0] = "0.0 0.0 1.0 1.0"; // repel hit
-	shapeFxColor[1] = "0.5 0.5 1.0 1.0"; // repel missed   
+	shapeFxColor[0] = "0.0 1.0 0.0 1.0"; // repel hit
+	shapeFxColor[1] = "0.5 1.0 0.5 1.0"; // repel missed
 	light = BlueRepelGunMineLightImage;
 };
 
