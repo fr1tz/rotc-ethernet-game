@@ -233,6 +233,10 @@ function startNewRound()
 	{
 		startTeamDragRace();
 	}
+	else if($Game::GameType == $Game::BCONS)
+	{
+		BCONS_startNewRound();
+	}	
 	else if($Game::GameType == $Game::GridWars)
 	{
 		TerritoryZones_reset();

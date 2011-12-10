@@ -9,6 +9,6 @@ $Game::mEthMatch    = 1;
 $Game::TeamJoust    = 2;
 $Game::TeamDragRace = 3;
 $Game::GridWars     = 4;
-
-// Other game types
-$Game::Infantry     = 5;
+$Game::BCONS        = 5;
+$Game::Infantry     = 6;
+$Game::TugOfWar     = 7;
