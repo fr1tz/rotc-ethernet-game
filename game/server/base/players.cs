@@ -135,8 +135,10 @@ function PlayerData::onAdd(%this,%obj)
 	%obj.setGrenadeAmmo(1);
     %obj.setGrenadeAmmoDt(0.125);
 
-	%obj.updateRegeneration();		
+	%obj.updateRegeneration();
 	%obj.updateGridConnection();
+	%obj.updateAccuracy();
+	%obj.updatePose();
 
 	if(%client.hasPermaboard)
 		%obj.setBodyPose($PlayerBodyPose::Sliding);
@@ -810,6 +812,49 @@ function Player::updateGridConnection(%this)
 		%this.shapeFxSetBalloon($PlayerShapeFxSlot::GridConnection, 1.00, 0);	
 		%this.shapeFxSetActive($PlayerShapeFxSlot::GridConnection, true, true);   	
 	}	
+}
+
+//-----------------------------------------------------------------------------
+
+function Player::updateAccuracy(%this)
+{
+	// TODO: move this into mounted image code
+
+	if(!isObject(%this.client))
+		return;
+
+	%dtTime = 32;
+
+	if(%this.updateAccuracyThread !$= "")
+		cancel(%this.updateAccuracyThread);
+
+	%this.updateAccuracyThread = %this.schedule(%dtTime, "updateAccuracy");
+
+	if(%this.getDamageState() !$= "enabled")
+		return;
+
+   %this.firingInaccuracy--;
+
+   if(%this.firingInaccuracy < 0)
+      %this.firingInaccuracy = 0;
+
+   %image = %this.getMountedImage(0);
+   if(isObject(%image) && %image.isMethod("getBulletSpread"))
+   {
+   	%spread = %image.getBulletSpread(%this);
+      %mod = 2-(%this.getCameraFov()/80);
+      %mod = mPow(%mod,mPow(%mod,%mod));
+      %this.eCrosshairSpread = %spread * %mod;
+   }
+   else
+      %this.eCrosshairSpread = 0;
+}
+
+//-----------------------------------------------------------------------------
+
+function Player::updatePose(%this)
+{
+   // Infantry implements this
 }
 
 //-----------------------------------------------------------------------------
