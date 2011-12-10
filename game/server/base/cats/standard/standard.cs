@@ -176,12 +176,14 @@ datablock PlayerData(RedStandardCat)
 	decalOffset = 0.25;
 
 	// foot puffs
-	footPuffEmitter = StandardCatLightPuffEmitter;
-	footPuffNumParts = 10;
-	footPuffRadius = 0.25;
+	footPuffEmitter = RedStandardCatFootPuffEmitter;
+	footPuffNumParts = 5;
+	footPuffRadius = 0.1;
 	
 	// ground connection beam
 	groundConnectionBeam = StandardCatGroundConnectionBeam;
+
+   numShapeTrails = 5;
 
 	// slide emitters
 	//slideContactParticleFootEmitter = RedSlideEmitter;
@@ -284,6 +286,7 @@ datablock PlayerData(BlueStandardCat : RedStandardCat)
 	shapeFxColor[5] = "0.5 0.5 1.0 1.0"; 
 	debrisShapeName = "share/shapes/rotc/players/standardcat/debris.blue.dts";
 	decalData = BlueStandardCatFootprint;
+	footPuffEmitter = BlueStandardCatFootPuffEmitter;
 	slideParticleFootEmitter = BlueCatSlideFootEmitter;
 	damageBufferParticleEmitter = BlueCatDamageBufferEmitter;
 	repairParticleEmitter = BlueCatRepairEmitter;

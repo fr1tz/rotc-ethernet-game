@@ -646,27 +646,27 @@ datablock DecalData(BlueStandardCatFootprint)
 // Foot puffs
 //----------------------------------------------------------------------------
 
-datablock ParticleData(StandardCatLightPuff)
+datablock ParticleData(RedStandardCatFootPuff)
 {
 	dragCoefficient		= 2.0;
 	gravityCoefficient	= -0.01;
 	inheritedVelFactor	= 0.6;
 	constantAcceleration = 0.0;
-	lifetimeMS			  = 800;
+	lifetimeMS			  = 1000;
 	lifetimeVarianceMS	= 100;
-	useInvAlpha			 = true;
+	useInvAlpha			 = false;
 	spinRandomMin		  = -35.0;
 	spinRandomMax		  = 35.0;
-	colors[0]	  = "1.0 1.0 1.0 1.0";
-	colors[1]	  = "1.0 1.0 1.0 0.0";
-	sizes[0]		= 0.1;
-	sizes[1]		= 0.8;
-	times[0]		= 0.3;
+	colors[0]	  = "1.0 0.5 0.0 1.0";
+	colors[1]	  = "1.0 0.0 0.0 0.0";
+	sizes[0]		= 1.2;
+	sizes[1]		= 0.0;
+	times[0]		= 0.0;
 	times[1]		= 1.0;
-	textureName	= "share/textures/rotc/dustParticle";
+	textureName	= "share/textures/rotc/particle1";
 };
 
-datablock ParticleEmitterData(StandardCatLightPuffEmitter)
+datablock ParticleEmitterData(RedStandardCatFootPuffEmitter)
 {
 	ejectionPeriodMS = 35;
 	periodVarianceMS = 10;
@@ -678,9 +678,46 @@ datablock ParticleEmitterData(StandardCatLightPuffEmitter)
 	phiReferenceVel  = 0;
 	phiVariance		= 360;
 	overrideAdvances = false;
-	useEmitterColors = true;
-	particles = StandardCatLightPuff;
+	useEmitterColors = false;
+	particles = RedStandardCatFootPuff;
 };
+
+datablock ParticleData(BlueStandardCatFootPuff)
+{
+	dragCoefficient		= 2.0;
+	gravityCoefficient	= -0.01;
+	inheritedVelFactor	= 0.6;
+	constantAcceleration = 0.0;
+	lifetimeMS			  = 1000;
+	lifetimeVarianceMS	= 100;
+	useInvAlpha			 = false;
+	spinRandomMin		  = -35.0;
+	spinRandomMax		  = 35.0;
+	colors[0]	  = "0.0 0.5 1.0 1.0";
+	colors[1]	  = "0.0 0.0 1.0 0.0";
+	sizes[0]		= 1.2;
+	sizes[1]		= 0.0;
+	times[0]		= 0.0;
+	times[1]		= 1.0;
+	textureName	= "share/textures/rotc/particle1";
+};
+
+datablock ParticleEmitterData(BlueStandardCatFootPuffEmitter)
+{
+	ejectionPeriodMS = 35;
+	periodVarianceMS = 10;
+	ejectionVelocity = 0.2;
+	velocityVariance = 0.1;
+	ejectionOffset	= 0.0;
+	thetaMin			= 20;
+	thetaMax			= 60;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	overrideAdvances = false;
+	useEmitterColors = false;
+	particles = BlueStandardCatFootPuff;
+};
+
 
 //----------------------------------------------------------------------------
 // Liftoff dust
