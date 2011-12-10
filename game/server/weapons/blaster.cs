@@ -213,6 +213,18 @@ function RedBlasterImage::getBulletSpread(%this, %obj)
    return 0.07;
 }
 
+function RedBlasterImage::onMount(%this, %obj, %slot)
+{
+   Parent::onMount(%this, %obj, %slot);
+
+   // Set up recoil
+   %obj.setImageRecoilEnabled(%slot, true);
+   %obj.setImageCurrentRecoil(%slot, 50);
+   %obj.setImageMaxRecoil(%slot, 50);
+   %obj.setImageRecoilAdd(%slot, 0);
+   %obj.setImageRecoilDelta(%slot, -0);
+}
+
 //------------------------------------------------------------------------------
 
 datablock ShapeBaseImageData(BlueBlasterImage : RedBlasterImage)
@@ -226,6 +238,11 @@ datablock ShapeBaseImageData(BlueBlasterImage : RedBlasterImage)
 function BlueBlasterImage::getBulletSpread(%this, %obj)
 {
    return RedBlasterImage::getBulletSpread(%this, %obj);
+}
+
+function BlueBlasterImage::onMount(%this, %obj, %slot)
+{
+   RedBlasterImage::onMount(%this, %obj, %slot);
 }
 
 

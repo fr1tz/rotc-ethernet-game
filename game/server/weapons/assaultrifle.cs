@@ -307,6 +307,18 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 	//-------------------------------------------------
 };
 
+function RedAssaultRifleImage::onMount(%this, %obj, %slot)
+{
+   Parent::onMount(%this, %obj, %slot);
+
+   // Set up recoil
+   %obj.setImageRecoilEnabled(%slot, true);
+   %obj.setImageCurrentRecoil(%slot, 50);
+   %obj.setImageMaxRecoil(%slot, 50);
+   %obj.setImageRecoilAdd(%slot, 0);
+   %obj.setImageRecoilDelta(%slot, -0);
+}
+
 //------------------------------------------------------------------------------
 
 datablock ShapeBaseImageData(BlueAssaultRifleImage : RedAssaultRifleImage)
@@ -318,4 +330,9 @@ datablock ShapeBaseImageData(BlueAssaultRifleImage : RedAssaultRifleImage)
 	//stateFireProjectile[3] = BlueAssaultRifleProjectile1;
 	//stateFireProjectile[8] = BlueAssaultRifleProjectile2;
 };
+
+function BlueAssaultRifleImage::onMount(%this, %obj, %slot)
+{
+    RedAssaultRifleImage::onMount(%this, %obj, %slot);
+}
 
