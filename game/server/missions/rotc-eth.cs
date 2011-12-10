@@ -33,11 +33,23 @@ function executeGameScripts()
 	exec("game/server/blueprints/exec.cs");	
 }
 
+function loadManual()
+{
+   constructManual("game/server/eth/help/index.idx");
+}
+
+function loadHints()
+{
+   constructHints("game/server/eth/help/hints.rml");
+}
+
 function initMission()
 {
 	executeGameScripts();
 	executeMissionScript();
 	executeEnvironmentScript();
+   loadManual();
+   loadHints();
 }
 
 function onMissionLoaded()

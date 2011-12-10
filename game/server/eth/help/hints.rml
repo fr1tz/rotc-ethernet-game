@@ -1,0 +1,61 @@
+If you have an Etherboard, you can use it to trade agility for speed
+when in CAT form by holding down @bind21.
+
+Using your Etherboard will cause you to slowly lose anchoring.
+
+Every additional Regeneration module doubles the amount of regenerated health.
+
+When in CAT form, press @bind45 to cycle through your weapons.
+
+Beware that firing your weapons leaves your damper with less energy, making
+you more susceptible to damage.
+
+When in CAT form, close to the ground and not etherboarding
+you become anchored to the ground which reduces the push you get from being hit
+
+When in CAT form, press @bind51 to fire a B.O.U.N.C.E. that reverses the momentum
+of nearby enemy CATs and deals some damage based on their speed.
+
+When in CAT form, hold down and release @bind19 to throw a grenade.
+Press @bind46 to throw a grenade with max. force.
+
+If you've aquired a disc lock (you'll hear three short beeps) you can
+launch a target-seeking disc: Press @bind47 for explosive disc, @bind17
+for repel disc.
+
+In CAT form, you can deflect incoming discs by keeping your crosshair
+over the disc until it's locked and then pressing @bind17.
+
+When in CAT form, press @bind18 to jump. Pressing @bind18 while in the air
+will fire your CAT's jump boosters at the cost of some energy.
+
+When you have full energy, your damper absorbs 50% of all damage you take.
+The percentage decreases in a linear fashion with less energy.
+
+In etherform you can select the equipment you'll have in CAT form.
+
+Dark green zones can't be captured.
+
+CATs can only capture zones that border on one of their team's zones.
+
+Orange/cyan zones are zones that still belong to red/blue but are being blocked
+by the presence of an enemy CAT, which prevents red/blue etherforms from manifesting there.
+
+Thanks to your CAT's V-AMP module, damaging enemies restores your health
+and your energy.
+
+Keep an eye on your energy (the bar on the right), CATs with low energy are
+easily destroyed.
+
+The sky changing color is not just eyecandy. In a contested zone, the red/blue
+values of the sky color reflect the amount of health of red/blue CATs in the zone.
+
+Press @bind25 for arena-wide chat, @bind26 for team-chat.
+
+Looking for more players? - Try the global player chat (accessible
+through the "Client Toolbox" window.
+
+To get a complete overview of the zones, press @bind30 for a bigger
+minimap. If you want to look at the precise landscape, press @bind31.
+
+

@@ -949,58 +949,7 @@ function GameConnection::setNewbieHelp(%this, %msg, %time)
 	if(%msg $= "random")
 	{
 		%isCAT = %time; // hackety hack hack
-
-		%i = -1;
-		if(%this.hasEtherboard)
-		{
-			%tip[%i++] = "When in CAT form, hold down @bind21 to use your etherboard.";
-		}
-		if(%this.numRegenerators > 0)
-		{
-			%tip[%i++] = "Every additional regeneration module doubles the rate of regeneration.";
-		}
-		if(%this.numWeapons > 1)
-		{
-			%tip[%i++] = "When in CAT form, press @bind45 to cycle through your weapons.";
-		}
-		if(%isCAT)
-		{
-
-		}
-		%tip[%i++] = "Beware that firing your weapons draws power away from your armor.";
-		%tip[%i++] = "When in CAT form, close to the ground and not etherboarding," SPC
-			"you become anchored to the ground which reduces the push you get from being hit.";
-		%tip[%i++] = "When in CAT form, press @bind51 to fire a B.O.U.N.C.E. that reverses the momentum" SPC
-			"of nearby enemy CATs and deals some damage based on their speed.";
-		%tip[%i++] = "When in CAT form, hold down and release @bind19 to throw a grenade. Press @bind46 to" SPC
-			"throw a grenade with max. force.";
-		%tip[%i++] = "If you've aquired a disc lock (you'll hear three short beeps) you can" SPC
-			"launch a target-seeking disc: Press @bind47 for explosive disc, @bind48 for repel disc.";
-		%tip[%i++] = "In CAT form, you can deflect incoming discs by keeping your crosshair" SPC
-			"over the disc until it's locked and then pressing @bind17.";
-		%tip[%i++] = "When in CAT form, press @bind18 to jump. Pressing @bind18 while in the air will fire" SPC
-			"your CAT's jump boosters, which drains power away from your armor.";
-		%tip[%i++] = "When full, your armor absorbs 50% of the damage you take. The" SPC
-			"percentage decreases in a linear fashion with less armor.";
-		%tip[%i++] = "In etherform you can select the equipment you'll have" SPC
-				"in CAT form." SPC (%isCAT ? "" : "See the icons" SPC
-				"next to the health bar to the left.") SPC "";
-		%tip[%i++] = "Dark green zones can't be captured.";
-		%tip[%i++] = "CATs can only capture zones that border on one of their team's zones.";
-		%tip[%i++] = "Orange/cyan zones are zones that still belong to red/blue but are being blocked" SPC
-			"by the presence of an enemy CAT, which prevents red/blue etherforms from manifesting there.";
-		%tip[%i++] = "Damaging enemies restores your health and your armor.";
-		%tip[%i++] = "Keep an eye on your armor (the bar on the right), CATs with low armor are easily destroyed.";
-		%tip[%i++] = "The sky changing color is not just eyecandy. In a contested zone, the red/blue" SPC
-			"values of the sky color reflect the amount of health of red/blue CATs in the zone.";
-		%tip[%i++] = "Press @bind25 for arena-wide chat, @bind26 for team-chat.";			
-		%tip[%i++] = "Looking for more players? - Try the global player chat (accessible" SPC
-			"through the \"Client Toolbox\" window).";		
-		%tip[%i++] = "To get a complete overview of the zones, press @bind30 for a bigger" SPC
-			"minimap. If you want to look at the precise landscape, press @bind31.";		
-
-		%rand = getRandom(%i);
-		%msg = %tip[%rand];
+		%msg = getRandomHint();
 		%time = (%isCAT ? 60 : 0);
 	}
 
