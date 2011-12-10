@@ -65,7 +65,8 @@ function GameConnection::onCookiesReceived(%this, %cookies)
       if(%code !$= "")
    		%this.loadoutCode[%i] = %code;
    }
-
+   %this.cookiesDone = true;
+	%this.updateQuickbar();
 }
 
 //------------------------------------------------------------------------------
@@ -74,6 +75,7 @@ function GameConnection::onCookiesReceived(%this, %cookies)
 function GameConnection::onClientLoadMission(%this)
 {
 	%this.loadingMission = true;
+   %this.cookiesDone = false;
 	%this.updateQuickbar();
 	serverCmdMainMenu(%this);
 }
@@ -1123,39 +1125,70 @@ function GameConnection::updateQuickbar(%this)
 
 	}
 
+   %B1 = true;
+   %B2 = true;
+   %B3 = true;
+   %B4 = true;
+   %B5 = true;
+   %B6 = true;
+   %B7 = true;
+
+   if(%this.loadingMission)
+      %B4 = false;
+
+   if(!%this.cookiesDone)
+   {
+      %B3 = false;
+      %B5 = false;
+   }
+
    %sep = "\n\n";
 
    %msk = "             ";
    %spc = "  ";
    %tmp = "" @
-      "<B:1:cmd MainMenu>" @ %msk @ "</b>" @ %spc @
-      "<B:2:cmd ShowPlayerList>" @ %msk @ "</b>" @ %spc @
-      "<B:3:cmd Loadout>" @ %msk @ "</b>" @ %spc @
-      "<B:4:cmd Teams>" @ %msk @ "</b>" @ %spc @
-      "<B:5:cmd ShowSettings>" @ %msk @ "</b>" @ %spc @
-      "<B:6:cmd Admin>" @ %msk @ "</b>" @ %spc @
+      (%B1?"<B:1:cmd MainMenu>":"") @ %msk @ (%B1?"</b>":"") @ %spc @
+      (%B2?"<B:2:cmd ShowPlayerList>":"") @ %msk @ (%B2?"</b>":"") @ %spc @
+      (%B3?"<B:3:cmd Loadout>":"") @ %msk @ (%B3?"</b>":"") @ %spc @
+      (%B4?"<B:4:cmd Teams>":"") @ %msk @ (%B4?"</b>":"") @ %spc @
+      (%B5?"<B:5:cmd ShowSettings>":"") @ %msk @ (%B5?"</b>":"") @ %spc @
+      (%B6?"<B:6:cmd Admin>":"") @ %msk @ (%B6?"</b>":"") @ %spc @
       %msk @ %spc @
-      "<B:7:cmd HowToPlay 0>" @ %msk @ "</b>" @
+      (%B7?"<B:7:cmd HowToPlay 0>":"") @ %msk @ (%B7?"</b>":"") @
       "\n";
 
+   %B1Link1 = (%B1?"<B:1:cmd MainMenu>":"") @ "Arena" @ (%B1?"</b>":"");
+   %B1Link2 = (%B1?"<B:1:cmd MainMenu>":"") @ "Info" @ (%B1?"</b>":"");
+   %B2Link1 = (%B2?"<B:2:cmd MainMenu>":"") @ "Player" @ (%B2?"</b>":"");
+   %B2Link2 = (%B2?"<B:2:cmd MainMenu>":"") @ "List" @ (%B2?"</b>":"");
+   %B3Link1 = (%B3?"<B:3:cmd MainMenu>":"") @ "Edit" @ (%B3?"</b>":"");
+   %B3Link2 = (%B3?"<B:3:cmd MainMenu>":"") @ "Loadouts" @ (%B3?"</b>":"");
+   %B4Link1 = (%B4?"<B:4:cmd MainMenu>":"") @ "Switch" @ (%B4?"</b>":"");
+   %B4Link2 = (%B4?"<B:4:cmd MainMenu>":"") @ "Team" @ (%B4?"</b>":"");
+   %B5Link1 = (%B5?"<B:5:cmd MainMenu>":"") @ "Game" @ (%B5?"</b>":"");
+   %B5Link2 = (%B5?"<B:5:cmd MainMenu>":"") @ "Settings" @ (%B5?"</b>":"");
+   %B6Link1 = (%B6?"<B:6:cmd MainMenu>":"") @ "Arena" @ (%B6?"</b>":"");
+   %B6Link2 = (%B6?"<B:6:cmd MainMenu>":"") @ "Admin" @ (%B6?"</b>":"");
+   %B7Link1 = (%B7?"<B:7:cmd MainMenu>":"") @ "Help" @ (%B7?"</b>":"");
+
    %tabsFG = %tmp @ %tmp @ %tmp @
-      "  <B:1:cmd MainMenu>Arena</b>      " @
-      "<B:2:cmd ShowPlayerList>Player</b>       " @
-      "<B:3:cmd Loadout>Edit</b>        " @
-      "<B:4:cmd Teams>Switch</b>  " @
+      "  "@%B1Link1@"      " @
+      %B2Link1@"       " @
+      %B3Link1@"        " @
+      %B4Link1@"  " @
       " " @ // center of line
-      "   <B:5:cmd ShowSettings>Game</b>       " @
-      "<B:6:cmd ShowSettings>Arena</b>         " @
+      "   "@%B5Link1@"       " @
+      %B6Link1@"         " @
       "             " @
-      "<B:7:cmd HowToPlay 0>Help</b>   " @
+      %B7Link1@"   " @
       "\n" @
-      "<B:1:cmd MainMenu>Info</b>          " @
-      "<B:2:cmd ShowPlayerList>List</b>     " @
-      "<B:3:cmd Loadout>Loadouts</b>     " @
-      "<B:4:cmd Teams>Team</b>   " @
+      %B1Link2@"          " @
+      %B2Link2@"     " @
+      %B3Link2@"     " @
+      %B4Link2@"   " @
       "" @ // center of line
-      "  <B:5:cmd ShowSettings>Settings</b>    " @
-      "<B:6:cmd ShowSettings>Admin</b>                           " @
+      "  "@%B5Link2@"    " @
+      %B6Link2@"                           " @
       "";
 
    %tabsBG = "<bitmap:share/ui/rotc/qbbg>";
