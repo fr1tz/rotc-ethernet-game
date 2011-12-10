@@ -14,8 +14,8 @@ function deployRepel3(%obj)
 	if(%obj.getEnergyLevel() < 50)
 		return;
 
-	if($Sim::Time < %obj.lastRepelTime + 1)
-		return;
+//	if($Sim::Time < %obj.lastRepelTime + 1)
+//		return;
 		
 	%pos = %obj.getWorldBoxCenter();
 	%radius = 10;
@@ -28,6 +28,9 @@ function deployRepel3(%obj)
 	{
 		if(%targetObject.getTeamId() == %obj.getTeamId())
 			continue;
+
+      if(%targetObject.hasBarrier())
+         continue;
 
 		// Calculate how much exposure the current object has to
 		// the effect.  The object types listed are objects
@@ -46,6 +49,7 @@ function deployRepel3(%obj)
 		%vec = %targetObject.getVelocity();
 		%vec = VectorScale(%vec, -1);
 		%targetObject.setVelocity(%vec);
+		%targetObject.activateBarrier(1);
 
 		// damage based on speed...
 		%speed = VectorLen(%vec);
@@ -78,7 +82,8 @@ function deployRepel3(%obj)
 	}
 	else
 	{
-		%obj.shapeFxSetColor($PlayerShapeFxSlot::Shield, 5);		
+		%obj.shapeFxSetColor($PlayerShapeFxSlot::Shield, 5);
+	
 		%obj.setEnergyLevel(%obj.getEnergyLevel() - 50);	
 
 	}
