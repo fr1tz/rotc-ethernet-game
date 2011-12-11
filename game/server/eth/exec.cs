@@ -12,5 +12,5 @@ exec("./news.cs");
 exec("./playerlist.cs");
 exec("./loadoutmenu.cs");
 exec("./teamsmenu.cs");
+exec("./settings.cs");
 exec("./adminmenu.cs");
-

@@ -113,6 +113,16 @@ function serverCmdTeams(%client)
 	%client.menu = "teams";
 }
 
+function serverCmdShowSettings(%client, %section)
+{
+	showSettings(%client, %section);
+}
+
+function serverCmdSetSetting(%client, %str)
+{
+	setSetting(%client, %str)
+}
+
 function serverCmdAdmin(%client, %str)
 {
 	%str = strreplace(%str, "/", " ");
