@@ -22,6 +22,12 @@ function serverCmdMainMenu(%client)
 	%client.menu = "main";
 }
 
+function serverCmdNews(%client)
+{
+	showNews(%client);
+	%client.menu = "news";
+}
+
 function serverCmdLoadout(%client, %str)
 {
 	%str = strreplace(%str, "/", " ");

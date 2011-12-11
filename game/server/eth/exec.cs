@@ -8,6 +8,7 @@ exec("./manual.cs");
 exec("./hints.cs");
 exec("./loadout.cs");
 exec("./mainmenu.cs");
+exec("./news.cs");
 exec("./loadoutmenu.cs");
 exec("./teamsmenu.cs");
 exec("./adminmenu.cs");
