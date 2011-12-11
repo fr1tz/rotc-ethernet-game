@@ -111,7 +111,7 @@ function showManualPage(%client, %page)
 
 	%newtxt = %newtxt @ %nav @ "\n\n" @
 		"<spush><font:NovaSquare:24>" @ %p.name @
-      "<spop><just:left><lmargin:5><rmargin:445>\n\n";
+      "<spop><just:left><lmargin:5><rmargin:480>\n\n";
 
    if(%idx == 0)
    {
