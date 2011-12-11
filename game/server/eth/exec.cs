@@ -9,6 +9,7 @@ exec("./hints.cs");
 exec("./loadout.cs");
 exec("./mainmenu.cs");
 exec("./news.cs");
+exec("./playerlist.cs");
 exec("./loadoutmenu.cs");
 exec("./teamsmenu.cs");
 exec("./adminmenu.cs");

@@ -28,6 +28,16 @@ function serverCmdNews(%client)
 	%client.menu = "news";
 }
 
+function serverCmdShowPlayerList(%client, %arg)
+{
+	showPlayerList(%client, %arg);
+}
+
+function serverCmdShowPlayerInfo(%client, %player)
+{
+	showPlayerInfo(%client, %player);
+}
+
 function serverCmdLoadout(%client, %str)
 {
 	%str = strreplace(%str, "/", " ");
