@@ -16,6 +16,12 @@ function serverCmdTextInput(%client, %text)
    %client.textInputTargetName = "";
 }
 
+function serverCmdMainMenu(%client)
+{
+	showMainMenu(%client);
+	%client.menu = "main";
+}
+
 function serverCmdLoadout(%client, %str)
 {
 	%str = strreplace(%str, "/", " ");

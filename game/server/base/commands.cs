@@ -233,38 +233,6 @@ function serverCmdMenuVisible(%client, %visible)
 
 //-----------------------------------------------------------------------------
 
-function serverCmdMainMenu(%client)
-{
-	%newtxt = om_init();
-	%client.beginMenuText(%client.menu $= "mainmenu");
-
-	%newtxt = %newtxt @
-		om_head(%client, "Arena Info") @
-		"<spush><font:NovaSquare:20>" @
-		"Welcome to" SPC $Server::MissionType SPC 
-		$Server::MissionName @ 
-		"<spop>\n\n<a:cmd News>What's new in" SPC $Server::MissionType @ "?</a>\n\n" @
-		"Hosted by" SPC $Pref::Server::Name @ "\n\n" @
-		"<spush>" @ $Pref::Server::Info @ "<spop>\n\n" @
-		"";
-
-	if(%client.loadingMission || %client.menu $= "mainmenu")
-	{
-		%summary = $Game::GameTypeString SPC "in a nutshell";	
-		%newtxt = %newtxt @
-			"If you're playing this arena for the first time, loading" SPC
-			"might take\nsome time while the game downloads needed" SPC
-			"art from the server.\nConsider using the time to read" SPC
-			"<a:cmd HowToPlay 1>" @ %summary @ "</a>.\n" @
-			"";
-	}
-
-	%client.addMenuText(%newtxt);
-	%client.endMenuText();
-
-	%client.menu = "mainmenu";
-}
-
 function serverCmdNews(%client)
 {
 	%newtxt = om_init();
