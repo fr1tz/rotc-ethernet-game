@@ -178,7 +178,7 @@ datablock PlayerData(RedStandardCat)
 	// foot puffs
 	footPuffEmitter = RedStandardCatFootPuffEmitter;
 	footPuffNumParts = 5;
-	footPuffRadius = 0.1;
+	footPuffRadius = 0.2;
 	
 	// ground connection beam
 	groundConnectionBeam = StandardCatGroundConnectionBeam;

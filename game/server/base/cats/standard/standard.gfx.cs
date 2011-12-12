@@ -649,32 +649,35 @@ datablock DecalData(BlueStandardCatFootprint)
 datablock ParticleData(RedStandardCatFootPuff)
 {
 	dragCoefficient		= 2.0;
-	gravityCoefficient	= -0.01;
-	inheritedVelFactor	= 0.6;
+	gravityCoefficient	= -0.3;
+	inheritedVelFactor	= 0.0;
 	constantAcceleration = 0.0;
-	lifetimeMS			  = 1000;
-	lifetimeVarianceMS	= 100;
+	lifetimeMS			  = 1200;
+	lifetimeVarianceMS	= 0;
 	useInvAlpha			 = false;
 	spinRandomMin		  = -35.0;
 	spinRandomMax		  = 35.0;
-	colors[0]	  = "1.0 0.5 0.0 1.0";
-	colors[1]	  = "1.0 0.0 0.0 0.0";
-	sizes[0]		= 1.2;
-	sizes[1]		= 0.0;
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "1.0 0.5 0.5 0.5";
+	colors[2]	  = "0.5 0.5 0.5 0.0";
+	sizes[0]		= 0.8;
+	sizes[1]		= 1.2;
+	sizes[2]		= 0.0;
 	times[0]		= 0.0;
-	times[1]		= 1.0;
-	textureName	= "share/textures/rotc/particle1";
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+	textureName	= "share/textures/rotc/smoke_particle";
 };
 
 datablock ParticleEmitterData(RedStandardCatFootPuffEmitter)
 {
 	ejectionPeriodMS = 35;
 	periodVarianceMS = 10;
-	ejectionVelocity = 0.2;
+	ejectionVelocity = 0;
 	velocityVariance = 0.1;
-	ejectionOffset	= 0.0;
-	thetaMin			= 20;
-	thetaMax			= 60;
+	ejectionOffset   = -0.6;
+	thetaMin         = 0;
+	thetaMax         = 0;
 	phiReferenceVel  = 0;
 	phiVariance		= 360;
 	overrideAdvances = false;
@@ -685,32 +688,35 @@ datablock ParticleEmitterData(RedStandardCatFootPuffEmitter)
 datablock ParticleData(BlueStandardCatFootPuff)
 {
 	dragCoefficient		= 2.0;
-	gravityCoefficient	= -0.01;
-	inheritedVelFactor	= 0.6;
+	gravityCoefficient	= -0.3;
+	inheritedVelFactor	= 0.0;
 	constantAcceleration = 0.0;
-	lifetimeMS			  = 1000;
-	lifetimeVarianceMS	= 100;
+	lifetimeMS			  = 1200;
+	lifetimeVarianceMS	= 0;
 	useInvAlpha			 = false;
 	spinRandomMin		  = -35.0;
 	spinRandomMax		  = 35.0;
-	colors[0]	  = "0.0 0.5 1.0 1.0";
-	colors[1]	  = "0.0 0.0 1.0 0.0";
-	sizes[0]		= 1.2;
-	sizes[1]		= 0.0;
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "0.5 0.5 1.0 0.5";
+	colors[2]	  = "0.5 0.5 0.5 0.0";
+	sizes[0]		= 0.8;
+	sizes[1]		= 1.2;
+	sizes[2]		= 0.0;
 	times[0]		= 0.0;
-	times[1]		= 1.0;
-	textureName	= "share/textures/rotc/particle1";
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+	textureName	= "share/textures/rotc/smoke_particle";
 };
 
 datablock ParticleEmitterData(BlueStandardCatFootPuffEmitter)
 {
 	ejectionPeriodMS = 35;
 	periodVarianceMS = 10;
-	ejectionVelocity = 0.2;
+	ejectionVelocity = 0;
 	velocityVariance = 0.1;
-	ejectionOffset	= 0.0;
-	thetaMin			= 20;
-	thetaMax			= 60;
+	ejectionOffset   = -0.6;
+	thetaMin         = 0;
+	thetaMax         = 0;
 	phiReferenceVel  = 0;
 	phiVariance		= 360;
 	overrideAdvances = false;
