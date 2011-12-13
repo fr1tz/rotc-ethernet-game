@@ -1,3 +1,4 @@
 #icon share/hud/rotc/icon.etherboard.50x15
+#size 11
 <lmargin:10><bitmap:share/manual/rotc/etherboard><sbreak>
 <lmargin:5>If eqipped with an etherboard, CATs can trade agility for speed by holding down @bind21. Using the etherboard causes a CAT to slowly lose <a:cmd Manual 4.4>anchoring</a>.

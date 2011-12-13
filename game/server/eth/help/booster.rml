@@ -1,3 +1,4 @@
 #icon share/hud/rotc/icon.booster.20x20
+#size 11
 <lmargin:10><bitmap:share/manual/rotc/jumpbooster><sbreak>
 <lmargin:5>All CATs are equipped with a jump booster. The jump booster allows a CAT to re-jump in mid-air at the cost of energy.

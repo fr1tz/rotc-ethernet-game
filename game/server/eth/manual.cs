@@ -55,8 +55,6 @@ function constructManual(%indexFile)
       }
       %textfile.delete();
 
-      %obj.size = getField(%line, 2);
-
       $Manual.push_back(%obj.page, %obj);
    }
 	%file.delete();
@@ -88,8 +86,8 @@ function showManualPage(%client, %page)
 		%page = 0;
 
 	%newtxt = %newtxt @
-		om_head(%client, "Manual") @
-		"<just:center><spush><font:NovaSquare:20>How to play " @ $Game::GameTypeString @ "?<spop>\n\n";
+		om_head(%client, $Game::GameTypeString SPC "Manual") @
+		"<just:center>";
 
    %idx = getManualPageIndex(%page);
    if(%idx < 0)

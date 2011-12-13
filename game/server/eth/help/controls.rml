@@ -33,6 +33,7 @@
 	Walk	<spush><font:Arial Bold:16>@bind20<spop>
 	Jump	<spush><font:Arial Bold:16>@bind18<spop>
 	Slide	<spush><font:Arial Bold:16>@bind21<spop>
+	Zoom	<spush><font:Arial Bold:16>Mouse wheel<spop>
 	Fire	<spush><font:Arial Bold:16>@bind16<spop>
 	Repel	<spush><font:Arial Bold:16>@bind17<spop>
 	Grenade	<spush><font:Arial Bold:16>@bind19<spop>

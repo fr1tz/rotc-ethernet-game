@@ -1,4 +1,5 @@
 #icon share/hud/rotc/icon.anchor.20x20
+#size 16
 <lmargin:10><bitmap:share/manual/rotc/anchor><sbreak><tab:20,130,240,350>	red 100%	red 0%	blue 100%	blue 0%
 
 <lmargin:5>All CATs are equipped with an anchor module. To compensate for the strong push from being hit by a projectile, the anchor module can "anchor" a CAT to the ground. When fully anchored,  the impact force from a hit is reduced by 75%. Not touching the ground or using the <a:cmd Manual 8.1>Etherboard</a> will cause a CAT to slowly lose anchoring.

@@ -1,4 +1,5 @@
 #icon share/hud/rotc/icon.blaster.50x15
+#size 27
 <lmargin:120><bitmap:share/manual/rotc/wpn.blaster><sbreak>
 <lmargin:5>The Blaster is a powerful but tricky weapon. 
 It always fires 9 shots at once. Because of this, it uses a lot of energy and has a huge recoil, but is able to deal up to 90 points of damage at once. Note that the seemingly random distribution of the shots is just eyecandy, there's no randomness involved in determining the amount of shots that hit. The properties of an individual Blaster shot:

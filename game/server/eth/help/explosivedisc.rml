@@ -1,4 +1,5 @@
 #icon share/hud/rotc/icon.explosivedisc.20x20
+#size 17
 <lmargin:10><bitmap:share/manual/rotc/explosivedisc><lmargin:5><sbreak>
 An explosive disc will track its target until it has hit it, missed it, was deflected by another disc or has expired.
 

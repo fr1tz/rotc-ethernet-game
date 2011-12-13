@@ -1,4 +1,5 @@
 #icon share/hud/rotc/icon.rifle.50x15
+#size 23
 <lmargin:120><bitmap:share/manual/rotc/wpn.battlerifle><sbreak>
 <lmargin:5>The Battle Rifle fires tiny grenades that explode near enemies or on impact. It always fires two mini-grenades at once. The properties of a single mini-grenade:
 <sbreak><tab:15,180>

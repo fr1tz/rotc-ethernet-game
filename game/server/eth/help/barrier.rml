@@ -1,4 +1,5 @@
 #icon share/hud/rotc/icon.barrier.20x20
+#size 17
 <lmargin:120><bitmap:share/manual/rotc/barrier><sbreak><tab:130,240>	red barrier	blue barrier
 
 <lmargin:5>All CATs are equipped with a barrier module. Being hit by <a:cmd Manual 7>a weapon that bypasses the shield</a> (weapons with orange/green visual effects) will enable a CAT to activate its temporary barrier that will make the CAT invulnerable to shield-bypassing weapons for a short time. Aside from time, only a hit with a <a:cmd Manual 5.1>Repel Disc</a> will make the barrier go away.
