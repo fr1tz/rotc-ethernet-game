@@ -429,7 +429,7 @@ function GameConnection::togglePlayerForm(%this, %forced)
 			
 			if(%this.player.getEnergyLevel() < 50)
 			{
-				%this.beepMsg("You need at least 50% armor to manifest!");
+				%this.beepMsg("You need at least 50% energy to manifest!");
 				return;
 			}
 
