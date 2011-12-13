@@ -127,7 +127,7 @@ function showManualPage(%client, %page)
    %p = getManualPageByIndex(%idx);
 
 	%newtxt = %newtxt @ %nav @ "\n\n" @
-		"<spush><font:NovaSquare:24>" @ %p.name @
+		"<spush><font:NovaSquare:24>" @ %page @ "." SPC %p.name @
       "<spop><just:left><lmargin:5><rmargin:480>\n\n";
 
    if(%idx == 0)

@@ -1,0 +1,11 @@
+Fundamentally there are two categories of weapons in ROTC: Those that bypass a CAT's <a:cmd Manual 4.3>barrier</a> (using red/blue visuals) and those that bypass a CAT's <a:cmd Manual 4.2>shield</a> (using orange/green visuals).
+
+Most weapons fall into the first category and thus will often require multiple hits in quick succession to cause an enemy CAT to lose a significant amount of health.
+
+- <a:cmd Manual 6.1>Blaster</a> <bitmap:share/hud/rotc/icon.blaster.50x15>
+
+- <a:cmd Manual 6.2>Battle Rifle</a> <bitmap:share/hud/rotc/icon.rifle.50x15>
+
+- <a:cmd Manual 6.3>Minigun</a> <bitmap:share/hud/rotc/icon.minigun.50x15>
+
+- <a:cmd Manual 6.4>Grenade</a> <bitmap:share/hud/rotc/icon.grenade.20x20>

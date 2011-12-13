@@ -1,4 +1,10 @@
 #icon share/hud/rotc/icon.bounce.20x20
 #size 30
+<lmargin:10><bitmap:share/manual/rotc/bounce><sbreak><tab:20,130,240,350>
+<lmargin:5>All CATs are equipped with a Chrestmann-Goldberg device that can be used to reverse the momentum of nearby enemy CATs. This is commonly called firing a B.O.U.N.C.E. (Burst Of Ultraons eNgaging Close Enemies). 
 
-CATs are equipped with a Chrestmann-Goldberg device that can be used to reverse the momentum of nearby enemy CATs. This is commonly called firing a B.O.U.N.C.E. (Burst Of Ultraons eNgaging Close Enemies). Pressing @bind51 activates the burst. If no enemy CATs are close this process drains 50% of the CAT's armor. Because it uses an enemy CAT's momentum against it, a B.O.U.N.C.E. is most effective against fast-moving CATs.
+Pressing @bind51 activates the burst. If no enemy CATs are close this process drains 50% of the CAT's energy.
+
+If enemy CATs are close, their momentum will be reversed and they will take some damage depending on how fast they were going. The burst will also activate their <a:cmd Manual 4.3>barrier</a>, making them immune to immediate follow-up bursts.
+
+Because it uses an enemy CAT's momentum against it, a B.O.U.N.C.E. is most effective against fast-moving CATs.

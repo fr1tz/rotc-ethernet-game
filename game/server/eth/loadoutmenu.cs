@@ -55,6 +55,22 @@ function LoadoutMenu_InfoLink(%loadout, %L3, %item)
    return "[<a:cmd Loadout " @ %arg @ ">" @ "?" @ "</a>]";
 }
 
+function LoadoutMenu_WeaponInfoLink(%loadout, %L3, %nr)
+{
+   %info = "";
+   switch(%nr)
+   {
+		case 1: %info = "6.1";
+		case 2: %info = "6.2";
+		case 3: %info = "7.1";
+		case 4: %info = "6.3";
+		case 5: %info = "8.3";
+		case 6: %info = "8.1";
+		case 7: %info = "8.2";
+   }
+   LoadoutMenu_InfoLink(%loadout, %L3, %info);
+}
+
 function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPos)
 {
 	%L3 = om_init();
@@ -109,7 +125,7 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
                %c2 = LoadoutMenu_GetIcon(%item);
                %c2 = "<bitmap:share/hud/rotc/icon." @ %c2 @ ".50x15>";
                %c3 = LoadoutMenu_GetWeaponName(%item);
-               %c3 = %c3 SPC LoadoutMenu_InfoLink(%no, %L3, %c);
+               %c3 = %c3 SPC LoadoutMenu_WeaponInfoLink(%no, %L3, %item);
                %c4 = LoadoutMenu_Link("Select", %no, "s", %slot, %item);
    		      %L3 = %L3 TAB "" TAB %c2 TAB %c3 TAB %c4 @ "\n";
             }
@@ -119,8 +135,8 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
             %c1 = "Slot #" @ %slot @ ":";
             %c2 = LoadoutMenu_GetIcon(%c);
             %c2 = "<bitmap:share/hud/rotc/icon." @ %c2 @ ".50x15>";
-            %c3 = LoadoutMenu_GetWeaponName(%slot);
-            %c3 = %c3 SPC LoadoutMenu_InfoLink(%no, %L3, %c);
+            %c3 = LoadoutMenu_GetWeaponName(%c);
+            %c3 = %c3 SPC LoadoutMenu_WeaponInfoLink(%no, %L3, %c);
             %c4 = LoadoutMenu_Link("Change", %no, "e", %slot);
    		   %L3 = %L3 TAB %c1 TAB %c2 TAB %c3  TAB %c4 @ "\n";
          }
@@ -133,18 +149,18 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.damper.20x20> Damper " @ LoadoutMenu_InfoLink(%no,%L3,10) @ "\n\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.barrier.20x20> Barrier " @ LoadoutMenu_InfoLink(%no,%L3,10) @ "\n\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.shield.20x20> Shield " @ LoadoutMenu_InfoLink(%no,%L3,10) @ "\n\n";
-		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.bounce.20x20> B.O.U.N.C.E. " @ LoadoutMenu_InfoLink(%no,%L3,10) @ "\n\n";
+		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.bounce.20x20> B.O.U.N.C.E. " @ LoadoutMenu_InfoLink(%no,%L3,"5.3") @ "\n\n";
 		%L3 = %L3 @ " Head:\n";
-		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.repeldisc.20x20> Repel Disc Launcher " @ LoadoutMenu_InfoLink(%no,%L3,10) @ "\n\n";
-		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.explosivedisc.20x20> Explosive Disc Launche " @ LoadoutMenu_InfoLink(%no,%L3,10) @ "\n\n";
+		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.repeldisc.20x20> Repel Disc Launcher " @ LoadoutMenu_InfoLink(%no,%L3,"5.1") @ "\n\n";
+		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.explosivedisc.20x20> Explosive Disc Launcher " @ LoadoutMenu_InfoLink(%no,%L3,"5.1") @ "\n\n";
 		%L3 = %L3 @ " Arm:\n";
-		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.grenade.20x20> Grenade " @ LoadoutMenu_InfoLink(%no,%L3,10) @ "\n\n";
+		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.grenade.20x20> Grenade " @ LoadoutMenu_InfoLink(%no,%L3,"5.2") @ "\n\n";
 		%L3 = %L3 @ " Torso:\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.vamp.20x20> V-AMP " @ LoadoutMenu_InfoLink(%no,%L3,10) @ "\n\n";
 		%L3 = %L3 @ " Pelvis:\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.anchor.20x20> Anchor " @ LoadoutMenu_InfoLink(%no,%L3,10) @ "\n\n";
 		%L3 = %L3 @ " Feet:\n";
-		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.permaboard.20x20> Jump Booster " @ LoadoutMenu_InfoLink(%no,%L3,10) @ "\n\n";
+		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.booster.20x20> Jump Booster " @ LoadoutMenu_InfoLink(%no,%L3,10) @ "\n\n";
 	}
 
    %L4 = om_init();
@@ -159,6 +175,7 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
 
    if(%showInfo > 0)
    {
+      %page = getManualPage(%showInfo);
       %spacers = (%infoPos*16)/14;
 
       for(%i = 0; %i < %spacers; %i++)
@@ -166,16 +183,13 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
       %L1 = %L1 @ om_init();
       %L1 = %L1 @ "<lmargin:350>";
       %L1 = %L1 @ LoadoutMenu_Link("Close", %no);
-      %L1 = %L1 @ "\n<lmargin:65>";
-      %L1 = %L1 @ "BLAH BLAH BLAH\n";
-      %L1 = %L1 @ "BLAH BLAH BLAH\n";
-      %L1 = %L1 @ "BLAH BLAH BLAH\n";
-      %L1 = %L1 @ "BLAH BLAH BLAH\n";
+      %L1 = %L1 @ "\n<lmargin:65><rmargin:385>";
+      %L1 = %L1 @ %page.text;
 
       for(%i = 0; %i < %spacers; %i++)
          %L2 = %L2 @ "<bitmap:share/ui/rotc/bg1>\n";
       %L2 = %L2 @ "<bitmap:share/ui/rotc/bg1t>\n";
-      %n = getRecordCount(%L1) - %spacers - 1;
+      %n = %page.size - %spacers - 1;
       while(%n > 0)
       {
          %L2 = %L2 @ "<bitmap:share/ui/rotc/bg1m>\n";

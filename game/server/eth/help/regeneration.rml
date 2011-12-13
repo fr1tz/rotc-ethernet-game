@@ -1,4 +1,3 @@
 #icon share/hud/rotc/icon.regen.50x15
-
-If eqipped with one or more regeneration modules, CATs will regenerate health when standing still.
-Every additional module doubles the amount repaired.
+<lmargin:10><bitmap:share/manual/rotc/regeneration><sbreak>
+<lmargin:5>If eqipped with one or more regeneration modules, CATs will regenerate health when standing still. Every additional module doubles the amount repaired.

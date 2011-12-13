@@ -1,15 +1,15 @@
 #icon share/hud/rotc/icon.blaster.50x15
-
-<bitmap:share/misc/help/wpn_oldblaster.png><sbreak>
-
-The Blaster is a powerful but tricky weapon. 
+<lmargin:120><bitmap:share/manual/rotc/wpn.blaster><sbreak>
+<lmargin:5>The Blaster is a powerful but tricky weapon. 
 It always fires 9 shots at once. Because of this, it uses a lot of energy and has a huge recoil, but is able to deal up to 90 points of damage at once. Note that the seemingly random distribution of the shots is just eyecandy, there's no randomness involved in determining the amount of shots that hit. The properties of an individual Blaster shot:
-<sbreak><tab:15,200>
-	Armor cost	<spush><font:Arial Bold:16>4<spop>
+<sbreak><tab:15,180>
+	Bypasses	<spush><font:Arial Bold:16>Barrier<spop>
+	Energy cost	<spush><font:Arial Bold:16>4<spop>
 	Impact damage	<spush><font:Arial Bold:16>10<spop>
 	Impact impulse	<spush><font:Arial Bold:16>400<spop>
 	Splash damage	<spush><font:Arial Bold:16>-<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
-	Bypasses	<spush><font:Arial Bold:16>barrier<spop>
+	Velocity inheritance	<spush><font:Arial Bold:16>0% (instant hit)<spop>	
+	Accuracy	<spush><font:Arial Bold:16>Even distribution among targets in fire cone<spop>
 <sbreak>

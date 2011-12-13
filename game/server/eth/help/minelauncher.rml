@@ -1,7 +1,5 @@
 #icon share/hud/rotc/icon.grenadelauncher.50x15
-
-<bitmap:share/misc/help/wpn_gl.png><sbreak>
-
-The Mine Launcher can fire up to four mines in quick succession.
-Firing it doesn't drain power away from a CAT's armor but instead draws from the same ammo source as the <a:cmd HowToPlay 5.2>grenades</a>. Once in position, the mines work like a <a:cmd HowToPlay 5.3>B.O.U.N.C.E.</a> that's triggered by nearby moving enemies. If not triggered by an enemy, the mine will trigger after a few seconds.
+<lmargin:120><bitmap:share/manual/rotc/wpn.minelauncher><sbreak>
+<lmargin:5>The Mine Launcher can fire up to four mines in quick succession.
+Firing it doesn't drain energy but instead draws from the same ammo source as the <a:cmd Manual 6.4>grenades</a>. Once in position, the mines work like a <a:cmd Manual 7.2>B.O.U.N.C.E.</a> that's triggered by nearby moving enemies. If not triggered by an enemy, the mine will trigger after a few seconds. CATs with an active <a:cmd Manual 4.3>barrier</a> will not trigger the mines.
 <sbreak>

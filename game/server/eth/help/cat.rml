@@ -21,15 +21,15 @@ By pressing @bind34, players manifested as CAT can dissolve their physical bodie
 
 A fixed set of passive modules give additional protection or unusual abilities to CATs:
 
-<a:cmd Manual 4.1>4.1 Damper</a> <bitmap:share/hud/rotc/icon.damper.20x20> - Reduces damage based on amount of available energy.
+- <a:cmd Manual 4.1>Damper</a> <bitmap:share/hud/rotc/icon.damper.20x20> - Reduces damage based on amount of available energy.
 
-<a:cmd Manual 4.2>4.2 Shield</a> <bitmap:share/hud/rotc/icon.shield.20x20> - Absorbs damage.
+- <a:cmd Manual 4.2>Shield</a> <bitmap:share/hud/rotc/icon.shield.20x20> - Absorbs damage.
 
-<a:cmd Manual 4.3>4.3 Barrier</a> <bitmap:share/hud/rotc/icon.barrier.20x20> - Provides 100% protection from certain weapons.
+- <a:cmd Manual 4.3>Barrier</a> <bitmap:share/hud/rotc/icon.barrier.20x20> - Provides 100% protection from certain weapons.
 
-<a:cmd Manual 4.4>4.4 Anchor</a> <bitmap:share/hud/rotc/icon.anchor.20x20> - Protects the CAT from being pushed around.
+- <a:cmd Manual 4.4>Anchor</a> <bitmap:share/hud/rotc/icon.anchor.20x20> - Protects the CAT from being pushed around.
 
-<a:cmd Manual 4.5>4.5 V-AMP</a> <bitmap:share/hud/rotc/icon.vamp.20x20> - Converts damage done to enemy CATs into health & energy.
+- <a:cmd Manual 4.5>V-AMP</a> <bitmap:share/hud/rotc/icon.vamp.20x20> - Converts damage done to enemy CATs into health & energy.
 
 
 

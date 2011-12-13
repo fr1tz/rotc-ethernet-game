@@ -2,6 +2,9 @@
 
 <lmargin:5>Every CAT carries a head-mounted disc launcher and two discs. Discs are removed from a CAT's inventory when launched and re-added when they return, explode or expire.
 
+<lmargin:5><spush><font:NovaSquare:24>Deflecting incoming Discs<spop>
+
+To deflect an incoming disc, keep the crosshair over it until it's locked, then press @bind17. 
 
 <spush><font:NovaSquare:24>Attacking with Discs<spop>
 
@@ -12,10 +15,9 @@ To attack with a disc, you first need to get a disc-lock on an enemy CAT. These 
 
 <lmargin:5>A disc-lock only lasts for two seconds.
 After you've aquired a disc-lock, you can:
-<lmargin:10>-<lmargin:20> Launch a <a:cmd Manual 5.1>repel disc</a> by pressing @bind17.
-<lmargin:10>-<lmargin:20> Launch an <a:cmd Manual 5.2>explosive disc</a> by pressing @bind47.
+
+<lmargin:10>-<lmargin:20> Launch a <a:cmd Manual 5.1>repel disc</a> <bitmap:share/hud/rotc/icon.repeldisc.20x20> by pressing @bind17.
+
+<lmargin:10>-<lmargin:20> Launch an <a:cmd Manual 5.2>explosive disc</a> <bitmap:share/hud/rotc/icon.explosivedisc.20x20> by pressing @bind47.
 
 
-<lmargin:5><spush><font:NovaSquare:24>Deflecting incoming Discs<spop>
-
-To deflect an incoming disc, keep the crosshair over it until it's locked, then press @bind17. 

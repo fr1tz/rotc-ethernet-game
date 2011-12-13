@@ -4,6 +4,6 @@ A repel disc will track its target until it has hit it, missed it, was deflected
 
 Repel discs don't do any damage. Instead, a disc-hit has the following effects:
 <lmargin:10>-<lmargin:20> It will give 20 points of energy to the CAT that launched it.
-<lmargin:10>-<lmargin:20> It will remove an enemy CAT's barrier.
-<lmargin:10>-<lmargin:20> It will remove 50% of an enemy CAT's anchoring and push it away from the CAT that launched the disc.
+<lmargin:10>-<lmargin:20> It will remove an enemy CAT's <a:cmd Manual 4.3>barrier</a>.
+<lmargin:10>-<lmargin:20> It will remove 50% of an enemy CAT's <a:cmd Manual 4.4>anchoring</a> and push it away from the CAT that launched the disc.
 <lmargin:0>
