@@ -120,7 +120,7 @@ function serverCmdShowSettings(%client, %section)
 
 function serverCmdSetSetting(%client, %str)
 {
-	setSetting(%client, %str)
+	setSetting(%client, %str);
 }
 
 function serverCmdAdmin(%client, %str)
