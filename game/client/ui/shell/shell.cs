@@ -46,7 +46,7 @@ function removeWindow(%control)
 
 function Shell::onWake(%this)
 {
-   ShellVersionString.setText("client version: $GameVersionString);
+   ShellVersionString.setText("client version:" SPC $GameVersionString);
    windowSelected(RootMenuWindow);
 }
 
