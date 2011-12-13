@@ -78,11 +78,13 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 		stateName[0]                     = "Preactivate";
 		stateTransitionOnAmmo[0]         = "Activate";
 		stateTransitionOnNoAmmo[0]       = "NoAmmo";
+		stateTimeoutValue[0]             = 0.25;
+		stateSequence[0]                 = "lowered";
 
 		// when mounted...
 		stateName[1]                     = "Activate";
 		stateTransitionOnTimeout[1]      = "Ready";
-		stateTimeoutValue[1]             = 0.5;
+		stateTimeoutValue[1]             = 0.25;
 		stateSequence[1]                 = "lowered";
 
 		// ready, just waiting for the trigger...
@@ -157,7 +159,7 @@ datablock ShapeBaseImageData(RedSniperRifleImage)
 		stateName[10]                    = "NoAmmo";
         stateTransitionOnTriggerDown[10] = "DryFire";
 		stateTransitionOnAmmo[10]        = "Ready";
-		stateSequence[10]                = "idle";
+		stateSequence[10]                = "lowered";
 		stateTimeoutValue[10]            = 0.50;
 		stateScript[10]                  = "onNoAmmo";
 

@@ -250,11 +250,13 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		stateName[0]                     = "Preactivate";
 		stateTransitionOnAmmo[0]         = "Activate";
 		stateTransitionOnNoAmmo[0]		 = "NoAmmo";
+		stateTimeoutValue[0]             = 0.25;
+		stateSequence[0]                 = "idle";
 
 		// when mounted...
 		stateName[1]                     = "Activate";
 		stateTransitionOnTimeout[1]      = "Ready";
-		stateTimeoutValue[1]             = 0.5;
+		stateTimeoutValue[1]             = 0.25;
 		stateSequence[1]                 = "idle";
 		stateSpinThread[1]               = "SpinUp";
 
