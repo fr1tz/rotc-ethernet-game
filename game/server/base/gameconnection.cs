@@ -1121,16 +1121,7 @@ function GameConnection::setHudMenuC(%this, %slot, %text, %repetitions, %visible
 
 function GameConnection::updateQuickbar(%this)
 {
-	%head = "<just:center><font:NovaSquare:16>";
-
-	if(%this.loadingMission)
-	{
-		%joinText = "Can't join a team while arena is loading";
-	}
-	else
-	{
-
-	}
+   %head = "<just:center><font:NovaSquare:16>";
 
    %B1 = true;
    %B2 = true;
@@ -1149,8 +1140,6 @@ function GameConnection::updateQuickbar(%this)
       %B5 = false;
    }
 
-   %sep = "\n\n";
-
    %msk = "             ";
    %spc = "  ";
    %tmp = "" @
@@ -1161,22 +1150,22 @@ function GameConnection::updateQuickbar(%this)
       (%B5?"<B:5:cmd ShowSettings>":"") @ %msk @ (%B5?"</b>":"") @ %spc @
       (%B6?"<B:6:cmd Admin>":"") @ %msk @ (%B6?"</b>":"") @ %spc @
       %msk @ %spc @
-      (%B7?"<B:7:cmd HowToPlay 0>":"") @ %msk @ (%B7?"</b>":"") @
+      (%B7?"<B:7:cmd Help 0>":"") @ %msk @ (%B7?"</b>":"") @
       "\n";
 
    %B1Link1 = (%B1?"<B:1:cmd MainMenu>":"") @ "Arena" @ (%B1?"</b>":"");
    %B1Link2 = (%B1?"<B:1:cmd MainMenu>":"") @ "Info" @ (%B1?"</b>":"");
-   %B2Link1 = (%B2?"<B:2:cmd MainMenu>":"") @ "Player" @ (%B2?"</b>":"");
-   %B2Link2 = (%B2?"<B:2:cmd MainMenu>":"") @ "List" @ (%B2?"</b>":"");
-   %B3Link1 = (%B3?"<B:3:cmd MainMenu>":"") @ "Edit" @ (%B3?"</b>":"");
-   %B3Link2 = (%B3?"<B:3:cmd MainMenu>":"") @ "Loadouts" @ (%B3?"</b>":"");
-   %B4Link1 = (%B4?"<B:4:cmd MainMenu>":"") @ "Switch" @ (%B4?"</b>":"");
-   %B4Link2 = (%B4?"<B:4:cmd MainMenu>":"") @ "Team" @ (%B4?"</b>":"");
-   %B5Link1 = (%B5?"<B:5:cmd MainMenu>":"") @ "Game" @ (%B5?"</b>":"");
-   %B5Link2 = (%B5?"<B:5:cmd MainMenu>":"") @ "Settings" @ (%B5?"</b>":"");
-   %B6Link1 = (%B6?"<B:6:cmd MainMenu>":"") @ "Arena" @ (%B6?"</b>":"");
-   %B6Link2 = (%B6?"<B:6:cmd MainMenu>":"") @ "Admin" @ (%B6?"</b>":"");
-   %B7Link1 = (%B7?"<B:7:cmd MainMenu>":"") @ "Help" @ (%B7?"</b>":"");
+   %B2Link1 = (%B2?"<B:2:cmd ShowPlayerList>":"") @ "Player" @ (%B2?"</b>":"");
+   %B2Link2 = (%B2?"<B:2:cmd ShowPlayerList>":"") @ "List" @ (%B2?"</b>":"");
+   %B3Link1 = (%B3?"<B:3:cmd Loadout>":"") @ "Edit" @ (%B3?"</b>":"");
+   %B3Link2 = (%B3?"<B:3:cmd Loadout>":"") @ "Loadouts" @ (%B3?"</b>":"");
+   %B4Link1 = (%B4?"<B:4:cmd Teams>":"") @ "Switch" @ (%B4?"</b>":"");
+   %B4Link2 = (%B4?"<B:4:cmd Teams>":"") @ "Team" @ (%B4?"</b>":"");
+   %B5Link1 = (%B5?"<B:5:cmd ShowSettings>":"") @ "Game" @ (%B5?"</b>":"");
+   %B5Link2 = (%B5?"<B:5:cmd ShowSettings>":"") @ "Settings" @ (%B5?"</b>":"");
+   %B6Link1 = (%B6?"<B:6:cmd Admin>":"") @ "Arena" @ (%B6?"</b>":"");
+   %B6Link2 = (%B6?"<B:6:cmd Admin>":"") @ "Admin" @ (%B6?"</b>":"");
+   %B7Link1 = (%B7?"<B:7:cmd Help>":"") @ "Help" @ (%B7?"</b>":"");
 
    %tabsFG = %tmp @ %tmp @ %tmp @
       "  "@%B1Link1@"      " @
@@ -1202,8 +1191,6 @@ function GameConnection::updateQuickbar(%this)
 
 	%this.beginQuickbarText();
 	%this.addQuickbarText(%head, 3);
-	//%this.addQuickbarText(%joinText, 3);
-	//%this.addQuickbarText(%sep, 3);
 	%this.addQuickbarText(%tabsFG, 1);
 	%this.addQuickbarText(%tabsBG, 2);
 
