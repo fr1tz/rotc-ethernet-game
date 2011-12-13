@@ -175,8 +175,6 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
 
    if(%showInfo > 0)
    {
-	loadManual();
-
       %page = getManualPage(%showInfo);
       %spacers = (%infoPos*16)/14;
 

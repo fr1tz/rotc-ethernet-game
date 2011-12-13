@@ -55,7 +55,7 @@ function serverCmdLoadout(%client, %str)
    else if(!(%loadout > 0 && %loadout <= 10))
       return;
 
-   %showInfo = 0;
+   %showInfo = "";
    %infoPos = 0;
 
    if(%arg2 $= "n")
@@ -101,8 +101,12 @@ function serverCmdLoadout(%client, %str)
       %infoPos = %arg4;
    }
 
-   %client.showLoadout(%loadout, %client.loadoutMenuExpandedSlot,
-      %showInfo, %infoPos);
+   %client.loadoutMenuLoadout = %loadout;
+   %client.loadoutMenuShowInfo = %showInfo;
+   %client.loadoutMenuInfoPos = %infoPos;
+
+   %client.showLoadout(%client.loadoutMenuLoadout, %client.loadoutMenuExpandedSlot,
+      %client.loadoutMenuShowInfo, %client.loadoutMenuInfoPos);
 
 	%client.menu = "loadout";
 }
@@ -159,11 +163,23 @@ function serverCmdAdmin(%client, %str)
 
 function serverCmdHowToPlay(%client, %page)
 {
-   showManualPage(%client, %page);
+   serverCmdManual(%client, %page);
 }
 
 function serverCmdManual(%client, %page)
 {
-   showManualPage(%client, %page);
+	if(%client.menu $= "loadout" && %client.loadoutMenuShowInfo !$= "")
+	{
+		%client.loadoutMenuShowInfo = %page;
+   		%client.showLoadout(%client.loadoutMenuLoadout, %client.loadoutMenuExpandedSlot,
+      		%client.loadoutMenuShowInfo, %client.loadoutMenuInfoPos);
+	}
+	else
+		showManualPage(%client, %page);
+}
+
+function serverCmdHelp(%client)
+{
+   showManualPage(%client);
 }
 
