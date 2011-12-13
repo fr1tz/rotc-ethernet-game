@@ -28,17 +28,34 @@ function constructManual(%indexFile)
       %obj = new ScriptObject();
       MissionCleanup.add(%obj);
 
+      %obj.size = 40;
       %obj.page = getField(%line, 0);
       %obj.file = "game/server/eth/help/" @ getField(%line,1) @ ".rml";
-      %obj.size = getField(%line, 2);
-      %obj.name = getFields(%line, 3, getFieldCount(%line)-1);
+      %obj.name = getFields(%line, 2, getFieldCount(%line)-1);
 
       %obj.text = "";
       %textfile = new FileObject();
       %textfile.openForRead(%obj.file);
+      %meta = true;
       while(!%textfile.isEOF())
-          %obj.text =%obj.text @ strreplace(%textfile.readLine(), "<br>", "\n") @ "\n";
+      {
+         %line = %textfile.readLine();
+         if(%meta && getSubStr(%line,0,1) $= "#")
+         {
+            if(getWord(%line, 0) $= "#icon")
+               %obj.icon = getWord(%line, 1);
+            else if(getWord(%line, 0) $= "#size")
+               %obj.size = getWord(%line, 1);
+         }
+         else
+         {
+            %meta = false;
+            %obj.text =%obj.text @ strreplace(%line, "<br>", "\n") @ "\n";
+         }
+      }
       %textfile.delete();
+
+      %obj.size = getField(%line, 2);
 
       $Manual.push_back(%obj.page, %obj);
    }
@@ -121,9 +138,12 @@ function showManualPage(%client, %page)
          %spc = "";
          if(strlen(%p.page) > 1)
             %spc = "   ";
+         %icon = "";
+         if(%p.icon !$= "")
+            %icon = "<bitmap:" @ %p.icon @ ">";
          %link = "<a:cmd Manual" SPC %p.page @ ">" @
 			   %p.page SPC %p.name @ "</a>";
-         %newtxt = %newtxt @ %spc @ %link @ "\n\n";
+         %newtxt = %newtxt @ %spc @ %link SPC %icon @ "\n\n";
       }
    }
    else

@@ -1,3 +1,5 @@
+#icon share/hud/rotc/icon.minigun.50x15
+
 <bitmap:share/misc/help/wpn_blaster.png><sbreak>
 
 The Minigun (a.k.a. The Trident because of its shape) sprays a lot of bullets but has a short cooldown delay after firing.

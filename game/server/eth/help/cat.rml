@@ -1,57 +1,35 @@
+<lmargin:10><bitmap:share/manual/rotc/cats><lmargin:5><sbreak>
 CATs are the physical manifestations of the Reds and Blues that can capture zones, tag enemies, shoot and be destroyed.
-The Reds and Blues have the following basic properties:
 
-    * Health: 75
-    * Health buffer: 25
-    * Armor: 100
+<spush><font:NovaSquare:24>Health <bitmap:game/client/ui/hud/pixmaps/health_icon><spop>
 
-<spush><font:NovaSquare:18>Health<spop>
+CATs have a maximum of 75 health points. Health is lost if a CAT takes more damage than its <a:cmd Manual 4.2>shield</a> can absorb or the CAT is hit by a weapon that bypasses the shield.
 
-Players start with 75 health points. At least 25% health is needed to manifest as a CAT. Health is lost if a player takes more damage than the health buffer can absorb or the player is hit by a weapon that bypasses the health buffer.
+<spush><font:NovaSquare:24>Energy <bitmap:game/client/ui/hud/pixmaps/energy_icon><spop>
 
-In CAT form, players can regain health by dealing damage to enemy CATs' health or by equipping themselves with one or more <a:cmd HowToPlay 8.2>regeneration modules</a>.
-Players can always change back into Etherform and rest in a zone owned by their team to regain health.
+CATs have a maximum of 100 recharging energy points. Energy is used for a number of things. An important example is that energy is both used to fire weapons and to provide protection via the <a:cmd Manual 4.1>Damper module</a>.
 
-<spush><font:NovaSquare:18>Health buffer<spop>
+<spush><font:NovaSquare:24>Tagging<spop>
 
-Players have a health buffer that constantly re-/degenerates to 25 points. Damage first hits the health buffer before affecting a player's health.
-A CAT's damage buffer can temporarily overflow (ie. hold more than 25 points) if the CAT has full health and deals damage to enemies. 
+CATs are tagged when they take damage from an enemy. Tagged enemies appear on the HUD.
 
-<spush><font:NovaSquare:18>Armor<spop>
-
-Every CAT has armor that can absorb up to 50% damage. The damage absorbed by the armor decreases in a linear fashion with decreased armor levels.
-
-Most weapons draw away power from a CAT's armor when fired. The removed armor is restored if the shot hits an enemy.
-
-<spush><font:NovaSquare:18>Barrier<spop>
-
-Being hit by a weapon that bypasses the health buffer (weapons with orange/green visual effects) will cause a CAT to activate a temporary barrier that will make the CAT invulnerable to damage buffer-bypassing weapons for a short time. Aside from time, only a hit with a <a:cmd HowToPlay 5.1>disc</a> will make the barrier go away.
-
-<spush><font:NovaSquare:18>Anchoring<spop>
-
-To compensate for the strong push from being hit by a projectile, CATs can become "anchored" to the ground by being close to it and not etherboarding. When fully anchored,  the impact force from a hit is reduced by 75%.
-
-<spush><font:NovaSquare:18>Tagging<spop>
-
-Players are tagged when they take damage from an enemy. Tagged enemies appear on the HUD.
-
-<spush><font:NovaSquare:18>Returning to Etherform<spop>
+<spush><font:NovaSquare:24>Returning to Etherform<spop>
 
 By pressing @bind34, players manifested as CAT can dissolve their physical bodies at any time.
 
-<tab:15,215><spush><font:NovaSquare:18>CAT Controls<spop>
-	Return to Etherform	<spush><font:Arial Bold:16>@bind34<spop>
-	Run forward	<spush><font:Arial Bold:16>@bind06<spop>
-	Run backward	<spush><font:Arial Bold:16>@bind07<spop>
-	Run left	<spush><font:Arial Bold:16>@bind04<spop>
-	Run right	<spush><font:Arial Bold:16>@bind05<spop>
-	Walk	<spush><font:Arial Bold:16>@bind20<spop>
-	Jump	<spush><font:Arial Bold:16>@bind18<spop>
-	Slide	<spush><font:Arial Bold:16>@bind21<spop>
-	Fire	<spush><font:Arial Bold:16>@bind16<spop>
-	Repel	<spush><font:Arial Bold:16>@bind17<spop>
-	Grenade	<spush><font:Arial Bold:16>@bind19<spop>
-	Grenade (max. force)	<spush><font:Arial Bold:16>@bind46<spop> or chord <spush><font:Arial Bold:16>@bind19<spop>-<spush><font:Arial Bold:16>@bind16<spop>
-	Cycle weapons	<spush><font:Arial Bold:16>@bind45<spop>
-	Launch explosive disc	<spush><font:Arial Bold:16>@bind47<spop>
-	Fire B.O.U.N.C.E.	<spush><font:Arial Bold:16>@bind51<spop>
+<spush><font:NovaSquare:24>Passive CAT Modules<spop>
+
+A fixed set of passive modules give additional protection or unusual abilities to CATs:
+
+<a:cmd Manual 4.1>4.1 Damper</a> <bitmap:share/hud/rotc/icon.damper.20x20> - Reduces damage based on amount of available energy.
+
+<a:cmd Manual 4.2>4.2 Shield</a> <bitmap:share/hud/rotc/icon.shield.20x20> - Absorbs damage.
+
+<a:cmd Manual 4.3>4.3 Barrier</a> <bitmap:share/hud/rotc/icon.barrier.20x20> - Provides 100% protection from certain weapons.
+
+<a:cmd Manual 4.4>4.4 Anchor</a> <bitmap:share/hud/rotc/icon.anchor.20x20> - Protects the CAT from being pushed around.
+
+<a:cmd Manual 4.5>4.5 V-AMP</a> <bitmap:share/hud/rotc/icon.vamp.20x20> - Converts damage done to enemy CATs into health & energy.
+
+
+

@@ -29,8 +29,8 @@ over the disc until it's locked and then pressing @bind17.
 When in CAT form, press @bind18 to jump. Pressing @bind18 while in the air
 will fire your CAT's jump boosters at the cost of some energy.
 
-When you have full energy, your damper absorbs 50% of all damage you take.
-The percentage decreases in a linear fashion with less energy.
+A CAT's damper absorbs up to 50% damage depending on its energy level:
+The less energy you have, the more damage you take.
 
 In etherform you can select the equipment you'll have in CAT form.
 

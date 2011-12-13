@@ -1,3 +1,5 @@
+#icon share/hud/rotc/icon.sniper.50x15
+
 <bitmap:share/misc/help/wpn_sniperrifle.png><sbreak>
 
 The Sniper rofl is a long range weapon. It needs to be charged before it can fire. While charging doesn't take long and doesn't consume energy, you can't run fast or use the Etherboard while doing it. Hold down @bind16 to charge, release it to fire.

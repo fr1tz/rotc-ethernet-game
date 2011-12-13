@@ -1,14 +1,6 @@
+<lmargin:40><bitmap:share/manual/rotc/etherform><lmargin:5><sbreak>
 After joining a team, players spawn as Etherform. Etherforms  can move freely around the map, but can't pass through solid objects. As Etherform, players can select their equipment, move quickly from zone to zone and manifest as CAT anywhere within their team's zones. In addition, players regenerate their health while they are in Etherform in a zone that's owned by their team. Each team can only regenerate a certain amount of health every second this way, which means that regeneration goes slower the more players are regenerating.
 
 <spush><font:NovaSquare:18>Manifesting as CAT<spop>
 
-In order to get anything done, players need to change from Etherform into CAT form. This is done by pressing @bind34 while being inside a zone that's owned by the player's team. Manifesting as CAT requires at least 25% health and 50% armor.
-
-<tab:15,215><spush><font:NovaSquare:18>Etherform Controls<spop>
-	Manifest as CAT	<spush><font:Arial Bold:16>@bind34<spop>
-	Fly forward	<spush><font:Arial Bold:16>@bind06<spop>
-	Fly backward	<spush><font:Arial Bold:16>@bind07<spop>
-	Fly left	<spush><font:Arial Bold:16>@bind04<spop>
-	Fly right	<spush><font:Arial Bold:16>@bind05<spop>
-	Fly up	<spush><font:Arial Bold:16>@bind18<spop>
-	Fly down	<spush><font:Arial Bold:16>@bind21<spop>
+In order to get anything done, players need to change from Etherform into CAT form. This is done by pressing @bind34 while being inside a zone that's owned by the player's team. Manifesting as CAT requires at least 25% health and 50% energy.

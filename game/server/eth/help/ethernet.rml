@@ -1,0 +1,17 @@
+Ethernet arenas are divided into rectangular zones and two teams (Reds and Blues) fight over control of these zones. Players can exist in two different forms: The flying, indestructible "Etherform" and a humanoid, weapon-wielding physical manifestation called a "CAT".
+
+<spush><tab:25,125><lmargin:0><rmargin:500><bitmap:share/manual/rotc/zones><sbreak>Zone Colors:
+<color:FFFFFF>	White:	Neutral/Contested Zone
+<color:008800>	Dark Green:	Permanently Neutral Zone
+<color:FF0000>	Red:	Red Zone
+<color:0000FF>	Blue:	Blue Zone
+<color:FF8800>	Orange:	Blocked Red Zone
+<color:0088FF>	Cyan:	Blocked Blue Zone
+<spop>	
+<lmargin:5>Players start out in Etherform and need to find a zone owned by their team in order to change into CAT form. 
+
+As CAT, players can capture zones bordering one of their zones by being inside the zone with no enemy CATs also present in the zone. The zone then turns red or blue, depending on which team captured it. If CATs of both teams are present, the zone remains white.
+
+CATs can enter enemy zones that are not connected to their territory to prevent  the enemy from manifesting in that zone. Such blocked zones appear orange for the red team and cyan for the blue team.
+
+The game is won if the opposing team has lost all their zones and has no more players manifested as CATs.

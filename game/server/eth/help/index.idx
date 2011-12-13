@@ -1,23 +1,31 @@
-0	-	-	Index
-1	summary	40	ROTC: Ethernet in a nutshell
-2	basics	40	Basics
-3	etherform	40	Playing as Etherform
-4	cat	40	Playing in CAT form
-5	basicweapons	40	Basic CAT Weapons
-5.1	discs	40	Discs
-5.2	grenades	40	Grenades
-5.3	bounce	40	B.O.U.N.C.E. <bitmap:share/hud/rotc/icon.bounce.20x20>
-6	bufferweapons	40	Red/Blue (buffer) CAT Weapons
-6.1	blaster	40	Blaster
-6.2	battlerifle	40	Battle Rifle
-6.3	minigun	40	Minigun
-7	barrierweapons	40	Green/Orange (barrier) CAT Weapons
-7.1	sniperrofl	40	Sniper ROFL
-8	catequipment	40	Other CAT equipment
-8.1	etherboard	40	The Etherboard
-8.2	regeneration	40	Regeneration modules
-8.3	minelauncher	40	Mine Launcher
-C	controls	40	Controls reference
-H	handicap	40	Handicap
-T	hints	0	All Newbie Helper Tips
-X	other	40	Bots, Mapping & other neat stuff
+0	-	Index
+1	ethernet	The Ethernet Game Type
+2	hud	The HUD
+3	etherform	Etherform
+4	cat	Basic CAT features
+4.1	damper	Damper
+4.2	shield	Shield
+4.3	barrier	Barrier
+4.4	anchor	Anchor
+4.5	vamp	V-AMP
+5	discs	Discs
+5.1	repeldisc	Repel Disc
+5.2	explosivedisc	Explosive Disc
+6	redblue	Red/Blue Weapons
+6.1	blaster	Blaster
+6.2	battlerifle	Battle Rifle
+6.3	minigun	Minigun
+6.4	grenades	Grenade
+7	orangegreen	Orange/Green Weapons
+7.1	sniperrofl	Sniper ROFL
+7.2	bounce	B.O.U.N.C.E.
+7.3	minelauncher	Mine Launcher
+8	catequipment	Other CAT equipment
+8.1	etherboard	The Etherboard
+8.2	regeneration	Regeneration modules
+8.3	booster	Jump Booster	
+C	controls	Controls reference
+H	handicap	Handicap
+F	faq	Frequently Asked Questions
+T	hints	All Newbie Helper Tips
+X	other	Bots, Mapping & other neat stuff
