@@ -21,9 +21,10 @@ function OptControlsWindow::onSleep(%this)
 
 function OptControlsWindow::onAddedAsWindow(%this)
 {
-   OptControlsMeaning.clear();
+	OptControlsMeaning.clear();
 	OptControlsMeaning.add("Universal", 0);
 	OptControlsMeaning.add("ROTC: Ethernet", 1);
+	OptControlsMeaning.add("Infantry", 2);
 	OptControlsMeaning.setSelected(OptControlsWindow.zMeaning);
 }
 
