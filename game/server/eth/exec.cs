@@ -14,3 +14,4 @@ exec("./loadoutmenu.cs");
 exec("./teamsmenu.cs");
 exec("./settings.cs");
 exec("./adminmenu.cs");
+exec("./help.cs");

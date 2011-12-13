@@ -180,6 +180,7 @@ function serverCmdManual(%client, %page)
 
 function serverCmdHelp(%client)
 {
-   showManualPage(%client);
+	%client.showHelpMenu();
+	%client.menu = "help";
 }
 
