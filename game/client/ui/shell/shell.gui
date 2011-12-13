@@ -9,7 +9,7 @@ new GuiBitmapCtrl(Shell) {
    Profile = "GuiContentProfile";
    HorizSizing = "width";
    VertSizing = "height";
-   position = "0 0";
+   Position = "0 0";
    Extent = "640 480";
    MinExtent = "8 8";
    canSave = "1";
@@ -23,7 +23,7 @@ new GuiBitmapCtrl(Shell) {
       Profile = "GuiDefaultProfile";
       HorizSizing = "center";
       VertSizing = "center";
-      position = "0 0";
+      Position = "0 0";
       Extent = "640 480";
       MinExtent = "480 480";
       canSave = "1";
@@ -32,12 +32,25 @@ new GuiBitmapCtrl(Shell) {
       bitmap = "./pixmaps/logo.png";
       wrap = "0";
    };
+   new GuiTextCtrl(ShellVersionString) {
+      canSaveDynamicFields = "0";
+      Profile = "GuiTextProfile";
+      HorizSizing = "right";
+      VertSizing = "top";
+      Position = "8 454";
+      Extent = "8 18";
+      MinExtent = "8 2";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      maxLength = "1024";
+   };
    new GuiWindowCtrl(RootMenuWindow) {
       canSaveDynamicFields = "0";
       Profile = "GuiInactiveWindowProfile";
       HorizSizing = "right";
       VertSizing = "bottom";
-      position = "10 10";
+      Position = "10 10";
       Extent = "137 305";
       MinExtent = "8 8";
       canSave = "1";
@@ -58,7 +71,7 @@ new GuiBitmapCtrl(Shell) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "14 29";
+         Position = "14 29";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -74,7 +87,7 @@ new GuiBitmapCtrl(Shell) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "14 58";
+         Position = "14 58";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -90,7 +103,7 @@ new GuiBitmapCtrl(Shell) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "14 88";
+         Position = "14 88";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -106,7 +119,7 @@ new GuiBitmapCtrl(Shell) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "14 118";
+         Position = "14 118";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -122,7 +135,7 @@ new GuiBitmapCtrl(Shell) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "14 148";
+         Position = "14 148";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -138,7 +151,7 @@ new GuiBitmapCtrl(Shell) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "14 178";
+         Position = "14 178";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -154,7 +167,7 @@ new GuiBitmapCtrl(Shell) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "14 238";
+         Position = "14 238";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -170,7 +183,7 @@ new GuiBitmapCtrl(Shell) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "14 268";
+         Position = "14 268";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -186,7 +199,7 @@ new GuiBitmapCtrl(Shell) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "14 208";
+         Position = "14 208";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
