@@ -154,10 +154,10 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 		if (%coverage == 0)
 			continue;
 
-        %center = %targetObject.getWorldBoxCenter();
-
 		%dist1 = containerSearchCurrRadiusDist();
+         // FIXME: can't call containerSearchCurrRadiusDist(); from here
 
+      %center = %targetObject.getWorldBoxCenter();
 		%col = containerRayCast(%pos, %center, $TypeMasks::ShapeBaseObjectType, 0);
 		%col = getWord(%col, 1) SPC getWord(%col, 2) SPC getWord(%col, 3);
 		%dist2 = VectorLen(VectorSub(%col, %pos));

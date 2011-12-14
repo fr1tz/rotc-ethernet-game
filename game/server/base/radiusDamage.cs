@@ -102,6 +102,7 @@ function radiusDamage(%sourceObject, %position, %radius, %damage, %damageType, %
 		// box axis to return an appriximate distance to the edge of the
 		// object's bounds, as opposed to the distance to it's center.
 		%dist = containerSearchCurrRadiusDist();
+         // FIXME: can't call containerSearchCurrRadiusDist(); from here
 
 		// Calculate a distance scale for the damage and the impulse.
 		// Full damage is applied to anything less than half the radius away,
