@@ -38,11 +38,14 @@ datablock ShapeBaseImageData(BlueRepelGunMineLightImage : RedRepelGunMineLightIm
 datablock StaticShapeData(RedRepelGunMine)
 {
    shapeFile = "share/shapes/rotc/misc/mine.dts";
-   
-	shapeFxTexture[0] = "share/textures/rotc/heating.png";
 
-	shapeFxColor[0] = "1.0 0.5 0.0 1.0"; // repel hit
-	shapeFxColor[1] = "1.0 0.5 0.5 1.0"; // repel missed
+	shapeFxTexture[0] = "share/textures/rotc/white.png";
+	shapeFxTexture[1] = "share/textures/rotc/zone.grid.png";
+	shapeFxTexture[5] = "share/textures/rotc/bounce.orange.hit.png";
+	shapeFxTexture[6] = "share/textures/rotc/bounce.orange.miss.png";
+
+	shapeFxColor[0] = "1.00 1.00 1.00 1.00";
+	shapeFxColor[1] = "1.00 0.50 0.00 1.00";
 	
 	// script fields...
 	light = RedRepelGunMineLightImage;
@@ -51,11 +54,17 @@ datablock StaticShapeData(RedRepelGunMine)
 function RedRepelGunMine::onAdd(%this, %obj)
 {
 	Parent::onAdd(%this, %obj);
-	
-	%obj.shapeFxSetTexture(1, 0);
-	%obj.shapeFxSetColor(1, 0);
+
+	%obj.shapeFxSetTexture(1, 1);
+	%obj.shapeFxSetColor(1, 1);
 	%obj.shapeFxSetBalloon(1, 1.1, 0);
-	%obj.shapeFxSetActive(1, true, true);
+	%obj.shapeFxSetFade(1, 1, 0);
+	%obj.shapeFxSetActive(1, true, false);
+	
+	%obj.shapeFxSetTexture($PlayerShapeFxSlot::Misc , 6);
+	%obj.shapeFxSetColor($PlayerShapeFxSlot::Misc , 1);
+	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Misc , 1.1, 0);
+	%obj.shapeFxSetActive($PlayerShapeFxSlot::Misc , true, false);
 	
 	%obj.mountImage(%this.light, 0);	
 	
@@ -73,14 +82,21 @@ function RedRepelGunMine::detonate(%this, %obj, %hit)
 		return;
 	
 	%obj.unmountImage(0);
-		
+
 	%obj.playAudio(0, RepelGunMineExplosionSound);
-		
+
 	%obj.startFade(0, 0, true);
-	%obj.shapeFxSetColor(1, %hit ? 0 : 1);
+
+	%obj.shapeFxSetTexture(1, %hit ? 0 : 1);
 	%obj.shapeFxSetBalloon(1, 1.1, 200);
-	%obj.shapeFxSetFade(1, 1, -1/0.15);
-	
+	%obj.shapeFxSetFade(1, 0.5, -1/0.15);
+	%obj.shapeFxSetActive(1, true, false);
+
+	%obj.shapeFxSetTexture($PlayerShapeFxSlot::Misc, 6);
+	%obj.shapeFxSetColor($PlayerShapeFxSlot::Misc, 0);
+	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Misc, 1.1, 200);
+	%obj.shapeFxSetFade($PlayerShapeFxSlot::Misc, 1, -1/0.15);
+
 	%obj.schedule(1000, "delete");
 	
 	%obj.detonated = true;
@@ -156,8 +172,9 @@ function RedRepelGunMine::checkDetonate(%this, %obj)
 
 datablock StaticShapeData(BlueRepelGunMine : RedRepelGunMine)
 {
-	shapeFxColor[0] = "0.0 1.0 0.0 1.0"; // repel hit
-	shapeFxColor[1] = "0.5 1.0 0.5 1.0"; // repel missed
+	shapeFxTexture[5] = "share/textures/rotc/bounce.green.hit.png";
+	shapeFxTexture[6] = "share/textures/rotc/bounce.green.miss.png";
+	shapeFxColor[1] = "0.00 1.00 0.00 1.00";
 	light = BlueRepelGunMineLightImage;
 };
 
