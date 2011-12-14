@@ -18,6 +18,7 @@ $DamageType::BOUNCE = 3;
 
 $SplashDamageFalloff::Linear = 0;
 $SplashDamageFalloff::Exponential = 1;
+$SplashDamageFalloff::None = 2;
 
 // These are bit masks ($TargetingMask::FreeX = 2^X)...
 $TargetingMask::Disc  = 1;
@@ -128,9 +129,13 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 	%radius = %this.splashDamageRadius;
 	%damage = %this.splashDamage;
 	%damageType = $DamageType::Splash;
-	
-	%sourceObject = %obj.getSourceObject();
-	%regainEnergy = %sourceObject.getClassName() $= "Player";
+
+   %regainEnergy = false;
+   if(%obj.getType() & $TypeMasks::ProjectileObjectType)
+   {
+      %sourceObject = %obj.getSourceObject();
+  	   %regainEnergy = %sourceObject.getClassName() $= "Player";
+   }
 
 	%targets = new SimSet();
 
@@ -142,9 +147,12 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 	{
 		%targetObject = %targets.getObject(%idx);
 
+      if(%targetObject == %obj)
+         continue;
+
         // the observer cameras are ShapeBases; ignore them...
-        if(%targetObject.getType() & $TypeMasks::CameraObjectType)
-    	   continue;
+      if(%targetObject.getType() & $TypeMasks::CameraObjectType)
+         continue;
  
 		%coverage = calcExplosionCoverage(%pos, %targetObject,
 			$TypeMasks::InteriorObjectType |  $TypeMasks::TerrainObjectType |
@@ -158,7 +166,7 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
          // FIXME: can't call containerSearchCurrRadiusDist(); from here
 
       %center = %targetObject.getWorldBoxCenter();
-		%col = containerRayCast(%pos, %center, $TypeMasks::ShapeBaseObjectType, 0);
+		%col = containerRayCast(%pos, %center, $TypeMasks::ShapeBaseObjectType, %obj);
 		%col = getWord(%col, 1) SPC getWord(%col, 2) SPC getWord(%col, 3);
 		%dist2 = VectorLen(VectorSub(%col, %pos));
 
@@ -166,6 +174,8 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 		%prox = %radius - %dist;
 		if(%this.splashDamageFalloff == $SplashDamageFalloff::Exponential)
 			%distScale = (%prox*%prox) / (%radius*%radius);
+		else if(%this.splashDamageFalloff == $SplashDamageFalloff::None)
+			%distScale = 1;
 		else
 			%distScale = %prox / %radius;
 

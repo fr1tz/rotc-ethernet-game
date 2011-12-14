@@ -37,6 +37,15 @@ datablock ShapeBaseImageData(BlueRepelGunMineLightImage : RedRepelGunMineLightIm
 
 datablock StaticShapeData(RedRepelGunMine)
 {
+	// script damage properties...
+	impactDamage        = 10; // only used to determine time for barrier
+	impactImpulse       = 0;
+	splashDamage        = 30;
+	splashDamageRadius  = 5;
+	splashImpulse       = 6000;
+   splashDamageFalloff = $SplashDamageFalloff::None;
+	bypassDamageBuffer  = true;
+
    shapeFile = "share/shapes/rotc/misc/mine.dts";
 
 	shapeFxTexture[0] = "share/textures/rotc/white.png";
@@ -55,16 +64,16 @@ function RedRepelGunMine::onAdd(%this, %obj)
 {
 	Parent::onAdd(%this, %obj);
 
-	%obj.shapeFxSetTexture(1, 1);
+	%obj.shapeFxSetTexture(1, 0);
 	%obj.shapeFxSetColor(1, 1);
 	%obj.shapeFxSetBalloon(1, 1.1, 0);
-	%obj.shapeFxSetFade(1, 1, 0);
+	%obj.shapeFxSetFade(1, 0, 1/4.0);
 	%obj.shapeFxSetActive(1, true, false);
 	
-	%obj.shapeFxSetTexture($PlayerShapeFxSlot::Misc , 6);
-	%obj.shapeFxSetColor($PlayerShapeFxSlot::Misc , 1);
-	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Misc , 1.1, 0);
-	%obj.shapeFxSetActive($PlayerShapeFxSlot::Misc , true, false);
+	%obj.shapeFxSetTexture(2, 1);
+	%obj.shapeFxSetColor(2, 1);
+	%obj.shapeFxSetBalloon(2, 1.1, 0);
+	%obj.shapeFxSetActive(2, true, false);
 	
 	%obj.mountImage(%this.light, 0);	
 	
@@ -80,6 +89,14 @@ function RedRepelGunMine::detonate(%this, %obj, %hit)
 		
 	if(%obj.detonated)
 		return;
+
+   %pos = %obj.getPosition();
+   %normal = "0 0 1";
+   %fade = 1;
+   %dist = 0;
+   %expType = 0;
+
+   ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType);
 	
 	%obj.unmountImage(0);
 
@@ -87,15 +104,15 @@ function RedRepelGunMine::detonate(%this, %obj, %hit)
 
 	%obj.startFade(0, 0, true);
 
-	%obj.shapeFxSetTexture(1, %hit ? 0 : 1);
+	%obj.shapeFxSetTexture(1, 0);
 	%obj.shapeFxSetBalloon(1, 1.1, 200);
 	%obj.shapeFxSetFade(1, 0.5, -1/0.15);
 	%obj.shapeFxSetActive(1, true, false);
 
-	%obj.shapeFxSetTexture($PlayerShapeFxSlot::Misc, 6);
-	%obj.shapeFxSetColor($PlayerShapeFxSlot::Misc, 0);
-	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Misc, 1.1, 200);
-	%obj.shapeFxSetFade($PlayerShapeFxSlot::Misc, 1, -1/0.15);
+	%obj.shapeFxSetTexture(2, 6);
+	%obj.shapeFxSetColor(2, 0);
+	%obj.shapeFxSetBalloon(2, 1.1, 200);
+	%obj.shapeFxSetFade(2, 1, -1/0.15);
 
 	%obj.schedule(1000, "delete");
 	
@@ -136,31 +153,9 @@ function RedRepelGunMine::checkDetonate(%this, %obj)
 		if (%coverage == 0)
 			continue;
 
-		%hitEnemy = true;
-		
-		// bouncy bounce...
-		%vec = %targetObject.getVelocity();
-		%vec = VectorScale(%vec, -1);
-		%targetObject.setVelocity(%vec);
-
-		// damage based on speed...
-		%speed = VectorLen(%vec);
-		%damage = %speed;
-		%dmgpos = %targetObject.getWorldBoxCenter();
-		%targetObject.damage(0, %dmgpos, %damage, $DamageType::BOUNCE);
-
-		if(VectorLen(%vel) != 0)
-		{
-			%exp = RepelExplosion5;
-			createExplosion(%exp, %targetObject.getWorldBoxCenter(), "0 0 1");
-		}
-	}	
-	
-	if(%hitEnemy)
-	{
 		%this.detonate(%obj, true);
 		return;
-	}
+	}	
 	
 	%this.schedule(50, "checkDetonate", %obj);	
 }
