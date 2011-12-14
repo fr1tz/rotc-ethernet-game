@@ -92,22 +92,24 @@ function RedRepelGunProjectile::onBounce(%this,%obj,%col,%fade,%pos,%normal,%dis
 function RedRepelGunProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 {
 	//Parent::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist);
-}
 
-function RedRepelGunProjectile::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
-{
-	//Parent::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType);
-	
 	%p = new StaticShape() {
 		dataBlock       = %this.mine;
 		teamId          = 0; // To prevent it from showing up on the HUD
 		zTeamId         = %obj.teamId;
 		client          = %obj.client;
 	};
-	
+
 	//%pos = VectorAdd(%pos, %normal);
+
+	%p.setTransform(%pos);
+}
+
+function RedRepelGunProjectile::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
+{
+	//Parent::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType);
 	
-	%p.setTransform(%pos);			
+		
 }
 
 //--------------------------------------------------------------------------
