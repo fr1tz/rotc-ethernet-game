@@ -5,7 +5,7 @@
 
 datablock AudioProfile(RepelExplosionSound)
 {
-	filename = "share/sounds/rotc/explosion10.wav";
+	filename = "share/sounds/rotc/explosion8.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
