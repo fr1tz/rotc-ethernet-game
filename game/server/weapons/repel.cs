@@ -16,62 +16,125 @@ function deployRepel3(%obj)
 
 //	if($Sim::Time < %obj.lastRepelTime + 1)
 //		return;
-		
+
+	%targets = new SimSet();
+
 	%pos = %obj.getWorldBoxCenter();
-	%radius = 10;
+	%radius = 7;
+   %mask = $TypeMasks::PlayerObjectType | $TypeMasks::ProjectileObjectType;
 
-	%hitEnemy = false;
+	InitContainerRadiusSearch(%pos, %radius, %mask);
+	while( (%targetObject = containerSearchNext()) != 0 )
+		%targets.add(%targetObject);
 
-	InitContainerRadiusSearch(%pos, %radius, $TypeMasks::PlayerObjectType);
+   %hitEnemy = false;
+
 	%halfRadius = %radius / 2;
-	while ((%targetObject = containerSearchNext()) != 0)
+	for(%idx = %targets.getCount()-1; %idx >= 0; %idx-- )
 	{
+		%targetObject = %targets.getObject(%idx);
+
+      if(%targetObject.getType() & $TypeMasks::ProjectileObjectType)
+         if(!%targetObject.isAlive())
+            continue;
+
 		if(%targetObject.getTeamId() == %obj.getTeamId())
 			continue;
 
-      if(%targetObject.hasBarrier())
+      if(%targetObject.isMethod("hasBarrier") && %targetObject.hasBarrier())
          continue;
 
 		// Calculate how much exposure the current object has to
 		// the effect.  The object types listed are objects
-		// that will block an explosion. 
+		// that will block an explosion.
 		%coverage = calcExplosionCoverage(%pos, %targetObject,
 			$TypeMasks::InteriorObjectType |  $TypeMasks::TerrainObjectType |
 			$TypeMasks::ForceFieldObjectType | $TypeMasks::VehicleObjectType |
 			$TypeMasks::TurretObjectType);
-			
+
 		if (%coverage == 0)
 			continue;
 
 		%hitEnemy = true;
 
-		// bouncy bounce...
-		%vec = %targetObject.getVelocity();
-		%vec = VectorScale(%vec, -1);
-		%targetObject.setVelocity(%vec);
+      if(%targetObject.getClassName() $= "Projectile")
+      {
+   		%speed = -1;
+         %targetObject.explode();
+      }
+      else
+      {
+   		// bouncy bounce...
+		   %vec = %targetObject.getVelocity();
+   		%vec = VectorScale(%vec, -1);
+         %targetObject.setVelocity(%vec);
 
-		// damage based on speed...
-		%speed = VectorLen(%vec);
-		%damage = %speed;
-		%dmgpos = %targetObject.getWorldBoxCenter();
-		%targetObject.damage(0, %dmgpos, %damage, $DamageType::BOUNCE);
+         if(%targetObject.getClassName() $= "NortDisc")
+         {
+            %speed = -1;
+            %targetObject.setTrackingAbility(0);
+         }
+         else
+         {
+            // damage based on speed...
+            %speed = VectorLen(%vec);
+            %damage = %speed;
+            %dmgpos = %targetObject.getWorldBoxCenter();
+            %targetObject.damage(0, %dmgpos, %damage, $DamageType::BOUNCE);
+         }
+      }
 
-		%exp = RepelExplosion5;
-		if(%speed < 10)
-			%exp = RepelExplosion1;	
+      %teamId = %obj.getTeamId();
+      if(%teamId == 1)
+         %exp = OrangeRepelExplosion5;
+      else
+         %exp = GreenRepelExplosion5;
+		if(%speed == -1)
+      {
+         if(%teamId == 1)
+            %exp = OrangeRepelProjectileExplosion;
+         else
+            %exp = GreenRepelProjectileExplosion;
+      }
+		else if(%speed < 10)
+      {
+         if(%teamId == 1)
+            %exp = OrangeRepelExplosion1;
+         else
+            %exp = GreenRepelExplosion1;
+      }
 		else if(%speed < 25)
-			%exp = RepelExplosion2;			
+      {
+         if(%teamId == 1)
+            %exp = OrangeRepelExplosion2;
+         else
+            %exp = GreenRepelExplosion2;
+      }
 		else if(%speed < 50)
-			%exp = RepelExplosion3;			
+      {
+         if(%teamId == 1)
+            %exp = OrangeRepelExplosion3;
+         else
+            %exp = GreenRepelExplosion3;
+      }
 		else if(%speed < 70)
-			%exp = RepelExplosion4;		
+      {
+         if(%teamId == 1)
+            %exp = OrangeRepelExplosion4;
+         else
+            %exp = GreenRepelExplosion4;
+      }
 		createExplosion(%exp, %targetObject.getWorldBoxCenter(), "0 0 1");
 	}
 
+	%targets.delete();
+
 	// source explosion effects...
-	createExplosion(RepelSourceExplosion, %pos, "0 0 1");
+	//createExplosion(RepelSourceExplosion, %pos, "0 0 1");
+   %obj.stopAudio(0);
+   %obj.playAudio(0, RepelExplosionSound);
    %obj.shapeFxSetColor($PlayerShapeFxSlot::Misc, 0);
-	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Misc, 1.025, 100);
+	%obj.shapeFxSetBalloon($PlayerShapeFxSlot::Misc, 1.025, 150);
 	%obj.shapeFxSetFade($PlayerShapeFxSlot::Misc, 1, -1/0.25);
 	if(%hitEnemy)
 	{
