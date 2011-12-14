@@ -42,7 +42,7 @@ datablock StaticShapeData(RedRepelGunMine)
 	// script damage properties...
 	impactDamage        = 10; // only used to determine time for barrier
 	impactImpulse       = 0;
-	splashDamage        = 30;
+	splashDamage        = 40;
 	splashDamageRadius  = 5;
 	splashImpulse       = 6000;
    splashDamageFalloff = $SplashDamageFalloff::None;
