@@ -3,6 +3,8 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
+exec("./repelgun.mine.gfx.cs");
+
 //------------------------------------------------------------------------------
 // light images...
 
@@ -100,7 +102,7 @@ function RedRepelGunMine::detonate(%this, %obj, %hit)
 	
 	%obj.unmountImage(0);
 
-	%obj.playAudio(0, RepelGunMineExplosionSound);
+	createExplosion(RepelGunMineExplosionExplosion, %pos, "0 0 1");
 
 	%obj.startFade(0, 0, true);
 
