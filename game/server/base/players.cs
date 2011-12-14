@@ -63,6 +63,7 @@ $PlayerDeathAnim::ExplosionBlowBack = 11;
 $PlayerShapeFxSlot::GridConnection  = 0;
 $PlayerShapeFxSlot::Shield = 1;
 $PlayerShapeFxSlot::Barrier = 2;
+$PlayerShapeFxSlot::Misc = 3;
 
 //-----------------------------------------------------------------------------
 
