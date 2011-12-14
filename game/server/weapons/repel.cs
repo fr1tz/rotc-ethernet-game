@@ -20,7 +20,7 @@ function deployRepel3(%obj)
 	%targets = new SimSet();
 
 	%pos = %obj.getWorldBoxCenter();
-	%radius = 7;
+	%radius = 10;
    %mask = $TypeMasks::PlayerObjectType | $TypeMasks::ProjectileObjectType;
 
 	InitContainerRadiusSearch(%pos, %radius, %mask);
