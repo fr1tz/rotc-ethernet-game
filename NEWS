@@ -1,30 +1,36 @@
 What's new?
 ===========
 
-Prototype 4+dev8
-----------------
+Prototype 5-dev
+---------------
 
-- Fixed zone mechanics and demo recording
-- Nicer UI
+- Support for Infantry arenas.
+- Fixed zone mechanics and demo recording.
+- Improved UI (both functionally and visually).
 - Changed default key-bindings: "t" for chat, "shift t" for team chat.
-- New game type: ROTC: mEthMatch
-- New discs:
-   - Explosive Disc
-   - Slasher Disc
-- Display icons for every CAT equipment item you carry on the HUD.
-- Certain mechanics have been tied to CAT 
-  equipment items to make them more noticeable:
-  - V-AMP: Converts the damage a CAT does into health.
-  - Anchor: Stabilizes a CAT's position when close to the ground.
-  - Stabilizer: Like anchor, but always 100% active.
+- New disc: Explosive Disc
+- New way to configure loadout: Hotkeys load a pre-configured loadout
+  and only the first slot can be exchanged on-the-fly.
+- New menus: "Edit Loadouts", "Switch Team" and "Arena Admin".
+- B.O.U.N.C.E. has been moved from the red/blue into the orange/green
+  weapon category. To compensate for bypassing the shield, its damage
+  has been reduced.
+- B.O.U.N.C.E. can now annihilate enemy projectiles.
+- The mines now work and look more like conventional explosives and
+  have been put into the orange/green weapon category.
+- Repel Discs cut anchoring in half rather than zeroing it.
 - Revert influence of the shooter's momentum on the battle rifle's 
   projectiles' trajectory back to the way it was in prototype 3.
 - Improved disc target tracking a little
+- "Smart" crosshair.
+- Connecting players automatically join the team with less players.
 - Although functionally unchanged, the "damage buffer" is now
-  presented more like a classic energy shield.
+  presented more like a classic energy shield.   
+- The more unusual mechanics have been turned into to CAT 
+  equipment items to make them more noticeable.
 - Tweaked battle rifle projectile bounce sound and visuals.
 - Mission Editor: Ignore locked or hidden objects when ray-casting.
-- Bugfixes
+- Bugfixes & lots of other minor improvements.
 
 
 Prototype 4-testing
