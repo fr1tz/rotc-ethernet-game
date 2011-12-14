@@ -1,6 +1,16 @@
 #icon share/hud/rotc/icon.grenadelauncher.50x15
-#size 16
+#size 28
 <lmargin:120><bitmap:share/manual/rotc/wpn.minelauncher><sbreak>
 <lmargin:5>The Mine Launcher can fire up to four mines in quick succession.
-Firing it doesn't drain energy but instead draws from the same ammo source as the <a:cmd Manual 6.4>grenades</a>. Once in position, the mines work like a <a:cmd Manual 7.2>B.O.U.N.C.E.</a> that's triggered by nearby moving enemies. If not triggered by an enemy, the mine will trigger after a few seconds. CATs with an active <a:cmd Manual 4.3>barrier</a> will not trigger the mines.
+Firing it doesn't drain energy but instead draws from the same ammo source as the <a:cmd Manual 6.4>grenades</a>. Once planted, the mines will explode after 4 seconds or if triggered by nearby moving enemies. CATs with an active <a:cmd Manual 4.3>barrier</a> will not trigger the mines. Note that a <a:cmd Manual 7.2>B.O.U.N.C.E.</a> can only annihilate the mines as long as they are in their projectile (bubble) form.
+<sbreak><tab:15,180>
+	Bypasses	<spush><font:Arial Bold:16>Shield<spop>
+	Energy cost	<spush><font:Arial Bold:16>-<spop>
+	Impact damage	<spush><font:Arial Bold:16>-<spop>
+	Impact impulse	<spush><font:Arial Bold:16>-<spop>
+	Splash damage	<spush><font:Arial Bold:16>40<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>5<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>6000<spop>
+	Velocity inheritance	<spush><font:Arial Bold:16>100%<spop>	
+	Accuracy	<spush><font:Arial Bold:16>Pinpoint<spop>	
 <sbreak>
