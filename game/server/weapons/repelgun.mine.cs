@@ -138,20 +138,17 @@ function RedRepelGunMine::checkDetonate(%this, %obj)
 
 		%hitEnemy = true;
 		
-		%vel = %targetObject.getVelocity();
-
 		// bouncy bounce...
-		%vec = VectorNormalize(%vel);
-		%vec = VectorScale(%vec, -50);
+		%vec = %targetObject.getVelocity();
+		%vec = VectorScale(%vec, -1);
 		%targetObject.setVelocity(%vec);
-		%targetObject.activateBarrier(1);
 
 		// damage based on speed...
-		%speed = VectorLen(%vel);
-		%damage = %speed * 2;
+		%speed = VectorLen(%vec);
+		%damage = %speed;
 		%dmgpos = %targetObject.getWorldBoxCenter();
-		%targetObject.damage(0, %dmgpos, %damage, $DamageType::Force);		
-		
+		%targetObject.damage(0, %dmgpos, %damage, $DamageType::BOUNCE);
+
 		if(VectorLen(%vel) != 0)
 		{
 			%exp = RepelExplosion5;
