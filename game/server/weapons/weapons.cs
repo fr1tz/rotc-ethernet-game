@@ -12,8 +12,9 @@ exec("./weapons.sfx.cs");
 exec("./weapons.gfx.cs");
 
 $DamageType::Impact = 0;
-$DamageType::Splash	= 1;
+$DamageType::Splash = 1;
 $DamageType::Force  = 2;
+$DamageType::BOUNCE = 3;
 
 $SplashDamageFalloff::Linear = 0;
 $SplashDamageFalloff::Exponential = 1;

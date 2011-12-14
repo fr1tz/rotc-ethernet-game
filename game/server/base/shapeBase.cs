@@ -369,8 +369,13 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		%damage = %damage * (1 - (%dstHand - %srcHand));
 	// If the the source handicap is higher, we leave the damage as it is, so dealing damage
 	// feels like normal when playing against a better player.
-	
-	if(isObject(%sourceObject) && %sourceObject.getDataBlock().bypassDamageBuffer)
+
+   %bypassDamageBuffer = false;
+   if(isObject(%sourceObject) && %sourceObject.getDataBlock().bypassDamageBuffer)
+      %bypassDamageBuffer = true;
+   if(%damageType == $DamageType::BOUNCE)
+      %bypassDamageBuffer = true;
+	if(%bypassDamageBuffer)
 	{
 		if(%obj.hasBarrier())
 		{
@@ -384,7 +389,11 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 			if(%dmgLevel + %damage > %maxDamage)
 				%damage = %maxDamage - %dmgLevel;
 			%obj.setDamageLevel(%dmgLevel + %damage);
-			%obj.activateBarrier(%sourceObject.getDataBlock().impactDamage/10);
+         if(%damageType == $DamageType::BOUNCE)
+            %barriertime = 1.0;
+         else
+            %barriertime = %sourceObject.getDataBlock().impactDamage/10;
+			%obj.activateBarrier(%barriertime);
 			%healthDamageDealt = %damage;
 			%bufDamageDealt = 0;
 		}
@@ -420,14 +429,21 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	}
 	
 	// eyecandy: ain't got time to bleed?...
-	%bleed = %this.getBleed(%obj, %healthDamageDealt, %sourceObject);
-	if(isObject(%bleed))
-	{
-		%norm = VectorNormalize(VectorSub(%pos, %obj.getWorldBoxCenter()));
-		%bpos = %damageType == $DamageType::Impact ? %pos : %obj.getWorldBoxCenter();
-		createExplosion(%bleed, %bpos, %norm);
-	}
- 
+   if(%bypassDamageBuffer && %healthDamageDealt == 0)
+   {
+      // no bleed
+   }
+	else
+   {
+      %bleed = %this.getBleed(%obj, %healthDamageDealt, %sourceObject);
+      if(isObject(%bleed))
+      {
+         %norm = VectorNormalize(VectorSub(%pos, %obj.getWorldBoxCenter()));
+         %bpos = %damageType == $DamageType::Impact ? %pos : %obj.getWorldBoxCenter();
+         createExplosion(%bleed, %bpos, %norm);
+      }
+   }
+
     if(%obj.client)
     {
 		%a = %obj.client.stats.dmgReceivedApplied;

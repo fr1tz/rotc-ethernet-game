@@ -49,13 +49,12 @@ function deployRepel3(%obj)
 		%vec = %targetObject.getVelocity();
 		%vec = VectorScale(%vec, -1);
 		%targetObject.setVelocity(%vec);
-		%targetObject.activateBarrier(1);
 
 		// damage based on speed...
 		%speed = VectorLen(%vec);
-		%damage = %speed * 2;
+		%damage = %speed;
 		%dmgpos = %targetObject.getWorldBoxCenter();
-		%targetObject.damage(0, %dmgpos, %damage, $DamageType::Force);		
+		%targetObject.damage(0, %dmgpos, %damage, $DamageType::BOUNCE);
 
 		%exp = RepelExplosion5;
 		if(%speed < 10)
