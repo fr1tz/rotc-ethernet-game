@@ -160,10 +160,11 @@ function RedExplosiveDisc::onHitTarget(%this, %obj)
 
 function RedExplosiveDisc::onMissedTarget(%this, %obj)
 {
-    if(%obj.state() == $NortDisc::Attacking)
-        %obj.getTarget().removeAttackingDisc(%obj);
-
-    %obj.stopAttacking();
+    // Don't stop attacking!
+    //if(%obj.state() == $NortDisc::Attacking)
+    //    %obj.getTarget().removeAttackingDisc(%obj);
+    //
+    //%obj.stopAttacking();
 }
 
 function RedExplosiveDisc::onLostTarget(%this, %obj)
