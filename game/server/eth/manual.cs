@@ -68,6 +68,10 @@ function getManualPage(%page)
 
 function getManualPageByIndex(%idx)
 {
+   if(%idx >= $Manual.count())
+      return "";
+   if(%idx < 0)
+      return "";
    return $Manual.getValue(%idx);
 }
 
@@ -96,16 +100,17 @@ function showManualPage(%client, %page)
    %previdx = %idx - 1;
    %nextidx = %idx + 1;
 
-	if(%previdx >= 0)
+   %p = getManualPageByIndex(%previdx);
+	if(%p !$= "")
 	{
-      %p = getManualPageByIndex(%previdx);
 		%prev = "<a:cmd Manual" SPC %p.page @ ">" @
 			%p.page SPC %p.name @ "</a>";
 	}
 	else
 		%prev = "";
 
-	if(%nextidx >= 0)
+   %p = getManualPageByIndex(%nextidx);
+	if(%p !$= "")
 	{
       %p = getManualPageByIndex(%nextidx);
 		%next = "<a:cmd Manual" SPC %p.page @ ">" @
