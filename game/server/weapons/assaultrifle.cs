@@ -17,8 +17,10 @@ exec("./assaultrifle.gfx.blue.cs");
 
 datablock TracerProjectileData(AssaultRiflePseudoProjectile)
 {
-	energyDrain = 16;
 	lifetime = 1000;
+
+   // Keep these three in sync with the real projectiles down below!
+	energyDrain = 16; 
 	muzzleVelocity = 300;
 	velInheritFactor = 0.75;
 };
@@ -109,8 +111,10 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	posOffset = "0 0 0";
 	velOffset = "0 0.005";
 
-	muzzleVelocity	= 0; // Handled by AssaultRiflePseudoProjectile
-	velInheritFactor = 0; // Handled by AssaultRiflePseudoProjectile
+   // Keep these three in sync with the pseudo projectile above!
+	energyDrain = 16;
+	muzzleVelocity	= 300; 
+	velInheritFactor = 0.75; 
 	
 	isBallistic			= true;
 	gravityMod			 = 5.0;
