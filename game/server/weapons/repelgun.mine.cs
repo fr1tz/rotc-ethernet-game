@@ -66,6 +66,8 @@ function RedRepelGunMine::onAdd(%this, %obj)
 {
 	Parent::onAdd(%this, %obj);
 
+   %obj.getHudInfo().setActive(false);
+
 	%obj.shapeFxSetTexture(1, 0);
 	%obj.shapeFxSetColor(1, 1);
 	%obj.shapeFxSetBalloon(1, 1.1, 0);
