@@ -228,6 +228,12 @@ function ShapeBase::setShieldLevel(%this, %val)
 	%this.getDataBlock().updateShieldFx(%this);
 }
 
+//-----------------------------------------------------------------------------
+
+function ShapeBase::hasBarrier(%this)
+{
+	return false;
+}
 
 //-----------------------------------------------------------------------------
 // ShapeBase datablock
@@ -472,8 +478,9 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 // called by ShapeBase::impulse()
 function ShapeBaseData::impulse(%this, %obj, %position, %impulseVec, %src)
 {
-	if(%obj.hasBarrier() && isObject(%src) && %src.getDataBlock().bypassDamageBuffer)
-		return;
+	if(isObject(%src) && %src.getDataBlock().bypassDamageBuffer)
+		if(%obj.hasBarrier())
+			return;
 
 	%impulseVec = VectorScale(%impulseVec, 1-0.75*%obj.gridConnection);
 	%obj.applyImpulse(%position, %impulseVec);
