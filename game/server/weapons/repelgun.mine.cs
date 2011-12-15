@@ -138,7 +138,7 @@ function RedRepelGunMine::checkDetonate(%this, %obj)
 	%halfRadius = %radius / 2;
 	while ((%targetObject = containerSearchNext()) != 0)
 	{
-		if(%targetObject.getTeamId() == %obj.zTeamId)
+		if(%targetObject.teamId == 0 || %targetObject.teamId == %obj.teamId)
 			continue;
 
       if(%targetObject.hasBarrier())

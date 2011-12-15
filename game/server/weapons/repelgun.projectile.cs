@@ -95,8 +95,7 @@ function RedRepelGunProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%
 
 	%p = new StaticShape() {
 		dataBlock       = %this.mine;
-		teamId          = 0; // To prevent it from showing up on the HUD
-		zTeamId         = %obj.teamId;
+		teamId          = %obj.teamId;
 		client          = %obj.client;
 	};
 
