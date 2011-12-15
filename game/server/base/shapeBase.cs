@@ -584,7 +584,7 @@ function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %healthDmg, %bufDmg)
     %enemy.setTagged();
     %obj.setCurrTagged(%enemy);
     
-    %obj.incGrenadeAmmo(%healthDmg +  %bufDmg/ 250);
+    %obj.incGrenadeAmmo((%healthDmg+%bufDmg)/250);
 
     %obj.setInflictedDamageSoundPitch(%enemy.getDamagePercent());
 
