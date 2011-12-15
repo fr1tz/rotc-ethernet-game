@@ -1,27 +1,21 @@
-Revenge Of The Cats: Ethernet p.4-testing
+Revenge Of The Cats: Ethernet p.5-testing
 =========================================
 
 Revenge Of The Cats: Ethernet is an independent experimental multiplayer FPS game.
 
-Its main influences are:
-- Subspace/Continuum (http://en.wikipedia.org/wiki/SubSpace_%28video_game%29)
-- Starsiege: Tribes (http://en.wikipedia.org/wiki/Starsiege_Tribes)
-- Tron (http://en.wikipedia.org/wiki/Tron_%28film%29)
- 
-This is a testing version of prototype 4 of the game. It has only been
-tested quickly by a few people. There shouldn't be any *major* bugs, but who 
-knows? - That's why the "testing" designation is there.
+Visit http://ethernet.wasted.ch for more information.
+
+This is a testing release of prototype 5 of the game. The idea of a testing
+release is to publish something useable that doesn't seem to have *major* bugs
+in order to find and fix minor bugs.
+
 Just like with the previous prototypes, don't expect any fancy graphics or great maps.
 
 If you're interested in helping with development, check out 
-http://ethernet.wasted.ch//index.php?page=contrib
+http://ethernet.wasted.ch/index.php?page=contrib
 
 Known Issues
 ------------
-
-- As of Apr. 26, 2011, the main master server is still down. That's why this
-  version has support for a backup master server. If the backup master server
-  is down as well, you can use the in-game "Player Chat" to find servers.
 
 - The game is still not very optimized in terms of speed, but the Linux version
   seems to run incredibly slow on systems with ATI graphics drivers (to the
