@@ -74,6 +74,17 @@ datablock AudioDescription(AudioClose3D)
 	type	  = $SimAudioType;
 };
 
+datablock AudioDescription(AudioClose3DLouder)
+{
+	volume	= 1.0;
+	isLooping= false;
+
+	is3D	  = true;
+	ReferenceDistance= 30.0;
+	MaxDistance= 60.0;
+	type	  = $SimAudioType;
+};
+
 datablock AudioDescription(AudioClosest3D)
 {
 	volume	= 1.0;
