@@ -3,6 +3,44 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
+function StandardCat::onAdd(%this, %obj)
+{
+	Parent::onAdd(%this, %obj);
+	%obj.setDiscs(0);
+}
+
+function StandardCat::useWeapon(%this, %obj, %nr)
+{
+	%client = %obj.client;
+
+	if(%nr == 0)
+		%obj.currWeapon++;
+	else
+		%obj.currWeapon = %nr;
+	
+	if(%obj.currWeapon > 2)
+		%obj.currWeapon = 1;	
+
+	%wpn =	%obj.currWeapon;
+
+	if(%wpn == 1)
+	{
+		if(%obj.getTeamId() == 1)
+			%obj.mountImage(RedSTG90Image, 0, -1, true);
+		else
+			%obj.mountImage(RedSTG90Image, 0, -1, true);
+	}
+	else if(%wpn == 2)
+	{
+		if(%obj.getTeamId() == 1)
+			%obj.mountImage(RedFF3Image, 0, -1, true);
+		else
+			%obj.mountImage(BlueFF3Image, 0, -1, true);
+	}
+}
+
+
+
 datablock TSShapeConstructor(RedSoldierCatDts)
 {
 	baseShape = "share/shapes/inf/soldier-0.red.dts";

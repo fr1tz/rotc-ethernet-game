@@ -521,23 +521,7 @@ function GameConnection::togglePlayerForm(%this, %forced)
 		}
 		else
 		{
-			if($Game::GameType == $Game::GridWars)
-			{
-				// Manifest into infantry CAT
-				if( %this.team == $Team1 )
-					%data = RedInfantryCat;
-				else
-					%data = BlueInfantryCat;
-			}
-			else
-			{
-				// Manifest into standard CAT form
-				if( %this.team == $Team1 )
-					%data = RedStandardCat;
-				else
-					%data = BlueStandardCat;
-			}
-
+			%data = %this.getPlayerFormDataBlock();
 			%obj = new Player() {
 				dataBlock = %data;
 				client = %this;
@@ -830,7 +814,7 @@ function GameConnection::updateHudWarningsThread(%this)
 	%health = %health / %player.getDataBlock().maxDamage;
 
 	%this.setHudWarning(1, "[HEALTH]", %health < 0.25);
-   if(%player.isCAT)
+   if(%player.isCAT && %this.hasDamper)
 	  %this.setHudWarning(3, "[DAMPER]", %player.getEnergyPercent() < 0.5);
    else
 	  %this.setHudWarning(3, "[ENERGY]", %player.getEnergyPercent() < 0.5);
@@ -1121,7 +1105,7 @@ function GameConnection::setHudMenuC(%this, %slot, %text, %repetitions, %visible
 
 function GameConnection::updateQuickbar(%this)
 {
-   %head = "<just:center><font:NovaSquare:16>";
+   %head = om_init() @ "<just:center><font:NovaSquare:16>";
 
    %B1 = true;
    %B2 = true;
@@ -1232,5 +1216,14 @@ function GameConnection::getEtherformDataBlock(%this)
 	}
 }
 
+function GameConnection::getPlayerFormDataBlock(%this)
+{
+	// Manifest into standard CAT form
+	if( %this.team == $Team1 )
+		return RedStandardCat;
+	else
+		return BlueStandardCat;
+}
 
+//-----------------------------------------------------------------------------
 

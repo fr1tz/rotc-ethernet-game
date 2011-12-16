@@ -30,7 +30,10 @@ function constructManual(%indexFile)
 
       %obj.size = 40;
       %obj.page = getField(%line, 0);
-      %obj.file = "game/server/eth/help/" @ getField(%line,1) @ ".rml";
+      if(getSubStr(getField(%line,1),0,1) $= "/")
+         %obj.file = getSubStr(getField(%line,1), 1, 255) @ ".rml";
+      else
+         %obj.file = "game/server/eth/help/" @ getField(%line,1) @ ".rml";
       %obj.name = getFields(%line, 2, getFieldCount(%line)-1);
 
       %obj.text = "";
