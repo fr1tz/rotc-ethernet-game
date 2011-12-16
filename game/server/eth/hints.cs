@@ -45,7 +45,7 @@ function constructHints(%hintsFile)
 
 function getRandomHint()
 {
-   if($Hints.count() == 0)
+   if(!isObject($Hints) || $Hints.count() == 0)
       return;
    %rand = getRandom($Hints.count()-1);
    %obj = $Hints.getValue(%rand);
