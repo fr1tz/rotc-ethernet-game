@@ -28,7 +28,7 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 		if(%obj.getTeamId() == 1)
 			%obj.mountImage(RedSTG90Image, 0, -1, true);
 		else
-			%obj.mountImage(RedSTG90Image, 0, -1, true);
+			%obj.mountImage(BlueSTG90Image, 0, -1, true);
 	}
 	else if(%wpn == 2)
 	{
