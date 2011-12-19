@@ -15,7 +15,8 @@ function showMainMenu(%client)
 		"Welcome to" SPC $Pref::Server::Name @
 		"<spop>\n\n" @
 		"Game:" SPC $Server::MissionType SPC 
-		"[<a:cmd News>Changelog</a>]\n\n" @
+		"\nChangelog: " @
+		"https://github.com/fr1tz/rotc-ethernet-game/commits/infantry\n\n" @
 //		"Environment:" SPC $Server::MissionName @ "\n\n" @
 		"<spush>" @ $Pref::Server::Info @ "<spop>\n\n" @
 		"";
