@@ -1,10 +1,11 @@
 What's new?
 ===========
 
-Prototype 5+dev1
+Prototype 5+dev2
 ----------------
 
-- Fixed server crash (currently ony in linux version)
+- Server crash fix (currently ony in linux version)
+- Bugfixes
 
 
 Prototype 5-testing

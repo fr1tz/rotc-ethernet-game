@@ -41,8 +41,8 @@ function GameConnection::prepareCookies(%this, %cookies)
    // Loadouts
 	for(%i = 1; %i <= 10; %i++)
    {
-		%cookies.push_back("ETH_LNAME" SPC %i, "");
-		%cookies.push_back("ETH_LCODE" SPC %i, "");
+		%cookies.push_back("ETH_LNAME" @ %i, "");
+		%cookies.push_back("ETH_LCODE" @ %i, "");
    }
 }
 
@@ -58,8 +58,8 @@ function GameConnection::onCookiesReceived(%this, %cookies)
 	for(%i = 1; %i <= 10; %i++)
    {
       %this.loadDefaultLoadout(%i);
-      %name = arrayGetValue(%cookies, "ETH_LNAME" SPC %i);
-      %code = arrayGetValue(%cookies, "ETH_LCODE" SPC %i);
+      %name = arrayGetValue(%cookies, "ETH_LNAME" @ %i);
+      %code = arrayGetValue(%cookies, "ETH_LCODE" @ %i);
       if(%name !$= "")
    		%this.loadoutName[%i] = %name;
       if(%code !$= "")
