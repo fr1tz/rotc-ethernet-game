@@ -58,7 +58,12 @@ $Pref::Recording::SpeedPreset5 = 4;
 $Pref::Recording::SpeedPreset6 = 10;
 $Pref::Recording::FreelookMoveSpeed = 40;
 
-$pref::Player::Name = "/bin/cat";
+if($platform $= "windows")
+	$pref::Player::Name = "progman.exe";
+else if($platform $= "macos")
+	$pref::Player::Name = "player.app";
+else
+	$pref::Player::Name = "/bin/cat";
 $pref::Player::DefaultFov = 110;
 $pref::Player::ZoomSpeed = 200;
 $pref::Player::MouseZoomSteps = 3;
