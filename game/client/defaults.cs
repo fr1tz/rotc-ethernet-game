@@ -103,7 +103,7 @@ $pref::sceneLighting::purgeMethod = "lastCreated";
 $pref::sceneLighting::cacheLighting = 1;
 $pref::sceneLighting::terrainGenerateLevel = 1;
 
-$pref::ts::detailAdjust = 0.45;
+$pref::ts::detailAdjust = 1.00;
 
 $pref::Terrain::DynamicLights = 1;
 $pref::Interior::TexturedFog = 0;
