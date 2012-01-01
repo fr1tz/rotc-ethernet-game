@@ -103,7 +103,7 @@ function JoinServerWindow::onWake()
 		"Arena" TAB
 		"Ping" TAB
 		"Players" TAB
-		"   Game" TAB
+		"Game" TAB
 		"Environment" TAB
 		"Server Index" // <- This will never be visible
 	);
