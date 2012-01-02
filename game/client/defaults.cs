@@ -81,8 +81,8 @@ $Pref::Hud::ShowPacketloss = false;
 $Pref::Hud::ShowFPS = true;
 $Pref::Hud::ShowFPSGraph = false;
 
-$pref::Commander::PanSpeed = 100;
-$pref::Commander::ZoomSpeed = 0.1;
+$pref::Commander::PanSpeed = 10;
+$pref::Commander::ZoomSpeed = 0.05;
 
 $pref::Net::LagThreshold = 400;
 $pref::Net::Port = 28000;

@@ -25,21 +25,22 @@ CmdrScreenActionMap.bindCmd(keyboard, "escape", "", "toggleShellDlg();");
 
 function cmdrscreen_panLeft(%val)
 {
-	CmdrScreen.panLeft(%val);
+   CmdrScreen.camLeftAction = %val;
 }
 
 function cmdrscreen_panRight(%val)
 {
-	CmdrScreen.panRight(%val);
+   CmdrScreen.camRightAction = %val;
 }
 
 function cmdrscreen_panUp(%val)
 {
-	CmdrScreen.panUp(%val);}
+   CmdrScreen.camUpAction = %val;
+}
 
 function cmdrscreen_panDown(%val)
 {
-	CmdrScreen.panDown(%val);
+   CmdrScreen.camDownAction = %val;
 }
 
 CmdrScreenActionMap.bind( keyboard, a, cmdrscreen_panLeft );
@@ -51,33 +52,38 @@ CmdrScreenActionMap.bind( keyboard, s, cmdrscreen_panDown );
 // zoom...
 //------------------------------------------------------------------------------
 
-function cmdrscreen_zoom(%val)
+function cmdrscreen_mouseZoom(%val)
 {
-	CmdrScreen.zoom(%val);
+   %min = 0.1;
+   %max = 2.0;
+
+	%step = (%max - %min)/$Pref::Player::MouseZoomSteps;
+
+	if(%val > 0)
+		CmdrScreen.mouseZoom -= %step;
+	else
+		CmdrScreen.mouseZoom += %step;
+
+	if(CmdrScreen.mouseZoom < %min)
+		CmdrScreen.mouseZoom = %min;
+	else if(CmdrScreen.mouseZoom > %max)
+		CmdrScreen.mouseZoom = %max;
+
+   CmdrScreen.zoom(CmdrScreen.mouseZoom);
 }
 
 function cmdrscreen_zoomIn(%val)
 {
-	CmdrScreen.zoomIn(%val);
+   CmdrScreen.camForwardAction = %val;
 }
 
 function cmdrscreen_zoomOut(%val)
 {
-	CmdrScreen.zoomOut(%val);
+   CmdrScreen.camBackwardAction = %val;
 }
 
-CmdrScreenActionMap.bind(mouse, zaxis, cmdrscreen_zoom);
+CmdrScreenActionMap.bind(mouse, zaxis, cmdrscreen_mouseZoom);
 CmdrScreenActionMap.bind(keyboard, e, cmdrscreen_zoomIn);
 CmdrScreenActionMap.bind(keyboard, q, cmdrscreen_zoomOut);
-
-//------------------------------------------------------------------------------
-// message HUD...
-//------------------------------------------------------------------------------
-
-CmdrScreenActionMap.bind(keyboard, "z", toggleMessageHud );
-CmdrScreenActionMap.bind(keyboard, "t", teamMessageHud );
-CmdrScreenActionMap.bind(keyboard, "shift pageUp", pageMessageHudUp );
-CmdrScreenActionMap.bind(keyboard, "shift pageDown", pageMessageHudDown );
-CmdrScreenActionMap.bind(keyboard, "i", resizeMessageHud );
 
 
