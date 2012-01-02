@@ -1,0 +1,3 @@
+exec("./common.cs");
+$MissionInfo::Name = "ETH2";
+$MissionInfo::Desc = "Simple indoor/outdoor hybrid";
