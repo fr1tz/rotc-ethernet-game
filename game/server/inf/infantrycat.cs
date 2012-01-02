@@ -383,9 +383,9 @@ datablock PlayerData(RedInfantryCatSliding : RedInfantryCat)
    numShapeTrails = 10;
 	flyForce = 15 * 90;
    skidSpeed = 30;
-	maxForwardSpeed = 18;
-	maxBackwardSpeed = 16;
-	maxSideSpeed = 12;
+	maxForwardSpeed = 14;
+	maxBackwardSpeed = 12;
+	maxSideSpeed = 10;
 };
 
 datablock PlayerData(RedInfantryCatCrouched : RedInfantryCat)
