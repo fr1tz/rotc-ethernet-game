@@ -49,6 +49,12 @@ new GuiControlProfile(GuiDefaultProfile)
 	fontColorHL = "0 255 0";
 	fontColorNA = "100 100 100";
 	fontColorSEL= "200 200 200";
+	fontColors[4] = "255 96 96"; // aka fontColorLink
+	fontColors[5] = "0 0 255"; // aka fontColorLinkHL
+	fontColors[6] = "0 200 0 255";
+	fontColors[7] = "200 0 200 255";
+	fontColors[8] = "255 200 0 255";
+	fontColors[9] = "0 200 255 255";
 
 	// bitmap information
 	bitmap = "./pixmaps/mg_window6";
@@ -129,8 +135,6 @@ new GuiControlProfile(GuiMenuBarProfile : GuiDefaultProfile)
 
 new GuiControlProfile(GuiTextProfile : GuiDefaultProfile)
 {
-	fontColorLink = "255 96 96";
-	fontColorLinkHL = "0 0 255";
 	autoSizeWidth = true;
 	autoSizeHeight = true;
 };
