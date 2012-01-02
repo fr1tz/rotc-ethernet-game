@@ -58,7 +58,12 @@ $Pref::Recording::SpeedPreset5 = 4;
 $Pref::Recording::SpeedPreset6 = 10;
 $Pref::Recording::FreelookMoveSpeed = 40;
 
-$pref::Player::Name = "/bin/cat";
+if($platform $= "windows")
+	$pref::Player::Name = "progman.exe";
+else if($platform $= "macos")
+	$pref::Player::Name = "player.app";
+else
+	$pref::Player::Name = "/bin/cat";
 $pref::Player::DefaultFov = 110;
 $pref::Player::ZoomSpeed = 200;
 $pref::Player::MouseZoomSteps = 3;
@@ -76,8 +81,8 @@ $Pref::Hud::ShowPacketloss = false;
 $Pref::Hud::ShowFPS = true;
 $Pref::Hud::ShowFPSGraph = false;
 
-$pref::Commander::PanSpeed = 100;
-$pref::Commander::ZoomSpeed = 0.1;
+$pref::Commander::PanSpeed = 10;
+$pref::Commander::ZoomSpeed = 0.05;
 
 $pref::Net::LagThreshold = 400;
 $pref::Net::Port = 28000;
@@ -98,7 +103,7 @@ $pref::sceneLighting::purgeMethod = "lastCreated";
 $pref::sceneLighting::cacheLighting = 1;
 $pref::sceneLighting::terrainGenerateLevel = 1;
 
-$pref::ts::detailAdjust = 0.45;
+$pref::ts::detailAdjust = 1.00;
 
 $pref::Terrain::DynamicLights = 1;
 $pref::Interior::TexturedFog = 0;

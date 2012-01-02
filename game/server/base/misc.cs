@@ -73,14 +73,14 @@ datablock AudioProfile(BlueVictorySound)
 datablock AudioProfile(DamageSoundOne)
 {
 	filename = "share/sounds/rotc/damage1.wav";
-	description = Audio2D;
+	description = AudioCritical2D;
 	preload = true;
 };
 
 datablock AudioProfile(DamageSoundTwo)
 {
 	filename = "share/sounds/rotc/damage2.wav";
-	description = Audio2D;
+	description = AudioCritical2D;
 	preload = true;
 };
 

@@ -147,7 +147,7 @@ new GuiControl(JoinServerWindowForEditing) {
             hovertime = "1000";
             enumerate = "0";
             resizeCell = "1";
-            columns = "0 165 200 240 420";
+            columns = "0 130 165 215 375";
             fitParentWidth = "0";
             clipColumnText = "0";
          };
@@ -182,7 +182,7 @@ new GuiControl(JoinServerWindowForEditing) {
             hovertime = "1000";
             enumerate = "0";
             resizeCell = "0";
-            columns = "0 165 200 240 420";
+            columns = "0 130 165 215 375";
             fitParentWidth = "0";
             clipColumnText = "1";
          };

@@ -63,6 +63,7 @@ RecordingActionMap.bind("keyboard", "w", "recordingMoveForward" );
 RecordingActionMap.bind("keyboard", "s", "recordingMoveBackward" );
 RecordingActionMap.bind("mouse0", "xaxis", "S", $pref::Input::MouseSensitivity, "recordingYaw");
 RecordingActionMap.bind("mouse0", "yaxis", "S", $pref::Input::MouseSensitivity, "recordingPitch");
+RecordingActionMap.bind("mouse0", "zaxis", mouseZoom);
 
 RecordingActionMap.bindCmd("mouse", "button0", "demoChangePlaySpeed(1);", "demoResetPlaySpeed();");
 RecordingActionMap.bindCmd("mouse", "button1", "demoChangePlaySpeed(2);", "demoResetPlaySpeed();");

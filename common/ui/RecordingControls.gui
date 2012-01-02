@@ -42,7 +42,7 @@ new GuiControl(RecordingControlsWindowForEditing) {
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
-         Command = "disconnect();";
+         Command = "demoPlaybackComplete();";
          hovertime = "1000";
          text = "End recording";
          groupNum = "-1";
