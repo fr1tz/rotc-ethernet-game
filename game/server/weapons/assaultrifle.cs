@@ -319,8 +319,8 @@ function RedAssaultRifleImage::onMount(%this, %obj, %slot)
 
    // Set up recoil
    %obj.setImageRecoilEnabled(%slot, true);
-   %obj.setImageCurrentRecoil(%slot, 50);
-   %obj.setImageMaxRecoil(%slot, 50);
+   %obj.setImageCurrentRecoil(%slot, 80);
+   %obj.setImageMaxRecoil(%slot, 80);
    %obj.setImageRecoilAdd(%slot, 0);
    %obj.setImageRecoilDelta(%slot, -0);
 }
