@@ -78,7 +78,8 @@ function Hud::onWake(%this)
 	chatHud.attach(HudMessageVector);
 
 	// just update the action map here
-    pushActionMap(MoveMap);
+	if(!ServerConnection.isDemoPlaying())
+      pushActionMap(MoveMap);
 
 	// hack city - these controls are floating around and need to be clamped
 	schedule(0, 0, "refreshCenterTextCtrl");

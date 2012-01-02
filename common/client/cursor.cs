@@ -81,9 +81,6 @@ function GuiCanvas::setContent(%this, %ctrl)
 	if(%ctrl != %oldContent)
 		onCanvasContentChanged(%oldContent, %ctrl);
 
-	if(ServerConnection.isDemoPlaying())
-		pushActionMap(RecordingActionMap);
-
 	%this.checkCursor();
 }
 
