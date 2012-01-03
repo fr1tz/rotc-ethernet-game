@@ -66,3 +66,11 @@ function serverCmdCookie(%client, %name, %value)
    arrayChangeElement(%client.cookies, %name, %value);
 }
 
+//-----------------------------------------------------------------------------
+// Recordings
+
+function serverCmdRecordingDemo(%client, %isRecording)
+{
+   %client.onRecordingDemo(%isRecording);
+}
+

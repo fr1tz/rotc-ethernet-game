@@ -134,11 +134,7 @@ function GameConnection::onClientEnterGame(%this)
 	%this.updateTopHudMenuThread();
 
    // Crosshair...
-   commandToClient(%this, 'Crosshair', 0);
-   commandToClient(%this, 'Crosshair', 2, 2);
-   //commandToClient(%this, 'Crosshair', 3, 2, 20);
-   commandToClient(%this, 'Crosshair', 5, "./rotc/ch1");
-   commandToClient(%this, 'Crosshair', 1);
+   %this.setDefaultCrosshair();
  	
 	//
 	// setup observer camera object...
@@ -224,6 +220,19 @@ function GameConnection::onClientLeaveGame(%this)
 
 //------------------------------------------------------------------------------
 
+function GameConnection::onRecordingDemo(%this, %isRecording)
+{
+   if(!%isRecording)
+      return;
+
+   //echo(%this.getId() SPC "started recording a demo");
+
+   %this.updateHudColors();
+   %this.setDefaultCrosshair();
+}
+
+//------------------------------------------------------------------------------
+
 function GameConnection::updateHudColors(%this)
 {
 	if(getFieldCount(%this.hudColor) == 2)
@@ -261,6 +270,17 @@ function GameConnection::updateHudColors(%this)
 		else if(%teamId == 2)
 			commandToClient(%this,'SetHudColor', "0 100 255", "200 200 255");	
 	}	
+}
+
+//------------------------------------------------------------------------------
+
+function GameConnection::setDefaultCrosshair(%this)
+{
+   commandToClient(%this, 'Crosshair', 0);
+   commandToClient(%this, 'Crosshair', 2, 2);
+   //commandToClient(%this, 'Crosshair', 3, 2, 20);
+   commandToClient(%this, 'Crosshair', 5, "./rotc/ch1");
+   commandToClient(%this, 'Crosshair', 1);
 }
 
 //------------------------------------------------------------------------------

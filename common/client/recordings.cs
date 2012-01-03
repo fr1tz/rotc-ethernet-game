@@ -345,6 +345,8 @@ function startDemoRecord()
 		ChatHud.AddLine( "\c3 *** Failed to record to file \c2" @ $DemoFileName);
 		$DemoFileName = "";
 	}
+   else
+      commandToServer('RecordingDemo', true);
 }
 
 function stopDemoRecord()
@@ -354,6 +356,7 @@ function stopDemoRecord()
 	{
 		ChatHud.AddLine( "\c4Recording file \c2" @ $DemoFileName @ "\c4 finished.");
 		ServerConnection.stopRecording();
+      commandToServer('RecordingDemo', false);
 	}
 }
 
