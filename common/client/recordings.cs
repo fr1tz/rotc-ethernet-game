@@ -242,6 +242,7 @@ function startDemoPlayback(%file, %position)
 	new GameConnection(ServerConnection);
 	RootGroup.add(ServerConnection);
 
+	$sky = "";
 	$timeScale = 0;
 	$DemoStartTime = 0;
 	$DemoCurrentPosition = 0;
