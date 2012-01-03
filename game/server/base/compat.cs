@@ -47,5 +47,9 @@ datablock AudioDescription(AudioCompat)
 
 //------------------------------------------------------------------------------
 
+datablock ParticleData(TextureDummy_1)
+{
+	textureName	= "share/textures/eth/precipitation1";
+};
 
 

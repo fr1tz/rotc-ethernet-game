@@ -1,0 +1,3 @@
+exec("./common.cs");
+$MissionInfo::Name = "/env/eth/wastes-1";
+$MissionInfo::Desc = "Wasteland";
