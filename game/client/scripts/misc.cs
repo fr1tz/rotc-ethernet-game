@@ -164,6 +164,7 @@ function client_find_sky()
 		if(%obj.getClassName() $= "Sky")
 			return %obj;
 	}
+   return "";
 }
 
 //-----------------------------------------------------------------------------
