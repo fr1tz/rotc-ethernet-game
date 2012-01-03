@@ -20,10 +20,16 @@ function RecordingsWindow::onWake(%this)
 	for(%file = findFirstFile(%filespec); %file !$= ""; %file = findNextFile(%filespec)) 
 	{ 
 		%fileName = fileBase(%file);
-		if (strStr(%file, "/CVS/") == -1) 
-		{
-			RecordingsDlgList.addRow(%i++, %fileName);
-		}
+
+      %str = strreplace(%fileName, "__", " ");
+      %player = getWord(%str, 0);
+      %version = getWord(%str, 1);
+      %date = strreplace(getWord(%str, 2), "_", ".");
+      %time = strreplace(getWord(%str, 3), "_", ":");
+
+      %display = %player SPC %version SPC %date SPC %time;
+
+		RecordingsDlgList.addRow(%i++, %display TAB %filename);
 	}
 	RecordingsDlgList.sort(0);
 	RecordingsDlgList.setSelectedRow(0);
@@ -280,7 +286,7 @@ function StartSelectedDemo()
 	%sel = RecordingsDlgList.getSelectedId();
 	%rowText = RecordingsDlgList.getRowTextById(%sel);
 
-	%file = $lastMod @ "/recordings/" @ getField(%rowText, 0) @ ".rec";
+	%file = $lastMod @ "/recordings/" @ getField(%rowText, 1) @ ".rec";
 
     startDemoPlayback(%file, DR_JumpToPosition.getText());
 }
@@ -304,27 +310,30 @@ function startDemoRecord()
 	if(ServerConnection.isDemoPlaying())
 		return;
 
-	for(%i = 0; %i < 1000; %i++)
-	{
-		%num = %i;
-		if(%num < 10)
-			%num = "0" @ %num;
-		if(%num < 100)
-			%num = "0" @ %num;
+   %player = strreplace($Pref::Player::Name, "/", "");
+   %player = strreplace(%player, " ", "");
 
-		%file = $lastMod @ "/recordings/"
-			@ strreplace($Pref::Player::Name, "/", "")
-			@ "-" @ %num @ ".rec";
+   %time = strreplace(getDateAndTime(), ".", "_");
+   %time = strreplace(%time, "-", "__");
+   %time = strreplace(%time, ".", "_");
+   %time = strreplace(%time, ":", "_");
 
-		if(!isfile(%file))
-			break;
-	}
-	if(%i == 1000)
-		return;
+   %file = $lastMod @ "/recordings/"
+			@ %player @ "__"
+         @ $GameVersionString @ "__"
+         @ %time
+         @ ".rec";
+
+	if(isfile(%file))
+   {
+		ChatHud.AddLine( "\c3 *** Failed to record to file \c2" @ %file
+         @ "\cr: File already exists.");
+      return;
+   }
 
 	$DemoFileName = %file;
 
-	ChatHud.AddLine( "\c4Recording to file [\c2" @ $DemoFileName @ "\cr].");
+	ChatHud.AddLine( "\c4Recording to file \c2" @ $DemoFileName);
 
 	ServerConnection.prepDemoRecord();
 	ServerConnection.startRecording($DemoFileName);
@@ -333,7 +342,7 @@ function startDemoRecord()
 	if(!ServerConnection.isDemoRecording())
 	{
 		deleteFile($DemoFileName);
-		ChatHud.AddLine( "\c3 *** Failed to record to file [\c2" @ $DemoFileName @ "\cr].");
+		ChatHud.AddLine( "\c3 *** Failed to record to file \c2" @ $DemoFileName);
 		$DemoFileName = "";
 	}
 }
@@ -343,7 +352,7 @@ function stopDemoRecord()
 	// make sure we are recording
 	if(ServerConnection.isDemoRecording())
 	{
-		ChatHud.AddLine( "\c4Recording file [\c2" @ $DemoFileName @ "\cr] finished.");
+		ChatHud.AddLine( "\c4Recording file \c2" @ $DemoFileName @ "\c4 finished.");
 		ServerConnection.stopRecording();
 	}
 }
