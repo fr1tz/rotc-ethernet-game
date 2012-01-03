@@ -21,14 +21,23 @@ function RecordingsWindow::onWake(%this)
 	{ 
 		%fileName = fileBase(%file);
 
+      %display = "";
       %str = strreplace(%fileName, "__", " ");
-      %player = getWord(%str, 0);
-      %version = getWord(%str, 1);
-      %date = strreplace(getWord(%str, 2), "_", ".");
-      %time = strreplace(getWord(%str, 3), "_", ":");
-
-      %display = %player SPC %version SPC %date SPC %time;
-
+      for(%j = 0; %j < getWordCount(%str); %j++)
+      {
+         %seg = getWord(%str, %j);
+         if(getSubStr(%seg,0,5) $= "DATE_")
+         {
+            %seg = strreplace(%seg, "DATE_", "");
+            %seg = strreplace(%seg, "_", ".");
+         }
+         else if(getSubStr(%seg,0,5) $= "TIME_")
+         {
+            %seg = strreplace(%seg, "TIME_", "");
+            %seg = strreplace(%seg, "_", ":");
+         }
+         %display = %display SPC %seg;
+      }
 		RecordingsDlgList.addRow(%i++, %display TAB %filename);
 	}
 	RecordingsDlgList.sort(0);
@@ -242,7 +251,7 @@ function startDemoPlayback(%file, %position)
 	new GameConnection(ServerConnection);
 	RootGroup.add(ServerConnection);
 
-	$sky = "";
+   $sky = "";
 	$timeScale = 0;
 	$DemoStartTime = 0;
 	$DemoCurrentPosition = 0;
@@ -314,8 +323,9 @@ function startDemoRecord()
    %player = strreplace($Pref::Player::Name, "/", "");
    %player = strreplace(%player, " ", "");
 
-   %time = strreplace(getDateAndTime(), ".", "_");
-   %time = strreplace(%time, "-", "__");
+   %time = "DATE_" @ getDateAndTime();
+   %time = strreplace(%time, ".", "_");
+   %time = strreplace(%time, "-", "__TIME_");
    %time = strreplace(%time, ".", "_");
    %time = strreplace(%time, ":", "_");
 
