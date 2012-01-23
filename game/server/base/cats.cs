@@ -96,9 +96,9 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 	if(%wpn == 1)
 	{
 		if(%obj.getTeamId() == $CatEquipment::Blaster)
-			%obj.mountImage(RedBlasterImage, 0, -1, true);
+			%obj.mountImage(RedBlaster2Image, 0, -1, true);
 		else
-			%obj.mountImage(BlueBlasterImage, 0, -1, true);
+			%obj.mountImage(BlueBlaster2Image, 0, -1, true);
 	}
 	else if(%wpn == $CatEquipment::BattleRifle)
 	{

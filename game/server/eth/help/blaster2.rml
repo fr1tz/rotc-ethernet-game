@@ -1,0 +1,16 @@
+#icon share/hud/rotc/icon.blaster.50x15
+#size 24
+<lmargin:120><bitmap:share/manual/rotc/wpn.blaster><sbreak>
+<lmargin:5>The Blaster is a powerful but tricky weapon. 
+It always fires 9 shots at once. Because of this, it uses a lot of energy and has a huge recoil, but is able to deal up to 90 points of damage at once. The properties of an individual Blaster shot:
+<sbreak><tab:15,180>
+	Bypasses	<spush><font:Arial Bold:16>Barrier<spop>
+	Energy cost	<spush><font:Arial Bold:16>4<spop>
+	Impact damage	<spush><font:Arial Bold:16>10<spop>
+	Impact impulse	<spush><font:Arial Bold:16>400<spop>
+	Splash damage	<spush><font:Arial Bold:16>-<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Velocity inheritance	<spush><font:Arial Bold:16>50%<spop>	
+	Accuracy	<spush><font:Arial Bold:16>Random distribution in fire cone<spop>
+<sbreak>
