@@ -7,5 +7,3 @@ Most weapons fall into the first category and thus will often require multiple h
 - <a:cmd Manual 6.2>Battle Rifle</a> <bitmap:share/hud/rotc/icon.rifle.50x15>
 
 - <a:cmd Manual 6.3>Minigun</a> <bitmap:share/hud/rotc/icon.minigun.50x15>
-
-- <a:cmd Manual 6.4>Grenade</a> <bitmap:share/hud/rotc/icon.grenade.20x20>

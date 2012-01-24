@@ -8,3 +8,5 @@ Weapons in the second category have the advantage of dealing health damage with 
 - <a:cmd Manual 7.2>B.O.U.N.C.E.</a> <bitmap:share/hud/rotc/icon.bounce.20x20>
 
 - <a:cmd Manual 7.3>Mine Launcher</a> <bitmap:share/hud/rotc/icon.grenadelauncher.50x15>
+
+- <a:cmd Manual 6.4>Grenade</a> <bitmap:share/hud/rotc/icon.grenade.20x20>

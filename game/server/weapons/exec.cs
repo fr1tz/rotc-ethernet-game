@@ -5,7 +5,7 @@
 
 exec("./weapons.cs");
 exec("./disc.cs");
-exec("./grenade.cs");
+exec("./grenade2/exec.cs");
 exec("./sniperrifle.cs");
 exec("./assaultrifle.cs");
 exec("./grenadelauncher.cs");

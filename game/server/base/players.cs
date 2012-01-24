@@ -114,13 +114,13 @@ function PlayerData::onAdd(%this,%obj)
 	{
 		%obj.mountImage(RedDiscImage, 1, -1, true);
 		if(%client.hasGrenade)
-			%obj.mountImage(RedGrenadeImage, 2, -1, true);
+			%obj.mountImage(RedGrenade2Image, 2, -1, true);
 	}
 	else
 	{
 		%obj.mountImage(BlueDiscImage, 1, -1, true);
 		if(%client.hasGrenade)
-			%obj.mountImage(BlueGrenadeImage, 2, -1, true);
+			%obj.mountImage(BlueGrenade2Image, 2, -1, true);
 	}
 	%obj.useWeapon(1);
 
@@ -1044,7 +1044,7 @@ function Player::decDiscs(%this)
 
 function Player::hasGrenade(%this)
 {
-	return %this.grenadeAmmo >= 1;
+	return %this.grenadeAmmo >= 0.5;
 }
 
 function Player::incGrenadeAmmo(%this, %amount)

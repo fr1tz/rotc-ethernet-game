@@ -1,0 +1,23 @@
+#icon share/hud/rotc/icon.grenade.20x20
+#size 37
+<lmargin:10><bitmap:share/manual/rotc/grenade><sbreak>
+<lmargin:5>A grenade will implode shortly after it has been thrown.
+
+To throw a grenade you need to hold down and then release @bind19. 
+
+The grenade is thrown farther the longer the mouse button was held down (but max force is reached after just one second).
+There's also the possibility to throw a Grenade instantly at full force by pressing @bind46 or by pressing @bind16 while holding down @bind19. 
+
+Throwing grenades does not use up energy. Instead they draw from their own separate ammo supply. The grenade ammo supply regenerates slowly by itself, but the regeneration can be sped up by dealing damage to enemies.
+
+<sbreak><tab:15,180>
+	Bypasses	<spush><font:Arial Bold:16>Shield<spop>
+	Energy cost	<spush><font:Arial Bold:16>-<spop>
+	Impact damage	<spush><font:Arial Bold:16>-<spop>
+	Impact impulse	<spush><font:Arial Bold:16>-<spop>
+	Splash damage	<spush><font:Arial Bold:16>40<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>10<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Velocity inheritance	<spush><font:Arial Bold:16>0%<spop>	
+	Accuracy	<spush><font:Arial Bold:16>Pinpoint<spop>		
+<sbreak>
