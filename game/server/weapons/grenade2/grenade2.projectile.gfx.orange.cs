@@ -16,9 +16,9 @@ datablock ParticleData(OrangeGrenade2_ParticleEmitter_Particles)
    lifetimeMS           = 400;
    lifetimeVarianceMS   = 100;
    textureName          = "share/textures/rotc/dustParticle";
-   colors[0]     = "1.0 0.5 0.0 1.0";
-   colors[1]     = "1.0 0.5 0.0 0.5";
-   colors[2]     = "1.0 0.5 0.0 0.0";
+   colors[0]     = "1.0 1.0 0.0 1.0";
+   colors[1]     = "1.0 1.0 0.0 0.5";
+   colors[2]     = "1.0 1.0 0.0 0.0";
    sizes[0]      = 0.90;
    sizes[1]      = 0.70;
    sizes[2]      = 0.50;
@@ -112,8 +112,8 @@ datablock ParticleData(OrangeGrenade2Explosion_Cloud)
 	textureName = "share/textures/rotc/corona.png";
 
 	colors[0]	  = "1.0 1.0 1.0 1.0";
-	colors[1]	  = "1.0 0.5 0.0 0.0";
-	colors[2]	  = "1.0 0.5 0.0 0.0";
+	colors[1]	  = "1.0 1.0 0.0 0.0";
+	colors[2]	  = "1.0 1.0 0.0 0.0";
 	sizes[0]		= 12.0;
 	sizes[1]		= 9.0;
 	sizes[2]		= 0.0;
@@ -274,7 +274,7 @@ datablock ExplosionData(OrangeGrenade2Explosion)
 
 	particleEmitter = OrangeGrenade2Explosion_CloudEmitter;
 	particleDensity = 300;
-	particleRadius = 10;
+	particleRadius = 15;
 
 	//emitter[0] = OrangeGrenade2Explosion_DustEmitter;
 	//emitter[1] = OrangeGrenade2Explosion_SmokeEmitter;
@@ -290,6 +290,6 @@ datablock ExplosionData(OrangeGrenade2Explosion)
 	// Dynamic light
 	lightStartRadius = 15;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.0 0.0";
+	lightStartColor = "1.0 1.0 0.0";
 	lightEndColor = "0.0 0.0 0.0";
 };

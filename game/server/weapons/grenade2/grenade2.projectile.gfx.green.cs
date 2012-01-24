@@ -274,7 +274,7 @@ datablock ExplosionData(GreenGrenade2Explosion)
 
 	particleEmitter = GreenGrenade2Explosion_CloudEmitter;
 	particleDensity = 300;
-	particleRadius = 10;
+	particleRadius = 15;
 
 	//emitter[0] = GreenGrenade2Explosion_DustEmitter;
 	//emitter[1] = GreenGrenade2Explosion_SmokeEmitter;
@@ -290,6 +290,6 @@ datablock ExplosionData(GreenGrenade2Explosion)
 	// Dynamic light
 	lightStartRadius = 15;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.0 0.0";
+	lightStartColor = "0.0 1.0 0.0";
 	lightEndColor = "0.0 0.0 0.0";
 };
