@@ -16,7 +16,7 @@ Throwing grenades does not use up energy. Instead they draw from their own separ
 	Impact damage	<spush><font:Arial Bold:16>-<spop>
 	Impact impulse	<spush><font:Arial Bold:16>-<spop>
 	Splash damage	<spush><font:Arial Bold:16>40<spop>
-	Splash damage radius	<spush><font:Arial Bold:16>10<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>15<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
 	Velocity inheritance	<spush><font:Arial Bold:16>0%<spop>	
 	Accuracy	<spush><font:Arial Bold:16>Pinpoint<spop>		

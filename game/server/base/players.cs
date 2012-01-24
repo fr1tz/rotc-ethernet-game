@@ -1044,7 +1044,7 @@ function Player::decDiscs(%this)
 
 function Player::hasGrenade(%this)
 {
-	return %this.grenadeAmmo >= 0.5;
+	return %this.grenadeAmmo >= 1.0;
 }
 
 function Player::incGrenadeAmmo(%this, %amount)

@@ -14,7 +14,7 @@ datablock ProjectileData(RedGrenade2)
 	impactDamage        = 30; // only used to determine time for barrier
 	impactImpulse       = 0;
 	splashDamage        = 40;
-	splashDamageRadius  = 10;
+	splashDamageRadius  = 15;
 	splashImpulse       = 0;
 	splashDamageFalloff = $SplashDamageFalloff::None;
 	bypassDamageBuffer  = true;

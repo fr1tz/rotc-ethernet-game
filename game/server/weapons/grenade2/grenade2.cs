@@ -162,7 +162,7 @@ function RedGrenade2Image::throw(%this, %obj, %slot)
 	%vec = %obj.getEyeVector();
 	%vec = vectorScale(%vec, %throwForce);
 
-	// add a vertical component to give the grenade2 a better arc
+	// add a vertical component to give the grenade a better arc
 	%verticalForce = %throwForce / 8;
 	%dot = vectorDot("0 0 1",%eye);
 	if (%dot < 0) %dot = -%dot;
@@ -176,7 +176,7 @@ function RedGrenade2Image::throw(%this, %obj, %slot)
 	%pos = VectorAdd(%pos, "0 0 0.5");
 
 	// create the grenade2...
-	%grenade2 = new (Projectile)() {
+	%grenade = new (Projectile)() {
 		dataBlock        = %projectile;
 		teamId           = %obj.teamId;
 		initialVelocity  = %vec;
@@ -185,11 +185,11 @@ function RedGrenade2Image::throw(%this, %obj, %slot)
 		sourceSlot       = %slot;
 		client           = %obj.client;
 	};
-	MissionCleanup.add(%grenade2);
+	MissionCleanup.add(%grenade);
 
-	%obj.decGrenadeAmmo(0.5);
+	%obj.decGrenadeAmmo(1.0);
 
-	return %grenade2;
+	return %grenade;
 }
 
 function RedGrenade2Image::onDryFire(%this, %obj, %slot)
