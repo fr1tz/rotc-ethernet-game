@@ -1,14 +1,12 @@
 What's new?
 ===========
 
-Prototype 5.1+dev2
+Prototype 5.1+dev3
 -------------
 
 - Blaster now uses projectiles instead of hitscan.
 - New grenade:
-   - Orange/green weapon category
-   - Less damage and smaller splash radius
-   - Requires half as much grenade ammo to throw
+   - Now bypasses shield but does much less damage.
 
 
 Prototype 5.1
