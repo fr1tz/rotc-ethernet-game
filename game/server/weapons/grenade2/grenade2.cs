@@ -120,8 +120,8 @@ function RedGrenade2Image::onUnmount(%this, %obj, %slot)
 
 function RedGrenade2Image::onReady(%this, %obj, %slot)
 {
-	%obj.fullForceGrenade2 = false;
-	%obj.noGrenade2 = false;
+	%obj.fullForceGrenade = false;
+	%obj.noGrenade = false;
 }
 
 function RedGrenade2Image::onCharge(%this, %obj, %slot)
@@ -131,7 +131,7 @@ function RedGrenade2Image::onCharge(%this, %obj, %slot)
 
 function RedGrenade2Image::throw(%this, %obj, %slot)
 {
-	if(%obj.noGrenade2)
+	if(%obj.noGrenade)
 		return;
 
 	%obj.setArmThread("look");
