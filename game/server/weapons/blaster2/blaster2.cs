@@ -12,8 +12,8 @@ datablock TracerProjectileData(Blaster2PseudoProjectile)
 {
 	energyDrain = 36;
 	lifetime = 1000;
-	muzzleVelocity = 200 * $Server::Game.speed;
-	velInheritFactor = 0.5 * $Server::Game.speed;
+	muzzleVelocity = 200 * $Server::Game.slowpokemod;
+	velInheritFactor = 0.5 * $Server::Game.slowpokemod;
 };
 
 function Blaster2PseudoProjectile::onAdd(%this, %obj)
@@ -112,7 +112,7 @@ datablock ProjectileData(RedBlaster2Projectile)
 	velInheritFactor = 0; // Handled by Blaster2PseudoProjectile
 
 	isBallistic			= true;
-	gravityMod			 = 1.0 * $Server::Game.speed;
+	gravityMod			 = 1.0 * $Server::Game.slowpokemod;
 
 	armingDelay			= 0;
 	lifetime			= 750;
