@@ -87,28 +87,28 @@ datablock PlayerData(RedStandardCat)
 	damageBufferDischargeRate = 0.15;
 	energyRechargeRate = 0.4;
 
-	skidSpeed = 20;
+	skidSpeed = 20 * $Server::Game.slowpokemod;
 	skidFactor = 0.4;
 
-	flyForce = 10 * 90;
+	flyForce = 10 * 90 * $Server::Game.slowpokemod;
 
-	runForce = 100 * 90; // formerly 48 * 90
+	runForce = 100 * 90 * $Server::Game.slowpokemod; // formerly 48 * 90
 	runEnergyDrain = 0;
 	minRunEnergy = 0;
 	
-	slideForce = 20 * 90;
+	slideForce = 20 * 90 * $Server::Game.slowpokemod;
 	slideEnergyDrain = 0;
 	minSlideEnergy = 0;
 
-	maxForwardSpeed = 15;
-	maxBackwardSpeed = 12;
-	maxSideSpeed = 12;
-	maxForwardSpeedSliding = 30;
-	maxBackwardSpeedSliding = 25;
-	maxSideSpeedSliding = 12;
-	maxForwardSpeedMarching = 8;
-	maxBackwardSpeedMarching = 8;
-	maxSideSpeedMarching = 5;
+	maxForwardSpeed = 15 * $Server::Game.slowpokemod;
+	maxBackwardSpeed = 12 * $Server::Game.slowpokemod;
+	maxSideSpeed = 12 * $Server::Game.slowpokemod;
+	maxForwardSpeedSliding = 30 * $Server::Game.slowpokemod;
+	maxBackwardSpeedSliding = 25 * $Server::Game.slowpokemod;
+	maxSideSpeedSliding = 12 * $Server::Game.slowpokemod;
+	maxForwardSpeedMarching = 8 * $Server::Game.slowpokemod;
+	maxBackwardSpeedMarching = 8 * $Server::Game.slowpokemod;
+	maxSideSpeedMarching = 5 * $Server::Game.slowpokemod;
 //	maxForwardSpeedCrouched = 15; NOT USED
 //	maxBackwardSpeedCrouched = 12; NOT USED
 //	maxSideSpeedCrouched = 10; NOT USED
@@ -116,9 +116,9 @@ datablock PlayerData(RedStandardCat)
 //	maxBackwardSpeedProne = 3; NOT USED
 //	maxSideSpeedProne = 2; NOT USED
 
-	maxUnderwaterForwardSpeed = 8.4;
-	maxUnderwaterBackwardSpeed = 7.8;
-	maxUnderwaterSideSpeed = 7.8;
+	maxUnderwaterForwardSpeed = 8.4 * $Server::Game.slowpokemod;
+	maxUnderwaterBackwardSpeed = 7.8 * $Server::Game.slowpokemod;
+	maxUnderwaterSideSpeed = 7.8 * $Server::Game.slowpokemod;
 	// [todo: insert values for other body poses here?]
 
 	jumpForce = 8 * 90;  // 12 * 90

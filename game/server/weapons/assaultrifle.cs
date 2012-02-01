@@ -21,8 +21,8 @@ datablock TracerProjectileData(AssaultRiflePseudoProjectile)
 
    // Keep these three in sync with the real projectiles down below!
 	energyDrain = 16; 
-	muzzleVelocity = 300;
-	velInheritFactor = 0.75;
+	muzzleVelocity = 300 * $Server::Game.slowpokemod;
+	velInheritFactor = 0.75 * $Server::Game.slowpokemod;
 };
 
 function AssaultRiflePseudoProjectile::onAdd(%this, %obj)
@@ -113,11 +113,11 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 
    // Keep these three in sync with the pseudo projectile above!
 	energyDrain = 16;
-	muzzleVelocity	= 300; 
-	velInheritFactor = 0.75; 
+	muzzleVelocity	= 300 * $Server::Game.slowpokemod; 
+	velInheritFactor = 0.75 * $Server::Game.slowpokemod; 
 	
 	isBallistic			= true;
-	gravityMod			 = 5.0;
+	gravityMod			 = 5.0 * $Server::Game.slowpokemod;
 
 	armingDelay			= 0;
 	lifetime				= 1000*5;

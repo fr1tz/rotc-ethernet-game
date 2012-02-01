@@ -56,12 +56,14 @@ function initMission()
 	if(isObject($Server::Game))
 		$Server::Game.delete();
 	$Server::Game = new ScriptObject();
+	$Server::Game.slowpokemod = 1.0;
 	for(%i = 0; %i < getWordCount($Pref::Server::Mutators); %i++)
 	{
 		%mutator = getWord($Pref::Server::Mutators, %i);
 		if(%mutator $= "slowpoke")
 		{
 			$Server::Game.slowpoke = true;
+			$Server::Game.slowpokemod = 0.5;
 			$Server::Game.mutators = true;
 		}
 		else if(%mutator $= "superblaster")

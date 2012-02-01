@@ -92,17 +92,17 @@ datablock NortDiscData(RedRepelDisc)
 	explodesNearEnemies = false;
 	explodesNearEnemiesRadius = 5;
 
-	muzzleVelocity		= 30;
-    maxVelocity         = 75;
-    acceleration        = 4;
-	velInheritFactor	= 0.5;
+	muzzleVelocity		= 30 * $Server::Game.slowpokemod;
+    maxVelocity         = 75 * $Server::Game.slowpokemod;
+    acceleration        = 4 * $Server::Game.slowpokemod;
+	velInheritFactor	= 0.5 * $Server::Game.slowpokemod;
 
 	armingDelay			= 0*1000;
 	lifetime				= 10*1000;
 	fadeDelay			  = 3*1000;
 
 	isBallistic = true;
-	gravityMod			 = 1.0;
+	gravityMod			 = 1.0 * $Server::Game.slowpokemod;
 	bounceElasticity	 = 0.99;
 	bounceFriction		 = 0.0;
     numBounces           = 3;

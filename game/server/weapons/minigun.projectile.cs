@@ -48,11 +48,11 @@ datablock ProjectileData(RedMinigunProjectile)
 
 	//particleEmitter	  = RedMinigunProjectileParticleEmitter;
 
-	muzzleVelocity   = 400;
-	velInheritFactor = 1.0;
+	muzzleVelocity   = 400 * $Server::Game.slowpokemod;
+	velInheritFactor = 1.0 * $Server::Game.slowpokemod;
 
 	isBallistic = false;
-	gravityMod  = 4.0;
+	gravityMod  = 4.0 * $Server::Game.slowpokemod;
 
 	armingDelay	= 1000*0;
 	lifetime	= 3000;

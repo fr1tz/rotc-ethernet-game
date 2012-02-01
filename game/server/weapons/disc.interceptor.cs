@@ -37,10 +37,10 @@ datablock NortDiscData(RedInterceptorDisc)
 	explodesNearEnemies = false;
 	explodesNearEnemiesRadius = 3;
 
-	muzzleVelocity		= 125;
-    maxVelocity         = 125;
-    acceleration        = 4;
-	velInheritFactor	 = 0.0;
+	muzzleVelocity		= 125 * $Server::Game.slowpokemod;
+    maxVelocity         = 125 * $Server::Game.slowpokemod;
+    acceleration        = 4 * $Server::Game.slowpokemod;
+	velInheritFactor	 = 0.0 * $Server::Game.slowpokemod;
 
 	armingDelay			= 0*1000;
 	lifetime				= 10*1000;
