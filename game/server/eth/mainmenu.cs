@@ -26,7 +26,7 @@ function showMainMenu(%client)
 	}
 
 	if(%mutators $= "")
-		%mutators = "Mutators: None (Standard Game)";
+		%mutators = "Mutators: None (Standard Game)\n";
 	else
 		%mutators = ""
 			@ "<spush><color:FF8888>"
