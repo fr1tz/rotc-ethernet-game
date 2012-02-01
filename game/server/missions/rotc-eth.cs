@@ -45,11 +45,30 @@ function loadHints()
 
 function initMission()
 {
+	if(isObject($Server::Game))
+		$Server::Game.delete();
+	$Server::Game = new ScriptObject();
+	for(%i = 0; %i < getWordCount($Pref::Server::Mutators); %i++)
+	{
+		%mutator = getWord($Pref::Server::Mutators, %i);
+		if(%mutator $= "slowpoke")
+		{
+			$Server::Game.slowpoke = true;
+			$Server::Game.mutators = true;
+		}
+		else if(%mutator $= "superblaster")
+		{
+			$Server::Game.superblaster = true;
+			$Server::Game.mutators = true;
+		}
+	}
+	if($Server::Game.mutators)
+		$Server::MissionType = $Server::MissionType SPC "\c4*MOD*\co";
 	executeGameScripts();
 	executeMissionScript();
 	executeEnvironmentScript();
-   loadManual();
-   loadHints();
+	loadManual();
+	loadHints();
 }
 
 function onMissionLoaded()
@@ -61,6 +80,9 @@ function onMissionLoaded()
 function onMissionEnded()
 {
 	// Called by endMission(), right before the mission is destroyed
+
+	if(isObject($Server::Game))
+		$Server::Game.delete();
 
 	// Normally the game should be ended first before the next
 	// mission is loaded, this is here in case loadMission has been

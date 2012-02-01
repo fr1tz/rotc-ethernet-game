@@ -34,6 +34,7 @@ $Pref::Server::KickBanTime = 300;
 $Pref::Server::BanTime = 1800;	
 $Pref::Server::FloodProtectionEnabled = 1;
 $Pref::Server::MaxChatLen = 120;
+$Pref::Server::Mutators = "";
 
 $pref::backgroundSleepTime = "0";
 $pref::Shadows = "0.3";

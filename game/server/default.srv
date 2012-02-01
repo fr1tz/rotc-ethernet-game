@@ -14,12 +14,19 @@ $Server::MissionFile = "game/arenas/rotc-ethernet/eth-pond.mis";
 // Information about the server
 $Pref::Server::RegionMask = 2;
 $Pref::Server::Name = "Lazy Hoster's Funhouse";
-$Pref::Server::Info = 
-	"<just:center>" @
-	"\n[ Default Arena description ]\n" @
-	"<spush><font:NovaSquare:16><color:AA0000>" @
-	"Daily meetup time: 8pm CET<spop>\n" @
-	"Scheduled matches: None"; 
+$Pref::Server::Info = "" 
+	@	"<just:center>" 
+	@	"\n[ Default Arena description ]\n" 
+	@	"<spush><font:NovaSquare:16><color:AA0000>" 
+	@	"Daily meetup time: 8pm CET<spop>\n" 
+	@	"Scheduled matches: None" 
+	@ "";
+
+// Mutators
+$Pref::Server::Mutators = "" 
+	//@	" slowpoke " // uncomment to enable slowpoke mutator
+	//@	" superblaster " // uncomment to enable superblaster mutator
+	@ "";
 
 // The connection error message is transmitted to the client immediatly
 // on connection, if any further error occures during the connection

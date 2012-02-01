@@ -1,0 +1,104 @@
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(MutatorsWindowForEditing) {
+   canSaveDynamicFields = "0";
+   Profile = "GuiDefaultProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   Position = "0 0";
+   Extent = "640 480";
+   MinExtent = "8 8";
+   canSave = "1";
+   Visible = "1";
+   hovertime = "1000";
+
+   new GuiWindowCtrl(MutatorsWindow) {
+      canSaveDynamicFields = "0";
+      Profile = "GuiWindowProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      Position = "61 18";
+      Extent = "350 350";
+      MinExtent = "350 350";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      text = "Available Mutators";
+      maxLength = "255";
+      resizeWidth = "1";
+      resizeHeight = "1";
+      canMove = "1";
+      canClose = "0";
+      canMinimize = "0";
+      canMaximize = "0";
+      minSize = "50 50";
+
+      new GuiButtonCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "bottom";
+         Position = "306 5";
+         Extent = "39 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "removeWindow(MutatorsWindow);";
+         hovertime = "1000";
+         text = "X";
+         groupNum = "-1";
+         buttonType = "PushButton";
+      };
+      new GuiScrollCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiScrollProfile";
+         HorizSizing = "width";
+         VertSizing = "height";
+         Position = "13 32";
+         Extent = "328 284";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         willFirstRespond = "1";
+         hScrollBar = "dynamic";
+         vScrollBar = "alwaysOn";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiTextListCtrl(SS_AvailableMutatorsList) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiTextArrayProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            Position = "3 3";
+            Extent = "304 8";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            enumerate = "0";
+            resizeCell = "1";
+            columns = "0 100";
+            fitParentWidth = "0";
+            clipColumnText = "0";
+         };
+      };
+      new GuiButtonCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "top";
+         Position = "234 319";
+         Extent = "110 23";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         Command = "SS_AddMutator();";
+         hovertime = "1000";
+         text = "Add Mutator";
+         groupNum = "-1";
+         buttonType = "PushButton";
+      };
+   };
+};
+//--- OBJECT WRITE END ---

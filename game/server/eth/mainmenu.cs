@@ -9,13 +9,38 @@ function showMainMenu(%client)
 
 	%bg = %newtext @ "\n\n\n<bitmap:share/ui/rotc/logo>";
 
+	%mutators = "";
+	for(%i = 0; %i < getRecordCount($MissionInfo::MutatorDesc); %i++)
+	{
+		%line1 = getRecord($MissionInfo::MutatorDesc, %i);
+		%mut1 = getWord(%line1, 0);
+		for(%j = 0; %j < getWordCount($Pref::Server::Mutators); %j++)
+		{
+			%mut2 = getWord($Pref::Server::Mutators, %j);
+			if(%mut2 $= %mut1)
+			{
+				%mutators = %mutators @ "\t\t * " @ %line1 @ "\n";
+				break;
+			}
+		}
+	}
+
+	if(%mutators $= "")
+		%mutators = "Mutators: None (Standard Game)";
+	else
+		%mutators = ""
+			@ "<spush><color:FF8888>"
+			@ "Game has been modified with the following mutators:\n"
+			@ "<spop>" @ %mutators;
+
 	%fg = %newtxt @
 		om_head(%client, "Arena Info") @
 		"<spush><font:NovaSquare:20>" @
 		"Welcome to" SPC $Pref::Server::Name @
 		"<spop>\n\n" @
-		"Game:" SPC $Server::MissionType SPC 
-		"[<a:cmd News>Changelog</a>]\n\n" @
+		"<tab:15,30,130>Game:\n" @
+		"\t" @ $Server::MissionType SPC "<a:cmd News>Show Changelog</a>\n" @
+		"\t" @ %mutators @ "\n" @
 //		"Environment:" SPC $Server::MissionName @ "\n\n" @
 		"<spush>" @ $Pref::Server::Info @ "<spop>\n\n" @
 		"";

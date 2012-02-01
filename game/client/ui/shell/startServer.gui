@@ -9,7 +9,7 @@ new GuiControl(StartServerWindowForEditing) {
    Profile = "GuiDefaultProfile";
    HorizSizing = "right";
    VertSizing = "bottom";
-   position = "0 0";
+   Position = "0 0";
    Extent = "640 480";
    MinExtent = "8 8";
    canSave = "1";
@@ -21,9 +21,9 @@ new GuiControl(StartServerWindowForEditing) {
       Profile = "GuiWindowProfile";
       HorizSizing = "center";
       VertSizing = "center";
-      position = "70 30";
-      Extent = "500 420";
-      MinExtent = "8 8";
+      Position = "61 18";
+      Extent = "560 443";
+      MinExtent = "500 350";
       canSave = "1";
       Visible = "1";
       hovertime = "1000";
@@ -42,7 +42,7 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "left";
          VertSizing = "bottom";
-         position = "456 5";
+         Position = "516 5";
          Extent = "39 18";
          MinExtent = "8 2";
          canSave = "1";
@@ -57,9 +57,9 @@ new GuiControl(StartServerWindowForEditing) {
          canSaveDynamicFields = "0";
          Profile = "GuiScrollProfile";
          HorizSizing = "width";
-         VertSizing = "top";
-         position = "13 323";
-         Extent = "478 58";
+         VertSizing = "height";
+         Position = "286 161";
+         Extent = "264 139";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -73,10 +73,10 @@ new GuiControl(StartServerWindowForEditing) {
          new GuiMLTextCtrl(SS_EnvironmentInfo) {
             canSaveDynamicFields = "0";
             Profile = "GuiMLTextEditProfile";
-            HorizSizing = "width";
+            HorizSizing = "right";
             VertSizing = "height";
-            position = "3 2";
-            Extent = "453 310";
+            Position = "3 2";
+            Extent = "252 310";
             MinExtent = "245 310";
             canSave = "1";
             Visible = "1";
@@ -91,8 +91,8 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiScrollProfile";
          HorizSizing = "width";
          VertSizing = "bottom";
-         position = "13 57";
-         Extent = "478 81";
+         Position = "13 57";
+         Extent = "538 81";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -108,12 +108,11 @@ new GuiControl(StartServerWindowForEditing) {
             Profile = "GuiMLTextEditProfile";
             HorizSizing = "width";
             VertSizing = "height";
-            position = "3 2";
-            Extent = "453 310";
+            Position = "3 2";
+            Extent = "513 310";
             MinExtent = "245 310";
             canSave = "1";
             Visible = "1";
-            Variable = "";
             hovertime = "1000";
             lineSpacing = "2";
             allowColorChars = "1";
@@ -123,10 +122,10 @@ new GuiControl(StartServerWindowForEditing) {
       new GuiScrollCtrl() {
          canSaveDynamicFields = "0";
          Profile = "GuiScrollProfile";
-         HorizSizing = "width";
+         HorizSizing = "right";
          VertSizing = "height";
-         position = "13 161";
-         Extent = "478 139";
+         Position = "13 161";
+         Extent = "264 139";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
@@ -140,10 +139,10 @@ new GuiControl(StartServerWindowForEditing) {
          new GuiTextListCtrl(SS_missionList) {
             canSaveDynamicFields = "0";
             Profile = "GuiTextArrayProfile";
-            HorizSizing = "width";
+            HorizSizing = "right";
             VertSizing = "bottom";
-            position = "5 3";
-            Extent = "456 8";
+            Position = "3 3";
+            Extent = "9 8";
             MinExtent = "8 8";
             canSave = "1";
             Visible = "1";
@@ -151,7 +150,7 @@ new GuiControl(StartServerWindowForEditing) {
             enumerate = "0";
             resizeCell = "1";
             columns = "0";
-            fitParentWidth = "1";
+            fitParentWidth = "0";
             clipColumnText = "0";
          };
          new GuiMLTextCtrl(SS_NoMaps_Text) {
@@ -159,7 +158,7 @@ new GuiControl(StartServerWindowForEditing) {
             Profile = "GuiMLTextProfile";
             HorizSizing = "right";
             VertSizing = "bottom";
-            position = "3 110";
+            Position = "3 110";
             Extent = "170 14";
             MinExtent = "170 10";
             canSave = "1";
@@ -170,12 +169,47 @@ new GuiControl(StartServerWindowForEditing) {
             maxChars = "-1";
          };
       };
+      new GuiScrollCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiScrollProfile";
+         HorizSizing = "width";
+         VertSizing = "top";
+         Position = "13 322";
+         Extent = "427 111";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         willFirstRespond = "1";
+         hScrollBar = "dynamic";
+         vScrollBar = "alwaysOn";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiTextListCtrl(SS_ActiveMutatorsList) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiTextArrayProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            Position = "3 3";
+            Extent = "9 8";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            enumerate = "0";
+            resizeCell = "1";
+            columns = "0 100";
+            fitParentWidth = "0";
+            clipColumnText = "0";
+         };
+      };
       new GuiTextCtrl() {
          canSaveDynamicFields = "0";
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "13 142";
+         Position = "13 144";
          Extent = "66 18";
          MinExtent = "8 8";
          canSave = "1";
@@ -189,14 +223,14 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "left";
          VertSizing = "top";
-         position = "410 389";
-         Extent = "80 23";
+         Position = "443 397";
+         Extent = "110 39";
          MinExtent = "8 8";
          canSave = "1";
          Visible = "1";
          Command = "SS_StartMission();";
          hovertime = "1000";
-         text = "Create";
+         text = "Create Arena";
          groupNum = "-1";
          buttonType = "PushButton";
       };
@@ -205,7 +239,7 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiTextEditProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "83 30";
+         Position = "83 30";
          Extent = "220 18";
          MinExtent = "8 8";
          canSave = "1";
@@ -225,7 +259,7 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         position = "13 30";
+         Position = "13 30";
          Extent = "64 18";
          MinExtent = "8 8";
          canSave = "1";
@@ -239,7 +273,7 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiCheckBoxProfile";
          HorizSizing = "left";
          VertSizing = "bottom";
-         position = "412 27";
+         Position = "472 27";
          Extent = "78 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -255,8 +289,8 @@ new GuiControl(StartServerWindowForEditing) {
          canSaveDynamicFields = "0";
          Profile = "GuiTextProfile";
          HorizSizing = "right";
-         VertSizing = "top";
-         position = "13 306";
+         VertSizing = "bottom";
+         Position = "286 144";
          Extent = "128 18";
          MinExtent = "8 8";
          canSave = "1";
@@ -270,7 +304,7 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiTextProfile";
          HorizSizing = "left";
          VertSizing = "bottom";
-         position = "330 30";
+         Position = "390 30";
          Extent = "26 18";
          MinExtent = "8 8";
          canSave = "1";
@@ -284,7 +318,7 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiTextEditProfile";
          HorizSizing = "left";
          VertSizing = "bottom";
-         position = "360 30";
+         Position = "420 30";
          Extent = "40 18";
          MinExtent = "8 8";
          canSave = "1";
@@ -298,6 +332,52 @@ new GuiControl(StartServerWindowForEditing) {
          sinkAllKeyEvents = "0";
          password = "0";
          passwordMask = "*";
+      };
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "top";
+         Position = "13 305";
+         Extent = "88 18";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Active Mutators:";
+         maxLength = "255";
+      };
+      new GuiButtonCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "top";
+         Position = "443 319";
+         Extent = "110 23";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         Command = "SS_RemoveMutator();";
+         hovertime = "1000";
+         text = "Remove Mutator";
+         groupNum = "-1";
+         buttonType = "PushButton";
+      };
+      new GuiButtonCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "top";
+         Position = "443 342";
+         Extent = "110 23";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         Command = "addWindow(MutatorsWindow);";
+         hovertime = "1000";
+         text = "Add Mutator...";
+         groupNum = "-1";
+         buttonType = "PushButton";
       };
    };
 };

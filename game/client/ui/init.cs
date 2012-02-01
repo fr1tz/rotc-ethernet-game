@@ -11,6 +11,7 @@ function executeShellScripts()
 	exec("./shell/rootMenu.gui");
 	exec("./shell/startServer.cs");
 	exec("./shell/startServer.gui");
+	exec("./shell/startServerMutators.gui");
 	exec("./shell/joinServer.cs");
 	exec("./shell/joinServer.gui");
 	exec("./shell/options.cs");

@@ -11,10 +11,12 @@ function MissionInfo::load(%missionFile)
 {
 	$MissionInfo::File = %missionFile;
 
-	$MissionInfo::Name       = "";
-	$MissionInfo::EnvFile    = "";
-	$MissionInfo::ScriptFile = "";
-	$MissionInfo::Desc       = "";
+	$MissionInfo::Name        = "";
+	$MissionInfo::Desc        = "";
+	$MissionInfo::Type        = "";
+	$MissionInfo::TypeDesc    = "";
+	$MissionInfo::MutatorDesc = "";
+	$MissionInfo::InitScript  = "";
 
 	exec(%missionFile);
 }
