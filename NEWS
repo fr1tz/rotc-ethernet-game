@@ -1,12 +1,15 @@
 What's new?
 ===========
 
-Prototype 5.1+dev3
+Prototype 5.1+dev4
 -------------
 
 - Blaster now uses projectiles instead of hitscan.
 - New grenade:
    - Now bypasses shield but does much less damage.
+- Mutators for ROTC: Ethernet:
+   - Slowpoke: Makes the game slow
+   - Superblaster: Replaces standard blaster with powerful hitscan version
 
 
 Prototype 5.1
