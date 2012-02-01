@@ -1,0 +1,15 @@
+#icon share/hud/rotc/icon.blaster.50x15
+#size 24
+<lmargin:120><bitmap:share/manual/rotc/wpn.blaster><sbreak>
+<lmargin:5>The Superblaster is a powerful short to mid-range weapon. Just like the standard blaster, it always fires 9 shots at once. But unlike the standard blaster, the shots hit instantly and spread less. Also, it uses less energy and has lower recoil. The properties of an individual Superblaster shot:
+<sbreak><tab:15,180>
+	Bypasses	<spush><font:Arial Bold:16>Barrier<spop>
+	Energy cost	<spush><font:Arial Bold:16>3<spop>
+	Impact damage	<spush><font:Arial Bold:16>10<spop>
+	Impact impulse	<spush><font:Arial Bold:16>400<spop>
+	Splash damage	<spush><font:Arial Bold:16>-<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Velocity inheritance	<spush><font:Arial Bold:16>0% (instant hit)<spop>	
+	Accuracy	<spush><font:Arial Bold:16>Even distribution among targets in fire cone<spop>
+<sbreak>

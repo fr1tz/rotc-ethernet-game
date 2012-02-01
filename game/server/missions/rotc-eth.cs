@@ -35,7 +35,15 @@ function executeGameScripts()
 
 function loadManual()
 {
-   constructManual("game/server/eth/help/index.idx");
+	constructManual("game/server/eth/help/index.idx");
+	// hack hack hack
+	if($Server::Game.superblaster)
+	{
+		%p = getManualPage("6.1");
+		%p.name = "Superblaster";
+		%p.file = "game/server/weapons/blaster3/blaster3.rml";
+		updateManualPage(%p);
+	}
 }
 
 function loadHints()

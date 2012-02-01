@@ -95,10 +95,20 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 
 	if(%wpn == 1)
 	{
-		if(%obj.getTeamId() == $CatEquipment::Blaster)
-			%obj.mountImage(RedBlaster2Image, 0, -1, true);
+		if($Server::Game.superblaster)
+		{
+			if(%obj.getTeamId() == $CatEquipment::Blaster)
+				%obj.mountImage(RedBlaster3Image, 0, -1, true);
+			else
+				%obj.mountImage(BlueBlaster3Image, 0, -1, true);
+		}
 		else
-			%obj.mountImage(BlueBlaster2Image, 0, -1, true);
+		{
+			if(%obj.getTeamId() == $CatEquipment::Blaster)
+				%obj.mountImage(RedBlaster2Image, 0, -1, true);
+			else
+				%obj.mountImage(BlueBlaster2Image, 0, -1, true);
+		}
 	}
 	else if(%wpn == $CatEquipment::BattleRifle)
 	{

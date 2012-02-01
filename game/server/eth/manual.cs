@@ -3,6 +3,31 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
+function updateManualPage(%page)
+{
+   %page.text = "";
+   %textfile = new FileObject();
+   %textfile.openForRead(%page.file);
+   %meta = true;
+   while(!%textfile.isEOF())
+   {
+      %line = %textfile.readLine();
+      if(%meta && getSubStr(%line,0,1) $= "#")
+      {
+         if(getWord(%line, 0) $= "#icon")
+            %page.icon = getWord(%line, 1);
+         else if(getWord(%line, 0) $= "#size")
+            %page.size = getWord(%line, 1);
+      }
+      else
+      {
+         %meta = false;
+         %page.text =%page.text @ strreplace(%line, "<br>", "\n") @ "\n";
+      }
+   }
+   %textfile.delete();
+}
+
 function constructManual(%indexFile)
 {
    if(isObject($Manual))
@@ -33,27 +58,7 @@ function constructManual(%indexFile)
       %obj.file = "game/server/eth/help/" @ getField(%line,1) @ ".rml";
       %obj.name = getFields(%line, 2, getFieldCount(%line)-1);
 
-      %obj.text = "";
-      %textfile = new FileObject();
-      %textfile.openForRead(%obj.file);
-      %meta = true;
-      while(!%textfile.isEOF())
-      {
-         %line = %textfile.readLine();
-         if(%meta && getSubStr(%line,0,1) $= "#")
-         {
-            if(getWord(%line, 0) $= "#icon")
-               %obj.icon = getWord(%line, 1);
-            else if(getWord(%line, 0) $= "#size")
-               %obj.size = getWord(%line, 1);
-         }
-         else
-         {
-            %meta = false;
-            %obj.text =%obj.text @ strreplace(%line, "<br>", "\n") @ "\n";
-         }
-      }
-      %textfile.delete();
+      updateManualPage(%obj);
 
       $Manual.push_back(%obj.page, %obj);
    }
