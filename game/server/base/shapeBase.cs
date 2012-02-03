@@ -328,6 +328,16 @@ function ShapeBaseData::getBleed(%this, %obj, %dmg)
 // called by ShapeBase::damage()
 function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageType)
 {
+	%dstat = 0;
+    if(%obj.client)
+	{
+		%dstat = %obj.client.stats.lastReceivedDamage;
+		%dstat.health = %this.maxDamage - %obj.getDamageLevel();
+		%dstat.damageApplied = %damage;
+		%dstat.damageName = "";
+		%dstat.sourceClientName = "";
+	}
+
 	%dmgstor = %damage;
 	
 	if(%damageType == $DamageType::Force)
@@ -337,6 +347,8 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	else
 		%n = "Other";
 
+	if(%dstat) %dstat.damageName = %n;
+
 	// get the real source object
 	%realSourceObject = 0;
 	if(isObject(%sourceObject))
@@ -345,13 +357,22 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 			%realSourceObject = %sourceObject.getSourceObject();
 		else if(%sourceObject.getType() & $TypeMasks::ShapeBaseObjectType)
 			%realSourceObject = %sourceObject.client.player;
+
+		if(isObject(%sourceObject.client))
+			if(%dstat) %dstat.sourceClientName = %sourceObject.client.nameBase;
 	}
 	
 	// reduce damage based on energy level...
 	if(%obj.client.hasDamper)
 	{
 		%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
-		%damage -= %damage * %energyScale * 0.50;	
+		%stor = %damage;
+		%damage -= %damage * %energyScale * 0.50;
+		if(%dstat)
+		{
+			%dstat.damperEnergy = %energyScale;
+			%dstat.damperSlice = %stor - %damage;
+		}	
 	}
 
 	// Handicap, we do damage dampening depending on the handicap value of the object
@@ -372,9 +393,26 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	// If the source handicap is lower than the target handicap, we lower the damage
 	// If the difference is 0.5, we lower the damage by 50%. If it's 0.1, we lower it by 10%.
 	if (%dstHand > %srcHand)
+	{
+		%stor = %damage;
 		%damage = %damage * (1 - (%dstHand - %srcHand));
-	// If the the source handicap is higher, we leave the damage as it is, so dealing damage
-	// feels like normal when playing against a better player.
+		if(%dstat)
+		{
+			%dstat.handicapDifference = %srcHand-%dstHand;
+			%dstat.handicapSlice = %stor - %damage;
+		}
+	}
+	else
+	{
+		// If the the source handicap is higher, we leave the damage as
+		// it is, so dealing damage feels like normal when playing
+		// against a better player.
+		if(%dstat)
+		{
+			%dstat.handicapDifference = %srcHand-%dstHand;
+			%dstat.handicapSlice = 0;
+		}
+	}
 
    %bypassDamageBuffer = false;
    if(isObject(%sourceObject) && %sourceObject.getDataBlock().bypassDamageBuffer)
@@ -402,6 +440,11 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 			%obj.activateBarrier(%barriertime);
 			%healthDamageDealt = %damage;
 			%bufDamageDealt = 0;
+			if(%dstat)
+			{
+				%dstat.shield = %obj.getDamageBufferLevel();
+				%dstat.shieldSlice = 0;
+			}	
 		}
 	}
 	else
@@ -409,8 +452,16 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		%damageBufStore = %obj.getDamageBufferLevel();
 		%healthDamageDealt = %obj.applyDamage(%damage);
 		%bufDamageDealt = %damageBufStore - %obj.getDamageBufferLevel();
-		%this.updateShieldFx(%obj);		
+		%this.updateShieldFx(%obj);	
+		if(%dstat)
+		{
+			%dstat.shield = %damageBufStore;
+			%dstat.shieldSlice = %bufDamageDealt;
+		}	
 	}
+
+	if(%dstat) %dstat.damageCaused = %damage;
+	if(%dstat) %dstat.healthLost = %healthDamageDealt;
 	
 	if(%realSourceObject != 0
 	&& %realSourceObject.teamId != %obj.teamId

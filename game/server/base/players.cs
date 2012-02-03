@@ -98,6 +98,9 @@ function PlayerData::onAdd(%this,%obj)
 	if(!isObject(%client))
 		return;
 
+	// Clear right HUD menu
+	%obj.client.setHudMenuR("*", " ", 1, 0);
+
 	%client.inventoryMode = "showicon";
 	
 	%obj.isCAT = true;
@@ -389,6 +392,7 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
 		if(%client)
 		{
 			//%client.onDeath(%sourceObject, %sourceClient, %damageType, %location);
+			%client.showReceivedDamageInfo(true);
 			%client.togglePlayerForm();
 		}
 		else if(%obj.getControllingClient())

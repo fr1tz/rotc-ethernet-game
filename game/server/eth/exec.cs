@@ -3,6 +3,7 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
+exec("./gameconnection.cs");
 exec("./commands.cs");
 exec("./manual.cs");
 exec("./hints.cs");

@@ -96,6 +96,7 @@ function GameConnection::onClientEnterGame(%this)
 	// ScriptObject used to store raw statistics...
 	%this.stats                    = new ScriptObject();
 	%this.stats.joinTime           = $Sim::Time;
+	%this.stats.lastReceivedDamage = new ScriptObject();
 	%this.stats.dmgDealtApplied    = new Array();
 	%this.stats.dmgDealtCaused     = new Array();
 	%this.stats.dmgReceivedApplied = new Array();
@@ -188,6 +189,7 @@ function GameConnection::onClientLeaveGame(%this)
  
 	if(isObject(%this.stats))
 	{
+		%this.stats.lastReceivedDamage.delete();
 		%this.stats.dmgDealtApplied.delete();
 		%this.stats.dmgDealtCaused.delete();
 		%this.stats.dmgReceivedApplied.delete();
