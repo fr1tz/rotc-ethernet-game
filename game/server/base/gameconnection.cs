@@ -38,6 +38,7 @@ function GameConnection::prepareCookies(%this, %cookies)
    %cookies.push_back("ROTC_HudColor", "");
    %cookies.push_back("ROTC_HudMenuTMode", "");
    %cookies.push_back("ROTC_Handicap", "");
+   %cookies.push_back("ROTC_DamageScreenMode", "");
    // Loadouts
 	for(%i = 1; %i <= 10; %i++)
    {
@@ -54,6 +55,9 @@ function GameConnection::onCookiesReceived(%this, %cookies)
 	%this.initialTopHudMenu = arrayGetValue(%cookies, "ROTC_HudMenuTMode");
 	if(%this.initialTopHudMenu $= "")
 		%this.initialTopHudMenu = "newbiehelp";
+	%this.damageScreenMode = arrayGetValue(%cookies, "ROTC_DamageScreenMode");
+	if(%this.damageScreenMode $= "")
+		%this.damageScreenMode = 2;
    // Loadouts
 	for(%i = 1; %i <= 10; %i++)
    {
@@ -804,7 +808,7 @@ function GameConnection::setHudBackground(%this, %slot, %bitmap, %color,
 	if(%this.hudBackgroundAlphaDt[%slot] $= %alphaDt)
 		%alphaDt = "";
 	else
-		%this.hudBackgroundAlphaDt[%slot] = %alphaDt;	
+		%this.hudBackgroundAlphaDt[%slot] = %alphaDt;
 
 	commandToClient(%this, 'SetHudBackground', %slot, %bitmap, %color, 
 		%repeat, %alpha, %alphaDt);

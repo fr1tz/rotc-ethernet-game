@@ -52,4 +52,7 @@ datablock ParticleData(TextureDummy_1)
 	textureName	= "share/textures/eth/precipitation1";
 };
 
-
+datablock ParticleData(TextureDummy_2)
+{
+	textureName	= "share/textures/rotc/screen.health";
+};
