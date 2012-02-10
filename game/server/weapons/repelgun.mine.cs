@@ -94,13 +94,41 @@ function RedRepelGunMine::detonate(%this, %obj, %hit)
 	if(%obj.detonated)
 		return;
 
-   %pos = %obj.getPosition();
-   %normal = "0 0 1";
-   %fade = 1;
-   %dist = 0;
-   %expType = 0;
+	%pos = %obj.getPosition();
+	%normal = "0 0 1";
+	%fade = 1;
+	%dist = 0;
+	%expType = 0;
 
-   ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType);
+	// Disc lock...
+	if(isObject(%obj.client.player) && %obj.client.player.isCAT)
+	{
+		%radius = %this.splashDamageRadius;
+		InitContainerRadiusSearch(%pos, %radius, $TypeMasks::ShapeBaseObjectType);
+		%halfRadius = %radius / 2;
+		while( (%targetObject = containerSearchNext()) != 0 )
+		{
+			// the observer cameras are ShapeBases; ignore them...
+			if(%targetObject.getType() & $TypeMasks::CameraObjectType)
+				continue;
+
+			// ignore shapes with a barrier...
+			if(%targetObject.hasBarrier())
+				continue;
+
+			%coverage = calcExplosionCoverage(%pos, %targetObject,
+				$TypeMasks::InteriorObjectType |  $TypeMasks::TerrainObjectType |
+				$TypeMasks::ForceFieldObjectType | $TypeMasks::VehicleObjectType |
+				$TypeMasks::TurretObjectType);
+
+			if (%coverage == 0)
+				continue;
+
+			%obj.client.player.setDiscTarget(%targetObject);
+		}
+	}
+
+	ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType);
 	
 	%obj.unmountImage(0);
 
