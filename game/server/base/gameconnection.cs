@@ -57,7 +57,7 @@ function GameConnection::onCookiesReceived(%this, %cookies)
 		%this.initialTopHudMenu = "newbiehelp";
 	%this.damageScreenMode = arrayGetValue(%cookies, "ROTC_DamageScreenMode");
 	if(%this.damageScreenMode $= "")
-		%this.damageScreenMode = 2;
+		%this.damageScreenMode = 1;
    // Loadouts
 	for(%i = 1; %i <= 10; %i++)
    {

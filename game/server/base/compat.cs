@@ -54,5 +54,5 @@ datablock ParticleData(TextureDummy_1)
 
 datablock ParticleData(TextureDummy_2)
 {
-	textureName	= "share/textures/rotc/screen.health";
+	textureName	= "share/textures/rotc/screen.damage";
 };

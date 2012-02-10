@@ -359,29 +359,6 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
 	// information in the onDamage or onDisable methods
 	%client = %obj.client;
 	%sourceClient = %sourceObject ? %sourceObject.client : 0;
-
-	if(%client)
-	{
-		if(%client.damageScreenMode == 2)
-		{
-			if(%damageDealt == 0)
-			{
-				%buf = %obj.getDamageBufferLevel();
-				%bmp = "share/textures/rotc/screen.health";
-				if(%buf > %this.damageBuffer)
-				{
-					%bmp = "share/textures/rotc/corona";
-					%color = "255 255 255";
-				}
-				else
-				{
-					%v = mFloatLength((%buf/%this.damageBuffer) * 255, 0);
-					%color = %v SPC %v SPC %v;
-				}
-				%client.setHudBackground(1,%bmp,%color,false,255,-25);
-			}
-		}
-	}
 	
 	// player died?
 	if(%obj.getState() $= "Dead")
@@ -406,6 +383,8 @@ function PlayerData::damage(%this, %obj, %sourceObject, %pos, %damage, %damageTy
 // Invoked by ShapeBase code whenever the object's damage level changes
 function PlayerData::onDamage(%this, %obj, %delta)
 {
+	Parent::onDamage(%this, %obj, %delta);
+
 	// [mag] moved most stuff into PlayerData::damage()
 	
 	if(%obj.getState() !$= "Dead")
@@ -414,7 +393,7 @@ function PlayerData::onDamage(%this, %obj, %delta)
 		if(isObject(%obj.client))
 		{
 			%client = %obj.client;
-			if(%this.damageScreenMode == 1)
+			if(%client.damageScreenMode == 1)
 			{
 				%time = getSimTime();
 				if(%client.dmgFlashTime !$= "")
@@ -424,33 +403,20 @@ function PlayerData::onDamage(%this, %obj, %delta)
 					if(%client.dmgFlash < 0)
 						%client.dmgFlash = 0;
 				}
-				%client.dmgFlash += (%delta / %this.maxDamage);
+				%client.dmgFlash += (%delta / %this.maxDamage)*2;
 				if(%client.dmgFlash > 1)
 					%client.dmgFlash = 1;
 				else if(%client.dmgFlash < 0)
 					%client.dmgFlash = 0;
 				%client.setHudBackground(
 					1,
-					"share/textures/rotc/heating",
-					"255 255 255",
+					"share/textures/rotc/screen.damage",
+					"255 0 0",
 					false,
 					%client.dmgFlash * 255,
 					-10
 				);
 				%client.dmgFlashTime = %time;
-			}
-			else if(%client.damageScreenMode == 2)
-			{
-				%bmp = "share/textures/rotc/screen.health";
-				%color = "0 255 0";
-				%dmg = %obj.getDamageLevel();
-				if(%dmg > 0)
-				{
-					%r = mFloatLength((%dmg/%this.maxDamage) * 255, 0);
-					%g = mFloatLength(1-(%dmg/%this.maxDamage) * 255, 0);
-					%color = %r SPC %g SPC "0";
-				}
-				%client.setHudBackground(1,%bmp,%color,false,255,-25);
 			}
 		}
 
