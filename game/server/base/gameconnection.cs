@@ -243,39 +243,65 @@ function GameConnection::updateHudColors(%this)
 {
 	if(getFieldCount(%this.hudColor) == 2)
 	{
-		commandToClient(%this,'SetHudColor', getField(%this.hudColor,0), getField(%this.hudColor,1));			
+		%c1 = getField(%this.hudColor,0);
+		%c2 = getField(%this.hudColor,1);
 	}
 	else if(%this.hudColor $= "fr1tz")
 	{
-		commandToClient(%this,'SetHudColor', "200 200 200", "255 0 255");	
+		%c1 = "200 200 200";
+		%c2 = "255 0 255";
 	}
 	else if(%this.hudColor $= "kurrata")
 	{
-		commandToClient(%this,'SetHudColor', "0 150 0", "255 50 255");	
+		%c1 = "0 150 0";
+		%c2 = "255 50 255";
 	}
 	else if(%this.hudColor $= "c&c")
 	{
-		commandToClient(%this,'SetHudColor', "63 151 48", "202 180 130");	
+		%c1 = "63 151 48";
+		%c2 = "202 180 130";
 	}	
 	else if(%this.hudColor $= "cga1dark")
 	{
-		commandToClient(%this,'SetHudColor', "170 0 170", "0 170 170");	
+		%c1 = "170 0 170";
+		%c2 = "0 170 170";
 	}
 	else if(%this.hudColor $= "cga1light")
 	{
-		commandToClient(%this,'SetHudColor', "255 80 255", "85 255 255");	
+		%c1 = "255 80 255";
+		%c2 = "85 255 255";
 	}	
-	else
+	else if(%this.hudColor $= "team")
 	{
 		%teamId = %this.team.teamId;
-	
 		if(%teamId == 0)
-			commandToClient(%this,'SetHudColor', "150 150 150", "255 255 255");
+		{
+			%c1 = "150 150 150";
+			%c2 = "255 255 255";
+		}
 		else if(%teamId == 1)
-			commandToClient(%this,'SetHudColor', "255 0 0", "255 200 200");
+		{
+			%c1 = "255 0 0";
+			%c2 = "255 200 200";
+		}
 		else if(%teamId == 2)
-			commandToClient(%this,'SetHudColor', "0 100 255", "200 200 255");	
-	}	
+		{
+			%c1 = "0 100 255";
+			%c2 = "200 200 255";
+		}
+	}
+	else
+	{
+		%player = %this.player;
+		%data = %player.getDataBlock();
+		%v = %player.getDamagePercent();
+		%c1 = mFloatLength(255*%v, 0) SPC
+			mFloatLength(255*(1-%v), 0) SPC
+			0;
+		%v = mFloatLength(125*(1-%v)+125, 0);
+		%c2 =  %v SPC %v SPC %v;
+	}
+	commandToClient(%this,'SetHudColor', %c1, %c2);	
 }
 
 //------------------------------------------------------------------------------

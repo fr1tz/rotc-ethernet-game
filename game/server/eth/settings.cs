@@ -56,7 +56,9 @@ function showSettings(%client, %section)
 	
 	%n = 0;
 	%schemeName[%n] = "";
-	%schemeDesc[%n] = "Based on team"; %n++;
+	%schemeDesc[%n] = "based_on_condition"; %n++;
+	%schemeName[%n] = "team";
+	%schemeDesc[%n] = "based_on_team"; %n++;
 	%schemeName[%n] = "fr1tz";
 	%schemeDesc[%n] = "fr1tz"; %n++;		
 	%schemeName[%n] = "kurrata";

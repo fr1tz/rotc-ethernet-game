@@ -59,7 +59,7 @@ function EtherformData::onAdd(%this, %obj)
 
 function EtherformData::onDamage(%this, %obj, %delta)
 {
-	// don't do anything
+	Parent::onDamage(%this, %obj, %delta);
 }
 
 //-----------------------------------------------------------------------------

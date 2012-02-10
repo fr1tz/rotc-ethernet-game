@@ -318,6 +318,17 @@ function ShapeBaseData::onCollision(%this,%obj,%col,%vec,%vecLen)
 //		%col.getShapeName() SPC "with speed" SPC %vecLen);
 }
 
+// *** Callback function:
+// Invoked by ShapeBase code whenever the object's damage level changes
+function ShapeBaseData::onDamage(%this, %obj, %delta)
+{
+	%client = %obj.client;
+	if(!isObject(%client))
+		return;
+
+	%client.updateHudColors();
+}
+
 // default ShapeBaseData::getBleed() method...
 // called by ShapeBaseData::damage()
 function ShapeBaseData::getBleed(%this, %obj, %dmg)
