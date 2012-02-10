@@ -35,7 +35,7 @@ function GameConnection::showReceivedDamageInfo(%this, %died)
 	%t = "";
 	%a = %this.stats.lastReceivedDamage;
 
-	%type = "?";
+	%n = "?";
 	if(%a.damageName $= "blaster")
 		%n = "Blaster hit";
 	else if(%a.damageName $= "br")
@@ -46,8 +46,6 @@ function GameConnection::showReceivedDamageInfo(%this, %died)
 		%n = "Minigun hit";
 	else if(%a.damageName $= "gl")
 		%n = "Mine explosion";
-	else if(%a.damageName $= "grenade")
-		%n = "Grenade explosion";
 	else if(%a.damageName $= "grenade")
 		%n = "Grenade explosion";
 	else if(%a.damageName $= "explosivedisc")

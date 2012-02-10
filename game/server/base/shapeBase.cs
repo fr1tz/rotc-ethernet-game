@@ -460,7 +460,7 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		}	
 	}
 
-	if(%dstat) %dstat.damageCaused = %damage;
+	if(%dstat) %dstat.damageCaused = %damage - %bufDamageDealt;
 	if(%dstat) %dstat.healthLost = %healthDamageDealt;
 	
 	if(%realSourceObject != 0
