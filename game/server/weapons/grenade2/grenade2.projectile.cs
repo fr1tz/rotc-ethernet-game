@@ -68,8 +68,6 @@ function RedGrenade2::onRemove(%this, %obj)
 
 function RedGrenade2::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 {
-    Parent::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType);
-
 	%radius = %this.splashDamageRadius;
 	%sourceObject = %obj.getSourceObject();
 
@@ -81,6 +79,10 @@ function RedGrenade2::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
         if(%targetObject.getType() & $TypeMasks::CameraObjectType)
     	   continue;
 
+		// ignore shapes with a barrier...
+		if(%targetObject.hasBarrier())
+			continue;
+
 		%coverage = calcExplosionCoverage(%pos, %targetObject,
 			$TypeMasks::InteriorObjectType |  $TypeMasks::TerrainObjectType |
 			$TypeMasks::ForceFieldObjectType | $TypeMasks::VehicleObjectType |
@@ -91,6 +93,8 @@ function RedGrenade2::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 
         %sourceObject.setDiscTarget(%targetObject);
 	}
+
+    Parent::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType);
 }
 
 //------------------------------------------------------------------------------
