@@ -1,8 +1,8 @@
 What's new?
 ===========
 
-Prototype 5.1+dev4
--------------
+Prototype 5.1+dev5
+------------------
 
 - Blaster now uses projectiles instead of hitscan.
 - New grenade:
@@ -10,6 +10,9 @@ Prototype 5.1+dev4
 - Mutators for ROTC: Ethernet:
    - Slowpoke: Makes the game slow
    - Superblaster: Replaces standard blaster with powerful hitscan version
+- On "death", display info on what caused your CATs destruction.
+- Per default, HUD colors now indicate player condition instead of team.
+- Make damage flash more visible.
 
 
 Prototype 5.1
