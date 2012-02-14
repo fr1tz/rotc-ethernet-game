@@ -37,11 +37,13 @@ function MotdWindow::setMotd()
 
 	if(MotdWindow.isAwake())
 	{
+		RootMenuMotdButton.setText("MOTD");
 		hilightControl(RootMenuMotdButton, false);
 		$Pref::MOTD::Text = $MOTD::Text;
 	}
 	else if($MOTD::Text !$= $Pref::MOTD::Text)
 	{
+		RootMenuMotdButton.setText("MOTD *updated*");
 		hilightControl(RootMenuMotdButton, true);
 	}	
 }
