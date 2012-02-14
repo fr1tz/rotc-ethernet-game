@@ -268,7 +268,13 @@ function irc_ask_for_game()
 	}
 	%txt = %txt SPC "]";
 	IrcSend.setText("Anyone up for a game?" SPC %txt);
-   IrcSend.onReturn();
+	IrcSend.onReturn();
+
+	%text = IrcAskForGameButton.getText();
+	IrcAskForGameButton.setActive(false);
+	IrcAskForGameButton.setText("Please wait...");
+	IrcAskForGameButton.schedule(60000, "setActive", true);
+	IrcAskForGameButton.schedule(60000, "setText", %text);
 }
 
 //------------------------------------------------------------------------------

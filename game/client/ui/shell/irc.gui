@@ -81,7 +81,7 @@ new GuiControl(IrcWindowForEditing) {
             groupNum = "-1";
             buttonType = "PushButton";
          };
-         new GuiButtonCtrl() {
+         new GuiButtonCtrl(IrcAskForGameButton) {
             canSaveDynamicFields = "0";
             Profile = "GuiButtonProfile";
             HorizSizing = "left";
