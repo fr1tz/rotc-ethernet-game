@@ -278,10 +278,6 @@ function IRCconn::onLine(%this, %line)
 	irc_process_line(%line);
 }
 
-function IRCconn::onDNSResolve(%this)
-{
-}
-
 function IRCconn::onConnected(%this)
 {
 	irc_set_status("Connected to" SPC $IRC::Server);
