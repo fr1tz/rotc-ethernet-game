@@ -372,19 +372,6 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		if(isObject(%sourceObject.client))
 			if(%dstat) %dstat.sourceClientName = %sourceObject.client.nameBase;
 	}
-	
-	// reduce damage based on energy level...
-	if(%obj.client.hasDamper)
-	{
-		%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
-		%stor = %damage;
-		%damage -= %damage * %energyScale * 0.50;
-		if(%dstat)
-		{
-			%dstat.damperEnergy = %energyScale;
-			%dstat.damperSlice = %stor - %damage;
-		}	
-	}
 
 	// Handicap, we do damage dampening depending on the handicap value of the object
 	if (isObject(%obj.client))
@@ -406,7 +393,7 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	if (%dstHand > %srcHand)
 	{
 		%stor = %damage;
-		%damage = %damage * (1 - (%dstHand - %srcHand));
+		%damage -= %damage * (%dstHand - %srcHand);
 		if(%dstat)
 		{
 			%dstat.handicapDifference = %srcHand-%dstHand;
@@ -423,6 +410,19 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 			%dstat.handicapDifference = %srcHand-%dstHand;
 			%dstat.handicapSlice = 0;
 		}
+	}
+	
+	// reduce damage based on energy level...
+	if(%obj.client.hasDamper)
+	{
+		%energyScale = %obj.getEnergyLevel() / %obj.getDataBlock().maxEnergy;
+		%stor = %damage;
+		%damage -= %damage * %energyScale * 0.50;
+		if(%dstat)
+		{
+			%dstat.damperEnergy = %energyScale;
+			%dstat.damperSlice = %stor - %damage;
+		}	
 	}
 
    %bypassDamageBuffer = false;
