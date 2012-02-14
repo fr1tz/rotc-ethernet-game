@@ -353,6 +353,8 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 	
 	if(%damageType == $DamageType::Force)
 		%n = "Force";
+	else if(%damageType == $DamageType::BOUNCE)
+		%n = "Bounce";
 	else if(isObject(%sourceObject) && isObject(%sourceObject.getDataBlock()))
 		%n = %sourceObject.getDataBlock().stat;  
 	else
@@ -440,10 +442,11 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
 		else
 		{
 			%maxDamage = %obj.getDataBlock().maxDamage;
-			%dmgLevel = %obj.getDamageLevel();
-			if(%dmgLevel + %damage > %maxDamage)
-				%damage = %maxDamage - %dmgLevel;
-			%obj.setDamageLevel(%dmgLevel + %damage);
+			%oldDmgLevel = %obj.getDamageLevel();
+			%newDmgLevel = %oldDmgLevel + %damage;
+			if(%newDmgLevel > %maxDamage)
+				%newDmgLevel = %maxDamage;
+			%obj.setDamageLevel(%newDmgLevel);
          if(%damageType == $DamageType::BOUNCE)
             %barriertime = 1.0;
          else

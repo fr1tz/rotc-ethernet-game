@@ -50,9 +50,11 @@ function GameConnection::showReceivedDamageInfo(%this, %died)
 		%n = "Grenade explosion";
 	else if(%a.damageName $= "explosivedisc")
 		%n = "Explosive Disc";
-	else if(%a.damageName $= "force")
+	else if(%a.damageName $= "Force")
 		%n = "Falling damage";
-	else if(%a.damageName $= "other")
+	else if(%a.damageName $= "Bounce")
+		%n = "B.O.U.N.C.E.";
+	else if(%a.damageName $= "Other")
 		%n = "Being out of zone";
 
 	%t = %t @ "<just:right>";
