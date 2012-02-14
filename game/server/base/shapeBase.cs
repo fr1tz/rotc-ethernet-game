@@ -199,7 +199,10 @@ function ShapeBase::clearDiscTarget(%this)
 
 function ShapeBase::setInflictedDamageSoundPitch(%this, %pitch)
 {
-    %this.inflictedDamageSoundPitch = %pitch;
+	if(%pitch == 0)
+		%this.inflictedDamageSoundDenied = true;
+	else if(%pitch > %this.inflictedDamageSoundPitch)
+	    %this.inflictedDamageSoundPitch = %pitch;
 
     cancel(%this.inflictedDamageThread);
     %this.inflictedDamageThread = %this.schedule(0, "playInflictedDamageSound");
@@ -209,13 +212,22 @@ function ShapeBase::playInflictedDamageSound(%this)
 {
     if(%this.client)
     {
-        %pitch = 0.9 + %this.inflictedDamageSoundPitch / 2;
-        if(%this.inflictedDamageSoundLocked)
-            %this.client.play2D(DamageSoundTwo, %pitch);
-        else
-            %this.client.play2D(DamageSoundOne, %pitch);
+		if(%this.inflictedDamageSoundDenied
+		&& %this.inflictedDamageSoundPitch == 0)
+		{
+	           %this.client.play2D(BeepMessageSound);
+		}
+		else
+		{
+	        %pitch = 0.9 + %this.inflictedDamageSoundPitch / 2;
+	        if(%this.inflictedDamageSoundLocked)
+	            %this.client.play2D(DamageSoundTwo, %pitch);
+	        else
+	            %this.client.play2D(DamageSoundOne, %pitch);
+		}
     }
 
+    %this.inflictedDamageSoundDenied = false;
     %this.inflictedDamageSoundPitch = 0;
     %this.inflictedDamageSoundLocked = false;
 }
@@ -639,8 +651,11 @@ function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %healthDmg, %bufDmg)
 	if(!isObject(%client))
 		return;
 
-   if(%healthDmg <= 0 && %bufDmg <= 0)
-      return;
+	if(%healthDmg <= 0 && %bufDmg <= 0)
+	{
+    	%obj.setInflictedDamageSoundPitch(0);
+		return;
+	}
 
     // health takeback...
 	if(%client.numVAMPs > 0)
