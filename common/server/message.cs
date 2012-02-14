@@ -117,7 +117,11 @@ function chatMessageClient( %client, %sender, %voiceTag, %voicePitch, %msgString
 {
 	//see if the client has muted the sender
 	if ( !%client.muted[%sender] )
-		commandToClient( %client, 'ChatMessage', %sender, %voiceTag, %voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10 );
+	{
+		commandToClient( %client, 'ChatMessage', %sender, %voiceTag, %voicePitch,
+			%msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10 );
+		%client.play2D(ChatMessageSound);
+	}
 }
 
 function chatMessageTeam( %sender, %team, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10 )

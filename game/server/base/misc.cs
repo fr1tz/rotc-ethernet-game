@@ -48,6 +48,12 @@ datablock AudioProfile(BeepMessageSound)
 	preload = true;
 };
 
+datablock AudioProfile(ChatMessageSound)
+{
+	filename = "share/sounds/rotc/powerdown2.wav";
+	description = AudioCritical2D;
+	preload = true;
+};
 
 datablock AudioProfile(ClownSound)
 {
