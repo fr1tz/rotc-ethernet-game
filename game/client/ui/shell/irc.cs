@@ -31,7 +31,7 @@ function irc_extract_user(%prefix)
 	return getSubStr(%prefix, 0, %idx);
 }
 
-function irc_shorten_name(%name)
+function irc_shorten_name(%name, %nocolor)
 {
 	%chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVXYZ-_";
 
@@ -44,10 +44,12 @@ function irc_shorten_name(%name)
 			%c += %i * %value;
 	}
 
-	%color = getWord($IRC::Colors, %c % $IRC::NumColors);
-
 	%name = strreplace(%name, "_rotc_", " [rotc]");
 
+	if(%nocolor)
+		return %name;
+
+	%color = getWord($IRC::Colors, %c % $IRC::NumColors);
 	return "<spush><color:" @ %color @ ">" @ %name @ "<spop>";
 }
 
@@ -91,7 +93,8 @@ function irc_disconnect(%error)
 
 function irc_set_status(%string)
 {
-	IrcText.addLine("[" @ %string @ "]", $IRC::MsgType::Status);
+	%text = "[" @ %string @ "]";
+	IrcText.addLine(%text, %text, $IRC::MsgType::Status);
 	IrcStatus.setText("<just:center>" @ %string);
 }
 
@@ -135,9 +138,11 @@ function irc_process_line(%line)
 		%usr = irc_extract_user(%prefix);
 		%nick = irc_after_colon(%params);
 
-		IrcText.addLine("*" SPC irc_shorten_name(%usr) SPC 
-			"is now known as" SPC irc_shorten_name(%nick),
-			$IRC::MsgType::Users);
+		%mltext = "*" SPC irc_shorten_name(%usr) SPC 
+			"is now known as" SPC irc_shorten_name(%nick);
+		%rawtext = "*" SPC irc_shorten_name(%usr, true) SPC 
+			"is now known as" SPC irc_shorten_name(%nick, true);
+		IrcText.addLine(%mltext, %rawtext, $IRC::MsgType::Users);
 
 		$IRC::Names.moveFirst();
 		%idx = $IRC::Names.getIndexFromValue(%usr);
@@ -156,8 +161,11 @@ function irc_process_line(%line)
 		}
 		else
 		{
-			IrcText.addLine("*" SPC irc_shorten_name(%usr) SPC 
-				"has joined player chat", $IRC::MsgType::Users);
+			%mltext = "*" SPC irc_shorten_name(%usr) SPC 
+				"has joined global player chat";
+			%rawtext = "*" SPC irc_shorten_name(%usr, true) SPC 
+				"has joined global player chat";			
+			IrcText.addLine(%mltext, %rawtext, $IRC::MsgType::Users);
 
 			$IRC::Names.push_back("", %usr);
 			IrcNames.update();
@@ -167,8 +175,11 @@ function irc_process_line(%line)
 	{
 		%usr = irc_extract_user(%prefix);
 
-		IrcText.addLine("*" SPC irc_shorten_name(%usr) SPC 
-			"has left player chat", $IRC::MsgType::Users);
+		%mltext = "*" SPC irc_shorten_name(%usr) SPC 
+			"has left global player chat";
+		%rawtext = "*" SPC irc_shorten_name(%usr, true) SPC 
+			"has left global player chat";			
+		IrcText.addLine(%mltext, %rawtext, $IRC::MsgType::Users);
 
 		$IRC::Names.moveFirst();
 		%idx = $IRC::Names.getIndexFromValue(%usr);
@@ -196,8 +207,8 @@ function irc_process_line(%line)
 	else if(%command $= "332") // RPL_TOPIC
 	{
 		%topic = irc_after_colon(%params);
-		IrcText.addLine("* The topic is:" SPC 
-			%topic, $IRC::MsgType::Topic);
+		%text = "* The topic is:" SPC %topic;
+		IrcText.addLine(%text, %text, $IRC::MsgType::Topic);
 	}
 	else if(%command >= 431 && %command <= 436)
 	{
@@ -223,15 +234,15 @@ function irc_send(%line)
 
 function irc_talk(%usr, %msg)
 {
-	%msg = StripMLControlChars(%msg);
 	%msg = strreplace(%msg, "_rotc_", " [rotc]");
 
-	%txt = "<" @ irc_shorten_name(%usr) @ ">" SPC %msg;
-
+	%mltext = "<" @ irc_shorten_name(%usr) @ ">" SPC %msg;
 	if(strpos(%msg, $Pref::Irc::Name, 0) != -1)
-		%txt = "<spush><shadowcolor:00ff00><shadow:1:1>" @ %txt @ "<spop>";	
+		%mltext = "<spush><shadowcolor:00ff00><shadow:1:1>" @ %mltext @ "<spop>";
 
-	IrcText.addLine(%txt, $IRC::MsgType::Talk);
+	%rawtext = "<" @ irc_shorten_name(%usr, true) @ ">" SPC %msg;
+
+	IrcText.addLine(%mltext, %rawtext, $IRC::MsgType::Talk);
 }
 
 function irc_grab_attention()
@@ -314,14 +325,14 @@ function IrcSend::onReturn(%this)
 	IrcSend.setText("");
 }
 
-function IrcText::addLine(%this, %text, %type)
+function IrcText::addLine(%this, %mltext, %rawtext, %type)
 {
 	%storX = IrcTextScroll.getScrollPositionX();
 	%storY = IrcTextScroll.getScrollPositionY();
 	IrcTextScroll.scrollToBottom();
 	%atBottom = IrcTextScroll.getScrollPositionY() == %storY;
 
-	IrcText.addText(%text @ "\n", false);
+	IrcText.addText(%mltext @ "\n", false);
 	IrcText.forceReflow();
 
 	if(%atBottom)
@@ -334,7 +345,7 @@ function IrcText::addLine(%this, %text, %type)
 	   (%type == $IRC::MsgType::Topic && $Pref::Irc::ToChat::Topic) ||
 	   (%type == $IRC::MsgType::Users && $Pref::Irc::ToChat::Users ))
 	{
-		ChatHud.addLine("\c5" SPC StripMLControlChars(%text));
+		ChatHud.addLine("\c5" SPC %rawtext);
 	}
 }
 
