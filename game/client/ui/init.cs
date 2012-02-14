@@ -56,6 +56,8 @@ function executeShellScripts()
 	exec("./shell/mapCredits.gui");
 	exec("./shell/irc.cs");
 	exec("./shell/irc.gui");
+	exec("./shell/motd.cs");
+	exec("./shell/motd.gui");
 }
 
 executeShellScripts();

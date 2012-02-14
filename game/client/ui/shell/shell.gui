@@ -38,11 +38,12 @@ new GuiBitmapCtrl(Shell) {
       HorizSizing = "right";
       VertSizing = "top";
       Position = "8 454";
-      Extent = "8 18";
+      Extent = "129 18";
       MinExtent = "8 2";
       canSave = "1";
       Visible = "1";
       hovertime = "1000";
+      text = "client version: p.5.1+dev6";
       maxLength = "1024";
    };
    new GuiWindowCtrl(RootMenuWindow) {
@@ -51,7 +52,7 @@ new GuiBitmapCtrl(Shell) {
       HorizSizing = "right";
       VertSizing = "bottom";
       Position = "10 10";
-      Extent = "137 305";
+      Extent = "137 331";
       MinExtent = "8 8";
       canSave = "1";
       Visible = "1";
@@ -183,7 +184,7 @@ new GuiBitmapCtrl(Shell) {
          Profile = "GuiButtonProfile";
          HorizSizing = "right";
          VertSizing = "bottom";
-         Position = "14 268";
+         Position = "14 298";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -207,6 +208,22 @@ new GuiBitmapCtrl(Shell) {
          Command = "toggleEditor(1);";
          hovertime = "1000";
          text = "Mission Editor";
+         groupNum = "-1";
+         buttonType = "PushButton";
+      };
+      new GuiButtonCtrl(RootMenuMotdButton) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         Position = "14 268";
+         Extent = "110 23";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         Command = "addWindow(MotdWindow);";
+         hovertime = "1000";
+         text = "MOTD";
          groupNum = "-1";
          buttonType = "PushButton";
       };

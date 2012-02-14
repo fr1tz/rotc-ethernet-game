@@ -15,4 +15,14 @@ new GuiBackgroundCtrl(ShellDlg) {
 };
 //--- OBJECT WRITE END ---
 
+function ShellDlg::onWake(%this)
+{
+	startUpdateHilightedGuiControlsThread();
+}
+
+function ShellDlg::onSleep(%this)
+{
+	stopUpdateHilightedGuiControlsThread();
+}
+
 

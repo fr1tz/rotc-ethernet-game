@@ -102,6 +102,11 @@ new GuiControlProfile(GuiButtonProfile : GuiDefaultProfile)
 	bitmap = "./pixmaps/mg_button6";
 };
 
+new GuiControlProfile(GuiHilightButtonProfile : GuiButtonProfile)
+{
+	bitmap = "./pixmaps/mg_button6hilight";
+};
+
 new GuiControlProfile(GuiTitleButtonProfile : GuiButtonProfile)
 {
 	bitmap = "./pixmaps/mg_button6title";
