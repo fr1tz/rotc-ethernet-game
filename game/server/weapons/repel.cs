@@ -80,7 +80,7 @@ function deployRepel3(%obj)
             %speed = VectorLen(%vec);
             %damage = %speed;
             %dmgpos = %targetObject.getWorldBoxCenter();
-            %targetObject.damage(0, %dmgpos, %damage, $DamageType::BOUNCE);
+            %targetObject.damage(%obj, %dmgpos, %damage, $DamageType::BOUNCE);
          }
       }
 
