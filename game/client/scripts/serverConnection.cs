@@ -68,8 +68,20 @@ function GameConnection::setLagIcon(%this, %state)
 	if (%this.getAddress() $= "local")
 		return;
 
-	LagIcon.setVisible(%state $= "true");
-	MissionWindowLagIcon.setVisible(%state $= "true");
+	if(%state $= "true")
+	{
+		// Never show lag icons while still in Shell
+		if(Canvas.getContent() != Shell.getId())
+		{
+			LagIcon.setVisible(true);
+			MissionWindowLagIcon.setVisible(true);
+		}
+	}
+	else
+	{
+		LagIcon.setVisible(false);
+		MissionWindowLagIcon.setVisible(false);
+	}
 }
 
 function GameConnection::onConnectionAccepted(%this)
