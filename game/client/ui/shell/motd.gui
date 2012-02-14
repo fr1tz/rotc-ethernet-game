@@ -1,0 +1,113 @@
+//------------------------------------------------------------------------------
+// Revenge Of The Cats: Ethernet
+// Copyright (C) 2008, mEthLab Interactive
+//------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
+// Torque Game Engine
+// Copyright (c) 2001 GarageGames.Com
+//-----------------------------------------------------------------------------
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(MotdWindowForEditing) {
+   canSaveDynamicFields = "0";
+   Profile = "GuiDefaultProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   Position = "0 0";
+   Extent = "640 480";
+   MinExtent = "8 8";
+   canSave = "1";
+   Visible = "1";
+   hovertime = "1000";
+
+   new GuiWindowCtrl(MotdWindow) {
+      canSaveDynamicFields = "0";
+      Profile = "GuiWindowProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      position = "60 18";
+      Extent = "560 400";
+      MinExtent = "500 200";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      text = "                Message Of The Day";
+      maxLength = "255";
+      resizeWidth = "1";
+      resizeHeight = "1";
+      canMove = "1";
+      canClose = "0";
+      canMinimize = "0";
+      canMaximize = "0";
+      minSize = "50 50";
+
+      new GuiButtonCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "bottom";
+         position = "516 5";
+         Extent = "39 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "removeWindow(MotdWindow);";
+         hovertime = "1000";
+         text = "X";
+         groupNum = "-1";
+         buttonType = "PushButton";
+      };
+      new GuiScrollCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiScrollProfile";
+         HorizSizing = "width";
+         VertSizing = "height";
+         Position = "13 24";
+         Extent = "538 367";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         willFirstRespond = "1";
+         hScrollBar = "alwaysOff";
+         vScrollBar = "alwaysOn";
+         constantThumbHeight = "0";
+         childMargin = "0 0";
+
+         new GuiMLTextCtrl(MotdText) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiMLTextProfile";
+            HorizSizing = "width";
+            VertSizing = "bottom";
+            Position = "2 3";
+            Extent = "538 14";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            lineSpacing = "2";
+            allowColorChars = "0";
+            maxChars = "-1";
+         };
+      };
+      new GuiButtonCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTitleButtonProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         Position = "4 4";
+         Extent = "55 18";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "MotdWindow.refresh();";
+         hovertime = "1000";
+         text = "Refresh";
+         groupNum = "-1";
+         buttonType = "PushButton";
+      };
+   };
+};
+//--- OBJECT WRITE END ---
+
