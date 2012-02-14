@@ -352,7 +352,7 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "left";
          VertSizing = "top";
-         Position = "443 319";
+         Position = "443 342";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
@@ -368,7 +368,7 @@ new GuiControl(StartServerWindowForEditing) {
          Profile = "GuiButtonProfile";
          HorizSizing = "left";
          VertSizing = "top";
-         Position = "443 342";
+         Position = "443 319";
          Extent = "110 23";
          MinExtent = "8 8";
          canSave = "1";
