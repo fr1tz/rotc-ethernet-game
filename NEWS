@@ -1,19 +1,24 @@
 What's new?
 ===========
 
-Prototype 5.1+dev6
-------------------
+Prototype 5.2
+-------------
 
-- Blaster now uses projectiles instead of hitscan.
-- New grenade:
-   - Now bypasses shield but does much less damage.
+Released: Feb. 15, 2012
+
+- Standard blaster now uses projectiles instead of hitscan.
+- New grenade: Bypasses shield but does much less damage.
 - An exploding mine can now lead to a disc-lock.
 - Mutators for ROTC: Ethernet:
-   - Slowpoke: Makes the game slow
-   - Superblaster: Replaces standard blaster with powerful hitscan version
+   - Slowpoke: Makes the game slow.
+   - Superblaster: Replaces standard blaster with powerful hitscan version.
 - On "death", display info on what caused your CATs destruction.
 - Per default, HUD colors now indicate player condition instead of team.
+- MOTD (Message Of The Day) feature.
 - Make damage flash more visible.
+- Force waiting period after using the "Ask for a game!" 
+  button in the global player chat.
+- Bugfixes & other minor improvements
 
 
 Prototype 5.1
