@@ -50,6 +50,8 @@ function GameConnection::initialControlSet(%this)
 			// Make sure we're displaying the IRC window if we're not offline...
 			if(!$IRC::Offline)
 				addWindow(IrcWindow, true);
+
+			hilightControl(IngameMenuReturn, true);
 		}
 	}
 }

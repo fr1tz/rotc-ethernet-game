@@ -43,7 +43,9 @@ function updateShellDlg()
 	else
 	{
 		if(ShellDlg.isAwake())
-			Canvas.popDialog(ShellDlg);	
+			Canvas.popDialog(ShellDlg);
+
+		hilightControl(IngameMenuReturn, false);
 	}
 }
 
