@@ -7,6 +7,8 @@
 
 function JoinServerWindow::query(%this)
 {
+	hilightControl(JS_queryMaster, false);
+
 	JS_RefreshServer.setActive(false);
 	JS_JoinServer.setActive(false);
 
@@ -28,6 +30,8 @@ function JoinServerWindow::query(%this)
 
 function JoinServerWindow::queryLan(%this)
 {
+	hilightControl(JS_queryMaster, false);
+
 	JS_RefreshServer.setActive(false);
 	JS_JoinServer.setActive(false);
 
@@ -81,6 +85,13 @@ function onServerQueryStatus(%status, %msg, %value)
 			JS_status.setText(%msg);
 			JoinServerWindow.update();
 	}
+}
+
+//----------------------------------------
+
+function JS_queryMaster::onAdd(%this)
+{
+	hilightControl(%this, true);
 }
 
 //----------------------------------------
