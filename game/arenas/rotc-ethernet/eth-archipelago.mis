@@ -1,0 +1,3 @@
+exec("./common.cs");
+$MissionInfo::Name = "/env/eth/archipelago-1";
+$MissionInfo::Desc = "A cluster of small islands";
