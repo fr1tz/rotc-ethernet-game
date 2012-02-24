@@ -99,9 +99,10 @@ function RedRepelGunProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%
 		client          = %obj.client;
 	};
 
-	//%pos = VectorAdd(%pos, %normal);
-
-	%p.setTransform(%pos);
+	%pos = VectorAdd(%pos, VectorScale(%normal,0.1));
+	%rot = getWords(MatrixCreateFromEuler(%normal),3,6);
+	%t = MatrixCreate(%pos, %rot);
+	%p.setTransform(%t);
 }
 
 function RedRepelGunProjectile::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
