@@ -95,7 +95,7 @@ function RedRepelGunMine::detonate(%this, %obj, %hit)
 		return;
 
 	%pos = %obj.getPosition();
-	%normal = "0 0 1";
+	%normal = %obj.zNormal;
 	%fade = 1;
 	%dist = 0;
 	%expType = 0;
@@ -132,7 +132,7 @@ function RedRepelGunMine::detonate(%this, %obj, %hit)
 	
 	%obj.unmountImage(0);
 
-	createExplosion(RepelGunMineExplosionExplosion, %pos, "0 0 1");
+	createExplosion(RepelGunMineExplosionExplosion, %pos, %normal);
 
 	%obj.startFade(0, 0, true);
 

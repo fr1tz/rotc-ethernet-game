@@ -103,6 +103,7 @@ function RedRepelGunProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%
 	%rot = getWords(MatrixCreateFromEuler(%normal),3,6);
 	%t = MatrixCreate(%pos, %rot);
 	%p.setTransform(%t);
+	%p.zNormal = %normal;
 }
 
 function RedRepelGunProjectile::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
