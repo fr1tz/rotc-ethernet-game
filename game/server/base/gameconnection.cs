@@ -425,6 +425,7 @@ function GameConnection::spawnPlayer(%this)
 	// give the client control of the player...
 	%this.player = %obj;
 	%this.setControlObject(%obj);
+	%this.updateHudColors();
 }
 
 //-----------------------------------------------------------------------------
