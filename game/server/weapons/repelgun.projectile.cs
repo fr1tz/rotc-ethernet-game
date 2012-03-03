@@ -67,8 +67,8 @@ datablock ProjectileData(RedRepelGunProjectile)
 	
 	isBallistic = true;
 	gravityMod  = 10.0;
-	bounceElasticity = 0.5;
-	bounceFriction   = 0.5;
+	bounceElasticity = 0.0;
+	bounceFriction   = 0.0;
 
 	armingDelay	= 1000*1;
 	lifetime    = 1000*10;
@@ -77,7 +77,7 @@ datablock ProjectileData(RedRepelGunProjectile)
 	//decals[0]	= ExplosionDecalTwo;
 	
 	hasLight	 = true;
-	lightRadius = 5.0;
+	lightRadius = 6.0;
 	lightColor  = "1.0 0.0 0.0";
 	
 	// other script fields...

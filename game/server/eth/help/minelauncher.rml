@@ -9,7 +9,7 @@ Firing it doesn't drain energy but instead draws from the same ammo source as th
 	Impact damage	<spush><font:Arial Bold:16>-<spop>
 	Impact impulse	<spush><font:Arial Bold:16>-<spop>
 	Splash damage	<spush><font:Arial Bold:16>40<spop>
-	Splash damage radius	<spush><font:Arial Bold:16>5<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>6<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>6000<spop>
 	Velocity inheritance	<spush><font:Arial Bold:16>100%<spop>	
 	Accuracy	<spush><font:Arial Bold:16>Pinpoint<spop>	

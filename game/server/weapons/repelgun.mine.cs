@@ -22,7 +22,7 @@ datablock ShapeBaseImageData(RedRepelGunMineLightImage)
 	lightType = "PulsingLight";
 	lightColor = "1 0 0";
 	lightTime = 200;
-	lightRadius = 5;
+	lightRadius = 6;
 	lightCastsShadows = false;
 	lightAffectsShapes = false;
 
@@ -43,7 +43,7 @@ datablock StaticShapeData(RedRepelGunMine)
 	impactDamage        = 10; // only used to determine time for barrier
 	impactImpulse       = 0;
 	splashDamage        = 40;
-	splashDamageRadius  = 5;
+	splashDamageRadius  = 6;
 	splashImpulse       = 6000;
    splashDamageFalloff = $SplashDamageFalloff::None;
 	bypassDamageBuffer  = true;
@@ -160,7 +160,7 @@ function RedRepelGunMine::checkDetonate(%this, %obj)
 		return;
 
 	%pos = %obj.getWorldBoxCenter();
-	%radius = 5;
+	%radius = 6;
 
 	%hitEnemy = false;
 
