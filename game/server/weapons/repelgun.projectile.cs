@@ -100,9 +100,10 @@ function RedRepelGunProjectile::onCollision(%this,%obj,%col,%fade,%pos,%normal,%
 	};
 
 	%pos = VectorAdd(%pos, VectorScale(%normal,0.1));
-	%rot = getWords(MatrixCreateFromEuler(%normal),3,6);
-	%t = MatrixCreate(%pos, %rot);
-	%p.setTransform(%t);
+//	%mat = MatrixCreateFromEuler(%normal);
+//	%rot = getSubStr(%mat,6,256);
+//	%t = %pos SPC %rot;
+	%p.setTransform(%pos);
 	%p.zNormal = %normal;
 }
 
