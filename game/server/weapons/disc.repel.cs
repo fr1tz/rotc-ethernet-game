@@ -162,16 +162,18 @@ function RedRepelDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 		// remove possible barrier from enemy...
 		%col.deactivateBarrier();
 
-		// remove 50% of enemy's anchoring...
-		%col.setGridConnection(%col.gridConnection*0.50);
+		// don't remove anchoring for now...
+		//%col.setGridConnection(%col.gridConnection*0.50);
 
 		// push enemy away from player...
 		%vec = VectorSub(%col.getPosition(), %source.getPosition());
 		%vec = VectorNormalize(%vec);
 		%vec = getWord(%vec,0) SPC getWord(%vec,1) SPC "0.5";
 		//%vec = "0 0 1";
-		%vec = VectorScale(%vec, 3000);
-		%col.impulse(%col.getPosition(), %vec);
+		%vec = VectorScale(%vec, 3500);
+		// ignore anchoring for impulse...
+		//%col.impulse(%col.getPosition(), %vec);
+		%col.applyImpulse(%col.getPosition(), %vec);
 
 		createExplosion(%this.explosion, %pos, %normal);
    
