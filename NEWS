@@ -1,6 +1,20 @@
 What's new?
 ===========
 
+Prototype 5.2+dev2
+------------------
+
+- Repel disc changes:
+   - Don't remove anchoring anymore.
+   - Ignore anchoring when pushing enemy CAT.
+   - Increase push force from 3000 to 3500.
+- Mine Launcher changes:
+   - Bubbles don't bounce anymore.
+   - Increase proximity radius from 5 to 6.
+- New map (Archipelago)
+- Bugfixes
+
+
 Prototype 5.2
 -------------
 
