@@ -1,17 +1,20 @@
 What's new?
 ===========
 
-Prototype 5.2+dev3
-------------------
+Prototype 5.3
+-------------
 
+Released: Mar. 30, 2012
+
+- This is the first release available for Mac OS X.
 - Repel disc changes:
    - Don't remove anchoring anymore.
    - Stop enemy CAT before pushing it.
-   - Ignore anchoring when pushing enemy CAT.
+   - Ignore enemy CAT's anchoring when pushing.
 - Mine Launcher changes:
    - Bubbles don't bounce anymore.
    - Increase proximity radius from 5 to 6.
-- New map (Archipelago)
+- Early version of new map (Archipelago)
 - Bugfixes
 
 
