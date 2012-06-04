@@ -80,6 +80,9 @@ function aiAdd(%teamid, %weaponNum)
 	};
 	MissionCleanup.add(%player);
 
+	if($Server::Game.tagMode == $Server::Game.alwaystag)
+		%player.setTagged();
+
 	%pos = getRandomHorizontalPos(%spawnSphere.position,%spawnSphere.radius);
 	%player.setShapeName("wayne" @ %nameadd);
 	%player.setTransform(%pos);

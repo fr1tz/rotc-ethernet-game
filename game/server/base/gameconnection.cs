@@ -614,7 +614,7 @@ function GameConnection::togglePlayerForm(%this, %forced)
 	%obj.setDamageLevel(%dmg);
 	%obj.setShieldLevel(%buf);
 	
-	if(%tagged)
+	if(%tagged || $Server::Game.tagMode == $Server::Game.alwaystag)
 		%obj.setTagged();
 
 	%this.control(%obj);

@@ -9,10 +9,6 @@ CATs have a maximum of 75 health points. Health is lost if a CAT takes more dama
 
 CATs have a maximum of 100 recharging energy points. Energy is used for a number of things. An important example is that energy is both used to fire weapons and to provide protection via the <a:cmd Manual 4.1>Damper module</a>.
 
-<spush><font:NovaSquare:24>Tagging<spop>
-
-CATs are tagged when they take damage from an enemy. Tagged enemies appear on the HUD.
-
 <spush><font:NovaSquare:24>Returning to Etherform<spop>
 
 By pressing @bind34, players manifested as CAT can dissolve their physical bodies at any time.

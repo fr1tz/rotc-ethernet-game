@@ -56,11 +56,25 @@ function initMission()
 	if(isObject($Server::Game))
 		$Server::Game.delete();
 	$Server::Game = new ScriptObject();
+	$Server::Game.alwaystag = -1;
+	$Server::Game.nevertag  = 0;
+	$Server::Game.temptag   = 1;
+	$Server::Game.tagMode = $Server::Game.alwaystag;
 	$Server::Game.slowpokemod = 1.0;
 	for(%i = 0; %i < getWordCount($Pref::Server::Mutators); %i++)
 	{
 		%mutator = getWord($Pref::Server::Mutators, %i);
-		if(%mutator $= "slowpoke")
+		if(%mutator $= "temptag")
+		{
+			$Server::Game.tagMode = $Server::Game.temptag;
+			$Server::Game.mutators = true;
+		}
+		else if(%mutator $= "nevertag")
+		{
+			$Server::Game.tagMode = $Server::Game.nevertag;
+			$Server::Game.mutators = true;
+		}
+		else if(%mutator $= "slowpoke")
 		{
 			$Server::Game.slowpoke = true;
 			$Server::Game.slowpokemod = 0.5;

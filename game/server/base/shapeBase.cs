@@ -266,7 +266,8 @@ function ShapeBaseData::onAdd(%this,%obj)
 	%obj.barrier = 0;
 
 	// Start threads...
-	%obj.checkTaggedThread();
+   if($Server::Game.tagMode == $Server::Game.temptag)
+      %obj.checkTaggedThread();
 }
 
 // *** callback function: called by engine
@@ -312,9 +313,7 @@ function ShapeBaseData::onEnterMissionArea(%this,%obj)
 // *** callback function: called by engine
 function ShapeBaseData::onCurrTaggedSelected(%this, %obj, %target)
 {
-	// tag enemies...
-	if( %target.teamId > 0 && %target.teamId != %obj.teamId )
-		%target.setTagged();
+
 }
 
 // *** callback function: called by engine
@@ -667,10 +666,12 @@ function ShapeBaseData::onHitEnemy(%this, %obj, %enemy, %healthDmg, %bufDmg)
 			%obj.setShieldLevel(%obj.getDamageBufferLevel() - %newSrcDamage);
 	}
 
-    // tagging...
-    %enemy.setTagged();
-    %obj.setCurrTagged(%enemy);
-    
+   // tagging...
+   if($Server::Game.tagMode == $Server::Game.temptag)
+      %enemy.setTagged();
+   if($Server::Game.tagMode != $Server::Game.nevertag)
+      %obj.setCurrTagged(%enemy);
+
     %obj.incGrenadeAmmo((%healthDmg+%bufDmg)/250);
 
     %obj.setInflictedDamageSoundPitch(%enemy.getDamagePercent());

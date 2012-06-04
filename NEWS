@@ -1,6 +1,15 @@
 What's new?
 ===========
 
+Prototype 5.3+dev1
+------------------
+
+- New tagging rules:
+   - New default is that all players are tagged all the time.
+   - New mutator to restore old rules: "temptag".
+   - New mutator "nevertag": Players are never tagged.
+
+
 Prototype 5.3
 -------------
 
