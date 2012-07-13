@@ -94,9 +94,9 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 
 	explosion             = RedAssaultRifleProjectileImpact;
 	bounceExplosion       = RedAssaultRifleProjectileBounceExplosion;
-	hitEnemyExplosion     = RedAssaultRifleProjectileHit;
+	hitEnemyExplosion     = RedAssaultRifleProjectileExplosion;
 	nearEnemyExplosion    = RedAssaultRifleProjectileExplosion;
-	hitTeammateExplosion  = RedAssaultRifleProjectileHit;
+	hitTeammateExplosion  = RedAssaultRifleProjectileExplosion;
 //	hitDeflectorExplosion = DiscDeflectedEffect;
 
 	missEnemyEffectRadius = 10;
@@ -123,7 +123,7 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	lifetime				= 1000*5;
 	fadeDelay			  = 5000;
 	
-	numBounces = 2;
+//	numBounces = 2;
 	
 	decals[0] = ExplosionDecalTwo;
 	
@@ -171,9 +171,9 @@ datablock ProjectileData(BlueAssaultRifleProjectile1 : RedAssaultRifleProjectile
 	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.blue.dts";    
 	explosion = BlueAssaultRifleProjectileImpact;
 	bounceExplosion = BlueAssaultRifleProjectileBounceExplosion;
-	hitEnemyExplosion = BlueAssaultRifleProjectileHit;
+	hitEnemyExplosion = BlueAssaultRifleProjectileExplosion;
 	nearEnemyExplosion = BlueAssaultRifleProjectileExplosion;
-	hitTeammateExplosion = BlueAssaultRifleProjectileHit;
+	hitTeammateExplosion = BlueAssaultRifleProjectileExplosion;
 	particleEmitter = BlueAssaultRifleProjectileParticleEmitter;	
 	laserTail = BlueAssaultRifleProjectileLaserTail;
 	lightColor  = "0.0 0.0 1.0";
@@ -184,9 +184,9 @@ datablock ProjectileData(BlueAssaultRifleProjectile2 : RedAssaultRifleProjectile
 	projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.blue.dts";    
 	explosion = BlueAssaultRifleProjectileImpact;
 	bounceExplosion = BlueAssaultRifleProjectileBounceExplosion;
-	hitEnemyExplosion = BlueAssaultRifleProjectileHit;
+	hitEnemyExplosion = BlueAssaultRifleProjectileExplosion;
 	nearEnemyExplosion = BlueAssaultRifleProjectileExplosion;
-	hitTeammateExplosion = BlueAssaultRifleProjectileHit;
+	hitTeammateExplosion = BlueAssaultRifleProjectileExplosion;
 	particleEmitter = BlueAssaultRifleProjectileParticleEmitter;		
 	laserTail = BlueAssaultRifleProjectileLaserTail;
 	lightColor  = "0.0 0.0 1.0";	

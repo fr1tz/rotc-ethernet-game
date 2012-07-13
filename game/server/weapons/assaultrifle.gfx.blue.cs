@@ -195,26 +195,26 @@ datablock ParticleData(BlueAssaultRifleProjectileExplosion_Cloud)
 	gravityCoefficient	= 0;
 	inheritedVelFactor	= 0.025;
 
-	lifetimeMS			  = 600;
+	lifetimeMS			  = 200;
 	lifetimeVarianceMS	= 0;
 
 	useInvAlpha = false;
-	spinRandomMin = -200.0;
-	spinRandomMax =  200.0;
+//	spinRandomMin = -200.0;
+//	spinRandomMax =  200.0;
 
 	textureName = "share/textures/rotc/corona.png";
 
 	colors[0]	  = "1.0 1.0 1.0 1.0";
-	colors[1]	  = "1.0 1.0 1.0 0.0";
-	colors[2]	  = "1.0 1.0 1.0 0.0";
+	colors[1]	  = "1.0 0.5 0.0 0.5";
+	colors[2]	  = "1.0 0.5 0.0 0.0";
 	sizes[0]		= 2.0;
-	sizes[1]		= 2.0;
-	sizes[2]		= 0.5;
+	sizes[1]		= 4.0;
+	sizes[2]		= 8.0;
 	times[0]		= 0.0;
-	times[1]		= 0.2;
+	times[1]		= 0.5;
 	times[2]		= 1.0;
 
-	allowLighting = true;
+	allowLighting = false;
 };
 
 datablock ParticleEmitterData(BlueAssaultRifleProjectileExplosion_CloudEmitter)
@@ -248,9 +248,9 @@ datablock ParticleData(BlueAssaultRifleProjectileExplosion_Dust)
 	colors[0]	  = "0.9 0.9 0.9 0.5";
 	colors[1]	  = "0.9 0.9 0.9 0.5";
 	colors[2]	  = "0.9 0.9 0.9 0.0";
-	sizes[0]		= 0.9;
-	sizes[1]		= 1.5;
-	sizes[2]		= 1.6;
+	sizes[0]		= 2;
+	sizes[1]		= 3;
+	sizes[2]		= 3;
 	times[0]		= 0.0;
 	times[1]		= 0.7;
 	times[2]		= 1.0;
@@ -321,18 +321,18 @@ datablock ParticleEmitterData(BlueAssaultRifleProjectileExplosion_SmokeEmitter)
 datablock ParticleData(BlueAssaultRifleProjectileExplosion_Sparks)
 {
 	dragCoefficient		= 1;
-	gravityCoefficient	= 0.0;
+	gravityCoefficient	= 5.0;
 	inheritedVelFactor	= 0.2;
 	constantAcceleration = 0.0;
-	lifetimeMS			  = 500;
-	lifetimeVarianceMS	= 350;
-	textureName			 = "share/textures/rotc/particle1.png";
-	colors[0]	  = "0.56 0.36 0.26 1.0";
-	colors[1]	  = "0.56 0.36 0.26 1.0";
-	colors[2]	  = "1.0 0.36 0.26 0.0";
-	sizes[0]		= 0.5;
-	sizes[1]		= 0.5;
-	sizes[2]		= 0.75;
+	lifetimeMS			  = 300;
+	lifetimeVarianceMS	= 150;
+	textureName			 = "share/textures/rotc/spark00.png";
+	colors[0]	  = "1 1 1 1";
+	colors[1]	  = "1 1 1 1";
+	colors[2]	  = "1 1 1 0";
+	sizes[0]		= 2.0;
+	sizes[1]		= 1.0;
+	sizes[2]		= 0.0;
 	times[0]		= 0.0;
 	times[1]		= 0.5;
 	times[2]		= 1.0;
@@ -341,13 +341,13 @@ datablock ParticleData(BlueAssaultRifleProjectileExplosion_Sparks)
 
 datablock ParticleEmitterData(BlueAssaultRifleProjectileExplosion_SparksEmitter)
 {
-	ejectionPeriodMS = 10;
+	ejectionPeriodMS = 5;
 	periodVarianceMS = 0;
-	ejectionVelocity = 4;
+	ejectionVelocity = 30;
 	velocityVariance = 1;
 	ejectionOffset	= 0.0;
 	thetaMin			= 0;
-	thetaMax			= 60;
+	thetaMax			= 180;
 	phiReferenceVel  = 0;
 	phiVariance		= 360;
 	overrideAdvances = false;
@@ -402,7 +402,7 @@ datablock ExplosionData(BlueAssaultRifleProjectileExplosion)
 	soundProfile = AssaultRifleProjectileExplosionSound;
 
 	lifetimeMS = 200;
- 
+
  	// shape...
 	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
 	faceViewer	  = false;
@@ -418,14 +418,14 @@ datablock ExplosionData(BlueAssaultRifleProjectileExplosion)
 	//debrisNum = 3;
 	//debrisVelocity = 50.0;
 	//debrisVelocityVariance = 10.0;
-	
+
 	particleEmitter = BlueAssaultRifleProjectileExplosion_CloudEmitter;
-	particleDensity = 25;
+	particleDensity = 10;
 	particleRadius = 0.5;
 
 	emitter[0] = BlueAssaultRifleProjectileExplosion_DustEmitter;
-	emitter[1] = 0; // BlueAssaultRifleProjectileExplosion_SmokeEmitter;
-	emitter[2] = 0; // BlueAssaultRifleProjectileExplosion_SparksEmitter;
+	emitter[1] = BlueAssaultRifleProjectileExplosion_SparksEmitter;
+	emitter[2] = 0; //BlueAssaultRifleProjectileExplosion_SmokeEmitter;
 
 	// Camera shake
 	shakeCamera = false;
@@ -437,7 +437,7 @@ datablock ExplosionData(BlueAssaultRifleProjectileExplosion)
 	// Dynamic light
 	lightStartRadius = 15;
 	lightEndRadius = 0;
-	lightStartColor = "0.0 0.8 1.0";
+	lightStartColor = "1.0 0.8 0.2";
 	lightEndColor = "0.0 0.0 0.0";
 };
 
@@ -699,98 +699,9 @@ datablock ExplosionData(BlueAssaultRifleProjectileHit)
 //-----------------------------------------------------------------------------
 // impact...
 
-datablock ParticleData(BlueAssaultRifleProjectileImpact_Smoke)
+datablock ExplosionData(BlueAssaultRifleProjectileImpact : BlueAssaultRifleProjectileExplosion)
 {
-	dragCoeffiecient	  = 0.4;
-	gravityCoefficient	= -0.4;
-	inheritedVelFactor	= 0.025;
-
-	lifetimeMS			  = 500;
-	lifetimeVarianceMS	= 200;
-
-	useInvAlpha =  true;
-
-	textureName = "share/textures/rotc/smoke_particle";
-
-	colors[0]	  = "1.0 1.0 1.0 0.5";
-	colors[1]	  = "1.0 1.0 1.0 0.0";
-	sizes[0]		= 1.0;
-	sizes[1]		= 1.0;
-	times[0]		= 0.0;
-	times[1]		= 1.0;
-
-	allowLighting = false;
+	emitter[2] = DefaultMediumWhiteDebrisEmitter;
 };
-
-datablock ParticleEmitterData(BlueAssaultRifleProjectileImpact_SmokeEmitter)
-{
-	ejectionOffset	= 0;
-
-	ejectionPeriodMS = 40;
-	periodVarianceMS = 0;
-
-	ejectionVelocity = 2.0;
-	velocityVariance = 0.1;
-
-	thetaMin			= 0.0;
-	thetaMax			= 60.0;
-
-	lifetimeMS		 = 100;
-
-	particles = "BlueAssaultRifleProjectileImpact_Smoke";
-};
-
-datablock DebrisData(BlueAssaultRifleProjectileImpact_Debris)
-{
-	// shape...
-	shapeFile = "share/shapes/rotc/misc/debris1.white.dts";
-
-	// bounce...
-	staticOnMaxBounce = true;
-	numBounces = 5;
-
-	// physics...
-	gravModifier = 2.0;
-	elasticity = 0.6;
-	friction = 0.1;
-
-	// spin...
-	minSpinSpeed = 60;
-	maxSpinSpeed = 600;
-
-	// lifetime...
-	lifetime = 4.0;
-	lifetimeVariance = 1.0;
-};
-
-datablock ExplosionData(BlueAssaultRifleProjectileImpact)
-{
-	soundProfile	= AssaultRifleProjectileImpactSound;
-
-	faceViewer	  = true;
-	explosionScale = "0.8 0.8 0.8";
-
-	lifetimeMS = 250;
-
-	emitter[0] = DefaultMediumWhiteDebrisEmitter;
-	emitter[1] = BlueAssaultRifleProjectileImpact_SmokeEmitter;
-
-	//debris = BlueAssaultRifleProjectileImpact_Debris;
-	//debrisThetaMin = 0;
-	//debrisThetaMax = 60;
-	//debrisNum = 2;
-	//debrisNumVariance = 1;
-	//debrisVelocity = 10.0;
-	//debrisVelocityVariance = 5.0;
-
-	// Dynamic light
-	lightStartRadius = 0.25;
-	lightEndRadius = 4;
-	lightStartColor = "0.0 0.0 1.0";
-	lightEndColor = "0.0 0.0 0.0";
-
-	shakeCamera = false;
-};
-
 
 
