@@ -136,6 +136,11 @@ datablock EtherformData(RedEtherform)
 
 };
 
+if($Server::Game.noshield)
+{
+	RedEtherform.damageBuffer = 0;
+}
+
 datablock EtherformData(BlueEtherform : RedEtherform)
 {
 	shapeFile = "share/shapes/rotc/vehicles/etherform/vehicle.blue.dts";

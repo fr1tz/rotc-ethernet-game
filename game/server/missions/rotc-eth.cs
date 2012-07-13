@@ -74,6 +74,11 @@ function initMission()
 			$Server::Game.tagMode = $Server::Game.nevertag;
 			$Server::Game.mutators = true;
 		}
+		else if(%mutator $= "noshield")
+		{
+			$Server::Game.noshield = true;
+			$Server::Game.mutators = true;
+		}
 		else if(%mutator $= "slowpoke")
 		{
 			$Server::Game.slowpoke = true;

@@ -4,6 +4,7 @@ $MissionInfo::InitScript = "game/server/missions/rotc-eth.cs";
 $MissionInfo::MutatorDesc = ""
 	@ "temptag\tPlayers are tagged from when they take damage until they're out of enemy LOS\n"
 	@ "nevertag\tPlayers are never tagged\n"
+	@ "noshield\tDeactivate CAT shields\n"
 	@ "slowpoke\tMakes the game slow\n"
 	@ "superblaster\tReplaces normal blaster with high-powered hitscan version\n"
 	@ "";

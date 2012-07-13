@@ -236,6 +236,8 @@ function ShapeBase::playInflictedDamageSound(%this)
 
 function ShapeBase::setShieldLevel(%this, %val)
 {
+   if($Server::Game.noshield)
+      return;
 	%this.setDamageBufferLevel(%val);
 	%this.getDataBlock().updateShieldFx(%this);
 }

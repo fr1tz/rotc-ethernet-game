@@ -266,6 +266,11 @@ if($Game::GameType != $Game::Ethernet)
 	RedStandardCat.groundConnectionBeam = "";
 }
 
+if($Server::Game.noshield)
+{
+	RedStandardCat.damageBuffer = 0;
+}
+
 function RedStandardCat::onAdd(%this, %obj)
 {
 	Parent::onAdd(%this, %obj);
