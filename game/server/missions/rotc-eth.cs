@@ -56,6 +56,7 @@ function initMission()
 	if(isObject($Server::Game))
 		$Server::Game.delete();
 	$Server::Game = new ScriptObject();
+   $Server::Game.mutators = 0;
 	$Server::Game.alwaystag = -1;
 	$Server::Game.nevertag  = 0;
 	$Server::Game.temptag   = 1;
@@ -67,17 +68,17 @@ function initMission()
 		if(%mutator $= "temptag")
 		{
 			$Server::Game.tagMode = $Server::Game.temptag;
-			$Server::Game.mutators = true;
+			$Server::Game.mutators++;
 		}
 		else if(%mutator $= "nevertag")
 		{
 			$Server::Game.tagMode = $Server::Game.nevertag;
-			$Server::Game.mutators = true;
+			$Server::Game.mutators++;
 		}
 		else if(%mutator $= "noshield")
 		{
 			$Server::Game.noshield = true;
-			$Server::Game.mutators = true;
+			$Server::Game.mutators++;
 		}
 		else if(%mutator $= "lowhealth")
 		{
@@ -88,16 +89,22 @@ function initMission()
 		{
 			$Server::Game.slowpoke = true;
 			$Server::Game.slowpokemod = 0.5;
-			$Server::Game.mutators = true;
+			$Server::Game.mutators++;
 		}
 		else if(%mutator $= "superblaster")
 		{
 			$Server::Game.superblaster = true;
-			$Server::Game.mutators = true;
+			$Server::Game.mutators++;
 		}
 	}
 	if($Server::Game.mutators)
-		$Server::MissionType = $Server::MissionType SPC "\c4*MOD*\co";
+	{
+		if($Server::Game.mutators > 1)
+			%str = "mutators";
+		else
+			%str = trim($Pref::Server::Mutators);
+		$Server::MissionType = $Server::MissionType SPC "\c4["@%str@"]\co";
+	}
 	executeGameScripts();
 	executeMissionScript();
 	executeEnvironmentScript();
