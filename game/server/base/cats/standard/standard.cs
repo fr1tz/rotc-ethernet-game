@@ -267,9 +267,10 @@ if($Game::GameType != $Game::Ethernet)
 }
 
 if($Server::Game.noshield)
-{
 	RedStandardCat.damageBuffer = 0;
-}
+
+if($Server::Game.lowhealth)
+	RedStandardCat.maxDamage = 50;
 
 function RedStandardCat::onAdd(%this, %obj)
 {

@@ -79,6 +79,11 @@ function initMission()
 			$Server::Game.noshield = true;
 			$Server::Game.mutators = true;
 		}
+		else if(%mutator $= "lowhealth")
+		{
+			$Server::Game.lowhealth = true;
+			$Server::Game.mutators++;
+		}
 		else if(%mutator $= "slowpoke")
 		{
 			$Server::Game.slowpoke = true;

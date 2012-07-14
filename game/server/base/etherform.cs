@@ -137,9 +137,10 @@ datablock EtherformData(RedEtherform)
 };
 
 if($Server::Game.noshield)
-{
 	RedEtherform.damageBuffer = 0;
-}
+
+if($Server::Game.lowhealth)
+	RedEtherform.maxDamage = 50;
 
 datablock EtherformData(BlueEtherform : RedEtherform)
 {
