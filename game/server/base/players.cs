@@ -744,8 +744,7 @@ function Player::updateGridConnection(%this)
 
 	if(%contact)
 	{
-		%newDt = 0.02;
-		
+		%newDt = 0.010;
 	}
 	else
 	{
