@@ -56,53 +56,71 @@ function initMission()
 	if(isObject($Server::Game))
 		$Server::Game.delete();
 	$Server::Game = new ScriptObject();
-   $Server::Game.mutators = 0;
+	$Server::Game.mutators = "";
 	$Server::Game.alwaystag = -1;
 	$Server::Game.nevertag  = 0;
 	$Server::Game.temptag   = 1;
 	$Server::Game.tagMode = $Server::Game.alwaystag;
 	$Server::Game.slowpokemod = 1.0;
+	%recognized = "";
 	for(%i = 0; %i < getWordCount($Pref::Server::Mutators); %i++)
 	{
 		%mutator = getWord($Pref::Server::Mutators, %i);
 		if(%mutator $= "temptag")
 		{
+		 %recognized = %mutator SPC %recognized;
 			$Server::Game.tagMode = $Server::Game.temptag;
-			$Server::Game.mutators++;
+			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
 		else if(%mutator $= "nevertag")
 		{
+		%recognized = %mutator SPC %recognized;
 			$Server::Game.tagMode = $Server::Game.nevertag;
-			$Server::Game.mutators++;
+			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
 		else if(%mutator $= "noshield")
 		{
+		%recognized = %mutator SPC %recognized;
 			$Server::Game.noshield = true;
-			$Server::Game.mutators++;
+			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
 		else if(%mutator $= "lowhealth")
 		{
+		%recognized = %mutator SPC %recognized;
 			$Server::Game.lowhealth = true;
-			$Server::Game.mutators++;
+			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
 		else if(%mutator $= "slowpoke")
 		{
+		%recognized = %mutator SPC %recognized;
 			$Server::Game.slowpoke = true;
 			$Server::Game.slowpokemod = 0.5;
-			$Server::Game.mutators++;
+			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
 		else if(%mutator $= "superblaster")
 		{
+		%recognized = %mutator SPC %recognized;
 			$Server::Game.superblaster = true;
-			$Server::Game.mutators++;
+			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
+		}
+		else if(%mutator $= "QUICKDEATH")
+		{
+		%recognized = %mutator SPC %recognized;
+			$Server::Game.noshield = true;
+			$Server::Game.lowhealth = true;
+			$Server::Game.mutators = $Server::Game.mutators SPC
+				"noshield" SPC "lowhealth";
 		}
 	}
-	if($Server::Game.mutators)
+	%recognized = trim(%recognized);
+	if(getWordCount(%recognized) > 0)
 	{
-		if($Server::Game.mutators > 1)
-			%str = "mutators";
+		// We have valid mutators...
+		$Server::Game.mutators = trim($Server::Game.mutators);
+		if(getWordCount(%recognized) == 1)
+			%str = %recognized;
 		else
-			%str = trim($Pref::Server::Mutators);
+			%str = "VARIANT";
 		$Server::MissionType = $Server::MissionType SPC "\c4["@%str@"]\co";
 	}
 	executeGameScripts();

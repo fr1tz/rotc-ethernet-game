@@ -14,9 +14,9 @@ function showMainMenu(%client)
 	{
 		%line1 = getRecord($MissionInfo::MutatorDesc, %i);
 		%mut1 = getWord(%line1, 0);
-		for(%j = 0; %j < getWordCount($Pref::Server::Mutators); %j++)
+		for(%j = 0; %j < getWordCount($Server::Game.mutators); %j++)
 		{
-			%mut2 = getWord($Pref::Server::Mutators, %j);
+			%mut2 = getWord($Server::Game.mutators, %j);
 			if(%mut2 $= %mut1)
 			{
 				%mutators = %mutators @ "\t\t * " @ %line1 @ "\n";
