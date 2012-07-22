@@ -1,13 +1,20 @@
 What's new?
 ===========
 
-Prototype 5.3+dev1
+Prototype 5.3+dev2
 ------------------
 
 - New tagging rules:
    - New default is that all players are tagged all the time.
    - New mutator to restore old rules: "temptag".
    - New mutator "nevertag": Players are never tagged.
+- Battle Rifle projectiles explode on impact instead of bouncing.
+- Repel Discs push harder depending on how low the enemy CAT's anchoring is.
+- CATs regain anchoring much slower. (Almost as slowly as they lose it)   
+- Other new mutators:
+   - "noshield": Deactivates CAT shields.
+   - "lowhealth": CATs have 50 instead of 75 health.
+   - "QUICKDEATH": Combo: noshield/lowhealth
 
 
 Prototype 5.3
