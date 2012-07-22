@@ -169,13 +169,13 @@ function RedRepelDisc::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 		%vec = VectorSub(%col.getPosition(), %source.getPosition());
 		%vec = VectorNormalize(%vec);
 		//%vec = getWord(%vec,0) SPC getWord(%vec,1) SPC "0.5";
-		%vec = VectorScale(%vec, 45);
+		%vec = VectorScale(%vec, 45 + 45*(1-%col.gridConnection));
+		%col.setVelocity(%vec);
 		//%col.impulse(%col.getPosition(), %vec); // don't ignore anchoring
 		//%col.applyImpulse(%col.getPosition(), %vec); // ignore anchoring
-		%col.setVelocity(%vec);
 
 		createExplosion(%this.explosion, %pos, %normal);
-   
+
         // give another disc-lock to the attacker
 //        %src =  %obj.getSourceObject();
 //        if(%src)
