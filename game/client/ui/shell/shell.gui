@@ -16,7 +16,7 @@ new GuiBitmapCtrl(Shell) {
    Visible = "1";
    hovertime = "1000";
    bitmap = "./pixmaps/root.png";
-   wrap = "1";
+   wrap = "0";
 
    new GuiBitmapCtrl() {
       canSaveDynamicFields = "0";
