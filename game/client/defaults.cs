@@ -13,6 +13,9 @@
 $Pref::Master[0] = "2:master.garagegames.com:28002";
 $Pref::Master[1] = "2:spica.dyndns.info:28002";
 
+// List of AIMS pubservers
+$Pref::AIMS::Server[0] = "spica.dyndns.info";
+
 // Default server prefs when starting a server via the GUI
 $Pref::Server::RegionMask = 2;
 $Pref::Server::Name = "Lazy Hoster's Funhouse";

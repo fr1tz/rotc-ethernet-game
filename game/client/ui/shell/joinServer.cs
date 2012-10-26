@@ -3,6 +3,11 @@
 // Copyright (C) 2008, mEthLab Interactive
 //------------------------------------------------------------------------------
 
+if(!isObject(XSLconn)) // EXtended Server List
+{
+	new TCPObject(XSLConn);
+}
+
 //----------------------------------------
 
 function JoinServerWindow::query(%this)
@@ -69,7 +74,8 @@ function onServerQueryStatus(%status, %msg, %value)
 			JS_statusText.setText(%msg);
 			JS_statusBar.setValue(0);
 			JS_serverList.clear();
-
+			JS_ServerList.extinfo = "";
+			XSLconn.connect($Pref::AIMS::Server[0] @ ":28003");
 		case "ping":
 			JS_statusText.setText("Ping Servers");
 			JS_statusBar.setValue(%value);
@@ -83,7 +89,7 @@ function onServerQueryStatus(%status, %msg, %value)
 			JS_queryMaster.setActive(true);
 			JS_queryStatus.setVisible(false);
 			JS_status.setText(%msg);
-			JoinServerWindow.update();
+			JoinServerWindow.fillServerList();
 	}
 }
 
@@ -129,18 +135,23 @@ function JoinServerWindow::onWake()
 
 function JoinServerWindow::cancel(%this)
 {
-	cancelServerQuery();
+	%this.cancelQuery();
 	JS_queryStatus.setVisible(false);
 	JS_queryLan.setActive(true);
 	JS_queryMaster.setActive(true);
 }
 
+function JoinServerWindow::cancelQuery(%this)
+{
+	cancelServerQuery();
+	XSLconn.disconnect();
+}
 
 //----------------------------------------
 
 function JoinServerWindow::join(%this)
 {
-	cancelServerQuery();
+	JoinServerWindow.cancelQuery();
 	%id = JS_ServerList.getSelectedId();
 
 	// The server info index is stored in the row along with the
@@ -160,7 +171,7 @@ function JoinServerWindow::join(%this)
 
 function JoinServerWindow::refreshServer(%this)
 {
-	cancelServerQuery();
+	JoinServerWindow.cancelQuery();
 	%id = JS_ServerList.getSelectedId();
 
 	// The server info index is stored in the row along with the
@@ -175,12 +186,13 @@ function JoinServerWindow::refreshServer(%this)
 
 function JoinServerWindow::exit(%this)
 {
-	cancelServerQuery();
+	JoinServerWindow.cancelQuery();
 	removeWindow(JoinServerWindow);
 }
 
 //----------------------------------------
-function JoinServerWindow::update(%this)
+
+function JoinServerWindow::fillServerList(%this)
 {
 	// Copy the servers into the server list.
 	
@@ -200,7 +212,7 @@ function JoinServerWindow::update(%this)
 		JS_ServerList.addRow(%i,
 			$ServerInfo::Name TAB
 			$ServerInfo::Ping TAB
-			$ServerInfo::PlayerCount @ "/" @ $ServerInfo::MaxPlayers TAB
+			$ServerInfo::PlayerCount @ "+? / " @ $ServerInfo::MaxPlayers TAB
 			$ServerInfo::MissionType TAB
          $ServerInfo::MissionName TAB
 			%i);  // ServerInfo index stored also
@@ -212,6 +224,34 @@ function JoinServerWindow::update(%this)
 	JS_ServerList.sort(1, true);
 	JS_ServerList.setSelectedRow(0);
 	JS_ServerList.scrollVisible(0);
+
+	%this.mergeExtInfo();
+}
+
+function JoinServerWindow::mergeExtInfo(%this)
+{
+	%idx1 = JS_ServerList.rowCount();
+	while(%idx1-- >= 0 )
+	{
+		%line1 = JS_ServerList.getRowText(%idx1);
+		%ps = getField(%line1, 2);
+		if(strstr(%ps, "?") == -1)
+			continue;
+		%name1 = getField(%line1, 0);
+		%idx2 = getRecordCount(JS_ServerList.extinfo);
+		while(%idx2-- >= 0)
+		{
+			%line2 = getRecord(JS_ServerList.extinfo, %idx2);
+			%name2 = getWords(%line2, 7);
+			if(%name1 !$= %name2)
+				continue;
+			%ps = strreplace(%ps, "?", getWord(%line2, 2));
+			%line1 = setField(%line1, 2, %ps);
+			%id = JS_ServerList.getRowId(%idx1);
+			JS_ServerList.setRowById(%id, %line1);
+			break;
+		}
+	}
 }
 
 //----------------------------------------
@@ -237,6 +277,26 @@ function JS_ServerList::onSelect(%this, %id, %text)
 	}
 }
 
-
 //----------------------------------------
 
+function XSLconn::onLine(%this, %line)
+{
+	//echo("XSLconn::onLine()");
+	JS_ServerList.extinfo = JS_ServerList.extinfo @ %line @ "\n";
+	JoinServerWindow::mergeExtInfo();
+}
+
+function XSLconn::onConnected(%this)
+{
+	XSLconn.send("rotc/serverlist+/v1/list\n");
+}
+
+function XSLconn::onConnectFailed(%this)
+{
+	error("XSLconn: Connection to" SPC $Pref::AIMS::Server[0] @ ":28003 failed!");
+}
+
+function XSLconn::onDisconnect(%this)
+{
+
+}
