@@ -58,7 +58,7 @@ function AssaultRiflePseudoProjectile::onAdd(%this, %obj)
 			initialPosition = %position;
 			sourceObject    = %player;
 			sourceSlot      = %slot;
-			client	        = %obj.client;
+			client          = %player.client;
 		};
 		MissionCleanup.add(%p);
 	}	

@@ -64,7 +64,7 @@ function GameConnection::showReceivedDamageInfo(%this, %died)
 		%t = %t @ srdi_h1("Last damage inflicted by");
 	%t = %t @ "\n";
 	if(%a.sourceClientName !$= "")
-		%t = %t @ srdi_h2(%a.sourceClientName @ "'s " @ %a.damageName);
+		%t = %t @ srdi_h2(%a.sourceClientName @ "'s " @ %n);
 	else
 		%t = %t @ srdi_h2(%n);
 	%t = %t @ "\n";
