@@ -75,6 +75,10 @@ function ProjectileData::onAdd(%this, %obj)
 	if(!isObject(%client))
 		return;
 
+   // Make sure ShotgunProjectiles have a "client" field.
+   if(%obj.getClassName() $= "ShotgunProjectile")
+      %obj.client = %client;
+
 	%a = %client.stats.fired;
 	%n = %this.stat;
 	arrayChangeElement(%a, "All", arrayGetValue(%a, "All") + 1);
