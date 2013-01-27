@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // Revenge Of The Cats: Ethernet
-// Copyright (C) 2008, mEthLab Interactive
+// Copyright notices are in the file named COPYING.
 //------------------------------------------------------------------------------
 
 // Game information used to query the master server

@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // Revenge Of The Cats: Ethernet
-// Copyright (C) 2008, mEthLab Interactive
+// Copyright notices are in the file named COPYING.
 //------------------------------------------------------------------------------
 
 function TeamsMenu_Link(%text, %arg1, %arg2, %arg3, %arg4)

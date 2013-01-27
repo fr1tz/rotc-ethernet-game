@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // Revenge Of The Cats: Ethernet
-// Copyright (C) 2008, mEthLab Interactive
+// Copyright notices are in the file named COPYING.
 //------------------------------------------------------------------------------
 
 // to get the Lighting Editor to work, common/server/lightingSystem.cs
