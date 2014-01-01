@@ -196,21 +196,21 @@ datablock ParticleData(RedAssaultRifleProjectileExplosion_Cloud)
 	gravityCoefficient	= 0;
 	inheritedVelFactor	= 0.025;
 
-	lifetimeMS			  = 200;
+	lifetimeMS			  = 250;
 	lifetimeVarianceMS	= 0;
 
 	useInvAlpha = false;
-//	spinRandomMin = -200.0;
-//	spinRandomMax =  200.0;
+	spinRandomMin = -200.0;
+	spinRandomMax =  200.0;
 
-	textureName = "share/textures/rotc/corona.png";
+	textureName = "share/textures/rotc/corona3.png";
 
 	colors[0]	  = "1.0 1.0 1.0 1.0";
-	colors[1]	  = "1.0 0.5 0.0 0.5";
-	colors[2]	  = "1.0 0.5 0.0 0.0";
-	sizes[0]		= 2.0;
-	sizes[1]		= 4.0;
-	sizes[2]		= 8.0;
+	colors[1]	  = "1.0 1.0 1.0 0.5";
+	colors[2]	  = "1.0 1.0 1.0 0.0";
+	sizes[0]		= 7.0;
+	sizes[1]		= 2.5;
+	sizes[2]		= 0.0;
 	times[0]		= 0.0;
 	times[1]		= 0.5;
 	times[2]		= 1.0;
@@ -240,7 +240,7 @@ datablock ParticleData(RedAssaultRifleProjectileExplosion_Dust)
 	gravityCoefficient	= -0.01;
 	inheritedVelFactor	= 0.0;
 	constantAcceleration = 0.0;
-	lifetimeMS			  = 1000;
+	lifetimeMS			  = 2000;
 	lifetimeVarianceMS	= 100;
 	useInvAlpha			 = true;
 	spinRandomMin		  = -90.0;
@@ -249,9 +249,9 @@ datablock ParticleData(RedAssaultRifleProjectileExplosion_Dust)
 	colors[0]	  = "0.9 0.9 0.9 0.5";
 	colors[1]	  = "0.9 0.9 0.9 0.5";
 	colors[2]	  = "0.9 0.9 0.9 0.0";
-	sizes[0]		= 2;
-	sizes[1]		= 3;
-	sizes[2]		= 3;
+	sizes[0]		= 0.9;
+	sizes[1]		= 1.5;
+	sizes[2]		= 1.6;
 	times[0]		= 0.0;
 	times[1]		= 0.7;
 	times[2]		= 1.0;
@@ -260,7 +260,7 @@ datablock ParticleData(RedAssaultRifleProjectileExplosion_Dust)
 
 datablock ParticleEmitterData(RedAssaultRifleProjectileExplosion_DustEmitter)
 {
-	ejectionPeriodMS = 10;
+	ejectionPeriodMS = 5;
 	periodVarianceMS = 0;
 	ejectionVelocity = 2.0;
 	velocityVariance = 0.0;
@@ -278,7 +278,7 @@ datablock ParticleEmitterData(RedAssaultRifleProjectileExplosion_DustEmitter)
 datablock ParticleData(RedAssaultRifleProjectileExplosion_Smoke)
 {
 	dragCoeffiecient	  = 0.4;
-	gravityCoefficient	= -0.5;	// rises slowly
+	gravityCoefficient	= -0.1;	// rises slowly
 	inheritedVelFactor	= 0.025;
 
 	lifetimeMS			  = 1250;
@@ -294,7 +294,7 @@ datablock ParticleData(RedAssaultRifleProjectileExplosion_Smoke)
 	colors[1]	  = "0.9 0.9 0.9 0.2";
 	colors[2]	  = "0.9 0.9 0.9 0.0";
 	sizes[0]		= 0.6;
-	sizes[1]		= 2.0;
+	sizes[1]		= 5.0;
 	sizes[2]		= 0.6;
 	times[0]		= 0.0;
 	times[1]		= 0.5;
@@ -319,21 +319,61 @@ datablock ParticleEmitterData(RedAssaultRifleProjectileExplosion_SmokeEmitter)
 	particles = "RedAssaultRifleProjectileExplosion_Smoke";
 };
 
+datablock ParticleData(RedAssaultRifleProjectileExplosion_Shrapnel)
+{
+	dragCoefficient		= 1;
+	gravityCoefficient	= 0.0;
+	windCoefficient	= 0.0;
+	inheritedVelFactor	= 0.2;
+	constantAcceleration = 0.0;
+	lifetimeMS			  = 1000;
+	lifetimeVarianceMS	= 0;
+	textureName			 = "share/textures/rotc/corona3.png";
+	colors[0]	  = "1 1 1 1.0";
+	colors[1]	  = "1 1 1 0.5";
+	colors[2]	  = "1 1 1 0.0";
+	sizes[0]		= 0.5;
+	sizes[1]		= 0.5;
+	sizes[2]		= 0.5;
+	times[0]		= 0.0;
+	times[1]		= 0.5;
+	times[2]		= 1.0;
+	allowLighting = false;
+	renderDot = false;
+};
+
+datablock ParticleEmitterData(RedAssaultRifleProjectileExplosion_ShrapnelEmitter)
+{
+	ejectionPeriodMS = 1;
+	periodVarianceMS = 0;
+	ejectionVelocity = 5;
+	velocityVariance = 0;
+	ejectionOffset	= 2.0;
+	thetaMin			= 0;
+	thetaMax			= 180;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	overrideAdvances = false;
+	orientParticles  = false;
+	lifetimeMS		 = 100;
+	particles = "RedAssaultRifleProjectileExplosion_Shrapnel";
+};
+
 datablock ParticleData(RedAssaultRifleProjectileExplosion_Sparks)
 {
 	dragCoefficient		= 1;
-	gravityCoefficient	= 5.0;
+	gravityCoefficient	= 0.0;
 	inheritedVelFactor	= 0.2;
 	constantAcceleration = 0.0;
-	lifetimeMS			  = 300;
-	lifetimeVarianceMS	= 150;
-	textureName			 = "share/textures/rotc/spark00.png";
-	colors[0]	  = "1 1 1 1";
-	colors[1]	  = "1 1 1 1";
-	colors[2]	  = "1 1 1 0";
-	sizes[0]		= 2.0;
-	sizes[1]		= 1.0;
-	sizes[2]		= 0.0;
+	lifetimeMS			  = 500;
+	lifetimeVarianceMS	= 350;
+	textureName			 = "share/textures/rotc/particle1.png";
+	colors[0]	  = "0.56 0.36 0.26 1.0";
+	colors[1]	  = "0.56 0.36 0.26 1.0";
+	colors[2]	  = "1.0 0.36 0.26 0.0";
+	sizes[0]		= 0.5;
+	sizes[1]		= 0.5;
+	sizes[2]		= 0.75;
 	times[0]		= 0.0;
 	times[1]		= 0.5;
 	times[2]		= 1.0;
@@ -342,13 +382,13 @@ datablock ParticleData(RedAssaultRifleProjectileExplosion_Sparks)
 
 datablock ParticleEmitterData(RedAssaultRifleProjectileExplosion_SparksEmitter)
 {
-	ejectionPeriodMS = 5;
+	ejectionPeriodMS = 10;
 	periodVarianceMS = 0;
-	ejectionVelocity = 30;
+	ejectionVelocity = 4;
 	velocityVariance = 1;
 	ejectionOffset	= 0.0;
 	thetaMin			= 0;
-	thetaMax			= 180;
+	thetaMax			= 60;
 	phiReferenceVel  = 0;
 	phiVariance		= 360;
 	overrideAdvances = false;
@@ -360,180 +400,45 @@ datablock ParticleEmitterData(RedAssaultRifleProjectileExplosion_SparksEmitter)
 datablock MultiNodeLaserBeamData(RedAssaultRifleProjectileExplosion_Debris_LaserTrail)
 {
 	hasLine = true;
-	lineColor	= "1.00 1.00 0.00 0.5";
+	lineColor	= "1.00 1.00 1.00 0.1";
 
 	hasInner = false;
-	innerColor = "1.00 1.00 0.00 0.3";
-	innerWidth = "0.20";
+	innerColor = "0.00 1.00 0.00 1.00";
+	innerWidth = "0.05";
 
-	hasOuter = false;
-	outerColor = "1.00 1.00 0.00 0.3";
-	outerWidth = "0.40";
+	hasOuter = true;
+	outerColor = "1.00 1.00 1.00 0.1";
+	outerWidth = "0.1";
 
-//	bitmap = "share/shapes/rotc/weapons/hegrenade/lasertrail";
-//	bitmapWidth = 0.1;
+//	bitmap = "share/shapes/rotc/weapons/assaultrifle/lasertrail";
+//	bitmapWidth = 0.25;
 
 	blendMode = 1;
-	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
-	fadeTime = 500;
+
+	windCoefficient = 0.0;
+
+	// node x movement...
+	nodeMoveMode[0]     = $NodeMoveMode::None;
+	nodeMoveSpeed[0]    = -0.002;
+	nodeMoveSpeedAdd[0] =  0.004;
+	// node y movement...
+	nodeMoveMode[1]     = $NodeMoveMode::None;
+	nodeMoveSpeed[1]    = -0.002;
+	nodeMoveSpeedAdd[1] =  0.004;
+	// node z movement...
+	nodeMoveMode[2]     = $NodeMoveMode::None;
+	nodeMoveSpeed[2]    = 0.5;
+	nodeMoveSpeedAdd[2] = 0.5;
+
+	//nodeDistance = 2;
+
+	fadeTime = 1000;
 };
 
-datablock DebrisData(RedAssaultRifleProjectileExplosion_Debris)
-{
-//	shapeFile = "share/shapes/rotc/weapons/hegrenade/grenade.dts";
-//	emitters[0] = GrenadeLauncherParticleEmitter;
-
-	laserTrail = RedAssaultRifleProjectileExplosion_Debris_LaserTrail;
-
-	// bounce...
-	numBounces = 3;
-	explodeOnMaxBounce = true;
-
-	// physics...
-	gravModifier = 5.0;
-	elasticity = 0.6;
-	friction = 0.1;
-
-	lifetime = 5.0;
-	lifetimeVariance = 0.02;
-};
-
-datablock ExplosionData(RedAssaultRifleProjectileExplosion)
-{
-	soundProfile = AssaultRifleProjectileExplosionSound;
-
-	lifetimeMS = 200;
- 
- 	// shape...
-	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
-	faceViewer	  = false;
-	playSpeed = 8.0;
-	sizes[0] = "0.2 0.2 0.2";
-	sizes[1] = "0.2 0.2 0.2";
-	times[0] = 0.0;
-	times[1] = 1.0;
-
-	//debris = 0; //RedAssaultRifleProjectileExplosion_Debris;
-	//debrisThetaMin = 0;
-	//debrisThetaMax = 180;
-	//debrisNum = 3;
-	//debrisVelocity = 50.0;
-	//debrisVelocityVariance = 10.0;
-	
-	particleEmitter = RedAssaultRifleProjectileExplosion_CloudEmitter;
-	particleDensity = 10;
-	particleRadius = 0.5;
-
-	emitter[0] = RedAssaultRifleProjectileExplosion_DustEmitter;
-	emitter[1] = RedAssaultRifleProjectileExplosion_SparksEmitter;
-	emitter[2] = 0; //RedAssaultRifleProjectileExplosion_SmokeEmitter;
-
-	// Camera shake
-	shakeCamera = false;
-	camShakeFreq = "10.0 6.0 9.0";
-	camShakeAmp = "20.0 20.0 20.0";
-	camShakeDuration = 0.5;
-	camShakeRadius = 20.0;
-
-	// Dynamic light
-	lightStartRadius = 15;
-	lightEndRadius = 0;
-	lightStartColor = "1.0 0.8 0.2";
-	lightEndColor = "0.0 0.0 0.0";
-};
-
-//-----------------------------------------------------------------------------
-// hit
-
-datablock ParticleData(RedAssaultRifleProjectileHit_Cloud)
+datablock ParticleData(RedAssaultRifleProjectileExplosion_Debris_Particle)
 {
 	dragCoeffiecient	  = 0.4;
-	gravityCoefficient	= 0;
-	inheritedVelFactor	= 0.025;
-
-	lifetimeMS			  = 600;
-	lifetimeVarianceMS	= 0;
-
-	useInvAlpha = false;
-	spinRandomMin = -200.0;
-	spinRandomMax =  200.0;
-
-	textureName = "share/textures/rotc/corona.png";
-
-	colors[0]	  = "1.0 0.5 0.0 1.0";
-	colors[1]	  = "1.0 0.5 0.0 0.0";
-	colors[2]	  = "1.0 0.5 0.0 0.0";
-	sizes[0]		= 2.0;
-	sizes[1]		= 2.0;
-	sizes[2]		= 0.5;
-	times[0]		= 0.0;
-	times[1]		= 0.2;
-	times[2]		= 1.0;
-
-	allowLighting = true;
-};
-
-datablock ParticleEmitterData(RedAssaultRifleProjectileHit_CloudEmitter)
-{
-	ejectionPeriodMS = 1;
-	periodVarianceMS = 0;
-
-	ejectionVelocity = 0.25;
-	velocityVariance = 0.25;
-
-	thetaMin			= 0.0;
-	thetaMax			= 90.0;
-
-	lifetimeMS		 = 100;
-
-	particles = "RedAssaultRifleProjectileHit_Cloud";
-};
-
-datablock ParticleData(RedAssaultRifleProjectileHit_Dust)
-{
-	dragCoefficient		= 1.0;
-	gravityCoefficient	= -0.01;
-	inheritedVelFactor	= 0.0;
-	constantAcceleration = 0.0;
-	lifetimeMS			  = 1000;
-	lifetimeVarianceMS	= 100;
-	useInvAlpha			 = true;
-	spinRandomMin		  = -90.0;
-	spinRandomMax		  = 500.0;
-	textureName			 = "share/textures/rotc/smoke_particle.png";
-	colors[0]	  = "0.9 0.9 0.9 0.5";
-	colors[1]	  = "0.9 0.9 0.9 0.5";
-	colors[2]	  = "0.9 0.9 0.9 0.0";
-	sizes[0]		= 0.9;
-	sizes[1]		= 1.5;
-	sizes[2]		= 1.6;
-	times[0]		= 0.0;
-	times[1]		= 0.7;
-	times[2]		= 1.0;
-	allowLighting = true;
-};
-
-datablock ParticleEmitterData(RedAssaultRifleProjectileHit_DustEmitter)
-{
-	ejectionPeriodMS = 10;
-	periodVarianceMS = 0;
-	ejectionVelocity = 2.0;
-	velocityVariance = 0.0;
-	ejectionOffset	= 0.0;
-	thetaMin			= 0;
-	thetaMax			= 180;
-	phiReferenceVel  = 0;
-	phiVariance		= 360;
-	overrideAdvances = false;
-	lifetimeMS		 = 50;
-	particles = "RedAssaultRifleProjectileHit_Dust";
-};
-
-
-datablock ParticleData(RedAssaultRifleProjectileHit_Smoke)
-{
-	dragCoeffiecient	  = 0.4;
-	gravityCoefficient	= -0.5;	// rises slowly
+	gravityCoefficient	= -0.1;	// rises slowly
 	inheritedVelFactor	= 0.025;
 
 	lifetimeMS			  = 1250;
@@ -558,87 +463,28 @@ datablock ParticleData(RedAssaultRifleProjectileHit_Smoke)
 	allowLighting = true;
 };
 
-datablock ParticleEmitterData(RedAssaultRifleProjectileHit_SmokeEmitter)
+datablock ParticleEmitterData(RedAssaultRifleProjectileExplosion_Debris_ParticleEmitter)
 {
-	ejectionPeriodMS = 2;
+	ejectionPeriodMS = 10;
 	periodVarianceMS = 0;
 
-	ejectionVelocity = 2.0;
-	velocityVariance = 0.25;
+	ejectionVelocity = 0.0;
+	velocityVariance = 0.0;
 
 	thetaMin			= 0.0;
 	thetaMax			= 180.0;
 
-	lifetimeMS		 = 250;
+	//lifetimeMS		 = 250;
 
-	particles = "RedAssaultRifleProjectileHit_Smoke";
+	particles = "RedAssaultRifleProjectileExplosion_Debris_Particle";
 };
 
-datablock ParticleData(RedAssaultRifleProjectileHit_Sparks)
+datablock DebrisData(RedAssaultRifleProjectileExplosion_Debris)
 {
-	dragCoefficient		= 1;
-	gravityCoefficient	= 0.0;
-	inheritedVelFactor	= 0.2;
-	constantAcceleration = 0.0;
-	lifetimeMS			  = 500;
-	lifetimeVarianceMS	= 350;
-	textureName			 = "share/textures/rotc/particle1.png";
-	colors[0]	  = "0.56 0.36 0.26 1.0";
-	colors[1]	  = "0.56 0.36 0.26 1.0";
-	colors[2]	  = "1.0 0.36 0.26 0.0";
-	sizes[0]		= 0.5;
-	sizes[1]		= 0.5;
-	sizes[2]		= 0.75;
-	times[0]		= 0.0;
-	times[1]		= 0.5;
-	times[2]		= 1.0;
-	allowLighting = false;
-};
+//	shapeFile = "~/data/weapons/hegrenade/grenade.dts";
+	emitters[0] = RedAssaultRifleProjectileExplosion_Debris_ParticleEmitter;
 
-datablock ParticleEmitterData(RedAssaultRifleProjectileHit_SparksEmitter)
-{
-	ejectionPeriodMS = 10;
-	periodVarianceMS = 0;
-	ejectionVelocity = 4;
-	velocityVariance = 1;
-	ejectionOffset	= 0.0;
-	thetaMin			= 0;
-	thetaMax			= 60;
-	phiReferenceVel  = 0;
-	phiVariance		= 360;
-	overrideAdvances = false;
-	orientParticles  = true;
-	lifetimeMS		 = 100;
-	particles = "RedAssaultRifleProjectileHit_Sparks";
-};
-
-datablock MultiNodeLaserBeamData(RedAssaultRifleProjectileHit_Debris_LaserTrail)
-{
-	hasLine = true;
-	lineColor	= "1.00 1.00 0.00 0.5";
-
-	hasInner = false;
-	innerColor = "1.00 1.00 0.00 0.3";
-	innerWidth = "0.20";
-
-	hasOuter = false;
-	outerColor = "1.00 1.00 0.00 0.3";
-	outerWidth = "0.40";
-
-//	bitmap = "share/shapes/rotc/weapons/hegrenade/lasertrail";
-//	bitmapWidth = 0.1;
-
-	blendMode = 1;
-	renderMode = $MultiNodeLaserBeamRenderMode::FaceViewer;
-	fadeTime = 500;
-};
-
-datablock DebrisData(RedAssaultRifleProjectileHit_Debris)
-{
-//	shapeFile = "share/shapes/rotc/weapons/hegrenade/grenade.dts";
-//	emitters[0] = GrenadeLauncherParticleEmitter;
-
-	laserTrail = RedAssaultRifleProjectileHit_Debris_LaserTrail;
+//	laserTrail = RedAssaultRifleProjectileExplosion_Debris_LaserTrail;
 
 	// bounce...
 	numBounces = 3;
@@ -649,16 +495,16 @@ datablock DebrisData(RedAssaultRifleProjectileHit_Debris)
 	elasticity = 0.6;
 	friction = 0.1;
 
-	lifetime = 5.0;
-	lifetimeVariance = 0.02;
+	lifetime = 0.1;
+	lifetimeVariance = 0.05;
 };
 
-datablock ExplosionData(RedAssaultRifleProjectileHit)
+datablock ExplosionData(RedAssaultRifleProjectileExplosion)
 {
-	soundProfile = AssaultRifleProjectileHitSound;
+	soundProfile = AssaultRifleProjectileExplosionSound;
 
 	lifetimeMS = 200;
- 
+
  	// shape...
 	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
 	faceViewer	  = false;
@@ -668,20 +514,22 @@ datablock ExplosionData(RedAssaultRifleProjectileHit)
 	times[0] = 0.0;
 	times[1] = 1.0;
 
-	//debris = 0; //RedAssaultRifleProjectileHit_Debris;
-	//debrisThetaMin = 0;
-	//debrisThetaMax = 180;
-	//debrisNum = 3;
-	//debrisVelocity = 50.0;
-	//debrisVelocityVariance = 10.0;
-	
-	particleEmitter = RedAssaultRifleProjectileHit_CloudEmitter;
+	debris = RedAssaultRifleProjectileExplosion_Debris;
+	debrisThetaMin = 0;
+	debrisThetaMax = 180;
+	debrisNum = 3;
+	debrisNumVariance = 0;
+	debrisVelocity = 50.0;
+	debrisVelocityVariance = 10.0;
+
+	particleEmitter = RedAssaultRifleProjectileExplosion_CloudEmitter;
 	particleDensity = 25;
 	particleRadius = 0.5;
 
-	emitter[0] = RedAssaultRifleProjectileHit_DustEmitter;
-	emitter[1] = 0; // RedAssaultRifleProjectileHit_SmokeEmitter;
-	emitter[2] = 0; // RedAssaultRifleProjectileHit_SparksEmitter;
+	emitter[0] = RedAssaultRifleProjectileExplosion_SmokeEmitter;
+	emitter[1] = RedAssaultRifleProjectileExplosion_ShrapnelEmitter;
+//	emitter[1] = RedAssaultRifleProjectileExplosion_DustEmitter;
+//	emitter[2] = RedAssaultRifleProjectileExplosion_SparksEmitter;
 
 	// Camera shake
 	shakeCamera = false;
@@ -691,19 +539,19 @@ datablock ExplosionData(RedAssaultRifleProjectileHit)
 	camShakeRadius = 20.0;
 
 	// Dynamic light
-	lightStartRadius = 15;
+	lightStartRadius = 7;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.8 0.2";
+	lightStartColor = "1.0 1.0 1.0";
 	lightEndColor = "0.0 0.0 0.0";
 };
 
 //-----------------------------------------------------------------------------
-// impact...
+// impact
 
 datablock ExplosionData(RedAssaultRifleProjectileImpact : RedAssaultRifleProjectileExplosion)
 {
+	soundProfile = AssaultRifleProjectileImpactSound;
+	debrisThetaMax = 60;
 	emitter[2] = DefaultMediumWhiteDebrisEmitter;
 };
-
-
 

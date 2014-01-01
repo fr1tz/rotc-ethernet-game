@@ -88,7 +88,7 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	explodesNearEnemiesRadius	= 2;
 	explodesNearEnemiesMask	  = $TypeMasks::PlayerObjectType;
 
-	//sound = AssaultRifleProjectileSound;
+	sound = AssaultRifleProjectileSound;
  
     projectileShapeName = "share/shapes/rotc/weapons/assaultrifle/projectile2.red.dts";
 
@@ -99,8 +99,8 @@ datablock ProjectileData(RedAssaultRifleProjectile1)
 	hitTeammateExplosion  = RedAssaultRifleProjectileExplosion;
 //	hitDeflectorExplosion = DiscDeflectedEffect;
 
-	missEnemyEffectRadius = 10;
-	missEnemyEffect = AssaultRifleProjectileMissedEnemyEffect;
+//	missEnemyEffectRadius = 10;
+//	missEnemyEffect = AssaultRifleProjectileMissedEnemyEffect;
 
 	particleEmitter = RedAssaultRifleProjectileParticleEmitter;
 	laserTrail[0]   = AssaultRifleProjectileLaserTrail;

@@ -10,36 +10,36 @@
 
 datablock AudioProfile(AssaultRifleFireSound)
 {
-	filename = "share/sounds/rotc/fire2.wav";
+	filename = "share/sounds/rotc/fire8.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
 
 datablock AudioProfile(AssaultRifleProjectileSound)
 {
-	filename = "share/sounds/rotc/charge5.wav";
+	filename = "share/sounds/rotc/slide3.wav";
 	description = AudioCloseLooping3D;
 	preload = true;	
 };
 
 datablock AudioProfile(AssaultRifleProjectileExplosionSound)
 {
-	filename = "share/sounds/rotc/explosion2.wav";
-	description = AudioDefault3D;
+	filename = "share/sounds/rotc/explosion13.wav";
+	description = AudioFar3D;
 	preload = true;	
 };
 
 datablock AudioProfile(AssaultRifleProjectileImpactSound)
 {
-	filename = "share/sounds/rotc/explosion2.wav";
-	description = AudioDefault3D;
+	filename = "share/sounds/rotc/explosion13.wav";
+	description = AudioFar3D;
 	preload = true;
 };
 
 datablock AudioProfile(AssaultRifleProjectileHitSound)
 {
-	filename = "share/sounds/rotc/explosion2.wav";
-	description = AudioDefault3D;
+	filename = "share/sounds/rotc/explosion13.wav";
+	description = AudioFar3D;
 	preload = true;
 };
 
