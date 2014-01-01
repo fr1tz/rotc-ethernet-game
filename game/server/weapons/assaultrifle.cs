@@ -275,7 +275,7 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		
 		stateName[3]                     = "Fire";
 		stateTransitionOnTimeout[3]      = "AfterFire";
-		stateTimeoutValue[3]             = 0.16;
+		stateTimeoutValue[3]             = 0.0;
 		stateFire[3]                     = true;
 		stateFireProjectile[3]           = AssaultRiflePseudoProjectile;
 		stateRecoil[3]                   = MediumRecoil;
@@ -288,6 +288,8 @@ datablock ShapeBaseImageData(RedAssaultRifleImage)
 		// after fire...
 		stateName[8]                     = "AfterFire";
 		stateTransitionOnTriggerUp[8]    = "KeepAiming";
+		stateTimeoutValue[8]             = 0.16;
+		stateWaitForTimeout[8]           = true;
 
 		stateName[4]                     = "KeepAiming";
 		stateTransitionOnNoAmmo[4]       = "NoAmmo";
