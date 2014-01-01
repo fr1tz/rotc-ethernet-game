@@ -247,7 +247,7 @@ datablock ShapeBaseImageData(RedBlaster2Image)
 		stateSequence[2]                 = "idle";
 
 		stateName[3]                     = "Fire";
-		stateTimeoutValue[3]             = 0.00;
+		stateTimeoutValue[3]             = 0.16;
 		stateTransitionOnTimeout[3]      = "AfterFire";
 		stateFire[3]                     = true;
 		stateFireProjectile[3]           = Blaster2PseudoProjectile;
