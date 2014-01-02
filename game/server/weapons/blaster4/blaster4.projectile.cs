@@ -52,7 +52,7 @@ datablock ShotgunProjectileData(RedBlaster4Projectile)
 	//laserTailLen			 = 10.0;
 
 	laserTrail[0]			= RedBlaster4ProjectileLaserTrail;
-	//laserTrail[1]			= RedBlaster4ProjectileLaserTrail;
+	laserTrail[1]			= RedBlaster4ProjectileLaserTrail;
 	smoothLaserTrail = false;
 
 	//particleEmitter	  = RedBlaster4ProjectileParticleEmitter;
@@ -123,7 +123,7 @@ datablock ShotgunProjectileData(BlueBlaster4Projectile : RedBlaster4Projectile)
 	//laserTail          = BlueBlaster4ProjectileLaserTail;
 
 	laserTrail[0]      = BlueBlaster4ProjectileLaserTrail;
-	//laserTrail[1]      = BlueBlaster4ProjectileLaserTrail;
+	laserTrail[1]      = BlueBlaster4ProjectileLaserTrail;
 
 	lightColor  = "0.0 0.0 1.0";
 };
