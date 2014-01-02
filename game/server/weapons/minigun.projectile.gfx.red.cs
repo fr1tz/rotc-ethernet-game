@@ -235,7 +235,7 @@ datablock ExplosionData(RedMinigunProjectileImpact)
 {
 	soundProfile = MinigunProjectileImpactSound;
 
-	lifetimeMS = 3000;
+	lifetimeMS = 300;
  
 	// shape...
 	//explosionShape = "share/shapes/rotc/effects/explosion5.green.dts";
@@ -258,11 +258,11 @@ datablock ExplosionData(RedMinigunProjectileImpact)
 	//debrisVelocityVariance = 5.0;
 
 	// Dynamic light
-	lightStartRadius = 0;
+	lightStartRadius = 4;
 	lightEndRadius = 0;
-	lightStartColor = "1.0 0.0 0.0";
-	lightEndColor = "0.0 0.0 0.0";
-    lightCastShadows = false;
+	lightStartColor = "1.0 0.0 0.0 1.0";
+	lightEndColor = "1.0 0.0 0.0 1.0";
+   lightCastShadows = false;
 
 	shakeCamera = false;
 };

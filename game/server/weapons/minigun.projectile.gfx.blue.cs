@@ -193,7 +193,7 @@ datablock ExplosionData(BlueMinigunProjectileImpact)
 {
 	soundProfile	= MinigunProjectileImpactSound;
 
-	lifetimeMS = 3000;
+	lifetimeMS = 300;
 
  	// shape...
 	//explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.blue.dts";
@@ -216,11 +216,11 @@ datablock ExplosionData(BlueMinigunProjectileImpact)
 	//debrisVelocityVariance = 5.0;
 
 	// Dynamic light
-	lightStartRadius = 0;
+	lightStartRadius = 4;
 	lightEndRadius = 0;
-	lightStartColor = "0.0 0.0 1.0";
-	lightEndColor = "0.0 0.0 0.0";
-    lightCastShadows = false;
+	lightStartColor = "0.0 0.0 1.0 1.0";
+	lightEndColor = "0.0 0.0 1.0 1.0";
+   lightCastShadows = false;
 
 	shakeCamera = false;
 };
