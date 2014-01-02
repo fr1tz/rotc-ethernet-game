@@ -46,9 +46,9 @@ datablock ProjectileData(RedMinigunProjectile)
 
 	laserTrail[0] = RedMinigunProjectileLaserTrail;
 
-	//particleEmitter	  = RedMinigunProjectileParticleEmitter;
+	particleEmitter = RedMinigunProjectileParticleEmitter;
 
-	muzzleVelocity   = 400 * $Server::Game.slowpokemod;
+	muzzleVelocity = 400 * $Server::Game.slowpokemod;
 	velInheritFactor = 1.0 * $Server::Game.slowpokemod;
 
 	isBallistic = false;
@@ -58,7 +58,11 @@ datablock ProjectileData(RedMinigunProjectile)
 	lifetime	= 3000;
 	fadeDelay	= 5000;
 
-	decals[0] = BulletHoleDecalOne;
+	//decals[0] = BulletHoleDecalOne;
+	decals[0] = SmashDecalOne;
+	decals[1] = SmashDecalTwo;
+	decals[2] = SmashDecalThree;
+	decals[3] = SmashDecalFour;
 
 	hasLight    = false;
 	lightRadius = 10.0;
@@ -88,6 +92,8 @@ datablock ProjectileData(BlueMinigunProjectile : RedMinigunProjectile)
 	laserTail          = BlueMinigunProjectileLaserTail;
 
 	laserTrail[0]      = BlueMinigunProjectileLaserTrail;
+ 
+	particleEmitter = BlueMinigunProjectileParticleEmitter;
 
 	lightColor  = "0.0 0.0 1.0";
 };

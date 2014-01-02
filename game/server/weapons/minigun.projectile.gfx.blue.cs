@@ -4,38 +4,80 @@
 //------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
+// projectile particle emitter
+
+datablock ParticleData(BlueMinigunProjectileParticleEmitter_Particles)
+{
+	dragCoefficient      = 1;
+	gravityCoefficient   = 0.0;
+	windCoefficient      = 0.0;
+	inheritedVelFactor	= 0.0;
+	constantAcceleration = 0.0;
+	lifetimeMS			   = 30;
+	lifetimeVarianceMS	= 0;
+	spinRandomMin        = 0;
+	spinRandomMax        = 0;
+	textureName			   = "share/textures/rotc/corona";
+	colors[0]            = "0.0 0.0 1.0 0.05";
+	colors[1]            = "0.0 0.0 1.0 0.0";
+	sizes[0]             = 5.0;
+	sizes[1]             = 5.0;
+	times[0]             = 0.0;
+	times[1]             = 1.0;
+	useInvAlpha          = false;
+	renderDot            = false;
+};
+
+datablock ParticleEmitterData(BlueMinigunProjectileParticleEmitter)
+{
+	ejectionPeriodMS = 1;
+	periodVarianceMS = 0;
+	ejectionVelocity = 0;
+	velocityVariance = 2.5;
+	ejectionOffset   = 0.0;
+	thetaMin         = 0;
+	thetaMax         = 0;
+	phiReferenceVel  = 0;
+	phiVariance      = 0;
+	overrideAdvances = false;
+	orientParticles  = false;
+	//lifetimeMS		 = 1000;
+	particles = "BlueMinigunProjectileParticleEmitter_Particles";
+};
+
+//-----------------------------------------------------------------------------
 // laser tail...
 
 datablock LaserBeamData(BlueMinigunProjectileLaserTail)
 {
 	hasLine = true;
-	lineStartColor	= "0.00 0.00 1.00 0.0";
-	lineBetweenColor = "0.00 0.00 1.00 0.25";
-	lineEndColor	  = "0.00 0.00 1.00 0.5";
+	lineStartColor	= "1 1 1 0.0";
+	lineBetweenColor = "1 1 1 0.5";
+	lineEndColor	  = "1 1 1 0.0";
 	lineWidth		  = 2.0;
 
-	hasInner = false;
-	innerStartColor = "0.00 0.00 0.90 0.5";
-	innerBetweenColor = "0.50 0.00 0.90 0.9";
-	innerEndColor = "1.00 1.00 1.00 0.9";
-	innerStartWidth = "0.05";
+	hasInner = true;
+	innerStartColor = "0 0 1 0.0";
+	innerBetweenColor = "0 0 1 1.0";
+	innerEndColor = "0 0 1 0.0";
+	innerStartWidth = "0.00";
 	innerBetweenWidth = "0.05";
-	innerEndWidth = "0.05";
+	innerEndWidth = "0.00";
 
-	hasOuter = false;
-	outerStartColor = "0.00 0.00 0.90 0.0";
-	outerBetweenColor = "0.50 0.00 0.90 0.8";
-	outerEndColor = "1.00 1.00 1.00 0.8";
-	outerStartWidth = "0.3";
-	outerBetweenWidth = "0.25";
-	outerEndWidth = "0.1";
-	
+	hasOuter = true;
+	outerStartColor = "0 0 1 0.0";
+	outerBetweenColor = "0 0 1 1.0";
+	outerEndColor = "0 0 1 0.0";
+	outerStartWidth = "0.05";
+	outerBetweenWidth = "0.2";
+	outerEndWidth = "0.05";
+
 	bitmap = "share/shapes/rotc/weapons/blaster/lasertail.blue";
 	bitmapWidth = 0.20;
-//	crossBitmap = "share/shapes/rotc/weapons/blaster/lasertail.blue.cross";
+//	crossBitmap = "share/shapes/rotc/weapons/blaster/lasertail.red.cross";
 //	crossBitmapWidth = 0.10;
 
-	betweenFactor = 0.5;
+	betweenFactor = 0.9;
 	blendMode = 1;
 };
 
