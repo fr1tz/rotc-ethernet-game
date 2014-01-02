@@ -87,7 +87,7 @@ datablock ProjectileData(BlueMinigunProjectile : RedMinigunProjectile)
 	hitEnemyExplosion    = BlueMinigunProjectileHit;
 	hitTeammateExplosion = BlueMinigunProjectileHit;
 
-	missEnemyEffect    = BlueMinigunProjectileMissedEnemyEffect;
+	//missEnemyEffect    = BlueMinigunProjectileMissedEnemyEffect;
 
 	laserTail          = BlueMinigunProjectileLaserTail;
 

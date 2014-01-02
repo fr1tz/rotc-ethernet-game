@@ -127,42 +127,42 @@ datablock MultiNodeLaserBeamData(BlueMinigunProjectileLaserTrail)
 
 datablock ParticleData(BlueMinigunProjectileImpact_Smoke)
 {
-	dragCoeffiecient	  = 0.4;
-	gravityCoefficient	= -0.4;
-	inheritedVelFactor	= 0.025;
+	dragCoeffiecient	  = 1.0;
+	gravityCoefficient	= -0.0;
+	inheritedVelFactor	= 0.0;
 
 	lifetimeMS			  = 500;
 	lifetimeVarianceMS	= 200;
 
-	useInvAlpha =  true;
+	useInvAlpha =  false;
 
-	textureName = "share/textures/rotc/smoke_particle";
+	textureName = "share/textures/rotc/corona4";
 
-	colors[0]	  = "0.5 0.0 1.0 1.0";
-	colors[1]	  = "0.5 0.0 1.0 0.0";
+	colors[0]	  = "1.0 1.0 1.0 1.0";
+	colors[1]	  = "0.0 0.0 1.0 0.0";
 	sizes[0]		= 1.0;
-	sizes[1]		= 1.0;
+	sizes[1]		= 0.0;
 	times[0]		= 0.0;
 	times[1]		= 1.0;
 
 	allowLighting = false;
+   renderDot = false;
 };
 
 datablock ParticleEmitterData(BlueMinigunProjectileImpact_SmokeEmitter)
 {
-	ejectionOffset	= 0;
-
-	ejectionPeriodMS = 40;
+	ejectionPeriodMS = 5;
 	periodVarianceMS = 0;
-
-	ejectionVelocity = 2.0;
-	velocityVariance = 0.1;
-
-	thetaMin			= 0.0;
-	thetaMax			= 60.0;
-
+	ejectionVelocity = 3;
+	velocityVariance = 0;
+	ejectionOffset	= 0.0;
+	thetaMin			= 80;
+	thetaMax			= 80;
+	phiReferenceVel  = 0;
+	phiVariance		= 360;
+	overrideAdvances = false;
+	orientParticles  = false;
 	lifetimeMS		 = 50;
-
 	particles = "BlueMinigunProjectileImpact_Smoke";
 };
 
@@ -288,32 +288,6 @@ datablock ExplosionData(BlueMinigunProjectileHit)
 	lightStartRadius = 2;
 	lightEndRadius = 0;
 	lightStartColor = "0.0 0.0 1.0";
-	lightEndColor = "0.0 0.0 0.0";
-    lightCastShadows = false;
-};
-
-//-----------------------------------------------------------------------------
-// missed enemy...
-
-datablock ExplosionData(BlueMinigunProjectileMissedEnemyEffect)
-{
-	soundProfile = MinigunProjectileMissedEnemySound;
-
-	// shape...
-	//explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
-	faceViewer	  = true;
-	playSpeed = 8.0;
-	sizes[0] = "0.07 0.07 0.07";
-	sizes[1] = "0.01 0.01 0.01";
-	times[0] = 0.0;
-	times[1] = 1.0;
-	
-	emitter[0] = BlueMinigunProjectileImpact_SmokeEmitter;
-
-	// dynamic light...
-	lightStartRadius = 0;
-	lightEndRadius = 0;
-	lightStartColor = "0.5 0.5 0.5";
 	lightEndColor = "0.0 0.0 0.0";
     lightCastShadows = false;
 };
