@@ -9,7 +9,6 @@ exec("./grenade2/exec.cs");
 exec("./sniperrifle.cs");
 exec("./assaultrifle.cs");
 exec("./grenadelauncher.cs");
-exec("./blaster.cs");
 exec("./blaster4/exec.cs");
 exec("./blaster5/exec.cs");
 exec("./minigun.cs");
