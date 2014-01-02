@@ -67,6 +67,22 @@ function StandardCat::useWeapon(%this, %obj, %nr)
       return;
    }
 
+   
+   // Switch weapon mode.
+   if(%nr == 7)
+   {
+      %image = %obj.getMountedImage(0);
+      // Blaster...
+      if(%image.getId() == RedBlaster4Image.getId())
+	      %obj.mountImage(RedBlaster5Image, 0, -1, true);
+      else if(%image.getId() == BlueBlaster4Image.getId())
+	      %obj.mountImage(BlueBlaster5Image, 0, -1, true);
+      else if(%image.getId() == RedBlaster5Image.getId())
+	      %obj.mountImage(RedBlaster4Image, 0, -1, true);
+      else if(%image.getId() == BlueBlaster5Image.getId())
+	      %obj.mountImage(BlueBlaster4Image, 0, -1, true);
+   }
+
 	// discs...
 	if($Game::GameType == $Game::Ethernet)
 	{
