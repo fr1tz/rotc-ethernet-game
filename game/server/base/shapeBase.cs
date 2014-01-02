@@ -302,14 +302,16 @@ function ShapeBaseData::onNewDataBlock(%this,%obj)
 function ShapeBaseData::onLeaveMissionArea(%this,%obj)
 {
 	//echo("left mission area");
-	%obj.setDamageDt(10,"LeftMissionArea");
+   if($Server::Game.oobdeath)
+	  %obj.setDamageDt(10,"LeftMissionArea");
 }
 
 // *** callback function: called by engine
 function ShapeBaseData::onEnterMissionArea(%this,%obj)
 {
 	//echo("entered mission area");
-	%obj.clearDamageDt();
+   if($Server::Game.oobdeath)
+      %obj.clearDamageDt();
 }
 
 // *** callback function: called by engine
