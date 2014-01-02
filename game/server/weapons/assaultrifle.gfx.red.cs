@@ -281,7 +281,7 @@ datablock ParticleData(RedAssaultRifleProjectileExplosion_Smoke)
 	gravityCoefficient	= -0.1;	// rises slowly
 	inheritedVelFactor	= 0.025;
 
-	lifetimeMS			  = 1250;
+	lifetimeMS			  = 2000;
 	lifetimeVarianceMS	= 0;
 
 	useInvAlpha =  true;
@@ -290,22 +290,22 @@ datablock ParticleData(RedAssaultRifleProjectileExplosion_Smoke)
 
 	textureName = "share/textures/rotc/smoke_particle.png";
 
-	colors[0]	  = "0.9 0.9 0.9 0.4";
-	colors[1]	  = "0.9 0.9 0.9 0.2";
-	colors[2]	  = "0.9 0.9 0.9 0.0";
-	sizes[0]		= 0.6;
-	sizes[1]		= 5.0;
+	colors[0]	  = "0.4 0.4 0.4 0.4";
+	colors[1]	  = "0.4 0.4 0.4 0.2";
+	colors[2]	  = "0.4 0.4 0.4 0.0";
+	sizes[0]		= 0.0;
+	sizes[1]		= 6.0;
 	sizes[2]		= 0.6;
 	times[0]		= 0.0;
 	times[1]		= 0.5;
 	times[2]		= 1.0;
 
-	allowLighting = true;
+	allowLighting = false;
 };
 
 datablock ParticleEmitterData(RedAssaultRifleProjectileExplosion_SmokeEmitter)
 {
-	ejectionPeriodMS = 2;
+	ejectionPeriodMS = 5;
 	periodVarianceMS = 0;
 
 	ejectionVelocity = 2.0;
@@ -314,7 +314,7 @@ datablock ParticleEmitterData(RedAssaultRifleProjectileExplosion_SmokeEmitter)
 	thetaMin			= 0.0;
 	thetaMax			= 180.0;
 
-	lifetimeMS		 = 250;
+	lifetimeMS		 = 50;
 
 	particles = "RedAssaultRifleProjectileExplosion_Smoke";
 };
@@ -348,14 +348,14 @@ datablock ParticleEmitterData(RedAssaultRifleProjectileExplosion_ShrapnelEmitter
 	periodVarianceMS = 0;
 	ejectionVelocity = 5;
 	velocityVariance = 0;
-	ejectionOffset	= 2.0;
+	ejectionOffset	= 1.0;
 	thetaMin			= 0;
 	thetaMax			= 180;
 	phiReferenceVel  = 0;
 	phiVariance		= 360;
 	overrideAdvances = false;
 	orientParticles  = false;
-	lifetimeMS		 = 100;
+	lifetimeMS		 = 50;
 	particles = "RedAssaultRifleProjectileExplosion_Shrapnel";
 };
 
@@ -506,21 +506,21 @@ datablock ExplosionData(RedAssaultRifleProjectileExplosion)
 	lifetimeMS = 200;
 
  	// shape...
-	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
-	faceViewer	  = false;
-	playSpeed = 8.0;
-	sizes[0] = "0.2 0.2 0.2";
-	sizes[1] = "0.2 0.2 0.2";
-	times[0] = 0.0;
-	times[1] = 1.0;
+	//explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
+	//faceViewer	  = false;
+	//playSpeed = 8.0;
+	//sizes[0] = "0.2 0.2 0.2";
+	//sizes[1] = "0.2 0.2 0.2";
+	//times[0] = 0.0;
+	//times[1] = 1.0;
 
-	debris = RedAssaultRifleProjectileExplosion_Debris;
-	debrisThetaMin = 0;
-	debrisThetaMax = 180;
-	debrisNum = 3;
-	debrisNumVariance = 0;
-	debrisVelocity = 50.0;
-	debrisVelocityVariance = 10.0;
+	//debris = RedAssaultRifleProjectileExplosion_Debris;
+	//debrisThetaMin = 0;
+	//debrisThetaMax = 180;
+	//debrisNum = 3;
+	//debrisNumVariance = 0;
+	//debrisVelocity = 50.0;
+	//debrisVelocityVariance = 10.0;
 
 	particleEmitter = RedAssaultRifleProjectileExplosion_CloudEmitter;
 	particleDensity = 25;
