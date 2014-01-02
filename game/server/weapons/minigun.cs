@@ -177,7 +177,10 @@ datablock ShapeBaseImageData(RedMinigunImage)
 
 function RedMinigunImage::getBulletSpread(%this, %obj)
 {
-   return 0.015;
+   %spread = (%obj.getCameraFov()*%obj.getCameraFov()*100) / (80000*100);
+   //echo(%spread);
+   return %spread;
+   //return 0.015;
 }
 
 function RedMinigunImage::onFire(%this, %obj, %slot)
@@ -192,7 +195,7 @@ function RedMinigunImage::onFire(%this, %obj, %slot)
 
 	//
 	%p = VectorAdd(%muzzlePoint, %muzzleVector);
-	%r = 0.005;
+	%r = 0.5 * %this.getBulletSpread(%obj);
 	for(%i = 0; %i < 3; %i++)
 	{
 		%rand = getRandom(10)-5;
