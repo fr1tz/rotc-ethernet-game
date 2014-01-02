@@ -37,13 +37,13 @@ function loadManual()
 {
 	constructManual("game/server/eth/help/index.idx");
 	// hack hack hack
-	if($Server::Game.superblaster)
-	{
-		%p = getManualPage("6.1");
-		%p.name = "Superblaster";
-		%p.file = "game/server/weapons/blaster3/blaster3.rml";
-		updateManualPage(%p);
-	}
+	//if($Server::Game.superblaster)
+	//{
+	//	%p = getManualPage("6.1");
+	//	%p.name = "Superblaster";
+	//	%p.file = "game/server/weapons/blaster3/blaster3.rml";
+	//	updateManualPage(%p);
+	//}
 }
 
 function loadHints()
@@ -95,12 +95,6 @@ function initMission()
 		%recognized = %mutator SPC %recognized;
 			$Server::Game.slowpoke = true;
 			$Server::Game.slowpokemod = 0.5;
-			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
-		}
-		else if(%mutator $= "superblaster")
-		{
-		%recognized = %mutator SPC %recognized;
-			$Server::Game.superblaster = true;
 			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
 		else if(%mutator $= "QUICKDEATH")

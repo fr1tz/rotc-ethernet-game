@@ -7,7 +7,6 @@ $MissionInfo::MutatorDesc = ""
 	@ "noshield\tDeactivate CAT shields\n"
 	@ "lowhealth\tCATs have 50 instead of 75 health\n"
 	@ "slowpoke\tMakes the game slow\n"
-	@ "superblaster\tReplaces normal blaster with high-powered hitscan version\n"
 	@ "QUICKDEATH\tCombo: noshield/lowhealth\n"
 	@ "";
 
