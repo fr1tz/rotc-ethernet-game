@@ -53,7 +53,7 @@ datablock ProjectileData(RedGrenade2)
 
 	hasLight	 = true;
 	lightRadius = 10.0;
-	lightColor  = "1.0 0.0 0.0";
+	lightColor  = "1.0 0.5 0.0";
 };
 
 function RedGrenade2::onAdd(%this, %obj)
@@ -106,7 +106,7 @@ datablock ProjectileData(BlueGrenade2 : RedGrenade2)
 	bounceExplosion = GreenGrenade2BounceEffect;
     particleEmitter = GreenGrenade2_ParticleEmitter;
 //	laserTrail[0] = GreenGrenade2_Lasertrail;
-	lightColor = "0.0 0.0 1.0";
+	lightColor = "0.0 1.0 0.0";
 };
 
 function BlueGrenade2::onAdd(%this, %obj)
