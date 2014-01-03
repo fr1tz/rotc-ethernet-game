@@ -81,6 +81,15 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 	      %obj.mountImage(RedBlaster4Image, 0, -1, true);
       else if(%image.getId() == BlueBlaster5Image.getId())
 	      %obj.mountImage(BlueBlaster4Image, 0, -1, true);
+      // Sniper Rifle...
+      else if(%image.getId() == RedSniperRifleImage.getId())
+	      %obj.mountImage(RedSniperRifle2Image, 0, -1, true);
+      else if(%image.getId() == BlueSniperRifleImage.getId())
+	      %obj.mountImage(BlueSniperRifle2Image, 0, -1, true);
+      else if(%image.getId() == RedSniperRifle2Image.getId())
+	      %obj.mountImage(RedSniperRifleImage, 0, -1, true);
+      else if(%image.getId() == BlueSniperRifle2Image.getId())
+	      %obj.mountImage(BlueSniperRifleImage, 0, -1, true);
    }
 
 	// discs...
@@ -126,9 +135,9 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 	else if(%wpn == $CatEquipment::SniperRifle)
 	{
 		if(%obj.getTeamId() == 1)
-			%obj.mountImage(RedSniperRifleImage, 0, -1, true);
+			%obj.mountImage(RedSniperRifle2Image, 0, -1, true);
 		else
-			%obj.mountImage(BlueSniperRifleImage, 0, -1, true);
+			%obj.mountImage(BlueSniperRifle2Image, 0, -1, true);
 	}
 	else if(%wpn == $CatEquipment::MiniGun)
 	{
