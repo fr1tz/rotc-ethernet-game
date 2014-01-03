@@ -135,9 +135,9 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 	else if(%wpn == $CatEquipment::SniperRifle)
 	{
 		if(%obj.getTeamId() == 1)
-			%obj.mountImage(RedSniperRifle2Image, 0, -1, true);
+			%obj.mountImage(RedSniperRifleImage, 0, -1, true);
 		else
-			%obj.mountImage(BlueSniperRifle2Image, 0, -1, true);
+			%obj.mountImage(BlueSniperRifleImage, 0, -1, true);
 	}
 	else if(%wpn == $CatEquipment::MiniGun)
 	{
