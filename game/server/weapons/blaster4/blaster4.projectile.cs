@@ -12,7 +12,7 @@ exec("./blaster4.projectile.gfx.blue.cs");
 
 datablock ShotgunProjectileData(RedBlaster4Projectile)
 {
-	stat = "blaster";
+	stat = "blaster4";
 
 	// script damage properties...
 	impactDamage       = 10;

@@ -48,7 +48,7 @@ function Blaster5PseudoProjectile::onAdd(%this, %obj)
 
 datablock ProjectileData(RedBlaster5Projectile)
 {
-	stat = "blaster";
+	stat = "blaster5";
 
 	// script damage properties...
 	impactDamage       = 120;

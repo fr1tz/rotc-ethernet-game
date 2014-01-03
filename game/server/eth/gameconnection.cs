@@ -38,10 +38,16 @@ function GameConnection::showReceivedDamageInfo(%this, %died)
 	%n = "?";
 	if(%a.damageName $= "blaster")
 		%n = "Blaster hit";
+	else if(%a.damageName $= "blaster4")
+		%n = "Blaster ray hit";
+	else if(%a.damageName $= "blaster5")
+		%n = "Blaster bolt hit";
 	else if(%a.damageName $= "br")
 		%n = "Battle Rifle explosion";
 	else if(%a.damageName $= "sniper")
-		%n = "Sniper ROFL hit";
+		%n = "Sniper ROFL high-power hit";
+	else if(%a.damageName $= "sniper2")
+		%n = "Sniper ROFL low-power hit";
 	else if(%a.damageName $= "minigun")
 		%n = "Minigun hit";
 	else if(%a.damageName $= "gl")
