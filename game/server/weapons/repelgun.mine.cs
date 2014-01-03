@@ -20,7 +20,7 @@ datablock ShapeBaseImageData(RedRepelGunMineLightImage)
 	
 	// light properties...
 	lightType = "PulsingLight";
-	lightColor = "1 0 0";
+	lightColor = "1 0.5 0";
 	lightTime = 200;
 	lightRadius = 6;
 	lightCastsShadows = false;
@@ -31,7 +31,7 @@ datablock ShapeBaseImageData(RedRepelGunMineLightImage)
 
 datablock ShapeBaseImageData(BlueRepelGunMineLightImage : RedRepelGunMineLightImage)
 {
-	lightColor = "0 0.0 1";
+	lightColor = "0 1 0";
 };
 
 //-----------------------------------------------------------------------------
