@@ -76,19 +76,19 @@ datablock ProjectileData(RedBlaster5Projectile)
 //	hitDeflectorExplosion = DiscDeflectedEffect;
 
 	missEnemyEffectRadius = 10;
-	missEnemyEffect = RedBlasterProjectileMissedEnemyEffect;
+	missEnemyEffect = RedBlaster5ProjectileMissedEnemyEffect;
 
 //	particleEmitter = RedBlaster5ProjectileParticleEmitter;
 //	laserTrail[0]   = Blaster5ProjectileLaserTrail;
 //	laserTrail[1]   = RedBlaster5ProjectileLaserTrail;
 	laserTail	    = RedBlaster5ProjectileLaserTail;
-	laserTailLen    = 3;
+	laserTailLen    = 1;
 
 	muzzleVelocity	= 0; // Handled by Blaster5PseudoProjectile
 	velInheritFactor = 0; // Handled by Blaster5PseudoProjectile
 
 	isBallistic			= true;
-	gravityMod			 = 1.0 * $Server::Game.slowpokemod;
+	gravityMod			 = 3.0 * $Server::Game.slowpokemod;
 
 	armingDelay    = 0;
 	lifetime			= 5000;
@@ -130,6 +130,7 @@ datablock ProjectileData(BlueBlaster5Projectile : RedBlaster5Projectile)
 	explosion = BlueBlaster5ProjectileImpact;
 	hitEnemyExplosion = BlueBlaster5ProjectileHit;
 	hitTeammateExplosion = BlueBlaster5ProjectileHit;
+	missEnemyEffect = BlueBlaster5ProjectileMissedEnemyEffect;
 	//particleEmitter = BlueBlaster5ProjectileParticleEmitter;
 	laserTail = BlueBlaster5ProjectileLaserTail;
 	lightColor  = "0.0 0.0 1.0";
@@ -180,7 +181,7 @@ datablock ShapeBaseImageData(RedBlaster5Image)
 	// script fields...
 	iconId = 7;
 	mainWeapon = true;
-	armThread  = "holdrifle";  // armThread to use when holding this weapon
+	armThread  = "aimrifle";  // armThread to use when holding this weapon
 	crosshair  = "assaultrifle"; // crosshair to display when holding this weapon
 	fireprojectile[0] = RedBlaster5Projectile;
 
@@ -190,7 +191,8 @@ datablock ShapeBaseImageData(RedBlaster5Image)
 		// preactivation...
 		stateName[0]                     = "Preactivate";
 		stateTransitionOnAmmo[0]         = "Ready";
-		stateTransitionOnNoAmmo[0]		 = "NoAmmo";
+		stateTransitionOnNoAmmo[0]       = "NoAmmo";
+      stateArmThread[0]                = "aimrifle";
 
 		// when mounted...
 		stateName[1]                     = "Activate";
@@ -204,7 +206,6 @@ datablock ShapeBaseImageData(RedBlaster5Image)
 		stateTransitionOnNoAmmo[2]       = "NoAmmo";
   		stateTransitionOnNotLoaded[2]    = "Disabled";
 		stateTransitionOnTriggerDown[2]  = "Fire";
-      stateArmThread[2]                = "holdrifle";
 		stateSpinThread[2]               = "FullSpeed";
 		stateSequence[2]                 = "idle";
 
@@ -216,7 +217,6 @@ datablock ShapeBaseImageData(RedBlaster5Image)
 		stateRecoil[3]                   = MediumRecoil;
 		stateAllowImageChange[3]         = false;
 		stateEjectShell[3]               = true;
-		stateArmThread[3]                = "aimblaster";
 		stateSequence[3]                 = "Fire";
 		stateSound[3]                    = Blaster5FireSound;
 
@@ -264,8 +264,8 @@ function RedBlaster5Image::onMount(%this, %obj, %slot)
 
    // Set up recoil
    %obj.setImageRecoilEnabled(%slot, true);
-   %obj.setImageCurrentRecoil(%slot, 150);
-   %obj.setImageMaxRecoil(%slot, 150);
+   %obj.setImageCurrentRecoil(%slot, 60);
+   %obj.setImageMaxRecoil(%slot, 60);
    %obj.setImageRecoilAdd(%slot, 0);
    %obj.setImageRecoilDelta(%slot, -0);
 }

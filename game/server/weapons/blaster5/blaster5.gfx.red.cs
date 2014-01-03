@@ -4,6 +4,9 @@
 //------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
+// projectile particle emitter
+
+//-----------------------------------------------------------------------------
 // laser tail...
 
 datablock LaserBeamData(RedBlaster5ProjectileLaserTail)
@@ -331,4 +334,28 @@ datablock ExplosionData(RedBlaster5ProjectileImpact : RedBlaster5ProjectileHit)
 	debrisNumVariance = 0;
 	debrisVelocity = 50.0;
 	debrisVelocityVariance = 10.0;
+};
+
+//-----------------------------------------------------------------------------
+// missed enemy...
+
+datablock ExplosionData(RedBlaster5ProjectileMissedEnemyEffect)
+{
+	soundProfile = Blaster5ProjectileMissedEnemySound;
+
+	// shape...
+	explosionShape = "share/shapes/rotc/effects/explosion2_white.dts";
+	faceViewer	  = true;
+	playSpeed = 8.0;
+	sizes[0] = "0.07 0.07 0.07";
+	sizes[1] = "0.01 0.01 0.01";
+	times[0] = 0.0;
+	times[1] = 1.0;
+
+	// dynamic light...
+	lightStartRadius = 0;
+	lightEndRadius = 2;
+	lightStartColor = "0.5 0.5 0.5";
+	lightEndColor = "0.0 0.0 0.0";
+    lightCastShadows = false;
 };
