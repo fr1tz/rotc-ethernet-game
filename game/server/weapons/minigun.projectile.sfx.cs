@@ -5,11 +5,11 @@
 
 datablock AudioProfile(MinigunProjectileImpactSound)
 {
-	//filename = "share/sounds/rotc/impact1.wav";
-   filename = "share/sounds/rotc/impact3-1.wav";
-	alternate[0] = "share/sounds/rotc/impact3-1.wav";
-	alternate[1] = "share/sounds/rotc/impact3-2.wav";
-	alternate[2] = "share/sounds/rotc/impact3-3.wav";
+	filename = "share/sounds/rotc/debris1.wav";
+// filename = "share/sounds/rotc/impact3-1.wav";
+//	alternate[0] = "share/sounds/rotc/impact3-1.wav";
+//	alternate[1] = "share/sounds/rotc/impact3-2.wav";
+//	alternate[2] = "share/sounds/rotc/impact3-3.wav";
 	description = AudioDefault3D;
 	preload = true;
 };
