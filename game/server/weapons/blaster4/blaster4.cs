@@ -213,8 +213,8 @@ function RedBlaster4Image::onMount(%this, %obj, %slot)
 
    // Set up recoil
    %obj.setImageRecoilEnabled(%slot, true);
-   %obj.setImageCurrentRecoil(%slot, 70);
-   %obj.setImageMaxRecoil(%slot, 70);
+   %obj.setImageCurrentRecoil(%slot, 60);
+   %obj.setImageMaxRecoil(%slot, 60);
    %obj.setImageRecoilAdd(%slot, 0);
    %obj.setImageRecoilDelta(%slot, -0);
 }
