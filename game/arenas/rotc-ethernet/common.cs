@@ -1,4 +1,4 @@
-$MissionInfo::Type = "\cp\c0ROTC:ETH\c2" SPC $GameVersionString @ "\co";
+$MissionInfo::Type = "\cp\c0ROTC:ETH\c6" SPC $GameVersionString @ "\co";
 $MissionInfo::TypeDesc = "Capture all the opposing team's zones to win.";
 $MissionInfo::InitScript = "game/server/missions/rotc-eth.cs";
 $MissionInfo::MutatorDesc = ""
