@@ -8,6 +8,7 @@
 // Code for the sniper rifle projectile
 //------------------------------------------------------------------------------
 
+exec("./sniperrifle.projectile.gfx.cs");
 exec("./sniperrifle.projectile.gfx.red.cs");
 exec("./sniperrifle.projectile.gfx.orange.cs");
 exec("./sniperrifle.projectile.gfx.blue.cs");
@@ -61,9 +62,9 @@ datablock ShotgunProjectileData(RedSniperProjectile)
     //laserTail	 = RedSniperProjectileLaserTail;
     //laserTailLen = 10.0;
 
-	//laserTrail[0] = OrangeSniperProjectileLaserTrailMissed;
-	laserTrail[1] = OrangeSniperProjectileLaserTrailHit;
-	laserTrail[2] = OrangeSniperProjectileLaserTrail; 
+	laserTrail[0] = OrangeSniperProjectileLaserTrailOne;
+	laserTrail[1] = OrangeSniperProjectileLaserTrailOne;
+	laserTrail[2] = OrangeSniperProjectileLaserTrailThree;
 
 	//particleEmitter = OrangeSniperProjectileEmitter;
 
@@ -77,7 +78,7 @@ datablock ShotgunProjectileData(RedSniperProjectile)
 	lifetime				= 5000;
 	fadeDelay			  = 5000;
 
-	decals[0] = BulletHoleDecalOne;
+	decals[0] = BulletHoleDecalTwo;
 
 	hasLight    = false;
 	lightRadius = 10.0;
@@ -124,9 +125,9 @@ datablock ShotgunProjectileData(BlueSniperProjectile : RedSniperProjectile)
 
 	fireExplosion = GreenSniperProjectileFireExplosion; // script field
 
-	//laserTrail[0] = GreenSniperProjectileLaserTrailMissed;
-	laserTrail[1] = GreenSniperProjectileLaserTrailHit;
-	laserTrail[2] = GreenSniperProjectileLaserTrail;
+	laserTrail[0] = GreenSniperProjectileLaserTrailOne;
+	laserTrail[1] = GreenSniperProjectileLaserTrailOne;
+	laserTrail[2] = GreenSniperProjectileLaserTrailThree;
 
 	lightColor  = "1.0 0.5 0.0";
 };
