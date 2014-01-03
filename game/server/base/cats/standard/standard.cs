@@ -43,8 +43,8 @@ datablock PlayerData(RedStandardCat)
 	shapeFxTexture[2] = "share/textures/rotc/barrier.green.png";
 	shapeFxTexture[3] = "share/textures/rotc/armor.white.png";
 	shapeFxTexture[4] = "share/textures/rotc/armor.orange.png";
-	shapeFxTexture[5] = "share/textures/rotc/bounce.orange.hit.png";
-	shapeFxTexture[6] = "share/textures/rotc/bounce.orange.miss.png";
+	shapeFxTexture[5] = "share/textures/rotc/bounce.red.hit.png";
+	shapeFxTexture[6] = "share/textures/rotc/bounce.red.miss.png";
 
 	shapeFxColor[0] = "1.0 1.0 1.0 1.0";  
 	shapeFxColor[1] = "1.0 0.0 0.0 1.0";  
@@ -283,8 +283,8 @@ datablock PlayerData(BlueStandardCat : RedStandardCat)
 	shapeFile = "share/shapes/rotc/players/standardcat/player2.blue.dts";
 	shapeFxTexture[2] = "share/textures/rotc/barrier.orange.png";
 	shapeFxTexture[4] = "share/textures/rotc/armor.cyan.png";
-	shapeFxTexture[5] = "share/textures/rotc/bounce.green.hit.png";
-	shapeFxTexture[6] = "share/textures/rotc/bounce.green.miss.png";
+	shapeFxTexture[5] = "share/textures/rotc/bounce.blue.hit.png";
+	shapeFxTexture[6] = "share/textures/rotc/bounce.blue.miss.png";
 	shapeFxColor[0] = "1.0 1.0 1.0 1.0";  
 	shapeFxColor[1] = "0.0 0.0 1.0 1.0";  
 	shapeFxColor[2] = "0.0 0.5 1.0 1.0";  

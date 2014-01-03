@@ -63,7 +63,7 @@ function StandardCat::useWeapon(%this, %obj, %nr)
    if(%nr == -17)
    {
 		if(%client.hasBounce)
-			deployRepel3(%obj);
+			deployRepel4(%obj);
       return;
    }
 

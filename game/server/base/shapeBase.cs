@@ -445,8 +445,8 @@ function ShapeBaseData::damage(%this, %obj, %sourceObject, %pos, %damage, %damag
    %bypassDamageBuffer = false;
    if(isObject(%sourceObject) && %sourceObject.getDataBlock().bypassDamageBuffer)
       %bypassDamageBuffer = true;
-   if(%damageType == $DamageType::BOUNCE)
-      %bypassDamageBuffer = true;
+   //if(%damageType == $DamageType::BOUNCE)
+   //   %bypassDamageBuffer = true;
 	if(%bypassDamageBuffer)
 	{
 		if(%obj.hasBarrier())
