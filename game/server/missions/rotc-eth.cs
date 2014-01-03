@@ -97,6 +97,12 @@ function initMission()
 			$Server::Game.slowpokemod = 0.5;
 			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
+		else if(%mutator $= "oobdeath")
+		{
+	   	%recognized = %mutator SPC %recognized;
+			$Server::Game.oobdeath = true;
+			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
+		}
 		else if(%mutator $= "QUICKDEATH")
 		{
 		%recognized = %mutator SPC %recognized;
