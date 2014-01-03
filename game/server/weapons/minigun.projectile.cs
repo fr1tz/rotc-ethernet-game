@@ -16,7 +16,7 @@ datablock ProjectileData(RedMinigunProjectile)
 
 	// script damage properties...
 	impactDamage       = 20;
-	impactImpulse      = 500;
+	impactImpulse      = 250;
 	splashDamage       = 0;
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
