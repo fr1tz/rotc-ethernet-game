@@ -9,10 +9,10 @@
 //------------------------------------------------------------------------------
 
 exec("./sniperrifle.projectile.gfx.cs");
-exec("./sniperrifle.projectile.gfx.red.cs");
+//exec("./sniperrifle.projectile.gfx.red.cs");
 exec("./sniperrifle.projectile.gfx.orange.cs");
-exec("./sniperrifle.projectile.gfx.blue.cs");
-exec("./sniperrifle.projectile.gfx.cyan.cs");
+//exec("./sniperrifle.projectile.gfx.blue.cs");
+//exec("./sniperrifle.projectile.gfx.cyan.cs");
 exec("./sniperrifle.projectile.gfx.green.cs");
 
 
