@@ -56,3 +56,93 @@ datablock ParticleData(TextureDummy_2)
 {
 	textureName	= "share/textures/rotc/screen.damage";
 };
+
+datablock ParticleData(TextureDummy_3)
+{
+	textureName	= "share/textures/rotc/bounce.blue.hit.png";
+};
+
+datablock ParticleData(TextureDummy_4)
+{
+	textureName	= "share/textures/rotc/bounce.blue.miss.png";
+};
+
+datablock ParticleData(TextureDummy_5)
+{
+	textureName	= "share/textures/rotc/bounce.red.hit.png";
+};
+
+datablock ParticleData(TextureDummy_6)
+{
+	textureName	= "share/textures/rotc/bounce.red.miss.png";
+};
+
+datablock ParticleData(TextureDummy_7)
+{
+	textureName	= "share/textures/rotc/laser1.blue.png";
+};
+
+datablock ParticleData(TextureDummy_8)
+{
+	textureName	= "share/textures/rotc/laser1.cyan.png";
+};
+
+datablock ParticleData(TextureDummy_9)
+{
+	textureName	= "share/textures/rotc/laser1.green.png";
+};
+
+datablock ParticleData(TextureDummy_10)
+{
+	textureName	= "share/textures/rotc/laser1.orange.png";
+};
+
+datablock ParticleData(TextureDummy_11)
+{
+	textureName	= "share/textures/rotc/laser1.red.png";
+};
+
+datablock ParticleData(TextureDummy_12)
+{
+	textureName	= "share/textures/rotc/laser1.violet.png";
+};
+
+datablock ParticleData(TextureDummy_13)
+{
+	textureName	= "share/textures/rotc/laser1.white.png";
+};
+
+datablock ParticleData(TextureDummy_14)
+{
+	textureName	= "share/textures/rotc/lasertrail2.blue.png";
+};
+
+datablock ParticleData(TextureDummy_15)
+{
+	textureName	= "share/textures/rotc/lasertrail2.red.png";
+};
+
+datablock ParticleData(TextureDummy_16)
+{
+	textureName	= "share/textures/rotc/smoke3.green.png";
+};
+
+datablock ParticleData(TextureDummy_17)
+{
+	textureName	= "share/textures/rotc/smoke3.orange.png";
+};
+
+datablock ParticleData(TextureDummy_18)
+{
+	textureName	= "share/textures/rotc/smoke3.png";
+};
+
+datablock ParticleData(TextureDummy_19)
+{
+	textureName	= "share/textures/rotc/smoke4.blue.png";
+};
+
+datablock ParticleData(TextureDummy_20)
+{
+	textureName	= "share/textures/rotc/smoke4.red.png";
+};
