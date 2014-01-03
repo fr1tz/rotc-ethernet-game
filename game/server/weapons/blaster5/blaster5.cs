@@ -52,7 +52,7 @@ datablock ProjectileData(RedBlaster5Projectile)
 
 	// script damage properties...
 	impactDamage       = 120;
-	impactImpulse      = 2500;
+	impactImpulse      = 5000;
 	splashDamage       = 0;
 	splashDamageRadius = 0;
 	splashImpulse      = 0;
