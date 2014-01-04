@@ -52,6 +52,10 @@ function WeaponImage::onMount(%this, %obj, %slot)
 //		if(%obj.mainspecialWeaponWeapon == $SpecialWeapon::SniperRifle)
 //			%obj.mountImage(HolsteredSniperRifleImage,2);
 //	}
+
+   // Setup HUD
+   if(%slot == 0 && isObject(%obj.client))
+      %obj.client.setupHud(%this);
 	
 	%obj.setArmThread(%this.armThread);
 	%obj.playAudio(0,WeaponSwitchSound);

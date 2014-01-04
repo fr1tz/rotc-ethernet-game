@@ -138,9 +138,6 @@ function GameConnection::onClientEnterGame(%this)
 	%this.topHudMenu = %this.initialTopHudMenu;
 	%this.updateTopHudMenuThread();
 
-   // Crosshair...
-   %this.setDefaultCrosshair();
- 	
 	//
 	// setup observer camera object...
 	//
@@ -226,6 +223,37 @@ function GameConnection::onClientLeaveGame(%this)
 
 //------------------------------------------------------------------------------
 
+function GameConnection::setupHud(%client, %weaponImage)
+{
+   //%client.setHudBackground(2, "", "", "", 0, 0);
+   //%client.setHudBackground(3, "", "", "", 0, 0);
+   
+   %ctrl = %client.getControlObject();
+   if(!isObject(%ctrl))
+      return;
+      
+   if(%weaponImage $= "")
+      %weaponImage = %ctrl.getMountedImage(0);
+
+   if(isObject(%weaponImage))
+   {
+      if(%weaponImage.isMethod("setupHud"))
+      {
+         %weaponImage.setupHud(%ctrl, %slot);
+      }
+      else
+      {
+         commandToClient(%client, 'Crosshair', 0);
+         commandToClient(%client, 'Crosshair', 2, 2);
+         //commandToClient(%client, 'Crosshair', 3, 2, 20);
+         commandToClient(%client, 'Crosshair', 5, "./rotc/ch1");
+         commandToClient(%client, 'Crosshair', 1);
+      }
+   }
+}
+
+//------------------------------------------------------------------------------
+
 function GameConnection::onRecordingDemo(%this, %isRecording)
 {
    if(!%isRecording)
@@ -234,7 +262,7 @@ function GameConnection::onRecordingDemo(%this, %isRecording)
    //echo(%this.getId() SPC "started recording a demo");
 
    %this.updateHudColors();
-   %this.setDefaultCrosshair();
+   %this.setupHud();
 }
 
 //------------------------------------------------------------------------------
@@ -302,17 +330,6 @@ function GameConnection::updateHudColors(%this)
 		%c2 =  %v SPC %v SPC %v;
 	}
 	commandToClient(%this,'SetHudColor', %c1, %c2);	
-}
-
-//------------------------------------------------------------------------------
-
-function GameConnection::setDefaultCrosshair(%this)
-{
-   commandToClient(%this, 'Crosshair', 0);
-   commandToClient(%this, 'Crosshair', 2, 2);
-   //commandToClient(%this, 'Crosshair', 3, 2, 20);
-   commandToClient(%this, 'Crosshair', 5, "./rotc/ch1");
-   commandToClient(%this, 'Crosshair', 1);
 }
 
 //------------------------------------------------------------------------------

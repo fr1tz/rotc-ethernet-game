@@ -25,7 +25,8 @@ function EtherformData::onAdd(%this, %obj)
 	// start singing...
 	%obj.playAudio(1, EtherformSingSound);
 
-	// Make sure grenade ammo bar is not visible...
+	// Setup HUD
+   commandToClient(%obj.client, 'Crosshair', 0);
 	messageClient(%obj.client, 'MsgGrenadeAmmo', "", 1);
 
 	// lights...
