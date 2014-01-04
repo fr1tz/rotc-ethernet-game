@@ -14,6 +14,13 @@ datablock AudioProfile(MinigunProjectileImpactSound)
 	preload = true;
 };
 
+datablock AudioProfile(MinigunProjectileHitSound)
+{
+	filename = "share/shapes/rotc/vehicles/etherform/sound.impact.wav";
+	description = AudioDefault3D;
+	preload = true;
+};
+
 datablock AudioProfile(MinigunProjectileFlybySound)
 {
 	filename = "share/sounds/rotc/flyby1.wav";
