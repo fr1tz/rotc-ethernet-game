@@ -350,7 +350,7 @@ datablock ParticleData(RedMinigunProjectileMissedEnemyEffect_CloudParticles)
 
 	textureName = "share/textures/rotc/corona";
 
-	colors[0]	  = "1.0 0.0 1.0 1.0";
+	colors[0]	  = "1.0 0.0 1.0 0.25";
 	colors[1]	  = "1.0 0.0 1.0 0.0";
 	sizes[0]		= 1.0;
 	sizes[1]		= 0.0;
