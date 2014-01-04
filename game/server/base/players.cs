@@ -719,12 +719,12 @@ function Player::updateGridConnection(%this)
 	
 	%updateFx = false;
     
-	if(!isObject(%this.zCurrentZone))
-	{
-		%this.gridConnection = 0;
-		%this.shapeFxSetActive($PlayerShapeFxSlot::GridConnection, false, false);
-		return;
-	}      
+//	if(!isObject(%this.zCurrentZone))
+//	{
+//		%this.gridConnection = 0;
+//		%this.shapeFxSetActive($PlayerShapeFxSlot::GridConnection, false, false);
+//		return;
+//	}
 	
 	if(%this.getBodyPose() == $PlayerBodyPose::Sliding)
 	{
