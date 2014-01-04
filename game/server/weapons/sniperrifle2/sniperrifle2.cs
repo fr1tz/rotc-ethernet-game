@@ -193,9 +193,9 @@ function RedSniperRifle2Image::setupHud(%this, %obj, %slot)
 
    commandToClient(%client, 'Crosshair', 0);
    //commandToClient(%client, 'Crosshair', 2, 2);
-   commandToClient(%client, 'Crosshair', 3, 2, 5);
-   //commandToClient(%client, 'Crosshair', 5, "./rotc/ch3");
-   commandToClient(%client, 'Crosshair', 6, "./rotc/ch.static.2b", 128, 128);
+   commandToClient(%client, 'Crosshair', 3, 3, 3);
+   commandToClient(%client, 'Crosshair', 5, "./rotc/ch2");
+   //commandToClient(%client, 'Crosshair', 6, "./rotc/ch2", 128, 128);
    commandToClient(%client, 'Crosshair', 1);
 }
 

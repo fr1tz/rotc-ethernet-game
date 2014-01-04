@@ -199,10 +199,12 @@ function RedSniperRifleImage::setupHud(%this, %obj, %slot)
 
    commandToClient(%client, 'Crosshair', 0);
    //commandToClient(%client, 'Crosshair', 2, 2);
-   commandToClient(%client, 'Crosshair', 3, 2, 5);
-   //commandToClient(%client, 'Crosshair', 5, "./rotc/ch3");
-   commandToClient(%client, 'Crosshair', 6, "./rotc/ch.static.2a", 128, 128);
+   commandToClient(%client, 'Crosshair', 3, 8, 8);
+   commandToClient(%client, 'Crosshair', 5, "./rotc/ch2");
+   //commandToClient(%client, 'Crosshair', 6, "./rotc/ch.static.2a", 128, 128);
    commandToClient(%client, 'Crosshair', 1);
+   
+   %client.setHudMenuC(0, "<bitmap:share/hud/>", 1, true);
 }
 
 function RedSniperRifleImage::getBulletSpread(%this, %obj)

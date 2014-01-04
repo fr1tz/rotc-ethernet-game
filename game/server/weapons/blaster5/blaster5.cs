@@ -305,8 +305,8 @@ function RedBlaster5Image::setupHud(%this, %obj, %slot)
    commandToClient(%client, 'Crosshair', 0);
    //commandToClient(%client, 'Crosshair', 2, 2);
    commandToClient(%client, 'Crosshair', 3, 2, 10);
-   //commandToClient(%client, 'Crosshair', 5, "./rotc/ch3");
-   commandToClient(%client, 'Crosshair', 6, "./rotc/ch.static.1", 128, 128);
+   commandToClient(%client, 'Crosshair', 5, "./rotc/ch2");
+   //commandToClient(%client, 'Crosshair', 6, "./rotc/ch.static.1", 128, 128);
    commandToClient(%client, 'Crosshair', 1);
 
    return;
