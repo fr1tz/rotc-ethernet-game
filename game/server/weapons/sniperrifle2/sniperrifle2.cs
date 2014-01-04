@@ -193,7 +193,7 @@ function RedSniperRifle2Image::setupHud(%this, %obj, %slot)
 
    commandToClient(%client, 'Crosshair', 0);
    //commandToClient(%client, 'Crosshair', 2, 2);
-   //commandToClient(%client, 'Crosshair', 3, 2, 5);
+   commandToClient(%client, 'Crosshair', 3, 2, 5);
    //commandToClient(%client, 'Crosshair', 5, "./rotc/ch3");
    commandToClient(%client, 'Crosshair', 6, "./rotc/ch.static.2b", 128, 128);
    commandToClient(%client, 'Crosshair', 1);
@@ -201,7 +201,7 @@ function RedSniperRifle2Image::setupHud(%this, %obj, %slot)
 
 function RedSniperRifle2Image::getBulletSpread(%this, %obj)
 {
-   return 0.04;
+   return 0.12;
 }
 
 function RedSniperRifle2Image::onReady(%this, %obj, %slot)
