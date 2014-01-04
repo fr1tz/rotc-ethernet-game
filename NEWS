@@ -1,20 +1,44 @@
 What's new?
 ===========
 
-Prototype 5.3+dev2
-------------------
+Prototype 5.4
+-------------
 
+Released: Jan. 4, 2014
+
+- CATs no longer lose health while not inside a zone, but
+  old behavior can be restored with new "oobdeath" mutator.
+- Add alternative fire modes for Blaster and Sniper ROFL.
+- B.O.U.N.C.E. has been moved back from the orange/green
+  into the red/blue weapon category.
+- Repel Discs push harder depending on how low the target CAT's anchoring is.
+- CATs regain anchoring much slower. (Almost as slowly as they lose it)  
+- Lots of small changes to weapon visuals and sounds.   
+- Sniper ROFL changes:
+   - Add alternative fire mode: Low damage but bypasses
+     barriers instead of shields (red/blue weapon category).
+- Blaster changes:
+   - Add alternative fire mode: Fire single slow but powerful bolt.
+   - Revert back to using hitscan projectiles for default fire mode.
+   - Force slow firing rate but add ability to fire immediately after
+     being equipped.     
+- Minigun changes:
+   - Change bullet spread depending on zoom level.
+   - Reduce impact impulse by half.
+- Battle Rifle changes:
+   - Projectiles explode on impact instead of bouncing.
+   - Add minimum pause of 160 ms between shots.
 - New tagging rules:
    - New default is that all players are tagged all the time.
    - New mutator to restore old rules: "temptag".
    - New mutator "nevertag": Players are never tagged.
-- Battle Rifle projectiles explode on impact instead of bouncing.
-- Repel Discs push harder depending on how low the enemy CAT's anchoring is.
-- CATs regain anchoring much slower. (Almost as slowly as they lose it)   
 - Other new mutators:
    - "noshield": Deactivates CAT shields.
    - "lowhealth": CATs have 50 instead of 75 health.
    - "QUICKDEATH": Combo: noshield/lowhealth
+- Removed "superblaster" mutator.   
+- Removed sound files that use third-party assets with NC licenses. 
+- Bugfixes & other minor improvements
 
 
 Prototype 5.3
