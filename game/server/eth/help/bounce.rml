@@ -5,7 +5,7 @@
 
 Pressing @bind51 activates the burst. This will drain 50% of the CAT's energy if no enemy entities are nearby.
 
-If enemy CATs are close, their momentum will be reversed and they will take some damage depending on how fast they were going. The burst will also activate their <a:cmd Manual 4.3>barrier</a>, making them immune to immediate follow-up bursts.
+If enemy CATs are close, their momentum will be reversed and they will take some damage depending on how fast they were going.
 Because it uses an enemy CAT's momentum against it, a B.O.U.N.C.E. is most effective against fast-moving CATs.
 
 If enemy projectiles are close, they will be anihilated. Although in practice this is only really useful to defend a position against <a:cmd Manual 7.3>Mine Launcher</a> spam (pictured above).

@@ -2,15 +2,37 @@
 #size 27
 <lmargin:120><bitmap:share/manual/rotc/wpn.blaster><sbreak>
 <lmargin:5>The Blaster is a powerful but tricky weapon. 
-It always fires 9 shots at once. Because of this, it uses a lot of energy and has a huge recoil, but is able to deal up to 90 points of damage at once. Note that the seemingly random distribution of the shots is just eyecandy, there's no randomness involved in determining the amount of shots that hit. The properties of an individual Blaster shot:
+It uses a lot of energy and has a huge recoil, but is able to deal up to 120 points of damage at once.
+
+<spush><font:NovaSquare:24>Default fire mode (@bind48 to switch)<spop>
+
+Fires 9 instant-hit rays at once. 
+Note that the seemingly random distribution of the rays is just eyecandy, there's no randomness involved in determining the amount of rays that hit. 
+
+The properties of a single Blaster ray:
 <sbreak><tab:15,180>
 	Bypasses	<spush><font:Arial Bold:16>Barrier<spop>
-	Energy cost	<spush><font:Arial Bold:16>4<spop>
+	Energy cost	<spush><font:Arial Bold:16>3<spop>
 	Impact damage	<spush><font:Arial Bold:16>10<spop>
-	Impact impulse	<spush><font:Arial Bold:16>400<spop>
+	Impact impulse	<spush><font:Arial Bold:16>500<spop>
 	Splash damage	<spush><font:Arial Bold:16>-<spop>
 	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
 	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
 	Velocity inheritance	<spush><font:Arial Bold:16>0% (instant hit)<spop>	
 	Accuracy	<spush><font:Arial Bold:16>Even distribution among targets in fire cone<spop>
+<sbreak>
+
+<spush><font:NovaSquare:24>Alt fire mode (@bind48 to switch)<spop>
+
+Fires single slow-moving but powerful projectile.
+<sbreak><tab:15,180>
+	Bypasses	<spush><font:Arial Bold:16>Barrier<spop>
+	Energy cost	<spush><font:Arial Bold:16>36<spop>
+	Impact damage	<spush><font:Arial Bold:16>120<spop>
+	Impact impulse	<spush><font:Arial Bold:16>5000<spop>
+	Splash damage	<spush><font:Arial Bold:16>-<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Velocity inheritance	<spush><font:Arial Bold:16>50%<spop>	
+	Accuracy	<spush><font:Arial Bold:16>Pinpoint<spop>
 <sbreak>
