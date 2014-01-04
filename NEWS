@@ -20,6 +20,7 @@ Released: Jan. 4, 2014
 - Blaster changes:
    - Add alternative fire mode: Fire single slow but powerful bolt.
    - Revert back to using hitscan projectiles for default fire mode.
+   - Reduce energy cost of default fire mode.
    - Force slow firing rate but add ability to fire immediately after
      being equipped.     
 - Minigun changes:
