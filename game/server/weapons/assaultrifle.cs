@@ -331,6 +331,25 @@ function RedAssaultRifleImage::onMount(%this, %obj, %slot)
    %obj.setImageRecoilDelta(%slot, -0);
 }
 
+function RedAssaultRifleImage::setupHud(%this, %obj, %slot)
+{
+   %client = %obj.client;
+   if(!isObject(%client))
+      return;
+
+   commandToClient(%client, 'Crosshair', 0);
+   //commandToClient(%client, 'Crosshair', 2, 2);
+   commandToClient(%client, 'Crosshair', 3, 2, 10);
+   //commandToClient(%client, 'Crosshair', 5, "./rotc/ch3");
+   commandToClient(%client, 'Crosshair', 6, "./rotc/ch.static.1", 128, 128);
+   commandToClient(%client, 'Crosshair', 1);
+}
+
+function RedAssaultRifleImage::getBulletSpread(%this, %obj)
+{
+   return 0.04;
+}
+
 //------------------------------------------------------------------------------
 
 datablock ShapeBaseImageData(BlueAssaultRifleImage : RedAssaultRifleImage)
@@ -347,4 +366,15 @@ function BlueAssaultRifleImage::onMount(%this, %obj, %slot)
 {
     RedAssaultRifleImage::onMount(%this, %obj, %slot);
 }
+
+function BlueAssaultRifleImage::setupHud(%this, %obj)
+{
+   RedAssaultRifleImage::setupHud(%this, %obj);
+}
+
+function BlueAssaultRifleImage::getBulletSpread(%this, %obj)
+{
+   RedAssaultRifleImage::getBulletSpread(%this, %obj);
+}
+
 

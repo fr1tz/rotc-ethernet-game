@@ -202,11 +202,6 @@ datablock ShapeBaseImageData(RedBlaster4Image)
 	//-------------------------------------------------
 };
 
-function RedBlaster4Image::getBulletSpread(%this, %obj)
-{
-   return 0.07;
-}
-
 function RedBlaster4Image::onMount(%this, %obj, %slot)
 {
    Parent::onMount(%this, %obj, %slot);
@@ -219,6 +214,25 @@ function RedBlaster4Image::onMount(%this, %obj, %slot)
    %obj.setImageRecoilDelta(%slot, -0);
 }
 
+function RedBlaster4Image::setupHud(%this, %obj, %slot)
+{
+   %client = %obj.client;
+   if(!isObject(%client))
+      return;
+
+   commandToClient(%client, 'Crosshair', 0);
+   commandToClient(%client, 'Crosshair', 2, 2);
+   commandToClient(%client, 'Crosshair', 3, 2, 5);
+   commandToClient(%client, 'Crosshair', 5, "./rotc/ch1");
+   //commandToClient(%client, 'Crosshair', 6, "./rotc/ch.static.1", 128, 128);
+   commandToClient(%client, 'Crosshair', 1);
+}
+
+function RedBlaster4Image::getBulletSpread(%this, %obj)
+{
+   return 0.07;
+}
+
 //------------------------------------------------------------------------------
 
 datablock ShapeBaseImageData(BlueBlaster4Image : RedBlaster4Image)
@@ -229,14 +243,18 @@ datablock ShapeBaseImageData(BlueBlaster4Image : RedBlaster4Image)
     stateEmitter[3] = BlueBlaster4FireEmitter;
 };
 
-function BlueBlaster4Image::getBulletSpread(%this, %obj)
-{
-   return RedBlaster4Image::getBulletSpread(%this, %obj);
-}
-
 function BlueBlaster4Image::onMount(%this, %obj, %slot)
 {
    RedBlaster4Image::onMount(%this, %obj, %slot);
 }
 
+function BlueBlaster4Image::setupHud(%this, %obj, %slot)
+{
+   RedBlaster4Image::setupHud(%this, %obj, %slot);
+}
+
+function BlueBlaster4Image::getBulletSpread(%this, %obj)
+{
+   return RedBlaster4Image::getBulletSpread(%this, %obj);
+}
 

@@ -3,7 +3,6 @@
 // Copyright notices are in the file named COPYING.
 //------------------------------------------------------------------------------
 
-
 datablock ParticleData(RedBlaster5ProjectileParticleEmitter_Particles)
 {
 	dragCoefficient      = 1;

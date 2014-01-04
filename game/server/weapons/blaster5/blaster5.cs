@@ -264,14 +264,17 @@ datablock ShapeBaseImageData(RedBlaster5Image)
 	//-------------------------------------------------
 };
 
-function RedBlaster5Image::getBulletSpread(%this, %obj)
-{
-   return 0.00;
-}
-
 function RedBlaster5Image::onMount(%this, %obj, %slot)
 {
-    Parent::onMount(%this, %obj, %slot);
+   Parent::onMount(%this, %obj, %slot);
+
+   //%client = %obj.client;
+   //if(isObject(%client))
+   //{
+   //   %obj.zLastFov = %client.getControlCameraFov();
+   //   %client.setControlCameraFov(90);
+   //   %client.lockControlCameraFov(true);
+   //}
 
    // Set up recoil
    %obj.setImageRecoilEnabled(%slot, true);
@@ -279,6 +282,66 @@ function RedBlaster5Image::onMount(%this, %obj, %slot)
    %obj.setImageMaxRecoil(%slot, 60);
    %obj.setImageRecoilAdd(%slot, 0);
    %obj.setImageRecoilDelta(%slot, -0);
+}
+
+function RedBlaster5Image::onUnmount(%this, %obj, %slot)
+{
+   Parent::onUnmount(%this, %obj, %slot);
+
+   //%client = %obj.client;
+   //if(isObject(%client))
+   //{
+   //   %client.setControlCameraFov(%obj.zLastFov);
+   //   %client.lockControlCameraFov(false);
+   //}
+}
+
+function RedBlaster5Image::setupHud(%this, %obj, %slot)
+{
+   %client = %obj.client;
+   if(!isObject(%client))
+      return;
+      
+   commandToClient(%client, 'Crosshair', 0);
+   //commandToClient(%client, 'Crosshair', 2, 2);
+   commandToClient(%client, 'Crosshair', 3, 2, 10);
+   //commandToClient(%client, 'Crosshair', 5, "./rotc/ch3");
+   commandToClient(%client, 'Crosshair', 6, "./rotc/ch.static.1", 128, 128);
+   commandToClient(%client, 'Crosshair', 1);
+
+   return;
+
+   %client.setHudBackground(
+      1,
+      "share/hud/rotc/bg.white",
+      "255 255 255",
+      false,
+      255,
+      -32
+   );
+
+   %client.setHudBackground(
+      2,
+      "share/hud/rotc/bg.blaster5",
+      "0 255 0",
+      false,
+      255,
+      0
+   );
+
+   %client.setHudBackground(
+      3,
+      "share/hud/rotc/bg.scanlines",
+      "0 255 0",
+      true,
+      32,
+      0
+   );
+}
+
+function RedBlaster5Image::getBulletSpread(%this, %obj)
+{
+   return 0.04;
 }
 
 //------------------------------------------------------------------------------
@@ -292,13 +355,18 @@ datablock ShapeBaseImageData(BlueBlaster5Image : RedBlaster5Image)
 	//stateFireProjectile[8] = BlueAssaultRifleProjectile2;
 };
 
-function BlueBlaster5Image::getBulletSpread(%this, %obj)
-{
-   RedBlaster5Image::getBulletSpread(%this, %obj);
-}
-
 function BlueBlaster5Image::onMount(%this, %obj, %slot)
 {
    RedBlaster5Image::onMount(%this, %obj, %slot);
+}
+
+function BlueBlaster5Image::setupHud(%this, %obj)
+{
+   RedBlaster5Image::setupHud(%this, %obj);
+}
+
+function BlueBlaster5Image::getBulletSpread(%this, %obj)
+{
+   RedBlaster5Image::getBulletSpread(%this, %obj);
 }
 

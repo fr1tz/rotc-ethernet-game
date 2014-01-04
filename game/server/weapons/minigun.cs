@@ -175,6 +175,20 @@ datablock ShapeBaseImageData(RedMinigunImage)
 	//-------------------------------------------------
 };
 
+function RedMinigunImage::setupHud(%this, %obj, %slot)
+{
+   %client = %obj.client;
+   if(!isObject(%client))
+      return;
+
+   commandToClient(%client, 'Crosshair', 0);
+   commandToClient(%client, 'Crosshair', 2, 2);
+   commandToClient(%client, 'Crosshair', 3, 2, 5);
+   commandToClient(%client, 'Crosshair', 5, "./rotc/ch1");
+   //commandToClient(%client, 'Crosshair', 6, "./rotc/ch.static.1", 128, 128);
+   commandToClient(%client, 'Crosshair', 1);
+}
+
 function RedMinigunImage::getBulletSpread(%this, %obj)
 {
    %spread = (%obj.getCameraFov()*%obj.getCameraFov()*100) / (80000*100);
@@ -242,6 +256,11 @@ datablock ShapeBaseImageData(BlueMinigunImage : RedMinigunImage)
 	projectile = BlueMinigunProjectile;
 	//stateEmitter[3] = BlueMinigunFireEmitter;
 };
+
+function BlueMinigunImage::setupHud(%this, %obj, %slot)
+{
+   RedMinigunImage::setupHud(%this, %obj, %slot);
+}
 
 function BlueMinigunImage::getBulletSpread(%this, %obj)
 {

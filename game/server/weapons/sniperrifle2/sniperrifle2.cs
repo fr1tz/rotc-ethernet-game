@@ -185,6 +185,25 @@ function RedSniperRifle2Image::onUnmount(%this, %obj, %slot)
     %obj.setSniping(false);
 }
 
+function RedSniperRifle2Image::setupHud(%this, %obj, %slot)
+{
+   %client = %obj.client;
+   if(!isObject(%client))
+      return;
+
+   commandToClient(%client, 'Crosshair', 0);
+   //commandToClient(%client, 'Crosshair', 2, 2);
+   //commandToClient(%client, 'Crosshair', 3, 2, 5);
+   //commandToClient(%client, 'Crosshair', 5, "./rotc/ch3");
+   commandToClient(%client, 'Crosshair', 6, "./rotc/ch.static.2b", 128, 128);
+   commandToClient(%client, 'Crosshair', 1);
+}
+
+function RedSniperRifle2Image::getBulletSpread(%this, %obj)
+{
+   return 0.04;
+}
+
 function RedSniperRifle2Image::onReady(%this, %obj, %slot)
 {
 	//error("onReady");
@@ -232,6 +251,16 @@ function BlueSniperRifle2Image::onMount(%this, %obj, %slot)
 function BlueSniperRifle2Image::onUnmount(%this, %obj, %slot)
 {
 	RedSniperRifle2Image::onUnmount(%this, %obj, %slot);
+}
+
+function BlueSniperRifle2Image::setupHud(%this, %obj)
+{
+   RedSniperRifle2Image::setupHud(%this, %obj);
+}
+
+function BlueSniperRifle2Image::getBulletSpread(%this, %obj)
+{
+   RedSniperRifle2Image::getBulletSpread(%this, %obj);
 }
 
 function BlueSniperRifle2Image::onReady(%this, %obj, %slot)
