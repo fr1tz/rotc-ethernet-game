@@ -5,7 +5,14 @@
 
 datablock AudioProfile(Blaster5FireSound)
 {
-	filename = "share/sounds/rotc/fire1.wav";
+	filename = "share/sounds/rotc/fire5.wav";
+	description = AudioDefault3D;
+	preload = true;
+};
+
+datablock AudioProfile(Blaster5PumpSound)
+{
+	filename = "share/sounds/rotc/pumpgun1.wav";
 	description = AudioDefault3D;
 	preload = true;
 };

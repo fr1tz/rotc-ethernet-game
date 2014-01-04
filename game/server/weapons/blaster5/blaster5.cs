@@ -210,19 +210,30 @@ datablock ShapeBaseImageData(RedBlaster5Image)
 		stateSequence[2]                 = "idle";
 
 		stateName[3]                     = "Fire";
-		stateTimeoutValue[3]             = 0.8;
-		stateTransitionOnTimeout[3]      = "AfterFire";
+		stateTimeoutValue[3]             = 0.0;
+		stateTransitionOnTimeout[3]      = "PumpDelay";
 		stateFire[3]                     = true;
 		stateFireProjectile[3]           = Blaster5PseudoProjectile;
 		stateRecoil[3]                   = MediumRecoil;
 		stateAllowImageChange[3]         = false;
-		stateEjectShell[3]               = true;
 		stateSequence[3]                 = "Fire";
 		stateSound[3]                    = Blaster5FireSound;
+  
+		stateName[8]                     = "PumpDelay";
+		stateTimeoutValue[8]             = 0.4;
+		stateTransitionOnTimeout[8]      = "Pump";
+		stateAllowImageChange[8]         = false;
+
+		stateName[9]                     = "Pump";
+		stateTimeoutValue[9]             = 0.6;
+		stateTransitionOnTimeout[9]      = "AfterFire";
+		stateAllowImageChange[9]         = false;
+		stateEjectShell[9]               = true;
+		stateSound[9]                    = Blaster5PumpSound;
 
 		// after fire...
-		stateName[8]                     = "AfterFire";
-		stateTransitionOnTriggerUp[8]    = "KeepAiming";
+		stateName[10]                    = "AfterFire";
+		stateTransitionOnTriggerUp[10]   = "KeepAiming";
 
 		stateName[4]                     = "KeepAiming";
 		stateTransitionOnNoAmmo[4]       = "NoAmmo";
