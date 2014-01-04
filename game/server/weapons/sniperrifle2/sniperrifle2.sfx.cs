@@ -24,6 +24,13 @@ datablock AudioProfile(SniperRifle2ProjectileImpactSound)
 	preload = true;
 };
 
+datablock AudioProfile(SniperRifle2ProjectileHitSound)
+{
+	filename = "share/shapes/rotc/vehicles/etherform/sound.impact.wav";
+	description = AudioDefault3D;
+	preload = true;
+};
+
 datablock AudioProfile(SniperRifle2ProjectileMissedEnemySound)
 {
 	filename = "share/sounds/rotc/flyby1.wav";

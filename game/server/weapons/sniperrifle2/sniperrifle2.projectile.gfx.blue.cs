@@ -172,7 +172,7 @@ datablock ParticleEmitterData(BlueSniperRifle2ProjectileExplosion_SparksEmitter)
 
 datablock ExplosionData(BlueSniperRifle2ProjectileHit)
 {
-	soundProfile = SniperRifle2ProjectileImpactSound;
+	soundProfile = SniperRifle2ProjectileHitSound;
 
 	lifetimeMS = 300;
 
@@ -199,6 +199,8 @@ datablock ExplosionData(BlueSniperRifle2ProjectileHit)
 
 datablock ExplosionData(BlueSniperRifle2ProjectileExplosion : BlueSniperRifle2ProjectileHit)
 {
+	soundProfile = SniperRifle2ProjectileImpactSound;
+
  	// shape...
 	//explosionShape = "share/shapes/rotc/weapons/blaster/projectile.impact.orange.dts";
 	//faceViewer = false;
