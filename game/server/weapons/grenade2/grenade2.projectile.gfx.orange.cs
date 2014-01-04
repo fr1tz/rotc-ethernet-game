@@ -16,9 +16,9 @@ datablock ParticleData(OrangeGrenade2_ParticleEmitter_Particles)
    lifetimeMS           = 400;
    lifetimeVarianceMS   = 100;
    textureName          = "share/textures/rotc/star3.orange";
-   colors[0]     = "1.0 1.0 0.0 1.0";
-   colors[1]     = "1.0 1.0 0.0 0.5";
-   colors[2]     = "1.0 1.0 0.0 0.0";
+   colors[0]     = "1.0 1.0 1.0 1.0";
+   colors[1]     = "1.0 1.0 1.0 0.5";
+   colors[2]     = "1.0 1.0 1.0 0.0";
    sizes[0]      = 0.90;
    sizes[1]      = 0.70;
    sizes[2]      = 0.50;
