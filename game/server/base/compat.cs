@@ -146,3 +146,19 @@ datablock ParticleData(TextureDummy_20)
 {
 	textureName	= "share/textures/rotc/smoke4.red.png";
 };
+
+datablock ParticleData(TextureDummy_21)
+{
+	textureName	= "share/hud/rotc/ch.static.1.png";
+};
+
+datablock ParticleData(TextureDummy_22)
+{
+	textureName	= "share/hud/rotc/ch.static.2a.png";
+};
+
+datablock ParticleData(TextureDummy_23)
+{
+	textureName	= "share/hud/rotc/ch.static.2b.png";
+};
+
