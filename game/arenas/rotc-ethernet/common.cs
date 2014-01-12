@@ -12,5 +12,6 @@ $MissionInfo::MutatorDesc = ""
 	@ "slowpoke\tMakes the game slow\n"
 	@ "oobdeath\tMakes CATs lose health when not inside a zone\n"
 	@ "QUICKDEATH\tCombo: noshield/lowhealth\n"
+	@ "INSTAGIB\tCombo: supersniper-arena/noshield/nodamper/novamp\n"
 	@ "";
 

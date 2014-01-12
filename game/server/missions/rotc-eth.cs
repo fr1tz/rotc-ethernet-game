@@ -129,6 +129,19 @@ function initMission()
 			$Server::Game.mutators = $Server::Game.mutators SPC
 				"noshield" SPC "lowhealth";
 		}
+		else if(%mutator $= "INSTAGIB")
+		{
+         %recognized = %mutator SPC %recognized;
+			$Server::Game.arena = "supersniper";
+			$Server::Game.noshield = true;
+			$Server::Game.nodamper = true;
+			$Server::Game.novamp = true;
+			$Server::Game.mutators = $Server::Game.mutators SPC
+				"supersniper-arena" SPC
+            "noshield" SPC
+            "nodamper" SPC
+            "novamp";
+		}
 	}
 	%recognized = trim(%recognized);
 	if(getWordCount(%recognized) > 0)
