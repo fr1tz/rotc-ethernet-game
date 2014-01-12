@@ -136,11 +136,15 @@ function initMission()
 			$Server::Game.noshield = true;
 			$Server::Game.nodamper = true;
 			$Server::Game.novamp = true;
+			$Server::Game.tagMode = $Server::Game.nevertag;
+			$Server::Game.oobdeath = true;
 			$Server::Game.mutators = $Server::Game.mutators SPC
 				"supersniper-arena" SPC
             "noshield" SPC
             "nodamper" SPC
-            "novamp";
+            "novamp" SPC
+            "nevertag" SPC
+            "oobdeath";
 		}
 	}
 	%recognized = trim(%recognized);
