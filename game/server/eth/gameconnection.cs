@@ -97,7 +97,11 @@ function GameConnection::showReceivedDamageInfo(%this, %died)
 	%t = %t @ "\n";
 
 	%i = mFloatLength(%a.shield,0);
-	if(%a.shield > 0 && %a.shieldSlice == 0)
+   if($Server::Game.noshield)
+   {
+      %t = %t @ srdi_h1("Shield disabled by 'noshield' mutator");
+   }
+	else if(%a.shield > 0 && %a.shieldSlice == 0)
 	{
 		%t = %t @ srdi_h1("Damage bypasses shield of " @ %i);
 	}
