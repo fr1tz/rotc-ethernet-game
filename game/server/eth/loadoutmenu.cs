@@ -172,7 +172,10 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
    else
       %L4 = %L4 @ "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
    %L4 = %L4 @ "<tab:70,125>";
-   %L4 = %L4 @ "\tHealth:\t75\n";
+   if($Server::Game.lowhealth)
+      %L4 = %L4 @ "\tHealth:\t50\n";
+   else
+      %L4 = %L4 @ "\tHealth:\t75\n";
    if($Server::Game.noshield)
       %L4 = %L4 @ "\tShield:\t0\n";
    else

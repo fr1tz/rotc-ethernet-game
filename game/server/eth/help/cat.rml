@@ -3,7 +3,7 @@ CATs are the physical manifestations of the Reds and Blues that can capture zone
 
 <spush><font:NovaSquare:24>Health <bitmap:game/client/ui/hud/pixmaps/health_icon><spop>
 
-CATs have a maximum of 75 health points. Health is lost if a CAT takes more damage than its <a:cmd Manual 4.2>shield</a> can absorb or the CAT is hit by a weapon that bypasses the shield.
+CATs have a maximum of 75 health points (50 if the 'lowhealth' mutator is active). Health is lost if a CAT takes more damage than its <a:cmd Manual 4.2>shield</a> can absorb or the CAT is hit by a weapon that bypasses the shield.
 
 <spush><font:NovaSquare:24>Energy <bitmap:game/client/ui/hud/pixmaps/energy_icon><spop>
 
