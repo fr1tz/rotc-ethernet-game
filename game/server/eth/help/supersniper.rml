@@ -1,0 +1,16 @@
+#icon share/hud/rotc/icon.sniper.50x15
+#size 25
+<lmargin:120><bitmap:share/manual/rotc/wpn.sniperrofl><sbreak>
+<lmargin:5>The Super Sniper ROFL is only available if the 'supersniper-arena' mutator is active. Just like the default Sniper ROFL, it needs to be charged before it can fire. But unlike its default counterpart, it doesn't have an alternative fire mode and CATs can run and use their etherboard while charging the weapon. Hold down @bind16 to charge, release it to fire.
+
+<sbreak><tab:15,180>
+	Bypasses	<spush><font:Arial Bold:16>Barrier<spop>
+	Energy cost	<spush><font:Arial Bold:16>50<spop>
+	Impact damage	<spush><font:Arial Bold:16>120<spop>
+	Impact impulse	<spush><font:Arial Bold:16>6000<spop>
+	Splash damage	<spush><font:Arial Bold:16>-<spop>
+	Splash damage radius	<spush><font:Arial Bold:16>-<spop>
+	Splash damage impulse	<spush><font:Arial Bold:16>-<spop>
+	Velocity inheritance	<spush><font:Arial Bold:16>0% (instant hit)<spop>	
+	Accuracy	<spush><font:Arial Bold:16>Pinpoint<spop>	
+<sbreak>
