@@ -162,7 +162,10 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
 		%L3 = %L3 @ " Arm:\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.grenade.20x20> Grenade " @ LoadoutMenu_InfoLink(%no,%L3,"6.4") @ "\n\n";
 		%L3 = %L3 @ " Torso:\n";
-		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.vamp.20x20> V-AMP " @ LoadoutMenu_InfoLink(%no,%L3,"4.5") @ "\n\n";
+      if($Server::Game.novamp)
+   		%L3 = %L3 @ "    * V-AMP disabled by mutator " @ LoadoutMenu_InfoLink(%no,%L3,"4.5") @ "\n\n";
+      else
+         %L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.vamp.20x20> V-AMP " @ LoadoutMenu_InfoLink(%no,%L3,"4.5") @ "\n\n";
 		%L3 = %L3 @ " Pelvis:\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.anchor.20x20> Anchor " @ LoadoutMenu_InfoLink(%no,%L3,"4.4") @ "\n\n";
 		%L3 = %L3 @ " Feet:\n";

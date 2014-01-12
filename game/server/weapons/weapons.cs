@@ -119,9 +119,18 @@ function ProjectileData::onCollision(%this,%obj,%col,%fade,%pos,%normal,%dist)
 	// call damage func...
 	%col.damage(%obj, %pos, %this.impactDamage, $DamageType::Impact);
 	
-	// if projectile was fired by a player, regain some of his energy...
+	// regain energy?
+   %regainEnergy = false;
 	%sourceObject = %obj.getSourceObject();
-	if(%sourceObject.getType() & $TypeMasks::PlayerObjectType)
+   if(%obj.getType() & $TypeMasks::ProjectileObjectType)
+   {
+      %sourceObject = %obj.getSourceObject();
+      if(%sourceObject.getClassName() $= "Player"
+      && isObject(%sourceObject.client)
+      && %sourceObject.client.numVAMPs > 0)
+         %regainEnergy = true;
+   }
+	if(%regainEnergy)
 	{
 		%newSrcEnergy = %sourceObject.getEnergyLevel() + %this.energyDrain;
 		%sourceObject.setEnergyLevel(%newSrcEnergy);
@@ -142,7 +151,10 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
    if(%obj.getType() & $TypeMasks::ProjectileObjectType)
    {
       %sourceObject = %obj.getSourceObject();
-  	   %regainEnergy = %sourceObject.getClassName() $= "Player";
+      if(%sourceObject.getClassName() $= "Player"
+      && isObject(%sourceObject.client)
+      && %sourceObject.client.numVAMPs > 0)
+         %regainEnergy = true;
    }
 
 	%targets = new SimSet();
@@ -203,7 +215,7 @@ function ProjectileData::onExplode(%this,%obj,%pos,%normal,%fade,%dist,%expType)
 		%targetObject.damage(%obj, %pos,
 			%damage * %coverage * %distScale, %damageType);
 			
-		// if projectile was fired by a player, regain some of his energy...
+		// regain energy?
 		if(%regainEnergy)
 		{
 			%newSrcEnergy = %sourceObject.getEnergyLevel()

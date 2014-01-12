@@ -177,6 +177,9 @@ function GameConnection::updateLoadout(%this)
 
    if($Server::Game.nodamper)
    	%this.hasDamper = false;
+    
+   if($Server::Game.novamp)
+      %this.numVAMPs = 0;
 }
 
 function GameConnection::displayInventory(%this, %obj)
