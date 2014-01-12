@@ -115,6 +115,12 @@ function initMission()
 			$Server::Game.oobdeath = true;
 			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
+		else if(%mutator $= "supersniper-arena")
+		{
+	   	%recognized = %mutator SPC %recognized;
+			$Server::Game.arena = "supersniper";
+			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
+		}
 		else if(%mutator $= "QUICKDEATH")
 		{
 		%recognized = %mutator SPC %recognized;

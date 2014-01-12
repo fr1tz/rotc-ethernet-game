@@ -134,10 +134,20 @@ function StandardCat::useWeapon(%this, %obj, %nr)
 	}
 	else if(%wpn == $CatEquipment::SniperRifle)
 	{
-		if(%obj.getTeamId() == 1)
-			%obj.mountImage(RedSniperRifleImage, 0, -1, true);
-		else
-			%obj.mountImage(BlueSniperRifleImage, 0, -1, true);
+      if($Server::Game.arena $= "supersniper")
+      {
+   		if(%obj.getTeamId() == 1)
+   			%obj.mountImage(RedSniperRifle3Image, 0, -1, true);
+   		else
+     			%obj.mountImage(BlueSniperRifle3Image, 0, -1, true);
+      }
+      else
+      {
+   		if(%obj.getTeamId() == 1)
+   			%obj.mountImage(RedSniperRifleImage, 0, -1, true);
+   		else
+     			%obj.mountImage(BlueSniperRifleImage, 0, -1, true);
+      }
 	}
 	else if(%wpn == $CatEquipment::MiniGun)
 	{

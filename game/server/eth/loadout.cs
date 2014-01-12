@@ -47,6 +47,13 @@ function GameConnection::defaultLoadout(%this)
 		%this.loadout[8] = $CatEquipment::Bounce;
 		%this.loadout[9] = $CatEquipment::RepelDisc;
 		%this.loadout[10] = $CatEquipment::ExplosiveDisc;
+  
+      if($Server::Game.arena $= "supersniper")
+      {
+         %this.loadout[1] = $CatEquipment::SniperRifle;
+         %this.loadout[2] = "";
+         %this.loadout[3] = $CatEquipment::Etherboard;
+      }
 	}
 	else if($Game::GameType == $Game::Infantry)
 	{
@@ -233,7 +240,12 @@ function GameConnection::displayInventory(%this, %obj)
 	%itemname[7] = "Regeneration";
 
 	%fixed = false;
-	if($Game::GameType == $Game::mEthMatch)
+	if($Game::GameType == $Game::Ethernet)
+   {
+      if($Server::Game.arena $= "supersniper")
+   		%fixed = true;
+   }
+	else if($Game::GameType == $Game::mEthMatch)
 		%fixed = true;
 
 	if(%this.inventoryMode $= "showicon")
@@ -247,56 +259,82 @@ function GameConnection::displayInventory(%this, %obj)
 			%this.setHudMenuL(%i, "", 1, 0);
 	}
 	else if(%this.inventoryMode $= "show")
-	{
-		%this.setHudMenuL(0, "\n", 8, 1);
-		%this.setHudMenuL(1, "<lmargin:100><font:NovaSquare:18><tab:120,175,200>" @
-         "Select Loadout:\n\n", 1, 1);
-
-		%slot = 2;
-		%prefix = "<bitmap:share/hud/rotc/icon.";
-		%suffix = ".50x15> ";
-		for(%i = 1; %i <= 3; %i++)
-		{
-		   for(%j = 1; %j <= %numItems; %j++)
-		   {
-				if(%this.loadout[%i] == %item[%j])
-				{
-					%icon = %iconname[%item[%j]];
-					%this.setHudMenuL(%slot, %prefix @ %icon @ %suffix, 1, 1);
-					%slot++;
-		 	   }
-		   }
-		}
-		%this.setHudMenuL(%slot, "<sbreak><font:NovaSquare:14>" @
-         "<bitmap:share/hud/rotc/icon.quickswitch.50x15>" @
-         "Press @bind51 to exchange\n\nLoad:\n", 1, 1);
-      %slot++;
-
-      %tmp = "";
-		for(%i = 1; %i <= 10; %i++)
-		{
-         if(%this.loadoutName[%i] !$= "")
-            %tmp = %tmp @ "@bind" @ 34+%i @ ":" TAB %this.loadoutName[%i];
-         %tmp = %tmp @ "\n";
-		}
-      %tmp = %tmp @ "\n";
-      %l = strlen(%tmp); %n = 0;
-   	while(%n < %l)
-	   {
-		   %chunk = getSubStr(%tmp, %n, 255);
-   		%this.setHudMenuL(%slot, %tmp, 1, 1);
-		   %n += 255;
-         %slot++;
-	   }
-
-      if(%this.loadout[1] == 0)
+   {
+      if(%fixed)
       {
-         %this.setHudMenuL(%slot, "!!! ILLEGAL LOADOUT !!!", 1, 1);
-         return;
+   		%this.setHudMenuL(0, "\n", 8, 1);
+   		%this.setHudMenuL(1, "<lmargin:100><font:NovaSquare:18><tab:120,175,200>" @
+            "Fixed Loadout:\n\n", 1, 1);
+   		%slot = 2;
+   		%prefix = "<bitmap:share/hud/rotc/icon.";
+   		%suffix = ".50x15> ";
+   		for(%i = 1; %i <= 3; %i++)
+   		{
+   		   for(%j = 1; %j <= %numItems; %j++)
+   		   {
+   				if(%this.loadout[%i] == %item[%j])
+   				{
+   					%icon = %iconname[%item[%j]];
+   					%this.setHudMenuL(%slot, %prefix @ %icon @ %suffix, 1, 1);
+   					%slot++;
+   		 	   }
+   		   }
+   		}
+   		for(%i = %slot; %i < 10; %i++)
+   			%this.setHudMenuL(%i, "", 1, 0);
       }
+      else
+      {
+   		%this.setHudMenuL(0, "\n", 8, 1);
+   		%this.setHudMenuL(1, "<lmargin:100><font:NovaSquare:18><tab:120,175,200>" @
+            "Select Loadout:\n\n", 1, 1);
 
-		for(%i = %slot; %i < 10; %i++)
-			%this.setHudMenuL(%i, "", 1, 0);
+   		%slot = 2;
+   		%prefix = "<bitmap:share/hud/rotc/icon.";
+   		%suffix = ".50x15> ";
+   		for(%i = 1; %i <= 3; %i++)
+   		{
+   		   for(%j = 1; %j <= %numItems; %j++)
+   		   {
+   				if(%this.loadout[%i] == %item[%j])
+   				{
+   					%icon = %iconname[%item[%j]];
+   					%this.setHudMenuL(%slot, %prefix @ %icon @ %suffix, 1, 1);
+   					%slot++;
+   		 	   }
+   		   }
+   		}
+   		%this.setHudMenuL(%slot, "<sbreak><font:NovaSquare:14>" @
+            "<bitmap:share/hud/rotc/icon.quickswitch.50x15>" @
+            "Press @bind51 to exchange\n\nLoad:\n", 1, 1);
+         %slot++;
+
+         %tmp = "";
+   		for(%i = 1; %i <= 10; %i++)
+   		{
+            if(%this.loadoutName[%i] !$= "")
+               %tmp = %tmp @ "@bind" @ 34+%i @ ":" TAB %this.loadoutName[%i];
+            %tmp = %tmp @ "\n";
+   		}
+         %tmp = %tmp @ "\n";
+         %l = strlen(%tmp); %n = 0;
+      	while(%n < %l)
+   	   {
+   		   %chunk = getSubStr(%tmp, %n, 255);
+      		%this.setHudMenuL(%slot, %tmp, 1, 1);
+   		   %n += 255;
+            %slot++;
+   	   }
+
+         if(%this.loadout[1] == 0)
+         {
+            %this.setHudMenuL(%slot, "!!! ILLEGAL LOADOUT !!!", 1, 1);
+            return;
+         }
+
+   		for(%i = %slot; %i < 10; %i++)
+   			%this.setHudMenuL(%i, "", 1, 0);
+      }
 	}
 	else if(%this.inventoryMode $= "oldshow")
 	{
@@ -470,6 +508,12 @@ function GameConnection::changeInventory(%this, %nr)
 {
 	if($Game::GameType == $Game::mEthMatch)
 		return;
+  
+	if($Game::GameType == $Game::Ethernet)
+   {
+      if($Server::Game.arena $= "supersniper")
+         return;
+   }
 
 	if(%this.inventoryMode $= "show")
 	{
