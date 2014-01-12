@@ -174,6 +174,9 @@ function GameConnection::updateLoadout(%this)
 			%this.numWeapons++;
 		}
 	}
+
+   if($Server::Game.nodamper)
+   	%this.hasDamper = false;
 }
 
 function GameConnection::displayInventory(%this, %obj)

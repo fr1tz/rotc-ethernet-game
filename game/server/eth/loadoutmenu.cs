@@ -146,13 +146,16 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
       %L3 = %L3 @ "CAT Specs:\n";
 		%L3 = %L3 @ "<bitmap:share/ui/rotc/cat.blueprint.200x500>\n";
 		%L3 = %L3 @ " Hull:\n";
-		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.damper.20x20> Damper " @ LoadoutMenu_InfoLink(%no,%L3,"4.1") @ "\n\n";
+      if(!$Server::Game.nodamper)
+   		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.damper.20x20> Damper " @ LoadoutMenu_InfoLink(%no,%L3,"4.1") @ "\n\n";
       if(!$Server::Game.noshield)
    		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.shield.20x20> Shield " @ LoadoutMenu_InfoLink(%no,%L3,"4.2") @ "\n\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.barrier.20x20> Barrier " @ LoadoutMenu_InfoLink(%no,%L3,"4.3") @ "\n\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.bounce.20x20> B.O.U.N.C.E. " @ LoadoutMenu_InfoLink(%no,%L3,"7.2") @ "\n\n";
+      if($Server::Game.nodamper)
+   		%L3 = %L3 @ "    * Damper disabled by mutator " @ LoadoutMenu_InfoLink(%no,%L3,"4.1") @ "\n\n";
       if($Server::Game.noshield)
-   		%L3 = %L3 @ "    - Shield disabled by 'noshield' mutator " @ LoadoutMenu_InfoLink(%no,%L3,"4.2") @ "\n\n";
+   		%L3 = %L3 @ "    * Shield disabled by mutator " @ LoadoutMenu_InfoLink(%no,%L3,"4.2") @ "\n\n";
 		%L3 = %L3 @ " Head:\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.repeldisc.20x20> Repel Disc Launcher " @ LoadoutMenu_InfoLink(%no,%L3,"5.1") @ "\n\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.explosivedisc.20x20> Explosive Disc Launcher " @ LoadoutMenu_InfoLink(%no,%L3,"5.2") @ "\n\n";

@@ -84,6 +84,12 @@ function initMission()
 			$Server::Game.noshield = true;
 			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
+		else if(%mutator $= "nodamper")
+		{
+         %recognized = %mutator SPC %recognized;
+			$Server::Game.nodamper = true;
+			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
+		}
 		else if(%mutator $= "lowhealth")
 		{
 		%recognized = %mutator SPC %recognized;
