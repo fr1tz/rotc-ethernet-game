@@ -1,13 +1,23 @@
 What's new?
 ===========
 
-Prototype 5.4+dev1
+Prototype 5.4+dev2
 ------------------
 
-- "INSTAGIB" combo mutator: supersniper-arena/noshield/nodamper/novamp/nevertag/oobdeath
-- "supersniper-arena" mutator: CATs carry hyper-powered sniper rifles.
-- "novamp" mutator: Deactivate CAT 'V-AMP' module.
-- "nodamper" mutator: Deactivate CAT 'damper' module.
+- Simplify default game but add "PRO" mutator to restore old rules.
+  Default game:
+  - CATs have 150 instead of 75 health but no damper.
+  - CATs don't have shields.
+  - Decreased falling damage.
+- New mutators:
+  - damper: CATs take less damage the more energy they have.
+  - halfhealth: CATs have 75 instead of 150 health.
+  - lowhealth: CATs have 50 instead of 150 health.
+  - crater: Triple falling damage.
+  - "supersniper-arena": CATs carry hyper-powered sniper rifles.  
+  - "novamp": Deactivate CAT 'V-AMP' module.  
+  - "PRO" combo: damper/shields/halfhealth/crater
+  - "INSTAGIB" combo: supersniper-arena/noshield/nodamper/novamp/nevertag/oobdeath
 - Small fixes
 
 
