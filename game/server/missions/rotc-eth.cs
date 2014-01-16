@@ -154,11 +154,13 @@ function initMission()
 		{
          %recognized = %mutator SPC %recognized;
 			$Server::Game.arena = "supersniper";
+			$Server::Game.health = 75;
 			$Server::Game.novamp = true;
 			$Server::Game.tagMode = $Server::Game.nevertag;
 			$Server::Game.oobdeath = true;
 			$Server::Game.mutators = $Server::Game.mutators SPC
 				"supersniper-arena" SPC
+				"halfhealth" SPC
             "novamp" SPC
             "nevertag" SPC
             "oobdeath";
