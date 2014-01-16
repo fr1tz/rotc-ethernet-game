@@ -92,9 +92,9 @@ datablock EtherformData(RedEtherform)
 	drag = 0.99;
 	density = 10;
 
-	maxDamage = 75;
-	damageBuffer = 25;
-	maxEnergy = 100;
+	maxDamage = $Server::Game.health;
+	damageBuffer = $Server::Game.shield;
+	maxEnergy = $Server::Game.energy;
 
 	damageBufferRechargeRate = 0.15;
 	damageBufferDischargeRate = 0.05;
@@ -136,12 +136,6 @@ datablock EtherformData(RedEtherform)
 
 
 };
-
-if($Server::Game.noshield)
-	RedEtherform.damageBuffer = 0;
-
-if($Server::Game.lowhealth)
-	RedEtherform.maxDamage = 50;
 
 datablock EtherformData(BlueEtherform : RedEtherform)
 {

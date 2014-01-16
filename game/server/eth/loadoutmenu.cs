@@ -146,16 +146,16 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
       %L3 = %L3 @ "CAT Specs:\n";
 		%L3 = %L3 @ "<bitmap:share/ui/rotc/cat.blueprint.200x500>\n";
 		%L3 = %L3 @ " Hull:\n";
-      if(!$Server::Game.nodamper)
+      if($Server::Game.damper)
    		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.damper.20x20> Damper " @ LoadoutMenu_InfoLink(%no,%L3,"4.1") @ "\n\n";
-      if(!$Server::Game.noshield)
+      if($Server::Game.shield > 0)
    		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.shield.20x20> Shield " @ LoadoutMenu_InfoLink(%no,%L3,"4.2") @ "\n\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.barrier.20x20> Barrier " @ LoadoutMenu_InfoLink(%no,%L3,"4.3") @ "\n\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.bounce.20x20> B.O.U.N.C.E. " @ LoadoutMenu_InfoLink(%no,%L3,"7.2") @ "\n\n";
-      if($Server::Game.nodamper)
-   		%L3 = %L3 @ "    * Damper disabled by mutator " @ LoadoutMenu_InfoLink(%no,%L3,"4.1") @ "\n\n";
-      if($Server::Game.noshield)
-   		%L3 = %L3 @ "    * Shield disabled by mutator " @ LoadoutMenu_InfoLink(%no,%L3,"4.2") @ "\n\n";
+      if(!$Server::Game.damper)
+   		%L3 = %L3 @ "    * Damper mutator not active " @ LoadoutMenu_InfoLink(%no,%L3,"4.1") @ "\n\n";
+      if($Server::Game.shield == 0)
+   		%L3 = %L3 @ "    * Shields mutator not active " @ LoadoutMenu_InfoLink(%no,%L3,"4.2") @ "\n\n";
 		%L3 = %L3 @ " Head:\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.repeldisc.20x20> Repel Disc Launcher " @ LoadoutMenu_InfoLink(%no,%L3,"5.1") @ "\n\n";
 		%L3 = %L3 @ "    <bitmap:share/hud/rotc/icon.explosivedisc.20x20> Explosive Disc Launcher " @ LoadoutMenu_InfoLink(%no,%L3,"5.2") @ "\n\n";
@@ -178,15 +178,10 @@ function GameConnection::showLoadout(%this, %no, %expandslot, %showInfo, %infoPo
    else
       %L4 = %L4 @ "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
    %L4 = %L4 @ "<tab:70,125>";
-   if($Server::Game.lowhealth)
-      %L4 = %L4 @ "\tHealth:\t50\n";
-   else
-      %L4 = %L4 @ "\tHealth:\t75\n";
-   if($Server::Game.noshield)
-      %L4 = %L4 @ "\tShield:\t0\n";
-   else
-      %L4 = %L4 @ "\tShield:\t25\n";
-   %L4 = %L4 @ "\tEnergy:\t100\n";
+
+   %L4 = %L4 @ "\tHealth:\t" @ $Server::Game.health @ "\n";
+   %L4 = %L4 @ "\tShield:\t" @ $Server::Game.shield @ "\n";
+   %L4 = %L4 @ "\tEnergy:\t" @ $Server::Game.energy @ "\n";
 
    if(%showInfo > 0)
    {

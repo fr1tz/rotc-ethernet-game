@@ -900,7 +900,7 @@ function GameConnection::updateHudWarningsThread(%this)
 	%health = %health / %player.getDataBlock().maxDamage;
 
 	%this.setHudWarning(1, "[HEALTH]", %health < 0.25);
-   if(%player.isCAT)
+   if(%player.isCAT && $Server::Game.damper)
 	  %this.setHudWarning(3, "[DAMPER]", %player.getEnergyPercent() < 0.5);
    else
 	  %this.setHudWarning(3, "[ENERGY]", %player.getEnergyPercent() < 0.5);

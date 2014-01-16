@@ -40,8 +40,17 @@ function GameConnection::defaultLoadout(%this)
 		%this.loadout[1] = $CatEquipment::BattleRifle;
 		%this.loadout[2] = $CatEquipment::Blaster;
 		%this.loadout[3] = $CatEquipment::Etherboard;
-		%this.loadout[4] = $CatEquipment::Damper;
-		%this.loadout[5] = $CatEquipment::VAMP;
+  
+      if($Server::Game.damper)
+         %this.loadout[4] = $CatEquipment::Damper;
+      else
+         %this.loadout[4] = "";
+  
+      if($Server::Game.novamp)
+         %this.loadout[5] = "";
+      else
+         %this.loadout[5] = $CatEquipment::VAMP;
+         
 		%this.loadout[6] = $CatEquipment::Anchor;
 		%this.loadout[7] = $CatEquipment::Grenade;
 		%this.loadout[8] = $CatEquipment::Bounce;
@@ -181,12 +190,6 @@ function GameConnection::updateLoadout(%this)
 			%this.numWeapons++;
 		}
 	}
-
-   if($Server::Game.nodamper)
-   	%this.hasDamper = false;
-    
-   if($Server::Game.novamp)
-      %this.numVAMPs = 0;
 }
 
 function GameConnection::displayInventory(%this, %obj)

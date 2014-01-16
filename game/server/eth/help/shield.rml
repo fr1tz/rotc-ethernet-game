@@ -2,6 +2,6 @@
 #size 19
 <lmargin:10><bitmap:share/manual/rotc/shield><sbreak><tab:20,130,240,350>	red recharging	red overcharged	blue recharging	blue overcharged
 
-<lmargin:5>Unless the 'noshield' mutator is active, CATs are equipped with a shield module. The module protects the CAT with a shield that constantly re-/decharges to 25 points. After being damped by the CAT's <a:cmd Manual 4.1>damper</a>, damage first hits the shield before affecting the CAT's health.
+<lmargin:5>If the 'shields' mutator is active, CATs are equipped with a shield module. The module protects the CAT with a shield that constantly re-/decharges to 25 points. After being damped by the CAT's <a:cmd Manual 4.1>damper</a>, damage first hits the shield before affecting the CAT's health.
 
 Because of its <a:cmd Manual 4.5>V-AMP module</a>, a CAT's shield can temporarily overcharge (ie. hold more than 25 points) if the CAT has full health & shield and deals damage to enemies.

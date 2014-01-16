@@ -3,11 +3,12 @@ CATs are the physical manifestations of the Reds and Blues that can capture zone
 
 <spush><font:NovaSquare:24>Health <bitmap:game/client/ui/hud/pixmaps/health_icon><spop>
 
-CATs have a maximum of 75 health points (50 if the 'lowhealth' mutator is active). Health is lost if a CAT takes more damage than its <a:cmd Manual 4.2>shield</a> can absorb or the CAT is hit by a weapon that bypasses the shield.
+CATs have a maximum of 150 health points (75 if the 'halfhealth' mutator is active and 50 if the 'lowhealth' mutator is active). If the 'shield' mutator is active, health is only lost if a CAT takes more damage than its <a:cmd Manual 4.2>shield</a> can absorb or the CAT is hit by a weapon that bypasses the shield.
 
 <spush><font:NovaSquare:24>Energy <bitmap:game/client/ui/hud/pixmaps/energy_icon><spop>
 
-CATs have a maximum of 100 recharging energy points. Energy is used for a number of things. An important example is that energy is both used to fire weapons and to provide protection via the <a:cmd Manual 4.1>Damper module</a>.
+CATs have a maximum of 100 recharging energy points. Energy is used for a number of things.
+An important example is that if the 'damper' mutator is active, energy is used to provide protection via the <a:cmd Manual 4.1>Damper module</a>.
 
 <spush><font:NovaSquare:24>Returning to Etherform<spop>
 
@@ -17,9 +18,9 @@ By pressing @bind34, players manifested as CAT can dissolve their physical bodie
 
 A fixed set of passive modules give additional protection or unusual abilities to CATs:
 
-- <a:cmd Manual 4.1>Damper</a> <bitmap:share/hud/rotc/icon.damper.20x20> - Reduces damage based on amount of available energy.
+- <a:cmd Manual 4.1>Damper</a> <bitmap:share/hud/rotc/icon.damper.20x20> - Reduces damage based on amount of available energy. (Only active if 'damper' mutator is active)
 
-- <a:cmd Manual 4.2>Shield</a> <bitmap:share/hud/rotc/icon.shield.20x20> - Absorbs damage.
+- <a:cmd Manual 4.2>Shield</a> <bitmap:share/hud/rotc/icon.shield.20x20> - Absorbs damage. (Only active if 'shields' mutator is active)
 
 - <a:cmd Manual 4.3>Barrier</a> <bitmap:share/hud/rotc/icon.barrier.20x20> - Provides 100% protection from certain weapons.
 

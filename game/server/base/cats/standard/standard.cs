@@ -78,10 +78,10 @@ datablock PlayerData(RedStandardCat)
 	density = 10;
 	gravityMod = 1.0;
 
-	maxDamage = 75;
-	damageBuffer = 25;
-	maxEnergy = 100;
-
+	maxDamage = $Server::Game.health;
+	damageBuffer = $Server::Game.shield;
+	maxEnergy = $Server::Game.energy;
+ 
 	repairRate = 0.8;
 	damageBufferRechargeRate = 0.15;
 	damageBufferDischargeRate = 0.15;
@@ -132,7 +132,7 @@ datablock PlayerData(RedStandardCat)
 	recoverRunForceScale = 1.2;
 
 	minImpactSpeed = 30; //
-	speedDamageScale = 3.0; // dynamic field: impact damage multiplier
+	speedDamageScale = $Server::Game.fallingdmg; // dynamic field: impact damage multiplier
 
 	boundingBox = "1.2 1.1 2.7";
 	pickupRadius = 0.75;
@@ -265,12 +265,6 @@ if($Game::GameType != $Game::Ethernet)
 {
 	RedStandardCat.groundConnectionBeam = "";
 }
-
-if($Server::Game.noshield)
-	RedStandardCat.damageBuffer = 0;
-
-if($Server::Game.lowhealth)
-	RedStandardCat.maxDamage = 50;
 
 function RedStandardCat::onAdd(%this, %obj)
 {

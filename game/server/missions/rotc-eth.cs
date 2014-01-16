@@ -57,6 +57,10 @@ function initMission()
 		$Server::Game.delete();
 	$Server::Game = new ScriptObject();
 	$Server::Game.mutators = "";
+	$Server::Game.health = 150;
+	$Server::Game.shield = 0;
+	$Server::Game.energy = 100;
+   $Server::Game.fallingdmg = 1.0;
 	$Server::Game.alwaystag = -1;
 	$Server::Game.nevertag  = 0;
 	$Server::Game.temptag   = 1;
@@ -78,16 +82,28 @@ function initMission()
 			$Server::Game.tagMode = $Server::Game.nevertag;
 			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
-		else if(%mutator $= "noshield")
-		{
-		%recognized = %mutator SPC %recognized;
-			$Server::Game.noshield = true;
-			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
-		}
-		else if(%mutator $= "nodamper")
+		else if(%mutator $= "halfhealth")
 		{
          %recognized = %mutator SPC %recognized;
-			$Server::Game.nodamper = true;
+         $Server::Game.health = 75;
+         $Server::Game.mutators = %mutator SPC $Server::Game.mutators;
+		}
+		else if(%mutator $= "lowhealth")
+		{
+         %recognized = %mutator SPC %recognized;
+         $Server::Game.health = 50;
+         $Server::Game.mutators = %mutator SPC $Server::Game.mutators;
+		}
+		else if(%mutator $= "shields")
+		{
+         %recognized = %mutator SPC %recognized;
+         $Server::Game.shield = 25;
+         $Server::Game.mutators = %mutator SPC $Server::Game.mutators;
+		}
+		else if(%mutator $= "damper")
+		{
+         %recognized = %mutator SPC %recognized;
+			$Server::Game.damper = true;
 			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
 		else if(%mutator $= "novamp")
@@ -96,10 +112,10 @@ function initMission()
 			$Server::Game.novamp = true;
 			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
-		else if(%mutator $= "lowhealth")
+		else if(%mutator $= "crater")
 		{
-		%recognized = %mutator SPC %recognized;
-			$Server::Game.lowhealth = true;
+         %recognized = %mutator SPC %recognized;
+			$Server::Game.fallingdmg = 3.0;
 			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
 		else if(%mutator $= "slowpoke")
@@ -121,27 +137,28 @@ function initMission()
 			$Server::Game.arena = "supersniper";
 			$Server::Game.mutators = %mutator SPC $Server::Game.mutators;
 		}
-		else if(%mutator $= "QUICKDEATH")
+		else if(%mutator $= "PRO")
 		{
-		%recognized = %mutator SPC %recognized;
-			$Server::Game.noshield = true;
-			$Server::Game.lowhealth = true;
+         %recognized = %mutator SPC %recognized;
+			$Server::Game.damper = true;
+			$Server::Game.shield = 25;
+			$Server::Game.health = 75;
+			$Server::Game.fallingdmg = 3.0;
 			$Server::Game.mutators = $Server::Game.mutators SPC
-				"noshield" SPC "lowhealth";
+				"damper" SPC
+            "shields" SPC
+            "halfhealth" SPC
+            "crater";
 		}
 		else if(%mutator $= "INSTAGIB")
 		{
          %recognized = %mutator SPC %recognized;
 			$Server::Game.arena = "supersniper";
-			$Server::Game.noshield = true;
-			$Server::Game.nodamper = true;
 			$Server::Game.novamp = true;
 			$Server::Game.tagMode = $Server::Game.nevertag;
 			$Server::Game.oobdeath = true;
 			$Server::Game.mutators = $Server::Game.mutators SPC
 				"supersniper-arena" SPC
-            "noshield" SPC
-            "nodamper" SPC
             "novamp" SPC
             "nevertag" SPC
             "oobdeath";

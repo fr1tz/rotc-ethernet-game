@@ -91,24 +91,24 @@ function GameConnection::showReceivedDamageInfo(%this, %died)
 	%t = %t @ srdi_h2("-" SPC mFloatLength(%a.handicapSlice,0));
 	%t = %t @ "\n";
 
-   if($Server::Game.noshield)
-   {
-      %t = %t @ srdi_h1("Damper disabled by 'nodamper' mutator");
-      %t = %t @ srdi_h2("- 0");
-      %t = %t @ "\n";
-   }
-   else
+   if($Server::Game.damper)
    {
       %i = mFloatLength(%a.damperEnergy*100,0);
       %t = %t @ srdi_h1("Damper (powered by " @ %i @ "% energy)");
       %t = %t @ srdi_h2("-" SPC mFloatLength(%a.damperSlice,0));
       %t = %t @ "\n";
    }
+   else
+   {
+      %t = %t @ srdi_h1("Damper mutator not active");
+      %t = %t @ srdi_h2("- 0");
+      %t = %t @ "\n";
+   }
 
 	%i = mFloatLength(%a.shield,0);
-   if($Server::Game.noshield)
+   if($Server::Game.shield == 0)
    {
-      %t = %t @ srdi_h1("Shield disabled by 'noshield' mutator");
+      %t = %t @ srdi_h1("Shields mutator not active");
    }
 	else if(%a.shield > 0 && %a.shieldSlice == 0)
 	{
