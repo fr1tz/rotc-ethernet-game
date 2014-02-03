@@ -30,7 +30,7 @@ datablock TacticalZoneData(GridZone)
 
 	colors[15] = "1.0 1.0 1.0 1.0"; 
 
-    texture = "share/textures/rotc/zone.dots";
+    texture = "share/textures/rotc/zone.grid";
 
 	// Script fields...
 	isTerritoryZone = true;

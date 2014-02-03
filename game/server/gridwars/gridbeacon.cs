@@ -12,7 +12,7 @@ datablock StaticShapeData(GridBeacon)
 	shapeFxTexture[1] = "share/textures/rotc/heating.png";
 	shapeFxColor[0] = "1.0 1.0 1.0 1.0";  
  	shapeFxColor[1] = "1.0 0.0 0.0 1.0"; 
- 	shapeFxColor[2] = "1.0 1.0 1.0 1.0";  
+ 	shapeFxColor[2] = "0.0 0.0 1.0 1.0";
 
 	// Script fields...
 	category = "Grid Wars Structures"; // for the mission editor
